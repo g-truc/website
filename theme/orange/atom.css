@@ -1,0 +1,64 @@
+﻿/* atom */
+
+subtitle
+{
+	display:block;
+	color:#ffffff;
+	font-size:24px;
+	font-weight:bold;
+	font-family:Century, Verdana, Arial;
+	margin:0px; 
+	margin-left:auto; 
+	margin-right:auto;
+	padding-top:16px;
+	padding-left:16px;
+	padding-right:16px;
+	padding-bottom:16px;
+	display:block;
+
+	background-color:#803300;
+	border-bottom-width:16px;
+	border-bottom-style:solid;
+	border-bottom-color:#ffffff;
+	border-top-width:1px;
+	border-top-style:solid;
+	border-top-color:#ffdac1;
+
+	width:647px;
+
+	text-align:center;
+}
+
+id, link, updated, author, title
+{
+	display:none;	
+}
+
+entry, feed
+{
+	display:block;
+	color:#803300;
+	margin-left:auto; 
+	margin-right:auto;
+	width:800px;
+	font-family:Verdana, Century, Arial;
+	text-align:justify;
+}
+
+entry
+{
+	width:647px;
+	background-color:#ffffff;
+	padding-left:16px;
+	padding-right:16px;
+}
+
+feed
+{
+	margin:0px;
+	padding:0px;
+	background-color:#d95701;
+	background-repeat:repeat;
+	min-height:800px;
+	font-size:13px;
+}

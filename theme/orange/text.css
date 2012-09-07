@@ -1,0 +1,256 @@
+﻿/* For shared items */
+
+div.list-block
+{
+	margin:0px;
+	padding:8px 0px 8px 0px;
+}
+
+ul
+{
+	padding:0px;
+	margin:0px;
+}
+
+li
+{
+	display:list-item;
+	list-style-position:inside;
+	list-style-type:square;	
+	margin:0px;
+	padding:0px;
+	text-indent:0px;
+}
+
+h2
+{
+	margin-top:0px;
+	font-size:16px;
+	font-family:Century;
+	font-weight:bold;
+}
+
+h3
+{
+	font-size:14px;
+	font-family:Century;
+	font-weight:normal;
+}
+
+h3.share
+{
+	font-size:9px;
+	font-family:verdana;
+	font-weight:normal;
+	margin-bottom:24px;
+}
+
+h4
+{
+    font-size:14px;
+	font-family:Century;
+	font-weight:bold;
+	margin-top:24px;
+	margin-bottom:8px;
+}
+
+h5
+{
+    font-size:13px;
+	font-family:Century;
+	font-weight:bold;
+	margin-top:16px;
+	margin-bottom:8px;
+}
+
+a
+{
+    color:#402000;
+}
+
+a:hover
+{
+	color:#804000;
+}
+
+.light
+{
+	color:#402000;
+}
+
+.light:hover
+{
+	color:#804000;
+}
+
+.dark
+{
+	color:#FFFFFF;
+}
+
+.dark:hover
+{
+	color:#FFFFFF;
+}
+
+p
+{
+	margin:0px;
+	padding:8px 0px 8px 0px;
+	text-align:justify;
+}
+
+p.quote
+{
+	margin:0px;
+	padding:8px 32px 8px 32px;
+	/*font-family:"Lucida Handwriting", "Monotype Corsiva", Century, "Bell MT", Verdana, Arial;*/
+	font-family:Verdana;
+	font-style:italic;
+	/*font-size:16px;*/
+}
+
+span.quote-author
+{
+	font-style:normal;
+	text-align:right;
+	display:block;
+}
+
+span.bold
+{
+	font-weight:bold;	
+}
+
+span.codeword
+{
+	color:#000000;
+	font-family:"Courier New";
+	font-size:14px;
+}
+
+/* For drivers status */
+
+table.status
+{
+	background-color:#FFFFFF;
+/*
+	margin-left:auto; 
+	margin-right:auto;
+*/
+	width:100%;
+	margin:0px 0px 0px 0px;
+	padding:8px 0px 8px 0px;
+	font-size:12px;
+}
+
+tr.title
+{
+	font-weight:bold;
+}
+
+th.sample-name
+{
+	width:180px;
+}
+
+th
+{
+	width:auto;		
+}
+
+td.table-sample
+{
+	font-size:11px;		
+}
+
+td.green, td.orange, td.red, td.black, td.blue
+{
+	
+}
+
+td.blue
+{
+	background-color:#C0C0FF;
+}
+
+td.green
+{
+	background-color:#C0FFC0;
+}
+
+td.orange
+{
+	background-color:#FFE0C0;
+}
+
+td.red
+{
+	background-color:#FFC0C0;
+}
+
+td.black
+{
+	background-color:#C0C0C0;
+}
+
+/* List */
+
+div.list
+{
+    padding:8px 0px 8px 0px;
+}
+
+span.list
+{
+	margin:0px;
+}
+
+ul.list
+{
+	margin:0px;
+}
+
+li.list
+{
+	list-style-position:inside;
+	list-style-type:square;	
+}
+
+/* Image stuff */
+
+div.post-image-white, 
+div.post-image-black
+{
+	width:100%;
+	padding-top:32px;
+	padding-bottom:32px;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	/*border-radius:0px;*/
+}
+
+div.post-image-black
+{
+	background-color:#000000;
+}
+
+div.post-image-white
+{
+	background-color:#ffffff;
+}
+
+div.post-image-list
+{
+	width:100%;
+	text-align:center;
+}
+
+div.post-image-title
+{
+	display:block;
+	font-style:italic;
+	text-align:center;
+	padding-bottom:32px;
+}

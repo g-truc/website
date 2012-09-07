@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+
+  <!-- about -->
+  <about>
+    <paragraph>
+      <link href="http://feeds.feedburner.com/g-truc">G-Truc Cresation's RSS feed</link> -
+      <twitter href="https://twitter.com/g_truc" class="twitter-follow-button">Follow G-Truc Creation on Twitter</twitter>
+    </paragraph>
+    <quote author="Christophe Riccio">
+      The content of this website only reflect my own views.
+    </quote>
+  </about>
+
+  <item level="0" name="gtc" title="Archives">
+    <address type="main" url="post.html" processor="page-post-list.xsl" />
+    <address type="atom" url="post.atom" processor="page-post-atom.xsl" />
+  </item>
+
+  <item level="0" name="gtc-crea" parent="gtc" title="Creative">
+  <options></options>
+    <address type="main" url="post-crea.html" processor="page-post-list.xsl" />
+    <address type="atom" url="post-crea.atom" processor="page-post-atom.xsl" />
+  </item>
+  <item level="1" name="gtc-crea-photograph" parent="gtc-crea" title="Photograph">
+    <options></options>
+    <address type="main" url="post-crea-photograph.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="1" name="gtc-crea-photography" parent="gtc-crea" title="Photography">
+    <options></options>
+    <address type="main" url="post-crea-photography.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="1" name="gtc-crea-exhibition" parent="gtc-crea" title="Exhibitions">
+    <options></options>
+    <address type="main" url="post-crea-exhibition.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="1" name="gtc-crea-performance" parent="gtc-crea" title="Performances">
+    <options></options>
+    <address type="main" url="post-crea-performance.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="0" name="gtc-tech" parent="gtc" title="Technical">
+    <options></options>
+    <address type="main" url="post-tech.html" processor="page-post-list.xsl" />
+    <address type="atom" url="post-tech.atom" processor="page-post-atom.xsl" />
+  </item>
+  <item level="1" name="gtc-tech-event" parent="gtc-tech" title="Events">
+    <options></options>
+    <address type="main" url="post-tech-event.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="1" name="gtc-tech-opengl" parent="gtc-tech" title="OpenGL">
+    <address type="main" url="post-opengl.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-opengl-review" parent="gtc-tech-opengl" title="OpenGL Reviews">
+   <address type="main" url="post-opengl-review.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-opengl-status" parent="gtc-tech-opengl" title="OpenGL Status">
+ <address type="main" url="post-opengl-status.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-opengl-tips" parent="gtc-tech-opengl" title="OpenGL Tips">
+    <address type="main" url="post-opengl-tips.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-opengl-samples" parent="gtc-tech-opengl" title="OpenGL Samples">
+    <address type="main" url="post-opengl-samples.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="1" name="gtc-tech-opencl" parent="gtc-tech" title="OpenCL">
+    <address type="main" url="post-opencl.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="1" name="gtc-tech-webgl" parent="gtc-tech" title="WebGL">
+    <address type="main" url="post-webgl.html" processor="page-post-list.xsl" />
+  </item>
+  
+  <item level="1" name="gtc-tech-project" parent="gtc-tech" title="Projects">
+    <address type="main" url="post-project.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-openglinsights" parent="gtc-tech-project" title="OpenGL Insights">
+    <address type="main" url="post-project-openglinsights.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-glm" parent="gtc-tech-project" title="GLM">
+    <address type="main" url="post-project-glm.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-gli" parent="gtc-tech-project" title="GLI">
+    <address type="main" url="post-project-gli.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-glo" parent="gtc-tech-project" title="GLO">
+    <address type="main" url="post-project-glo.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-ovtsa" parent="gtc-tech-project" title="Ovt'sa">
+    <address type="main" url="post-project-ovtsa.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-kueken" parent="gtc-tech-project" title="Küken">
+    <address type="main" url="post-project-kueken.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-shooter" parent="gtc-tech-project" title="Shoot(r)">
+    <address type="main" url="post-project-shooter.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-piranha" parent="gtc-tech-project" title="Piranha">
+    <options></options>
+    <address type="main" url="post-project-piranha.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-zglu" parent="gtc-tech-project" title="Zglu">
+    <options></options>
+    <address type="main" url="post-project-zglu.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-othellogl" parent="gtc-tech-project" title="OthelloGL">
+   <options></options>
+    <address type="main" url="post-project-othellogl.html" processor="page-post-list.xsl" />
+  </item>
+
+  <item level="1" name="gtc-tech-devel" parent="gtc-tech" title="Development">
+    <address type="main" url="post-devel.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-devel-cpp" parent="gtc-tech-devel" title="C++">
+    <address type="main" url="post-devel-cpp.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-devel-xml" parent="gtc-tech-devel" title="XML">
+    <address type="main" url="post-devel-xml.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-devel-book" parent="gtc-tech-devel" title="Books">
+    <address type="main" url="post-devel-book.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-devel-hardware" parent="gtc-tech-devel" title="Hardware">
+    <address type="main" url="post-devel-hardware.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-devel-documentation" parent="gtc-tech-devel" title="Documentation">
+    <address type="main" url="post-devel-documentation.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-devel-tool" parent="gtc-tech-devel" title="Tool">
+    <address type="main" url="post-devel-tool.html" processor="page-post-list.xsl" />
+  </item>
+
+  <item level="0" name="gtc-tech-g-truc" parent="gtc" title="G-Truc Creation">
+    <address type="main" url="post-g-truc.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="1" name="gtc-tech-g-truc-update" parent="gtc-tech-g-truc" title="Updates">
+    <address type="main" url="post-g-truc-update.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="1" name="gtc-tech-g-truc-source" parent="gtc-tech-g-truc" title="Source">
+    <options></options>
+    <address type="main" url="post-g-truc-source.html" processor="page-post-list.xsl" />
+  </item>
+
+	<theme name="orange" favicon="favicon.ico" favicon-apple="favicon.png">
+		<style>./theme/orange/style.css</style>
+    <style>./theme/orange/code.css</style>
+    <style>./theme/orange/text.css</style>
+    <style>./theme/orange/title.css</style>
+    <style>./theme/orange/atom.css</style>
+    <style>./theme/orange/button.css</style>
+  </theme>
+
+</g-truc>

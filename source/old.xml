@@ -1,0 +1,2975 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<old>
+
+	<!-- References -->
+	<reference-list>
+		<reference-element date="05/02/2006" title="Shadow Mapping">
+			<text>
+				<paragraph>
+					Le concept du shadow mapping est de cr�er des cartes de profondeurs en positionnant la camera sur la position de la lampe. Ces cartes de profondeurs sont ensuite appliqu�es sur la sc�ne alors que la camera reprend la position de la vue.
+				</paragraph>
+				<paragraph>
+					Le shadow mapping est simple � impl�menter cependant il n�cessite beaucoup de m�moire d'autant plus que la qualit� du rendu d�pend de la taille des textures utilis�es pour les ombres.
+				</paragraph>
+			</text>
+			<source-list>
+				<source-element type="Documentation" address="" title="Lee Thomason, Shadow Mapping, More OpenGL Game Programming, 2005, Page 383 - 388. " />
+				<source-element type="Documentation" address="http://www.paulsprojects.net/tutorials/smt/smt.html" title="Paul Baker, Shadow Mapping" />
+			</source-list>
+		</reference-element>
+
+		<reference-element date="05/02/2006" title="Shadow Volume">
+			<text>
+				<paragraph>
+					Technique notamment utilis� dans Doom 3 pour le rendu d'ombre. Il s'agit de cr�er volume qui recouvre la zone d'ombre d'un objet. Ce volume est souvent dessin� dans le tampon stencil d'o� le nom Stencil Shadow Volume. Il est ensuite possible d'appliquer un �clairage diff�rent aux pixels suivant la valeur qu'il leurs est associ�e dans le tampon stencil.
+				</paragraph>
+				<paragraph>
+					Les shadows volumes nous offrent un rendu parfait (peut-�tre trop) mais ils consomment beaucoup de fill rate et la cr�ation de la silouette n�cessite beaucoup de calculs sur CPU.
+				</paragraph>
+			</text>
+			<source-list>
+				<source-element type="Documentation" address="" title="Eric Lengyel, Shadows, Mathematics for 3D Game Programming and Computer Graphics, Chapitre 10, 2004, Page 307 - 340. " />
+				<source-element type="Documentation" address="" title="Morgan McGuire, Efficient Shadow Volume Rendering, GPU Gems, Chapitre 9, 2004, Page 137 - 166. " />
+				<source-element type="Documentation" address="" title="Lee Thomason, Shadow Volumes, More OpenGL Game Programming, 2005, Page 379 - 383. " />
+				<source-element type="Documentation" address="http://www.c4engine.com/code/edges.html" title="Eric Lengyel, Bulding an edge list" />
+				<source-element type="Documentation" address="http://www.gamasutra.com/features/20021011/lengyel_pfv.htm" title="Eric Lengyel, Shadow Volume" />
+			</source-list>
+		</reference-element>
+
+		<reference-element date="01/02/2006" title="Normal Mapping">
+			<text>
+				<paragraph>
+					Le normal mapping est une technique de rendu simulant un relief sur une surface plane (bump mapping). Cette technique utilise une normal map dont chaque texel est utilis� comme normal lors du calcul de l'�clairage d'un fragment. Ces normals sont souvent exprim�s dans l'espace de la texture c'est pourquoi une matrice nomm�e TBN (Tangent Binormal Normal) est utilis�e pour convertir des valeurs exprimer l'espace du model vers l'espace de la texture.
+				</paragraph>
+			</text>
+			<source-list>
+				<source-element type="Documentation" address="" title="Eric Lengyel, Bump Mapping, Mathematics for 3D Game Programming and Computer Graphics, Chapitre 6.8, 2004, Page 182 - 189. " />
+				<source-element type="Documentation" address="http://developer.nvidia.com/object/mipmapping_normal_maps.html" title="Michael Toksvig, Mipmapping Normal Maps, nVidia, 2004." />
+				<source-element type="Documentation" address="http://www.paulsprojects.net/tutorials/simplebump/simplebump.html" title="Paul baker, Bump Mapping, 2002." />
+				<source-element type="Tool" address="http://www.ati.com/developer/sdk/radeonSDK/html/Tools/ToolsPlugIns.html" title="Un outil de ATI pour cr�er des normals maps � partir d'une heightmap." />
+				<source-element type="Tool" address="http://developer.nvidia.com/object/melody_home.html" title="Un outil de nVidia pour creer des normaps maps a partir de models high resolution." />
+				<source-element type="Tool" address="http://www.ati.com/developer/samples/dx9/3dcnormalcompression.html" title="Un outil pour creer des normal maps au format compress� 3Dc." />
+			</source-list>
+		</reference-element>
+
+		<reference-element date="01/02/2006" title="Parallax Mapping">
+			<text>
+				<paragraph>
+					Technique habituellement utilis� avec le Normal Mapping. Elle permet de simuler le relief en recouvrant certains pixel, ceux qui sont sens�s �tre cach�s par la relief de la texture suivant la vue.
+				</paragraph>
+			</text>
+			<source-list>
+				<source-element type="Documentation" address="http://www.infiscape.com/doc/parallax_mapping.pdf" title="Le papier originel du Parallax Mapping tel qu'il est utilis� actuellement. Il inclut un vertex et fragment programs OpenGL." />
+			</source-list>
+		</reference-element>
+	</reference-list>
+
+	<!-- Article -->
+	<article-list>
+		<article-element index="0013" address="./article/const.pdf" date-creation="12/07/2007" date-update="12/07/2007" title="Approfondir const en C++">
+			<text>
+				<paragraph>
+					Aborde quelques usages du qualificatif 'const' en C++ dans l'optique d'�crire un code plus robuste.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0012" address="./article/GeForce8800.pdf" date-creation="12/11/2006" date-update="12/11/2006" title="GeForce 8800 : Programmation OpenGL">
+			<text>
+				<paragraph>
+					Pr�sentation des nouvelles possibilit�s offertes par le GeForce 8800 au niveau programmation.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0011" address="./article/jegx.pdf" date-creation="28/05/2006" date-update="28/05/2006" title="Interview de JeGX">
+			<text>
+				<paragraph>
+					Interview de JeGX, webmaster de <link href="http://www.ozone3d.net">oZone3D.net</link> et cr�ateur d'<link href="http://www.ozone3d.net/hyperion.php">Hyperion</link>.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0010" address="./article/vbo-en.pdf"  date-creation="06/10/2006" date-update="06/10/2006" title="Vertex Buffer Object (English)">
+			<text>
+				<paragraph>
+					Presenting all features of Vertex Buffer Objects.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0009" address="./article/vbo-fr.pdf" date-creation="06/10/2006" date-update="06/10/2006" title="Vertex Buffer Object (Fran�ais)">
+			<text>
+				<paragraph>
+					Pr�sentation compl�te des fonctionnalit�s des Vertex Buffer Objects.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0008" address="./article/smart_ptr.pdf" date-creation="07/04/2006" date-update="07/04/2006" title="Smart Pointer">
+			<text>
+				<paragraph>
+					Description du concept des smart pointers, de leurs utilisations et proposition d'une impl�mentation.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0007" address="./article/precompiled.pdf" date-creation="24/02/2006" date-update="24/02/2006" title="Precompiled Header">
+			<text>
+				<paragraph>
+					Pr�sentation des pr�compiled headers, un outil pour r�duire le temps de compilation d'un programme.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0006" address="./article/lod.pdf" date-creation="28/03/2005" date-update="28/03/2005" title="Niveau de d�tail et cartes de hauteurs">
+			<text>
+				<paragraph>
+					Description de techniques utilis�s pour le rendu de terrain avec niveaux de d�tail.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0005" address="./article/glsl.pdf" date-creation="12/01/2005" date-update="12/01/2005" title="OpenGL Shading Language">
+			<text>
+				<paragraph>
+					Description de l'OpenGL Shading Language, concept, variable, fonction et API avec un exemple.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0004" address="./article/inno_nsis.pdf" date-creation="20/01/2004" date-update="20/01/2004" title="Comparatif entre Inno Setup et NSIS">
+			<text>
+				<paragraph>
+					Un test entre NSIS 2 RC1 et Inno Setup 4.0.10, les deux meilleurs g�n�rateurs d'installeurs en freeware.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0003" address="./article/ogl-ext.pdf" date-creation="06/10/2006" date-update="06/10/2006" title="Utiliser les extensions OpenGL">
+			<text>
+				<paragraph>
+					D�crit le principe des extensions OpenGL qui est utilis� pour l'utilisation des possibilit�s des versions sup�rieurs � OpenGL 1.1 sous Windows 4.x et Windows 5.x.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0002" address="./article/xml_pre.pdf" date-creation="28/09/2003" date-update="28/09/2003" title="Pr�sentation de XML">
+			<text>
+				<paragraph>
+					Pr�sentation du language XML, sa philosophie, son utilisation.
+				</paragraph>
+			</text>
+		</article-element>
+
+		<article-element index="0001" address="./article/sdl_intro.pdf" date-creation="25/05/2003" date-update="25/05/2003" title="Introduction � SDL">
+			<text>
+				<paragraph>
+					Un document de propagendes pr�sentant les possibilit�s de la biblioth�que SDL afin de vous convaincre de l'utiliser.
+				</paragraph>
+			</text>
+		</article-element>
+	</article-list>
+
+
+	<!-- type : tutorial project community service library amateur tool resource news matos download -->
+	<link-list>
+
+		<link-element date="17/03/2009" name="Guru of the Week" lang="English" type="tutorial" address="http://www.gotw.ca/gotw/index.htm">
+			<text>
+				<paragraph>
+					C++ extremely advanced topics to reach toplevel in C++.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="17/03/2009" name="D3DBook" lang="English" type="tutorial" address="http://wiki.gamedev.net/index.php/D3DBook:Table_of_Contents">
+			<text>
+				<paragraph>
+					One amazing advanced free e-book about real time 3D graphics based on Direct3D by Wolfgang Engel, Jack Hoxley, Ralf Kornmann, Niko Suni and Jason Zink.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="12/03/2006" name="Devmaster" lang="English" type="tutorial news community" address="http://www.devmaster.net">
+			<text>
+				<paragraph>
+					A graphics development website with news, tutorials and a great community.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="18/03/2009" name="MSDN" lang="English" type="tutorial" address="http://msdn.microsoft.com">
+			<text>
+				<paragraph>
+					Microsoft Developer Network, a big website with a lot of documentation. Great for SSE intrincis, OpenMP, C++ TR1 and a lot more!
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="16/04/2005" name="David Henry" lang="English" type="tutorial" address="http://tfc.duke.free.fr/">
+			<text>
+				<paragraph>
+					David Henry (DukeNukem) come from the Half-Like modding world. He programs in C, C++ and OpenGL.
+				</paragraph>
+				<paragraph>
+					A lot of code and documentation are available on his website. Mesh loaders (MDL (Q1), MD2, MD3, MD5) and textures loaders (BMP, TGA, JPG, PNG, DDS).
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="16/04/2005" name="Olivier Nocent" lang="French" type="tutorial" address="http://olivier.nocent.free.fr/">
+			<text>
+				<paragraph>
+					Olivier Nocent is a lecturer at the IUT of Reims in France and researcher at LERI.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="12/12/2004" name="piGfreeZer" lang="English" type="blog" address="http://pigfreezer.free.fr">
+			<text>
+				<paragraph>
+					piGfreeZer is an amator mucisien who worked on Half-Life mods and Warsow. He continues to publish albums and musics.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="14/08/2003" name="Emil Persson (Humus)" lang="English" type="blog" address="http://www.humus.name">
+			<text>
+				<paragraph>
+					Emil Persson website with a lot of photos and advanced OpenGL and Direct3D demos. He works at ATI but now moved to Avalanche Studios. he wrote several articles in Game Programming book series.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="14/08/2003" name="Paul Baker" lang="English" type="tutorial" address="http://www.paulsprojects.net">
+			<text>
+				<paragraph>
+					Varius of OpenGL and Direct3D tutorials and codes.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="27/07/2003" name="Kevin Harris" lang="English" type="tutorial" address="http://www.codesampler.com">
+			<text>
+				<paragraph>
+					A lot of samples in C++, Direct3D and OpenGL. His samples are quite old fashion now, based on the mostly based on the fixed pipelines.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="17/03/2009" name="Timothy Farrar" lang="English" type="blog" address="http://www.farrarfocus.com/atom/">
+			<text>
+				<paragraph>
+					Timothy Farrar is a photograph and OpenGL programmer. On his blog, he discus advanced 3D graphics topics and talk about his experiments.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="17/03/2009" name="Wolfgang Engel" lang="English" type="blog" address="http://diaryofagraphicsprogrammer.blogspot.com">
+			<text>
+				<paragraph>
+					The blog of Wolfgang Engel, editor of ShaderX book series, writer of the <link href="http://wiki.gamedev.net/index.php/D3DBook:Table_of_Contents">D3DBook on Gamedev.Net</link> and graphics programmer at Rockstar. A lot of interesting entries on his blog!
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="05/01/2007" name="Cyril Crassin" lang="French English" type="blog" address="http://www.icare3d.org">
+			<text>
+				<paragraph>
+					Cyril Crassin is a PHD student, he deals with advanced visualisation topies on his website.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="21/05/2006" name="Jerome Guinot (JeGX)" lang="French English" type="tutorial" address="http://www.ozone3d.net">
+			<text>
+				<paragraph>
+					Old fashion amator with a lot of content on his website.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="17/02/2006" name="Sylvain Douce (CH4NDL3R)" lang="French" type="blog" address="http://blogs.nofrag.com/channie">
+			<text>
+				<paragraph>
+					Sylvain Douce is professional a mapper and game designer who have been involved in mapping for Counter Strike, Quake 3, Splinter Cell and Warsow as a amator.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="12/03/2006" name="C4 Engine" lang="English" type="project" address="http://www.c4engine.com">
+			<text>
+				<paragraph>
+					Eric Lengyel engine, author of Mathematics for 3D Game Programming and Computer Graphics.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="17/02/2006" name="ATI Developer" lang="English" type="tool tutorial" address="http://ati.amd.com/developer/">
+			<text>
+				<paragraph>
+					ATI developer website ... quick a mess since AMD bought ATI. Some good tools here like The Compressonator to compress pictures in DDS files with the best quality over the other tool including Microsoft and nVidia onces.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="17/02/2006" name="nVidia Developer" lang="English" type="tool tutorial" address="http://developer.nvidia.com">
+			<text>
+				<paragraph>
+					nVidia developer center ... Just so great!
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="17/02/2006" name="Le Monde" lang="French" type="news" address="http://www.lemonde.fr">
+			<text>
+				<paragraph>
+					The website of the French paper.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="17/02/2006" name="The Guardian" lang="English" type="news" address="http://www.guardian.co.uk">
+			<text>
+				<paragraph>
+					The website of the British Paper.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="03/01/2006" name="Amit Patel" lang="English" type="blog" address="http://www-cs-students.stanford.edu/~amitp/">
+			<text>
+				<paragraph>
+					Amit Patel is a PHD student specilized in AI: A lot of content on this topic!
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="14/08/2005" name="Geometric Tools" lang="English" type="tutorial" address="http://www.geometrictools.com">
+			<text>
+				<paragraph>
+					Previously Magic Software, a lot of codes and documentation about graphics. A main reference!
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="14/08/2005" name="ImageShack" lang="English" type="service" address="http://www.imageshack.us">
+			<text>
+				<paragraph>
+					Upload your picture for free.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="14/08/2005" name="Paste Bin" lang="English" type="service" address="http://pastebin.com">
+			<text>
+				<paragraph>
+					Upload some code for free.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="31/05/2005" name="Havok" lang="English" type="library" address="http://www.havok.com">
+			<text>
+				<paragraph>
+					A commercial library for physics used by a lot of games and supported by Intel.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="31/05/2005" name="PhysX" lang="English" type="library" address="http://developer.nvidia.com/object/physx_downloads.html">
+			<text>
+				<paragraph>
+					Previously called Novodex, bought by Agiea to release a unique PPU (Physic Processing Unit) and finally bought by nVidia, a great PhysX library partly excellerated by nVidia chips.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="27/04/2005" name="Unreal Wiki" lang="English" type="mod tutorial" address="http://wiki.beyondunreal.com/">
+			<text>
+				<paragraph>
+					A great website of Unreal modding.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="02/04/2005" name="glView" lang="English" type="tool" address="http://www.realtech-vr.com/glview">
+			<text>
+				<paragraph>
+					List the feature of your graphics card and contain a database of old graphics cards to see which extensions are available.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="02/04/2005" name="Light House 3D" lang="English" type="tutorial" address="http://www.lighthouse3d.com">
+			<text>
+				<paragraph>
+					Light House 3D deal with OpenGL and VRML technologies. A lot of documentations and some really interesting articles based on GLSL.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="02/04/2005" name="Flipcode" lang="English" type="tutorial" address="http://www.flipcode.com">
+			<text>
+				<paragraph>
+					What was the best website for 3D graphics programers during years. We can still access to archives.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="15/12/2004" name="Cg Textures" lang="English" type="resource" address="http://www.cgtextures.com">
+			<text>
+				<paragraph>
+					A lot of free textures.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="09/09/2004" name="Guru 3D" lang="English" type="news matos" address="http://www.guru3d.com">
+			<text>
+				<paragraph>
+					The best place to get the last drivers available for your graphics cards.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="14/08/2004" name="DA Font" lang="English" type="resource" address="http://www.dafont.com">
+			<text>
+				<paragraph>
+					The reference website if you are looking for fonts.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="21/03/2004" name="OpenGL.org" lang="English" type="library" address="http://www.opengl.org">
+			<text>
+				<paragraph>
+					The official OpenGL website with a good community.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="27/02/2004" name="7-Zip" lang="English" type="tool" address="http://www.7-zip.org/">
+			<text>
+				<paragraph>
+					Compression your files, very efficient and it's a free software!
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="27/02/2004" name="Irrlicht" lang="English" type="library" address="http://irrlicht.sourceforge.net/">
+			<text>
+				<paragraph>
+					A free 3D engine.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="05/02/2004" name="NSIS" lang="English" type="tool" address="http://nsis.sourceforge.net/">
+			<text>
+				<paragraph>
+					Create installer for your Windozs software.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="05/02/2004" name="Inno Setup" lang="English" type="tool" address="http://www.innosetup.com/">
+			<text>
+				<paragraph>
+					Create installer for your Windozs software.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="05/02/2004" name="Free GLUT" lang="English" type="library" address="http://freeglut.sourceforge.net/">
+			<text>
+				<paragraph>
+					Free implementation of GLUT, a library to create OpenGL windows.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="21/01/2004" name="Ogre" lang="English" type="library" address="http://www.ogre3d.org">
+			<text>
+				<paragraph>
+					The best free real time engine.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="28/09/2003" name="SDL" lang="English" type="library" address="http://www.libsdl.org">
+			<text>
+				<paragraph>
+					A library to create OpenGL windows with a lot of library to load picture, play sound, etc...
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="28/09/2003" name="FMod" lang="English" type="library" address="http://www.fmod.org">
+			<text>
+				<paragraph>
+					One amazing library to load and play sound and music, available in so much platform!
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="26/10/2004" name="Gr�gory Smialek" lang="French" type="blog" address="http://texel3d.free.fr">
+			<text>
+				<paragraph>
+					Gr�gory Smialek website, various OpenGL andDirect3D projects.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="22/08/2003" name="OpenGL Registry" lang="English" type="library" address="http://www.opengl.org/registry">
+			<text>
+				<paragraph>
+					OpenGL extensions list.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="17/03/2009" name="OpenGL Reference page" lang="English" type="library" address="http://www.opengl.org/sdk/docs/man/">
+			<text>
+				<paragraph>
+					OpenGL reference page. It describes all OpenGL functions!
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="27/07/2003" name="Wotsit" lang="English" type="resource" address="http://www.wotsit.org">
+			<text>
+				<paragraph>
+					The website to get the specification of any file.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="15/07/2003" name="Ultimate Game Programming" lang="English" type="tutorial" address="http://www.ultimategameprogramming.com">
+			<text>
+				<paragraph>
+					A lot of samples!
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="05/06/2003" name="SourceForge" lang="English" type="download" address="http://www.sourceforge.net">
+			<text>
+				<paragraph>
+					A website that host a lot of free software including a lot of mine like OthelloGL, Zglu, Shoot(r), GLM, Kueken and GLF.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="10/04/2003" name="Clubic" lang="French" type="news download" address="http://www.clubic.com">
+			<text>
+				<paragraph>
+					Windows, Linux, MacOS, Palm OS, iPhone ... for all platforms. Download, software to hardware reviews.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="04/03/2003" name="Hardware" lang="French" type="news matos" address="http://www.hardware.fr">
+			<text>
+				<paragraph>
+					My favorite computer hardware website, deep reviews and mostly wised news.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="04/03/2003" name="GameDev" lang="English" type="tutorial news community" address="http://www.gamedev.net">
+			<text>
+				<paragraph>
+					The main game development website. A lot of reviews, acticle and a large community.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="04/03/2003" name="Developpez" lang="French" type="tutorial community" address="http://www.developpez.com">
+			<text>
+				<paragraph>
+					The biggest French developer community. Any programing topic is fine.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="21/05/2006" name="Loulou" lang="Francais" type="deprecated" address="http://perso.wanadoo.fr/laurent.gom/">
+			<text>
+				<paragraph>
+					Le site d'un amateur tr�s pr�sent sur D�veloppez.com avec l'exp�rience de nombreux projets amateurs notamment en �quipe.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="31/05/2005" name="SOS Math" lang="Anglais" type="deprecated" address="http://www.sosmath.com">
+			<text>
+				<paragraph>
+					Un site sur les math�matiques qui n'a vraiment pas d'allure mais le contenu est int�ressant.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="09/03/2005" name="WadFather" lang="Anglais" type="deprecated" address="http://www.planethalflife.com/wadfather">
+			<text>
+				<paragraph>
+					Textures de SkyBox � gogo !
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="09/02/2005" name="Math World" lang="Anglais" type="deprecated" address="http://mathwolfram.com">
+			<text>
+				<paragraph>
+					Un site de Math traitant d'un tr�s grand d'aspect de tous les secteurs de la mati�re.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="11/08/2004" name="Coder Studio" lang="Francais" type="deprecated" address="http://www.coder-studio.com">
+			<text>
+				<paragraph>
+					Un site sur la programmation C, C++, ASM, etc. contenant des tutoriaux, des sources de projets, des ressources 2D, etc. A noter, la pr�sence de quelques tutoriaux originaux comme celui sur les RAII (Ressource Aquisition Is Initialisation) ou celui sur le pattern Observer/Observable et certainement bien d'autres � venir !
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="17/07/2004" name="Unreal Design" lang="Francais" type="deprecated" address="http://www.unreal-design.com">
+			<text>
+				<paragraph>
+					Un site fran�ais sur la cr�ation de modification pour la s�rie des jeux Unreal.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="24/05/2004" name="Onversity" lang="Francais" type="deprecated" address="http://www.onversity.com">
+			<text>
+				<paragraph>
+					Un site d'informations sur le mat�riel avec de nombreuses explication sur le fonctionnement des cartes graphiques et de processeurs.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="05/02/2004" name="DevCPP" lang="Francais" type="deprecated" address="http://www.bloodshed.net/dev/devcpp.html">
+			<text>
+				<paragraph>
+					L'IDE C++ libre le plus populaire et open source.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="28/09/2003" name="Tokamak" lang="Anglais" type="deprecated" address="http://www.tokamakphysics.com">
+			<text>
+				<paragraph>
+					Un moteur physique qui g�re les collisions. Non payante, elle est utilisable uniquement sous Windows.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="09/09/2003" name="Doom 3 World" lang="Anglais" type="deprecated" address="http://www.doom3world.org">
+			<text>
+				<paragraph>
+					Site de tutoriaux mapping, modeling et autre pour Doom 3.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="29/08/2003" name="L'Altruiste" lang="Francais" type="deprecated" address="http://www.laltruiste.com">
+			<text>
+				<paragraph>
+					Un site fran�ais, sur les technologies du Net : HTML, XHTML, XML, XSL, XLL, CSS, Java, PHP, SQL, etc ...
+				</paragraph>
+				<paragraph>
+					A noter un tutorial tr�s rare sur l'utilisation de PHP avec XML et XSL.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="28/08/2003" name="SQL Pro" lang="Francais" type="deprecated" address="http://sqlpro.developpez.com">
+			<text>
+				<paragraph>
+					Un site fran�ais sur SQL. Au style tr�s personnel mais tr�s complet !
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="17/08/2003" name="Prografix" lang="Francais" type="deprecated" address="http://prografix.games-creators.org">
+			<text>
+				<paragraph>
+					Un site en fran�ais sur la cr�ation de jeu video.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="14/08/2003" name="Frustum" lang="Anglais" type="deprecated" address="http://www.frustum.org">
+			<text>
+				<paragraph>
+					Un site comprenant de nombreux codes OpenGL utilisant notemmant des shaders et r�alis�s pour Linux.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="10/04/2003" name="NeHe" lang="Anglais" type="deprecated" address="http://nehe.gamedev.net">
+			<text>
+				<paragraph>
+					Un site en anglais avec �normement (41 le 10/04/2003) de tutorials OpenGL pour les codeurs d�butants et avanc�s.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="04/03/2003" name="Game Lab" lang="Francais" type="deprecated" address="http://www.game-lab.com">
+			<text>
+				<paragraph>
+					Un site de coding, modeling et de game editing en fran�ais sur Half-Life, UT2003, Quake 1-2-3 et moteurs maisons. Quelques tutorials, surtout sur Half-Life et maintenant une vrai orientation vers Doom 3.
+				</paragraph>
+			</text>
+		</link-element>
+
+		<link-element date="18/02/2003" name="YouHou par Invalide" lang="Francais" type="deprecated" address="http://invalide.gnougnou.com">
+			<text>
+				<paragraph>
+					Invalide est un mappeur amateur qui a oeuvre pour le mod HL Runaway mais aussi sur l'entr�e au contest NeHe Creative 2004 que j'ai programm�.
+				</paragraph>
+				<paragraph>
+					Il se d�marque par un esprit original bas� sur le concept des GnouGnous qui est propablement sa source artistique.
+				</paragraph>
+				<paragraph>
+					Son site contient de nombreuses textures et des liens vers des site distribuant des textures.
+				</paragraph>
+			</text>
+		</link-element>
+
+	</link-list>
+
+	<hardware>
+		<gpu-list>
+			<gpu date="01/2009" name="GeForce GTX 285" code="GT200b" engraving="55 nm" transistors="N/A millions" size="N/A">
+				<main vertex-pipeline="240 scalar" pixel-pipeline="240 scalar" rop="32" texture-unit="80 vec4" memory-bus="512" />
+				<frequency processor="648 MHz / 1476 MHz" memory="1242 MHz" />
+				<stat fillrate="51.8 GTexels/s" geometrierate="n/a" boardwise="148.1 Go/s" />
+			</gpu>
+
+			<gpu date="01/2009" name="GeForce GTX 295" code="GT200b" engraving="55 nm" transistors="N/A millions" size="N/A">
+				<main vertex-pipeline="480 scalar" pixel-pipeline="480 scalar" rop="56" texture-unit="160 vec4" memory-bus="896" />
+				<frequency processor="576 MHz / 1242 MHz" memory="1242 MHz" />
+				<stat fillrate="92.2 GTexels/s" geometrierate="n/a" boardwise="208.6 Go/s" />
+			</gpu>
+
+			<gpu date="11/2008" name="Radeon HD 4830" code="RV770 LE" engraving="55 nm" transistors="956 millions" size="260 mm�">
+				<main vertex-pipeline="128 vec5" pixel-pipeline="128 vec5" rop="16" texture-unit="32 vec4" memory-bus="256" />
+				<frequency processor="575 MHz" memory="900 MHz" />
+				<stat fillrate="9.2 GTexels/s" geometrierate="n/a" boardwise="53.6 Go/s" />
+			</gpu>
+
+			<gpu date="09/2008" name="Radeon HD 4670" code="RV730" engraving="55 nm" transistors="N/A millions" size="144 mm�">
+				<main vertex-pipeline="64 vec5" pixel-pipeline="64 vec5" rop="8" texture-unit="32 vec4" memory-bus="128" />
+				<frequency processor="575 MHz" memory="1000 MHz" />
+				<stat fillrate="6.0 GTexels/s" geometrierate="n/a" boardwise="29.8 Go/s" />
+			</gpu>
+
+			<gpu date="11/2008" name="Radeon HD 4850 X2" code="RV770" engraving="55 nm" transistors="956 millions" size="260 mm�">
+				<main vertex-pipeline="320 vec5" pixel-pipeline="320 vec5" rop="32" texture-unit="80 vec4" memory-bus="512" />
+				<frequency processor="625 MHz" memory="993 MHz" />
+				<stat fillrate="24.0 GTexels/s" geometrierate="n/a" boardwise="214.6 Go/s" />
+			</gpu>
+
+			<gpu date="09/2008" name="GeForce GTX 260+" code="GT200b" engraving="65 nm" transistors="N/A millions" size="600 mm�">
+				<main vertex-pipeline="216 scalar" pixel-pipeline="216 scalar" rop="28" texture-unit="72 vec4" memory-bus="448" />
+				<frequency processor="576 MHz / 1242 MHz" memory="1242 MHz" />
+				<stat fillrate="41.5 GTexels/s" geometrierate="n/a" boardwise="104.3 Go/s" />
+			</gpu>
+
+			<gpu date="08/2008" name="Radeon HD 4870 X2" code="RV770" engraving="55 nm" transistors="956 millions" size="260 mm�">
+				<main vertex-pipeline="320 vec5" pixel-pipeline="320 vec5" rop="32" texture-unit="80 vec4" memory-bus="512" />
+				<frequency processor="750 MHz" memory="1800 MHz" />
+				<stat fillrate="20.0 GTexels/s" geometrierate="n/a" boardwise="118.4 Go/s" />
+			</gpu>
+
+			<gpu date="06/2008" name="Radeon HD 4870" code="RV770" engraving="55 nm" transistors="956 millions" size="260 mm�">
+				<main vertex-pipeline="160 vec5" pixel-pipeline="160 vec5" rop="16" texture-unit="40 vec4" memory-bus="256" />
+				<frequency processor="750 MHz" memory="1800 MHz" />
+				<stat fillrate="12.0 GTexels/s" geometrierate="n/a" boardwise="107.3 Go/s" />
+			</gpu>
+
+			<gpu date="06/2008" name="Radeon HD 4850" code="RV770" engraving="55 nm" transistors="956 millions" size="260 mm�">
+				<main vertex-pipeline="160 vec5" pixel-pipeline="160 vec5" rop="16" texture-unit="40 vec4" memory-bus="256" />
+				<frequency processor="625 MHz" memory="993 MHz" />
+				<stat fillrate="10.0 GTexels/s" geometrierate="n/a" boardwise="59.2 Go/s" />
+			</gpu>
+
+			<gpu date="06/2008" name="GeForce GTX 280" code="GT200" engraving="65 nm" transistors="1/4 billion" size="600 mm�">
+				<main vertex-pipeline="240 scalar" pixel-pipeline="240 scalar" rop="32" texture-unit="80 vec4" memory-bus="512" />
+				<frequency processor="602 MHz / 1296 MHz" memory="1107 MHz" />
+				<stat fillrate="48.2 GTexels/s" geometrierate="n/a" boardwise="132.0 Go/s" />
+			</gpu>
+
+			<gpu date="06/2008" name="GeForce GTX 260" code="GT200" engraving="65 nm" transistors="1/4 billion" size="600 mm�">
+				<main vertex-pipeline="192 scalar" pixel-pipeline="192 scalar" rop="28" texture-unit="64 vec4" memory-bus="448" />
+				<frequency processor="576 MHz / 1242 MHz" memory="1000 MHz" />
+				<stat fillrate="36.9 GTexels/s" geometrierate="n/a" boardwise="104.3 Go/s" />
+			</gpu>
+
+			<gpu date="06/2008" name="GeForce 9800 GTX+" code="G92b" engraving="55 nm" transistors="754 millions" size="264 mm�">
+				<main vertex-pipeline="128 scalar" pixel-pipeline="128 scalar" rop="16" texture-unit="64 vec4" memory-bus="256" />
+				<frequency processor="738 MHz / 1836 MHz" memory="1100 MHz" />
+				<stat fillrate="N/A GTexels/s" geometrierate="n/a" boardwise="65.6 Go/s" />
+			</gpu>
+
+			<gpu date="04/2008" name="GeForce 9800 GTX" code="G92" engraving="65 nm" transistors="754 millions" size="324 mm�">
+				<main vertex-pipeline="128 scalar" pixel-pipeline="128 scalar" rop="16" texture-unit="64 vec4" memory-bus="256" />
+				<frequency processor="675 MHz / 1688 MHz" memory="1100 MHz" />
+				<stat fillrate="43.2 GTexels/s" geometrierate="n/a" boardwise="65.6 Go/s" />
+			</gpu>
+
+			<gpu date="03/2008" name="GeForce 9800 GX2" code="G92" engraving="65 nm" transistors="754 millions" size="324 mm�">
+				<main vertex-pipeline="256 scalar" pixel-pipeline="256 scalar" rop="16" texture-unit="128 vec4" memory-bus="512" />
+				<frequency processor="675 MHz / 1688 MHz" memory="1000 MHz" />
+				<stat fillrate="76.8 GTexels/s" geometrierate="n/a" boardwise="119.2 Go/s" />
+			</gpu>
+
+			<gpu date="12/2007" name="GeForce 8800 GTS 512" code="G92" engraving="65 nm" transistors="754 millions" size="324 mm�">
+				<main vertex-pipeline="128 scalar" pixel-pipeline="128 scalar" rop="16" texture-unit="64 vec4" memory-bus="256" />
+				<frequency processor="650 MHz / 1625 MHz" memory="970 MHz" />
+				<stat fillrate="10.4 GTexels/s" geometrierate="n/a" boardwise="57.8 Go/s" />
+			</gpu>
+
+			<gpu date="11/2007" name="Radeon HD 3870" code="RV670" engraving="55 nm" transistors="666 millions" size="192 mm�">
+				<main vertex-pipeline="64 vec5" pixel-pipeline="64 vec5" rop="16" texture-unit="16 vec4 + 16" memory-bus="256" />
+				<frequency processor="775 MHz" memory="1125 MHz" />
+				<stat fillrate="12.4 GTexels/s" geometrierate="n/a" boardwise="67.1 Go/s" />
+			</gpu>
+
+			<gpu date="11/2007" name="Radeon HD 3850" code="RV670" engraving="55 nm" transistors="666 millions" size="192 mm�">
+				<main vertex-pipeline="64 vec5" pixel-pipeline="64 vec5" rop="16" texture-unit="16 vec4 + 16" memory-bus="256" />
+				<frequency processor="670 MHz" memory="830 MHz" />
+				<stat fillrate="10.7 GTexels/s" geometrierate="n/a" boardwise="49.5 Go/s" />
+			</gpu>
+
+			<gpu date="11/2007" name="GeForce 8800 GT" code="G92" engraving="65 nm" transistors="754 millions" size="N/A">
+				<main vertex-pipeline="128 scalar" pixel-pipeline="128 scalar" rop="16" texture-unit="56 vec4" memory-bus="256" />
+				<frequency processor="600 MHz / 1500 MHz" memory="900 MHz" />
+				<stat fillrate="9.6 GTexels/s" geometrierate="n/a" boardwise="53.6 Go/s" />
+			</gpu>
+
+			<gpu date="06/2007" name="Radeon HD 2600 XT GDDR4" code="RV630" engraving="65 nm" transistors="390 millions" size="143 mm�">
+				<main vertex-pipeline="24 vec5" pixel-pipeline="24 vec5" rop="4" texture-unit="8" memory-bus="128" />
+				<frequency processor="800 MHz" memory="1100 MHz" />
+				<stat fillrate="3.2 GTexels/s" geometrierate="n/a" boardwise="32.8 Go/s" />
+			</gpu>
+
+			<gpu date="06/2007" name="Radeon HD 2600 XT GDDR3" code="RV630" engraving="65 nm" transistors="390 millions" size="143 mm�">
+				<main vertex-pipeline="24 vec5" pixel-pipeline="24 vec5" rop="4" texture-unit="8" memory-bus="128" />
+				<frequency processor="800 MHz" memory="700 MHz" />
+				<stat fillrate="3.2 GTexels/s" geometrierate="n/a" boardwise="20.9 Go/s" />
+			</gpu>
+
+			<gpu date="06/2007" name="Radeon HD 2600 Pro" code="RV630" engraving="65 nm" transistors="390 millions" size="143 mm�">
+				<main vertex-pipeline="24 vec5" pixel-pipeline="24 vec5" rop="4" texture-unit="8" memory-bus="128" />
+				<frequency processor="600" memory="400 MHz" />
+				<stat fillrate="2.4 GTexels/s" geometrierate="n/a" boardwise="11.9 Go/s" />
+			</gpu>
+
+			<gpu date="06/2007" name="Radeon HD 2400 XT" code="RV610" engraving="65 nm" transistors="180 millions" size="85 mm�">
+				<main vertex-pipeline="8 vec5" pixel-pipeline="64 vec5" rop="4" texture-unit="4" memory-bus="64" />
+				<frequency processor="700 MHz" memory="800 MHz" />
+				<stat fillrate="2.8 GTexels/s" geometrierate="n/a" boardwise="11.9 Go/s" />
+			</gpu>
+
+			<gpu date="06/2007" name="Radeon HD 2400 Pro" code="RV610" engraving="65 nm" transistors="180 millions" size="85 mm�">
+				<main vertex-pipeline="8 vec5" pixel-pipeline="64 vec5" rop="4" texture-unit="4" memory-bus="64" />
+				<frequency processor="n/a" memory="n/a" />
+				<stat fillrate="2.1 GTexels/s" geometrierate="n/a" boardwise="6.0 Go/s" />
+			</gpu>
+
+			<gpu date="05/2007" name="Radeon HD 2900 XT" code="R600" engraving="80 nm" transistors="700 millions" size="408 mm�">
+				<main vertex-pipeline="64 vec5" pixel-pipeline="64 vec5" rop="16" texture-unit="16 vec4 + 16" memory-bus="512" />
+				<frequency processor="742 MHz" memory="828 MHz" />
+				<stat fillrate="11.9 GTexels/s" geometrierate="n/a" boardwise="98.7 Go/s" />
+			</gpu>
+
+			<gpu date="05/2007" name="GeForce 8800 Ultra" code="G80" engraving="90 nm" transistors="681 millions" size="N/A">
+				<main vertex-pipeline="128 scalar" pixel-pipeline="128 scalar" rop="24" texture-unit="32 vec4" memory-bus="384" />
+				<frequency processor="612 MHz / 1512 MHz" memory="970 MHz" />
+				<stat fillrate="39.2 GTexels/s" geometrierate="n/a" boardwise="96.6 Go/s" />
+			</gpu>
+
+			<gpu date="04/2007" name="GeForce 8600 GTS" code="G84" engraving="n/a" transistors="289 millions" size="169 mm�">
+				<main vertex-pipeline="32 scalar" pixel-pipeline="32 scalar" rop="8" texture-unit="8" memory-bus="128" />
+				<frequency processor="675 MHz / 1450 MHz" memory="1000 MHz" />
+				<stat fillrate="5.4 GTexels/s" geometrierate="n/a" boardwise="29.8 Go/s" />
+			</gpu>
+
+			<gpu date="04/2007" name="GeForce 8600 GT" code="G84" engraving="n/a" transistors="289 millions" size="169 mm�">
+				<main vertex-pipeline="32 scalar" pixel-pipeline="32 scalar" rop="8" texture-unit="8" memory-bus="128" />
+				<frequency processor="540 MHz / 1180 MHz" memory="700 MHz" />
+				<stat fillrate="4.3 GTexels/s" geometrierate="n/a" boardwise="20.9 Go/s" />
+			</gpu>
+
+			<gpu date="04/2007" name="GeForce 8500 GT" code="G86" engraving="n/a" transistors="210 millions" size="115 mm�">
+				<main vertex-pipeline="16 scalar" pixel-pipeline="16 scalar" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="450 MHz / 900 MHz" memory="400 MHz" />
+				<stat fillrate="1.8 GTexels/s" geometrierate="n/a" boardwise="11.9 Go/s" />
+			</gpu>
+
+			<gpu date="11/2007" name="GeForce 8800 GTX" code="G80" engraving="90" transistors="n/a" size="n/a">
+				<main vertex-pipeline="128 scalar" pixel-pipeline="128 scalar" rop="24" texture-unit="32 vec4" memory-bus="384" />
+				<frequency processor="575 MHz / 1350 MHz" memory="900 MHz" />
+				<stat fillrate="13.8 GTexels/s" geometrierate="n/a" boardwise="80.5 Go/s" />
+			</gpu>
+
+			<gpu date="11/2007" name="GeForce 8800 GTS" code="G80" engraving="90" transistors="681 millions" size="n/a">
+				<main vertex-pipeline="96 scalar" pixel-pipeline="96 scalar" rop="20" texture-unit="24 vec4" memory-bus="320" />
+				<frequency processor="500 MHz / 1200 MHz" memory="900 MHz" />
+				<stat fillrate="10.0 GTexels/s" geometrierate="n/a" boardwise="59.6 Go/s" />
+			</gpu>
+
+			<gpu date="08/2006" name="Radeon X1950 XTX" code="R580+" engraving="90 nm" transistors="384 millions" size="352 mm�">
+				<main vertex-pipeline="8" pixel-pipeline="48" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="650 MHz" memory="1000 MHz" />
+				<stat fillrate="10.4 GTexels/s" geometrierate="1300 MVertrices/s" boardwise="59.6 Go/s" />
+			</gpu>
+
+			<gpu date="06/2006" name="GeForce 7950 GX2" code="G71 x2" engraving="90 nm" transistors="278 millions" size="196mm�">
+				<main vertex-pipeline="16" pixel-pipeline="48" rop="32" texture-unit="48" memory-bus="512" />
+				<frequency processor="500 MHz" memory="600 MHz" />
+				<stat fillrate="16.0 GTexels/s" geometrierate="2000 MVertrices/s" boardwise="71.5 Go/s" />
+			</gpu>
+
+			<gpu date="05/2006" name="GeForce 7300 GT" code="G73" engraving="90 nm" transistors="n/a millions" size="126 mm�">
+				<main vertex-pipeline="4" pixel-pipeline="8" rop="8" texture-unit="8" memory-bus="128" />
+				<frequency processor="350 MHz" memory="333 MHz" />
+				<stat fillrate="2.8 GTexels/s" geometrierate="350 MVertrices/s" boardwise="9.9 Go/s" />
+			</gpu>
+			<gpu date="05/2006" name="Radeon X1900 GT" code="R580" engraving="90 nm" transistors="384 millions" size="352 mm�">
+				<main vertex-pipeline="8" pixel-pipeline="36" rop="12" texture-unit="12" memory-bus="256" />
+				<frequency processor="575 MHz" memory="600 MHz" />
+				<stat fillrate="6.9 GTexels/s" geometrierate="1150 MVertrices/s" boardwise="35.8 Go/s" />
+			</gpu>
+			<gpu date="03/2006" name="Radeon X1800 GTO" code="R520" engraving="90 nm" transistors="321 millions">
+				<main vertex-pipeline="8" pixel-pipeline="12" rop="12" texture-unit="12" memory-bus="256" />
+				<frequency processor="500 MHz" memory="500 MHz" />
+				<stat fillrate="6.0 GTexels/s" geometrierate="1000 MVertrices/s" boardwise="29.8 Go/s" />
+			</gpu>
+			<gpu date="03/2006" name="GeForce 7900 GTX" code="G71" engraving="90 nm" transistors="278 millions" size="196mm�">
+				<main vertex-pipeline="8" pixel-pipeline="24" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="650/700 MHz" memory="800 MHz" />
+				<stat fillrate="10.4 GTexels/s" geometrierate="1400 MVertrices/s" boardwise="47.7 Go/s" />
+			</gpu>
+			<gpu date="03/2006" name="GeForce 7900 GT" code="G71" engraving="90 nm" transistors="278 millions" size="196mm�">
+				<main vertex-pipeline="8" pixel-pipeline="24" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="450 MHz" memory="660 MHz" />
+				<stat fillrate="7.2 GTexels/s" geometrierate="936 MVertrices/s" boardwise="39.3 Go/s" />
+			</gpu>
+			<gpu date="03/2006" name="GeForce 7600 GT" code="G73" engraving="90 nm" transistors="n/a millions" size="126 mm�">
+				<main vertex-pipeline="5" pixel-pipeline="12" rop="8" texture-unit="12" memory-bus="128" />
+				<frequency processor="450 MHz" memory="660 MHz" />
+				<stat fillrate="4.5 GTexels/s" geometrierate="700 MVertrices/s" boardwise="20.9 Go/s" />
+			</gpu>
+			<gpu date="03/2006" name="GeForce 7600 GS" code="G73" engraving="90 nm" transistors="n/a millions" size="126 mm�">
+				<main vertex-pipeline="5" pixel-pipeline="12" rop="8" texture-unit="12" memory-bus="128" />
+				<frequency processor="400 MHz" memory="400 MHz" />
+				<stat fillrate="3.2 GTexels/s" geometrierate="500 MVertrices/s" boardwise="11.9 Go/s" />
+			</gpu>
+			<gpu date="01/2006" name="Radeon X1900 XTX" code="R580" engraving="90 nm" transistors="384 millions" size="352 mm�">
+				<main vertex-pipeline="8" pixel-pipeline="48" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="650 MHz" memory="775 MHz" />
+				<stat fillrate="10.4 GTexels/s" geometrierate="1300 MVertrices/s" boardwise="46.2 Go/s" />
+			</gpu>
+			<gpu date="01/2006" name="Radeon X1900 XT" code="R580" engraving="90 nm" transistors="384 millions" size="352 mm�">
+				<main vertex-pipeline="8" pixel-pipeline="48" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="625 MHz" memory="725 MHz" />
+				<stat fillrate="10.0 GTexels/s" geometrierate="1250 MVertrices/s" boardwise="43.2 Go/s" />
+			</gpu>
+			<gpu date="11/2005" name="GeForce 7800 GTX 512" code="G70" engraving="110 nm" transistors="302 millions" size="332mm�">
+				<main vertex-pipeline="8" pixel-pipeline="24" rop="16" texture-unit="24" memory-bus="256" />
+				<frequency processor="550 MHz" memory="850 MHz" />
+				<stat fillrate="8.8 GTexels/s" geometrierate="1100 MVertrices/s" boardwise="50.7 Go/s" />
+			</gpu>
+			<gpu date="10/2005" name="Radeon X1600" code="RV515" engraving="90 nm" transistors="n/a millions">
+				<main vertex-pipeline="5" pixel-pipeline="12" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="590 MHz" memory="690 MHz" />
+				<stat fillrate="2.4 GTexels/s" geometrierate="738 MVertrices/s" boardwise="20.6 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="Radeon X1300" code="RV530" engraving="90 nm" transistors="n/a millions">
+				<main vertex-pipeline="2" pixel-pipeline="4" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="600 MHz" memory="400 MHz" />
+				<stat fillrate="2.4 GTexels/s" geometrierate="300 MVertrices/s" boardwise="11.9 Go/s" />
+			</gpu>
+			<gpu date="10/2005" name="Radeon X1800 XT" code="R520" engraving="90 nm" transistors="321 millions">
+				<main vertex-pipeline="8" pixel-pipeline="16" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="625 MHz" memory="750 MHz" />
+				<stat fillrate="10.0 GTexels/s" geometrierate="1250 MVertrices/s" boardwise="44.7 Go/s" />
+			</gpu>
+			<gpu date="10/2005" name="Radeon X1800 XL" code="R520" engraving="90 nm" transistors="321 millions">
+				<main vertex-pipeline="8" pixel-pipeline="16" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="500 MHz" memory="500 MHz" />
+				<stat fillrate="8.0 GTexels/s" geometrierate="1000 MVertrices/s" boardwise="29.8 Go/s" />
+			</gpu>
+			<gpu date="08/2005" name="GeForce 7800 GT" code="G70" engraving="110 nm" transistors="302 millions" size="332mm�">
+				<main vertex-pipeline="7" pixel-pipeline="20" rop="16" texture-unit="20" memory-bus="256" />
+				<frequency processor="400 MHz" memory="500 MHz" />
+				<stat fillrate="6.4 GTexels/s" geometrierate="770 MVertrices/s" boardwise="29.8 Go/s" />
+			</gpu>
+			<gpu date="06/2005" name="GeForce 7800 GTX" code="G70" engraving="110 nm" transistors="302 millions" size="332mm�">
+				<main vertex-pipeline="8" pixel-pipeline="24" rop="16" texture-unit="24" memory-bus="256" />
+				<frequency processor="430 MHz" memory="600 MHz" />
+				<stat fillrate="6.9 GTexels/s" geometrierate="936 MVertrices/s" boardwise="35.8 Go/s" />
+			</gpu>
+			<gpu date="12/2004" name="Radeon X800 XL" code="R430" engraving="130 nm" transistors="160 millions">
+				<main vertex-pipeline="6" pixel-pipeline="16" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="400 MHz" memory="500 MHz" />
+				<stat fillrate="6.4 GTexels/s" geometrierate="600 MVertrices/s" boardwise="29.8 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="Radeon X800 GTO" code="R423/R480" engraving="130-110 nm" transistors="n/a millions">
+				<main vertex-pipeline="6" pixel-pipeline="12" rop="12" texture-unit="12" memory-bus="256" />
+				<frequency processor="400 MHz" memory="490 MHz" />
+				<stat fillrate="4.8 GTexels/s" geometrierate="600 MVertrices/s" boardwise="29.2 Go/s" />
+			</gpu>
+			<gpu date="05/2004" name="Radeon X800 GT" code="R423/R480" engraving="130-110 nm" transistors="n/a millions">
+				<main vertex-pipeline="6" pixel-pipeline="16" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="475 MHz" memory="490 MHz" />
+				<stat fillrate="3.8 GTexels/s" geometrierate="712 MVertrices/s" boardwise="29.2 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="Radeon X700 Pro" code="RV410" engraving="110 nm" transistors="110 millions">
+				<main vertex-pipeline="6" pixel-pipeline="8" rop="8" texture-unit="8" memory-bus="128" />
+				<frequency processor="425 MHz" memory="432 MHz" />
+				<stat fillrate="3.4 GTexels/s" geometrierate="637 MVertrices/s" boardwise="12.9 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="Radeon X700 SE" code="RV410" engraving="110 nm" transistors="110 millions">
+				<main vertex-pipeline="6" pixel-pipeline="8" rop="8" texture-unit="8" memory-bus="128" />
+				<frequency processor="400 MHz" memory="250 MHz" />
+				<stat fillrate="3.2 GTexels/s" geometrierate="600 MVertrices/s" boardwise="7.5 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="Radeon X600 Pro" code="RV380" engraving="110 nm" transistors="n/a millions">
+				<main vertex-pipeline="2" pixel-pipeline="4" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="400 MHz" memory="300 MHz" />
+				<stat fillrate="1.6 GTexels/s" geometrierate="200 MVertrices/s" boardwise="8.9 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="Radeon X550" code="RV370" engraving="110 nm" transistors="n/a millions">
+				<main vertex-pipeline="2" pixel-pipeline="4" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="400 MHz" memory="250 MHz" />
+				<stat fillrate="1.6 GTexels/s" geometrierate="200 MVertrices/s" boardwise="7.5 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="Radeon X300" code="RV370" engraving="110 nm" transistors="n/a millions">
+				<main vertex-pipeline="2" pixel-pipeline="4" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="325 MHz" memory="203 MHz" />
+				<stat fillrate="1.3 GTexels/s" geometrierate="163 MVertrices/s" boardwise="6.0 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="Radeon X300 SE" code="RV370" engraving="110 nm" transistors="n/a millions">
+				<main vertex-pipeline="2" pixel-pipeline="4" rop="4" texture-unit="4" memory-bus="64" />
+				<frequency processor="325 MHz" memory="203 MHz" />
+				<stat fillrate="1.3 GTexels/s" geometrierate="163 MVertrices/s" boardwise="3.0 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="GeForce 6800 Ultra" code="NV45" engraving="110 nm" transistors="222 millions">
+				<main vertex-pipeline="6" pixel-pipeline="16" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="425 MHz" memory="550 MHz" />
+				<stat fillrate="6.8 GTexels/s" geometrierate="638 MVertrices/s" boardwise="35.2 Go/s" />
+			</gpu>
+			<gpu date="04/2004" name="GeForce 6800 Ultra" code="NV40" engraving="130 nm" transistors="222 millions">
+				<main vertex-pipeline="6" pixel-pipeline="16" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="400 MHz" memory="550 MHz" />
+				<stat fillrate="6.4 GTexels/s" geometrierate="600 MVertrices/s" boardwise="35.2 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="GeForce 6800 GT" code="NV40, NV45" engraving="130/110 nm" transistors="222 millions">
+				<main vertex-pipeline="6" pixel-pipeline="16" rop="16" texture-unit="16" memory-bus="256" />
+				<frequency processor="325 MHz" memory="500 MHz" />
+				<stat fillrate="5.6 GTexels/s" geometrierate="525 MVertrices/s" boardwise="29.8 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="GeForce 6800 GS" code="NV42" engraving="110" transistors="222 millions">
+				<main vertex-pipeline="5" pixel-pipeline="12" rop="12" texture-unit="12" memory-bus="256" />
+				<frequency processor="425 MHz" memory="500 MHz" />
+				<stat fillrate="5.1 GTexels/s" geometrierate="531 MVertrices/s" boardwise="29.8 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="GeForce 6800" code="NV41, NV42" engraving="130/110 nm" transistors="222 millions">
+				<main vertex-pipeline="5" pixel-pipeline="12" rop="12" texture-unit="12" memory-bus="256" />
+				<frequency processor="325 MHz" memory="350 MHz" />
+				<stat fillrate="3.9 GTexels/s" geometrierate="406 MVertrices/s" boardwise="20.9 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="GeForce 6800 XT" code="NV42" engraving="110 nm" transistors="222 millions">
+				<main vertex-pipeline="4" pixel-pipeline="8" rop="12" texture-unit="8" memory-bus="256" />
+				<frequency processor="325 MHz" memory="350 MHz" />
+				<stat fillrate="2.6 GTexels/s" geometrierate="325 MVertrices/s" boardwise="20.9 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="GeForce 6600 GT" code="NV43" engraving="110 nm" transistors="146 millions" size="150 mm�">
+				<main vertex-pipeline="3" pixel-pipeline="8" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="500 MHz" memory="500 MHz" />
+				<stat fillrate="4.0 GTexels/s" geometrierate="375 MVertrices/s" boardwise="14.9 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="GeForce 6600" code="NV43" engraving="110 nm" transistors="146 millions" size="150 mm�">
+				<main vertex-pipeline="3" pixel-pipeline="8" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="300 MHz" memory="275 MHz" />
+				<stat fillrate="2.4 GTexels/s" geometrierate="225 MVertrices/s" boardwise="8.2 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="GeForce 6600 LE" code="NV43" engraving="110 nm" transistors="146 millions" size="150 mm�">
+				<main vertex-pipeline="3" pixel-pipeline="4" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="425 MHz" memory="275 MHz" />
+				<stat fillrate="1.7 GTexels/s" geometrierate="319 MVertrices/s" boardwise="8.2 Go/s" />
+			</gpu>
+			<gpu date="n/a" name="GeForce 6200" code="NV43 (partiel)" engraving="110 nm" transistors="146 millions">
+				<main vertex-pipeline="3" pixel-pipeline="4" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="300 MHz" memory="200 MHz" />
+				<stat fillrate="1.2 GTexels/s" geometrierate="225 MVertrices/s" boardwise="6.0 Go/s" />
+			</gpu>
+			<gpu date="03/2003" name="Radeon 9800 Pro" code="R350" engraving="130 nm" transistors="117 millions">
+				<main vertex-pipeline="4" pixel-pipeline="8" rop="8" texture-unit="8" memory-bus="256" />
+				<frequency processor="380 MHz" memory="340 MHz" />
+				<stat fillrate="n/a GTexels/s" geometrierate="n/a MVertrices/s" boardwise="n/a Go/s" />
+			</gpu>
+			<gpu date="03/2003" name="Radeon 9800" code="R350" engraving="130 nm" transistors="117 millions">
+				<main vertex-pipeline="4" pixel-pipeline="8" rop="8" texture-unit="8" memory-bus="256" />
+				<frequency processor="325 MHz" memory="290 MHz" />
+				<stat fillrate="n/a GTexels/s" geometrierate="n/a MVertrices/s" boardwise="n/a Go/s" />
+			</gpu>
+			<gpu date="04/2003" name="Radeon 9600 Pro" code="n/a" engraving="130 nm" transistors="76 millions">
+				<main vertex-pipeline="2" pixel-pipeline="4" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="400 MHz" memory="300 MHz" />
+				<stat fillrate="1.6 GTexels/s" geometrierate="200 MVertrices/s" boardwise="9.6 Go/s" />
+			</gpu>
+			<gpu date="04/2003" name="Radeon 9600" code="n/a" engraving="130 nm" transistors="76 millions">
+				<main vertex-pipeline="2" pixel-pipeline="4" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="325 MHz" memory="200 MHz" />
+				<stat fillrate="1.3 GTexels/s" geometrierate="163 MVertrices/s" boardwise="6.4 Go/s" />
+			</gpu>
+			<gpu date="08/2002" name="Radeon 9700 Pro" code="R300" engraving="150 nm" transistors="107 millions">
+				<main vertex-pipeline="4" pixel-pipeline="8" rop="8" texture-unit="8" memory-bus="256" />
+				<frequency processor="325 MHz" memory="310 MHz" />
+				<stat fillrate="2.6 GTexels/s" geometrierate="325 MVertrices/s" boardwise="19.8 Go/s" />
+			</gpu>
+			<gpu date="08/2002" name="Radeon 9700" code="R300" engraving="150 nm" transistors="107 millions">
+				<main vertex-pipeline="4" pixel-pipeline="8" rop="8" texture-unit="8" memory-bus="256" />
+				<frequency processor="275 MHz" memory="270 MHz" />
+				<stat fillrate="2.2 GTexels/s" geometrierate="275 MVertrices/s" boardwise="17.3 Go/s" />
+			</gpu>
+			<gpu date="08/2002" name="Radeon 9500 Pro" code="R300" engraving="150 nm" transistors="107 millions">
+				<main vertex-pipeline="4" pixel-pipeline="8" rop="8" texture-unit="8" memory-bus="128" />
+				<frequency processor="275 MHz" memory="270 MHz" />
+				<stat fillrate="2.2 GTexels/s" geometrierate="275 MVertrices/s" boardwise="8.6 Go/s" />
+			</gpu>
+			<gpu date="08/2002" name="Radeon 9500" code="R300" engraving="150 nm" transistors="107 millions">
+				<main vertex-pipeline="4" pixel-pipeline="4" rop="4" texture-unit="4" memory-bus="128" />
+				<frequency processor="275 MHz" memory="270 MHz" />
+				<stat fillrate="1.1 GTexels/s" geometrierate="275 MVertrices/s" boardwise="8.6 Go/s" />
+			</gpu>
+		</gpu-list>
+	</hardware>
+
+	<!-- assembler ccpp design directx game graphics gpu math net opengl xml -->
+	<book-list>
+		<book-element type="game" lang="Anglais" date-writing="05/02/2006" date-publishing="2004" title="Game Programmming Golden Rules" image-normal="./book/normal/golden_rules.jpg" image-small="./book/small/golden_rules.jpg">
+			<author>Martin Brownlow</author>
+			<editor address="http://www.charlesriver.com">Charles River Media</editor>
+			<paragraph>
+				Ce livre est bas� sur 9 r�gles dont les �nonc�s sont applicable au d�veloppement de jeu.
+			</paragraph>
+			<paragraph>
+				La premi�re r�gle est "Trust the compiler ... but not too mush". Il s'agit de comprendre certains mots cl�s du C++ tels que volatile, const, static, register, new et enfin de rappeler les bienfaits du preprocesseur.
+			</paragraph>
+			<paragraph>
+				la deuxi�me r�gle est "Divide and Conquer". Ce chapitre traite de la recherche dans des arbres dont l'arbre BSP avec gestion des collisions d'objets.
+			</paragraph>
+			<paragraph>
+				La troisi�me r�gle est "Trust your First Impressions" ce qui est associ� aux structures de donn�es hash�s tels que la Hash List, la HashTable et le Hash Tree. Ce chapitre est illustr� par une utilisation avec un Vertex Shader.
+			</paragraph>
+			<paragraph>
+				La quatri�me r�gle est "Script is Worth a Thousand Lines of Code". Il s'agit ici de cr�er un language de script avec son interpr�teur C++.
+			</paragraph>
+			<paragraph>
+				La cinqui�me r�gle est "Always use the right tool for the job". L'id�e est de traiter de la gestion des donn�es avec notamment l'utilisation d'archives de fichiers.
+			</paragraph>
+			<paragraph>
+				La sixi�me r�gle est "Don't use a Square Peg for a Round Hole". Ce chapitre regroupe des suggestions pour le traitement des textures, des font et des meshes dans les jeux.
+			</paragraph>
+			<paragraph>
+				La septi�me r�gle est "Exploit Your data". Cette r�gle est bas�e sur les Finite State Machines et propose d'utiliser cette technique au travers du scripting.
+			</paragraph>
+			<paragraph>
+				La huiti�me r�gle est "Save Early, Save Often". Elle aborde le sujet rarement �voqu� de la sauvegarde dans les jeux.
+			</paragraph>
+			<paragraph>
+				La neuxi�me r�gle est "Mesure Twice, Cut Once" et se concacre � l'optimisation de codes par la mesure.
+			</paragraph>
+			<paragraph>
+				Game Programmming Golden Rules est un livre tr�s int�ressant qui peut nous aider � cr�er des jeux data-driven.
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>1. Embracing C++</list-element>
+				<list-element>2. Orders of Complexity</list-element>
+				<list-element>3. Hashes and Hash Functions</list-element>
+				<list-element>4. Scripting</list-element>
+				<list-element>5. The Ressource Pipeline</list-element>
+				<list-element>6. Processing Asserts</list-element>
+				<list-element>7. Finite State Machin</list-element>
+				<list-element>8. Saving Game State</list-element>
+				<list-element>9. Optimisation</list-element>
+			</list>
+		</book-element>
+
+		<book-element type="opengl graphics gpu game" lang="Anglais" date-writing="05/02/2006" date-publishing="2005" title="More OpenGL Game Programmming" image-normal="./book/normal/more_opengl.jpg" image-small="./book/small/more_opengl.jpg">
+			<author>Dave Astle</author>
+			<editor address="http://www.courseptr.com">Thomson Course Technologie</editor>
+			<paragraph>
+				More OpenGL Game Programming est un livre dans la lign�e de OpenGL Game Programming, pourtant bien que ce dernier m'avais particuli�rement d��u, More OpenGL Game Programming me parait totalement indispensable car il s'agit ici d'un livre de pragrammation graphique avanc�.
+			</paragraph>
+			<paragraph>
+				Les quatres premiers chapitres sont directement d�di�s � pr�senter de nouvelles possibilit�s introduitent par OpenGL, tel que les Vertex et Pixel Buffer Objects, le Framebuffer Object, les floating points buffer ou encore l'occlusion query. Ils pr�sentent �galement la programmation GPU sous OpenGL avec les low level programs et l'OpenGL Shading Language. Si vous pensez que les low level programs sont aujourd'hui obsol�tes, je pense vous avez plut�t raison cependant il est toujours possible de r�cup�rer les shaders des jeux sous cette forme. Il peut donc �tre int�ressant de connaitre les low level shaders pour �tudier des shaders existant.
+			</paragraph>
+			<paragraph>
+				Pour le reste du livre, OpenGL est utilis� uniquement comme support aux techniques graphiques explicit�s dans ce livre.
+			</paragraph>
+			<paragraph>
+				Le chapitre 5 explique tout ce qu'il y a � connaitre actuellement sur le bump mapping tel que l'embross bump mapping, le normal mappping, le parallax mapping avec ou sans self shadows et plus encore. le chapitre 6 offrent un festival de connaissances tout aussi important mais sur le sujet de l'�clairage : BRDFs, Microfacet, Oren-Nayar, Cook-Torrance, Ashikhmin. Les jours de Phong sont compt�s :p. Enfin nous y retrouvons des sujets en voir de d�veloppement comme les deferred shaders et l'High Dynamic Range (HDR). Le chapitre 7 sur les effets sp�ciaux traitent des moteurs de particules, des ombres (Shadow Volume et Shadow Mapping) mais aussi de la r�flection et r�flaction.
+			</paragraph>
+			<paragraph>
+				Les chapitres 8 � 10 sont d�di�s au rendu en ext�rieur ce qui inclut le rendu d'eau, du ciel et de la terre. S'en suit un chapitre d�di� � l'animation skeletale de mod�les et enfin chapitre sur le management de sc�nes, ce qui inclut le frustum culling et des algorithms d�di�s � cet effet: BSP, Portal, Quadtree, Octree.
+			</paragraph>
+			<paragraph>
+				En conclusion avec ce livre nous avons tous les outils utils pour cr�er un rendu de jeu et m�me un bon rendu. Il s'agit � mon sens du meilleur livre dans le genre, un livre pour programmeur graphique avanc� uniquement.
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Chapter 1. More OpenGL</list-element>
+				<list-element>Chapter 2. Introduction to Shaders</list-element>
+				<list-element>Chapter 3. Low-level Shaders</list-element>
+				<list-element>Chapter 4. The OpenGL Shading Language</list-element>
+				<list-element>Chapter 5. Advanced Texture Mapping</list-element>
+				<list-element>Chapter 6. Advanced Lighting and Shading</list-element>
+				<list-element>Chapter 7. Special Effects</list-element>
+				<list-element>Chapter 8. Rendering Nature</list-element>
+				<list-element>Chapter 9. Rendering Skies</list-element>
+				<list-element>Chapter 10. Terrain</list-element>
+				<list-element>Chapter 11. 3D Models and Skeletal Animation</list-element>
+				<list-element>Chapter 12. Scene Management</list-element>
+				<list-element>Appendix A. Low-Level Shading Languages Reference</list-element>
+				<list-element>Appendix B. OpenGL Shading Language Reference</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="2" type="assembler" lang="Fran�ais" date-writing="20/04/2004" date-publishing="2003" title="Assembleur x86" image-normal="./book/normal/assembleurx86.jpg" image-small="./book/small/assembleurx86.jpg">
+			<author>Kip Irvine</author>
+			<editor address="http://www.campuspress.fr">CampusPress</editor>
+			<paragraph>
+				R�inventer la route est quelques choses de tr�s agr�able pour beaucoup de programmeurs. Pourquoi ? Simplement l'envis de tout faire et de tout comprendre de A � Z. Voici un d�fit � la hauteur des programmeurs les plus chevronn�s et l'assembleur est un bon langage pour atteindre le sommet de cet art.
+			</paragraph>
+			<paragraph>
+				Comme son nom l'indique, "Assembleur x86" est un livre destin� � l'architechture des CPUs x86. Ainsi, ce livre explique l'architecture IA-32 c'est-�-dire la gestion de la m�moire, les entr�es sorties, ces composants, etc. Ce livre s'ouvre � plusieurs environnements : Le BIOS, MS-DOS et Win32. On regrettera particuli�rement l'absence d'UNIX.
+			</paragraph>
+			<paragraph>
+				En effet, tous les exemples sont r�alis�s avec le m�me outil : MASM, l'assembleur de Microsoft. Ils font admettre qu'il est particuli�rement bien document�, ce qui constitue un tr�s bon point ici car en assembleur pas d'IDE (Il y en � bien quelques uns en r�alit�). Le compilateur et le linker sont utilis�es en ligne de commande. Ainsi, nous avons le doit � une explication de la d�marche � suivre pour utiliser MASM, comment compiler les exemples et enfin une r�f�rence de MASM.
+			</paragraph>
+			<paragraph>
+				Concernant directement l'assembleur x86, ce livre nous propose une description compl�te des mots cl�s bien souvent �paul�e d'exemples d'utilisation. Il y a �galement des d�tails sur la cr�ation et l'utilisation des fonctions, les tableaux, les structures de donn�es et les acc�s aux disques.
+			</paragraph>
+			<paragraph>
+				Pour toutes les personnes souhaitant apprendre l'assembleur, ce livre viendra leur apport� l'aide qu'il recherche et leurs permettra d'atteindre un bon niveau.
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Introduction</list-element>
+				<list-element>Chapitre 1. Concepts fondamentaux</list-element>
+				<list-element>Chapitre 2. Architecture IA-32</list-element>
+				<list-element>Chapitre 3. Principes du langage assembleur</list-element>
+				<list-element>Chapitre 4. Transferts de donn�es, adressage et arithm�tique</list-element>
+				<list-element>Chapitre 5. Proc�dures</list-element>
+				<list-element>Chapitre 6. Traitements conditionnels</list-element>
+				<list-element>Chapitre 7. Arithm�tique des entiers</list-element>
+				<list-element>Chapitre 8. Proc�dures (niveau 2)</list-element>
+				<list-element>Chapitre 9. Cha�nes et tableaux</list-element>
+				<list-element>Chapitre 10. Structures de donn�es et macros</list-element>
+				<list-element>Chapitre 11. Programmation Windows 32 bits</list-element>
+				<list-element>Chapitre 12. Interface avec les langages de haut niveau</list-element>
+				<list-element>Chapitre 13. Programmation MS-DOS 16 bits</list-element>
+				<list-element>Chapitre 14. Concept de base des disques</list-element>
+				<list-element>Chapitre 15. Programmation au niveau BIOS</list-element>
+				<list-element>Chapitre 16. Programmation MS-DOS pour les experts</list-element>
+				<list-element>Annexe A. Installation et utilisation de MASM</list-element>
+				<list-element>Annexe B. Le jeu d'instructions Intel</list-element>
+				<list-element>Annexe C. Interruptions BIOS et MS-DOS</list-element>
+				<list-element>Annexe D. R�f�rence de MASM</list-element>
+				<list-element>Annexe E. R�ponses aux questions des r�visions de sections</list-element>
+				<list-element>Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="1" type="assembler" lang="Fran�ais" date-writing="22/04/2004" date-publishing="2000" title="Programmation Graphique C/C++ Assembleur" image-normal="./book/normal/proggraphique.jpg" image-small="./book/small/proggraphique.jpg">
+			<author>Michael Abrash</author>
+			<editor address="http://www.sybex.fr">Sybex</editor>
+			<paragraph>
+				Si le livre saint des chr�tiens est la Bible et celui des Musulmans est la Coran, alors Programmation Graphique C/C++ Assembleur est tr�s certainement le livre saint des programmeurs.
+			</paragraph>
+			<paragraph>
+				Ce livre est en fait la r�union de tous les livres et articles publi�s par Michael Abrash. Le titre indique que trois langages sont utilis�s : le C, le C++ et l'Assembleur (x86). Cependant, il y a tr�s peu de C et de C++ ... c'est un livre d'Assembleur x86 !
+			</paragraph>
+			<paragraph>
+				Ce livre est organis� en deux parties, la premi�re concernant l'optimisation de code (au niveau du processeur) et la seconde sur la programmation graphique (au niveau de la vid�o). M�me si vous n'�tes pas une star de l'Assembleur, ce livre propose de nombreux concepts et algorithme fondamentaux pour optimiser son code et pour les applications graphiques.
+			</paragraph>
+			<paragraph>
+				Il faut admettre que certains points peuvent para�tre un peu vieux : Description des processeurs 286, 386, 486 et Pentium et rien de plus r�cent. Pour la partie graphique, une grande partie du livre se concentre sur le mode VGA avec acc�s � la m�moire vid�o. Cependant, apprendre ces concepts n'est pas une perte de temps car derni�re nos biblioth�ques pr�f�r�s le fonctionnement est toujours celui-ci.
+			</paragraph>
+			<paragraph>
+				Notez �galement qu'une grande partie du livre d�crit des concepts de Quake et Quake 2 telle que les arbres BSP, le clipping 3D, la d�termination des surfaces visibles, le mipmappping, etc.
+			</paragraph>
+			<paragraph>
+				Enfin, il faut remarquez la lecture tr�s agr�able du livre dans lequel Michael Abrash fait preuve de beaucoup d'humour ainsi chaque chapitre commence par une introduction ne parlant absolument pas de programmation mais dont la chute montre l'int�r�t du chapitre.
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>1 La meilleure des optimisations s'effectue entre vos oreilles</list-element>
+				<list-element>2 Un mode � part</list-element>
+				<list-element>3 Ne pr�sumez de rien</list-element>
+				<list-element>4 Dans l'antre des mangeurs de cycles</list-element>
+				<list-element>5 Traverser la fronti�re</list-element>
+				<list-element>6 Examiner les valeurs</list-element>
+				<list-element>7 Optimisation locale</list-element>
+				<list-element>8 Acc�l�rer le C avec le langage Assembleur</list-element>
+				<list-element>9 Lecteurs, faites-moi signe !</list-element>
+				<list-element>10 Coder patiemmement, coder plus vite</list-element>
+				<list-element>11 Pousser les 286 et 386</list-element>
+				<list-element>12 Pousser le 486 � ses limites</list-element>
+				<list-element>13 Cibler le 486</list-element>
+				<list-element>14 L'algorithme de recherche de cha�ne Boyer-Moore</list-element>
+				<list-element>15 Listes chain�es et autre d�fis</list-element>
+				<list-element>16 Aucun code n'est le plus rapide</list-element>
+				<list-element>17 Le jeu de la vie</list-element>
+				<list-element>18 La vie est belle</list-element>
+				<list-element>19 Pentium : ce n'est pas la m�me chanson</list-element>
+				<list-element>20 Les r�gles du Pentium</list-element>
+				<list-element>21 Utiliser le pipeline V du Pentium</list-element>
+				<list-element>22 Le Zen et l'esprit souple</list-element>
+				<list-element>23 Os et tendons</list-element>
+				<list-element>24 Traitement en parall�le avec le VGA</list-element>
+				<list-element>25 Les m�canisme du VGA</list-element>
+				<list-element>26 Le mode 3 Write du VGA</list-element>
+				<list-element>27 Encore un nouveau mode Write du VGA</list-element>
+				<list-element>28 Lire en m�moire VGA</list-element>
+				<list-element>29 Sauvegardes d'�cran et autres myst�mes du VGA</list-element>
+				<list-element>30 Video est omnis divisa</list-element>
+				<list-element>31 Haute r�solution en 256 couleurs sur VGA</list-element>
+				<list-element>32 A r�soudre : 360x480</list-element>
+				<list-element>33 Yogi et Eurythmics confront�s aux couleurs VGA</list-element>
+				<list-element>34 Changer les couleurs sans �crire de pixels</list-element>
+				<list-element>35 Bresenham est rapide, et la rapidit� est bonne</list-element>
+				<list-element>36 Le bon, le mauvais et les traitements segment�s</list-element>
+				<list-element>37 Chats morts et lignes d'�clairs</list-element>
+				<list-element>38 La gen�se du polygone</list-element>
+				<list-element>39 Polygones convexes rapides</list-element>
+				<list-element>40 Chansons, imp�ts et simplicit� des polygones complexes</list-element>
+				<list-element>41 Le blues des nomenclatures de polygones</list-element>
+				<list-element>42 Frit ou selon Wu ?</list-element>
+				<list-element>43 Animation par plans de bits</list-element>
+				<list-element>44 La division d'�cran au secours de la permutation de pages</list-element>
+				<list-element>45 Poils de chien et recouvrement de rectangle</list-element>
+				<list-element>46 Qui est ce Sprite ?</list-element>
+				<list-element>47 Mode X : Toute la magie du VGA 256 couleurs</list-element>
+				<list-element>48 Le mode X et les latches</list-element>
+				<list-element>49 Animation en mode X et en 256 couleurs</list-element>
+				<list-element>50 Ajouter une dimention</list-element>
+				<list-element>51 Espadrilles dans l'espace</list-element>
+				<list-element>52 Lorsque l'animation 3D rapide rencontre XSharp</list-element>
+				<list-element>53 Vitesse pure</list-element>
+				<list-element>54 Les sources de lumi�re 3D</list-element>
+				<list-element>55 Un mod�le d'illumination en 256 couleurs</list-element>
+				<list-element>56 L'ourson et la station spatiale</list-element>
+				<list-element>57 Afficher 10 000 moutons fra�chement tondus</list-element>
+				<list-element>58 Boule de cristal d'Heinlein, Cerveau de Spock et d�fi des 9 cycles</list-element>
+				<list-element>59 L'Id des arbres BSP</list-element>
+				<list-element>60 Compiler des arbres BSP</list-element>
+				<list-element>61 Syst�mes de r�f�rence</list-element>
+				<list-element>62 Une histoire, deux r�gles et un moteur de rendu BSP</list-element>
+				<list-element>63 Savoir mettre les math�matiques traditionnelles au panier</list-element>
+				<list-element>64 D�termination des surfaces visibles de Quake</list-element>
+				<list-element>65 Clipping 3D et autres consid�rations</list-element>
+				<list-element>66 La suppresstion des surfaces cach�es de Quake</list-element>
+				<list-element>67 Les segments raster en action</list-element>
+				<list-element>68 Le mod�le d'illumination de Quake</list-element>
+				<list-element>69 Le cache de surface et mod�le de triangle de Quake</list-element>
+				<list-element>70 Quake : Une conclusion et une prospective</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="5" type="ccpp" lang="Fran�ais" date-writing="28/02/2005" date-publishing="1999" title="Pour mieux d�velopper avec C++" image-normal="./book/normal/pourmieux.jpg" image-small="./book/small/pourmieux.jpg">
+			<author>Aur�lien G�ron</author>
+			<author>Fatm� Tawbi</author>
+			<editor address="http://www.dunod.com">Dunod</editor>
+			<paragraph>
+				Ce livre sur le langage C++ est � destination des programmeurs initi�s. Il est compos� de trois parties principales.
+			</paragraph>
+			<paragraph>
+				La premi�re est consacr�e aux m�canismes virtuels du C++, ce qui inclut le polymorphisme sous ses trois composantes : l'encapsulation, l'abstraction et l'h�ritage. Ce livre explique concr�tement le fonctionnement de ces m�canismes en C++ ainsi que les cons�quences qu'ils impliquent que ce soit par leurs forces ou leurs faiblesses. Un autre chapitre tr�s int�ressant �voque un th�me pour le moins anodin et pourtant riche en pi�ge : les conversions de types ! Les probl�mes de ce type de manipulation sont �voqu�s dans une perspective de robustesse. Les auteurs en profitent pour discuter des avantages des nouveaux casts telle que static_cast et de la RTTI. L'une des choses agr�ables dans ce livre c'est que les mauvaises solutions sont autant �voqu�es que les bonnes. Par exemple, les auteurs �voquent const_cast et mutable sans concision puis propose une meilleure alternative avec l'utilisation de "const" comme qualificateur de fonctions. Enfin, cette partie �voque l'h�ritage multiple et la notion "d'interface" d'inspiration JAVA (Le terme 'interface' n'existe pas v�ritablement en C++, c'est une classe ne contenant que des fonctions virtuelles pures).
+			</paragraph>
+			<paragraph>
+				La seconde partie est consacr�e � la biblioth�que standard du C++ : la STL. Elle aborde donc les conteneurs qu'ils soient s�quentiels (list, vector, deque) ou associatifs (map, multimap, set, multiset) et les m�canismes de manipulation comme les it�rateurs et les mod�les internes sur lesquels la STL repose : Le conteneur - Iterateur et la Strat�gie. Nous regretterons cependant que les cot�s "cause/cons�quence" ou "force/faiblesse" de la premi�re partie ne soit pas aussi d�velopp� que dans la premi�re partie ... Heureusement, le dernier chapitre d�di� aux "smart pointers" reprend ces concepts avec brio. En fait, ce chapitre commence avec la probl�matique de gestion de la m�moire puis part dans la construction d'une solution avec le lecteur, la r�ponse �tant le smart pointer. Le tout en pr�cisant les limites de cette technique.
+			</paragraph>
+			<paragraph>
+				La troisi�me et derni�re partie concerne les design patterns et pour mon plus grand bonheur, leur pr�sentation est bas�e sur des diagrammes de classes UML. Ce livre est loin de faire le tour de tous les design patterns (mais est ce possible ?), il se contente des mod�les les plus utiles : Le Composite; La fabrication; La Fabrique Abstraite; Le Singleton; L'Observateur et le M�diateur. La pr�sentation des diff�rents patterns est globalement toujours identiques : Qu'elle est l'objet du pattern, son r�le; Comment remplit t'il sa t�che; Comment le programmer; qu'elles sont ses avantages et ses inconv�nients. Notons �galement que les patterns sont illustr�s par des exemples.
+			</paragraph>
+			<paragraph>
+				En bref, un excellent livre qui a au minimum l'int�r�t de nous apprendre que si l'on nous vend une solution comme miraculeuse, c'est il y a anguille sous roche.
+			</paragraph>
+
+			<list name="Le sommaire :">
+				<list-element>Chapitre 1 - Les m�canismes du polymorphisme</list-element>
+				<list-element>Chapitre 2 - Le patron de m�thode</list-element>
+				<list-element>Chapitre 3 - La RTTI et les nouveaux casts</list-element>
+				<list-element>Chapitre 4 - H�ritage multiple et h�ritage virtuel</list-element>
+				<list-element>Chapitre 5 - Les classes d'interface</list-element>
+				<list-element>Chapitre 6 - Conteneurs et it�rateurs de la STL</list-element>
+				<list-element>Chapitre 7 - Le mod�le strat�gie</list-element>
+				<list-element>Chapitre 8 - Adapter l'interface d'une classe</list-element>
+				<list-element>Chapitre 9 - les smart pointers</list-element>
+				<list-element>Chapitre 10 - Le Composite</list-element>
+				<list-element>Chapitre 11 - La Fabrication (Factory Method)</list-element>
+				<list-element>Chapitre 12 - La Fabrique Abstraite (Abstract Factory)</list-element>
+				<list-element>Chapitre 13 - Le Singleton</list-element>
+				<list-element>Chapitre 14 - L'observateur (Observer)</list-element>
+				<list-element>Chapitre 15 - Le M�diateur (M�diator)</list-element>
+				<list-element>A. Fiches techniques</list-element>
+				<list-element>B. Bibliographie</list-element>
+				<list-element>C. Sites web</list-element>
+				<list-element>Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="4" type="ccpp" lang="Fran�ais" date-writing="12/02/2005" date-publishing="2001" title="Le C++ Efficace" image-normal="./book/normal/lecppefficace.jpg" image-small="./book/small/lecppefficace.jpg">
+			<author>Scott Meyers</author>
+			<editor address="http://www.vuibert.fr">Vuibert</editor>
+			<paragraph>
+				Ce livre n'est autre que la traduction fran�aise de Effective C++. Bien que ce livre est �t� publi� en 2001 en fran�ais il a r�ellement vue le jour en 1994. Malgr� son age, il n'a rien perdu de son int�r�t.
+			</paragraph>
+			<paragraph>
+				En effet, apr�s avoir lue des livres tel que Programmer en langage C++ de Claude Delannoy nous sommes en mesure de dire que l'on conna�t le langage C++ pourtant ce n'est pas pour autant que l'on sait l'utiliser.
+			</paragraph>
+			<paragraph>
+				Ce livre est une sorte de collection de "gems" sur le C++, 50 exactement. Scott Meyers nous explique les bonnes et mauvaises pratiques du langage C++. Sa d�marche n'est pas de proposer des v�rit�s mais surtout de favoriser la r�flexion du lecteur sur des th�mes pour lui permettre de prendre des d�cisions ou des choix. Il ne s'agit pas d'aller dans les m�andres de la technicit� du C++ mais vraiment de discuter des probl�mes concrets.
+			</paragraph>
+			<paragraph>
+				Cerise sur le g�teau, ce livre est tr�s agr�able � livre gr�ce � une organisation proche des "livres jeux" avec des r�f�rences � d'autres "gems" du livres. Il est �galement v�ritablement bien �crit et l'auteur est loin d'�tre d�nu� d'humour dans sa r�daction. Je pense que la plus part des livres sont fait pour �tre consult� comme r�f�rence mais celui ci est d'une telle richesse et tellement agr�able � lire que le vous conseille vivement de le lire en entier en suivant les r�f�rences � d'autres parties suivants votre humeur.
+			</paragraph>
+			<paragraph>
+				A mon avis, un livre indispensable pour un programmeur C++.
+			</paragraph>
+
+			<list name="Le sommaire :">
+				<list-element>1 Utilisez const et inline au lieu de #define</list-element>
+				<list-element>2 Pr�f�rez iostream.h � stdio.h</list-element>
+				<list-element>3 Utilisez new et delete plut�t que malloc et free</list-element>
+				<list-element>4 Pr�f�rez les commentaires de style C++</list-element>
+				<list-element>5 Utilisez la m�me forme pour les appels correspondants � new et delete</list-element>
+				<list-element>6 Appelez delete sur les membres pointeurs dans les destructeurs</list-element>
+				<list-element>7 V�rifiez la valeur retour de new</list-element>
+				<list-element>8 Conformez-vous aux conventions pour �crire new</list-element>
+				<list-element>9 Evitez de masquer l'op�rateur global new</list-element>
+				<list-element>10 Ecrivez delete d�s que vous �crivez new</list-element>
+				<list-element>11 D�finissez un constructeur de copie et un op�rateur d'affectation pour les classes � m�moire allou�e dynamiquement</list-element>
+				<list-element>12 Pr�f�rez l'initialisation � l'affectation dans les constructeurs</list-element>
+				<list-element>13 Rangez les membres de la liste d'initialisation dans l'ordre de leur d�claration</list-element>
+				<list-element>14 D�clarez les destructeurs virtuels dans les classes de base</list-element>
+				<list-element>15 Faites en sorte que l'op�rator= retourne une r�f�rence � *this</list-element>
+				<list-element>16 Dans l'op�rator=, affectez des valeurs � tous les membres</list-element>
+				<list-element>17 V�rifiez les auto-affectations dans l'operator=</list-element>
+				<list-element>18 Efforcez vous de faire des interfaces de classes compl�tes et minimales</list-element>
+				<list-element>19 Diff�renciez les m�thodes, les fonctions globales et les fonctions amies(friend)</list-element>
+				<list-element>20 Evitez les donn�es membres dans l'interface publique</list-element>
+				<list-element>21 Utilisez const autant que possible</list-element>
+				<list-element>22 Passez et retournez les objets par r�f�rence plut�t que par valeur</list-element>
+				<list-element>23 N'essayer pas de renvoyer une r�f�rence quand vous devez renvoyer un objet</list-element>
+				<list-element>24 Choissiez bien entre surcharge de fonctions et le param�trage par d�faut</list-element>
+				<list-element>25 Evitez la surcharge entre un pointeur et un type num�rique</list-element>
+				<list-element>26 M�fiez-vous de l'ambigu�t� potentielle</list-element>
+				<list-element>27 Interdisez explicitement l'utilisation de m�thodes ind�sirables g�n�r�es implicitement</list-element>
+				<list-element>28 Utilisez les structures pour cloisonner l'espace global des noms</list-element>
+				<list-element>29 Evitez de renvoyer des "poign�es" r�v�lant des donn�es internes depuis des m�thodes const</list-element>
+				<list-element>30 Evitez les m�thodes quirenvoient des pointeurs ou des r�f�rences � des membres moins accessibles qu'elles m�mes</list-element>
+				<list-element>31 Ne renvoyez jamais une r�f�rences � un objet local ni un pointeur d�r�f�renc� initialis� par new dans une fonction</list-element>
+				<list-element>32 Utilisez les enums pour des constantes de classe enti�res</list-element>
+				<list-element>33 Utilisez inline judicieusement</list-element>
+				<list-element>34 Minimisez les d�pendances de compilation entre fichiers</list-element>
+				<list-element>35 Assuez-vous que l'h�ritage public mod�lise le "est-un"</list-element>
+				<list-element>36 Diff�renciez l'h�ritage d'interface de l'h�ritage d'impl�mentation</list-element>
+				<list-element>37 Ne red�finissez jamais une m�thode non virtuelle h�rit�e</list-element>
+				<list-element>38 Ne red�finissez jamais une valeur de param�tre par d�faut h�rit�e</list-element>
+				<list-element>39 Evitez la conversion de type descendant la hi�rarchie d'h�ritage</list-element>
+				<list-element>40 Mod�lisez "a-un" ou "est-impl�ment�-en-termes-de" avec le layering (mod�le en couches)</list-element>
+				<list-element>41 Utilisez judicieusement l'h�ritage priv�</list-element>
+				<list-element>42 Faites la diff�rence entre h�ritage et templates</list-element>
+				<list-element>43 Utilisez judicieusement l'h�ritage multiple</list-element>
+				<list-element>44 Dites ce que vous voulez dire ; comprenez ce que vous dites</list-element>
+				<list-element>45 Sachez quelles m�thodes le C++ �crit et appelle en silence</list-element>
+				<list-element>46 Pr�f�rez des erreurs de compilation et d'�dition de liens � des erreurs d'ex�cution</list-element>
+				<list-element>47 Assuez-vous que les objets globaux sont initialis�s avant d'�tre utilis�s</list-element>
+				<list-element>48 Soyez attentif aux avertissements du compilateur</list-element>
+				<list-element>49 Pr�voyez les avanc�es futures du langage</list-element>
+				<list-element>50 Lisez l'ARM</list-element>
+			</list>
+		</book-element>
+
+		<book-element type="ccpp" index="3" lang="Anglais" date-writing="16/05/2004" date-publishing="2002" title="Data Structures for Game Programmers" image-normal="./book/normal/data-structures.jpg" image-small="./book/small/data-structures.jpg">
+			<author>Ron Penton</author>
+			<editor address="http://www.premierpressbooks.com">Premier Press</editor>
+			<paragraph>
+				Data Structures for Game Programmers est un livre organis� en six parties de plusieurs chapitres chacunes.
+			</paragraph>
+			<paragraph>
+				La premi�re partie pr�sente d'une part la notion de complexit� d'un algorithme et d'autre part la notion de template. La deusi�me partie aborde des structures de donn�es : Tableaux, Bitvectors, listes cha�n�es, piles, queues et tables de hachage. La troisi�me partie pr�sente les arbres avec notamment un chapitre sur l'algorithme Minimax, tr�s utile en recherche op�ration pour par exemple r�alis� une IA. Ces notions sont d'ailleurs approfondi dans la partie quatre qui traite des graphes. La partie suivante est batis� 'Algorithms' et elle aborde les probl�mes de tries (bubble, heap, quick, radix), de compression de donn�es (RLE, Huffman), de nombres all�atoires, etc. La derni�re partie est un ensemble d'annexe sur le C++ (Math, I/O, Exceptions, surcharge d'op�rateurs, etc.), la m�moire, SDL et STL.
+			</paragraph>
+			<paragraph>
+				Ce livre contient un CD contenant tous les exemples du livre. Ces exemples ont pour but de donn�es un apper�u visuel du fonctionnement de certaines notions. Par exemple, pour la pile, il y a un programme utilisant SDL comprenant deux boutons dont les actions sont : empiler et d�piler. L'utilisation de SDL garantie des programmes potentiellements portables, mais ils ne sont disponibles que pour Windows et on �t� r�alis� avec Visual C++ 6.
+			</paragraph>
+			<paragraph>
+				N'oublions pas que ce livre est destin� aux programmeurs de jeux, ce livre nous propose de d�velopper un jeu de r�les/aventures � la fin des parties deux � cinq.
+			</paragraph>
+
+			<list name="Le sommaire :">
+				<list-element>Chapter 1 : Basic Algorithm Analysis</list-element>
+				<list-element>Chapter 2 : Templates</list-element>
+				<list-element>Chapter 3 : Arrays</list-element>
+				<list-element>Chapter 4 : Bitvectors</list-element>
+				<list-element>Chapter 5 : Multi-Dimensional Arrays</list-element>
+				<list-element>Chapter 6 : Linked Lists</list-element>
+				<list-element>Chapter 7 : Stacks and Queues</list-element>
+				<list-element>Chapter 8 : Hash Tables</list-element>
+				<list-element>Chapter 9 : Tying it together : The Basics</list-element>
+				<list-element>Chapter 10 : Recursion</list-element>
+				<list-element>Chapter 11 : Trees</list-element>
+				<list-element>Chapter 12 : Binary Trees</list-element>
+				<list-element>Chapter 13 : Binary Trees</list-element>
+				<list-element>Chapter 14 : Binary Search Trees</list-element>
+				<list-element>Chapter 15 : Priority Queues And Heaps</list-element>
+				<list-element>Chapter 16 : Game Trees Ans Minimax Trees</list-element>
+				<list-element>Chapter 17 : Tying it Together : Trees</list-element>
+				<list-element>Chapter 18 : Using Graphs for IA : Finite State Machines</list-element>
+				<list-element>Chapter 19 : Graphs</list-element>
+				<list-element>Chapter 20 : Sorting Data</list-element>
+				<list-element>Chapter 21 : Data Compression</list-element>
+				<list-element>Chapter 22 : Random Numbers</list-element>
+				<list-element>Chapter 23 : Pathfinding</list-element>
+				<list-element>Chapter 24 : Tying it together : Algorithms</list-element>
+				<list-element>Appendix A : A C++ Primer</list-element>
+				<list-element>Appendix B : The memory layout of a computer program</list-element>
+				<list-element>Appendix C : Introduction to SDL</list-element>
+				<list-element>Appendix D : Intriduction to the Standard Template Library</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="2" type="ccpp" lang="Fran�ais" date-writing="16/05/2004" date-publishing="2002" title="Programmer en langage C++" image-normal="./book/normal/programmer-cpp.jpg" image-small="./book/small/programmer-cpp.jpg">
+			<author>Claude Delannoy</author>
+			<editor address="http://www.editions-eyrolles.com">Eyrolles</editor>
+			<paragraph>
+				Programmer en langage C++ est un livre bas� et respectant la norme ISO C++. On retrouve naturellement toutes les notions du langage C++ : Types, fonctions, surcharges, patrons, h�ritage, flots, exceptions, etc. Ce livre aborde aussi tous les conteneurs de la STL de la norme C++ : list, vector, degue, map, multimap, set, multiset, bitset, valarray et pr�sente �galement les algorithmes.
+			</paragraph>
+			<paragraph>
+				Ce livre offre �galement une comparaison avec le langage C au niveau de la compatibilit� et aborde d'autres point critique comme les conversions de type d�finies par l'utilisateur et les fonctions amies.
+			</paragraph>
+
+			<list name="Le sommaire :">
+				<list-element>Chapitre 1 : G�n�ralit�s concernant C++</list-element>
+				<list-element>Chapitre 2 : Les incompatibilit�s entre C++ et C</list-element>
+				<list-element>Chapitre 3 : Les entr�es-sorties conversationnelles du C++</list-element>
+				<list-element>Chapitre 4 : Les sp�cificit�s du C++</list-element>
+				<list-element>Chapitre 5 : Classes et objets</list-element>
+				<list-element>Chapitre 6 : Les propri�t�s des fonctiones membres</list-element>
+				<list-element>Chapitre 7 : Construction, destruction et initialisation des objets</list-element>
+				<list-element>Chapitre 8 : Les fonctions amies</list-element>
+				<list-element>Chapitre 9 : La surd�finition d'op�rateurs</list-element>
+				<list-element>Chapitre 10 : Les conversions de type d�finis par d'utilisateur</list-element>
+				<list-element>Chapitre 11 : Les patrons de fonctions</list-element>
+				<list-element>Chapitre 12 : Les patrons de classes</list-element>
+				<list-element>Chapitre 13 : L'h�ritage simple</list-element>
+				<list-element>Chapitre 14 : L'h�ritage multiple</list-element>
+				<list-element>Chapitre 15 : Les fonctions virtuelles et le typage dynamique</list-element>
+				<list-element>Chapitre 16 : Les flots</list-element>
+				<list-element>Chapitre 17 : La gestion des exceptions</list-element>
+				<list-element>Chapitre 18 : G�n�ralit�s sur la biblioth�que standard</list-element>
+				<list-element>Chapitre 19 : Les conteneurs s�quentiels</list-element>
+				<list-element>Chapitre 20 : Les conteneurs associatifs</list-element>
+				<list-element>Chapitre 21 : Les algorithmes standard</list-element>
+				<list-element>Chapitre 22 : La classe string</list-element>
+				<list-element>Chapitre 23 : les outils num�riques</list-element>
+				<list-element>Chapitre 24 : les espaces de noms</list-element>
+				<list-element>Annexe A : Mise en correspondance d'arguments</list-element>
+				<list-element>Annexe B : Les incompatibilit�s entre C et C++</list-element>
+				<list-element>Annexe C : Compl�ments sur les exceptions</list-element>
+				<list-element>Annexe D : Les diff�rentes sortes de fonctions en C++</list-element>
+				<list-element>Annexe E : Comptage de r�f�rences</list-element>
+				<list-element>Annexe F : Les pointeurs sur des membres</list-element>
+				<list-element>Annexe G : Les algorithmes standard</list-element>
+				<list-element>Correction des exercices</list-element>
+				<list-element>Index</list-element>
+				<list-element>Contenu du site Web</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="1" type="ccpp" lang="Fran�ais" date-writing="15/05/2004" date-publishing="2002" title="Langage C" image-normal="./book/normal/langage-c.jpg" image-small="./book/small/langage-c.jpg">
+			<author>Claude Delannoy</author>
+			<editor address="http://www.editions-eyrolles.com">Eyrolles</editor>
+			<paragraph>
+				Voici un livre sur le langage C. Il n'a rien de particuliers, ne dispose pas de CD, n'utilise pas une p�dagogie sp�cial, l'auteur de raconte pas sa vie, non rien de toute cela. Il s'agit seulement d'un classique livre de programmation sur le langage C, mais parmi les nombreux livres sur le langage C, il se distingue pas un point tr�s important : c'est un bon livre !
+			</paragraph>
+			<paragraph>
+				En effet, ce livre est d�di� de le langage C et il ne s'agit ni d'un langage C d�di� � un compilateur ni d'une variante du langage C, non il s'agit d'une description belle et bien du langage C de la norme ANSI C99 avec une description compl�te, de A � Z, ni plus ni moins.
+			</paragraph>
+			<paragraph>
+				Ainsi, ce livre d�crit tous les fondements du langage C : types de base, op�rateurs, expressions, structures de contr�les, tableaux, pointeurs, fonctions, etc. Ce livre pr�sente �galement les fonctions standard, c'est � dire leurs utilisations et leurs d�clarations. De plus, il pr�sente la cr�ation de type personnalis� par le biais de structures, d'unions, d'�num�rations ainsi que la gestion de la m�moire dynamique et aborde en profondeur la gestion des fichiers. Parmi les autres notions misent en valeur dans ce livre nous noterons les arguments variables, la communication avec l'environnement, les caract�res �tendus. Bien entendu le pr� processeur n'a pas �t� oubli�.
+			</paragraph>
+			<paragraph>
+				Enfin nous noterons deux parties particuli�rement int�ressantes. La premi�re concernant les compatibilit�s entre le C et le C++ et la seconde �tant l'annexe. En effet celui si indique dans quel fichier doit t'on trouver les d�clarations de chaque �l�ment du langage ce qui est � la fois tr�s pratique et facilit� l'�criture de code portable.
+			</paragraph>
+
+			<list name="Le sommaire :">
+				<list-element>Chapitre 1 - G�n�ralit�s</list-element>
+				<list-element>Chapitre 2 - Les �l�ments constitutifs d'un programme source</list-element>
+				<list-element>Chapitre 3 - Les types de base</list-element>
+				<list-element>Chapitre 4 - Les op�rations et les expressions</list-element>
+				<list-element>Chapitre 5 - Les instructions ex�cutables</list-element>
+				<list-element>Chapitre 6 - Les tableaux</list-element>
+				<list-element>Chapitre 7 - Les pointeurs</list-element>
+				<list-element>Chapitre 8 - Les fonctions</list-element>
+				<list-element>Chapitre 9 - Les entr�es-sorties standard</list-element>
+				<list-element>Chapitre 10 - Les cha�nes de caract�res</list-element>
+				<list-element>Chapitre 11 - Les types strutures, union et �num�ration</list-element>
+				<list-element>Chapitre 12 - La d�finition de synonymes avec typedef</list-element>
+				<list-element>Chapitre 13 - Les fichiers</list-element>
+				<list-element>Chapitre 14 - La gestion dynamique</list-element>
+				<list-element>Chapitre 15 - Le pr�processeur</list-element>
+				<list-element>Chapitre 16 - Les d�clarations</list-element>
+				<list-element>Chapitre 17 - Fiabilisation des lectures au clavier</list-element>
+				<list-element>Chapitre 18 - Les cat�gories de caract�res et les fonctions associ�es</list-element>
+				<list-element>Chapitre 19 - Gestion des gros programmes</list-element>
+				<list-element>Chapitre 20 - Les arguments variables</list-element>
+				<list-element>Chapitre 21 - Communication avec l'environnement</list-element>
+				<list-element>Chapitre 22 - Les caract�res �tendus</list-element>
+				<list-element>Chapitre 23 - Les adaptations locales</list-element>
+				<list-element>Chapitre 24 - La r�cursivit�</list-element>
+				<list-element>Chapitre 25 - Les branchements non locaux</list-element>
+				<list-element>Chapitre 26 - Les incompatibilit�s entre le C et C++</list-element>
+				<list-element>Annexe - la bibiloth�que standard</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="3" type="design" lang="Fran�ais" date-writing="14/09/2004" date-publishing="1999" title="Design Patterns" image-normal="./book/normal/design-patterns.jpg" image-small="./book/small/design-patterns.jpg">
+			<author>Erich Gamma</author>
+			<author>Richard Helm</author>
+			<author>Ralph Johnson</author>
+			<author>John Vlissides</author>
+			<editor address="http://www.google.fr">Addison Wesley</editor>
+			<paragraph>
+				Ce livre est compos� de deux parties : La premi�re d�crit ce que sont les desing patterns et comment ils peuvent apport�s une aide dans une approche orient� objet. La deuxi�me partie, qui compose la majorit� du livre, contient pas moins de vingt trois patterns.
+			</paragraph>
+			<paragraph>
+				Ce livre contient des exemples en code C++ et Smalltack (plus rare) et les patterns sont d�crient � l'aide de diagrammes de classes UML.
+			</paragraph>
+			<paragraph>
+				Notons la pr�sence d'un CD, vendu avec le livre, qui contient le texte du livre en version original sous une forme HTML tr�s aggr�able.
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Chapitre 1 Introduction</list-element>
+				<list-element>Chapitre 2 Etude de cas : conception d'un �diteur de documents</list-element>
+				<list-element>Chapitre 3 Mod�les cr�ateurs</list-element>
+				<list-element>- Fabrique abstraite</list-element>
+				<list-element>- Monteur</list-element>
+				<list-element>- Fabrication</list-element>
+				<list-element>- Prototype</list-element>
+				<list-element>- Singleton</list-element>
+				<list-element>Chapitre 4 Mod�les structuraux</list-element>
+				<list-element>- Adaptateur</list-element>
+				<list-element>- Pont</list-element>
+				<list-element>- Composite</list-element>
+				<list-element>- Decorateur</list-element>
+				<list-element>- Facade</list-element>
+				<list-element>- Poids mouche</list-element>
+				<list-element>- Procuration</list-element>
+				<list-element>Chapitre 5 Mod�les de comportement</list-element>
+				<list-element>- Chaine de responsabilit�s</list-element>
+				<list-element>- Commande</list-element>
+				<list-element>- Interpreteur</list-element>
+				<list-element>- Iterateur</list-element>
+				<list-element>- Mediateur</list-element>
+				<list-element>- Mememto</list-element>
+				<list-element>- Observateur</list-element>
+				<list-element>- Etat</list-element>
+				<list-element>- Strat�gie</list-element>
+				<list-element>- Patron de methode</list-element>
+				<list-element>- Visiteur</list-element>
+				<list-element>Chapitre 6 Conclusion</list-element>
+				<list-element>Annexe A Glossaire</list-element>
+				<list-element>Annexe B Guide de notation</list-element>
+				<list-element>Annexe C Classes Fondations</list-element>
+				<list-element>Bibliographie</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="2" type="design" lang="Fran�ais" date-writing="14/09/2004" date-publishing="2004" title="UML 2.0" image-normal="./book/normal/uml2.jpg" image-small="./book/small/uml2.jpg">
+			<author>Martin Fowler</author>
+			<editor address="http://www.pearsoneducation.fr">CampusPress</editor>
+			<paragraph>
+				Ce livre est une pr�sentation d'UML. L'auteur commence par d�crire le r�le d'UML puis il discute de son r�le dans un processus de d�veloppement. Nous avons enfin une description plus ou moins d�taill� de chacun des diagrammes de classes d'UML.
+			</paragraph>
+			<paragraph>
+				L'un des principaux plus, de ce livre, est certainement que l'auteur nous offre son opinion car le monde d'UML n'est pas blanc ou noir mais plut�t gris. C'est donc un exc�lent livre pour se forger son opinion sur UML.
+			</paragraph>
+			<paragraph>
+				Ce livre est une traduction de la version originale anglaise nomm� UML Distilled.
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Chapitre 1. Introduction</list-element>
+				<list-element>Chapitre 2. Processus de d�veloppement</list-element>
+				<list-element>Chapitre 3. Diagrammes de classes : concepts essentiels</list-element>
+				<list-element>Chapitre 4. Les diagrammes de s�quence</list-element>
+				<list-element>Chapitre 5. Diagrammes de classes : concepts avanc�s</list-element>
+				<list-element>Chapitre 6. Diagrammes d'objets</list-element>
+				<list-element>Chapitre 7. Diagrammes de packages</list-element>
+				<list-element>Chapitre 8. Diagrammes de d�ploiement</list-element>
+				<list-element>Chapitre 9. Cas d'utilisation</list-element>
+				<list-element>Chapitre 10. Diagrammes de machines d'�tats</list-element>
+				<list-element>Chapitre 11. Diagrammes d'activit�s</list-element>
+				<list-element>Chapitre 12. Diagrammes de comunication</list-element>
+				<list-element>Chapitre 13. Structures composites</list-element>
+				<list-element>Chapitre 14. Diagrammes de composants</list-element>
+				<list-element>Chapitre 15. Collaborations</list-element>
+				<list-element>Chapitre 16. Les diagrammes de vue d'ensemble des interactions</list-element>
+				<list-element>Chapitre 17. Diagrammes de timing</list-element>
+				<list-element>Annexe A. Conventions de notation</list-element>
+				<list-element>Annexe B. Diff�rences entre versions d'UML</list-element>
+				<list-element>Annexe C. Bibliographie</list-element>
+				<list-element>Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="1" type="design" lang="Anglais" date-writing="14/09/2004" date-publishing="2003" title="The pragmatic programmer" image-normal="./book/normal/pragmatic.jpg" image-small="./book/small/pragmatic.jpg">
+			<author>Andrew Hunt</author>
+			<author>David Thomas</author>
+			<editor address="http://www.pragmaticprogrammer.com">Addison Wesley</editor>
+			<paragraph>
+				The pramatic programmer propose un grand nombre de concept pour nous aider � mieux concevoir, mieux programmer, mieux g�rer un projet. Comme son nom l'indique, ce livre expose des r�sultats produits par la pratique. Il n'y a pas de concepts novateurs et pourtant ce livre pourrait bien r�volutionner notre vision du d�veloppement gr�ce � des outils et m�thodes nous permettant de tendre vers une qualit� sup�rieure.
+			</paragraph>
+			<paragraph>
+				Quels concepts sont abord�s ? La communication, le design par contrat, Le refactoring, le debugging, les g�n�rateurs de code, etc. En tout, quarante six id�es nous permettant d'allez au bout de nos projets. Certain concepts sont difficilement appr�ciable cependant l'essentiel est, � mon avis, la dynamique de r�flexions que ce livre induit.
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>1. The cat ate my source code</list-element>
+				<list-element>2. Software entropy</list-element>
+				<list-element>3. Stone soup and boiled frogs</list-element>
+				<list-element>4. Good-Enough Software</list-element>
+				<list-element>5. Your knowledge Portfolio</list-element>
+				<list-element>6. Comunicate!</list-element>
+				<list-element>7. The evils of duplication</list-element>
+				<list-element>8. Orthogonality</list-element>
+				<list-element>9. Reversibility</list-element>
+				<list-element>10. Tracer bullets</list-element>
+				<list-element>11. Prototypes and post-it notes</list-element>
+				<list-element>12. Domain languages</list-element>
+				<list-element>13. Estimating</list-element>
+				<list-element>14. The power of plain text</list-element>
+				<list-element>15. Shell Games</list-element>
+				<list-element>16. Power editing</list-element>
+				<list-element>17. Source code control</list-element>
+				<list-element>18. Debugging</list-element>
+				<list-element>19. Text manipulation</list-element>
+				<list-element>20. Code generators</list-element>
+				<list-element>21. Design by contract</list-element>
+				<list-element>22. Dead Programs Tell no lies</list-element>
+				<list-element>23. Assertive programming</list-element>
+				<list-element>24. When to use exceptions</list-element>
+				<list-element>25. How to balance ressources</list-element>
+				<list-element>26. Decoupling and law of demeter</list-element>
+				<list-element>27. Metaprogramming</list-element>
+				<list-element>28. Temporal Coupling</list-element>
+				<list-element>29. It's just a view</list-element>
+				<list-element>30. Blackboards</list-element>
+				<list-element>31. Programming by coincidence</list-element>
+				<list-element>32. Algorithm speed</list-element>
+				<list-element>33. Refactoring</list-element>
+				<list-element>34. Code that's easy to test</list-element>
+				<list-element>35. Evil wizards</list-element>
+				<list-element>36. The requirements pit</list-element>
+				<list-element>37. Solving impossible puzzles</list-element>
+				<list-element>38. Not until you're ready</list-element>
+				<list-element>39. The specification trap</list-element>
+				<list-element>40. Circles ans arrows</list-element>
+				<list-element>41. Pragmatic teams</list-element>
+				<list-element>42. Ubiquitous automation</list-element>
+				<list-element>43. Ruthless testing</list-element>
+				<list-element>44. It's all writing</list-element>
+				<list-element>45. Great expectations</list-element>
+				<list-element>46. Pride and prejudice</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="2" type="math" lang="Anglais" date-writing="13/09/2004" date-publishing="2004" title="Mathematics for 3D Game Programming and Computer Graphics" image-normal="./book/normal/math-for-3d.jpg" image-small="./book/small/math-for-3d.jpg">
+			<author>Eric Langyel</author>
+			<editor address="http://www.charlesriver.com">Charles River Media</editor>
+			<paragraph>
+				En parcourant les pages de ce livres, nous observons tout de suites que l'approche des Maths pour la 3D choisi pour ce livre est tr�s scolaire. Nous retrouvons des propri�t�s, des formules, des th�or�mes, des d�monstrations ... bref de quoi faire fuir un bon nombre de personnes.
+			</paragraph>
+			<paragraph>
+				Notons que chaque chapitre se termine par un r�sumer des principaux r�sultats obtenus dans le chapitre puis par des exercices donc les quelques r�ponses sont donn�es � la fin du livre. Aussi scolaire, soit t'il, ce livre en particuli�rement bien fait dans cette approche.
+			</paragraph>
+			<paragraph>
+				En terme de notions abord�es, nous avons bien entendu le droit � une partie sur les espaces vertoriels mais elle est limit�e au chapitre 1 � 4. Il y a de nombreux chapitres qui abord� d'un point de vue math�matique des notions de rendus 3D : La camera, les stencils shadows, les courbes de beziers et B-Splines, etc. Remarquons �galement la pr�sence de trois chapitres de physiques traitant des mouvements de translations et de rotations d'un solide et abordant la simulation de flu�de.
+			</paragraph>
+			<paragraph>
+				Ce livre est principalement destin� aux personnes ayant de bonnes connaissances math�matiques et aux �tudiants de seconds cycles disposant de notions en programmation et en infographie, c'est � dire connaissant le C++ et le langage de shader de bas niveau d'OpenGL ...
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Chapter 0 The Rendering Pipeline</list-element>
+				<list-element>Chapter 1 Vectors</list-element>
+				<list-element>Chapter 2 Matrices</list-element>
+				<list-element>Chapter 3 Transforms</list-element>
+				<list-element>Chapter 4 3D Engine Geometry</list-element>
+				<list-element>Chapter 5 Ray Tracing</list-element>
+				<list-element>Chapter 6 Illumination</list-element>
+				<list-element>Chapter 7 Visibility Determination</list-element>
+				<list-element>Chapter 8 Collision Detection</list-element>
+				<list-element>Chapter 9 Polygonal Techniques</list-element>
+				<list-element>Chapter 10 Shadows</list-element>
+				<list-element>Chapter 11 Linear Physics</list-element>
+				<list-element>Chapter 12 Rotational Physics</list-element>
+				<list-element>Chapter 13 Fuild Simulation</list-element>
+				<list-element>Chapter 14 Numerical Methods</list-element>
+				<list-element>Chapter 15 Curves and surfaces</list-element>
+				<list-element>Appendix A Complex Numbers</list-element>
+				<list-element>Appendix B Trigonometry Reference</list-element>
+				<list-element>Appendix C Coordinate Systems</list-element>
+				<list-element>Appendix D Taylor Series</list-element>
+				<list-element>Appendix E Answers to Exercises</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="1" type="math" lang="Anglais" date-writing="02/03/2004" date-publishing="2002" title="3D Math primer for Graphics and Game Development" image-normal="./book/normal/3D-math-primer.jpg" image-small="./book/small/3D-math-primer.jpg">
+			<author>Fletcher Dunn</author>
+			<author>Ian Parberry</author>
+			<editor address="http://www.wordware.com">Wordware</editor>
+			<paragraph>
+				Tout d'abord je tiens � signaler que ce livre est vraiment � la port� de tous, que vous soyez bon ou pas. En effet, il abord des sujets depuis la base, ce qui est une tr�s bonne chose pour charifier le sujet.
+			</paragraph>
+			<paragraph>
+				Si de nombreux concepts paretront d�j� connu par nombre de personnes, il y � des notions fondammenles qui sont clarifi�. Par exemple, quel est la diff�rence entre "Position" et "Displacement"(D�placement est fran�ais). La reponse parait �vidente (mais faut t'il d�j� ce la pos�) mais elle ne l'ai pas tant que �a. En fait c'est exactement la m�me diff�rence qu'entre point et vecteur. Concretement identique mais mat�matiquement diff�rent.
+			</paragraph>
+			<paragraph>
+				Ce livre d�gage quelques comparaisons. Par exemple, quel est le point est commun entre les angles, les matrices et les quaternions ? Ce sont tous des m�thodes permettant de r�aliser des transformations. Ce livre indique les points forts et les points faibles de chaque m�thode.
+			</paragraph>
+			<paragraph>
+				La fin du livre traite de sujet plus d�licat comme les collisions, les meshes, l'�clairage et les testes de visibilit�s.
+			</paragraph>
+
+			<list name="Le sommaire :">
+				<list-element>Chapter 1 Introduction</list-element>
+				<list-element>Chapter 2 The Cartesian Coordinate System</list-element>
+				<list-element>Chapter 3 Multiple Coorinate Spaces</list-element>
+				<list-element>Chapter 4 Vectors</list-element>
+				<list-element>Chapter 5 Operations on Vectors</list-element>
+				<list-element>Chapter 6 A Simple 3D Vector Class</list-element>
+				<list-element>Chapter 7 Introduction to Matrices</list-element>
+				<list-element>Chapter 8 Matrices ans Linear Transformations</list-element>
+				<list-element>Chapter 9 More on matrices</list-element>
+				<list-element>Chapter 10 Orientation and Angular Displacement in 3D</list-element>
+				<list-element>Chapter 11 Transformations in C++</list-element>
+				<list-element>Chapter 12 Geometric Primitives</list-element>
+				<list-element>Chapter 13 Geometric Tests</list-element>
+				<list-element>Chapter 14 Triangle Meshes</list-element>
+				<list-element>Chapter 15 3D Math for Graphics</list-element>
+				<list-element>Chapter 16 Visibility Determination</list-element>
+				<list-element>Chapter 17 Afterword</list-element>
+				<list-element>Appendix A Math Review</list-element>
+				<list-element>Appendix B References</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="6" type="opengl graphics" lang="Anglais" date-writing="15/09/2004" date-publishing="2000" title="Game programming gems" image-normal="./book/normal/gems1.jpg" image-small="./book/small/gems1.jpg">
+			<author>Mark Deloura</author>
+			<editor address="http://www.charlesriver.com">Charles Rivers</editor>
+			<paragraph>
+				Ce livre est le premier ouvrage d'une s�rie dont le cinqui�me volume est pr�vu pour mars 2005. C'est une sorte de recueille de trucs et astuces pour la programmation de jeux, r�alis� par une trentaine de contributeurs.
+			</paragraph>
+			<paragraph>
+				Les articles sont organis�s dans cinq parties : Programming techniques, Mathematics, Artificial intelligence, polygonal techniques et pixel effects.
+			</paragraph>
+			<paragraph>
+				Dans la partie Programming techniques sont abord�es la notion de design pattern, de fonctionnalit� du C++ ou encore des techniques pour le chargement de donn�es et la gestion de m�moires.
+			</paragraph>
+			<paragraph>
+				Dans la partie mathematics nous trouvons notamment un chapitre sur les m�thodes d'interpolations, sur le mouvement mais aussi plusieurs chapitres qui font le tour des quaternions.
+			</paragraph>
+			<paragraph>
+				La partie concernant l'IA parcours principalement l'algorithme A* en proposant plusieurs optimisations.
+			</paragraph>
+			<paragraph>
+				Ce livre comprend deux parties d�di�es � l'affichage OpenGL, la premi�re nomm�e polygonal techniques offre des articles orient�s g�om�tries avec notamment plusieurs chapitres que le rendu de terrain et la deuxi�me partie nomm�e pixel effects traitant d'avantage des textures, des ombres, du bump mapping, etc.
+			</paragraph>
+
+			<list name="Le sommaire :">
+				<list-element>Chapter 1. Review of OpenGL Basics</list-element>
+				<list-element>Chapter 2. Basics</list-element>
+				<list-element>Chapter 3. Language Definition</list-element>
+				<list-element>Chapter 4. The OpenGL Programmable Pipeline</list-element>
+				<list-element>Chapter 5. Built-in Functions</list-element>
+				<list-element>Chapter 6. Simple Shading Example</list-element>
+				<list-element>Chapter 7. OpenGL Shading Language API</list-element>
+				<list-element>Chapter 8. Shader Development</list-element>
+				<list-element>Chapter 9. Traditional Shaders</list-element>
+				<list-element>Chapter 10. Stored Texture Shaders</list-element>
+				<list-element>Chapter 11. Procedural Texture Shaders</list-element>
+				<list-element>Chapter 12. Noise</list-element>
+				<list-element>Chapter 13. Animated Shaders</list-element>
+				<list-element>Chapter 14. Antialiasing Procedural Textures</list-element>
+				<list-element>Chapter 15. Non-Photorealistic Shaders</list-element>
+				<list-element>Chapter 16. Shaders for Imaging</list-element>
+				<list-element>Chapter 17. Language Comparison</list-element>
+				<list-element>Appendix A. Language Grammar</list-element>
+				<list-element>Appendix B. API Function Reference</list-element>
+				<list-element>Afterword</list-element>
+				<list-element>Glossary</list-element>
+				<list-element>Further Reading</list-element>
+				<list-element>Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="5" type="opengl gpu" lang="Anglais" date-writing="23/04/2004" date-publishing="2004" title="OpenGL Shading Language" image-normal="./book/normal/glsl.jpg" image-small="./book/small/glsl.jpg">
+			<author>Randi J.Rost</author>
+			<author>John M. Kessenich</author>
+			<author>Barthold Lichtenbelt</author>
+			<editor address="http://www.awprofessional.com">Addison Wesley</editor>
+			<paragraph>
+				Sortie en f�crier 2004, ce livre est le premier � traiter de l'OpenGL Shading Language et il ne parle que de ce langage mis � part le premier chapitre. On ne voit donc presque aucun code C appelant des fonctions OpenGL et si vous n'avez que de faible connaissance d'OpenGL, passez votre chemin !
+			</paragraph>
+			<paragraph>
+				En terme d'organisation et de contenue, ce livre est plus proche d'un livre sur le langage C qu'un livre sur OpenGL. En effet, il s'agit bien de d�crire un langage et non une biblioth�que.
+			</paragraph>
+			<paragraph>
+				Ainsi, ce livre pr�sente une vue l'ensemble du langage en commen�ant par d�crire les types support�s par le langage, la conversion de types, les qualificatifs (ex const en C++), les branchements dynamiques (if, while, etc.) et le pr�-processeur. Bien entendu, il y a �galement une description de toute les fonctions int�grer au langage, � la mani�re de la biblioth�que standard du langage C.
+			</paragraph>
+			<paragraph>
+				Il y a �galement une partie beaucoup plus conceptuelle, qui se charge de d�crire le processus de rendu d'une sc�ne OpenGL ainsi que ce que son r�ellement les Pixel et Vertex Programs et ce qu'ils peuvent r�aliser et afin un comparatif avec d'autres langages de shaders : ISL, HLSL et Cg.
+			</paragraph>
+			<paragraph>
+				L'une des particularit�s de ce livre r�side sur une grande partie d�di�e � la pratique. Ainsi, il y a un chapitre qui traite du d�veloppement des shaders, les probl�mes de performance, de debbugage mais �galement des outils comme RenderMonkey, l'IDE d'ATI. Toujours dans la partie pratique, il est bon de notez que 187 pages sur les 543 pages qui compose ce livre sont d�di�es � la pr�sentation de technique de rendu au travers d'exemples de shaders.
+			</paragraph>
+			<paragraph>
+				Vous l'aurez compris, j'ai �t� particuli�rement s�duit par cet Orange Book mais je vous avoue que la difficult� de ce livre me paru d'un niveau relev�.
+			</paragraph>
+
+			<list name="Le sommaire :">
+				<list-element>Chapter 1. Review of OpenGL Basics</list-element>
+				<list-element>Chapter 2. Basics</list-element>
+				<list-element>Chapter 3. Language Definition</list-element>
+				<list-element>Chapter 4. The OpenGL Programmable Pipeline</list-element>
+				<list-element>Chapter 5. Built-in Functions</list-element>
+				<list-element>Chapter 6. Simple Shading Example</list-element>
+				<list-element>Chapter 7. OpenGL Shading Language API</list-element>
+				<list-element>Chapter 8. Shader Development</list-element>
+				<list-element>Chapter 9. Traditional Shaders</list-element>
+				<list-element>Chapter 10. Stored Texture Shaders</list-element>
+				<list-element>Chapter 11. Procedural Texture Shaders</list-element>
+				<list-element>Chapter 12. Noise</list-element>
+				<list-element>Chapter 13. Animated Shaders</list-element>
+				<list-element>Chapter 14. Antialiasing Procedural Textures</list-element>
+				<list-element>Chapter 15. Non-Photorealistic Shaders</list-element>
+				<list-element>Chapter 16. Shaders for Imaging</list-element>
+				<list-element>Chapter 17. Language Comparison</list-element>
+				<list-element>Appendix A. Language Grammar</list-element>
+				<list-element>Appendix B. API Function Reference</list-element>
+				<list-element>Afterword</list-element>
+				<list-element>Glossary</list-element>
+				<list-element>Further Reading</list-element>
+				<list-element>Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="4" type="opengl graphics" lang="Anglais" date-writing="02/03/2004" date-publishing="2002" title="Focus On 3D Terrain Programming" image-normal="./book/normal/3D-terrain-programming.jpg" image-small="./book/small/3D-terrain-programming.jpg">
+			<author>Trent Polack</author>
+			<editor address="http://www.premierpressbooks.com">Premier Press</editor>
+			<paragraph>
+				Un excellent livre sur le rendu de terrain et l'utilisation de CLOD (Continous Level Of Detail), pour l'optimisation du rendu.
+			</paragraph>
+			<paragraph>
+				Ainsi dans une premi�re partie, l'auteur d�crit l'affichage de terrain : Mesh, Texture et �clairage. La technique d'�clairage utilis� est une lightmap de type colormap, c'est-�-dire que pour chaque vertex du mesh est associ� une couleur provenant d'un pixel d'une texture.
+			</paragraph>
+			<paragraph>
+				La deuxi�me partie du livre est beaucoup plus ardu car concerne notamment 3 algorithmes nomm�s Geomipmapping, QuadTree et ROAM.
+			</paragraph>
+			<paragraph>
+				La mise en ouvre de chacun des algorithmes est r�alis�e progressivement afin de simplifier la compr�hension.
+			</paragraph>
+			<paragraph>
+				L'une des puissances de ce livre r�side dans la parfaite coxistence entre la partie th�orique et la partie pratique. La p�dagogie de ce livre consiste par commencer par la th�orie puis une phase de pratique et un exemple. Ensuite le processus boucle et parfois plusieurs fois par chapitre. Les exemples sont r�alis�s avec OpenGL sous Windows.
+			</paragraph>
+			<paragraph>
+				Si le sujet vous int�resse, achetez le, d'autant plus que son coup est raisonnable (30$).
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Part One : Introduction to Terrain Programming</list-element>
+				<list-element>Chapter 1 : The Journey into the Great Outdoors</list-element>
+				<list-element>Chapter 2 : Terrain 101 </list-element>
+				<list-element>Chapter 3 : Texture Terrain</list-element>
+				<list-element>Chapter 4 : Lighting Terrain</list-element>
+				<list-element>Part Two : Advanced Terrain Programming</list-element>
+				<list-element>Chapter 5 : Geomipmapping for CLOD impaired</list-element>
+				<list-element>Chapter 6 : Climbing the Quadtree</list-element>
+				<list-element>Chapter 7 : Wherever you may ROAM</list-element>
+				<list-element>Chapter 8 : Wrapping it up : Special Effects and more</list-element>
+				<list-element>Appendix What's on the CD</list-element>
+				<list-element>Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="3" type="opengl" lang="Anglais" date-writing="15/05/2004" date-publishing="2003" title="The OpenGL Extensions Guide" image-normal="./book/normal/the-opengl-extensions-guide.jpg" image-small="./book/small/the-opengl-extensions-guide.jpg">
+			<author>Eric Lengyel</author>
+			<editor address="http://www.charlesriver.com">Charles River Media</editor>
+			<paragraph>
+				Ce livre pr�sente 78 d'extensions OpenGL, qu'elles soient officielles ou propri�taires. Les extensions sont regroup�s par chapitre avec des indications sur les d�pendences avec d'autres extensions, la version d'OpenGL o� elles ont �t� propu.
+			</paragraph>
+			<paragraph>
+				Ce livre est tr�s formel, pas d'exemples, ce qui le dirige directement vers les programmeurs OpenGL averti. Cette strat�gie � l'avantage de permettre la description de A � Z des extensions �voqu�es.
+			</paragraph>
+			<paragraph>
+				A noter, que les 2 derni�res chapitres sont destin�s aux Pixel et Vertex Shaders bas niveau et bien qu'il ne soit que 2 chapitres sur 18, ils repr�sentent pr�s de
+				la moiti� du livre car il d�taille pour chacune des extensions GL_ARB_vertex_program, GL_NV_vertex_program, GL_NV_vertex_program1_1, GL_NV_vertex_program2, GL_ ARB_vertex_program1_1,
+				GL_ARB_fragment_program, et GL_NV_fragment_program, chaque instruction des langages de shaders utilis�s par chaque extension.
+			</paragraph>
+			<paragraph>
+				Ce livre se pr�sente comme le blue book. En cons�quence, si vous �tes allergique au blue book, passez votre chemin sinon foncez.
+			</paragraph>
+			<paragraph>
+				A noter enfin, qu'une partie du livre est maintenant d�pass�e, malgr� sa date de parution r�cente. En effet, ce livre est consacr� � OpenGL 1.4, hors avec l'arriv� d'OpenGL 1.5 le chapitre 8 "Array Management" est maintenant repr�sent� par l'extension GL_ARB_vertex_buffer_object. De plus, l'utilisation de langage de shader de nVidia n'est plus utilise car l'am�lioration des drivers de nVidia � permis de gommer les �carts de performance avec le langage officiel.
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Chapter 1 : About OpenGL Extensions </list-element>
+				<list-element>Chapter 2 : Blending </list-element>
+				<list-element>Chapter 3 : Texture Environment</list-element>
+				<list-element>Chapter 4 : Texture Mapping</list-element>
+				<list-element>Chapter 5 : Texture Compression</list-element>
+				<list-element>Chapter 6 : Fragment Shading</list-element>
+				<list-element>Chapter 7 : Vertex Blending</list-element>
+				<list-element>Chapter 8 : Array Management</list-element>
+				<list-element>Chapter 9 : Synchronization</list-element>
+				<list-element>Chapter 10 : Lighting</list-element>
+				<list-element>Chapter 11 : Fog</list-element>
+				<list-element>Chapter 12 : Stencil Operations</list-element>
+				<list-element>Chapter 13 : Shadow Mapping</list-element>
+				<list-element>Chapter 14 : Occlusion Culling</list-element>
+				<list-element>Chapter 15 : Point Rendering</list-element>
+				<list-element>Chapter 16 : Pixel Formats</list-element>
+				<list-element>Chapter 17 : Miscellaneous</list-element>
+				<list-element>Chapter 18 : Vertex Programs</list-element>
+				<list-element>Chapter 19 : Fragment Programs</list-element>
+				<list-element>Appendix A : Program Syntax Specifications</list-element>
+				<list-element>Appendix B : Extension Index</list-element>
+				<list-element>Appendix C : Function Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="2" type="opengl game" lang="Anglais" date-writing="02/03/2004" date-publishing="2001" title="OpenGL Game Programming" image-normal="./book/normal/opengl-game-programming.jpg" image-small="./book/small/opengl-game-programming.jpg">
+			<author>Kevin Hawkins</author>
+			<author>Dave Astle</author>
+			<editor address="http://www.primagamedev.com">Prima Tech</editor>
+			<paragraph>
+				Ce livre est d�di� � la programmation OpenGL sous Windows. Ainsi il se base sur Direct X pour les entr�es, le son et le fen�trage. Ce n'est pas un livre sur OpenGL vous dites vous ? Effectivement, ce n'est pas uniquement un livre sur OpenGL mais �galement sur la programmation de jeu. Il comprend �galement un chapitre sur la th�orie de la 3D.
+			</paragraph>
+			<paragraph>
+				Une grande partie du livre est consacr� au base d'OpenGL : Transformations; Couleurs; Transparence, Eclairage, Texture, Display list, etc. On trouve vraiment beaucoup de concepts mais le contenu n'est pas tr�s approfondit car particuli�rement orient� vers la pratique.
+			</paragraph>
+			<paragraph>
+				Dans cet esprit de pratique le livre d�crit comment charg� une image BMP et TGA. De plus � la fin du livre le format MD2 de Quake 2 est d�crit : Chargement du mesh, texture et animation.
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Part I : Introduction to OpenGL and DirectX</list-element>
+				<list-element>Chapitre 1 : The Exploration Begins : OpenGL and Direct X</list-element>
+				<list-element>Chapitre 2 : Using Windws with OpenGL</list-element>
+				<list-element>Chapitre 3 : An Overview of 3D Graphics Theory</list-element>
+				<list-element>Part II : Using OpenGL</list-element>
+				<list-element>Chapter 4 : OpenGL States and Primitives</list-element>
+				<list-element>Chapter 5 : Coordinates Transformations and OpenGL Matrices</list-element>
+				<list-element>Chapter 6 : Adding Colors, Blending and Lighting</list-element>
+				<list-element>Chapter 7 : Bitmaps and Images with OpenGL</list-element>
+				<list-element>Chapter 8 : Texture Mapping</list-element>
+				<list-element>Chapter 9 : Advanced Texture Mapping</list-element>
+				<list-element>Chapter 10 : Display Lists and Vertex Arrays</list-element>
+				<list-element>Chapter 11 : Displaying Text</list-element>
+				<list-element>Chapter 12 : OpenGL Buffers</list-element>
+				<list-element>Chapter 13 : OpenGL Quadrics</list-element>
+				<list-element>Chapter 14 : Curves and Surfaces</list-element>
+				<list-element>Chapter 15 : Special Effects</list-element>
+				<list-element>Part III : Building a Game</list-element>
+				<list-element>Chapter 16 : Using DirectX : DirectInput</list-element>
+				<list-element>Chapter 17 : Using DirectX Audio</list-element>
+				<list-element>Chapter 18 : Working with 3D Models</list-element>
+				<list-element>Chapter 19 : Physics Modeling with OpenGL</list-element>
+				<list-element>Chapter 20 : Building a Game Engine</list-element>
+				<list-element>Chapter 21 : Making a Game : A Time to Kill</list-element>
+				<list-element>Part IV : Appendixes</list-element>
+				<list-element>Annexe A : Online Resources</list-element>
+				<list-element>Annexe B : Using the CD / Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="1" type="opengl" lang="Fran�ais" date-writing="02/03/2004" date-publishing="2000" title="OpenGL 1.2" image-normal="./book/normal/opengl1.2.jpg" image-small="./book/small/opengl1.2.jpg">
+			<author>Mason Woo</author>
+			<author>Jackie Neider</author>
+			<author>Tom Davis</author>
+			<author>Dave Shreiner</author>
+			<editor address="http://www.campuspress.fr">CampusPress</editor>
+			<paragraph>
+				Ce livre n'est autre que le fameux Red Book traduit est fran�ais.
+			</paragraph>
+			<paragraph>
+				Il est � la fois pratique et th�orique car dispose de nombreux exemples et fait la par belle � la th�orie : Math�matique de l'�clairage, calcule de normales, processus de restitution d'OpenGL, etc.
+			</paragraph>
+			<paragraph>
+				Son champ d'�tude va des bases au multitexturing en passant par la visualisation ou encore l'�clairage. De plus, une bonne partie du livre est consacr�e � GLU, biblioth�que qui simplifie la tache dans bien des exemples pour se concentrer sur le sujet.
+			</paragraph>
+			<paragraph>
+				On regrettera l'age d�j� avanc� du livre (1999 pour la version originale) ce qui implique une d�couverte d'OpenGL limit� � la version 1.2 . et encore ! De m�me, les exemples utilisent la biblioth�que GLUT, abandonn�e depuis 2001.
+			</paragraph>
+			<paragraph>
+				Malgr� tout, ce livre demeure une r�f�rence pour se lancer dans OpenGL, car sont contenu est toujours d'actualit�, d'autant plus que c'est un rare d�s rare livre en Fran�ais sur OpenGL .
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>A propos de ce livre</list-element>
+				<list-element>Chapitre 1 : Introduction � OpenGL</list-element>
+				<list-element>Chapitre 2 : Gestion des �tats et dessin g�om�trique </list-element>
+				<list-element>Chapitre 3 : Visualisation</list-element>
+				<list-element>Chapitre 4 : Couleur</list-element>
+				<list-element>Chapitre 5 : Eclairage</list-element>
+				<list-element>Chapitre 6 : Blending,Lissage, fog et d�calage de polygone</list-element>
+				<list-element>Chapitre 7 : Listes d'affichage</list-element>
+				<list-element>Chapitre 8 : Dessiner des pixels, des bitmaps, des polices et des images</list-element>
+				<list-element>Chapitre 9 : Application de texture</list-element>
+				<list-element>Chapitre 10 : Tampon d'image</list-element>
+				<list-element>Chapitre 11 : Fragmenteurs et quadriques</list-element>
+				<list-element>Chapitre 12 : Evaluateurs et NURBS</list-element>
+				<list-element>Chapitre 13 : Mode s�lection et mode feedback</list-element>
+				<list-element>Chapitre 14 : Et maintenant ...</list-element>
+				<list-element>Annexe A : Ordre des op�rations</list-element>
+				<list-element>Annexe B : Variables d'�tat</list-element>
+				<list-element>Annexe C : OpenGL et les gestionnaires de fen�tres</list-element>
+				<list-element>Annexe D : Base du GLUT : l'Utility Toolkit d'OpenGL</list-element>
+				<list-element>Annexe E : Calcul de verteurs normaux</list-element>
+				<list-element>Annexe F : Coordonn�es homog�nes et matrices de transformation</list-element>
+				<list-element>Annexe G : Astuces de programmation</list-element>
+				<list-element>Annexe H : Invariance OpenGL</list-element>
+				<list-element>Glossaire</list-element>
+				<list-element>Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="2" type="net" lang="Fran�ais" date-writing="14/09/2004" date-publishing="2004" title="PHP 5" image-normal="./book/normal/php5.jpg" image-small="./book/small/php5.jpg">
+			<author>Leon Atkinson</author>
+			<editor address="http://www.pearsoneducation.fr">Campus Press</editor>
+			<paragraph>
+				PHP 5 est un livre de r�f�rence. Son r�le est d'expliquer le langage, la syntaxe, le fonctionnement du langage. Une grosse partie de ce livre est un annuaire de fonctions class�es par cat�gories.
+			</paragraph>
+			<paragraph>
+				Comme beaucoup de livres intitul�s se revendiquant bas� sur la version 5 de PHP, ce titre est d'avantage flatteur qu'un r�alit�. En effet, si la partie concernant le langage PHP lui-m�me est effectivement une description de la version 5, l'annuaire de fonction correspond d'avantage � celui de la version 4. De plus, l'auteur c'est bas� sur une version non finale de PHP pour la r�daction de ce livre. Il est donc possible de certains bugs apparaissent.
+			</paragraph>
+			<paragraph>
+				Ce livre est pourtant de bonne qualit� et vrai agr�able � lire gr�ce notamment aux exemples d'utilisation des fonctions dans l'annuaire de fonctions. Pourtant, si ce livre vous int�resse, je ne serait trop vous conseillez de patienter jusqu'� la sortie de la 4�me �dition qui j'esp�re sera totalement tourn�e vers PHP 5 et comprendra une partie sur XML, totalement absente dans cette �dition.
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Chapitre 1. Pr�sentation de PHP</list-element>
+				<list-element>Chapitre 2. Variables, op�rateurs et expressions</list-element>
+				<list-element>Chapitre 3. Instructions de contr�le</list-element>
+				<list-element>Chapitre 4. Fonctions</list-element>
+				<list-element>Chapitre 5. Tableaux</list-element>
+				<list-element>Chapitre 6. Classes et objets</list-element>
+				<list-element>Chapitre 7. Entr�es/sorties et acc�s disque</list-element>
+				<list-element>Chapitre 8. Entr�es/sorties navigateur</list-element>
+				<list-element>Chapitre 9. Fonctions fichiers</list-element>
+				<list-element>Chapitre 10. Fonctions d'entr�es/sorties r�seau</list-element>
+				<list-element>Chapitre 11. Fonctions de traitement de donn�es</list-element>
+				<list-element>Chapitre 12. Traitement des cha�nes</list-element>
+				<list-element>Chapitre 13. Fonctions math�matiques</list-element>
+				<list-element>Chapitre 14. Fonctions de temps et de date</list-element>
+				<list-element>Chapitre 15. Fonctions relatives aux images</list-element>
+				<list-element>Chapitre 16. Fonctions de base de donn�es</list-element>
+				<list-element>Chapitre 17. Interfa�age avec des couches objet</list-element>
+				<list-element>Chapitre 18. Fonctions diverses</list-element>
+				<list-element>Chapitre 19. Tri, recherche et nombres al�atoires</list-element>
+				<list-element>Chapitre 20. Analyse et �valuation des cha�nes de caract�res</list-element>
+				<list-element>Chapitre 21. Int�gration des bases de donn�es</list-element>
+				<list-element>Chapitre 22. Interactions avec le r�seau</list-element>
+				<list-element>Chapitre 23. G�n�rer des images</list-element>
+				<list-element>Chapitre 24. Int�gration de PHP et de HTML</list-element>
+				<list-element>Chapitre 25. Conception d'une application Web</list-element>
+				<list-element>Chapitre 26. Efficacit� et d�bogage</list-element>
+				<list-element>Index des fonctions</list-element>
+				<list-element>Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="1" type="net" lang="Fran�ais" date-writing="14/09/2004" date-publishing="2003" title="MySQL et PHP" image-normal="./book/normal/mysql-php.jpg" image-small="./book/small/mysql-php.jpg">
+			<author>Philippe Rigaux</author>
+			<editor address="http://www.oreilly.fr">O'Reilly</editor>
+			<paragraph>
+				Ce livre est un n-�me volume sur l'un des sujets les plus exploit�s de la litt�rature informatique : MySQL et PHP. En quoi se diff�rencie t'il de la concurrence ? Par son approche pratique. Nous trouvons ainsi de nombreux codes SQL et PHP comment� mais aussi HTML et CSS.
+			</paragraph>
+			<paragraph>
+				L'objectif de ce livre n'ai pas d'apprendre le langage SQL et encore moins le langage PHP mais d'apprendre � s'en servir pour obtenir un r�sultat flatteur qui soit robuste et �volutif. Ici, on fait de la programmation de qualit� !
+			</paragraph>
+			<paragraph>
+				Malgr� une parution r�cente ce livre commence � ce faire vieux. En effet, il s'appuie sur PHP4, certains points seront alors d�pass�s si vous utilisez PHP5 mais l'int�r�t de ce livre r�side avant tout sur la conception.
+			</paragraph>
+			<paragraph>
+				A la fin de ce livre nous trouvons une r�f�rence PHP et surtout une tr�s bonne r�f�rence SQL qui n'est pas parfaitement complet mais qui satisfera pour la r�alisation de la majorit� des sites web.
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Chapitre 1. Introduction</list-element>
+				<list-element>Chapitre 2. Programmation Web</list-element>
+				<list-element>Chapitre 3. Environnement MySQL/PHP</list-element>
+				<list-element>Chapitre 4. Techniques de base</list-element>
+				<list-element>Chapitre 5. Cr�ation d'une MySQL</list-element>
+				<list-element>Chapitre 6. D�veloppement d'utilitaires</list-element>
+				<list-element>Chapitre 7. Production du site</list-element>
+				<list-element>Chapitre 8. XML</list-element>
+				<list-element>Chapitre 9. Graphiques</list-element>
+				<list-element>Chapitre 10. R�capitulatifs SQL</list-element>
+				<list-element>Chapitre 11. R�capitulatif PHP</list-element>
+				<list-element>Chapitre 12. Administration de MySQL</list-element>
+				<list-element>Annexe A. Installation Apache/PHP/MySQL</list-element>
+				<list-element>Annexe B. R�f�rence MySQL</list-element>
+				<list-element>Annexe C. Fonctions PHP</list-element>
+				<list-element>Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="2" type="xml" lang="Fran�ais" date-writing="15/05/2004" date-publishing="2001" title="XSLT : D�veloppement en XML et HTML" image-normal="./book/normal/xslt-dev.jpg" image-small="./book/small/xslt-dev.jpg">
+			<author>Khun Yee Fung</author>
+			<editor address="http://www.campuspress.fr">CampusPress</editor>
+			<paragraph>
+				Voici bien une livre qui m'aurai vraiment aid� � r�aliser G-Truc Creation depuis �a version 3 car il est d�di� � ce type d'application. En effet, ce livre vous propose une application tr�s courante : Transformer des documents XML en document HTML � l'aide de XSLT.
+			</paragraph>
+			<paragraph>
+				Vous n'�tes pas oblig� de conna�tre XML pour vous lancer dans la lecture de ce livre car il offre une bonne introduction au langage en �voquant les concepts principaux : Int�r�t de XML, diff�rence entre XML et HTML, URI, document bien form�, validit�, espace de nom, terminologie, arbre, etc. Si vous connaissez d�j� XML, vous constaterez que la pr�sentation de XML est vraiment compl�te. Pourtant, elle ne tient que sur trois chapitres. Personnellement j'ai trouv� cette "introduction" bien plus int�ressante que le contenu de certains livres d�di�s exclusivement � XML : Concis, complet et pertinent.
+			</paragraph>
+			<paragraph>
+				Ce livre traite �galement de HTML. Utilisant principalement HTML 3.2, il vous faudra conna�tre ce langage de pr�sentation. On pourra regretter que l'auteur n'ai pas opt� pour XHTML qui est bien plus d'actualit� cependant le livre date de 2001. Effectivement, il n'y a gu�re plus d'une petite page sur XHTML ...
+			</paragraph>
+			<paragraph>
+				Mise � part ce faux pas, qui n'est pas vraiment important, le reste de ce livre tend vers la perfection. Le chapitre 5, baptis� "Chemins d'acc�s", traite de XPath. Les explications sont particuli�rement convaincantes et illustr�s. Ce choix de l'illustration est v�ritablement une excellente id�e car il rend la compr�hension de XPath simple en d�pit de sa r�putation.
+			</paragraph>
+			<paragraph>
+				Concernant la partie essentielle du livre, XSLT, le chapitre 3 offre une introduction qui met en oeuvre la transformation d'un document de base et offre une critique sur les diff�rentes m�thodes permettant d'obtenir une m�me r�sultat de base. Il y a bien entendu des chapitres beaucoup plus �volu�s sur la transformation avec notamment le principe de template, l'utilisation de structure de contr�le, le param�trage pour une sortie HTML, etc. Notons �galement le chapitre 11 qui est une sorte de chapitre "trucs et astuces", vraiment tr�s utile. De plus, le chapitre 12 est un exemple de d�veloppement qui pr�sente en plus du cot� pratique une v�ritable d�marche pour la r�alisation de projets. Enfin le chapitre 13 donne une ouverture vers la transformation de document XML en document XML, XHTML, SVG (dessin vectoriel) ou encore texte ainsi qu'une pr�sentation de XSL-FO (Pr�sentation de donn�e telle que HTML).
+			</paragraph>
+			<paragraph>
+				Le livre se termine finalement par une r�f�rence, expliquant le fonctionnement de bon nombre d'�l�ments XSLT et XPath.
+			</paragraph>
+			<paragraph>
+				Je tiens enfin � notez la grande rigueur de l'auteur au niveau du vocabulaire XML. En effet, bien que cette partie soit souvent oubli�e dans de nombreux livres sur ce sujet c'est un point fondamental qui permet de comprendre les messages d'erreurs retourn�s par les parseurs et permet tout simplement une bonne communication entre programmeurs.
+			</paragraph>
+			<paragraph>
+				Finalement, je qualifiais la partie sur XML de concis, compl�te et pertinente, je pense que se sont les ma�tres mots sur lesquels l'auteur c'est bas� pour �crire ce livre. Bref, si vous recherchez un livre sur XSLT pour r�aliser des transformations de fichiers XML en fichiers (X)HTML, c'est le livre qu'il vous faut !
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Chapitre 1. Introduction</list-element>
+				<list-element>Chapitre 2. XML</list-element>
+				<list-element>Chapitre 3. Introduction au XSLT</list-element>
+				<list-element>Chapitre 4. L'arbre d'un document XML</list-element>
+				<list-element>Chapitre 5. Chemins d'acc�s</list-element>
+				<list-element>Chapitre 6. Transformations</list-element>
+				<list-element>Chapitre 7. Contr�le</list-element>
+				<list-element>Chapitre 8. Construire l'arbre final</list-element>
+				<list-element>Chapitre 9. Combinaison de mod�les</list-element>
+				<list-element>Chapitre 10. Extensions</list-element>
+				<list-element>Chapitre 11. Expressions usuelles</list-element>
+				<list-element>Chapitre 12. Transformation en XML et en texte</list-element>
+				<list-element>Annexe A. Outils et ressources</list-element>
+				<list-element>Annexe B. Jeux de caract�res et sch�mas de codage</list-element>
+				<list-element>Annexe C. XSLT et XPath</list-element>
+				<list-element>Index</list-element>
+			</list>
+		</book-element>
+
+		<book-element index="1" type="xml" lang="Fran�ais" date-writing="25/04/2004" date-publishing="2002" title="XML in a nutshell" image-normal="./book/normal/xml-in-a-nutshell.jpg" image-small="./book/small/xml-in-a-nutshell.jpg">
+			<author>Elliotte Rusty Harold</author>
+			<author>W. Scott Means</author>
+			<editor address="http://www.oreilly.fr">O'Reilly</editor>
+			<paragraph>
+				Ce livre est un excellent r�sum� des langages XML. De nombreux langages li�s � XML du <link href="http://www.w3.org">W3C</link> sont pr�sent : XHTML (HTML au format XML), XSLT (le langage de transformation de document XML en n'importe quel langage), XPath (le langage de parcours d'arbre XML), XLink (le langage pour attacher des liens aux documents XML), XPointer (le langage de localisation des points ou des r�gions dans les documents XML), CSS (le langage de formatage de donn�es), XSL-FO (Langage d�crivant la mise en page d'un document XML), XML Schema (Le langage de description de document XML).
+			</paragraph>
+			<paragraph>
+				Les fichiers XML n'auraient un grand int�r�t sans les m�thodes de traitement qui lui son associ�e. Logiquement, on retrouve une description compl�te de la m�thode DOM (Avantage, inconv�nient, structure, plusieurs interfaces) et la m�thode SAX.
+			</paragraph>
+			<paragraph>
+				On notera �galement que ce livre comprend bon nombre de tables unicodes, qui s'av�rent tr�s utilise car les caract�res sont indiqu�es sous forme d'entit� XHTML, en hexad�cimal et en d�cimal.
+			</paragraph>
+			<paragraph>
+				Si vous souhaitez d�couvrir XML et ces technologies affili�es, ce livre vous offrira un bon d�part !
+			</paragraph>
+			<list name="Le sommaire :">
+				<list-element>Chapitre 1 - Introduction � XML</list-element>
+				<list-element>Chapitre 2 - Principes de XML</list-element>
+				<list-element>Chapitre 3 - D�finition de Type de Document</list-element>
+				<list-element>Chapitre 4 - Espaces de noms</list-element>
+				<list-element>Chapitre 5 - Internationnalisation</list-element>
+				<list-element>Chapitre 6 - XML comme format de documents</list-element>
+				<list-element>Chapitre 7 - XML sur le Web</list-element>
+				<list-element>Chapitre 8 - XSLT</list-element>
+				<list-element>Chapitre 9 - XPath</list-element>
+				<list-element>Chapitre 10 - XLink</list-element>
+				<list-element>Chapitre 11 - XPointers</list-element>
+				<list-element>Chapitre 12 - CSS</list-element>
+				<list-element>Chapitre 13 - XSL-FO</list-element>
+				<list-element>Chapitre 14 - RDDL</list-element>
+				<list-element>Chapitre 15 - XML comme format de donn�es</list-element>
+				<list-element>Chapitre 16 - Sch�mas XML</list-element>
+				<list-element>Chapitre 17 - Mod�les de programmation</list-element>
+				<list-element>Chapitre 18 - DOM</list-element>
+				<list-element>Chapitre 19 - SAX</list-element>
+				<list-element>Chapitre 20 - R�f�rence de XML 1.0</list-element>
+				<list-element>Chapitre 21 - R�f�rence des sch�mas</list-element>
+				<list-element>Chapitre 22 - R�f�rence de XPath</list-element>
+				<list-element>Chapitre 23 - R�f�rence de XSLT</list-element>
+				<list-element>Chapitre 24 - R�f�rence de DOM</list-element>
+				<list-element>Chapitre 25 - R�f�rence de SAX</list-element>
+				<list-element>Chapitre 26 - Jeux de caract�res</list-element>
+				<list-element>Index</list-element>
+			</list>
+		</book-element>
+	</book-list>
+
+	<!-- Samples ogl1 -->
+	<sample-list-ogl1>
+		<sample-element date="05/11/2004" title="G-Tuts Pack">
+			<text>
+				<paragraph>
+					L'ancien pack de "samples OpenGL" de G-Truc Creation que je conserve pour le moment tant que la nouvelle g�n�ration de samples ne recouvre pas tout ce qu'il contenait.
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-01-small.jpg" normal="./sample/g-tut-pack-01-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-02-small.jpg" normal="./sample/g-tut-pack-02-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-03-small.jpg" normal="./sample/g-tut-pack-03-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-04-small.jpg" normal="./sample/g-tut-pack-04-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-05-small.jpg" normal="./sample/g-tut-pack-05-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-06-small.jpg" normal="./sample/g-tut-pack-06-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-07-small.jpg" normal="./sample/g-tut-pack-07-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-08-small.jpg" normal="./sample/g-tut-pack-08-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-09-small.jpg" normal="./sample/g-tut-pack-09-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-10-small.jpg" normal="./sample/g-tut-pack-10-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-11-small.jpg" normal="./sample/g-tut-pack-11-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-12-small.jpg" normal="./sample/g-tut-pack-12-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-13-small.jpg" normal="./sample/g-tut-pack-13-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-14-small.jpg" normal="./sample/g-tut-pack-14-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-15-small.jpg" normal="./sample/g-tut-pack-15-normal.jpg" />
+				<image-element title="Screenshot de G-Tut Pack" small="./sample/g-tut-pack-16-small.jpg" normal="./sample/g-tut-pack-16-normal.jpg" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample/g-tut-pack-ogl-20041105.zip" title="g-tut-pack-ogl-20041105.zip (~10 Mo)" />
+			</source-list>
+		</sample-element>
+
+		<!--sample-element date="13/08/2006" title="OpenGL 2.0, Samples pack">
+      <text>
+        <paragraph>
+          Ce nouveau pack contains les nouveaux exemples de code OpenGL, tous bas�s sur l'impl�mentation OpenGL 2.0 fournit par GLEW. Ce sample utilise �galement SDL et GLM.
+        </paragraph>
+      </text>
+      <image-list>
+        <image-element title="Base" small="./sample/ogl-glsl-texture-rect-small.jpg" normal="./sample/ogl-glsl-texture-rect-normal.jpg" />
+        <image-element title="Base" small="./sample/ogl-glsl-multitexture-small.jpg" normal="./sample/ogl-glsl-multitexture-normal.jpg" />
+        <image-element title="Base" small="./sample/ogl-glsl-design-small.jpg" normal="./sample/ogl-glsl-design-normal.jpg" />
+        <image-element title="Base" small="./sample/ogl-glsl-basic-small.jpg" normal="./sample/ogl-glsl-basic-normal.jpg" />
+        <image-element title="Base" small="./sample/ogl-fixed-texture3d-small.jpg" normal="./sample/ogl-fixed-texture3d-normal.jpg" />
+        <image-element title="Base" small="./sample/ogl-fixed-basic-small.jpg" normal="./sample/ogl-fixed-basic-normal.jpg" />
+      </image-list>
+      <source-list>
+        <source-element type="T�l�chargement" address="./sample/ogl-samples.7z" title="Version 7z (1.1 Mo)" />
+        <source-element type="T�l�chargement" address="./sample/ogl-samples.zip" title="Version zip (4.9 Mo)" />
+        <source-element type="SDL" address="http://www.libsdl.org" title="Le site de SDL" />
+        <source-element type="GLM" address="http://glm.g-truc.net" title="Le site de GLM" />
+      </source-list>
+    </sample-element>
+
+    <sample-element date="13/08/2006" title="OpenGL 2.0, Texture rectangle with GLSL">
+      <text>
+        <paragraph>
+          Exemple montrant l'utilistion des textures rectangulaires avec GLSL.
+        </paragraph>
+      </text>
+      <image-list>
+        <image-element title="Base" small="./sample/ogl-glsl-texture-rect-small.jpg" normal="./sample/ogl-glsl-texture-rect-normal.jpg" />
+      </image-list>
+      <source-list>
+        <source-element type="T�l�chargement" address="./sample/ogl-glsl-texture-rect.7z" title="Version 7z (381 Ko)" />
+        <source-element type="T�l�chargement" address="./sample/ogl-glsl-texture-rect.zip" title="Version zip (667 Ko)" />
+      </source-list>
+    </sample-element>
+
+    <sample-element date="13/08/2006" title="OpenGL 2.0, Multitexture with GLSL">
+      <text>
+        <paragraph>
+          Exemple montrant l'utilisation du multi texturing avec GLSL.
+        </paragraph>
+      </text>
+      <image-list>
+        <image-element title="Base" small="./sample/ogl-glsl-multitexture-small.jpg" normal="./sample/ogl-glsl-multitexture-normal.jpg" />
+      </image-list>
+      <source-list>
+        <source-element type="T�l�chargement" address="./sample/ogl-glsl-multitexture.zip" title="Version 7z (378 Ko)" />
+        <source-element type="T�l�chargement" address="./sample/ogl-glsl-multitexture.zip" title="Version zip (662 Ko)" />
+      </source-list>
+    </sample-element>
+
+    <sample-element date="13/08/2006" title="OpenGL 2.0, Software design with GLSL">
+      <text>
+        <paragraph>
+          Exemple basique proposant une architechture minimal pour le rendu d'un quadrangle avec une texture.
+        </paragraph>
+      </text>
+      <image-list>
+        <image-element title="Base" small="./sample/ogl-glsl-design-small.jpg" normal="./sample/ogl-glsl-design-normal.jpg" />
+      </image-list>
+      <source-list>
+        <source-element type="T�l�chargement" address="./sample/ogl-glsl-design.7Z" title="Version 7z (401 Ko)" />
+        <source-element type="T�l�chargement" address="./sample/ogl-glsl-design.zip" title="Version zip (683 Ko)" />
+      </source-list>
+    </sample-element>
+
+    <sample-element date="13/08/2006" title="OpenGL 2.0, Basic GLSL">
+      <text>
+        <paragraph>
+          Exemple basique de rendu d'un quarangle avec une texture.
+        </paragraph>
+      </text>
+      <image-list>
+        <image-element title="Base" small="./sample/ogl-glsl-basic-small.jpg" normal="./sample/ogl-glsl-basic-normal.jpg" />
+      </image-list>
+      <source-list>
+        <source-element type="T�l�chargement" address="./sample/ogl-glsl-basic.7z" title="Version 7z (397 Ko)" />
+        <source-element type="T�l�chargement" address="./sample/ogl-glsl-basic.zip" title="Version zip (695 Ko)" />
+      </source-list>
+    </sample-element>
+
+    <sample-element date="13/08/2006" title="OpenGL 2.0 - Fixed pipeline - Texture 3D">
+      <text>
+        <paragraph>
+          Exemple d'utilisation d'une texture 3D.
+        </paragraph>
+      </text>
+      <image-list>
+        <image-element title="Base" small="./sample/ogl-fixed-texture3d-small.jpg" normal="./sample/ogl-fixed-texture3d-normal.jpg" />
+      </image-list>
+      <source-list>
+        <source-element type="T�l�chargement" address="./sample/ogl-fixed-texture3d.7z" title="Version 7z (374 Ko)" />
+        <source-element type="T�l�chargement" address="./sample/ogl-fixed-texture3d.zip" title="Version zip (652 Ko)" />
+      </source-list>
+    </sample-element>
+
+    <sample-element date="13/08/2006" title="OpenGL 2.0 - Fixed pipeline - Basic">
+      <text>
+        <paragraph>
+          Un premier sample de base qui desine un simple carr� textur� � l'�cran.
+        </paragraph>
+        <paragraph>
+          Ce sample utilise et int�gre SDL et GLEW pour son impl�mentation d'OpenGL 2.0.
+        </paragraph>
+      </text>
+      <image-list>
+        <image-element title="Base" small="./sample/ogl-fixed-basic-small.jpg" normal="./sample/ogl-fixed-basic-normal.jpg" />
+      </image-list>
+      <source-list>
+        <source-element type="T�l�chargement" address="./sample/ogl-fixed-basic.7z" title="Version 7z (393 Ko)" />
+        <source-element type="T�l�chargement" address="./sample/ogl-fixed-basic.zip" title="Version zip (670 Ko)" />
+      </source-list>
+    </sample-element>
+
+    <sample-element date="06/02/2006" title="Base">
+      <text>
+        <paragraph>
+          Un premier sample de base qui desine un simple carr� � l'�cran.
+        </paragraph>
+        <paragraph>
+          Ce sample utilise et int�gre GLEW et GL Window.
+        </paragraph>
+      </text>
+      <image-list>
+        <image-element title="Base" small="./sample/base-small.jpg" normal="./sample/base-normal.jpg" />
+      </image-list>
+      <source-list>
+        <source-element type="T�l�chargement" address="./sample/d3d9_base.zip" title="Version Direct3D 9" />
+        <source-element type="T�l�chargement" address="./sample/ogl_base.zip" title="Version OpenGL" />
+        <source-element type="Documentation" address="http://sourceforge.net/projects/glew/" title="Site de GLEW" />
+      </source-list>
+    </sample-element-->
+	</sample-list-ogl1>
+
+	<!-- Samples ogl2 -->
+	<sample-list-ogl2>
+
+		<sample-element date="14/12/2007" title="A propos des samples OpenGL 2 de G-Truc Creation">
+			<text>
+				<paragraph>
+					Cette s�rie d'exemples exposent l'API d'<link href="http://www.opengl.org/">OpenGL</link> 2.x dans une approche orient� pipeline programmable. Aucune command <link href="http://www.opengl.org/">OpenGL</link> du fixed pipeline n'est utilis� dans ces exemples.
+				</paragraph>
+				<paragraph>
+					Aucun software design n'est pr�sent, il s'agit seulement et simplement de proposer des exemples montrant comment utiliser des fonctionnalit�s de l'API <link href="http://www.opengl.org/">OpenGL</link> 2.x. Certaines extensions sont �galement pr�sent�s ce qui inclut des extensions propri�taires mais dans tous les cas ceci est clairement pr�ciss�.
+				</paragraph>
+				<paragraph>
+					Les exemples utilisent <link href="http://www.libsdl.org/">SDL</link> pour la cr�ation d'une fen�tre OpenGL, <link href="http://glew.sourceforge.net/">GLEW</link> pour exposer une impl�mentation d'OpenGL 2 et <link href="http://glm.g-truc.net">GLM</link> pour les outils math�matiques. Tous les exemples sont compil�s avec Visual Studio 2005 en 32 Bits. Tous les exemples sont distribu�s dans des archives compress�s au format <link href="http://www.7-zip.org">7z</link>.
+				</paragraph>
+			</text>
+			<source-list>
+				<source-element type="Lien" address="./contact.html" title="Envoyer commentaire" />
+				<source-element type="Lien" address="./sample-ogl2/g-tut-pack-ogl2.7z" title="G-Tut-Pack 2" />
+				<source-element type="Lien" address="http://www.opengl.org/" title="OpenGL.org" />
+				<source-element type="Lien" address="http://glm.g-truc.net/" title="Le site de GLM" />
+				<source-element type="Lien" address="http://glew.sourceforge.net/" title="Le site de GLEW" />
+				<source-element type="Lien" address="http://www.libsdl.org/" title="Le site de SDL" />
+				<source-element type="Lien" address="http://www.7-zip.org/" title="Le site de 7-zip" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="13/01/2008" title="Render to vertex buffer">
+			<text>
+				<paragraph>
+					Cet exemple propose une m�thode pour effectuer un rendu dans un vertex buffer par l'interm�diaire d'un pixel buffer. Par se proc�der un mesh peut �tre charg� � partir d'une image. Il peut �ventuellement �tre anim� via une s�quence d'images, tout se passant enti�rement sur le GPU.
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-render-to-vertex-buffer-small.png" normal="./sample-ogl2/ogl2-render-to-vertex-buffer.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-render-to-vertex-buffer.7z" title="ogl2-render-to-vertex-buffer.7z (419 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/doc/glspec21.20061201.pdf" title="OpenGL 2.1" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="13/12/2007" title="Depth buffer float">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-depth-float-small.png" normal="./sample-ogl2/ogl2-depth-float.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-depth-float.7z" title="ogl2-depth-float.7z (419 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_object.txt" title="GL_EXT_framebuffer_object" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/NV/depth_buffer_float.txt" title="GL_NV_depth_buffer_float" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="16/01/2008" title="Alpha to coverage">
+			<text>
+				<paragraph>
+					Cet exemple �voque l'alpha to coverage, c'est � dire la possibilit� d'antialiser une texture qui contient des texels non visiables. L'alpha test pour le multisampling en somme.
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-alpha-to-coverage-small.png" normal="./sample-ogl2/ogl2-alpha-to-coverage.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-alpha-to-coverage.7z" title="ogl2-alpha-to-coverage.7z (419 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="13/12/2007" title="Framebuffer object, Multisample Coverage">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-fbo-multisample-coverage-small.png" normal="./sample-ogl2/ogl2-fbo-multisample-coverage.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-fbo-multisample-coverage.7z" title="ogl2-fbo-multisample-coverage.7z (419 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_object.txt" title="GL_EXT_framebuffer_object" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_blit.txt" title="GL_EXT_framebuffer_blit" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_multisample.txt" title="GL_EXT_framebuffer_multisample" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/NV/framebuffer_multisample_coverage.txt" title="GL_NV_framebuffer_multisample_coverage" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="13/12/2007" title="Framebuffer object, Multisample">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-fbo-multisample-small.png" normal="./sample-ogl2/ogl2-fbo-multisample.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-fbo-multisample.7z" title="ogl2-fbo-multisample.7z (419 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_object.txt" title="GL_EXT_framebuffer_object" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_blit.txt" title="GL_EXT_framebuffer_blit" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_multisample.txt" title="GL_EXT_framebuffer_multisample" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="13/12/2007" title="Framebuffer object, Blit">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-fbo-blit-small.png" normal="./sample-ogl2/ogl2-fbo-blit.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-fbo-blit.7z" title="ogl2-fbo-blit.7z (421 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_object.txt" title="GL_EXT_framebuffer_object" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_blit.txt" title="GL_EXT_framebuffer_blit" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="13/12/2007" title="Framebuffer object, Renderbuffer">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-fbo-renderbuffer-small.png" normal="./sample-ogl2/ogl2-fbo-renderbuffer.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-fbo-renderbuffer.7z" title="ogl2-fbo-renderbuffer.7z (421 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_object.txt" title="GL_EXT_framebuffer_object" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="13/12/2007" title="Framebuffer object, depth buffer">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-fbo-depthbuffer-small.png" normal="./sample-ogl2/ogl2-fbo-depthbuffer.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-fbo-depthbuffer.7z" title="ogl2-fbo-depthbuffer.7z (423 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_object.txt" title="GL_EXT_framebuffer_object" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="12/12/2007" title="Framebuffer object, multiple output">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-fbo-multiple-output-small.png" normal="./sample-ogl2/ogl2-fbo-multiple-output.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-fbo-multiple-output.7z" title="ogl2-fbo-multiple-output.7z (421 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_object.txt" title="GL_EXT_framebuffer_object" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="13/12/2007" title="Framebuffer object, color buffer">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-fbo-colorbuffer-small.png" normal="./sample-ogl2/ogl2-fbo-colorbuffer.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-fbo-colorbuffer.7z" title="ogl2-fbo-colorbuffer.7z (421 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_object.txt" title="GL_EXT_framebuffer_object" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="06/12/2007" title="GeForce 8 extensions for fun">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-gf8ext-small.png" normal="./sample-ogl2/ogl2-gf8ext.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-gf8ext.7z" title="ogl2-gf8ext.7z (429 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/doc/glspec21.20061201.pdf" title="OpenGL 2.1" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/bindable_uniform.txt" title="GL_EXT_bindable_uniform" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/draw_instanced.txt" title="GL_EXT_draw_instanced" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/texture_buffer_object.txt" title="GL_EXT_texture_buffer_object" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/texture_array.txt" title="GL_EXT_texture_array" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/gpu_shader4.txt" title="GL_EXT_gpu_shader4" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="06/12/2007" title="Bindable uniform">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-bindable-uniform-small.png" normal="./sample-ogl2/ogl2-bindable-uniform.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-bindable-uniform.7z" title="ogl2-bindable-uniform.7z (421 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/doc/glspec21.20061201.pdf" title="OpenGL 2.1" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/bindable_uniform.txt" title="GL_EXT_bindable_uniform" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/gpu_shader4.txt" title="GL_EXT_gpu_shader4" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="07/12/2007" title="Texture buffer">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-texture-buffer-small.png" normal="./sample-ogl2/ogl2-texture-buffer.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-texture-buffer.7z" title="ogl2-texture-buffer.7z (440 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/doc/glspec21.20061201.pdf" title="OpenGL 2.1" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/texture_buffer_object.txt" title="GL_EXT_texture_buffer_object" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/draw_instanced.txt" title="GL_EXT_draw_instanced" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/gpu_shader4.txt" title="GL_EXT_gpu_shader4" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="07/12/2007" title="Geometry instancing">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-geometry-instancing-small.png" normal="./sample-ogl2/ogl2-geometry-instancing.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-geometry-instancing.7z" title="ogl2-geometry-instancing.7z (439 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/doc/glspec21.20061201.pdf" title="OpenGL 2.1" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/draw_instanced.txt" title="GL_EXT_draw_instanced" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/gpu_shader4.txt" title="GL_EXT_gpu_shader4" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="10/12/2007" title="Clip plane">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-clip-plane-small.png" normal="./sample-ogl2/ogl2-clip-plane.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-clip-plane.7z" title="ogl2-clip-plane.7z (439 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="15/12/2007" title="Scissor test">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-scissor-test-small.png" normal="./sample-ogl2/ogl2-scissor-test.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-scissor-test.7z" title="ogl2-scissor-test.7z (419 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="07/12/2007" title="Texture array">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-texture-array-small.png" normal="./sample-ogl2/ogl2-texture-array.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-texture-array.7z" title="ogl2-texture-array.7z (424 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/doc/glspec21.20061201.pdf" title="OpenGL 2.1" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/texture_array.txt" title="GL_EXT_texture_array" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/gpu_shader4.txt" title="GL_EXT_gpu_shader4" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="10/01/2008" title="Mipmaps">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-mipmaps-small.png" normal="./sample-ogl2/ogl2-mipmaps.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-mipmaps.7z" title="ogl2-mipmaps.7z (428 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/framebuffer_object.txt" title="GL_EXT_framebuffer_object" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/texture_filter_anisotropic.txt" title="GL_EXT_texture_filter_anisotropic" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="05/12/2007" title="Texture filtering">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-texture-filtering-small.png" normal="./sample-ogl2/ogl2-texture-filtering.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-texture-filtering.7z" title="ogl2-texture-filtering.7z (420 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/texture_filter_anisotropic.txt" title="GL_EXT_texture_filter_anisotropic" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="12/12/2007" title="Texture wrap">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-texture-wrap-small.png" normal="./sample-ogl2/ogl2-texture-wrap.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-texture-wrap.7z" title="ogl2-texture-wrap.7z (420 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/ATI/texture_mirror_once.txt" title="GL_ATI_texture_mirror_once" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="06/12/2007" title="Viewport">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-viewport-small.png" normal="./sample-ogl2/ogl2-viewport.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-viewport.7z" title="ogl2-viewport.7z (422 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="13/01/2008" title="Vertex texture">
+			<text>
+				<paragraph>
+					Ce sample donne un exemple d'acc�s � une texture depuis un vertex shader.
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-vertex-texture-small.png" normal="./sample-ogl2/ogl2-vertex-texture.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-vertex-texture.7z" title="ogl2-vertex-texture.7z (424 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="12/12/2007" title="Texture rectangle">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-texture-rect-small.png" normal="./sample-ogl2/ogl2-texture-rect.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-texture-rect.7z" title="ogl2-texture-rect.7z (422 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/ARB/texture_rectangle.txt" title="GL_ARB_texture_rectangle" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="12/12/2007" title="Not power of two texture 2D">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-texture-npot-small.png" normal="./sample-ogl2/ogl2-texture-npot.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-texture-npot.7z" title="ogl2-texture-npot.7z (422 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="12/12/2007" title="Texture 2D">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-texture-2d-small.png" normal="./sample-ogl2/ogl2-texture-2d.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-texture-2d.7z" title="ogl2-texture-2d.7z (423 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="07/12/2007" title="First Geometry Shader">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-first-gs-small.png" normal="./sample-ogl2/ogl2-first-gs.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-first-gs.7z" title="ogl2-first-gs.7z (412 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/doc/glspec21.20061201.pdf" title="OpenGL 2.1" />
+				<source-element type="Lien" address="http://www.opengl.org/registry/specs/EXT/geometry_shader4.txt" title="GL_EXT_geometry_shader4" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="06/12/2007" title="First Fragment Shader">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-first-fs-small.png" normal="./sample-ogl2/ogl2-first-fs.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-first-fs.7z" title="ogl2-first-fs.7z (427 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+			</source-list>
+		</sample-element>
+
+		<sample-element date="06/12/2007" title="First Vertex Shader">
+			<text>
+				<paragraph>
+
+				</paragraph>
+			</text>
+			<image-list>
+				<image-element title="Screenshot" small="./sample-ogl2/ogl2-first-vs-small.png" normal="./sample-ogl2/ogl2-first-vs.png" />
+			</image-list>
+			<source-list>
+				<source-element type="T�l�chargement" address="./sample-ogl2/ogl2-first-vs.7z" title="ogl2-first-vs.7z (412 Ko)" />
+				<source-element type="Lien" address="http://www.opengl.org/documentation/specs/version2.0/glspec20.pdf" title="OpenGL 2.0" />
+			</source-list>
+		</sample-element>
+
+	</sample-list-ogl2>
+
+</old>

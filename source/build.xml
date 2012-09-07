@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+
+  <!-- Title buttons pages -->
+	<command out="../index.html" xsl="page-index.xsl" xml="data.xml" />
+  <command out="../index-crea.html" xsl="page-index.xsl" xml="data.xml">
+    <param name="filter" value="'gtc-crea'" />
+  </command>
+  <command out="../index-tech.html" xsl="page-index.xsl" xml="data.xml">
+    <param name="filter" value="'gtc-tech'" />
+  </command>
+  <command out="../photo.html" xsl="page-photo.xsl" xml="data.xml" />
+	<command out="../info.html" xsl="page-info.xsl" xml="data.xml" />
+	<command out="../search.html" xsl="page-search.xsl" xml="data.xml" />
+
+	<!-- desktop post type -->
+	<command-type post-id="posts">
+		<param name="serve" value="'desktop'" />
+	</command-type>
+</g-truc>

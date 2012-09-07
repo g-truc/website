@@ -1,0 +1,59 @@
+﻿div.code
+{
+	padding:8px 0px 8px 0px;
+}
+
+span.code-title
+{
+
+}
+
+ul.code-list
+{
+	background-color:#FFFFFF;
+}
+
+li.code-line
+{
+	color:#008080;
+	font-family:"Courier New";
+	font-size:11px;
+	clear:both;
+	width:100%;
+	list-style-position:inside;
+	list-style-type:decimal-leading-zero;
+	margin:0px;
+	padding:0px;
+}
+
+span.code-line-content
+{
+	display:inline;
+	color:#000000;
+}
+
+span.userword
+{
+	color:#ff8000;	
+}
+
+span.keyword
+{
+	color:#0000ff;
+}
+
+span.comment
+{
+	color:#008000;
+}
+
+span.string
+{
+	color:#800000;
+}
+
+canvas
+{
+	width:800px;
+	height:600px;
+}

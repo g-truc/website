@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article SYSTEM "/home/matrem/documents/prog/encours/g-truc/Documentation/docbook-5.0/dtd/docbook.dtd">
+<article
+	class="whitepaper"
+	xml:lang="fr"
+>
+	<title>GPU</title>
+
+
+	<section>
+		<title>Introduction</title>
+		<para> Ce document présente les GPU modernes (g80, R600, RV770 et GT200 : (cas d'utilisation, historique, activités, composants). Il utilise la notation UML pour tous les schema.</para>
+		<para> Ces unités de calcul sont apparus en 1995, pour décharger le CPU des tâches graphiques. 13 ans plus tard, elles sont partout présentes, et quasiment indispensable. Leur succès est en grande partie du à l'industrie des jeux vidéos.</para>
+		<para>A quoi sert un GPU aujourd'hui? Dans ses premières années il était utilisé pour le calcul 2D, puis jusqu'à ces dernières années sa plus grande utilisation a été le calcul 3D. Aujourd'hui avec l'essort du GPGPU ces matériels sont en train de remplacer les CPU pour tous les travaux massivement parallélisables.</para>
+		<para><mediaobject>
+			<imageobject>
+				<imagedata fileref="use_case.png" format="PNG" />
+			</imageobject>
+		</mediaobject></para>
+	</section>
+	<section>
+		<title>Historique</title>
+		<para>Outre l'évolution de son utilisation, le GPU a fortement évolué dans son fonctionnement. Voici une présentation de ces différentes évolutions. </para>
+		<para>
+			Chaque activité est colorée, la couleur correspond à la façon dont elle est implémentée :
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="history/legend.png" format="PNG" />
+				</imageobject>
+			</mediaobject>
+		</para>
+		<formalpara>
+			<title>1996 : 3dfx SST1 (Voodoo)</title>
+			<para>Le SST1 est un des premiers GPU utilisé pour le rendu 3D. Il possède 1 million de transistors gravés à 500 nm et un bus mémoire 64 bits. Il pouvait déjà faire du filtrage bilinéaire de texture.
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="history/1996_3dfx_sst1.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+		<formalpara>
+			<title>1999 : NVIDIA NV10 (GeForce 256)</title>
+			<para>Le nv10 a apporté la gestion materielle du traitement des vertex. Il possède 22 million de transistors gravés à 220 nm et un bus mémoire 128 bits. Il pouvait utiliser les filtrages trilinaire de texture et anisotropic 2x. Il gère aussi le multitexturing (2 accès).
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="history/1999_nvidia_nv10.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+		<formalpara>
+			<title>2002 : ATI R300 (Radeon 9700)</title>
+			<para>Avec le r300 une grosse évolution a été ancrée : les unités de traitement des vertex et des fragments sont devenus programmables. Elle embarque 107 millions de transistors gravés à 150 nm et un bus mémoire 256 bits. Le multi-texturing permet maintenant d'accéder à 16 images.
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="history/2002_ati_r300.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+		<formalpara>
+			<title>2006 : NVIDIA G80 (GeForce 8800 ultra)</title>
+			<para>Le g80 possède un nouvelle étage, programmable, pour creer de la geometrie. De plus il permet d'arréter le traitement avant la rasteriation (output stream). Une évolution importante est l'unification des shaders : les 3 unités programmables utilisent les mêmes puces matérielles.
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="history/2006_nvidia_g80.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+	</section>
+
+	<section>
+		<title>Activité logique</title>
+		<para>Les diagrammes UML suivant montrent, à différent niveau de zoom, le fonctionnement du GPU du point de vue logique. C'est à dire du point de vu que l'on aurait en utilisant une api comme OpenGL 3.</para>
+		<formalpara>
+			<title>Vue globale</title>	
+			<para><mediaobject>
+				<imageobject>
+					<imagedata fileref="activity/0_3D_rendering.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+		<formalpara>
+			<title>Rasterization</title>
+			<para><mediaobject>
+				<imageobject>
+					<imagedata fileref="activity/1_rasterization.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+		<formalpara>
+			<title>Fragment testing</title>
+			<para><mediaobject>
+				<imageobject>
+					<imagedata fileref="activity/2_fragment_testing.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+		<formalpara>
+			<title>Render targets writting</title>
+			<para><mediaobject>
+				<imageobject>
+					<imagedata fileref="activity/3_render_targets_writting.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+	</section>
+
+	<section>
+		<title>Activité matérielle</title>
+		<para>Cette description est plus proche du GPU que la précédente, car ici c'est directement l'activité du matériel qui est schématisée.</para>
+	</section>
+
+	<section>
+		<title>Architecture</title>
+		<para>Pour finir, ces diagrammes de classes montrent la composition des 4 derniers "gros" GPUS.</para>
+		<formalpara>
+			<title>NVIDIA G80 (GeForce 8800)</title>
+			<para><itemizedlist>
+			<listitem><para>484 mm2</para></listitem>
+			<listitem><para>681 millions de transistors</para></listitem>
+			<listitem><para>gravés en 90 nm</para></listitem>
+			</itemizedlist>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="architecture/g80.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+		<formalpara>
+			<title>AMD R600 (Radeon HD 2900 XT)</title>
+			<para><itemizedlist>
+			<listitem><para>420 mm2</para></listitem>
+			<listitem><para>720 millions de transistors</para></listitem>
+			<listitem><para>gravés en 80 nm</para></listitem>
+			</itemizedlist>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="architecture/r600.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+		<formalpara>
+			<title>NVIDIA GT200 (GTX 280)</title>
+			<para><itemizedlist>
+			<listitem><para>600 mm2</para></listitem>
+			<listitem><para>1400 millions de transistors</para></listitem>
+			<listitem><para>gravés en 65 nm</para></listitem>
+			</itemizedlist>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="architecture/gt200.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+		<formalpara>
+			<title>AMD RV770 (Radeon HD 4870)</title>
+			<para><itemizedlist>
+			<listitem><para>260 mm2</para></listitem>
+			<listitem><para>956 millions de transistors</para></listitem>
+			<listitem><para>gravés en 55 nm</para></listitem>
+			</itemizedlist>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="architecture/rv770.png" format="PNG" />
+				</imageobject>
+			</mediaobject></para>
+		</formalpara>
+	</section>
+
+	<section>
+		<title>Prospective</title>
+		<para></para>
+	</section>
+
+	<section>
+		<title>Bibliographie</title>
+		<para xlink:href="http://www.beyond3d.com">http://www.beyond3d.com</para>
+		<para xlink:href="http://www.hardware.fr">http://www.hardware.fr</para>
+	</section>
+</article>

@@ -1,0 +1,41 @@
+ul.title-list-button
+{
+	margin-top:0px;
+	margin-left:auto; 
+	margin-right:auto;
+	width:1000px;	
+}
+
+li.title-list-button-search
+{
+	color:transparent;
+	float:right;
+	border-width:0px;
+	border-style:solid;
+	border-color:#000000;
+	border-radius:24px;
+	width:24px;
+	min-height:24px;
+	margin:8px;
+	margin-left:0px;
+}
+
+li.title-list-button-search
+{
+	background-image:url(button-32-hover.png);
+}
+
+li.title-list-button-search:hover
+{
+	background-image:url(button-32.png);
+}
+
+a.title-list-button-search
+{
+	color:transparent;
+	display:block;
+	width:24px;
+	min-height:24px;
+	text-align:center;
+	float:none;
+}

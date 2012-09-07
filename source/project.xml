@@ -1,0 +1,1241 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+
+  <project index="0032" name="OpenGL Reviews" short="OpenGL Reviews" type="gtc-tech-project-openglreviews" date-creation="22/05/2004">
+    <text>
+      <paragraph>
+        OpenGL reviews published on G-Truc Creation.
+      </paragraph>
+    </text>
+  </project>
+
+  <project index="0031" name="OpenGL Insights" short="OpenGL Insights" type="gtc-tech-project-openglinsights" date-creation="22/05/2011">
+    <text>
+      <paragraph>
+        The OpenCL Samples Pack is a collection of OpenCL samples.
+      </paragraph>
+    </text>
+    <source-list>
+      <source-element type="Link" href="http://www.openglinsights.com" title="OpenGL Insights blog" />
+    </source-list>
+  </project>
+
+  <project index="0030" name="OpenCL Samples Pack" short="OCL Samples" type="gtc-tech-project-sample-ocl" date-creation="01/07/2010">
+		<text>
+			<paragraph>
+				The OpenCL Samples Pack is a collection of OpenCL samples.
+			</paragraph>
+			
+        <list name="Git repositories:">
+          <list-element href="http://ocl-samples.git.sourceforge.net/git/gitweb.cgi?p=ocl-samples/ocl-samples;a=summary">git clone git://ocl-samples.git.sourceforge.net/gitroot/ocl-samples/ocl-samples (read-only)</list-element>
+          <list-element href="http://ocl-samples.git.sourceforge.net/git/gitweb.cgi?p=ocl-samples/ocl-samples;a=summary">git clone ssh://${LOGIN]@ocl-samples.git.sourceforge.net/gitroot/ocl-samples/ocl-samples (read/write)</list-element>
+        </list>
+
+		</text>
+		<source-list>
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/ocl-samples/report/1" title="View active tickets" />
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/ocl-samples/newticket" title="Submit a ticket" />
+			<source-element type="Link" href="http://ocl-samples.git.sourceforge.net/git/gitweb.cgi?p=ocl-samples/ocl-samples;a=summary" title="Browse Git repository" />
+			<source-element type="Download" href="http://ocl-samples.git.sourceforge.net/git/gitweb.cgi?p=ocl-samples/ocl-samples;a=snapshot;h=HEAD;sf=tgz" title="OpenCL Samples Pack HEAD snapshot" />
+		</source-list>
+	</project>
+
+  <project index="0029" name="Küken" type="gtc-tech-project-kueken" date-creation="14/03/2008">
+    <text>
+      <paragraph>
+        Küken is an OpenGL renderer project build in C++ 0x designed for experiments with a very experimental approach.
+      </paragraph>
+      <paragraph>
+        Küken mainly targets OpenGL 4 hardware with both AMD and nVidia cards support but requires OpenGL 4.1 drivers and even a support of some extensions.
+        The project is written for Windows (at the moment) with native 32 bits for Visual C++ 2010.
+      </paragraph>
+      <paragraph>
+        Design wise, Küken uses OpenGL core profile and as much as direct state access as possible but also try to overcome OpenGL limitation like the lack of GLSL compiler options.
+        The project aims to acknowledge the development process keeping traces of issues encounted throw asserts and making invalide choice and
+        calls fails as soon as possible in debug mode but keeping efficiency high in release mode.
+      </paragraph>
+      <paragraph>
+        Finally, the renderer is planned to be multithreadable and to provide OpenGL 3 hardware and even propriary features support.
+      </paragraph>
+      <paragraph>
+        This project is still at alpha stage and will eventually evolves drastically in the future.
+      </paragraph>
+      
+        <list name="Git repositories:">
+          <list-element href="http://kueken.git.sourceforge.net/git/gitweb.cgi?p=kueken/kueken;a=summary">git clone git://kueken.git.sourceforge.net/gitroot/kueken/kueken (read-only)</list-element>
+          <list-element href="http://kueken.git.sourceforge.net/git/gitweb.cgi?p=kueken/kueken;a=summary">git clone ssh://${LOGIN]@kueken.git.sourceforge.net/gitroot/kueken/kueken (read/write)</list-element>
+        </list>
+
+    </text>
+    <source-list>
+      <source-element type="Link" href="https://sourceforge.net/apps/trac/kueken/report/1" title="View active tickets" />
+      <source-element type="Link" href="https://sourceforge.net/apps/trac/kueken/newticket" title="Submit a ticket" />
+      <source-element type="Link" href="http://kueken.git.sourceforge.net/git/gitweb.cgi?p=kueken/kueken;a=summary" title="Browse Git repository" />
+      <source-element type="Download" href="http://kueken.git.sourceforge.net/git/gitweb.cgi?p=kueken/kueken;a=snapshot;h=HEAD;sf=tgz" title="Küken HEAD snapshot" />
+    </source-list>
+  </project>
+  
+  <project index="0028" name="OpenGL Overload (GLO)" short="GLO" type="gtc-tech-project-glo" date-creation="02/03/2010" date-update="02/03/2010">
+		<text>
+			<paragraph>
+				A library to replace GLEW for loading OpenGL 3.2 implementation and which aims providing debugging functionnalies and a simple C++ wrapping.
+			</paragraph>
+        <list name="Git repositories:">
+          <list-element href="http://ogl-overload.git.sourceforge.net/git/gitweb.cgi?p=ogl-overload/ogl-overload;a=summary">git clone git://ogl-overload.git.sourceforge.net/gitroot/ogl-overload/ogl-overload (read-only)</list-element>
+          <list-element href="http://ogl-overload.git.sourceforge.net/git/gitweb.cgi?p=ogl-overload/ogl-overload;a=summary">git clone ssh://${LOGIN]@ogl-overload.git.sourceforge.net/gitroot/ogl-overload/ogl-overload (read/write)</list-element>
+        </list>
+
+		</text>
+		<source-list>
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-overload/report/1" title="View active tickets" />
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-overload/newticket" title="Submit a ticket" />
+			<source-element type="Link" href="http://ogl-overload.git.sourceforge.net/git/gitweb.cgi?p=ogl-overload/ogl-overload;a=summary" title="Browse Git repository" />
+			<source-element type="Download" href="http://ogl-overload.git.sourceforge.net/git/gitweb.cgi?p=ogl-overload/ogl-overload;a=snapshot;h=HEAD;sf=tgz" title="GLO HEAD snapshot" />
+		</source-list>
+	</project>
+
+	<project index="0027" name="C++ Experiments" type="gtc-tech-sample-cpp" date-creation="16/12/2009" date-update="16/12/2009">
+		<text>
+			<paragraph>
+				Collection of C++ tests to experiment and study the C++ languages features.
+			</paragraph>
+		</text>
+		<source-list>
+			<source-download index="1012" />
+		</source-list>
+	</project>
+
+	<project index="0026" name="OpenGL Samples Pack" short="OpenGL Samples" type="gtc-tech-opengl-samples" date-creation="14/09/2004" date-update="03/11/2009">
+		<text>
+			<paragraph>
+				The OpenGL Samples Pack is a collection of <link href="http://www.opengl.org/">OpenGL</link> samples based on the OpenGL "core profile" specifications.
+			</paragraph>
+			<paragraph>
+				The project aims to promote the new OpenGL features making easier version transitions
+				for OpenGL programmers with a complementary documentation for the OpenGL specification.
+				Despite the fact that the OpenGL Samples Pack provides as simple (and dumb) as possible samples,
+				it's not a tutorial for beginner but a project for programmers already familiar with OpenGL.
+				The OpenGL Samples Pack is also a good OpenGL drivers feature test.
+			</paragraph>
+			<paragraph>
+				These samples use
+				<link href="http://freeglut.sf.net/">FreeGLUT</link> to create window and an OpenGL context,
+				<link href="http://glew.sourceforge.net/">GLEW</link> to load OpenGL implementations,
+				<link href="http://glm.g-truc.net">GLM</link> as math library and to replace OpenGL fixed pipeline functions and
+				<link href="./project-0024.html">GLI</link> to load images.
+			</paragraph>
+
+        <list name="Git repositories">
+          <list-element href="http://ogl-samples.git.sourceforge.net/git/gitweb.cgi?p=ogl-samples/ogl-samples;a=summary">git clone git://ogl-samples.git.sourceforge.net/gitroot/ogl-samples/ogl-samples (read-only)</list-element>
+          <list-element href="http://ogl-samples.git.sourceforge.net/git/gitweb.cgi?p=ogl-samples/ogl-samples;a=summary">git clone ssh://${LOGIN]@ogl-samples.git.sourceforge.net/gitroot/ogl-samples/ogl-samples (read/write)</list-element>
+        </list>
+
+		</text>
+		<source-list>
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-samples/report/1" title="View active tickets" />
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-samples/newticket" title="Submit a ticket" />
+			<source-element type="Link" href="http://ogl-samples.git.sourceforge.net/git/gitweb.cgi?p=ogl-samples/ogl-samples;a=summary" title="Browse Git repository" />
+			<source-element type="Download" href="http://ogl-samples.git.sourceforge.net/git/gitweb.cgi?p=ogl-samples/ogl-samples;a=snapshot;h=HEAD;sf=tgz" title="OpenGL Samples Pack HEAD snapshot" />
+			<source-element type="Link" href="http://www.opengl.org/" title="OpenGL.org" />
+			<source-element type="Link" href="http://glm.g-truc.net/" title="Le site de GLM" />
+			<source-element type="Link" href="http://glew.sourceforge.net/" title="Le site de GLEW" />
+			<source-element type="Link" href="http://www.libsdl.org/" title="Le site de SDL" />
+			<source-element type="Link" href="http://www.opengl.org/registry/doc/glspec32.core.20090803.pdf" title="OpenGL 3.2 core specification" />
+			<source-element type="Link" href="http://www.opengl.org/registry/doc/GLSLangSpec.1.50.09.pdf" title="GLSL 1.5 specification" />
+			<source-element type="Link" href="http://www.opengl.org/registry/doc/GLSLangSpec.Full.1.40.07.pdf" title="OpenGL 3.1 specification" />
+			<source-element type="Link" href="http://www.opengl.org/registry/doc/glspec31.20090528.pdf" title="GLSL 1.4 specification" />
+		</source-list>
+	</project>
+
+	<project index="0025" name="OpenGL is on trend!" type="gtc-tech-documentation" date-creation="04/10/2009" date-update="04/10/2009">
+		<text>
+			<paragraph>
+				An article about all the good reason to be optimistic about OpenGL at the end of 2009: OpenGL development, markets, new open specifications, platforms, etc...
+			</paragraph>
+		</text>
+		<source-list>
+			<source-download index="1000" />
+		</source-list>
+	</project>
+
+	<project index="0024" name="OpenGL Image (GLI)" short="GLI" type="gtc-tech-project-gli" date-creation="27/03/2009" date-update="19/09/2009">
+		<text>
+			<paragraph>
+				GLI is a simple C++ image library based on OpenGL and GLSL convensions and used to load and store OpenGL textures.
+			</paragraph>
+      <paragraph>
+        GLI supports DDS (Direct3D9 and Direct3D10) file formats including all BC1 to BC7 formats but don't compressed image data to these formats (yet).
+      </paragraph>
+
+      <code title="Creating an OpenGL texture object with GLI manually:">
+        <line>
+          <keyword>#include </keyword>
+          <string>&lt;gli/gli.hpp&gt;</string>
+        </line>
+        <line>
+          <keyword>#include </keyword>
+          <string>&lt;gli/gtx/loader.hpp&gt;</string>
+        </line>
+        <line>
+
+        </line>
+        <line align="0px">
+          ...
+        </line>
+        <line align="0px">
+          glGenTextures(1, &amp;TextureName);
+        </line>
+        <line align="0px">
+          glBindTexture(GL_TEXTURE_2D, TextureName);
+        </line>
+        <line align="0px">
+
+        </line>
+        <line align="0px">
+          gli::texture2D Texture = gli::load("texture-bc3.dds");
+        </line>
+        <line align="0px">
+          <keyword>for</keyword>(gli::texture2D::level_type Level = 0; Level &lt; Texture.levels(); ++Level)
+        </line>
+        <line align="0px">
+          {
+        </line>
+        <line align="32px">
+          glCompressedTexImage2D(
+        </line>
+        <line align="32px">
+          GL_TEXTURE_2D,
+        </line>
+        <line align="32px">
+          GLint(Level),
+        </line>
+        <line align="32px">
+          GL_COMPRESSED_RGBA_S3TC_DXT5_EXT,
+        </line>
+        <line align="32px">
+          GLsizei(Texture[Level].dimensions().x),
+        </line>
+        <line align="32px">
+          GLsizei(Texture[Level].dimensions().y),
+        </line>
+        <line align="32px">
+          0,
+        </line>
+        <line align="32px">
+          GLsizei(Texture[Level].capacity()),
+        </line>
+        <line align="32px">
+          Texture[Level].data());
+        </line>
+        <line align="0px">
+          }
+        </line>
+        <line align="0px">
+          ...
+        </line>
+      </code>
+
+      <code title="Creating an OpenGL texture object with GLI automatically:">
+        <line>
+          <keyword>#include </keyword>
+          <string>&lt;gli/gli.hpp&gt;</string>
+        </line>
+        <line>
+          <keyword>#include </keyword>
+          <string>&lt;gli/gtx/gl_texture2d.hpp&gt;</string>
+          <comment>// Requires OpenGL >= 1.1 to be included before this include</comment>
+        </line>
+        <line>
+
+        </line>
+        <line align="0px">
+          ...
+        </line>
+        <line align="0px">
+          GLuint TextureName = gli::createTexture2D("texture-bc3.dds");
+        </line>
+        <line align="0px">
+          ...
+        </line>
+      </code>
+        <list name="Git repositories">
+          <list-element href="http://ogl-image.git.sourceforge.net/git/gitweb.cgi?p=ogl-image/ogl-image;a=summary">git clone git://ogl-image.git.sourceforge.net/gitroot/ogl-image/ogl-image (read-only)</list-element>
+          <list-element href="http://ogl-image.git.sourceforge.net/git/gitweb.cgi?p=ogl-image/ogl-image;a=summary">git clone ssh://${LOGIN]@ogl-image.git.sourceforge.net/gitroot/ogl-image/ogl-image (read/write)</list-element>
+        </list>
+      
+		</text>
+		<source-list>
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-image/report/1" title="View active tickets" />
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-image/newticket" title="Submit a ticket" />
+			<source-element type="Link" href="https://sourceforge.net/projects/ogl-image/" title="Sourceforge.net page" />
+			<source-element type="Link" href="http://ogl-image.git.sourceforge.net/git/gitweb.cgi?p=ogl-image/ogl-image;a=summary" title="Browse Git repository" />
+			<source-element type="Download" href="http://ogl-image.git.sourceforge.net/git/gitweb.cgi?p=ogl-image/ogl-image;a=snapshot;h=HEAD;sf=tgz" title="GLI HEAD snapshot" />
+		</source-list>
+	</project>
+
+	<!--project-element index="0023" name="OpenGL 2.x Samples Pack" type="gtc-tech-content-sample-ogl2" date-creation="15/12/2007" date-update="15/01/2008">
+		<text>
+			<paragraph>
+				This series of samples shows <link href="http://www.opengl.org/">OpenGL</link> 2.x API using a programmable pipeline approach. No <link href="http://www.opengl.org/">OpenGL</link> command of the vertex and fragment fixed pipeline is used in these samples.
+			</paragraph>
+			<paragraph>
+				These samples use <link href="http://www.libsdl.org/">SDL</link> to create OpenGL window, <link href="http://glew.sourceforge.net/">GLEW</link> to load OpenGL 2.x implementation and <link href="http://glm.g-truc.net">GLM</link> as math tools to replace OpenGL fixed pipeline functions. All the samples build with Visual Studio 2005 with the 32 bits compiler.
+			</paragraph>
+		</text>
+		<source-list>
+			<source-element type="Link" href="http://www.opengl.org/" title="OpenGL.org" />
+			<source-element type="Link" href="http://glm.g-truc.net/" title="GLM website" />
+			<source-element type="Link" href="http://glew.sourceforge.net/" title=" GLEW website" />
+			<source-element type="Link" href="http://www.libsdl.org/" title="SDL website" />
+			<source-element type="Link" href="http://www.7-zip.org/" title="7-zip website" />
+		</source-list>
+	</project-element-->
+
+	<project index="0022" name="Stuff" type="gtc-tech-project-stuff" date-creation="02/08/2007" date-update="02/08/2007">
+		<text>
+			<paragraph>
+				Stuff is a library that extend SDL and Boost using the same convensions. Stuff required Boost. This proejct is released under LGPL licence.
+			</paragraph>
+		</text>
+		<source-list>
+			<source-element type="Download" href="./project/stuff/stuff-0.1.zip" title="Stuff 0.1" />
+			<source-element type="Link" href="http://www.boost.org" title="Boost website" />
+		</source-list>
+	</project>
+
+	<project index="0021" name="Orange" type="gtc-tech-project-orange" date-creation="29/04/2006" date-update="29/04/2006">
+		<text>
+			<paragraph>
+				Orange is a C++ framework dedicated to game and graphics software development.
+			</paragraph>
+			<paragraph>
+				<list title="Features list">
+					<element>Scene graph</element>
+					<element>Error management and log (XML)</element>
+					<element>Resources management from 7z packages</element>
+					<element>Component object management</element>
+					<element>Memory leak detection tools</element>
+					<element>Languages management</element>
+					<element>Patterns (Singleton, factory, tree, smart pointer...)</element>
+					<element>Math tool (throught GLM)</element>
+				</list>
+			</paragraph>
+			<paragraph>
+				Orange is released under LGPL licence.
+			</paragraph>
+		</text>
+		<source-list>
+			<source-element type="Download" href="./project/orange/orange-0.1.0.zip" title="Orange 0.1 .zip (1.8 Mo)" />
+			<source-element type="Download" href="./project/orange/orange-0.1.0.7z" title="Orange 0.1 .7z (1.1 Mo)" />
+		</source-list>
+	</project>
+
+	<project index="0020" name="GT Error" type="gtc-tech-project-error" date-creation="15/02/2006" date-update="27/02/2006">
+		<text>
+			<paragraph>
+				This C++ library aims projects debugging, a free alternative to BoundChecker. Three features are included for this purpose.
+			</paragraph>
+			<paragraph>
+				First, a log system in text files, in the console, in Visual C++ console, in a message box and optionnaly in xml files thanks to TinyXML.
+				Second, a system to detect memory leaks and the amount of memory lost.
+				Third, a instance tracking system to help the search of the memory leaks.
+			</paragraph>
+			<paragraph>
+				An included code sample shows all the uses of this library.
+			</paragraph>
+			<paragraph>
+				This library is available for Visual C++ 6.0, 7.1, 8.0 and MinGW 3.2, 3.3 and 3.4.
+			</paragraph>
+		</text>
+		<source-list>
+			<source-element type="Download" href="./project/error/error-1.0.zip" title="Error 1.0" />
+			<source-element type="Link" href="./project/error/log/index.html" title="Log généré avec la bliothèque et transformé avec Xalan" />
+			<source-element type="Link" href="http://xml.apache.org" title="Le site de Xalan" />
+			<source-element type="Download" href="./project/error/error-0.9.zip" title="Error 0.9 pour VC6.0, VC7.1 et VC8.0." />
+		</source-list>
+	</project>
+
+	<project index="0019" name="GT Window" type="gtc-tech-project-window" date-creation="06/02/2006" date-update="23/03/2006">
+		<text>
+			<paragraph>
+				GL window is a OpenGL and Direct3D 9 window wrapper to manage contexts / devices, keyboard and mouse.
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot" small="./project/window/window1-small.jpg" normal="./project/window/window1-normal.jpg" />
+			<image-element title="Screenshot" small="./project/window/window2-small.jpg" normal="./project/window/window2-normal.jpg" />
+		</image-list>
+		<source-list>
+			<source-element type="Download" href="./project/window/gt-window-wgl-1.1.0.zip" title="GT Window 1.1 WGL Edition for VisualC++ 6.0, 7.1, 8.0 and MinGW 3.2, 3.3, 3.4. (ZIP : 3.7 Mo)" />
+			<source-element type="Download" href="./project/window/gt-window-wgl-1.1.0.7z" title="GT Window 1.1 WGL Edition for VisualC++ 6.0, 7.1, 8.0 and MinGW 3.2, 3.3, 3.4. (7Z : 797 Ko)" />
+			<source-element type="Download" href="./project/window/gt-window-d3d9-1.1.0.zip" title="GT Window 1.1 Direct3D 9 Edition for VisualC++ 6.0, 7.1, 8.0. (ZIP : 530 Ko)" />
+			<source-element type="Download" href="./project/window/gt-window-d3d9-1.1.0.7z" title="GT Window 1.1 Direct3D 9 Edition for VisualC++ 6.0, 7.1, 8.0. (7Z : 231 Ko)" />
+			<source-element type="Download" href="./project/window/gt-window-wgl-1.0.0.7z" title="GT Window 1.0 WGL Edition for VisualC++ 7.1 and MinGW. (7Z : 247 Ko)" />
+			<source-element type="Download" href="./project/window/gt-window-d3d9-1.0.0.7z" title="GT Window 1.0 Direct3D 9 Edition for VisualC++ 7.1. (7Z : 67 Ko)" />
+		</source-list>
+	</project>
+
+	<project index="0018" name="Ovt'sa" type="gtc-tech-project-ovtsa" date-creation="05/05/2005" date-update="16/09/2007">
+		<text>
+			<paragraph>
+				A basic C++ raytracer based on GLM which uses XML files to describe scenes.
+			</paragraph>
+		</text>
+		<image title="Glossy refraction surfaces" img="./post/0254-2.jpg" href="./post/0254-2-large.jpg" />
+		<image title="Soft shadows and ... a bug :/" img="./post/0254-1.jpg" href="./post/0254-1.jpg" />
+    <list name="Git repositories">
+      <list-element href="http://ovtsa.git.sourceforge.net/git/gitweb.cgi?p=ovtsa/ovtsa;a=summary">git clone git://ovtsa.git.sourceforge.net/gitroot/ovtsa/ovtsa (read-only)</list-element>
+      <list-element href="http://ovtsa.git.sourceforge.net/git/gitweb.cgi?p=ovtsa/ovtsa;a=summary">git clone ssh://${LOGIN}@ovtsa.git.sourceforge.net/gitroot/ovtsa/ovtsa (read/write)</list-element>
+    </list>
+		<image-list>
+			<image-element title="Raytracer based on GLM" small="./project/glm/glm1-small.jpg" normal="./project/glm/glm1-normal.jpg" />
+			<image-element title="Raytracer based on GLM" small="./project/glm/glm2-small.jpg" normal="./project/glm/glm2-normal.jpg" />
+		</image-list>
+    <source-list>
+      <source-element type="Link" href="https://sourceforge.net/apps/trac/ovtsa/report/1" title="View active tickets" />
+      <source-element type="Link" href="https://sourceforge.net/apps/trac/ovtsa/newticket" title="Submit a ticket" />
+      <source-element type="Link" href="http://ovtsa.git.sourceforge.net/git/gitweb.cgi?p=ovtsa/ovtsa;a=summary" title="Browse Git repository" />
+      <source-element type="Download" href="http://ovtsa.git.sourceforge.net/git/gitweb.cgi?p=ovtsa/ovtsa;a=snapshot;h=a287db1fe83d4d066dad8a929c1dd20cd21cba58;sf=tgz" title="Ovt'sa HEAD snapshot" />
+      <source-element type="Link" href="http://glm.g-truc.net" title="glm.g-truc.net" />
+    </source-list>
+	</project>
+
+	<project index="0017" name="Spots battle" type="gtc-tech-project-spots" date-creation="04/05/2005" date-update="24/05/2005">
+		<text>
+			<paragraph>
+				An AI project based on FSMs (Finite State Machines). No interaction possible, points groups try to annihilate others groups.
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot" small="./project/spots/spot1-small.png" normal="./project/spots/spot1-normal.png" />
+		</image-list>
+		<source-list>
+			<source-element type="Download" href="./project/spots/spots0.1.zip" title="Spots Battle 0.1 for VisualC++ 7.1, DevCPP, MinGW and GCC." />
+			<source-element type="Download" href="./project/spots/spots0.2.zip" title="Spots Battle 0.2 for VisualC++ 7.1, DevCPP, MinGW and GCC." />
+		</source-list>
+	</project>
+
+	<project index="0016" name="OpenGL Mathematics (GLM)" short="GLM" type="gtc-tech-project-glm" date-creation="21/02/2005" date-update="16/09/2009">
+    <paragraph>
+      OpenGL Mathematics (GLM) is a C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL) specification.
+    </paragraph>
+    <paragraph>
+      The goal of the project is to provide to 3D programmers math classes and functions that miss in C++ when we use to program with GLSL or any high level GPU language. With GLM, the idea is to have a library that works the same way that GLSL which imply a strict following of GLSL specification for the implementation.
+    </paragraph>
+    <paragraph>
+      However, this project isn't limited by GLSL features. An extension system based on GLSL extensions development conventions allows to extend GLSL capabilities.
+    </paragraph>
+    <paragraph>
+      GLM is release under MIT license and available for all version of GCC from version 3.4 and Visual Studio from version 8.0 as a platform independent library.
+    </paragraph>
+    <list name="Git repositories">
+      <list-element href="http://ogl-math.git.sourceforge.net/git/gitweb.cgi?p=ogl-math/ogl-math;a=summary">git clone git://ogl-math.git.sourceforge.net/gitroot/ogl-math/ogl-math (read-only)</list-element>
+      <list-element href="http://ogl-math.git.sourceforge.net/git/gitweb.cgi?p=ogl-math/ogl-math;a=summary">git clone ssh://${LOGIN}@ogl-math.git.sourceforge.net/gitroot/ogl-math/ogl-math (read/write)</list-element>
+    </list>
+
+    <image-list>
+      <image-element title="Raytracer based on GLM" small="./project/glm/glm1-small.jpg" normal="./project/glm/glm1-normal.jpg" />
+      <image-element title="Raytracer based on GLM" small="./project/glm/glm2-small.jpg" normal="./project/glm/glm2-normal.jpg" />
+      <image-element title="Animation based on GLM" small="./project/glm/glm3-small.jpg" normal="./project/glm/glm3-normal.jpg" />
+      <image-element title="Animation based on GLM" small="./project/glm/glm4-small.jpg" normal="./project/glm/glm4-normal.jpg" />
+    </image-list>
+    <source-list>
+      <source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-math/report/1" title="View active tickets" />
+      <source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-math/newticket" title="Submit a ticket" />
+      <source-element type="Link" href="http://ogl-math.git.sourceforge.net/git/gitweb.cgi?p=ogl-math/ogl-math;a=summary" title="Browse Git repository" />
+      <source-element type="Download" href="http://ogl-math.git.sourceforge.net/git/gitweb.cgi?p=ogl-math/ogl-math;a=snapshot;h=HEAD;sf=tgz" title="GLM HEAD snapshot" />
+      <source-element type="Link" href="http://glm.g-truc.net" title="glm.g-truc.net" />
+    </source-list>
+
+    <code title="GLM sample, compute a triangle normal:">
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/glm.hpp&gt;</string>
+      </line>
+      <line>
+
+      </line>
+      <line>
+        <keyword>void </keyword> computeNormal(triangle &amp; Triangle)
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        glm::<userword>vec3 </userword><keyword>const </keyword> &amp; a = Triangle.Position[0];
+      </line>
+      <line align="32px">
+        glm::<userword>vec3 </userword><keyword>const </keyword> &amp; b = Triangle.Position[1];
+      </line>
+      <line align="32px">
+        glm::<userword>vec3 </userword><keyword>const </keyword> &amp; c = Triangle.Position[2];
+      </line>
+      <line align="32px">
+        Triangle.Normal = glm::normalize(glm::cross(c - a, b - a));
+      </line>
+      <line>
+        }
+      </line>
+    </code>
+
+    <code title="GLM sample, matrix transform:">
+      <line>
+        <comment>// glm::vec3, glm::vec4, glm::ivec4, glm::mat4</comment>
+      </line>
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/glm.hpp&gt; </string>
+      </line>
+      <line>
+        <comment>// glm::perspective</comment>
+      </line>
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/gtc/matrix_projection.hpp&gt; </string>
+      </line>
+      <line>
+        <comment>// glm::translate, glm::rotate, glm::scale</comment>
+      </line>
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/gtc/matrix_transform.hpp&gt; </string>
+      </line>
+      <line>
+        <comment>// glm::value_ptr</comment>
+      </line>
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/gtc/type_ptr.hpp&gt; </string>
+      </line>
+      <line>
+
+      </line>
+      <line>
+        {
+      </line>
+
+      <line align="32px">
+        glm::<userword>mat4</userword> Projection =
+      </line>
+      <line align="64px">
+        glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.f);
+      </line>
+      <line align="32px">
+        glm::<userword>mat4</userword> ViewTranslate = glm::translate(
+      </line>
+      <line align="64px">
+        glm::<userword>mat4</userword>(1.0f),
+      </line>
+      <line align="64px">
+        glm::<userword>vec3</userword>(0.0f, 0.0f, -Translate));
+      </line>
+      <line align="32px">
+        glm::<userword>mat4</userword> ViewRotateX = glm::rotate(
+      </line>
+      <line align="64px">
+        ViewTranslate,
+      </line>
+      <line align="64px">
+        Rotate.y, glm::<userword>vec3</userword>(-1.0f, 0.0f, 0.0f));
+      </line>
+      <line align="32px">
+        glm::<userword>mat4</userword> View = glm::rotate(
+      </line>
+      <line align="64px">
+        ViewRotateX,
+      </line>
+      <line align="64px">
+        Rotate.x, glm::<userword>vec3</userword>(0.0f, 1.0f, 0.0f));
+      </line>
+      <line align="32px">
+        glm::mat4 Model = glm::scale(
+      </line>
+      <line align="64px">
+        glm::<userword>mat4</userword>(1.0f),
+      </line>
+      <line align="64px">
+        glm::<userword>vec3</userword>(0.5f));
+      </line>
+      <line align="32px">
+        glm::<userword>mat4</userword> MVP = Projection * View * Model;
+      </line>
+      <line>
+
+      </line>
+      <line align="32px">
+        glUniformMatrix4fv(
+      </line>
+      <line align="64px">
+        LocationMVP, 1, GL_FALSE, glm::value_ptr(MVP));
+      </line>
+      <line>
+        }
+      </line>
+    </code>
+
+    <code title="GLM sample, vector types:">
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/glm.hpp&gt;</string>
+      </line>
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/gtx/type_precision.hpp&gt;</string>
+      </line>
+      <line>
+
+      </line>
+      <line>
+        std::size_t <keyword>const </keyword>VertexCount = 4;
+      </line>
+      <line>
+
+      </line>
+      <line>
+        <comment>// Float quad geometry</comment>
+      </line>
+      <line>
+        std::size_t <keyword>const </keyword>PositionSizeF32 = VertexCount * <keyword>sizeof</keyword>(glm::<userword>vec2</userword>);
+      </line>
+      <line>
+        glm::<userword>vec2 </userword><keyword>const </keyword>PositionDataF32[VertexCount] =
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        glm::<userword>vec2</userword>(-1.0f,-1.0f),
+      </line>
+      <line align="32px">
+        glm::<userword>vec2</userword>( 1.0f,-1.0f),
+      </line>
+      <line align="32px">
+        glm::<userword>vec2</userword>( 1.0f, 1.0f),
+      </line>
+      <line align="32px">
+        glm::<userword>vec2</userword>(-1.0f, 1.0f)
+      </line>
+      <line>
+        };
+      </line>
+      <line>
+
+      </line>
+      <line>
+        <comment>// Half-float quad geometry</comment>
+      </line>
+      <line>
+        std::size_t <keyword>const </keyword>PositionSizeF16 = VertexCount * <keyword>sizeof</keyword>(glm::<userword>hvec2</userword>);
+      </line>
+      <line>
+        glm::<userword>hvec2 </userword><keyword>const </keyword>PositionDataF16[VertexCount] =
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        glm::<userword>hvec2</userword>(-1.0f, -1.0f),
+      </line>
+      <line align="32px">
+        glm::<userword>hvec2</userword>( 1.0f, -1.0f),
+      </line>
+      <line align="32px">
+        glm::<userword>hvec2</userword>( 1.0f,  1.0f),
+      </line>
+      <line align="32px">
+        glm::<userword>hvec2</userword>(-1.0f,  1.0f)
+      </line>
+      <line>
+        };
+      </line>
+      <line>
+
+      </line>
+      <line>
+        <comment>// 8 bits signed integer quad geometry</comment>
+      </line>
+      <line>
+        std::size_t <keyword>const </keyword>PositionSizeI8 = VertexCount * <keyword>sizeof</keyword>(glm::<userword>i8vec2</userword>);
+      </line>
+      <line>
+        glm::<userword>i8vec2 </userword><keyword>const </keyword> PositionDataI8[VertexCount] =
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        glm::<userword>i8vec2</userword>(-1,-1),
+      </line>
+      <line align="32px">
+        glm::<userword>i8vec2</userword>( 1,-1),
+      </line>
+      <line align="32px">
+        glm::<userword>i8vec2</userword>( 1, 1),
+      </line>
+      <line align="32px">
+        glm::<userword>i8vec2</userword>(-1, 1)
+      </line>
+      <line>
+        };
+      </line>
+      <line>
+
+      </line>
+      <line>
+        <comment>// 32 bits signed integer quad geometry</comment>
+      </line>
+      <line>
+        std::size_t <keyword>const </keyword>PositionSizeI32 = VertexCount * <keyword>sizeof</keyword>(glm::<userword>i32vec2</userword>);
+      </line>
+      <line>
+        glm::<userword>i32vec2 </userword><keyword>const </keyword>PositionDataI32[VertexCount] =
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        glm::<userword>i32vec2 </userword>(-1,-1),
+      </line>
+      <line align="32px">
+        glm::<userword>i32vec2 </userword>( 1,-1),
+      </line>
+      <line align="32px">
+        glm::<userword>i32vec2 </userword>( 1, 1),
+      </line>
+      <line align="32px">
+        glm::<userword>i32vec2 </userword>(-1, 1)
+      </line>
+      <line>
+        };
+      </line>
+    </code>
+
+    <code title="GLM sample, lighting:">
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/glm.hpp&gt;</string>
+      </line>
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/gtx/random.hpp&gt;</string>
+      </line>
+      <line>
+
+      </line>
+      <line>
+        glm::<userword>vec3 </userword> lighting
+      </line>
+      <line>
+        (
+      </line>
+      <line align="32px">
+        intersection<keyword> const </keyword>&amp; Intersection,
+      </line>
+      <line align="32px">
+        material<keyword> const </keyword>&amp; Material,
+      </line>
+      <line align="32px">
+        light<keyword> const </keyword>&amp; Light,
+      </line>
+      <line align="32px">
+        glm::<userword>vec3 </userword>const &amp; View
+      </line>
+      <line>
+        )
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        glm::<userword>vec3 </userword> Color = glm::<userword>vec3</userword>(0.0f);
+      </line>
+      <line>
+
+      </line>
+      <line align="32px">
+        glm::<userword>vec3 </userword>LightVertor = glm::normalize(
+      </line>
+      <line align="64px">
+        Light.position() - Intersection.globalPosition() +
+      </line>
+      <line align="96px">
+        glm::vecRand3(0.0f, Light.inaccuracy());
+      </line>
+      <line>
+
+      </line>
+      <line align="32px">
+        <keyword>if</keyword>(!shadow(
+      </line>
+      <line align="64px">
+        Intersection.globalPosition(),
+      </line>
+      <line align="64px">
+        Light.position(),
+      </line>
+      <line align="64px">
+        LightVertor))
+      </line>
+      <line align="32px">
+        {
+      </line>
+      <line align="64px">
+        <keyword>float</keyword> Diffuse = glm::dot(Intersection.normal(), LightVector);
+      </line>
+      <line align="64px">
+
+      </line>
+      <line align="64px">
+        <keyword>if</keyword>(Diffuse &lt;= 0.0f)
+      </line>
+      <line align="96px">
+        <keyword>return</keyword> Color;
+      </line>
+      <line align="64px">
+        <keyword>if</keyword>(Material.isDiffuse())
+      </line>
+      <line align="96px">
+        Color += Light.color() * Material.diffuse() * Diffuse;
+      </line>
+      <line align="64px">
+
+      </line>
+      <line align="64px">
+        <keyword>if</keyword>(Material.isSpecular())
+      </line>
+      <line align="64px">
+        {
+      </line>
+      <line align="96px">
+        glm::<userword>vec3 </userword>Reflect = glm::reflect(
+      </line>
+      <line align="128px">
+        glm::normalize(-LightVector),
+      </line>
+      <line align="128px">
+        glm::normalize(Intersection.normal()));
+      </line>
+      <line align="96px">
+        <keyword>float</keyword> Dot = glm::dot(Reflect, View);
+      </line>
+      <line align="96px">
+        <keyword>float</keyword> Base = Dot > 0.0f ? Dot : 0.0f;
+      </line>
+      <line align="96px">
+        <keyword>float</keyword> Specular = glm::pow(Base, Material.exponent());
+      </line>
+      <line align="96px">
+        Color += Material.specular() * Specular;
+      </line>
+      <line align="64px">
+        }
+      </line>
+      <line>
+        }
+      </line>
+    </code>
+	</project>
+
+	<project index="0015" name="Piranha" type="gtc-tech-project-piranha" date-creation="03/12/2004" date-update="06/01/2005">
+		<text>
+			<paragraph>
+				Piranha is an OpenGL graphics demo that uses GLSL, originally programed using the first nVidia GLSL beta drivers!
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot" small="./post/0328-01-small.jpg" normal="./post/0328-01.jpg" />
+			<image-element title="Screenshot" small="./post/0328-02-small.jpg" normal="./post/0328-02.jpg" />
+			<image-element title="Screenshot" small="./post/0328-03-small.jpg" normal="./post/0328-03.jpg" />
+			<image-element title="Screenshot" small="./post/0328-04-small.jpg" normal="./post/0328-04.jpg" />
+			<image-element title="Screenshot" small="./post/0328-05-small.jpg" normal="./post/0328-05.jpg" />
+			<image-element title="Screenshot" small="./post/0328-06-small.jpg" normal="./post/0328-06.jpg" />
+			<image-element title="Screenshot" small="./post/0328-07-small.jpg" normal="./post/0328-07.jpg" />
+			<image-element title="Screenshot" small="./post/0328-08-small.jpg" normal="./post/0328-08.jpg" />
+			<image-element title="Screenshot" small="./post/0328-09-small.jpg" normal="./post/0328-09.jpg" />
+			<image-element title="Screenshot" small="./post/0328-10-small.jpg" normal="./post/0328-10.jpg" />
+			<image-element title="Screenshot" small="./post/0328-11-small.jpg" normal="./post/0328-11.jpg" />
+			<image-element title="Screenshot" small="./post/0328-12-small.jpg" normal="./post/0328-12.jpg" />
+		</image-list>
+		<source-list>
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/piranha-lp/report/1" title="View active tickets" />
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/piranha-lp/newticket" title="Submit a ticket" />
+			<source-element type="Link" href="http://piranha-lp.git.sourceforge.net/git/gitweb.cgi?p=piranha-lp/piranha-lp;a=summary" title="Browse Git repository" />
+			<source-element type="Download" href="http://piranha-lp.git.sourceforge.net/git/gitweb.cgi?p=piranha-lp/piranha-lp;a=snapshot;h=HEAD;sf=tgz" title="Piranha HEAD snapshot" />
+		</source-list>
+	</project>
+
+	<project index="0014" name="G-MD5-Viewer" type="gtc-tech-project-md5" date-creation="25/10/2004" date-update="29/10/2004">
+		<text>
+			<paragraph>
+				A MD5 mesh loader, Doom 3 file format.
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot" small="./project/md5/md5-1-small.jpg" normal="./project/md5/md5-1-normal.jpg" />
+			<image-element title="Screenshot" small="./project/md5/md5-2-small.jpg" normal="./project/md5/md5-2-normal.jpg" />
+			<image-element title="Screenshot" small="./project/md5/md5-3-small.jpg" normal="./project/md5/md5-3-normal.jpg" />
+			<image-element title="Screenshot" small="./project/md5/md5-4-small.jpg" normal="./project/md5/md5-4-normal.jpg" />
+			<image-element title="Screenshot" small="./project/md5/md5-5-small.jpg" normal="./project/md5/md5-5-normal.jpg" />
+		</image-list>
+		<source-list>
+			<source-element type="Download" href="./project/md5/g-md5-viewer-b2.0.zip" title="Beta 2.0 for VisualC++ 7.1, MinGW and GCC." />
+		</source-list>
+	</project>
+
+	<project index="0013" name="Shoot(r)" type="gtc-tech-project-shooter" date-creation="01/09/2004" date-update="03/04/2005">
+		<author name="Groove" href="./contact.html" function="Programmation C++/XML/OpenGL/SDL"/>
+		<author name="piGfreeZer" href="pigfreezer.free.fr" function="Musicien"/>
+		<author name="L'équipe de WormsHL" function="Bruitages"/>
+		<text>
+			<paragraph>
+				Shoot(r) is an OpenGL shoot'em up I made for the French developer magazine "Code(r)" with a 20 pages article.
+			</paragraph>
+			<paragraph>
+				Shoot(r) is a C++ oriented object software based on OpenGL 1.5 which main graphics effects are based on particle system.
+				The levels, weapons, ennemies, bonuses are all describe in a XML files.
+			</paragraph>
+			<paragraph>
+				git clone git://shooter.git.sourceforge.net/gitroot/shooter/shooter (read-only)
+			</paragraph>
+			<paragraph>
+				git clone ssh://groovounet@shooter.git.sourceforge.net/gitroot/shooter/shooter (read/write)
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot" small="./project/shooter/shooter1-small.jpg" normal="./project/shooter/shooter1-normal.jpg" />
+			<image-element title="Screenshot" small="./project/shooter/shooter2-small.jpg" normal="./project/shooter/shooter2-normal.jpg" />
+			<image-element title="Screenshot" small="./project/shooter/shooter3-small.jpg" normal="./project/shooter/shooter3-normal.jpg" />
+			<image-element title="Screenshot" small="./project/shooter/shooter4-small.jpg" normal="./project/shooter/shooter4-normal.jpg" />
+			<image-element title="Screenshot" small="./project/shooter/shooter5-small.jpg" normal="./project/shooter/shooter5-normal.jpg" />
+		</image-list>
+		<source-list>
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/shooter/report/1" title="View active tickets" />
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/shooter/newticket" title="Submit a ticket" />
+			<source-element type="Link" href="http://shooter.git.sourceforge.net/git/gitweb.cgi?p=shooter/shooter;a=summary" title="Browse Git repository" />
+			<source-element type="Download" href="http://shooter.git.sourceforge.net/git/gitweb.cgi?p=shooter/shooter;a=snapshot;h=HEAD;sf=tgz" title="Shoot(r) HEAD snapshot" />
+			<source-element type="Link" href="http://shooter.g-truc.net" title="shooter.g-truc.net" />
+		</source-list>
+	</project>
+
+	<project index="0012" name="Mitose" type="g-truc-demos" date-creation="14/08/2004" date-update="14/08/2004">
+		<text>
+			<paragraph>
+				Mitose is an infinte demo based on basic OpenGL features
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot de Mitose" small="./project/mitose/mitose1-small.jpg" normal="./project/mitose/mitose1-normal.jpg" />
+			<image-element title="Screenshot de Mitose" small="./project/mitose/mitose2-small.jpg" normal="./project/mitose/mitose2-normal.jpg" />
+			<image-element title="Screenshot de Mitose" small="./project/mitose/mitose3-small.jpg" normal="./project/mitose/mitose3-normal.jpg" />
+			<image-element title="Screenshot de Mitose" small="./project/mitose/mitose4-small.jpg" normal="./project/mitose/mitose4-normal.jpg" />
+			<image-element title="Screenshot de Mitose" small="./project/mitose/mitose5-small.jpg" normal="./project/mitose/mitose5-normal.jpg" />
+		</image-list>
+		<source-list>
+			<source-element type="Download" href="./project/mitose/mitose-v1.0.zip" title="Version 1.0 for Windows. (290Ko)" />
+		</source-list>
+	</project>
+
+	<!--project-element index="0011" name="OpenGL 1.x Samples Pack" type="g-truc-opengl-samples" date-creation="16/07/2004" date-update="05/11/2004">
+		<text>
+			<paragraph>
+				More than 60 OpenGL 1.x samples that mainly explores OpenGL fixed pipeline features. These samples have been developed with GCC 3.4 and Visual C++ 7.1 (2003).
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-01-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-01-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-02-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-02-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-03-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-03-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-04-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-04-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-05-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-05-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-06-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-06-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-07-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-07-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-08-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-08-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-09-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-09-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-10-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-10-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-11-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-11-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-12-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-12-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-13-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-13-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-14-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-14-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-15-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-15-normal.jpg" />
+			<image-element title="Screenshot" small="./project/ogl-1-samples-pack/g-tut-pack-16-small.jpg" normal="./project/ogl-1-samples-pack/g-tut-pack-16-normal.jpg" />
+		</image-list>
+		<source-list>
+			<source-download index="900" />
+		</source-list>
+	</project-element-->
+
+	<project index="0010" name="MultiTunnel" type="g-truc-demos" date-creation="22/11/2003" date-update="09/01/2004">
+		<text>
+			<paragraph>
+				MultiTunnel is a small OpenGL 1.4 demo using SDL and GTL. It is based on the "Tunnel" demo of Code(r) magazine n°5 by Arnaud Storq.
+				In this demo: dynamic lighting, anisotropic filtering (GL_EXT_texture_filter_anisotropic), volume fog (GL_EXT_fog_coord) and culling.
+			</paragraph>
+			<paragraph>
+				The project inclus a NSIS script and a Inno Setup script to generate installers. A good way to compare both.
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot de Multitunnel" small="./project/multitunnel/multitunnel1-small.jpg" normal="./project/multitunnel/multitunnel1-normal.jpg" />
+			<image-element title="Screenshot de Multitunnel" small="./project/multitunnel/multitunnel2-small.jpg" normal="./project/multitunnel/multitunnel2-normal.jpg" />
+			<image-element title="Screenshot de Multitunnel" small="./project/multitunnel/multitunnel3-small.jpg" normal="./project/multitunnel/multitunnel3-normal.jpg" />
+		</image-list>
+		<source-list>
+			<source-element type="Download" href="./project/multitunnel/multitunnelv1.0.exe" title="Version 1.0 for Windows. (766Ko)" />
+		</source-list>
+	</project>
+
+	<project index="0009" name="TAM" type="g-truc-demos" date-creation="14/07/2003" date-update="10/03/2004">
+		<author name="Groove" href="./contact.html" function="C++ and OpenGL programming"/>
+		<author name="invalide" href="invalide.gnougnou.com" function="Mapping and texturing"/>
+		<text>
+			<paragraph>
+				Guillaume Chervet and myself have participate to NeHe Creative 2004 context and this project is our entry.
+			</paragraph>
+			<paragraph>
+				This demo is a terrain rendering with fast time evolution, from day to night.
+				It also feature some kind of muting terrain...
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot de TAM 1" small="./project/tam/tam1-small.jpg" normal="./project/tam/tam1-normal.jpg" />
+			<image-element title="Screenshot de TAM 2" small="./project/tam/tam2-small.jpg" normal="./project/tam/tam2-normal.jpg" />
+			<image-element title="Screenshot de TAM 3" small="./project/tam/tam3-small.jpg" normal="./project/tam/tam3-normal.jpg" />
+		</image-list>
+		<source-list>
+			<source-element type="Download" href="./project/tam/terrain_demo.zip" title="Entrée envoyé pour le contest Nehe Creative 2004" />
+		</source-list>
+	</project>
+
+	<project index="0008" name="Othello GL" type="g-truc-games" date-creation="07/02/2003" date-update="04/04/2003">
+		<author name="Groove" href="./contact.html" function="Conception UML et Programmation C++/OpenGL" />
+		<author name="MatRem" function="Conception UML et Programmation C++" />
+		<text>
+			<paragraph>
+				OthelloGL is a Othello game in C++ and OpenGL for a single player with an A.I. with 5 level of difficulty of for 2 players.
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot de Othello GL" small="./project/othello/othello1-small.jpg" normal="./project/othello/othello1-normal.jpg" />
+			<image-element title="Screenshot de Othello GL" small="./project/othello/othello2-small.jpg" normal="./project/othello/othello2-normal.jpg" />
+			<image-element title="Screenshot de Othello GL" small="./project/othello/othello3-small.jpg" normal="./project/othello/othello3-normal.jpg" />
+			<image-element title="Screenshot de Othello GL" small="./project/othello/othello4-small.jpg" normal="./project/othello/othello4-normal.jpg" />
+			<image-element title="Screenshot de Othello GL" small="./project/othello/othello5-small.jpg" normal="./project/othello/othello5-normal.jpg" />
+		</image-list>
+		<source-list>
+			<source-element type="Download" href="http://othellogl.g-truc.net/" title="OthelloGL Beta 3 for Windows, Linux in French, English, German and Spanish" />
+			<source-element type="Link" href="http://othellogl.g-truc.net" title="Project website" />
+		</source-list>
+	</project>
+
+	<project index="0007" name="GTL" type="g-truc-other" date-creation="02/02/2003" date-update="06/01/2005">
+		<text>
+			<paragraph>
+				GTL est une bibliothèque qui regroupe des éléments de programmation réutilissables comme le chargement d'images, le changement de fonts, les vecteurs et divers outils.
+			</paragraph>
+			<paragraph>
+				GTL est un projet pour Windows et Linux, sous licence LGPL. Il supporte Visual C++ 6, Visual C++ 7.1, C++ Builder X, Dev Cpp 5 beta, MinGW Developer Studio, MinGW et GCC. D'autres outils seront ajoutés à cette liste dans les prochaines versions.
+			</paragraph>
+			<paragraph>
+				Plusieurs exemples sont disponibles afin de montrer les possibilités de GTL et comment les utilisés. Screenshot 1 - Font : Affichage de caractères dans une fenètre OpenGL. Screenshot 2 - Frustum culling : Optimisation de la vitesse d'affichage en évitant le traitement d'objets non visible. Screenshot 3 - Image : Exemple de chargement et d'affichage d'image TGA, RAW, et BMP en mode GL_TEXTURE_2D ou GL_TEXTURE_RECTANGLE_ARB. Screenshot 4 - Lighting : Exemple d'éclairage d'un terrain avec calcul des normales par vertex. Screenshot 5 - OGL-EXT : Détection et affichage des extensions OpenGL disponible. Screenshot 6 - Particles : Système de particles avec gestion des collisions avec un terrain. Screenshot 7 - Transform : Exemple de tranformation utilisant soit les fonctions OpenGL, soit les matrices, soit les quaternions.
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot 1" small="./project/gtl/small1.jpg" normal="./project/gtl/normal1.jpg" />
+			<image-element title="Screenshot 2" small="./project/gtl/small2.jpg" normal="./project/gtl/normal2.jpg" />
+			<image-element title="Screenshot 3" small="./project/gtl/small3.jpg" normal="./project/gtl/normal3.jpg" />
+			<image-element title="Screenshot 4" small="./project/gtl/small4.jpg" normal="./project/gtl/normal4.jpg" />
+			<image-element title="Screenshot 5" small="./project/gtl/small5.jpg" normal="./project/gtl/normal5.jpg" />
+			<image-element title="Screenshot 6" small="./project/gtl/small6.jpg" normal="./project/gtl/normal6.jpg" />
+			<image-element title="Screenshot 7" small="./project/gtl/small7.jpg" normal="./project/gtl/normal7.jpg" />
+		</image-list>
+		<source-list>
+			<source-element type="Download" href="http://prdownloads.sourceforge.net/piranha-lp/piranha-b1.2.7z?download" title="gtl-b1.2.7z" />
+			<source-element type="Download" href="http://prdownloads.sourceforge.net/piranha-lp/piranha-b1.2.7z?download" title="gtl-b1.2.zip" />
+			<source-element type="Download" href="http://prdownloads.sourceforge.net/piranha-lp/piranha-b1.2.7z?download" title="gtl-b1.2.tar.bz2" />
+		</source-list>
+	</project>
+
+	<project index="0006" name="Bricolo Club" type="g-truc-other" date-creation="29/12/2002" date-update="29/12/2002">
+		<text>
+			<paragraph>
+				A C++ console software which shows a lot of STL conteners with UML diagrams.
+			</paragraph>
+		</text>
+		<source-list>
+			<source-element type="Download" href="./project/bricolo-club/bricolo-club-v1.1.tar.gz" title="Bricolo-Club 1.1 for Linux" />
+		</source-list>
+	</project>
+
+	<project index="0005" name="G-Truc Creation Website" type="gtc-tech-g-truc-source" date-creation="20/10/2002" date-update="20/09/2009">
+		<text>
+			<paragraph>
+				G-Truc Creation website is build entierly with XML, XSLT, XPath, CSS and XHTML since version 3.
+				I really like XML and all the technologies build around it which make it, for me, one of the most interesting progress in computing.
+				This choice allows me keep my knowlegde up to date but actually it just fits to most of my needs for a website.
+			</paragraph>
+			<list name="XML + XSLT + XPath + CSS + XHTML:">
+				<list-elements>Work off-line</list-elements>
+				<list-elements>Make easy to update the website</list-elements>
+				<list-elements>Allow to keep the data over time</list-elements>
+				<list-elements>Maintain a separation between data (XML), organization (XSLT + XPath) and design (CSS + XHTML)</list-elements>
+				<list-elements></list-elements>
+			</list>
+			<paragraph>
+				If you are interested in XML, XSLT and XPath, you are invited to download the website source and discover all the crazy tricks that make this website.
+			</paragraph>
+      <list name="Git repositories">
+        <list-element href="http://g-truc.git.sourceforge.net/git/gitweb.cgi?p=g-truc/g-truc;a=summary">git clone git://g-truc.git.sourceforge.net/gitroot/g-truc/g-truc (read-only)</list-element>
+        <list-element href="http://g-truc.git.sourceforge.net/git/gitweb.cgi?p=g-truc/g-truc;a=summary">git clone ssh://${Login}@g-truc.git.sourceforge.net/gitroot/g-truc/g-truc (read/write)</list-element>
+      </list>
+		</text>
+		<image-list>
+			<image-element title="G-Truc Creation 2.0.2" normal="./project/site/g-truc-v202.png" small="./project/site/vignette/g-truc-v202.png" />
+			<image-element title="G-Truc Creation 2.0.4" normal="./project/site/g-truc-v204.png" small="./project/site/vignette/g-truc-v204.png" />
+			<image-element title="G-Truc Creation 2.0.5" normal="./project/site/g-truc-v205.png" small="./project/site/vignette/g-truc-v205.png" />
+			<image-element title="G-Truc Creation 2.0.6" normal="./project/site/g-truc-v206.png" small="./project/site/vignette/g-truc-v206.png" />
+			<image-element title="G-Truc Creation 3.0.0" normal="./project/site/g-truc-v300.png" small="./project/site/vignette/g-truc-v300.png" />
+			<image-element title="G-Truc Creation 3.0.7" normal="./project/site/g-truc-v307.png" small="./project/site/vignette/g-truc-v307.png" />
+			<image-element title="G-Truc Creation 4.0.2" normal="./project/site/g-truc-v402.png" small="./project/site/vignette/g-truc-v402.png" />
+			<image-element title="G-Truc Creation 5.0.0" normal="./project/site/g-truc-v500.png" small="./project/site/vignette/g-truc-v500.png" />
+			<image-element title="G-Truc Creation 6.0.0" normal="./project/site/g-truc-v600.png" small="./project/site/vignette/g-truc-v600.png" />
+			<image-element title="G-Truc Creation 6.1.0" normal="./project/site/g-truc-v610.png" small="./project/site/vignette/g-truc-v610.png" />
+			<image-element title="G-Truc Creation 7.0.0" normal="./project/site/g-truc-v700-1.png" small="./project/site/vignette/g-truc-v700-1.png" />
+      <image-element title="G-Truc Creation 7.0.0" normal="./project/site/g-truc-v700-2.png" small="./project/site/vignette/g-truc-v700-2.png" />
+      <image-element title="G-Truc Creation 7.0.1" normal="./project/site/g-truc-v701-1.png" small="./project/site/vignette/g-truc-v701-1.png" />
+      <image-element title="G-Truc Creation 7.0.1" normal="./project/site/g-truc-v701-2.png" small="./project/site/vignette/g-truc-v701-2.png" />
+      <image-element title="G-Truc Creation 7.0.2" normal="./project/site/g-truc-v702-1.png" small="./project/site/vignette/g-truc-v702-1.png" />
+      <image-element title="G-Truc Creation 7.0.3" normal="./project/site/g-truc-v703-1.png" small="./project/site/vignette/g-truc-v703-1.png" />
+      <image-element title="G-Truc Creation 7.0.3" normal="./project/site/g-truc-v703-2.png" small="./project/site/vignette/g-truc-v703-2.png" />
+		</image-list>
+		<source-list>
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/g-truc/report/1" title="View active tickets" />
+			<source-element type="Link" href="https://sourceforge.net/apps/trac/g-truc/newticket" title="Submit a ticket" />
+			<source-element type="Link" href="http://g-truc.git.sourceforge.net/git/gitweb.cgi?p=g-truc/g-truc;a=summary" title="Browse Git repository" />
+			<source-element type="Download" href="http://g-truc.git.sourceforge.net/git/gitweb.cgi?p=g-truc/g-truc;a=snapshot;h=HEAD;sf=tgz" title="G-Truc Creation HEAD snapshot" />
+		</source-list>
+	</project>
+
+	<project index="0004" name="G-Particule" type="g-truc-demos" date-creation="02/10/2002" date-update="09/11/2003">
+		<text>
+			<paragraph>
+				Une fontaine réalisé en C++, OpenGL et GLUT, utilisant le concept des moteurs de particules de manière très specialisé. Il utilise la cinématique pour le calcul des trajectoires. Il met en oeuvre un grand nombre d'effet graphique tel que le blending, le fog ou l'antialiasing sur des lignes.
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot" small="./project/g-particle/g-particle1-small.jpg" normal="./project/g-particle/g-particle1-normal.jpg" />
+			<image-element title="Screenshot" small="./project/g-particle/g-particle2-small.jpg" normal="./project/g-particle/g-particle2-normal.jpg" />
+		</image-list>
+		<source-list>
+			<source-element type="Download" href="./project/g-particule/g-particule-v3.56.zip" title="G-Particule 3.56" />
+		</source-list>
+	</project>
+
+	<project index="0003" name="Quake 2: Zglu" type="g-truc-games" date-creation="11/04/2002" date-update="06/07/2003">
+		<text>
+			<paragraph>
+				Zglu est une modification de Quake 2 basée sur le code source complet de Quake 2 en version 3.21. Il se joue seul et en multijoueur sur la campagne et les cartes de Quake 2, vous devez donc avoir Quake 2 pour joueur à Zglu.
+			</paragraph>
+			<paragraph>
+				Le principe de Zglu est d'éviter les lasers tirés par les autres joueurs. Pour cela, toutes les armes ont étés modifiés afin de projeter des lasers qui disposent d'une certaine vitesse, d'un certain niveau de dommage et qui repondissent sur les murs.
+			</paragraph>
+			<paragraph>
+				A chaque couleur de laser correspond une certaine puissante. Rouge : 20 points, Orange : 40 points, Jaune : 60 points, Vert : 80 points, Cyen : 120 points, Bleu : 160 points et Violet : 240 points.
+			</paragraph>
+			<paragraph>
+				Il n'existe pas d'armes inutiles ou d'armes ultime dans Zglu. Chaque arme dispose de qualités propres qui lui permet d'être util suivant la configuration d'une situations du jeu. De plus, suivant cette idée de trouver l'arme optimum à un cas particulière, chaque arme dispose de réglages précifiques et le joueur modifier les caractéristiques physiques de son personnage suivant trois paramètres : L'armure, la puissance de feu, les aptitudes physiques.
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot de Zglu" small="./project/zglu/zglu1-small.jpg" normal="./project/zglu/zglu1-normal.jpg" />
+			<image-element title="Screenshot de Zglu" small="./project/zglu/zglu2-small.jpg" normal="./project/zglu/zglu2-normal.jpg" />
+			<image-element title="Screenshot de Zglu" small="./project/zglu/zglu3-small.jpg" normal="./project/zglu/zglu3-normal.jpg" />
+			<image-element title="Screenshot de Zglu" small="./project/zglu/zglu4-small.jpg" normal="./project/zglu/zglu4-normal.jpg" />
+			<image-element title="Screenshot de Zglu" small="./project/zglu/zglu5-small.jpg" normal="./project/zglu/zglu5-normal.jpg" />
+		</image-list>
+		<source-list>
+			<source-element type="Download" href="http://prdownloads.sourceforge.net/zglu/zglu-a04.exe?download" title="Zglu Alpha 4.0" />
+		</source-list>
+	</project>
+
+	<project index="0002" name="WormsHL" type="g-truc-games" date-creation="05/06/2001" date-update="01/08/2003">
+		<author name="EurOPiuM" function="Codeur majeur graphiste (Leader majeur)"/>
+		<author name="Groove" href="./contact.html" function="Codeur majeur, mappeur, graphiste (Leader majeur)"/>
+		<author name="ModKiller" function="Codeur majeur (Leader majeur)"/>
+		<author name="Captain Storm" function="Modeleur majeur"/>
+		<author name="Ilag" function="Mappeur majeur"/>
+		<author name="JeP" function="Modeleur majeur"/>
+		<author name="LondNoir" function="Mappeur majeur"/>
+		<author name="Anybody" function="Compilation Linux"/>
+		<author name="Bayo" function="Codeur"/>
+		<author name="BCastaldi" function="Sounder"/>
+		<author name="Clooky" function="Modeleur"/>
+		<author name="Cyril le BosS" function="Sounder"/>
+		<author name="DeuXraY" function="Musicien"/>
+		<author name="Doggy Dog" function="Modeleur, mappeur"/>
+		<author name="L_Eternel" function="Webmaster"/>
+		<author name="Netweaver" function="Webmaster"/>
+		<author name="Piero" function="Beta-testeur"/>
+		<author name="Piv" function="Codeur"/>
+		<author name="Sleeyer" function="Beta-testeur"/>
+		<author name="Spawm69" function="Modeleur"/>
+		<author name="Swarog" function="Beta-testeur"/>
+		<author name="Yeahman" function="Mappeur"/>
+		<author name="Yvain" function="Beta-testeur"/>
+		<author name="ZMaster" function="Graphiste"/>
+		<text>
+			<paragraph>
+				Le premier gros projet en équipe de mon existence, celui qui a vue naitre ma passion pour la programmation.
+				Il s'agit d'une modification du jeu Half-Life sur le thème de Worms, le jeu de Team17.
+			</paragraph>
+			<paragraph>
+				Le jeu se déroule entre deux équipes en tour par tour. On y retrouve bon nombre d'armes de la série des Worms avec quelques créations.
+			</paragraph>
+			<paragraph>
+				WormsHL nécessite une version de Half-Life pather en version 1.1.1.0.
+			</paragraph>
+		</text>
+		<image-list>
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl01-small.jpg" normal="./project/wormshl/wormshl01-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl02-small.jpg" normal="./project/wormshl/wormshl02-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl03-small.jpg" normal="./project/wormshl/wormshl03-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl04-small.jpg" normal="./project/wormshl/wormshl04-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl05-small.jpg" normal="./project/wormshl/wormshl05-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl06-small.jpg" normal="./project/wormshl/wormshl06-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl07-small.jpg" normal="./project/wormshl/wormshl07-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl08-small.jpg" normal="./project/wormshl/wormshl08-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl09-small.jpg" normal="./project/wormshl/wormshl09-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl10-small.jpg" normal="./project/wormshl/wormshl10-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl11-small.jpg" normal="./project/wormshl/wormshl11-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl12-small.jpg" normal="./project/wormshl/wormshl12-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl13-small.jpg" normal="./project/wormshl/wormshl13-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl14-small.jpg" normal="./project/wormshl/wormshl14-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl15-small.jpg" normal="./project/wormshl/wormshl15-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl16-small.jpg" normal="./project/wormshl/wormshl16-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl17-small.jpg" normal="./project/wormshl/wormshl17-normal.jpg" />
+			<image-element title="Screenshot of WormsHL" small="./project/wormshl/wormshl18-small.jpg" normal="./project/wormshl/wormshl18-normal.jpg" />
+		</image-list>
+		<source-list>
+			<source-download index="1005" />
+			<source-element type="Review" href="https://sourceforge.net/projects/wormshl/" title="SourceForge WormsHL page" />
+			<source-element type="Review" href="http://planethalflife.gamespy.com/View.php?view=HLMotw.Detail&amp;id=96" title="Planet Half-Life review" />
+			<source-element type="Review" href="http://planethalflife.gamespy.com/View.php?view=HLMods.Detail&amp;id=558" title="Planet Half-Life download page" />
+			<source-element type="Review" href="http://www.worms-land.de/worms_half-life.wl" title="Worms-Land review" />
+		</source-list>
+	</project>
+
+	<project index="0001" name="Pack CS Interstate" type="g-truc-games" date-creation="1999" date-update="25/04/2002">
+		<text>
+			<paragraph>
+				A Counter-Strike pack with binds, PodBot, sounds and meshes based on Interstate 76 theme.
+			</paragraph>
+			<paragraph>
+				This pack translate Counter Strike in French.
+			</paragraph>
+		</text>
+		<source-list>
+			<source-element type="Download" href="https://sourceforge.net/projects/glf/files/Pack%20CS%20Interstate/pcsi-v203.exe/download" title="Pack CS Interstate for Counter Strike 1.5" />
+		</source-list>
+	</project>
+
+</g-truc>
