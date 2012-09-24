@@ -43,7 +43,7 @@
     </paragraph>
   </draft>
 
-  <draft index="0500" date="01/01/2011" std-date="2011-01-31T23:30:00.00Z" title="WebGL test" published="no">
+  <draft index="0999" date="01/01/2011" std-date="2011-01-31T23:30:00.00Z" title="WebGL test" published="no">
     <webgl index="canvas">
       <script type="text/javascript" href="./script/0376.js" />
     </webgl>
@@ -55,6 +55,28 @@
     </source-list>
   </draft>
 
+  <post index="0501" date="24/09/2012" std-date="2012-09-24T12:30:00.00Z" title="Week 35 photograph: Textures">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-35-960.jpg"
+      href="./photo/2012-35.jpg" />
+  </post>
+
+  <post index="0500" date="19/09/2012" std-date="2012-09-19T23:30:00.00Z" title="Week 34 photograph: Domination and control">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-34-960.jpg"
+      href="./photo/2012-34.jpg" />
+  </post>
+  
   <post index="0499" date="31/08/2012" std-date="2012-08-31T23:30:00.00Z" title="August 2012 OpenGL drivers status">
     <meta>
       <tag>gtc-tech-opengl-status</tag>
