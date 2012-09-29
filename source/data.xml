@@ -55,6 +55,17 @@
     </source-list>
   </draft>
 
+  <post index="0502" date="24/09/2012" std-date="2012-09-24T12:30:00.00Z" title="Week 36 photograph: Strings">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-36-960.jpg"
+      href="./photo/2012-36.jpg" />
+  </post>
+
   <post index="0501" date="24/09/2012" std-date="2012-09-24T12:30:00.00Z" title="Week 35 photograph: Textures">
     <meta>
       <tag>gtc-crea-photograph</tag>
