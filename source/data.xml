@@ -10,7 +10,7 @@
   <!--post-list picture="20090722.jpg" comment="Mankind legacy"-->
   <!--post-list picture="20090812.jpg" comment="Flavors and the secret ingredient"-->
 
-  <draft index="0501" date="23/08/2010" std-date="2010-08-23T23:30:00.00Z" title="16 tools free for download">
+  <draft index="0998" date="23/08/2010" std-date="2010-08-23T23:30:00.00Z" title="16 tools free for download">
     <meta>
       <tag>gtc-tech-devel-tool</tag>
     </meta>
@@ -55,7 +55,495 @@
     </source-list>
   </draft>
 
-  <post index="0502" date="24/09/2012" std-date="2012-09-24T12:30:00.00Z" title="Week 36 photograph: Strings">
+  <draft index="0507" date="13/10/2012" std-date="2012-10-13T17:00:00.00Z" title="Week 39 photograph: Midnight hike">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-39-960.jpg"
+      href="./photo/2012-39.jpg" />
+  </draft>
+
+  <post index="0506" date="13/10/2012" std-date="2012-10-13T17:00:00.00Z" title="Week 38 photograph: Rye legacy">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-38-960.jpg"
+      href="./photo/2012-38.jpg" />
+  </post>
+
+  <post index="0505" date="08/10/2012" std-date="2012-10-08T23:30:00.00Z" title="Week 37 photograph: 500m">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-37-960.jpg"
+      href="./photo/2012-37.jpg" />
+  </post>
+
+  <post index="0504" date="30/09/2012" std-date="2012-09-30T23:30:00.00Z" title="September 2012 OpenGL drivers status">
+    <meta>
+      <tag>gtc-tech-opengl-status</tag>
+    </meta>
+
+    <paragraph>
+      With the release of OpenGL 4.3 at Siggraph, NVIDIA as released an OpenGL 4.3 drivers (<link href="http://www.guru3d.com/files_details/nvidia_geforce_306_63_vista_and_7_64_bit_download.html">Forceware 306.63</link>).
+      This gives us an opportunity to try out the new samples of the <link href="https://github.com/g-truc/ogl-samples/tree/4.3.0.2">OpenGL Samples Pack 4.3.0.2</link>.
+      For the AMD side, we will use the  <link href="http://www.guru3d.com/files_details/amd_catalyst_12_9_beta_64_bit_download.html">Catalyst 12.9 (9.01)</link>.
+    </paragraph>
+
+    <paragraph>
+      No change for AMD drivers. On the NVIDIA side, the OpenGL 4.3 implementation is encouraging even if I didn't have time to explore it
+      too much and I had to use workarounds so that samples could pass.
+      I also encountered quite few issues on the GLSL compiler with not too obvious error messages.
+    </paragraph>
+    
+    <paragraph>
+      This month I was experting a lot of improvements for the OpenGL 4.3 NVIDIA drivers but even if I have not doubt they have been improved, none of the tests reflect this idea. On the AMD side all the TDRs have been fixed and many fixes applied in the meantime, great month for AMD! Unfortunately still no sign of OpenGL 4.3 drivers...
+    </paragraph>
+
+    <title>ERRATA</title>
+
+    <paragraph>
+      Catalyst 12.9 beta supports <link href="http://www.opengl.org/registry/specs/EXT/texture_sRGB_decode.txt">EXT_texture_sRGB_decode</link>.
+    </paragraph>
+
+    <title>The test</title>
+
+    <list name="Drivers test results nomenclature:">
+      <list-element>White: Unsupported or untested.</list-element>
+      <list-element>Blue: The sample works but it doesn't follow the OpenGL specification.</list-element>
+      <list-element>Green: The sample works following the OpenGL specification.</list-element>
+      <list-element>Orange: The sample doesn't work correctly but a workaround is possible.</list-element>
+      <list-element>Red: The sample does't work and I haven't found any workaround.</list-element>
+      <list-element>Black: Really distubing problem!</list-element>
+    </list>
+
+    <paragraph>
+      Once again, don't forget to contribute to the OpenGL community by <link href="post-0430.html#menu">reporting your bugs</link>!
+    </paragraph>
+
+    <table>
+      <table-title>
+        <table-title-element class="sample-name">OpenGL Samples Pack 4.3.0.2, OpenGL specification tests</table-title-element>
+        <table-title-element>AMD Catalyst 12.8, 8.982 (15/08/2012)</table-title-element>
+        <table-title-element>AMD Catalyst 12.9 beta, 9.01 (26/09/2012)</table-title-element>
+        <table-title-element>NVIDIA Forceware 305.53 (06/08/2012)</table-title-element>
+        <table-title-element>NVIDIA Forceware 306.63 (26/09/2012)</table-title-element>
+      </table-title>
+      <table-entry>
+        <table-entry-element>430-texture-view</table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>430-texture-copy</table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>430-program-subroutine</table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>430-program-compute</table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="orange">readonly and writeonly qualifiers generates parsing errors</table-entry-element>
+        <table-entry-element color="orange">readonly and writeonly qualifiers generates parsing errors</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>430-multi-draw-indirect</table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>430-interface-matching</table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="orange">dvec4 vertex input generates an error: "unknown opcode modifier"</table-entry-element>
+        <table-entry-element color="orange">dvec4 vertex input generates an error: "unknown opcode modifier"</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>430-image-store</table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="orange">coherent qualifier on image2D result in a parsing error.</table-entry-element>
+        <table-entry-element color="orange">coherent qualifier on image2D result in a parsing error.</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>430-image-sampling</table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>430-draw-without-vertex-attrib</table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>430-direct-state-access-ext</table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>430-atomic-counter</table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+
+      <table-entry>
+        <table-entry-element>420-transform-feedback-instanced</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-texture-storage</table-entry-element>
+        <table-entry-element color="blue">Allows an implicit cast on texture coordinates parameter</table-entry-element>
+        <table-entry-element color="blue">Allows an implicit cast on texture coordinates parameter</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-texture-pixel-store</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-texture-conversion</table-entry-element>
+        <table-entry-element color="white">BPTC online conversions is not/won't be supported</table-entry-element>
+        <table-entry-element color="white">BPTC online conversions is not/won't be supported</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-texture-compressed</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-test-depth-conservative</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-sampler-fetch</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-picking</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-memory-barrier</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-interface-matching</table-entry-element>
+        <table-entry-element color="black">Drivers TDR</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="red">Doesn't detect varying mismatch. Structure for vertex inputs supported</table-entry-element>
+        <table-entry-element color="red">Doesn't detect varying mismatch. Structure for vertex inputs supported</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-image-unpack</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-image-store</table-entry-element>
+        <table-entry-element color="orange">glClear is skipped for the first frame</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-image-load</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-fbo-layered</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-draw-base-instance</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-direct-state-access-ext</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-debug-output</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-buffer-uniform</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-atomic-counter</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>410-program-separate</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="orange">The implementation doesn't return an error when a built-in block isn't declared</table-entry-element>
+        <table-entry-element color="orange">The implementation doesn't return an error when a built-in block isn't declared</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>410-program-binary</table-entry-element>
+        <table-entry-element color="black">Drivers TDR</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>410-program-64</table-entry-element>
+        <table-entry-element color="black">Drivers TDR</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>410-primitive-tessellation-5</table-entry-element>
+        <table-entry-element color="black">Drivers TDR</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>410-primitive-tessellation-2</table-entry-element>
+        <table-entry-element color="black">Drivers TDR</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>410-primitive-instanced</table-entry-element>
+        <table-entry-element color="black">Drivers TDR</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>410-fbo-layered</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>400-transform-feedback-stream</table-entry-element>
+        <table-entry-element color="orange">layout(triangles) in; declaration is required by the specification</table-entry-element>
+        <table-entry-element color="orange">layout(triangles) in; declaration is required by the specification</table-entry-element>
+        <table-entry-element color="orange">layout(triangles) in; declaration is required by the specification</table-entry-element>
+        <table-entry-element color="orange">layout(triangles) in; declaration is required by the specification</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>400-transform-feedback-object</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green">EXT_transform_feedback extension string missing</table-entry-element>
+        <table-entry-element color="green">EXT_transform_feedback extension string missing</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>330-texture-format</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green">EXT_texture_snorm string missing</table-entry-element>
+        <table-entry-element color="green">EXT_texture_snorm string missing</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>330-texture-array</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>330-primitive-point-sprite</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="blue">Pop free clipping</table-entry-element>
+        <table-entry-element color="blue">Pop free clipping</table-entry-element>
+      </table-entry>
+    </table>
+
+    <table>
+      <table-title>
+        <table-title-element class="sample-name">OpenGL Samples Pack 4.3.0.2, proprietary features</table-title-element>
+        <table-title-element>AMD Catalyst 12.8, 8.982 (15/08/2012)</table-title-element>
+        <table-title-element>AMD Catalyst 12.9 beta, 9.01 (26/09/2012)</table-title-element>
+        <table-title-element>NVIDIA Forceware 305.53 (06/08/2012)</table-title-element>
+        <table-title-element>NVIDIA Forceware 306.63 (26/09/2012)</table-title-element>
+      </table-title>
+      <table-entry>
+        <table-entry-element>420-test-depth-clamp-separate-amd</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="white">AMD_depth _clamp_separate not supported</table-entry-element>
+        <table-entry-element color="white">AMD_depth _clamp_separate not supported</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-primitive-bindless-nv</table-entry-element>
+        <table-entry-element color="white">NV_shader _buffer_load not supported</table-entry-element>
+        <table-entry-element color="white">NV_shader _buffer_load not supported</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-fbo-srgb-decode-ext</table-entry-element>
+        <table-entry-element color="white">EXT_texture _sRGB_decode not supported</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-fbo-multisample-position-amd</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="white">AMD_sample _positions not supported</table-entry-element>
+        <table-entry-element color="white">AMD_sample _positions not supported</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-fbo-layered-amd</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="white">AMD_vertex _shader_layer and AMD_vertex_shader _viewport_index not supported</table-entry-element>
+        <table-entry-element color="white">AMD_vertex _shader_layer and AMD_vertex_shader _viewport_index not supported</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-fbo-multisample-dsa-nv</table-entry-element>
+        <table-entry-element color="white">NV_texture _multisample not supported</table-entry-element>
+        <table-entry-element color="white">NV_texture _multisample not supported</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-buffer-pinned-amd</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="white">AMD_pinned _memory not supported</table-entry-element>
+        <table-entry-element color="white">AMD_pinned _memory not supported</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-buffer-barrier-gtc</table-entry-element>
+        <table-entry-element color="blue">Works as desired</table-entry-element>
+        <table-entry-element color="blue">Works as desired</table-entry-element>
+        <table-entry-element color="white">Generates an invalid operation as specified</table-entry-element>
+        <table-entry-element color="white">Generates an invalid operation as specified</table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>420-blend-op-amd</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+        <table-entry-element color="white"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>330-fbo-multisample-explicit-nv</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+      <table-entry>
+        <table-entry-element>es-200-draw-elements-ext</table-entry-element>
+        <table-entry-element color="white">WGL EXT create context es2 profile not supported</table-entry-element>
+        <table-entry-element color="white">WGL EXT create context es2 profile not supported</table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+        <table-entry-element color="green"></table-entry-element>
+      </table-entry>
+    </table>
+
+    <source-list>
+      <source-download index="1116" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/tree/4.3.0" title="OpenGL Samples Pack 4.3.0 branch snapshot" />
+    </source-list>
+  </post>
+
+  <post index="0503" date="29/09/2012" std-date="2012-09-29T14:00:00.00Z" title="OpenGL Samples Pack 4.3.0.2 released">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      The OpenGL Samples Pack 4.3.0.2 is a revision fixing the 420-fbo-multisample-position-amd sample, improving 430-program-subroutine with subroutine indexing and 430-multi-draw-indirect with a DrawID for ressource indexing.
+      This revision also modify the shader build infrastructure to ensure that the sample can rely on multithreaded compilation.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1116" />
+      <source-element type="Link" href="https://github.com/Groovounet/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+  
+  <post index="0502" date="29/09/2012" std-date="2012-09-29T14:30:00.00Z" title="Week 36 photograph: Strings">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -87,7 +575,7 @@
       img="./photo/2012-34-960.jpg"
       href="./photo/2012-34.jpg" />
   </post>
-  
+
   <post index="0499" date="31/08/2012" std-date="2012-08-31T23:30:00.00Z" title="August 2012 OpenGL drivers status">
     <meta>
       <tag>gtc-tech-opengl-status</tag>

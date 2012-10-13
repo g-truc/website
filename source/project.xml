@@ -125,26 +125,14 @@
 				<link href="http://glm.g-truc.net">GLM</link> as math library and to replace OpenGL fixed pipeline functions and
 				<link href="./project-0024.html">GLI</link> to load images.
 			</paragraph>
-
-        <list name="Git repositories">
-          <list-element href="http://ogl-samples.git.sourceforge.net/git/gitweb.cgi?p=ogl-samples/ogl-samples;a=summary">git clone git://ogl-samples.git.sourceforge.net/gitroot/ogl-samples/ogl-samples (read-only)</list-element>
-          <list-element href="http://ogl-samples.git.sourceforge.net/git/gitweb.cgi?p=ogl-samples/ogl-samples;a=summary">git clone ssh://${LOGIN]@ogl-samples.git.sourceforge.net/gitroot/ogl-samples/ogl-samples (read/write)</list-element>
-        </list>
-
 		</text>
 		<source-list>
-			<source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-samples/report/1" title="View active tickets" />
-			<source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-samples/newticket" title="Submit a ticket" />
-			<source-element type="Link" href="http://ogl-samples.git.sourceforge.net/git/gitweb.cgi?p=ogl-samples/ogl-samples;a=summary" title="Browse Git repository" />
-			<source-element type="Download" href="http://ogl-samples.git.sourceforge.net/git/gitweb.cgi?p=ogl-samples/ogl-samples;a=snapshot;h=HEAD;sf=tgz" title="OpenGL Samples Pack HEAD snapshot" />
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples" title="Git repository" />
+			<source-element type="Download" href="https://github.com/g-truc/ogl-samples/zipball/master" title="ogl-samples snapshot" />
 			<source-element type="Link" href="http://www.opengl.org/" title="OpenGL.org" />
 			<source-element type="Link" href="http://glm.g-truc.net/" title="Le site de GLM" />
 			<source-element type="Link" href="http://glew.sourceforge.net/" title="Le site de GLEW" />
-			<source-element type="Link" href="http://www.libsdl.org/" title="Le site de SDL" />
-			<source-element type="Link" href="http://www.opengl.org/registry/doc/glspec32.core.20090803.pdf" title="OpenGL 3.2 core specification" />
-			<source-element type="Link" href="http://www.opengl.org/registry/doc/GLSLangSpec.1.50.09.pdf" title="GLSL 1.5 specification" />
-			<source-element type="Link" href="http://www.opengl.org/registry/doc/GLSLangSpec.Full.1.40.07.pdf" title="OpenGL 3.1 specification" />
-			<source-element type="Link" href="http://www.opengl.org/registry/doc/glspec31.20090528.pdf" title="GLSL 1.4 specification" />
+			<source-element type="Link" href="http://www.opengl.org/registry/" title="OpenGL registry" />
 		</source-list>
 	</project>
 
@@ -429,10 +417,6 @@
     <paragraph>
       GLM is release under MIT license and available for all version of GCC from version 3.4 and Visual Studio from version 8.0 as a platform independent library.
     </paragraph>
-    <list name="Git repositories">
-      <list-element href="http://ogl-math.git.sourceforge.net/git/gitweb.cgi?p=ogl-math/ogl-math;a=summary">git clone git://ogl-math.git.sourceforge.net/gitroot/ogl-math/ogl-math (read-only)</list-element>
-      <list-element href="http://ogl-math.git.sourceforge.net/git/gitweb.cgi?p=ogl-math/ogl-math;a=summary">git clone ssh://${LOGIN}@ogl-math.git.sourceforge.net/gitroot/ogl-math/ogl-math (read/write)</list-element>
-    </list>
 
     <image-list>
       <image-element title="Raytracer based on GLM" small="./project/glm/glm1-small.jpg" normal="./project/glm/glm1-normal.jpg" />
@@ -441,10 +425,9 @@
       <image-element title="Animation based on GLM" small="./project/glm/glm4-small.jpg" normal="./project/glm/glm4-normal.jpg" />
     </image-list>
     <source-list>
-      <source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-math/report/1" title="View active tickets" />
-      <source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-math/newticket" title="Submit a ticket" />
-      <source-element type="Link" href="http://ogl-math.git.sourceforge.net/git/gitweb.cgi?p=ogl-math/ogl-math;a=summary" title="Browse Git repository" />
-      <source-element type="Download" href="http://ogl-math.git.sourceforge.net/git/gitweb.cgi?p=ogl-math/ogl-math;a=snapshot;h=HEAD;sf=tgz" title="GLM HEAD snapshot" />
+      <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a ticket" />
+      <source-element type="Link" href="https://github.com/g-truc/glm" title="Browse Git repository" />
+      <source-element type="Download" href="https://github.com/g-truc/glm/zipball/master" title="GLM HEAD snapshot" />
       <source-element type="Link" href="http://glm.g-truc.net" title="glm.g-truc.net" />
     </source-list>
 
