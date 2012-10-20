@@ -55,7 +55,101 @@
     </source-list>
   </draft>
 
-  <draft index="0507" date="13/10/2012" std-date="2012-10-13T17:00:00.00Z" title="Week 39 photograph: Midnight hike">
+  <draft index="0999" date="14/08/2012" std-date="2012-08-14T23:30:00.00Z" title="Surviving without gl_DrawID">
+    <meta>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+    <paragraph>
+      
+    </paragraph>
+
+    <paragraph>
+      
+    </paragraph>
+  </draft>
+
+  <post index="0509" date="20/10/2012" std-date="2012-10-20T16:00:00.00Z" title="10th Anniversary: win a copy of OpenGL Insights">
+    <meta>
+      <tag>gtc-tech-g-truc-source</tag>
+    </meta>
+
+    <paragraph>
+      To celebrate G-truc Creation 10th Anniversary, I propose a contest to win a copy of <link href="http://openglinsights.com">OpenGL Insights</link>. For this, answer to the following questions in <link href="mailto:mail@g-truc.net">an email</link>. 
+      A winner will be randomly selected from those submitting the best answers.
+    </paragraph>
+
+    <list name="With OpenGL 4.3...">
+      <list-element>What shader stages are available?</list-element>
+      <list-element>What's the minimum maximum number of uniform blocks we can use simultanously?</list-element>
+      <list-element>What's the minimum maximum size for a uniform block?</list-element>
+      <list-element>What ressources can only be indexed with dynamically uniform expressions?</list-element>
+      <list-element>How to ensure that an OpenGL implementation will be able to build GLSL shaders in parallels?</list-element>
+    </list>
+
+    <paragraph>
+      Submissions are running until Sunday 28 October, good luck!
+    </paragraph>
+  </post>
+
+  <post index="0508" date="20/10/2012" std-date="2012-10-20T11:00:00.00Z" title="G-Truc Creation, 10 years old today!">
+    <meta>
+      <tag>gtc-tech-g-truc-source</tag>
+    </meta>
+
+    <paragraph>
+      Aniversaries are not an information which makes me typically not really keen to celebrate them. 10 years, I thought I could make an effort.
+    </paragraph>
+
+    <paragraph>
+      After my very first real scale programming experience on <link href="project-0002.html">WormsHL</link> 
+      (<link href="http://www.dailymotion.com/video/x2acqi_wormshl-teaser-beta-2-0_videogames">video</link>), an Half-Life modification, I had the desire to discover, learn, do and share more.
+      Somehow, I was inspired by Micheal Abrash's <link href="http://www.amazon.com/Michael-Abrashs-Graphics-Programming-Special/dp/1576101746">Black book</link> maybe less by the content than the reasonning approach around the content. 
+      This leaded me to explore the code of <link href="project-0003.html">Quake 2</link> and wrote my first OpenGL experiment, a <link href="project-0004.html">particle effect</link> that I still find somewhat pretty... 
+      With WormsHL, we used to have website and actually each "modification" had its website so I guess I didn't really thought of it, I just made a website: <link href="project-0005.html#menu">G-Truc Creation</link> was born.
+    </paragraph>
+
+    <paragraph>
+      Why this name "G-Truc Creation"? Let say that I have never been driven by a sense of rationnality as I am more focus doing "stuff", which is the direct translation for the French word "Truc". 
+      Associated with the first letter of my username that gave me the name of my first ever program, "G-Truc", written in <link href="http://en.wikipedia.org/wiki/GW-BASIC">GW Basic</link> about five years before. 
+      I gave more thought to "Creation". It's the symbol of what actually matters when we write code. 
+    </paragraph>
+
+    <paragraph>
+      10 years later "stuff" have been accumulate here and I have lost really a few thanks to my use of XML files for my data. G-Truc Creation remains the only website that requires to be built to be updated! 
+      Very basic but afterall, the content mostly survive thanks to this process. Unfortunately, some issues from the beginning remains: It's impossible to find anything on G-Truc Creation without using Google!
+    </paragraph>
+
+    <paragraph>
+      This is my space of freedom which evolve to become mostly an OpenGL space with few projects that became somewhat useful for the community: 
+      <link href="http://glm.g-truc.net">GLM</link> and <link href="https://github.com/g-truc">The OpenGL Samples Pack</link>. 
+      I really hope that in the future that I will be able to build a good image library for OpenGL. So far <link href="https://github.com/g-truc/gli">GLI</link> remains behind this goal but hope remains as
+      this is the code I am working on the most these days on my personal time and version 4 is promissing: 
+      Nearly 50x better performance for loading texture in VC debug build, About 50% better performance in release mode; zero copy and copy on write; support of all texture targets (3D, 2D Arrays, cube maps) throught DDS files.
+    </paragraph>
+
+    <paragraph>
+      G-Truc Creation is a set of projects but also some writing mainly <link href="http://www.g-truc.net/project-0032.html#menu">OpenGL specification reviews</link> but also what I call tips: 
+      <link href="http://www.g-truc.net/post-0263.html#menu">Using sRGB color space with OpenGL</link>, 
+      <link href="http://www.g-truc.net/post-0335.html#menu">Texture compression formats: lost in translation</link>, 
+      <link href="http://www.g-truc.net/post-0340.html#menu">First look at BPTC (BC7) texture compression format</link>,
+      <link href="http://www.g-truc.net/post-0256.html#menu">Generate mipmaps</link>.
+    </paragraph>
+
+    <paragraph>
+      Finally, G-Truc Creation gave me the opportunity to work on <link href="http://openglinsights.com">OpenGL Insights</link>! I can't wait to start working on the next one.
+    </paragraph>
+
+    <paragraph>
+      I hope you will continue to enjoy G-Truc Creation and if this website has anyhow helped you to contribute to the OpenGL community, it met its purpose.
+    </paragraph>
+
+    <image title="First ever record of G-Truc Creation"
+        color="white"
+        img="./post/0508-small.png"
+        href="./post/0508.png" />
+  </post>
+
+  <post index="0507" date="19/10/2012" std-date="2012-10-19T02:00:00.00Z" title="Week 39 photograph: Midnight hike">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -64,7 +158,7 @@
       color="black"
       img="./photo/2012-39-960.jpg"
       href="./photo/2012-39.jpg" />
-  </draft>
+  </post>
 
   <post index="0506" date="13/10/2012" std-date="2012-10-13T17:00:00.00Z" title="Week 38 photograph: Rye legacy">
     <meta>
@@ -30000,6 +30094,8 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
+
 
 
 
