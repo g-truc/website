@@ -68,6 +68,113 @@
     </paragraph>
   </draft>
 
+    <draft index="0510" date="23/10/2012" std-date="2012-10-23T23:30:00.00Z" title="GL_AMD_sparse_texture comments">
+        <meta>
+            <tag>gtc-tech-opengl-tips</tag>
+        </meta>
+        
+        <paragraph>
+            We have heard of AMD_sparse_texture for a long time with excitement from many programmeurs: Having textures for which we can allocate and unallocate memory pages sounds great especially for virtual texturing where we need to address large amount of data so that we can't espect that it would entierely hold into memory. Interesting conscequence: sparse texture allows sampling across texture pages.
+        </paragraph>
+        
+        <code title="Creating a sparse texture">
+            <line>
+                <comment>// Create a buffer object for the query result</comment>
+            </line>
+            <line>
+                glGenTextures(1, &amp;TextureName);
+            </line>
+            <line>
+                glTextureStorageSparseAMD(TextureName, GL_TEXTURE_2D, 
+            </line>
+            <line align="32px">
+                GL_RGBA8, <comment>// Internal format</comment>
+            </line>
+            <line align="32px">
+                16384, 16384, 1,<comment>// width, height, depth</comment>
+            </line>
+            <line align="32px">
+                1, // layers
+            </line>
+            <line align="32px">
+                GL_TEXTURE_STORAGE_SPARSE_BIT_AMD); // 
+            </line>
+            <line>
+                <comment>// Get query results to buffer object</comment>
+            </line>
+            <line>
+                glBindBuffer(GL_QUERY_BUFFER_AMD, queryBuffer);
+            </line>
+            <line>
+                glGetQueryObjectuiv(queryId, GL_QUERY_RESULT, BUFFER_OFFSET(0));
+            </line>
+            <line>
+                
+            </line>
+            <line>
+                <comment>// Bind query result buffer as uniform buffer</comment>
+            </line>
+            <line>
+                glBindBufferBase(GL_UNIFORM_BUFFER, 0, queryBuffer);
+            </line>
+            <line>
+                ...
+            </line>
+            <line>
+                <comment>// --- Shader ---</comment>
+            </line>
+            <line>
+                ...
+            </line>
+            <line>
+                uniform queryResult {
+            </line>
+            <line align="32px">
+                uint samplesPassed;
+            </line>
+            <line>
+                }
+            </line>
+            <line>
+                
+            </line>
+            <line>
+                void main() {
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line align="32px">
+                if (samplesPassed > threshold) {
+            </line> 
+            <line align="64px">
+                <comment>// Complex processing</comment>
+            </line>
+            <line align="64px">
+                ...
+            </line>
+            <line align="32px">
+                } else {
+            </line>
+            <line align="64px">
+                <comment>// Simplified processing</comment>
+            </line>
+            <line align="64px">
+                ...
+            </line>
+            <line align="32px">
+                }
+            </line>  
+            <line>
+                }
+            </line>
+        </code>
+        
+        <paragraph>
+            
+        </paragraph>
+    </draft>
+    
   <post index="0509" date="20/10/2012" std-date="2012-10-20T16:00:00.00Z" title="10th Anniversary: win a copy of OpenGL Insights">
     <meta>
       <tag>gtc-tech-g-truc-source</tag>
