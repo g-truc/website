@@ -79,7 +79,7 @@
         
         <code title="Creating a sparse texture">
             <line>
-                <comment>// Create a buffer object for the query result</comment>
+                <comment>// Create a sparse texture</comment>
             </line>
             <line>
                 glGenTextures(1, &amp;TextureName);
@@ -97,82 +97,56 @@
                 1, // layers
             </line>
             <line align="32px">
-                GL_TEXTURE_STORAGE_SPARSE_BIT_AMD); // 
+                GL_TEXTURE_STORAGE_SPARSE_BIT_AMD); // Handle the texture as a sparse texture. (Not a hint)
             </line>
             <line>
-                <comment>// Get query results to buffer object</comment>
-            </line>
-            <line>
-                glBindBuffer(GL_QUERY_BUFFER_AMD, queryBuffer);
-            </line>
-            <line>
-                glGetQueryObjectuiv(queryId, GL_QUERY_RESULT, BUFFER_OFFSET(0));
-            </line>
-            <line>
-                
-            </line>
-            <line>
-                <comment>// Bind query result buffer as uniform buffer</comment>
-            </line>
-            <line>
-                glBindBufferBase(GL_UNIFORM_BUFFER, 0, queryBuffer);
-            </line>
-            <line>
-                ...
-            </line>
-            <line>
-                <comment>// --- Shader ---</comment>
-            </line>
-            <line>
-                ...
-            </line>
-            <line>
-                uniform queryResult {
+                <comment>// Allocate the texture pagess of the sparse texture</comment>
             </line>
             <line align="32px">
-                uint samplesPassed;
-            </line>
-            <line>
-                }
-            </line>
-            <line>
-                
-            </line>
-            <line>
-                void main() {
+                glTextureSubImage2DEXT( <comment>// Using the classic texture sub image function.</comment>
             </line>
             <line align="32px">
-                ...
-            </line>
-            <line align="32px">
-                if (samplesPassed > threshold) {
-            </line> 
-            <line align="64px">
-                <comment>// Complex processing</comment>
+                for(int i = 0; i &lt; n; ++i)
             </line>
             <line align="64px">
                 ...
             </line>
-            <line align="32px">
-                } else {
+            <line align="64px">
+				TextureName, GL_TEXTURE_2D,
             </line>
             <line align="64px">
-                <comment>// Simplified processing</comment>
+				GLint(Level),
             </line>
             <line align="64px">
-                ...
+				GLint(Position.x), GLint(Position.y),
             </line>
-            <line align="32px">
-                }
-            </line>  
-            <line>
-                }
+            <line align="64px">
+				GLsizei(Size.x), GLsizei(Size.y),
+            </line>
+            <line align="64px">
+				GL_RGBA, GL_UNSIGNED_BYTE, Texture[0].data());
             </line>
         </code>
         
         <paragraph>
-            
+            For
         </paragraph>
+        
+        <code title="Query texture page sizes">
+            <line>
+                GLint PageSizeX(0), PageSizeY(0), PageSizeZ(0);
+            </line>
+            <line>
+                glGetInternalformativ(GL_TEXTURE_2D, GL_RGBA8, GL_VIRTUAL_PAGE_SIZE_X_AMD, 1, &amp;PageSizeX);
+            </line>
+            <line>
+                glGetInternalformativ(GL_TEXTURE_2D, GL_RGBA8, GL_VIRTUAL_PAGE_SIZE_Y_AMD, 1, &amp;PageSizeY);
+            </line>
+            <line>
+                glGetInternalformativ(GL_TEXTURE_2D, GL_RGBA8, GL_VIRTUAL_PAGE_SIZE_Z_AMD, 1, &amp;PageSizeZ);
+            </line>
+        </code>
+        
     </draft>
     
   <post index="0509" date="20/10/2012" std-date="2012-10-20T16:00:00.00Z" title="10th Anniversary: win a copy of OpenGL Insights">
