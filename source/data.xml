@@ -174,7 +174,18 @@
             
         </paragraph>
     </draft>
-  
+
+  <post index="0511" date="27/10/2012" std-date="2012-10-27T23:00:00.00Z" title="Week 41 photograph: Filling the stomach of roving seals">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-41-960.jpg"
+      href="./photo/2012-41.jpg" />
+  </post>
+
   <post index="0510" date="23/10/2012" std-date="2012-10-23T23:00:00.00Z" title="Week 40 photograph: The real and its double">
     <meta>
       <tag>gtc-crea-photograph</tag>
@@ -184,7 +195,7 @@
       color="black"
       img="./photo/2012-40-960.jpg"
       href="./photo/2012-40.jpg" />
-  </post>  
+  </post>
   
   <post index="0509" date="20/10/2012" std-date="2012-10-20T16:00:00.00Z" title="10th Anniversary: win a copy of OpenGL Insights">
     <meta>
