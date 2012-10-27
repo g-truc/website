@@ -68,7 +68,7 @@
     </paragraph>
   </draft>
 
-    <draft index="0510" date="23/10/2012" std-date="2012-10-23T23:30:00.00Z" title="GL_AMD_sparse_texture comments">
+    <draft index="0513" date="23/10/2012" std-date="2012-10-23T23:30:00.00Z" title="GL_AMD_sparse_texture comments">
         <meta>
             <tag>gtc-tech-opengl-tips</tag>
         </meta>
@@ -129,7 +129,7 @@
         </code>
         
         <paragraph>
-            For
+            For 
         </paragraph>
         
         <code title="Query texture page sizes">
@@ -148,6 +148,53 @@
         </code>
         
     </draft>
+    
+    <post index="0512" date="28/10/2012" std-date="2012-10-28T16:00:00.00Z" title="10th Anniversary contest: and the winner is...">
+        <meta>
+            <tag>gtc-tech-g-truc-source</tag>
+        </meta>
+        <paragraph>
+            Congratulation to Wilhansen Li who answered all the questions correctly!
+        </paragraph>
+        
+        <subtitle>What shader stages are available?</subtitle>
+        <paragraph>
+            Vertex shader, Tessellation Control Shader, Tessellation Evaluation Shader, Geometry Shader, Fragment Shader, Compute Shader.
+        </paragraph>
+        
+        <subtitle>What's the minimum maximum number of uniform blocks we can use simultanously?</subtitle>
+        <paragraph>
+            14 blocks per stage. This limits has been raised with OpenGL 4.3 from 12 to 14 and is given by querying GL_MAX_VERTEX_UNIFORM_BLOCKS, GL_MAX_TESS_CONTROL_UNIFORM_BLOCKS, GL_MAX_TESS_EVALUATION_UNIFORM_BLOCKS, GL_MAX_GEOMETRY_UNIFORM_BLOCKS, GL_MAX_GEOMETRY_UNIFORM_BLOCKS and GL_MAX_COMPUTE_UNIFORM_BLOCKS.
+            
+            In practice, AMD implementation supports 15 blocks per stage, Intel implementation supports 12 blocks per stage and NVIDIA implementation supports 14 blocks per stage.
+        </paragraph>
+        
+        <subtitle>What's the minimum maximum size for a uniform block?</subtitle>
+        <paragraph>
+            The minimum maximum size for a uniform block is given by the GL_MAX_UNIFORM_BLOCK_SIZE query. OpenGL 4.3 set this minimum to 16384 bytes. This limit remains the same as the one set when the <link href="">GL_ARB_uniform_buffer_object</link>
+            was introduce as part of OpenGL 3.1 specification. In practice, AMD and NVIDIA implementation support 65536 bytes for this limit but Intel implementation is limited to 16384 bytes.
+            
+        <paragraph>
+        
+        <list name="With OpenGL 4.3...">
+            <list-element>What shader stages are available?</list-element>
+            <list-element>What's the minimum maximum number of uniform blocks we can use simultanously?</list-element>
+            <list-element>What's the minimum maximum size for a uniform block?</list-element>
+            <list-element>What ressources can only be indexed with dynamically uniform expressions?</list-element>
+            <list-element>How to ensure that an OpenGL implementation will be able to build GLSL shaders in parallels?</list-element>
+        </list>
+    </post>
+    
+    <post index="0511" date="27/10/2012" std-date="2012-10-27T02:00:00.00Z" title="Week 41 photograph: Freedom">
+        <meta>
+            <tag>gtc-crea-photograph</tag>
+        </meta>
+        
+        <image
+        color="black"
+        img="./photo/2012-41-960.jpg"
+        href="./photo/2012-41.jpg" />
+    </post>
     
   <post index="0509" date="20/10/2012" std-date="2012-10-20T16:00:00.00Z" title="10th Anniversary: win a copy of OpenGL Insights">
     <meta>
