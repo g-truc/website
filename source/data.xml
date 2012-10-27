@@ -74,7 +74,7 @@
         </meta>
         
         <paragraph>
-            We have heard of AMD_sparse_texture for a long time with excitement from many programmeurs: Having textures for which we can allocate and unallocate memory pages sounds great especially for virtual texturing where we need to address large amount of data so that we can't espect that it would entierely hold into memory. Interesting conscequence: sparse texture allows sampling across texture pages.
+            We have heard of <link href="http://www.opengl.org/registry/specs/AMD/sparse_texture.txt">AMD_sparse_texture</link> for quite some time but finally the extension is available. It rose quite some excitement from OpenGL programmers: Having textures for which we can allocate and unallocate memory pages sounds great especially for virtual texturing where we need to address large amount of data. It handles case where wecan't espect that all the textures can fit entierely into graphics memory. Sparse texture allows sampling across texture pages without artefacts even with high anisotropic filtering.
         </paragraph>
         
         <code title="Creating a sparse texture">
@@ -100,16 +100,21 @@
                 GL_TEXTURE_STORAGE_SPARSE_BIT_AMD); // Handle the texture as a sparse texture. (Not a hint)
             </line>
             <line>
-                <comment>// Allocate the texture pagess of the sparse texture</comment>
+            </line>
+            <line>
+                <comment>// Allocate the texture pages of the sparse texture</comment>
+            </line>
+            <line align="0px">
+                <keyword>for</keyword>(std::size_t i = 0; i &lt; n; ++i)
+            </line>
+            <line align="0px">
+                {
+            </line>
+            <line align="32px">
+                ...
             </line>
             <line align="32px">
                 glTextureSubImage2DEXT( <comment>// Using the classic texture sub image function.</comment>
-            </line>
-            <line align="32px">
-                for(int i = 0; i &lt; n; ++i)
-            </line>
-            <line align="64px">
-                ...
             </line>
             <line align="64px">
 				TextureName, GL_TEXTURE_2D,
@@ -126,10 +131,19 @@
             <line align="64px">
 				GL_RGBA, GL_UNSIGNED_BYTE, Texture[0].data());
             </line>
+            <line align="0px">
+                }
+            </line>
         </code>
         
         <paragraph>
-            For 
+                Texture pages can be deleted using the same <codeword>glTextureSubImage2DEXT</codeword> function but passing NULL for the data.
+            This behavours highlight a design issue with this extension which prevents allocating a texture page without passing data to fill the texture pages.
+            A workaround to reduce the performance impact is to source a pack buffer object, reading (even garbage) from GPU memory instead of through the PCI express bus.
+        </paragraph>
+        
+        <paragraph>
+            The texture page size must be multiple of the value returned by the GL_VIRTUAL_PAGE_SIZE_[X,Y,Z]_AMD queries.
         </paragraph>
         
         <code title="Query texture page sizes">
@@ -147,14 +161,88 @@
             </line>
         </code>
         
+        <paragraph>
+            In practice the texture page memory size must be a multiple a 64 KB so that if the texture internal format store large texels (RGBA32F = 16 bytes per texels), the number of texels per page will be reduced only bound by the 64 KB memory size. Hence, the texture page dimensions for a RGBA32F texture is 64 by 64 texels. For a DXT1/BC1 texture, a texel is encoded with 4 bits which results in a mimimum of 256 by 256 texels per texture page.
+        </paragraph>
+        
+        <paragraph>
+            Sparse textures can be used for texture 2d, texture 2d array and texture 3d. Unfortunately, on Southern Islands GPUs, the texture pages dimensions are always the same shape, flat 2D slices even for texture 3d. An application (<link href="http://realtimevoxels.blogspot.fr/">global illumiation with sparse voxel octrees</link>) could take advantage of 3d texture pages (dices instead of slices) for texture 3d, unfortunately this shape reflects the texture 3d layout of Southern Islands GPUs <link href="http://en.wikipedia.org/wiki/Z-order">memory layout</link>.
+        </paragraph>
+        
+        <paragraph>
+            On the GLSL size, the usual texture sampling language can be used to sample a sparse texture. However, in some cases it can be useful to sample in area where no texture pages have been allocated. For this, <link href="http://www.opengl.org/registry/specs/AMD/sparse_texture.txt">AMD_sparse_texture</link> provides some new GLSL functions that return a code qualified the result of the sampling. 
+        </paragraph>
+        
+        <code title="New GLSL functions returning a code:">
+            <line>
+                <keyword>#version</keyword> 420 core
+            </line>
+            <line>
+                <keyword>#extension</keyword> AMD_sparse_texture : require
+            </line>
+            <line>
+            </line>
+            <line>
+                <keyword>layout</keyword>(<keyword>binding</keyword> = DIFFUSE) <keyword>uniform sampler2D</keyword> Diffuse;
+            </line>
+            <line>
+                ...
+            </line>
+            <line>
+                
+            </line>
+            <line>
+                <keyword>void</keyword> main() {
+            </line>
+            <line align="32px">
+                <keyword>vec4</keyword> Color;
+            </line>
+            <line align="32px">
+                <keyword>int</keyword> Code = sparseTexture(Diffuse, Texcoord, Color);
+            </line>
+            <line align="32px">
+                <comment>// Did we fetch somewhere all the texels are resident?</comment>
+            </line>
+            <line align="32px">
+                <keyword>bool</keyword> Resident = sparseTexelResident(Code);
+            </line>
+            <line align="32px">
+                <comment>// Do we need a texel from any LOD lower than the user specified LOD warning threshold?</comment>
+            </line>
+            <line align="32px">
+                <keyword>bool</keyword> MinLodWarning = sparseTexelMinLodWarning(Code);
+            </line>
+                <comment>// What level was it?</comment>
+            <line align="32px">
+                <keyword>int</keyword> LodWarningFetch = sparseTexelLodWarningFetch(Code);
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line>
+                }
+            </line>
+        </code>
+        
+        <paragraph>
+                It is also possible to do rendering to sparse framebuffer but unfortunately not to depth textures. Supporting depth textures could make high resolution shadow mapping a lot easier and particularly memory efficient.
+        </paragraph>
+        
+        <paragraph>
+            Even if this extension remains quite experimental from my opinion, it defines one of the key feature for post OpenGL 4 hardware. Considering that NVIDIA GPUs support some form of virtual memory system, I wouldn't be surprise to see them releasing an implementation with at least a subset of the functionnalities given by this extension. 
+        </paragraph>
+        
+        <paragraph>
+            Some people will argue that NVIDIA supports <link href="http://www.opengl.org/registry/specs/NV/bindless_texture.txt">bindless textures</link> and hence NVIDIA doesn't need sparse textures. This is either a misleading argument, a misunderstanding of the features or simply a marketing lie. Bindless textures are great but bindless and sparse textures are simply complementary features. Bindless textures allows an unlimited number of textures while sparse textures ensure filtering between texture pages. We need both!
+        </paragraph>
     </draft>
     
     <post index="0512" date="28/10/2012" std-date="2012-10-28T16:00:00.00Z" title="10th Anniversary contest: and the winner is...">
         <meta>
-            <tag>gtc-tech-g-truc-source</tag>
+            <tag>gtc-tech-opengl-tips</tag>
         </meta>
         <paragraph>
-            Congratulation to Wilhansen Li who answered all the questions correctly!
+            Congratulation to <bold>Wilhansen Li</bold> who answered all the questions correctly and won a copy of <link href="http://openglinsights.com/">OpenGL Insights</link>! Here is the answers with some details.
         </paragraph>
         
         <subtitle>What shader stages are available?</subtitle>
@@ -164,25 +252,214 @@
         
         <subtitle>What's the minimum maximum number of uniform blocks we can use simultanously?</subtitle>
         <paragraph>
-            14 blocks per stage. This limits has been raised with OpenGL 4.3 from 12 to 14 and is given by querying GL_MAX_VERTEX_UNIFORM_BLOCKS, GL_MAX_TESS_CONTROL_UNIFORM_BLOCKS, GL_MAX_TESS_EVALUATION_UNIFORM_BLOCKS, GL_MAX_GEOMETRY_UNIFORM_BLOCKS, GL_MAX_GEOMETRY_UNIFORM_BLOCKS and GL_MAX_COMPUTE_UNIFORM_BLOCKS.
+            14 blocks per stage. This limits has been raised with OpenGL 4.3 from 12 to 14 and is given by querying <codeword>GL_MAX_VERTEX_UNIFORM_BLOCKS</codeword>, <codeword>GL_MAX_TESS_CONTROL_UNIFORM_BLOCKS</codeword>, <codeword>GL_MAX_TESS_EVALUATION_UNIFORM_BLOCKS</codeword>, <codeword>GL_MAX_GEOMETRY_UNIFORM_BLOCKS</codeword>, <codeword>GL_MAX_GEOMETRY_UNIFORM_BLOCKS</codeword> and <codeword>GL_MAX_COMPUTE_UNIFORM_BLOCKS</codeword>.
             
             In practice, AMD implementation supports 15 blocks per stage, Intel implementation supports 12 blocks per stage and NVIDIA implementation supports 14 blocks per stage.
         </paragraph>
         
         <subtitle>What's the minimum maximum size for a uniform block?</subtitle>
         <paragraph>
-            The minimum maximum size for a uniform block is given by the GL_MAX_UNIFORM_BLOCK_SIZE query. OpenGL 4.3 set this minimum to 16384 bytes. This limit remains the same as the one set when the <link href="">GL_ARB_uniform_buffer_object</link>
+            The minimum maximum size for a uniform block is given by the <codeword>GL_MAX_UNIFORM_BLOCK_SIZE</codeword> query. OpenGL 4.3 set this minimum to 16384 bytes. This limit remains the same as the one set when the <link href="http://www.opengl.org/registry/specs/ARB/uniform_buffer_object.txt">GL_ARB_uniform_buffer_object</link>
             was introduce as part of OpenGL 3.1 specification. In practice, AMD and NVIDIA implementation support 65536 bytes for this limit but Intel implementation is limited to 16384 bytes.
-            
-        <paragraph>
+        </paragraph>
         
-        <list name="With OpenGL 4.3...">
-            <list-element>What shader stages are available?</list-element>
-            <list-element>What's the minimum maximum number of uniform blocks we can use simultanously?</list-element>
-            <list-element>What's the minimum maximum size for a uniform block?</list-element>
-            <list-element>What ressources can only be indexed with dynamically uniform expressions?</list-element>
-            <list-element>How to ensure that an OpenGL implementation will be able to build GLSL shaders in parallels?</list-element>
-        </list>
+        <subtitle>What ressources can only be indexed with dynamically uniform expressions?</subtitle>
+        <paragraph>
+            Dynamically uniform expressions restrict the access to ressources within a shader stage set of invocations, that is to say within a work group. Every ressources are evolved: textures, images, atomic counter buffer, uniform blocks and shader storage buffers. This is both true for indexing arrays of these resources and selecting ressources through if statements. For example, it is not legal to use a built-in variable that evolves for each shader invocation to index ressources. However, this index might be used to index ressources in a subsequent shader stage where all the shader invocations per work group will access the same ressources.
+        </paragraph>
+        
+        <code title="Illegal indexing of uniform blocks:">
+            <line>
+                <comment>// --- Vertex Shader ---</comment>
+            </line>
+            <line>
+            </line>
+            <line>
+                <keyword>layout</keyword>(<keyword>binding</keyword> = INSTANCES) <keyword>uniform</keyword> perInstance {
+            </line>
+            <line align="32px">
+                    ...
+            </line>
+            <line>
+                } Instance[MAX_INSTANCE_COUNT];
+            </line>
+            <line>
+            </line>
+            <line>
+                <keyword>void</keyword> main() {
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line align="32px">
+                <comment>// /!\ Any indexing of ressources, no error but the rendering result is undefined. /!\</comment>
+            </line>
+            <line align="32px">
+                <keyword>mat4</keyword> Transform = Instance[gl_InstanceID].Transform;
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line>
+                }
+            </line>
+        </code>
+  
+        <code title="Illegal ressource selection of uniform blocks:">
+            <line>
+                <comment>// --- Vertex Shader ---</comment>
+            </line>
+            <line>
+            </line>
+            <line>
+                <keyword>layout</keyword>(<keyword>binding</keyword> = LOW_QUALITY_LOD) <keyword>uniform</keyword> lowQuality {
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line>
+                } LowQuality;
+            </line>
+            <line>
+            </line>
+            <line>
+                <keyword>layout</keyword>(<keyword>binding</keyword> = HIGH_QUALITY_LOD) <keyword>uniform</keyword> highQuality {
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line>
+            </line>
+            <line>
+                } HighQuality;
+            </line>
+            <line>
+                <keyword>vec4</keyword> highQualityTransform() {
+            </line>
+            <line align="32px">
+                ... <comment>// Access HighQuality block</comment>
+            </line>
+            <line>
+                }
+            </line>
+            <line>
+            </line>
+            <line>
+                <keyword>vec4</keyword> lowQualityTransform() {
+            </line>
+            <line align="32px">
+                ... <comment>// Access LowQuality block</comment>
+            </line>
+            <line>
+                }
+            </line>
+            <line>
+            </line>
+            <line>
+                <keyword>void</keyword> main() {
+            </line>
+            <line align="32px">
+                if(isObjectCloseToCamera())
+            </line>
+            <line align="64px">
+                    gl_Position = highQualityTransform();
+            </line>
+            <line align="32px">
+                else
+            </line>
+            <line align="64px">
+                    gl_Position = lowQualityTransform();
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line>
+                }
+            </line>
+        </code>
+        
+        <subtitle>How to ensure that an OpenGL implementation will be able to build GLSL shaders in parallels?</subtitle>
+        <paragraph>
+            Single core CPU performances haven't significantly evolve for years now so that it's important to take advantge of the multi core architechture to ensure that shader compilation will be as fast as possible which is especially important for large application building thousand of shaders. For this it is extremely simple that the application only need to issue all the compilation commands before querying the individual compilation results.
+        </paragraph>
+        
+        <code title="Single CPU core shader compilation:">
+            <line>
+                for(std::size_t i = 0; i &lt; n; ++n) {
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line align="32px">
+                GLuint Name = glCreateShader(Type);
+            </line>
+            <line align="32px">
+                glShaderSource(Name, 1, &amp;Source, NULL);
+            </line>
+            <line align="32px">
+                glCompileShader(Name);
+            </line>
+            <line>
+                
+            </line>
+            <line align="32px">
+                GLint Result = GL_FALSE;
+            </line>
+            <line align="32px">
+                glGetShaderiv(Name, GL_COMPILE_STATUS, &amp;Result);
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line>
+                }
+            </line>
+        </code>
+        
+        <code title="Multiple CPU core shader compilation:">
+            <line>
+                for(std::size_t i = 0; i &lt; n; ++n) {
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line align="32px">
+                GLuint Name = glCreateShader(Type);
+            </line>
+            <line align="32px">
+                glShaderSource(Name, 1, &amp;Source, NULL);
+            </line>
+            <line align="32px">
+                glCompileShader(Name);
+            </line>
+            <line>
+                }
+            </line>
+            <line>
+                
+            </line>
+            <line>
+                for(std::size_t i = 0; i &lt; n; ++n) {
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line align="32px">
+                GLint Result = GL_FALSE;
+            </line>
+            <line align="32px">
+                glGetShaderiv(ShaderName, GL_COMPILE_STATUS, &amp;Result);
+            </line>
+            <line align="32px">
+                ...
+            </line>
+            <line>
+                }
+            </line>
+            <line>
+                
+            </line>
+        </code>
     </post>
     
     <post index="0511" date="27/10/2012" std-date="2012-10-27T02:00:00.00Z" title="Week 41 photograph: Freedom">
