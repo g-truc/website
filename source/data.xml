@@ -55,17 +55,79 @@
     </source-list>
   </draft>
 
-  <draft index="0999" date="14/08/2012" std-date="2012-08-14T23:30:00.00Z" title="Surviving without gl_DrawID">
+  <draft index="0997" date="27/10/2012" std-date="2012-10-27T23:30:00.00Z" title="Surviving without gl_DrawID">
     <meta>
       <tag>gtc-tech-opengl-tips</tag>
     </meta>
     <paragraph>
-      
+      <link href="http://www.opengl.org/registry/specs/AMD/multi_draw_indirect.txt">AMD_multi_draw_indirect</link>
+        a functionality that Direct3D 11 programmer can be particularly jaleous as it reached OpenGL 4.3 specification but this feature is still missing on the Direct3D 11 world.
+        Direct3D 11 and OpenGL 4.0 introduced the draw indirect functionnality allowing to submit a draw using parameters stored in a buffer object.
+        <link href="http://www.opengl.org/registry/specs/AMD/multi_draw_indirect.txt">AMD_multi_draw_indirect</link> extend this feature by allowing to submit multiple draw in a single call, protencially moving a CPU loop to a GPU command processor loop, hence potencially significantly reducing the CPU overhead and the possible number of draws per frame.
+        Unfortunately, unlike instanced draw, OpenGL doesn't provide a unique identifier per draw (gl_DrawID) for each draw... 
     </paragraph>
-
+      
+      <paragraph>
+          A first approach we could thought of is to use an atomic counter and increment each draw it's value when gl_VertexID is equal to 0. Unfortunately, this idea is not working because OpenGL doesn't provide garantie on the order of excution so that we can't be sure with this method that the first draw will be identified with the value 0. On AMD hardware this behaviours is almost possible but not all the time. On NVIDIA hardware atomic counter are asynchronously executed which nearly garantee that we will never have the right identifier for a draw.
+      </paragraph>
+      
+      <paragraph>
+        Fortunately, there is one method we can use using a vertex attribute with a divisor and base instance. 
+      </paragraph>
+      <code title="DrawID with a divisor and base instance">
+          <line>
+              <comment>// Create a vertex array object with a DrawID attribute</comment>
+          </line>
+          <line>
+              glGenVertexArrays(1, &amp;VertexArrayName);
+          </line>
+          <line>
+              glBindVertexArray(VertexArrayName);
+          </line>
+          <line align="32px">
+              glBindBuffer(GL_ARRAY_BUFFER, BufferName[buffer::DRAW_ID]);
+          </line>
+          <line align="32px">
+              glVertexAttribIPointer(DRAW_ID, 1, GL_UNSIGNED_INT, sizeof(glm::uint), 0);
+          </line>
+          <line align="32px">
+              glVertexAttribDivisor(DRAW_ID, 1);
+          </line>
+          <line align="32px">
+              glBindBuffer(GL_ARRAY_BUFFER, 0);
+          </line>
+          <line align="32px">
+              glEnableVertexAttribArray(DRAW_ID);
+          </line>
+          <line align="32px">
+              glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, BufferName[buffer::ELEMENT]); 
+          </line>
+          <line>
+              glBindVertexArray(0);
+          </line>
+          <line>
+          </line>
+        </code>
     <paragraph>
-      
+        With a divisor equal to 1, all the vertices of a draw will access to the same buffer value. Then, for each draw we use the base instance parameter as an offset to set where in the buffer we are reading the DrawID value. The base instance value act here as an indirection value which increases the execution latency but allow to set a specific value for each DrawID, providing a behaviours more advanced than a simple increase of the value for each draw. This behaviours allows to maximize the usage of each draws by the application. When each draw is associated with a specific mesh, for a specific frame a lot of draws will be useless for the rendering. This bahaviours wouldn't matter if discarding a draw was particularly efficient but it isn't on both Kepler and Southern Islands architechtures. By being able to assign a specific DrawID to each draw we can assign a specific mesh for each draw allowing to build the needed list of meshes for each draw.
     </paragraph>
+      <code title="Content of the DrawID buffer for three draws">
+          <line>
+              GLsizei const DrawDataCount(3);
+          </line>
+          <line>
+              GLsizeiptr const DrawSize = DrawDataCount * sizeof(glm::uint);
+          </line>
+          <line>
+              glm::uint const DrawIDData[DrawDataCount] = {
+          </line>
+          <line align="32px">
+              76, 64, 321 <comment>Each value is the identifier of a specific mesh.</comment>
+          </line>
+          <line>
+              };
+          </line>
+    </code>
   </draft>
 
     <draft index="0513" date="23/10/2012" std-date="2012-10-23T23:30:00.00Z" title="GL_AMD_sparse_texture comments">
@@ -74,8 +136,7 @@
         </meta>
         
         <paragraph>
-            We have heard of <link href="http://www.opengl.org/registry/specs/AMD/sparse_texture.txt">AMD_sparse_texture</link> for quite some time but finally the extension is available. It rose quite some excitement from OpenGL programmers: Having textures for which we can allocate and unallocate memory pages sounds great especially for virtual texturing where we need to address large amount of data. It handles case where wecan't espect that all the textures can fit entierely into graphics memory. Sparse texture allows sampling across texture pages without artefacts even with high anisotropic filtering.
-        </paragraph>
+            We have heard of <link href="http://www.opengl.org/registry/specs/AMD/sparse_texture.txt">AMD_sparse_texture</link> for quite some time but finally the extension is available. It rose quite some excitement from OpenGL programmers: Having textures for which we can allocate and unallocate memory pages sounds great especially for virtual texturing where we need to address large amount of data. It handles case where wecan't espect that all the textures can fit entierely into graphics memory. Sparse texture allows sampling across texture pages without artefacts even with high anisotropic filtering.         </paragraph>
         
         <code title="Creating a sparse texture">
             <line>
