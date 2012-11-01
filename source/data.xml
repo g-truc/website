@@ -308,16 +308,15 @@
             Some people will argue that NVIDIA supports <link href="http://www.opengl.org/registry/specs/NV/bindless_texture.txt">bindless textures</link> and hence NVIDIA doesn't need sparse textures. This is either a misleading argument, a misunderstanding of the features or simply a marketing lie. Bindless textures are great but bindless and sparse textures are simply complementary features. Bindless textures allows an unlimited number of textures while sparse textures ensure filtering between texture pages. We need both!
         </paragraph>
     </draft>
-    
-    
-    <draft index="0514" date="01/11/2012" std-date="2012-11-01T23:30:00.00Z" title="October 2012 OpenGL drivers status">
+
+  <post index="0514" date="01/11/2012" std-date="2012-11-01T23:30:00.00Z" title="October 2012 OpenGL drivers status">
         <meta>
             <tag>gtc-tech-opengl-status</tag>
         </meta>
         
         <paragraph>
             With the release of OpenGL 4.3 at Siggraph, NVIDIA as released an OpenGL 4.3 drivers (<link href="http://www.guru3d.com/files_details/nvidia_geforce_306_63_vista_and_7_64_bit_download.html">Forceware 306.63</link>).
-            This gives us an opportunity to try out the new samples of the <link href="https://github.com/g-truc/ogl-samples/tree/4.3.0.2">OpenGL Samples Pack 4.3.0.2</link>.
+            This gives us an opportunity to try out the new samples of the <link href="https://github.com/g-truc/ogl-samples/tree/4.3.0.3">OpenGL Samples Pack 4.3.0.3</link>.
             For the AMD side, we will use the  <link href="http://www.guru3d.com/files_details/amd_catalyst_12_9_beta_64_bit_download.html">Catalyst 12.9 (9.01)</link>.
         </paragraph>
         
@@ -756,7 +755,7 @@
             <source-download index="1117" />
             <source-element type="Link" href="https://github.com/g-truc/ogl-samples/tree/4.3.0" title="OpenGL Samples Pack 4.3.0 branch snapshot" />
         </source-list>
-    </draft>
+    </post>
 
   <post index="0513" date="31/10/2012" std-date="2012-10-31T14:00:00.00Z" title="OpenGL Samples Pack 4.3.0.3 released">
     <meta>
@@ -31045,6 +31044,7 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 
 
 
