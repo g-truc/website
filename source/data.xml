@@ -130,7 +130,7 @@
     </code>
   </draft>
 
-  <draft index="0514" date="27/10/2012" std-date="2012-10-27T02:00:00.00Z" title="Week 41 photograph: Freedom">
+  <draft index="0516" date="27/10/2012" std-date="2012-10-27T02:00:00.00Z" title="Week 41 photograph: Freedom">
         <meta>
             <tag>gtc-crea-photograph</tag>
         </meta>
@@ -141,7 +141,7 @@
         href="./photo/2012-42.jpg" />
     </draft>
   
-    <draft index="0513" date="23/10/2012" std-date="2012-10-23T23:30:00.00Z" title="GL_AMD_sparse_texture comments">
+    <draft index="0515" date="23/10/2012" std-date="2012-10-23T23:30:00.00Z" title="GL_AMD_sparse_texture comments">
         <meta>
             <tag>gtc-tech-opengl-tips</tag>
         </meta>
@@ -310,7 +310,7 @@
     </draft>
     
     
-    <post index="0513" date="01/11/2012" std-date="2012-11-01T23:30:00.00Z" title="October 2012 OpenGL drivers status">
+    <draft index="0514" date="01/11/2012" std-date="2012-11-01T23:30:00.00Z" title="October 2012 OpenGL drivers status">
         <meta>
             <tag>gtc-tech-opengl-status</tag>
         </meta>
@@ -753,12 +753,26 @@
         </table>
         
         <source-list>
-            <source-download index="1116" />
+            <source-download index="1117" />
             <source-element type="Link" href="https://github.com/g-truc/ogl-samples/tree/4.3.0" title="OpenGL Samples Pack 4.3.0 branch snapshot" />
         </source-list>
-    </post>
-    
-    <post index="0512" date="28/10/2012" std-date="2012-10-28T16:00:00.00Z" title="10th Anniversary contest: and the winner is...">
+    </draft>
+
+  <post index="0513" date="31/10/2012" std-date="2012-10-31T14:00:00.00Z" title="OpenGL Samples Pack 4.3.0.3 released">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      The OpenGL Samples Pack 4.3.0.3 adds few samples: 430-program-compute-image, 430-debug, 420-texture-sparse-amd, 420-texture-bindless-nv and updating 430-multi-draw-indirect to illustrate how to identify each draws.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1117" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+
+  <post index="0512" date="28/10/2012" std-date="2012-10-28T16:00:00.00Z" title="10th Anniversary contest: and the winner is...">
         <meta>
             <tag>gtc-tech-opengl-tips</tag>
         </meta>
