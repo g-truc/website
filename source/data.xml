@@ -309,26 +309,22 @@
         </paragraph>
     </draft>
     
-    
-    <draft index="0514" date="01/11/2012" std-date="2012-11-01T23:30:00.00Z" title="October 2012 OpenGL drivers status">
+    <post index="0514" date="01/11/2012" std-date="2012-11-01T23:30:00.00Z" title="October 2012 OpenGL drivers status">
         <meta>
             <tag>gtc-tech-opengl-status</tag>
         </meta>
         
         <paragraph>
-            With the release of OpenGL 4.3 at Siggraph, NVIDIA as released an OpenGL 4.3 drivers (<link href="http://www.guru3d.com/files_details/nvidia_geforce_306_63_vista_and_7_64_bit_download.html">Forceware 306.63</link>).
-            This gives us an opportunity to try out the new samples of the <link href="https://github.com/g-truc/ogl-samples/tree/4.3.0.2">OpenGL Samples Pack 4.3.0.2</link>.
-            For the AMD side, we will use the  <link href="http://www.guru3d.com/files_details/amd_catalyst_12_9_beta_64_bit_download.html">Catalyst 12.9 (9.01)</link>.
+            This month we are testing <link href="http://www.guru3d.com/files_details/amd_catalyst_12_11_beta_download.html">Catalyst 12.11 beta 4 (9.10.8)</link> and <link href="http://www.guru3d.com/files_details/geforce_310_33_beta_driver_download.html">Forceware 310.33</link>.
         </paragraph>
         
         <paragraph>
-            No change for AMD drivers. On the NVIDIA side, the OpenGL 4.3 implementation is encouraging even if I didn't have time to explore it
-            too much and I had to use workarounds so that samples could pass.
-            I also encountered quite few issues on the GLSL compiler with not too obvious error messages.
+            No sign yet from AMD OpenGL 4.3 implementation. On NVIDIA side the debug output implementation has been improved regarding the texture information.
+            Unfortunately, there is an issue with it and a warning is reported as an error. The KHR_debug implemenation has progressed but the object labels are not used within debug messages.
         </paragraph>
         
         <paragraph>
-            This month I was experting a lot of improvements for the OpenGL 4.3 NVIDIA drivers but even if I have not doubt they have been improved, none of the tests reflect this idea. On the AMD side all the TDRs have been fixed and many fixes applied in the meantime, great month for AMD! Unfortunately still no sign of OpenGL 4.3 drivers...
+            In ForceWare 310.33, NVIDIA exposes a new extension called <link href="http://www.opengl.org/registry/specs/NV/draw_texture.txt">NV_draw_texture</link> for image space rendering. It could be an interesting extension but the design is very limitating as no fragment shader can we used for with this command reducing the functionnalities of this extension to something close to texture blitting... 
         </paragraph>
         
         <title>The test</title>
@@ -348,7 +344,7 @@
         
         <table>
             <table-title>
-                <table-title-element class="sample-name">OpenGL Samples Pack 4.3.0.2, OpenGL specification tests</table-title-element>
+                <table-title-element class="sample-name">OpenGL Samples Pack 4.3.0.3, OpenGL specification tests</table-title-element>
                 <table-title-element>AMD Catalyst 12.9 beta, 9.01 (26/09/2012)</table-title-element>
                 <table-title-element>AMD Catalyst 12.11 beta 4, 9.10.8 (23/10/2012)</table-title-element>
                 <table-title-element>NVIDIA Forceware 306.63 (26/09/2012)</table-title-element>
@@ -362,7 +358,28 @@
                 <table-entry-element color="green"></table-entry-element>
             </table-entry>
             <table-entry>
+                <table-entry-element>430-texture-storage</table-entry-element>
+                <table-entry-element color="white"></table-entry-element>
+                <table-entry-element color="white"></table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+            </table-entry>
+            <table-entry>
+                <table-entry-element>430-texture-query</table-entry-element>
+                <table-entry-element color="white"></table-entry-element>
+                <table-entry-element color="white"></table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+            </table-entry>
+            <table-entry>
                 <table-entry-element>430-texture-copy</table-entry-element>
+                <table-entry-element color="white"></table-entry-element>
+                <table-entry-element color="white"></table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+            </table-entry>
+            <table-entry>
+                <table-entry-element>430-texture-buffer</table-entry-element>
                 <table-entry-element color="white"></table-entry-element>
                 <table-entry-element color="white"></table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
@@ -425,11 +442,11 @@
                 <table-entry-element color="green"></table-entry-element>
             </table-entry>
             <table-entry>
-                <table-entry-element>430-direct-state-access-ext</table-entry-element>
+                <table-entry-element>430-debug</table-entry-element>
                 <table-entry-element color="white"></table-entry-element>
                 <table-entry-element color="white"></table-entry-element>
-                <table-entry-element color="green"></table-entry-element>
-                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="red"></table-entry-element>
+                <table-entry-element color="orange">Object labels not used in the debug output log.</table-entry-element>
             </table-entry>
             <table-entry>
                 <table-entry-element>430-atomic-counter</table-entry-element>
@@ -535,7 +552,8 @@
                 <table-entry-element color="green"></table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
-                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="red">GL_INVALID_VALUE error generated. Texture 0 had no mipmaps, while
+                    it's min filter requires mipmap.</table-entry-element>
             </table-entry>
             <table-entry>
                 <table-entry-element>420-draw-base-instance</table-entry-element>
@@ -619,7 +637,8 @@
                 <table-entry-element color="green"></table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
-                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="red">GL_INVALID_VALUE error generated. Texture 0 had no mipmaps, while
+                    it's min filter requires mipmap.</table-entry-element>
             </table-entry>
             <table-entry>
                 <table-entry-element>400-transform-feedback-stream</table-entry-element>
@@ -667,12 +686,33 @@
         
         <table>
             <table-title>
-                <table-title-element class="sample-name">OpenGL Samples Pack 4.3.0.2, proprietary features</table-title-element>
+                <table-title-element class="sample-name">OpenGL Samples Pack 4.3.0.3, proprietary features</table-title-element>
                 <table-title-element>AMD Catalyst 12.9 beta, 9.01 (26/09/2012)</table-title-element>
                 <table-title-element>AMD Catalyst 12.11 beta 4, 9.10.8 (23/10/2012)</table-title-element>
                 <table-title-element>NVIDIA Forceware 306.63 (26/09/2012)</table-title-element>
                 <table-title-element>NVIDIA Forceware 310.33 (24/10/2012)</table-title-element>
             </table-title>
+            <table-entry>
+                <table-entry-element>430-direct-state-access-ext</table-entry-element>
+                <table-entry-element color="white"></table-entry-element>
+                <table-entry-element color="white"></table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+            </table-entry>
+            <table-entry>
+                <table-entry-element>420-texture-sparse-amd</table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="white">AMD_sparse_texture not supported</table-entry-element>
+                <table-entry-element color="white">AMD_sparse_texture not supported</table-entry-element>
+            </table-entry>
+            <table-entry>
+                <table-entry-element>420-texture-bindless-nv</table-entry-element>
+                <table-entry-element color="white">NV_bindless_texture not supported</table-entry-element>
+                <table-entry-element color="white">NV_bindless_texture not supported</table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="green"></table-entry-element>
+            </table-entry>
             <table-entry>
                 <table-entry-element>420-test-depth-clamp-separate-amd</table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
@@ -689,10 +729,11 @@
             </table-entry>
             <table-entry>
                 <table-entry-element>420-fbo-srgb-decode-ext</table-entry-element>
-                <table-entry-element color="white">EXT_texture _sRGB_decode not supported</table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="red">GL_INVALID_VALUE error generated. Texture 0 had no mipmaps, while
+                    it's min filter requires mipmap.</table-entry-element>
             </table-entry>
             <table-entry>
                 <table-entry-element>420-fbo-multisample-position-amd</table-entry-element>
@@ -713,7 +754,8 @@
                 <table-entry-element color="white">NV_texture _multisample not supported</table-entry-element>
                 <table-entry-element color="white">NV_texture _multisample not supported</table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
-                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="red">GL_INVALID_VALUE error generated. Texture 0 had no mipmaps, while
+                    it's min filter requires mipmap.</table-entry-element>
             </table-entry>
             <table-entry>
                 <table-entry-element>420-buffer-pinned-amd</table-entry-element>
@@ -741,7 +783,8 @@
                 <table-entry-element color="green"></table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
                 <table-entry-element color="green"></table-entry-element>
-                <table-entry-element color="green"></table-entry-element>
+                <table-entry-element color="red">GL_INVALID_VALUE error generated. Texture 0 had no mipmaps, while
+                    it's min filter requires mipmap.</table-entry-element>
             </table-entry>
             <table-entry>
                 <table-entry-element>es-200-draw-elements-ext</table-entry-element>
@@ -756,7 +799,7 @@
             <source-download index="1117" />
             <source-element type="Link" href="https://github.com/g-truc/ogl-samples/tree/4.3.0" title="OpenGL Samples Pack 4.3.0 branch snapshot" />
         </source-list>
-    </draft>
+    </post>
 
   <post index="0513" date="31/10/2012" std-date="2012-10-31T14:00:00.00Z" title="OpenGL Samples Pack 4.3.0.3 released">
     <meta>
@@ -1151,7 +1194,7 @@
     </paragraph>
     
     <paragraph>
-      This month I was experting a lot of improvements for the OpenGL 4.3 NVIDIA drivers but even if I have not doubt they have been improved, none of the tests reflect this idea. On the AMD side all the TDRs have been fixed and many fixes applied in the meantime, great month for AMD! Unfortunately still no sign of OpenGL 4.3 drivers...
+      This month I was expecting a lot of improvements for the OpenGL 4.3 NVIDIA drivers but even if I have not doubt they have been improved, none of the tests reflect this idea. On the AMD side all the TDRs have been fixed and many fixes applied in the meantime, great month for AMD! Unfortunately still no sign of OpenGL 4.3 drivers...
     </paragraph>
 
     <title>ERRATA</title>
