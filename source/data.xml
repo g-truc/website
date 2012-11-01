@@ -130,18 +130,18 @@
     </code>
   </draft>
 
-  <draft index="0516" date="27/10/2012" std-date="2012-10-27T02:00:00.00Z" title="Week 41 photograph: Freedom">
-        <meta>
-            <tag>gtc-crea-photograph</tag>
-        </meta>
-        
-        <image
-        color="black"
-        img="./photo/2012-42-960.jpg"
-        href="./photo/2012-42.jpg" />
-    </draft>
-  
-    <draft index="0515" date="23/10/2012" std-date="2012-10-23T23:30:00.00Z" title="GL_AMD_sparse_texture comments">
+  <draft index="0517" date="05/11/2012" std-date="2012-11-05T00:30:00.00Z" title="Week 43 photograph: Freedom">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-43-960.jpg"
+      href="./photo/2012-43.jpg" />
+  </draft>
+
+  <post index="0516" date="04/11/2012" std-date="2012-11-04T23:30:00.00Z" title="GL_AMD_sparse_texture comments">
         <meta>
             <tag>gtc-tech-opengl-tips</tag>
         </meta>
@@ -307,8 +307,19 @@
         <paragraph>
             Some people will argue that NVIDIA supports <link href="http://www.opengl.org/registry/specs/NV/bindless_texture.txt">bindless textures</link> and hence NVIDIA doesn't need sparse textures. This is either a misleading argument, a misunderstanding of the features or simply a marketing lie. Bindless textures are great but bindless and sparse textures are simply complementary features. Bindless textures allows an unlimited number of textures while sparse textures ensure filtering between texture pages. We need both!
         </paragraph>
-    </draft>
-    
+    </post>
+
+  <post index="0515" date="02/11/2012" std-date="2012-11-02T00:30:00.00Z" title="Week 42 photograph: The crush of a sunset's dying blush">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-42-960.jpg"
+      href="./photo/2012-42.jpg" />
+  </post>
+  
     <post index="0514" date="01/11/2012" std-date="2012-11-01T23:30:00.00Z" title="October 2012 OpenGL drivers status">
         <meta>
             <tag>gtc-tech-opengl-status</tag>
@@ -31093,6 +31104,7 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 
 
 
