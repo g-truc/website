@@ -130,7 +130,7 @@
     </code>
   </draft>
 
-  <draft index="0517" date="05/11/2012" std-date="2012-11-05T00:30:00.00Z" title="Week 43 photograph: Freedom">
+  <post index="0517" date="13/11/2012" std-date="2012-11-13T19:00:00.00Z" title="Week 43 photograph: Freedom">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -139,9 +139,9 @@
       color="black"
       img="./photo/2012-43-960.jpg"
       href="./photo/2012-43.jpg" />
-  </draft>
+  </post>
 
-  <post index="0516" date="04/11/2012" std-date="2012-11-04T23:30:00.00Z" title="GL_AMD_sparse_texture comments">
+  <post index="0516" date="04/11/2012" std-date="2012-11-04T00:30:00.00Z" title="GL_AMD_sparse_texture comments">
         <meta>
             <tag>gtc-tech-opengl-tips</tag>
         </meta>
