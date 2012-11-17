@@ -55,20 +55,24 @@
     </source-list>
   </draft>
 
-  <draft index="0997" date="27/10/2012" std-date="2012-10-27T23:30:00.00Z" title="Surviving without gl_DrawID">
+  <post index="0518" date="16/11/2012" std-date="2012-11-16T18:30:00.00Z" title="Surviving without gl_DrawID">
     <meta>
       <tag>gtc-tech-opengl-tips</tag>
     </meta>
     <paragraph>
-      <link href="http://www.opengl.org/registry/specs/AMD/multi_draw_indirect.txt">AMD_multi_draw_indirect</link>
-        a functionality that Direct3D 11 programmer can be particularly jaleous as it reached OpenGL 4.3 specification but this feature is still missing on the Direct3D 11 world.
-        Direct3D 11 and OpenGL 4.0 introduced the draw indirect functionnality allowing to submit a draw using parameters stored in a buffer object.
-        <link href="http://www.opengl.org/registry/specs/AMD/multi_draw_indirect.txt">AMD_multi_draw_indirect</link> extend this feature by allowing to submit multiple draw in a single call, protencially moving a CPU loop to a GPU command processor loop, hence potencially significantly reducing the CPU overhead and the possible number of draws per frame.
-        Unfortunately, unlike instanced draw, OpenGL doesn't provide a unique identifier per draw (gl_DrawID) for each draw... 
+      <link href="http://www.opengl.org/registry/specs/AMD/multi_draw_indirect.txt">AMD_multi_draw_indirect</link> is 
+        a functionality that Direct3D 11 programmers can be particularly jaleous as it reached OpenGL 4.3 specification but this great feature is still missing in the Direct3D 11 world.
+        Direct3D 11 and OpenGL 4.0 introduced the draw indirect functionnality to submit a draw using parameters stored in a buffer object.
+        <link href="http://www.opengl.org/registry/specs/AMD/multi_draw_indirect.txt">AMD_multi_draw_indirect</link> 
+        extends this feature by allowing multiple draw submissions in a single call. This approach moves a CPU loop to a GPU command processor loop, 
+        hence potencially significantly reducing the CPU overhead and the possible number of draws per frame.
+        Unfortunately, unlike instanced draw, OpenGL doesn't provide a unique identifier per draw (let's call it <codeword>gl_DrawID</codeword>) for each draw... 
     </paragraph>
       
       <paragraph>
-          A first approach we could thought of is to use an atomic counter and increment each draw it's value when gl_VertexID is equal to 0. Unfortunately, this idea is not working because OpenGL doesn't provide garantie on the order of excution so that we can't be sure with this method that the first draw will be identified with the value 0. On AMD hardware this behaviours is almost possible but not all the time. On NVIDIA hardware atomic counter are asynchronously executed which nearly garantee that we will never have the right identifier for a draw.
+          A first approach we could thought of is to use an atomic counter and increment each draw it's value when <codeword>gl_VertexID</codeword> is equal to 0. 
+          Unfortunately, this idea is not working because OpenGL doesn't provide garantie on the order of excution so that we can't be sure with this method that the first draw will be identified with the value 0. 
+          On AMD hardware this behaviours is almost possible but not all the time. On NVIDIA hardware atomic counter are asynchronously executed which nearly garantee that we will never have the right identifier for a draw.
       </paragraph>
       
       <paragraph>
@@ -128,7 +132,7 @@
               };
           </line>
     </code>
-  </draft>
+  </post>
 
   <post index="0517" date="13/11/2012" std-date="2012-11-13T19:00:00.00Z" title="Week 43 photograph: Freedom">
     <meta>
@@ -31104,6 +31108,7 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 
 
 
