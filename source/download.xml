@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+  <download index="1118" date="18/11/2012" std-date="2012-11-18T20:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.3.4">
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.4.0/glm-0.9.4.0.zip/download" type="ZIP" size="2.4 MB" />
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.4.0/glm-0.9.4.0.7z/download" type="7Z" size="1.5 MB" />
+  </download>
   <download index="1117" date="31/10/2012" std-date="2012-10-31T02:00:00.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.3.0.3">
     <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.3.0.3/ogl-samples-4.3.0.3.zip/download" type="ZIP" size="5.1 MB" />
     <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.3.0.3/ogl-samples-4.3.0.3.7z/download" type="7Z" size="2.3 MB" />

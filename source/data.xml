@@ -55,7 +55,40 @@
     </source-list>
   </draft>
 
-  <post index="0518" date="16/11/2012" std-date="2012-11-16T18:30:00.00Z" title="Surviving without gl_DrawID">
+  <post index="0520" date="18/11/2012" std-date="2012-11-18T19:00:00.00Z" title="GLM 0.9.4 released">
+    <list name="Changelog:">
+      <list-element>Added Intel Composer Compiler support</list-element>
+      <list-element>
+        Promoted <link href="http://glm.g-truc.net/api-0.9.4/a00146.html">GLM_GTC_espilon</link> extension
+      </list-element>
+      <list-element>
+        Promoted <link href="http://glm.g-truc.net/api-0.9.4/a00159.html">GLM_GTC_ulp</link> extension
+      </list-element>
+      <list-element>Removed GLM website from the source repository</list-element>
+      <list-element>Added GLM_FORCE_RADIANS so that all functions takes radians for arguments</list-element>
+      <list-element>Fixed detection of Clang and LLVM GCC on MacOS X</list-element>
+      <list-element>Added debugger visualizers for Visual C++ 2012</list-element>
+      <list-element>Etc.</list-element>
+    </list>
+
+    <source-download index="1118" />
+    <source type="Link" href="https://github.com/g-truc/glm/issues">Submit a bug report</source>
+    <source type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf">GLM 0.9.4 Manual</source>
+    <source type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html">GLM 0.9.4 API</source>
+  </post>
+
+  <post index="0519" date="18/11/2012" std-date="2012-11-18T19:00:00.00Z" title="Week 44 photograph: l'absurde, la révolte, l'amour">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-44-960.jpg"
+      href="./photo/2012-44.jpg" />
+  </post>
+
+  <post index="0518" date="17/11/2012" std-date="2012-11-17T18:30:00.00Z" title="Surviving without gl_DrawID">
     <meta>
       <tag>gtc-tech-opengl-tips</tag>
     </meta>
@@ -70,9 +103,9 @@
     </paragraph>
       
       <paragraph>
-          A first approach we could thought of is to use an atomic counter and increment each draw it's value when <codeword>gl_VertexID</codeword> is equal to 0. 
-          Unfortunately, this idea is not working because OpenGL doesn't provide garantie on the order of excution so that we can't be sure with this method that the first draw will be identified with the value 0. 
-          On AMD hardware this behaviours is almost possible but not all the time. On NVIDIA hardware atomic counter are asynchronously executed which nearly garantee that we will never have the right identifier for a draw.
+          A first approach we could thought of is to use an atomic counter and increment each draw its value when <codeword>gl_VertexID</codeword> and <codeword>gl_InstanceID</codeword> are equal to 0.
+        Unfortunately, this idea is not working because of the GPU architechture so that OpenGL doesn't provide garantee on the order of excutions so that we can't be sure with this method that the first draw will be identified with the value 0.
+        On AMD hardware this behaviour is almost possible but not all the time. On NVIDIA hardware atomic counter are asynchronously executed which nearly garantee that we will never have the right identifier for a draw.
       </paragraph>
       
       <paragraph>
@@ -112,9 +145,13 @@
           <line>
           </line>
         </code>
-    <paragraph>
-        With a divisor equal to 1, all the vertices of a draw will access to the same buffer value. Then, for each draw we use the base instance parameter as an offset to set where in the buffer we are reading the DrawID value. The base instance value act here as an indirection value which increases the execution latency but allow to set a specific value for each DrawID, providing a behaviours more advanced than a simple increase of the value for each draw. This behaviours allows to maximize the usage of each draws by the application. When each draw is associated with a specific mesh, for a specific frame a lot of draws will be useless for the rendering. This bahaviours wouldn't matter if discarding a draw was particularly efficient but it isn't on both Kepler and Southern Islands architechtures. By being able to assign a specific DrawID to each draw we can assign a specific mesh for each draw allowing to build the needed list of meshes for each draw.
-    </paragraph>
+      <paragraph>
+          With a divisor equal to 1, all the vertices of a draw will access to the same buffer value. Then, for each draw we use the base instance parameter as an offset to set where in the buffer we are reading the DrawID value. 
+          The base instance value act here as an indirection value which increases the execution latency but allow to set a specific value for each DrawID, providing a behaviours more advanced than a simple increase of the value for each draw. 
+          This behaviours allows to maximize the usage of each draws by the application. When each draw is associated with a specific mesh, for a specific frame a lot of draws will be useless for the rendering. 
+          This bahaviours wouldn't matter if discarding a draw was particularly efficient but it isn't on both Kepler and Southern Islands architechtures. 
+          By being able to assign a specific DrawID to each draw we can assign a specific mesh for each draw allowing to build the needed list of meshes for each draw.
+      </paragraph>
       <code title="Content of the DrawID buffer for three draws">
           <line>
               GLsizei const DrawDataCount(3);
@@ -131,7 +168,54 @@
           <line>
               };
           </line>
-    </code>
+      </code>
+      <paragraph>
+        This DrawID gives an interesting fonctional quality to the multi draw indirect approach however adding an application specific semantic could increase the flexibility and even the change the application performance balance. 
+        This DrawID is useful because it allows indexing ressources in the shader. Typically, we would like to use it to index material in the fragment shader stage. 
+        We can even imagine that multiple ressources will be indexed thanks this this DrawID. 
+        Hence, we need an indirection table that per draw and this table will be embodied by a uniform block which stores indexes to access each ressources per draw. 
+        Unfortunately indirections imply latences which cost performances... 
+      </paragraph>
+
+    <paragraph>
+      A possible improvement for this DrawID is to add to itself some semantics to skip one level of indirection. 
+      Hence, we can create multiple DrawIDs using both a divisor equal to 1 and <codeword>BaseInstance</codeword> and call them "MaterialID", "VertexFormatID" or whatever an OpenGL application needs.
+    </paragraph>
+
+    <paragraph>
+      A scenario with multi draw indirect is to pack multiple meshes of different objects into a single set of buffers and manually fetch each vertex for each draw so that each draw can have different vertex format. 
+      One tricky issue with this approach is that each the <codeword>BaseVertex</codeword> and the <codeword>BaseInstance</codeword> parameters are not exposed into the vertex shader stage as input variable. 
+      Using the divisor equal to 1 and BaseInstance is also an approach to expose these variables in the vertex shader stage. People used to ridiculously optimized code (If you do VHDL you will understand me !:p)
+      could even naturally pack the <codeword>BaseVertex</codeword> and the <codeword>VertexFormat</codeword> ids into a single integer by allocating a part bits for <codeword>BaseVertex</codeword> and the rest to <codeword>VertexFormat</codeword>
+      relying on the limitations given by <codeword>GL_MAX_SHADER_STORAGE_BLOCK_SIZE</codeword> and <codeword>GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT</codeword>.
+    </paragraph>
+
+    <paragraph>
+      The divisor by 1 and <codeword>BaseInstance</codeword> method provides a lot of opportunities to the multi draw indirect approach.
+      However, we can question the problem of optimal performances. Even if a single value for a vertex attribute is fetched for all the vertex invocations of a draw,
+      there are little reasons to think that this value won't be fetched each time for each vertex shader invocations.
+      Chances are that the latency and bandwidth impact will be small as we can expect a good cache reuse hoping that many vertex shader invocations will be triggered at the same time.
+    </paragraph>
+
+    <paragraph>
+      A question remains, how fast an automatically increased <codeword>gl_DrawID</codeword> would be compare to the proposed solution? 
+      No immediate bandwidth and latency impact but this approach would require an indirection table (uniform block) to identify which actual ressource to access which may not do a better cache reuse than the divisor.
+      Another approach would be to add another draw parameter alongside with <codeword>BaseVertex</codeword> and <codeword>BaseInstance</codeword> where the user could set its own value for the DrawID parameter. 
+      We could even imagine multiple of those parameters. However, what garantee us that those parameters would not have to be fetched for each vertex shader invocation? 
+      As a result, this approach could perform equally than using vertex attribute with divisors.
+    </paragraph>
+
+    <list name="Per draw indexing perspectives:">
+      <list-element>Vertex attributes with divisor equal to one and base instance to set a specific value to this attribute. (OpenGL 4.3)</list-element>
+      <list-element>A gl_DrawID automatically increased by GPUs command processor with a resource indirection table/uniform block. (Sci-Fi)</list-element>
+      <list-element>Per-draw draw parameters stored in a command processor cache that would be accessible by shader invocations and pre-fetched. (Heroic Fantasy)</list-element>
+    </list>
+
+    <paragraph>
+      A sample showing the usage of multi draw indirect is available in the OpenGL Samples Pack 4.3.
+    </paragraph>
+
+    <source-download index="1117" />
   </post>
 
   <post index="0517" date="13/11/2012" std-date="2012-11-13T19:00:00.00Z" title="Week 43 photograph: Freedom">
