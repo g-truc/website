@@ -56,6 +56,10 @@
   </draft>
 
   <post index="0520" date="18/11/2012" std-date="2012-11-18T19:00:00.00Z" title="GLM 0.9.4 released">
+    <meta>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+    
     <list name="Changelog:">
       <list-element>Added Intel Composer Compiler support</list-element>
       <list-element>
@@ -72,9 +76,9 @@
     </list>
 
     <source-download index="1118" />
-    <source type="Link" href="https://github.com/g-truc/glm/issues">Submit a bug report</source>
-    <source type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf">GLM 0.9.4 Manual</source>
-    <source type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html">GLM 0.9.4 API</source>
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues">Submit a bug report</source-element>
+    <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf">GLM 0.9.4 Manual</source-element>
+    <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html">GLM 0.9.4 API</source-element>
   </post>
 
   <post index="0519" date="18/11/2012" std-date="2012-11-18T19:00:00.00Z" title="Week 44 photograph: l'absurde, la révolte, l'amour">
