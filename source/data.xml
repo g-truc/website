@@ -50,11 +50,20 @@
 
     <source-list>
       <source-download index="1064" />
-      <source-element type="Link" href="http://glm.g-truc.net" title="GLM website" />
-      <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.1.pdf" title="GLM Manual" />
     </source-list>
   </draft>
 
+  <post index="0521" date="29/11/2012" std-date="2012-11-29T19:00:00.00Z" title="Week 45 photograph: Disparition d'une source de bruit">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-45-960.jpg"
+      href="./photo/2012-45.jpg" />
+  </post>
+  
   <post index="0520" date="18/11/2012" std-date="2012-11-18T19:00:00.00Z" title="GLM 0.9.4 released">
     <meta>
       <tag>gtc-tech-opengl-tips</tag>
@@ -76,9 +85,9 @@
     </list>
 
     <source-download index="1118" />
-    <source-element type="Link" href="https://github.com/g-truc/glm/issues">Submit a bug report</source-element>
-    <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf">GLM 0.9.4 Manual</source-element>
-    <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html">GLM 0.9.4 API</source-element>
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+    <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf" title="GLM 0.9.4 Manual" />
+    <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
   </post>
 
   <post index="0519" date="18/11/2012" std-date="2012-11-18T19:00:00.00Z" title="Week 44 photograph: l'absurde, la révolte, l'amour">
