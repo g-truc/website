@@ -64,6 +64,50 @@
       href="./photo/2012-52.jpg" />
   </draft>
 
+  <post index="0528" date="22/12/2012" std-date="2012-12-22T22:00:00.00Z" title="Week 50 photograph: Lines of structure and perspective">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-50-960.jpg"
+      href="./photo/2012-50.jpg" />
+  </post>
+  
+  <post index="0527" date="22/12/2012" title="GLM 0.9.4.1 released" image="goodies/logo.png" image-mini="image/logo-mini.png">
+    <meta>
+      <tag>gtc-tech-project-glm</tag>
+    </meta>
+    
+    <paragraph>
+      GLM 0.9.4.1 fixes various bugs and clarifies quaternion interpolations. There are now three different functions now: <codeword>mix</codeword>, <codeword>slerp</codeword> and <codeword>lerp</codeword>.
+    </paragraph>
+    <paragraph>
+      <codeword>lerp</codeword> performs a linear interpolation between two quaternions. 
+      This operation is only defined with interpolation factors between [0, 1] and doesn't perform the rotation at constant speed. 
+      <codeword>slerp</codeword> perform a spherical linear interpolation between two quaternion. 
+      It always takes the short rotation path and it is performed at constant speed for interpolation factors between ]-inf, +inf[. This function is similar to the old <codeword>shortMix</codeword> function.
+      <codeword>mix</codeword> is an oriented spherical linear interpolation between two quaternion. It is performed at constant speed for interpolation factors between ]-inf, +inf[.
+    </paragraph>
+
+    <list name="Changelog:">
+      <list-element>Improved half support: -0.0 case and implicit conversions</list-element>
+      <list-element>Fixed Intel Composer Compiler support on Linux</list-element>
+      <list-element>Fixed interaction between quaternion and euler angles</list-element>
+      <list-element>Fixed GTC_constants build</list-element>
+      <list-element>Fixed quat slerp using mix function when cosTheta close to 1</list-element>
+      <list-element>Improved fvec4SIMD and fmat4x4SIMD implementations</list-element>
+      <list-element>Fixed assert messages</list-element>
+      <list-element>Added slerp and lerp quaternion functions and tests</list-element>
+    </list>
+
+    <source-download index="1119" />
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+    <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf" title="GLM 0.9.4 Manual" />
+    <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
+  </post>
+  
   <post index="0526" date="20/12/2012" std-date="2012-12-20T22:00:00.00Z" title="Week 49 photograph: The Four Angels Staying the Winds">
     <meta>
       <tag>gtc-crea-photograph</tag>
@@ -616,7 +660,7 @@
   
   <post index="0520" date="18/11/2012" std-date="2012-11-18T19:00:00.00Z" title="GLM 0.9.4 released">
     <meta>
-      <tag>gtc-tech-opengl-tips</tag>
+      <tag>gtc-tech-project-glm</tag>
     </meta>
     
     <list name="Changelog:">
@@ -31755,6 +31799,7 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 
 
 
