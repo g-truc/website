@@ -103,13 +103,24 @@
             <link href="http://www.opengl.org/registry/specs/ARB/debug_output.txt">ARB_debug_output</link>
             support is definetely my number one feature request for this implementation!
         </paragraph>
-        
+
+        <paragraph>
+          For this new OpenGL status, I refactored the table using Excel to make it easier for me to maintain the status especially now that it includes Intel results. 
+          The complete and details status can be download at the end of this post. The PDF version doesn't show the comments embedded in the the Excel version.
+        </paragraph>
+
         <paragraph>
             Late review this month. I am laking advantage of today's release of <link href="http://www.guru3d.com/files_details/amd_catalyst_12_11_beta_download.html">Catalyst 12.11 beta 11</link> for this review.
-            On NVIDIA side, I am testing <link href="http://www.guru3d.com/files_details/geforce_310_64_beta_driver_download.html">Forceware 310.64</link>.
-            Lot of fixes on NVIDIA side!
+            On NVIDIA side, I am testing <link href="http://www.guru3d.com/files_details/geforce_310_70_whql_driver_download.html">Forceware 310.64</link> and 
+            for Intel <link href="http://www.necacom.net/index.php?option=com_content&amp;view=article&amp;id=6577">drivers 15.31.64.2885</link>. 
+            Lot of fixes for Intel regarding rendering to framebuffer, indirect draws and point sprite rendering.
         </paragraph>
-        
+
+        <image title="December 2012 level of samples passing on implementations"
+          color="white"
+          img="./post/0513-status-2012-12.png"
+          href="./post/0513-status-2012-12.png" />
+
         <paragraph>
             All in all, I am quite surprized by the good quality of Intel OpenGL driver. Considering the size of Intel market share, it sounds resonnable to consider
             supporting this implementation by our software and the future sounds pretty promessing. Hopefully in 2013, Intel provides an OpenGL 4.2 implementation
