@@ -53,7 +53,7 @@
     </source-list>
   </draft>
 
-  <draft index="0530" date="29/12/2012" std-date="2012-12-29T22:00:00.00Z" title="Week 52 photograph: M'enfin !">
+  <draft index="0532" date="28/12/2012" std-date="2012-12-28T22:00:00.00Z" title="Week 52 photograph: M'enfin !">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -64,6 +64,81 @@
       href="./photo/2012-52.jpg" />
   </draft>
 
+    <draft index="0531" date="28/12/2012" std-date="2012-12-28T23:30:00.00Z" title="December 2012 OpenGL drivers status">
+        <meta>
+            <tag>gtc-tech-opengl-status</tag>
+        </meta>
+        
+        <paragraph>
+            This month I had my first experience with Intel OpenGL drivers since four or five years.
+            Back then working on Intel was a nightmare, the implementation would report VBO supports but no entry point would be available...
+            Intel has been more and more active on the GPU side so that having an Intel GPU on a laptop sounds like a reasonnable option to me...
+            but is the OpenGL imeplementation descent?
+        </paragraph>
+        
+        <paragraph>
+            The lastest drivers I found is the version <link href="http://www.necacom.net/index.php?option=com_content&amp;view=article&amp;id=6577:intel-hd-graphics-4000-drivers-version-1531642885&amp;catid=68:intel&amp;Itemid=86">15.31.64.2885</link> which doesn't appears to be an official driver but it resolves a lot of issues regarding
+            rendering to framebuffer objects. The implementation provides a full support of OpenGL 4.0 specification adn the work on OpenGL 4.1 and OpenGL 4.2 has began
+            as we can see that
+            <link href="http://www.opengl.org/registry/specs/ARB/ES2_compatibility.txt">ARB_ES2_compatibility</link> (4.1),
+            <link href="http://www.opengl.org/registry/specs/ARB/base_instance.txt">ARB_base_instance</link> (4.2),
+            <link href="http://www.opengl.org/registry/specs/ARB/conservative_depth.txt">ARB_conservative_depth</link> (4.2),
+            <link href="http://www.opengl.org/registry/specs/ARB/internalformat_query.txt">ARB_internalformat_query</link> (4.2),
+            <link href="http://www.opengl.org/registry/specs/ARB/map_buffer_alignment.txt">ARB_map_buffer_alignment</link> (4.2) and
+            <link href="http://www.opengl.org/registry/specs/ARB/texture_storage.txt">ARB_texture_storage</link> (4.2)
+            extensions are exposed. 
+        </paragraph>
+        
+        <paragraph>
+            More digging also shows that the work on more extensions has became as we can find entry points for
+            <link href="http://www.opengl.org/registry/specs/ARB/get_program_binary.txt">ARB_get_program_binary</link> (4.1),
+            <link href="http://www.opengl.org/registry/specs/ARB/invalidate_subdata.txt">ARB_invalidate_subdata</link> (4.3),
+            <link href="http://www.opengl.org/registry/specs/ARB/shader_image_load_store.txt">ARB_shader_image_load_store</link> (4.2),
+            <link href="http://www.opengl.org/registry/specs/ARB/shader_atomic_counter.txt">ARB_shader_atomic_counter</link> (4.2) and
+            <link href="http://www.opengl.org/registry/specs/ARB/separate_shader_objects.txt">ARB_separate_shader_objects</link> (4.1).
+        </paragraph>
+        
+        <paragraph>
+            At this point, the biggest issue is that ARB_debug_output is still not supported which makes debugging to painful for this modern age.
+            <link href="http://www.opengl.org/registry/specs/ARB/debug_output.txt">ARB_debug_output</link>
+            support is definetely my number one feature request for this implementation!
+        </paragraph>
+        
+        <paragraph>
+            Late review this month. I am laking advantage of today's release of <link href="http://www.guru3d.com/files_details/amd_catalyst_12_11_beta_download.html">Catalyst 12.11 beta 11</link> for this review.
+            On NVIDIA side, I am testing <link href="http://www.guru3d.com/files_details/geforce_310_64_beta_driver_download.html">Forceware 310.64</link>.
+            Lot of fixes on NVIDIA side!
+        </paragraph>
+        
+        <paragraph>
+            All in all, I am quite surprized by the good quality of Intel OpenGL driver. Considering the size of Intel market share, it sounds resonnable to consider
+            supporting this implementation by our software and the future sounds pretty promessing. Hopefully in 2013, Intel provides an OpenGL 4.2 implementation
+            which will lead to some pretty interesting programming accross all vendors. 
+         </paragraph>
+        
+        <paragraph>
+            Once again, don't forget to contribute to the OpenGL community by <link href="post-0430.html#menu">reporting your bugs</link>!
+        </paragraph>
+        
+        <source-list>
+            <source-download index="1122" />
+            <source-download index="1121" />
+            <source-element type="Link" href="https://github.com/g-truc/ogl-samples/tree/4.3.1" title="OpenGL Samples Pack 4.3.1 branch snapshot" />
+            <source-download index="1120" />
+        </source-list>
+    </draft>
+    
+    <post index="0530" date="26/12/2012" std-date="2012-12-22T22:00:00.00Z" title="Week 51 photograph: Beginning">
+        <meta>
+            <tag>gtc-crea-photograph</tag>
+        </meta>
+        
+        <image
+        color="black"
+        img="./photo/2012-51-960.jpg"
+        href="./photo/2012-51.jpg" />
+    </post>
+    
   <post index="0529" date="23/12/2012" std-date="2012-12-23T14:00:00.00Z" title="OpenGL Samples Pack 4.3.1.0 released">
     <meta>
       <tag>gtc-tech-opengl-samples</tag>
