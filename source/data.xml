@@ -69,7 +69,7 @@
       <tag>gtc-tech-opengl-samples</tag>
     </meta>
     <paragraph>
-      The OpenGL Samples Pack 4.3.1.0 adds Intel OpenGL implementation support.
+      The OpenGL Samples Pack 4.3.1.0 adds Intel OpenGL implementation support to ensure that all OpenGL 3.3 and OpenGL 4.0 are not using extensions.
     </paragraph>
 
     <source-list>
