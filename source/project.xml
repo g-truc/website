@@ -22,24 +22,22 @@
   </project>
 
   <project index="0030" name="OpenCL Samples Pack" short="OCL Samples" type="gtc-tech-project-sample-ocl" date-creation="01/07/2010">
-		<text>
-			<paragraph>
-				The OpenCL Samples Pack is a collection of OpenCL samples.
-			</paragraph>
-			
+    <text>
+      <paragraph>
+        The OpenCL Samples Pack is a collection of OpenCL samples.
+      </paragraph>
         <list name="Git repositories:">
           <list-element href="http://ocl-samples.git.sourceforge.net/git/gitweb.cgi?p=ocl-samples/ocl-samples;a=summary">git clone git://ocl-samples.git.sourceforge.net/gitroot/ocl-samples/ocl-samples (read-only)</list-element>
           <list-element href="http://ocl-samples.git.sourceforge.net/git/gitweb.cgi?p=ocl-samples/ocl-samples;a=summary">git clone ssh://${LOGIN]@ocl-samples.git.sourceforge.net/gitroot/ocl-samples/ocl-samples (read/write)</list-element>
         </list>
-
-		</text>
-		<source-list>
-			<source-element type="Link" href="https://sourceforge.net/apps/trac/ocl-samples/report/1" title="View active tickets" />
-			<source-element type="Link" href="https://sourceforge.net/apps/trac/ocl-samples/newticket" title="Submit a ticket" />
-			<source-element type="Link" href="http://ocl-samples.git.sourceforge.net/git/gitweb.cgi?p=ocl-samples/ocl-samples;a=summary" title="Browse Git repository" />
-			<source-element type="Download" href="http://ocl-samples.git.sourceforge.net/git/gitweb.cgi?p=ocl-samples/ocl-samples;a=snapshot;h=HEAD;sf=tgz" title="OpenCL Samples Pack HEAD snapshot" />
-		</source-list>
-	</project>
+    </text>
+    <source-list>
+      <source-element type="Link" href="https://sourceforge.net/apps/trac/ocl-samples/report/1" title="View active tickets" />
+      <source-element type="Link" href="https://sourceforge.net/apps/trac/ocl-samples/newticket" title="Submit a ticket" />
+      <source-element type="Link" href="http://ocl-samples.git.sourceforge.net/git/gitweb.cgi?p=ocl-samples/ocl-samples;a=summary" title="Browse Git repository" />
+      <source-element type="Download" href="http://ocl-samples.git.sourceforge.net/git/gitweb.cgi?p=ocl-samples/ocl-samples;a=snapshot;h=HEAD;sf=tgz" title="OpenCL Samples Pack HEAD snapshot" />
+    </source-list>
+  </project>
 
   <project index="0029" name="Küken" type="gtc-tech-project-kueken" date-creation="14/03/2008">
     <text>
@@ -247,18 +245,12 @@
           ...
         </line>
       </code>
-        <list name="Git repositories">
-          <list-element href="http://ogl-image.git.sourceforge.net/git/gitweb.cgi?p=ogl-image/ogl-image;a=summary">git clone git://ogl-image.git.sourceforge.net/gitroot/ogl-image/ogl-image (read-only)</list-element>
-          <list-element href="http://ogl-image.git.sourceforge.net/git/gitweb.cgi?p=ogl-image/ogl-image;a=summary">git clone ssh://${LOGIN]@ogl-image.git.sourceforge.net/gitroot/ogl-image/ogl-image (read/write)</list-element>
-        </list>
       
 		</text>
 		<source-list>
-			<source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-image/report/1" title="View active tickets" />
-			<source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-image/newticket" title="Submit a ticket" />
-			<source-element type="Link" href="https://sourceforge.net/projects/ogl-image/" title="Sourceforge.net page" />
-			<source-element type="Link" href="http://ogl-image.git.sourceforge.net/git/gitweb.cgi?p=ogl-image/ogl-image;a=summary" title="Browse Git repository" />
-			<source-element type="Download" href="http://ogl-image.git.sourceforge.net/git/gitweb.cgi?p=ogl-image/ogl-image;a=snapshot;h=HEAD;sf=tgz" title="GLI HEAD snapshot" />
+			<source-element type="Link" href="https://github.com/g-truc/gli/issues" title="Submit a ticket" />
+			<source-element type="Link" href="https://github.com/g-truc/gli" title="Github page" />
+			<source-element type="Download" href="https://github.com/g-truc/gli/archive/master.zip" title="GLI HEAD snapshot" />
 		</source-list>
 	</project>
 
@@ -372,19 +364,14 @@
 		</text>
 		<image title="Glossy refraction surfaces" img="./post/0254-2.jpg" href="./post/0254-2-large.jpg" />
 		<image title="Soft shadows and ... a bug :/" img="./post/0254-1.jpg" href="./post/0254-1.jpg" />
-    <list name="Git repositories">
-      <list-element href="http://ovtsa.git.sourceforge.net/git/gitweb.cgi?p=ovtsa/ovtsa;a=summary">git clone git://ovtsa.git.sourceforge.net/gitroot/ovtsa/ovtsa (read-only)</list-element>
-      <list-element href="http://ovtsa.git.sourceforge.net/git/gitweb.cgi?p=ovtsa/ovtsa;a=summary">git clone ssh://${LOGIN}@ovtsa.git.sourceforge.net/gitroot/ovtsa/ovtsa (read/write)</list-element>
-    </list>
 		<image-list>
 			<image-element title="Raytracer based on GLM" small="./project/glm/glm1-small.jpg" normal="./project/glm/glm1-normal.jpg" />
 			<image-element title="Raytracer based on GLM" small="./project/glm/glm2-small.jpg" normal="./project/glm/glm2-normal.jpg" />
 		</image-list>
     <source-list>
-      <source-element type="Link" href="https://sourceforge.net/apps/trac/ovtsa/report/1" title="View active tickets" />
-      <source-element type="Link" href="https://sourceforge.net/apps/trac/ovtsa/newticket" title="Submit a ticket" />
-      <source-element type="Link" href="http://ovtsa.git.sourceforge.net/git/gitweb.cgi?p=ovtsa/ovtsa;a=summary" title="Browse Git repository" />
-      <source-element type="Download" href="http://ovtsa.git.sourceforge.net/git/gitweb.cgi?p=ovtsa/ovtsa;a=snapshot;h=a287db1fe83d4d066dad8a929c1dd20cd21cba58;sf=tgz" title="Ovt'sa HEAD snapshot" />
+      <source-element type="Link" href="https://github.com/g-truc/ovtsa/issues" title="Submit a ticket" />
+      <source-element type="Link" href="https://github.com/g-truc/ovtsa" title="Browse Git repository" />
+      <source-element type="Download" href="https://github.com/g-truc/ovtsa/archive/master.zip" title="Ovt'sa HEAD snapshot" />
       <source-element type="Link" href="http://glm.g-truc.net" title="glm.g-truc.net" />
     </source-list>
 	</project>
@@ -878,12 +865,6 @@
 				Shoot(r) is a C++ oriented object software based on OpenGL 1.5 which main graphics effects are based on particle system.
 				The levels, weapons, ennemies, bonuses are all describe in a XML files.
 			</paragraph>
-			<paragraph>
-				git clone git://shooter.git.sourceforge.net/gitroot/shooter/shooter (read-only)
-			</paragraph>
-			<paragraph>
-				git clone ssh://groovounet@shooter.git.sourceforge.net/gitroot/shooter/shooter (read/write)
-			</paragraph>
 		</text>
 		<image-list>
 			<image-element title="Screenshot" small="./project/shooter/shooter1-small.jpg" normal="./project/shooter/shooter1-normal.jpg" />
@@ -893,10 +874,9 @@
 			<image-element title="Screenshot" small="./project/shooter/shooter5-small.jpg" normal="./project/shooter/shooter5-normal.jpg" />
 		</image-list>
 		<source-list>
-			<source-element type="Link" href="https://sourceforge.net/apps/trac/shooter/report/1" title="View active tickets" />
-			<source-element type="Link" href="https://sourceforge.net/apps/trac/shooter/newticket" title="Submit a ticket" />
-			<source-element type="Link" href="http://shooter.git.sourceforge.net/git/gitweb.cgi?p=shooter/shooter;a=summary" title="Browse Git repository" />
-			<source-element type="Download" href="http://shooter.git.sourceforge.net/git/gitweb.cgi?p=shooter/shooter;a=snapshot;h=HEAD;sf=tgz" title="Shoot(r) HEAD snapshot" />
+			<source-element type="Link" href="https://github.com/g-truc/shooter/issues" title="Submit a ticket" />
+			<source-element type="Link" href="https://github.com/g-truc/shooter" title="Browse Git repository" />
+			<source-element type="Download" href="https://github.com/g-truc/shooter/archive/master.zip" title="Shoot(r) HEAD snapshot" />
 			<source-element type="Link" href="http://shooter.g-truc.net" title="shooter.g-truc.net" />
 		</source-list>
 	</project>
@@ -1006,8 +986,10 @@
 			<image-element title="Screenshot de Othello GL" small="./project/othello/othello5-small.jpg" normal="./project/othello/othello5-normal.jpg" />
 		</image-list>
 		<source-list>
-			<source-element type="Download" href="http://othellogl.g-truc.net/" title="OthelloGL Beta 3 for Windows, Linux in French, English, German and Spanish" />
-			<source-element type="Link" href="http://othellogl.g-truc.net" title="Project website" />
+      <source-element type="Link" href="https://github.com/g-truc/othello/issues" title="Submit a ticket" />
+      <source-element type="Link" href="https://github.com/g-truc/othello" title="Browse Git repository" />
+      <source-element type="Download" href="https://github.com/g-truc/othello/archive/master.zip" title="HEAD snapshot" />
+      <source-element type="Link" href="http://othellogl.g-truc.net" title="Project website" />
 		</source-list>
 	</project>
 
@@ -1067,10 +1049,6 @@
 			<paragraph>
 				If you are interested in XML, XSLT and XPath, you are invited to download the website source and discover all the crazy tricks that make this website.
 			</paragraph>
-      <list name="Git repositories">
-        <list-element href="http://g-truc.git.sourceforge.net/git/gitweb.cgi?p=g-truc/g-truc;a=summary">git clone git://g-truc.git.sourceforge.net/gitroot/g-truc/g-truc (read-only)</list-element>
-        <list-element href="http://g-truc.git.sourceforge.net/git/gitweb.cgi?p=g-truc/g-truc;a=summary">git clone ssh://${Login}@g-truc.git.sourceforge.net/gitroot/g-truc/g-truc (read/write)</list-element>
-      </list>
 		</text>
 		<image-list>
 			<image-element title="G-Truc Creation 2.0.2" normal="./project/site/g-truc-v202.png" small="./project/site/vignette/g-truc-v202.png" />
@@ -1092,10 +1070,9 @@
       <image-element title="G-Truc Creation 7.0.3" normal="./project/site/g-truc-v703-2.png" small="./project/site/vignette/g-truc-v703-2.png" />
 		</image-list>
 		<source-list>
-			<source-element type="Link" href="https://sourceforge.net/apps/trac/g-truc/report/1" title="View active tickets" />
-			<source-element type="Link" href="https://sourceforge.net/apps/trac/g-truc/newticket" title="Submit a ticket" />
-			<source-element type="Link" href="http://g-truc.git.sourceforge.net/git/gitweb.cgi?p=g-truc/g-truc;a=summary" title="Browse Git repository" />
-			<source-element type="Download" href="http://g-truc.git.sourceforge.net/git/gitweb.cgi?p=g-truc/g-truc;a=snapshot;h=HEAD;sf=tgz" title="G-Truc Creation HEAD snapshot" />
+      <source-element type="Link" href="https://github.com/g-truc/website/issues" title="Submit an issue" />
+      <source-element type="Link" href="https://github.com/g-truc/website" title="Browse Git repository" />
+      <source-element type="Download" href="https://github.com/g-truc/website/archive/master.zip" title="HEAD snapshot" />
 		</source-list>
 	</project>
 
