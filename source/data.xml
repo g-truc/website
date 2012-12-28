@@ -53,18 +53,7 @@
     </source-list>
   </draft>
 
-  <draft index="0533" date="28/12/2012" std-date="2012-12-28T22:00:00.00Z" title="Week 52 photograph: M'enfin !">
-    <meta>
-      <tag>gtc-crea-photograph</tag>
-    </meta>
-
-    <image
-      color="black"
-      img="./photo/2012-52-960.jpg"
-      href="./photo/2012-52.jpg" />
-  </draft>
-
-    <draft index="0532" date="28/12/2012" std-date="2012-12-28T23:30:00.00Z" title="December 2012 OpenGL drivers status">
+    <draft index="0533" date="28/12/2012" std-date="2012-12-28T23:30:00.00Z" title="December 2012 OpenGL drivers status">
         <meta>
             <tag>gtc-tech-project-openglstatus</tag>
         </meta>
@@ -139,22 +128,39 @@
         </source-list>
     </draft>
 
-  <draft index="0531" date="27/12/2012" std-date="2012-12-27T01:30:00.00Z" title="December 2012 OpenGL matrix">
+  <post index="0532" date="28/12/2012" std-date="2012-12-28T22:00:00.00Z" title="Week 52 photograph: M'enfin !">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2012-52-960.jpg"
+      href="./photo/2012-52.jpg" />
+  </post>
+
+  <post index="0531" date="27/12/2012" std-date="2012-12-27T01:30:00.00Z" title="December 2012 OpenGL matrix">
     <meta>
       <tag>gtc-tech-project-openglmatrix</tag>
     </meta>
 
     <paragraph>
       The OpenGL ecosystem is particularly fragmented. There is a lot of different OpenGL implementations but none of them is reaching the same level of features.
+    </paragraph>
+    <paragraph>
       NVIDIA implements OpenGL 4.3; AMD implements OpenGL 4.2; Intel implements OpenGL 4.0; Apple implements OpenGL 3.2; and MESA implements OpenGL 3.1.
-      On top of this, even if there is OpenGL 3 and OpenGL 4 hardware support each minor revision of the specifications, a lot of extensions are available so that many of the OpenGL 4 extension can run on OpenGL 3 hardware. 
-      It can be complicated to navigate into the OpenGL extensions, this is why I created this OpenGL features matrix.
+      On top of this, even if there are OpenGL 3 and OpenGL 4 hardware supporting each minor revision of the specifications,
+      a lot of OpenGL 4 extensions are available on OpenGL 3 hardware.
+    </paragraph>
+    <paragraph>
+      It can be complicated to navigate into the OpenGL extensions and optimize our application to maximize the use of OpenGL features.
+      I created an OpenGL features matrix to resolve this issue. It summarizes for each architecture the list of supported extensions.
     </paragraph>
 
     <source-list>
       <source-download index="1123" />
     </source-list>
-  </draft>
+  </post>
 
   <post index="0530" date="27/12/2012" std-date="2012-12-27T21:00:00.00Z" title="Week 51 photograph: Visited">
         <meta>
@@ -31916,4 +31922,5 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 </g-truc>
