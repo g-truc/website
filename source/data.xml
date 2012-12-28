@@ -53,7 +53,7 @@
     </source-list>
   </draft>
 
-    <draft index="0533" date="28/12/2012" std-date="2012-12-28T23:30:00.00Z" title="December 2012 OpenGL drivers status">
+  <post index="0533" date="28/12/2012" std-date="2012-12-28T23:30:00.00Z" title="December 2012 OpenGL status">
         <meta>
             <tag>gtc-tech-project-openglstatus</tag>
         </meta>
@@ -62,7 +62,7 @@
             This month I had my first experience with Intel OpenGL drivers since four or five years.
             Back then working on Intel was a nightmare, the implementation would report VBO supports but no entry point would be available...
             Intel has been more and more active on the GPU side so that having an Intel GPU on a laptop sounds like a reasonnable option to me...
-            but is the OpenGL imeplementation descent?
+            but is the OpenGL implementation descent?
         </paragraph>
         
         <paragraph>
@@ -79,7 +79,7 @@
         </paragraph>
         
         <paragraph>
-            More digging also shows that the work on more extensions has became as we can find entry points for
+            More digging also shows that the work on more extensions has began as we can find entry points for
             <link href="http://www.opengl.org/registry/specs/ARB/get_program_binary.txt">ARB_get_program_binary</link> (4.1),
             <link href="http://www.opengl.org/registry/specs/ARB/invalidate_subdata.txt">ARB_invalidate_subdata</link> (4.3),
             <link href="http://www.opengl.org/registry/specs/ARB/shader_image_load_store.txt">ARB_shader_image_load_store</link> (4.2),
@@ -95,11 +95,11 @@
 
         <paragraph>
           For this new OpenGL status, I refactored the table using Excel to make it easier for me to maintain the status especially now that it includes Intel results. 
-          The complete and details status can be download at the end of this post. The PDF version doesn't show the comments embedded in the the Excel version.
+          The complete and details status can be download at the end of this post. The PDF version doesn't show the comments embedded in the Excel version.
         </paragraph>
 
         <paragraph>
-            Late review this month. I am laking advantage of today's release of <link href="http://www.guru3d.com/files_details/amd_catalyst_12_11_beta_download.html">Catalyst 12.11 beta 11</link> for this review.
+            For this month status I am using <link href="http://www.guru3d.com/files_details/amd_catalyst_12_11_beta_download.html">Catalyst 12.11 beta 11</link> as AMD hasn't release new drivers.
             On NVIDIA side, I am testing <link href="http://www.guru3d.com/files_details/geforce_310_70_whql_driver_download.html">Forceware 310.64</link> and 
             for Intel <link href="http://www.necacom.net/index.php?option=com_content&amp;view=article&amp;id=6577">drivers 15.31.64.2885</link>. 
             Lot of fixes for Intel regarding rendering to framebuffer, indirect draws and point sprite rendering.
@@ -111,10 +111,10 @@
           href="./post/0513-status-2012-12.png" />
 
         <paragraph>
-            All in all, I am quite surprized by the good quality of Intel OpenGL driver. Considering the size of Intel market share, it sounds resonnable to consider
-            supporting this implementation by our software and the future sounds pretty promessing. Hopefully in 2013, Intel provides an OpenGL 4.2 implementation
-            which will lead to some pretty interesting programming accross all vendors. 
-         </paragraph>
+          All in all, I am quite surprized by the good quality of Intel OpenGL driver. Considering the size of Intel market share, it sounds reasonable to consider
+          supporting this implementation by our software and the future sounds pretty promessing. Hopefully, in 2013 Intel will provide an OpenGL 4.2 implementation
+          which will lead to some pretty interesting programming across all vendors.
+        </paragraph>
         
         <paragraph>
             Once again, don't forget to contribute to the OpenGL community by <link href="post-0430.html#menu">reporting your bugs</link>!
@@ -126,7 +126,7 @@
             <source-element type="Link" href="https://github.com/g-truc/ogl-samples/tree/4.3.1" title="OpenGL Samples Pack 4.3.1 branch snapshot" />
             <source-download index="1120" />
         </source-list>
-    </draft>
+    </post>
 
   <post index="0532" date="28/12/2012" std-date="2012-12-28T22:00:00.00Z" title="Week 52 photograph: M'enfin !">
     <meta>
@@ -31922,5 +31922,6 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 
 </g-truc>
