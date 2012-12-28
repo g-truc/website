@@ -54,9 +54,6 @@
   <item level="2" name="gtc-tech-opengl-review" parent="gtc-tech-opengl" title="OpenGL Reviews">
    <address type="main" url="post-opengl-review.html" processor="page-post-list.xsl" />
   </item>
-  <item level="2" name="gtc-tech-opengl-status" parent="gtc-tech-opengl" title="OpenGL Status">
- <address type="main" url="post-opengl-status.html" processor="page-post-list.xsl" />
-  </item>
   <item level="2" name="gtc-tech-opengl-tips" parent="gtc-tech-opengl" title="OpenGL Tips">
     <address type="main" url="post-opengl-tips.html" processor="page-post-list.xsl" />
   </item>
@@ -74,7 +71,13 @@
     <address type="main" url="post-project.html" processor="page-post-list.xsl" />
   </item>
   <item level="2" name="gtc-tech-project-openglinsights" parent="gtc-tech-project" title="OpenGL Insights">
+    <address type="main" url="http://www.openglinsights.com" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-openglstatus" parent="gtc-tech-project" title="OpenGL Status">
     <address type="main" url="post-project-openglinsights.html" processor="page-post-list.xsl" />
+  </item>
+  <item level="2" name="gtc-tech-project-openglmatrix" parent="gtc-tech-project" title="OpenGL Matrix">
+    <address type="main" url="post-project-openglmatrix.html" processor="page-post-list.xsl" />
   </item>
   <item level="2" name="gtc-tech-project-glm" parent="gtc-tech-project" title="GLM">
     <address type="main" url="post-project-glm.html" processor="page-post-list.xsl" />

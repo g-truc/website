@@ -289,10 +289,6 @@
       </xsl:call-template>
       
       <div class="title-frame-tech-extend-button-block">
-        <xsl:call-template name="tech-menu-button-link">
-          <xsl:with-param name="Token" select="'gtc-tech-project-openglinsights'"/>
-          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
-        </xsl:call-template>
         <xsl:call-template name="tech-menu-button-project">
           <xsl:with-param name="Token" select="'gtc-tech-opengl-samples'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
@@ -305,44 +301,25 @@
           <xsl:with-param name="Token" select="'gtc-tech-project-gli'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
         </xsl:call-template>
+
         <xsl:call-template name="tech-menu-button-project">
-          <xsl:with-param name="Token" select="'gtc-tech-project-kueken'"/>
-          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
-        </xsl:call-template>
-        <xsl:call-template name="tech-menu-button-project">
-          <xsl:with-param name="Token" select="'gtc-tech-project-ovtsa'"/>
+          <xsl:with-param name="Token" select="'gtc-tech-project-openglreviews'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
         </xsl:call-template>
         <xsl:call-template name="tech-menu-button-project">
-          <xsl:with-param name="Token" select="'gtc-tech-project-shooter'"/>
+          <xsl:with-param name="Token" select="'gtc-tech-project-openglstatus'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
         </xsl:call-template>
         <xsl:call-template name="tech-menu-button-project">
-          <xsl:with-param name="Token" select="'gtc-tech-project-piranha'"/>
+          <xsl:with-param name="Token" select="'gtc-tech-project-openglmatrix'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
         </xsl:call-template>
         <xsl:call-template name="tech-menu-button-link">
-          <xsl:with-param name="Token" select="'gtc-tech-opengl'"/>
-          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
-        </xsl:call-template>
-        <xsl:call-template name="tech-menu-button-link">
-          <xsl:with-param name="Token" select="'gtc-tech-devel'"/>
-          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
-        </xsl:call-template>
-        <xsl:call-template name="tech-menu-button-link">
-          <xsl:with-param name="Token" select="'gtc-tech-project'"/>
-          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
-        </xsl:call-template>
-        <xsl:call-template name="tech-menu-button-link">
-          <xsl:with-param name="Token" select="'gtc-tech-event'"/>
+          <xsl:with-param name="Token" select="'gtc-tech-project-openglinsights'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
         </xsl:call-template>
       </div>
       <div class="title-frame-tech-extend-button-shadow">
-        <xsl:call-template name="tech-menu-button-link">
-          <xsl:with-param name="Token" select="'gtc-tech-project-openglinsights'"/>
-          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
-        </xsl:call-template>
         <xsl:call-template name="tech-menu-button-project">
           <xsl:with-param name="Token" select="'gtc-tech-opengl-samples'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
@@ -355,36 +332,21 @@
           <xsl:with-param name="Token" select="'gtc-tech-project-gli'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
         </xsl:call-template>
+
         <xsl:call-template name="tech-menu-button-project">
-          <xsl:with-param name="Token" select="'gtc-tech-project-kueken'"/>
-          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
-        </xsl:call-template>
-        <xsl:call-template name="tech-menu-button-project">
-          <xsl:with-param name="Token" select="'gtc-tech-project-ovtsa'"/>
+          <xsl:with-param name="Token" select="'gtc-tech-project-openglreviews'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
         </xsl:call-template>
         <xsl:call-template name="tech-menu-button-project">
-          <xsl:with-param name="Token" select="'gtc-tech-project-shooter'"/>
+          <xsl:with-param name="Token" select="'gtc-tech-project-openglstatus'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
         </xsl:call-template>
         <xsl:call-template name="tech-menu-button-project">
-          <xsl:with-param name="Token" select="'gtc-tech-project-piranha'"/>
+          <xsl:with-param name="Token" select="'gtc-tech-project-openglmatrix'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
         </xsl:call-template>
         <xsl:call-template name="tech-menu-button-link">
-          <xsl:with-param name="Token" select="'gtc-tech-opengl'"/>
-          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
-        </xsl:call-template>
-        <xsl:call-template name="tech-menu-button-link">
-          <xsl:with-param name="Token" select="'gtc-tech-devel'"/>
-          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
-        </xsl:call-template>
-        <xsl:call-template name="tech-menu-button-link">
-          <xsl:with-param name="Token" select="'gtc-tech-project'"/>
-          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
-        </xsl:call-template>
-        <xsl:call-template name="tech-menu-button-link">
-          <xsl:with-param name="Token" select="'gtc-tech-event'"/>
+          <xsl:with-param name="Token" select="'gtc-tech-project-openglinsights'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
         </xsl:call-template>
       </div>
@@ -452,10 +414,11 @@
           </xsl:otherwise>
         </xsl:choose>
       </a>
-      <xsl:text> </xsl:text>
+      <xsl:text> (</xsl:text>
       <a href="{$Download/item/@href}" class="{$Class}">
         <xsl:value-of select="$Download/@version" />
       </a>
+      <xsl:text>)</xsl:text>
     </span>
   </xsl:template>
 

@@ -21,7 +21,7 @@ div.page
 	margin-left:auto; 
 	margin-right:auto;
 	width:1000px;
-	min-height:420px;
+	min-height:600px;
     background-color:#000000;
 	/*font-family:Century, Arial;*/
 	/*font-family::Georgia;*/
@@ -186,9 +186,9 @@ div.content-menu
 
 div.post-menu
 {
-	background-color:transparent;
-	text-align:center;
-	padding:0px;
+    background-color:transparent;
+    text-align:center;
+    padding:0px;
     margin:0px;
     color:#304703;
 }
@@ -278,7 +278,7 @@ span.post-frame-list
     margin:8px;
     margin-right:0px;
 	width:656px;
-	min-height:568px;
+	min-height:600px;
 }
 
 ul.post-frame-menu

@@ -2,6 +2,23 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
 
+  <project index="0034" name="OpenGL Matrix" short="OpenGL Matrix" type="gtc-tech-project-openglmatrix" date-creation="28/12/2012">
+    <text>
+      <paragraph>
+        List the extensions exposed by OpenGL implementations.
+      </paragraph>
+    </text>
+  </project>
+
+  <project index="0033" name="OpenGL Status" short="OpenGL Status" type="gtc-tech-project-openglstatus" date-creation="28/12/2012">
+    <text>
+      <paragraph>
+        OpenGL status published on G-Truc Creation. By testing OpenGL implementations against The OpenGL Samples Pack 
+        we comments the behaviour and execusion successes or failures for these implementations.
+      </paragraph>
+    </text>
+  </project>
+  
   <project index="0032" name="OpenGL Reviews" short="OpenGL Reviews" type="gtc-tech-project-openglreviews" date-creation="22/05/2004">
     <text>
       <paragraph>
