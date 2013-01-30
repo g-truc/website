@@ -1,17 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+  <download index="1126" date="30/01/2013" std-date="2012-02-30T17:00:00.00Z" type="gtc-tech-project-openglmatrix" title="OpenGL Matrix" short="OGL matrix" version="January 2013">
+    <item href="doc/OpenGL%20matrix%202013-01.pdf" type="PDF" size="469 KB" />
+    <item href="doc/OpenGL%20matrix.xlsx" type="XLSX" size="59 KB" />
+  </download>
+  <download index="1125" date="30/01/2013" std-date="2013-01-30T17:00:00.00Z" type="gtc-tech-project-openglstatus" title="OpenGL status" short="OGL status" version="January 2013">
+    <item href="doc/OpenGL%20status%202013-01.pdf" type="PDF" size="336 KB" />
+    <item href="doc/OpenGL%20status.xlsx" type="XLSX" size="65 KB" />
+  </download>
+  <download index="1124" date="28/01/2013" std-date="2013-01-28T15:02:00.00Z" type="gtc-tech-project-gli" title="GLI" version="0.4.0.0">
+    <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.4.0.0/gli-0.4.0.0.zip/download" type="ZIP" size="4.0 MB" />
+    <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.4.0.0/gli-0.4.0.0.7z/download" type="7Z" size="2.14 MB" />
+  </download>
   <download index="1123" date="23/12/2012" std-date="2012-12-23T17:00:00.00Z" type="gtc-tech-project-openglmatrix" title="OpenGL Matrix" short="OGL matrix" version="December 2012">
-    <item href="http://www.g-truc.net/doc/OpenGL%20matrix%202012-12.pdf" type="PDF" size="305 KB" />
-    <item href="http://www.g-truc.net/doc/OpenGL%20matrix.xlsx" type="XLSX" size="27 KB" />
+    <item href="doc/OpenGL%20matrix%202012-12.pdf" type="PDF" size="305 KB" />
+    <item href="doc/OpenGL%20matrix.xlsx" type="XLSX" size="27 KB" />
   </download>
   <download index="1122" date="28/12/2012" std-date="2012-12-28T17:00:00.00Z" type="gtc-tech-project-openglstatus" title="OpenGL status" short="OGL status" version="December 2012">
-    <item href="http://www.g-truc.net/doc/OpenGL%20status%202012-12.pdf" type="PDF" size="219 KB" />
-    <item href="http://www.g-truc.net/doc/OpenGL%20status.xlsx" type="XLSX" size="43 KB" />
+    <item href="doc/OpenGL%20status%202012-12.pdf" type="PDF" size="219 KB" />
+    <item href="doc/OpenGL%20status.xlsx" type="XLSX" size="43 KB" />
   </download>
   <download index="1121" date="23/12/2012" std-date="2012-12-23T17:00:00.00Z" type="gtc-tech-project-openglstatus" title="OpenGL status" short="OGL status" version="November 2012">
-    <item href="http://www.g-truc.net/doc/OpenGL%20status%202012-11.pdf" type="PDF" size="188 KB" />
-    <item href="http://www.g-truc.net/doc/OpenGL%20status.xlsx" type="XLSX" size="37 KB" />
+    <item href="doc/OpenGL%20status%202012-11.pdf" type="PDF" size="188 KB" />
+    <item href="doc/OpenGL%20status.xlsx" type="XLSX" size="37 KB" />
   </download>
   <download index="1120" date="23/12/2012" std-date="2012-12-23T17:00:00.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.3.1.0">
     <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.3.1.0/ogl-samples-4.3.1.0.zip/download" type="ZIP" size="4.6 MB" />
@@ -42,7 +54,7 @@
     <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.3.0.0/ogl-samples-4.3.0.0.7z/download" type="7Z" size="2.31 MB" />
   </download>
   <download index="1113" date="06/08/2012" std-date="2012-08-06T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="4.3">
-    <item href="http://www.g-truc.net/doc/OpenGL4.3review.pdf" type="PDF" size="762 KB" />
+    <item href="doc/OpenGL4.3review.pdf" type="PDF" size="762 KB" />
   </download>
   <download index="1112" date="30/06/2012" std-date="2012-06-30T20:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.3.4">
     <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.3.4/glm-0.9.3.4.zip/download" type="ZIP" size="6.4 MB" />
@@ -133,19 +145,19 @@
     <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.2.0.0/ogl-samples-4.2.0.0.7z/download" type="7Z" size="5.3 MB" />
   </download>
   <download index="1090" date="08/08/2011" std-date="2011-08-08T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="4.2">
-    <item href="http://www.g-truc.net/doc/OpenGL4.2review.pdf" type="PDF" size="857 KB" />
+    <item href="doc/OpenGL4.2review.pdf" type="PDF" size="857 KB" />
     <item href="https://docs.google.com/document/d/1kFzd9eZikZoAIKdDTkPo2i3OVeq4u8JZkmmIkdXDRNM/edit?hl=en_US" type="Google Docs" />
   </download>
   <download index="1089" date="18/08/2011" std-date="2010-08-18T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="4.1">
-    <item href="http://www.g-truc.net/doc/OpenGL4.1review.pdf" type="PDF" size="274 KB" />
+    <item href="doc/OpenGL4.1review.pdf" type="PDF" size="274 KB" />
     <item href="https://docs.google.com/document/d/1XQZ91G_Cxpq6H3a1dwCg1G0jUR6KMHIihCded7HFLpQ/edit?hl=en_US" type="Google Docs" />
   </download>
   <download index="1088" date="23/03/2010" std-date="2010-03-23T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="4.0">
-    <item href="http://www.g-truc.net/doc/OpenGL4.0review.pdf" type="PDF" size="382 KB" />
+    <item href="doc/OpenGL4.0review.pdf" type="PDF" size="382 KB" />
     <item href="https://docs.google.com/document/d/14wg28sEhrnl3QNMJymlHzZ7qoySiTTnre-KJu74cMn4/edit?hl=en_US" type="Google Docs" />
   </download>
   <download index="1087" date="16/03/2010" std-date="2010-03-16T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="3.3">
-    <item href="http://www.g-truc.net/doc/OpenGL3.3review.pdf" type="PDF" size="207 KB" />
+    <item href="doc/OpenGL3.3review.pdf" type="PDF" size="207 KB" />
     <item href="https://docs.google.com/document/d/15Y166rexHlbKuhK-dtp_8rUxdk-m99wQa28nAEgEbqs/edit?hl=en_US" type="Google Docs" />
   </download>
   <download index="1086" date="04/08/2011" std-date="2011-08-04T23:30:00.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.1.7.2">

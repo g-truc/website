@@ -53,6 +53,271 @@
     </source-list>
   </draft>
 
+  <post index="0538" date="30/01/2013" std-date="2003-01-30T23:30:00.00Z" title="January 2013 OpenGL status">
+    <meta>
+        <tag>gtc-tech-project-openglstatus</tag>
+    </meta>
+
+    <paragraph>
+      The tested drivers this month are 
+      <link href="http://www.guru3d.com/files_details/amd_catalyst_13_2_download.html">AMD Catalyst 13.2 beta 3</link> 
+      <link href="http://www.necacom.net/index.php?option=com_content&amp;view=article&amp;id=6577:intel-hd-graphics-4000-drivers-version-1531642885&amp;catid=68:intel&amp;Itemid=86">Intel 15.31.64.2885</link> and 
+      <link href="http://www.guru3d.com/files_details/geforce_313_95_beta_driver_download.html">NVIDIA Forceware 313.95 beta</link>. No newer drivers for Intel, I just kept using last month one.
+    </paragraph>
+
+    <title>Core and compatibility profile issues</title>
+    <paragraph>
+      I am typically working with the core profile because it supports rendering without vertex attributes according to the specification.
+      However, both Intel and NVIDIA supports rendering without vertex attributes with the compatibility profile.
+    </paragraph>
+
+    <title>New exposed extensions</title>
+    <paragraph>
+      AMD implementation exposes four new extensions from OpenGL 4.3 core specification: 
+      <link href="http://www.opengl.org/registry/specs/ARB/texture_storage_multisample.txt">ARB_texture_storage_multisample</link>,
+      <link href="http://www.opengl.org/registry/specs/ARB/texture_buffer_range.txt">ARB_texture_buffer_range</link>,
+      <link href="http://www.opengl.org/registry/specs/ARB/fragment_layer_viewport.txt">ARB_fragment_layer_viewport</link> and
+      <link href="http://www.opengl.org/registry/specs/ARB/multi_draw_indirect.txt">ARB_multi_draw_indirect</link>.
+    </paragraph>
+    <paragraph>
+      I have updated the extension matrix with the new extensions but also including MacOS X and Mesa implementations. MacOS X implementation seems to be really far behind everyone else. 
+      Mesa is making great progress as only <link href="http://www.opengl.org/registry/specs/ARB/texture_multisample.txt">ARB_texture_multisample</link> is missing for a full OpenGL 3.3 support 
+      and a good amount of OpenGL 4 hardware extensions are also supported.
+    </paragraph>
+
+    <image title="January 2013 extensions available"
+      color="white"
+      img="./post/0538-status-2013-01-800.png"
+      href="./post/0538-status-2013-01.png" />
+
+    <title>Bugs fixed</title>
+
+    <paragraph>
+      The work on the OpenGL Samples Pack 4.3.2 is focussed on OpenGL 3.2 samples and a MacOS X port. It allowed me to identify new bugs on AMD where creating a depth buffer only framebuffer results 
+      into a crash when using the core profile or generates an incomplete framebuffer error using the compatibility profile. Furthermore, using multi draw indirect on SI results in a crash.
+    </paragraph>
+    <paragraph>
+      On NVIDIA side, we can now use double for the vertex attributes.
+    </paragraph>
+    
+    <image title="January 2013 drivers status"
+      color="white"
+      img="./post/0538-status-2013-01-800-B.png"
+      href="./post/0538-status-2013-01-B.png" />
+    
+    <paragraph>
+        Once again, don't forget to contribute to the OpenGL community by <link href="post-0430.html#menu">reporting your bugs</link>!
+        The detailled <link href="project-0033.html#menu">OpenGL drivers status</link> and <link href="project-0034.html#menu">OpenGL extensions matrix</link> are available for download below.
+    </paragraph>
+        
+    <source-list>
+        <source-download index="1126" />
+        <source-download index="1125" />
+        <source-element type="Link" href="https://github.com/g-truc/ogl-samples/tree/4.3.2" title="OpenGL Samples Pack 4.3.2 branch snapshot" />
+        <source-download index="1120" />
+    </source-list>
+  </post>
+  
+  <post index="0537" date="28/01/2013" std-date="2013-01-28T02:30:00.00Z" title="GLI 0.4.0.0 released">
+    <meta>
+      <tag>gtc-tech-project-gli</tag>
+    </meta>
+
+    <paragraph>
+      I have been wishing to release a new version of <a href="project-0024.html">GLI</a> for more than a year but GLI 0.4.0.0 is finally available.
+    </paragraph>
+    <paragraph>
+      This new version is a large refactoring / rewrite of the code which aims at avoiding memory copies, reduce memory fragmentation, memory allocations and constant time memory access.
+      Just for loading textures, performance tests show a gain of 50% in release build and 50X in debug build.
+    </paragraph>
+    <paragraph>
+      Currently, there is no documentation and the features set remains very limited. All it is good for is loading DDS files containing basically any formats supported by OpenGL for either texture 2d, cube maps or texture 3d. 
+      It should be considered as an alpha version but expect regular updates from now on, aiming at making it a good image processing library. 
+    </paragraph>
+
+    <code title="Creating an OpenGL 4.2 compressed texture with GLI 0.4.0:">
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;gli/gli.hpp&gt;</string>
+      </line>
+      <line>
+      </line>
+      <line>
+        <comment>// </comment>
+      </line>
+      <line>
+        gli::texture2D Texture(gli::loadStorageDDS("kueken2.dds"));
+      </line>
+      <line>
+        assert(!Texture.empty());
+      </line>
+      <line>
+      </line>
+      <line>
+        glBindTexture(GL_TEXTURE_2D, TextureName);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, GLint(Texture.levels() - 1));
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, GL_RED);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, GL_GREEN);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, GL_BLUE);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_A, GL_ALPHA);
+      </line>
+      <line>
+        glTexStorage2D(GL_TEXTURE_2D,
+      </line>
+      <line align="32px">
+        GLint(Texture.levels()),
+      </line>
+      <line align="32px">
+        GLenum(gli::internal_format(Texture.format())),
+      </line>
+      <line align="32px">
+        GLsizei(Texture.dimensions().x),
+      </line>
+      <line align="32px">
+        GLsizei(Texture.dimensions().y));
+      </line>
+      <line>
+
+      </line>
+      <line>
+        if(gli::is_compressed(Texture.format()))
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        for(gli::texture2D::size_type Level = 0; Level &lt; Texture.levels(); ++Level)
+      </line>
+      <line align="32px">
+        {
+      </line>
+      <line align="64px">
+        glCompressedTexSubImage2D(GL_TEXTURE_2D,
+      </line>
+      <line align="96px">
+        GLint(Level),
+      </line>
+      <line align="96px">
+        0, 0,
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().x),
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().y),
+      </line>
+      <line align="96px">
+        GLenum(gli::internal_format(Texture.format())),
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].size()),
+      </line>
+      <line align="96px">
+        Texture[Level].data());
+      </line>
+      <line align="32px">
+        }
+      </line>
+      <line>
+        }
+      </line>
+      <line>
+        else
+      </line>
+      <line>
+        {
+      </line>
+
+      <line align="32px">
+        for(gli::texture2D::size_type Level = 0; Level &lt; Texture.levels(); ++Level)
+      </line>
+      <line align="32px">
+        {
+      </line>
+      <line align="64px">
+        glTexSubImage2D(GL_TEXTURE_2D,
+      </line>
+      <line align="96px">
+        GLint(Level),
+      </line>
+      <line align="96px">
+        0, 0,
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().x),
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().y),
+      </line>
+      <line align="96px">
+        GLenum(gli::external_format(Texture.format())),
+      </line>
+      <line align="96px">
+        GLenum(gli::type_format(Texture.format())),
+      </line>
+      <line align="96px">
+        Texture[Level].data());
+      </line>
+      <line align="32px">
+        }
+      </line>
+      <line>
+        }
+      </line>
+    </code>
+    
+    <source-list>
+      <source-download type="Download" index="1124" />
+      <source-element type="Link" href="https://github.com/g-truc/gli/issues" title="Submit a bug report" />
+    </source-list>
+  </post>
+  
+  <post index="0536" date="25/01/2013" std-date="2013-01-25T04:00:00.00Z" title="Week 3: La plénitude du vide">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-03-960.jpg"
+      href="./photo/2013-03.jpg" />
+  </post>
+
+  <post index="0535" date="18/01/2013" std-date="2013-01-18T22:00:00.00Z" title="Week 2: Just arrived on Earth">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-02-960.jpg"
+      href="./photo/2013-02.jpg" />
+  </post>
+    
+  <post index="0534" date="15/01/2013" std-date="2013-01-15T22:00:00.00Z" title="Week 1: Reykja geisli">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-01-960.jpg"
+      href="./photo/2013-01.jpg" />
+  </post>
+
   <post index="0533" date="28/12/2012" std-date="2012-12-28T23:30:00.00Z" title="December 2012 OpenGL status">
         <meta>
             <tag>gtc-tech-project-openglstatus</tag>
