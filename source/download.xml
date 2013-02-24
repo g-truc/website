@@ -1,6 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+  <download index="1131" date="24/02/2013" std-date="2012-02-30T17:00:00.00Z" type="gtc-tech-project-openglmatrix" title="OpenGL Matrix" short="OGL matrix" version="February 2013">
+    <item href="doc/OpenGL%20matrix%202013-02.pdf" type="PDF" size="469 KB" />
+    <item href="doc/OpenGL%20matrix.xlsx" type="XLSX" size="84 KB" />
+  </download>
+  <download index="1130" date="24/02/2013" std-date="2013-01-30T17:00:00.00Z" type="gtc-tech-project-openglstatus" title="OpenGL status" short="OGL status" version="February 2013">
+    <item href="doc/OpenGL%20status%202013-02.pdf" type="PDF" size="310 KB" />
+    <item href="doc/OpenGL%20status.xlsx" type="XLSX" size="83 KB" />
+  </download>
+  <download index="1129" date="24/02/2013" std-date="2013-02-24T21:00:00.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.3.2.4">
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.3.2.1/ogl-samples-4.3.2.1.zip/download" type="ZIP" size="4.7 MB" />
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.3.2.1/ogl-samples-4.3.2.1.7z/download" type="7Z" size="2.9 MB" />
+  </download>
+  <download index="1128" date="16/02/2013" std-date="2013-02-16T21:00:00.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.3.2.0">
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.3.2.0/ogl-samples-4.3.2.0.zip/download" type="ZIP" size="4.7 MB" />
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.3.2.0/ogl-samples-4.3.2.0.7z/download" type="7Z" size="2.9 MB" />
+  </download>
+  <download index="1127" date="14/02/2013" std-date="2013-02-14T15:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.4.2">
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.4.2/glm-0.9.4.2.zip/download" type="ZIP" size="4.5 MB" />
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.4.2/glm-0.9.4.2.7z/download" type="7Z" size="2.4 MB" />
+  </download>
   <download index="1126" date="30/01/2013" std-date="2012-02-30T17:00:00.00Z" type="gtc-tech-project-openglmatrix" title="OpenGL Matrix" short="OGL matrix" version="January 2013">
     <item href="doc/OpenGL%20matrix%202013-01.pdf" type="PDF" size="469 KB" />
     <item href="doc/OpenGL%20matrix.xlsx" type="XLSX" size="59 KB" />

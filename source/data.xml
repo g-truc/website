@@ -43,7 +43,7 @@
     </paragraph>
   </draft>
 
-  <draft index="0999" date="01/01/2011" std-date="2011-01-31T23:30:00.00Z" title="WebGL test" published="no">
+  <draft index="0999" date="16/02/2013" std-date="2013-02-16T23:30:00.00Z" title="WebGL test" published="no">
     <webgl index="canvas">
       <script type="text/javascript" href="./script/0376.js" />
     </webgl>
@@ -53,6 +53,173 @@
     </source-list>
   </draft>
 
+  <draft index="0547" date="25/02/2013" std-date="2003-02-25T01:00:00.00Z" title="February 2013 OpenGL status">
+    <meta>
+      <tag>gtc-tech-project-openglstatus</tag>
+    </meta>
+
+    <paragraph>
+      The tested drivers this month are
+      <link href="http://www.guru3d.com/files_details/amd_catalyst_13_2_download.html">AMD Catalyst 13.2 beta 6</link>,
+      <link href="http://drivers.mydrivers.com/download/459-183835-Intel-Core-i3-Core-i5-Core-i7-CPU-9.18.1/">
+        Intel 9.18.10.2973
+      </link> and
+      <link href="http://www.guru3d.com/files_details/geforce_314_07_whql_driver_download.html">NVIDIA Forceware 313.95 beta</link>. No newer drivers for Intel, I just kept using last month one.
+    </paragraph>
+
+    <paragraph>
+      Once again the new Intel drivers seem to be coming from a leak so there are probably unreliable but the OpenGL drivers is the most rescent available.
+      AMD announced that they would release less drivers and it can seems that this is not really the case. In practice, it's the number of stable release which wa reduce to 4 per year instead of 12 per year. 
+      However there are still beta drivers regularly (monthly?), so that developers can get fixes quickly. I think this strategy build a pretty robust ecosystem with fewer stable drivers largely and to somehow support for the programs.
+    </paragraph>
+
+    <title>Apple OpenGL implementation status</title>
+    <paragraph>
+      The MacOS X platform is becoming a more and more relevant platform to support, this is why the OpenGL drivers is now including this platform. Apple implementation is far behind AMD, Intel and NVIDIA implementation, claiming only OpenGL 3.2 core profile support.
+      If the feature set is not impressive, the drivers quality is not very impressive either. IHVs only provides "low level" drivers so that effectivement Apple writes most of the implementation. It is very unfortunate that Apple doesn't let IHVs 
+      write the OpenGL drivers. Even if there is perfect implementation, for IHVs supporting another platform is mostly a matter of reusing the existing source code. Both AMD and NVIDIA share the same source for Linux and Windows. For Intel, 
+      the situation is different because Linux OpenGL implementation (OpenGL 3.1) is based on <link href="http://www.mesa3d.org/">Mesa</link> and is open source but Windows implementation (OpenGL 4.0) is closed source.
+    </paragraph>
+
+    <title>Is OpenGL faster than Direct3D?</title>
+    <paragraph>
+      Last summer we had a quite stunning news coming from Valve saying that Left 4 Dead 2 is almost 20% faster on Linux than on Windows. Quickly this news has been interpreted by 
+      <link href="http://www.extremetech.com/gaming/133824-valve-opengl-is-faster-than-directx-even-on-windows">"OpenGL is faster than DirectX"</link>. 
+      I really can't believe this claim and I don't believe the days where this will happen are near. Direct3D mainly has to support an ecosystem mades of games which is very restricted. 
+      Furthermore, we can expect that these programmers are relatively good or at least better than the average OpenGL programmer who sometime use OpenGL to display something but with no care at all about how efficient is his code.
+      Supporting these bad programs results in slower OpenGL implementations which can't just focus on making fast code running faster. After all, optimization is making slow code run faster. 
+      Making these optimizations result is making the fast path shower. If we really want better drivers, what really need to be done is for everyone to write better programs. 
+      This is one way to explain why the OpenGL core profile has been created but considering that the low adoption of the core profile, I guess the OpenGL ecosystem doesn't care too much about writing fast OpenGL code.
+    </paragraph>
+    <paragraph>
+      The case of Left 4 Dead 2 is interesting because it was a major title but this game is built on an old engine design for Direct3D 9. Chances are that IVHs are more interested in optimizing Direct3D 11 implmentations but also Direct3D 11 reflects 
+      better how today's hardware works. The release of <link href="http://unigine.com/products/heaven/">Unigine Heaven</link> and <link href="http://unigine.com/products/valley/">Unigine Valley</link> is another opportunity
+      to evalute the performance difference between OpenGL and Direct3D especially considering that the egine has been design for Direct3D 11 hardware. We can still argue that Unigine is using OpenGL 4.0 which remain a significant subset 
+      of OpenGL 4.3
+    </paragraph>
+
+    <paragraph>
+      Once again, don't forget to contribute to the OpenGL community by <link href="post-0430.html#menu">reporting your bugs</link>!
+      The detailled <link href="project-0033.html#menu">OpenGL drivers status</link> and <link href="project-0034.html#menu">OpenGL extensions matrix</link> are available for download below.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1131" />
+      <source-download index="1130" />
+      <source-download index="1129" />
+    </source-list>
+  </draft>
+
+  <post index="0545" date="24/02/2013" std-date="2013-02-24T17:00:00.00Z" title="OpenGL Samples Pack 4.3.2.1 released">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      The OpenGL Samples Pack 4.3.2.1 adds many OpenGL 3.2 samples for a total of 43 samples. It adds some workarounds for the samples to run on Apple implementations...
+      Finally, it fixes the two OpenGL 3.0 samples.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1129" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+
+  <post index="0544" date="24/02/2013" std-date="2013-02-24T23:00:00.00Z" title="Week 7: *_*">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-07-960.jpg"
+      href="./photo/2013-07.jpg" />
+  </post>
+
+  <post index="0543" date="16/02/2013" std-date="2013-02-16T23:00:00.00Z" title="Week 6: Faktorý">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-06-960.jpg"
+      href="./photo/2013-06.jpg" />
+  </post>
+
+  <post index="0542" date="16/02/2013" std-date="2013-02-16T17:00:00.00Z" title="OpenGL Samples Pack 4.3.2.0 released">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      The OpenGL Samples Pack 4.3.2.0 mainly adds MacOS X support through a set of 27 OpenGL 3.2 samples and it restaures Linux support.
+      This has been made possible by replacing FreeGLUT by GLFW and removing GLEW which doesn't support the core profile. 
+      The 27 OpenGL 3.2 samples are essentially back port of previously OpenGL 3.3 samples.
+    </paragraph>
+    <paragraph>
+      Apple OpenGL implementation fails to run 4 samples on a GeForce 9600M. 
+      With <codeword>320-buffer-uniform-shared</codeword> that generates a GLSL compiler error failing to interpret global scope layout qualifier on uniform.
+      With <codeword>320-glsl-builtin-blocks</codeword>, the implementation doesn't support built-in block redeclarations.
+      <codeword>320-glsl-precision</codeword> generates a drivers crash. 
+      Finally, <codeword>320-texture-integer</codeword> fails to render an integer texture.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1128" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+
+  <post index="0541" date="14/02/2013" title="GLM 0.9.4.2 released" image="goodies/logo.png" image-mini="image/logo-mini.png">
+    <meta>
+      <tag>gtc-tech-project-glm</tag>
+    </meta>
+
+    <paragraph>
+      A new revision of GLM is available. It fixes the following issues.
+    </paragraph>
+
+    <list name="Changelog:">
+      <list-element>Fixed compAdd from GTX_component_wise</list-element>
+      <list-element>Fixed SIMD support for Intel compiler on Windows</list-element>
+      <list-element>Fixed isnan and isinf for CUDA compiler</list-element>
+      <list-element>Fixed GLM_FORCE_RADIANS on glm::perspective</list-element>
+      <list-element>Fixed GCC warnings</list-element>
+      <list-element>Fixed packDouble2x32 on XCode</list-element>
+      <list-element>Fixed mix for vec4 SSE implementation</list-element>
+      <list-element>Fixed 0x2013 dash character in comments that cause issue in Windows Japanese mode</list-element>
+      <list-element>Fixed documentation warnings</list-element>
+      <list-element>Fixed CUDA warnings</list-element>
+    </list>
+
+    <source-download index="1127" />
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+    <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf" title="GLM 0.9.4 Manual" />
+    <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
+  </post>
+  
+  <post index="0540" date="09/02/2013" std-date="2013-02-09T22:00:00.00Z" title="Week 5: le plein dans le vide">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-05-960.jpg"
+      href="./photo/2013-05.jpg" />
+  </post>
+  
+  <post index="0539" date="02/02/2013" std-date="2013-02-02T17:00:00.00Z" title="Week 4: Earth is blue like an orange">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-04-960.jpg"
+      href="./photo/2013-04.jpg" />
+  </post>
+
   <post index="0538" date="30/01/2013" std-date="2003-01-30T23:30:00.00Z" title="January 2013 OpenGL status">
     <meta>
         <tag>gtc-tech-project-openglstatus</tag>
@@ -60,7 +227,7 @@
 
     <paragraph>
       The tested drivers this month are 
-      <link href="http://www.guru3d.com/files_details/amd_catalyst_13_2_download.html">AMD Catalyst 13.2 beta 3</link> 
+      <link href="http://www.guru3d.com/files_details/amd_catalyst_13_2_download.html">AMD Catalyst 13.2 beta 3</link>, 
       <link href="http://www.necacom.net/index.php?option=com_content&amp;view=article&amp;id=6577:intel-hd-graphics-4000-drivers-version-1531642885&amp;catid=68:intel&amp;Itemid=86">Intel 15.31.64.2885</link> and 
       <link href="http://www.guru3d.com/files_details/geforce_313_95_beta_driver_download.html">NVIDIA Forceware 313.95 beta</link>. No newer drivers for Intel, I just kept using last month one.
     </paragraph>
