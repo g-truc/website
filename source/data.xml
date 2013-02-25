@@ -53,7 +53,7 @@
     </source-list>
   </draft>
 
-  <draft index="0547" date="25/02/2013" std-date="2003-02-25T01:00:00.00Z" title="February 2013 OpenGL status">
+  <post index="0546" date="25/02/2013" std-date="2003-02-25T01:00:00.00Z" title="February 2013 OpenGL status">
     <meta>
       <tag>gtc-tech-project-openglstatus</tag>
     </meta>
@@ -64,43 +64,159 @@
       <link href="http://drivers.mydrivers.com/download/459-183835-Intel-Core-i3-Core-i5-Core-i7-CPU-9.18.1/">
         Intel 9.18.10.2973
       </link> and
-      <link href="http://www.guru3d.com/files_details/geforce_314_07_whql_driver_download.html">NVIDIA Forceware 313.95 beta</link>. No newer drivers for Intel, I just kept using last month one.
+      <link href="http://www.guru3d.com/files_details/geforce_314_07_whql_driver_download.html">NVIDIA Forceware 314.07 beta</link>. No newer drivers for Intel, I just kept using last month one.
     </paragraph>
 
     <paragraph>
       Once again the new Intel drivers seem to be coming from a leak so there are probably unreliable but the OpenGL drivers is the most rescent available.
-      AMD announced that they would release less drivers and it can seems that this is not really the case. In practice, it's the number of stable release which wa reduce to 4 per year instead of 12 per year. 
-      However there are still beta drivers regularly (monthly?), so that developers can get fixes quickly. I think this strategy build a pretty robust ecosystem with fewer stable drivers largely and to somehow support for the programs.
+      The detailled <link href="project-0033.html#menu">OpenGL drivers status</link> and <link href="project-0034.html#menu">OpenGL extensions matrix</link> are available for download.
     </paragraph>
 
-    <title>Apple OpenGL implementation status</title>
+    <title>First Apple OpenGL implementation status</title>
     <paragraph>
-      The MacOS X platform is becoming a more and more relevant platform to support, this is why the OpenGL drivers is now including this platform. Apple implementation is far behind AMD, Intel and NVIDIA implementation, claiming only OpenGL 3.2 core profile support.
-      If the feature set is not impressive, the drivers quality is not very impressive either. IHVs only provides "low level" drivers so that effectivement Apple writes most of the implementation. It is very unfortunate that Apple doesn't let IHVs 
-      write the OpenGL drivers. Even if there is perfect implementation, for IHVs supporting another platform is mostly a matter of reusing the existing source code. Both AMD and NVIDIA share the same source for Linux and Windows. For Intel, 
-      the situation is different because Linux OpenGL implementation (OpenGL 3.1) is based on <link href="http://www.mesa3d.org/">Mesa</link> and is open source but Windows implementation (OpenGL 4.0) is closed source.
+      The MacOS X platform is becoming a more and more relevant platform to support by our OpenGL program. 
+      For this reason, I have been long looking forward to see this first Apple OpenGL implenetation status coming but thanks to the <link href="post-0545.html#menu">OpenGL Samples Pack 4.3.2 branch</link> this is now possible.
+    </paragraph>
+
+    <paragraph>
+      Apple implementation is far behind AMD, Intel and NVIDIA implementations in term of feature set has if only claims <link href="doc/OpenGL%20matrix%202013-02.pdf">OpenGL 3.2 core profile support</link>.
+      Sadly, even the drivers quality is particularly poor as the <link href="http://www.g-truc.net/doc/OpenGL%20status%202013-02.pdf">February OpenGL drivers status</link> shows 
+      that <bold>only 61% of the samples run successfully on Apple OpenGL 3.2 implementation</bold> against 95% for Intel and NVIDIA implementations or 89% for AMD implementations, far behind everyone else once against.
+    </paragraph>
+
+    <paragraph>
+      IHVs only provides "low level" drivers so that effectivement Apple writes most of the implementation. It is very unfortunate that Apple doesn't let IHVs write the OpenGL drivers.
+      Even if there isn't an existing perfect OpenGL implementation, supporting another platform for IHVs is mostly a matter of reusing the existing source code ofthe OpenGL drivers. 
+      Both AMD and NVIDIA share the same source code for Linux and Windows. 
+      For Intel, the situation is different because Linux OpenGL implementation (OpenGL 3.1) is based on <link href="http://www.mesa3d.org/">Mesa</link> and open source but Windows implementation (OpenGL 4.0) is closed source. 
+      We could easily imagine Intel reusing their Windows implementation for MacOS X. 
+    </paragraph>
+
+    <paragraph>
+      Few days ago I saw a <link href="https://www.change.org/petitions/apple-os-x-10-9-support-opengl-4-3-and-zfs">petition for OpenGL 4.3 on MacOS X</link>. 
+      Please sign it! But then don't believe one second that Apple will write an OpenGL 4.3 implementation for the next version of MacOS X or even the next one. 
+      Writing an OpenGL drivers is really hard and cost a lot of money in term hours of development. 
+      <bold>The only possible way for OpenGL 4.3 on MacOS X to happen is that Apple let IHVs provide OpenGL drivers for MacOS X</bold>... Sounds challenging for Apple and this is too bad because I really enjoy my MacBook.
+    </paragraph>
+
+    <title>A lot of bugs fixed for Intel OpenGL implementation</title>
+    <paragraph>
+      The <link href="doc/OpenGL%20status%202012-12.pdf">first OpenGL status I made in December for Intel</link> wasn't particularly flattering however 
+      it is clear to me that Intel is working really hard to provide a better implementation and this is paying of. 
+      <bold>On the OpenGL 4.0 feature set, Intel implementation now runs the highest number of samples successfully</bold>.
+    </paragraph>
+
+    <paragraph>
+      I was hoping to provide a status for Intel Linux implementation. 
+      However, even if the <link href="doc/OpenGL%20matrix%202013-02.pdf">feature set is particularly advanced</link>, 
+      <link href="http://www.opengl.org/registry/specs/ARB/texture_multisample.txt">ARB_texture_multisample</link> isn't supported so that we can't create an OpenGL 3.2 core context 
+      with Mesa and we should rely on OpenGL extensions. It's not sure a big deal but it remains quite some works to be done on the <link href="project-0026.html#menu">OpenGL Samples Pack</link>
+      Let's hope the work on this extension get completed soon and I will be pleased to include an OpenGL drivers status for Intel Linux implementation in this report.
+    </paragraph>
+
+    <title>About AMD drivers release frequency</title>
+    <paragraph>
+      AMD announced that they would release less drivers and it can seem that this is not really the case. In practice, it's the number of stable release which is reduced to about 4 per year instead of 12 per year. 
+      However there are still beta drivers regularly (monthly?), so that developers can get fixes quickly. I think this strategy build a pretty robust ecosystem with fewer stable drivers largely used to somehow support by the programs.
     </paragraph>
 
     <title>Is OpenGL faster than Direct3D?</title>
     <paragraph>
       Last summer we had a quite stunning news coming from Valve saying that Left 4 Dead 2 is almost 20% faster on Linux than on Windows. Quickly this news has been interpreted by 
-      <link href="http://www.extremetech.com/gaming/133824-valve-opengl-is-faster-than-directx-even-on-windows">"OpenGL is faster than DirectX"</link>. 
+      <link href="http://www.extremetech.com/gaming/133824-valve-opengl-is-faster-than-directx-even-on-windows">"OpenGL is faster than DirectX"</link>.
+    </paragraph>
+    <paragraph>
       I really can't believe this claim and I don't believe the days where this will happen are near. Direct3D mainly has to support an ecosystem mades of games which is very restricted. 
-      Furthermore, we can expect that these programmers are relatively good or at least better than the average OpenGL programmer who sometime use OpenGL to display something but with no care at all about how efficient is his code.
-      Supporting these bad programs results in slower OpenGL implementations which can't just focus on making fast code running faster. After all, optimization is making slow code run faster. 
-      Making these optimizations result is making the fast path shower. If we really want better drivers, what really need to be done is for everyone to write better programs. 
+      Furthermore, we can expect that these programmers are relatively good or at least better than the average OpenGL programmer who sometime use OpenGL to display something but with no care at all about how efficient is his code
+      because rendering is not the purpose of their programs.
+      Supporting these inefficient programs efficiently results in slower OpenGL implementations which can't just focus on making fast code running faster. Afterall, optimization is about making slow code run faster. 
+      Making these optimizations result in making the fast path shower. <bold>If we really want better OpenGL drivers, what we need is programmers that write better OpenGL programs.</bold>
       This is one way to explain why the OpenGL core profile has been created but considering that the low adoption of the core profile, I guess the OpenGL ecosystem doesn't care too much about writing fast OpenGL code.
     </paragraph>
     <paragraph>
-      The case of Left 4 Dead 2 is interesting because it was a major title but this game is built on an old engine design for Direct3D 9. Chances are that IVHs are more interested in optimizing Direct3D 11 implmentations but also Direct3D 11 reflects 
-      better how today's hardware works. The release of <link href="http://unigine.com/products/heaven/">Unigine Heaven</link> and <link href="http://unigine.com/products/valley/">Unigine Valley</link> is another opportunity
-      to evalute the performance difference between OpenGL and Direct3D especially considering that the egine has been design for Direct3D 11 hardware. We can still argue that Unigine is using OpenGL 4.0 which remain a significant subset 
-      of OpenGL 4.3
+      The case of Left 4 Dead 2 is interesting because it was a major title but this game is built on an old engine design for Direct3D 9. 
+      Chances are that IVHs are more interested in optimizing Direct3D 11 implementations but also Direct3D 11 reflects better how today's hardware works. 
+      The release of <link href="http://unigine.com/products/heaven/">Unigine Heaven 4</link> and <link href="http://unigine.com/products/valley/">Unigine Valley 1</link> is another opportunity
+      to evalute the performance difference between OpenGL and Direct3D especially considering that the engine is designed for Direct3D 11 hardware. 
+      We can still argue that Unigine is using OpenGL 4.0 which remain a significant subset of OpenGL 4.3 which makes it an unfair comparison.
+    </paragraph>
+
+    <image
+      color="white"
+      img="./post/0547-01.png"
+      href="./post/0547-01.png" />
+
+    <image
+      color="white"
+      img="./post/0547-02.png"
+      href="./post/0547-02.png" />
+
+    <paragraph>
+      In these chart we don't care about the absolute level of performance, we only consider the relative level of performance based on the results given using the Direct3D9 version of Unigine. 
+      The test runs in low quality and a small resolution hoping that the CPU becomes the bottleneck. 
+    </paragraph>
+    <paragraph>
+      Looking at these results is seems that the level of performance of Intel drivers is very stable across APIs. 
+      It is possible that the HD4000 is simply too slow for these benchmarks for not hitting a specific GPU bottleneck.
+    </paragraph>
+    <paragraph>
+      The most striking results is that <bold>NVIDIA OpenGL implementation turns out to be particularly slow</bold> and this is not really a surprized.
+      AMD OpenGL implementation is about 25% and 32% slower than Direct3D 9 implementation, 30% and 33% slower than Direct3D 11 implementation on respectively Valley and Heaven.
+      NVIDIA implementation is supposed to be the most robust which means that it is also probably the one which has the most workaround and checking to support all sorts of strange behaviours.
+      It is very like that NVIDIA implementation is the one doing the most working behind our back which affects our nicely crafted code.
+    </paragraph>
+    <paragraph>
+      AMD OpenGL implementation is about 7% and 9% slower than Direct3D 9 implementation, 8% and 13% slower than Direct3D 11 implementation on respectively Valley and Heaven.
+    </paragraph>
+    <paragraph>
+      <bold>For all ISVs, Direct3D 9 or Direct3D 11 makes very little differences</bold>, when it comes to CPU usage different API design doesn't seem to matter too much.
+    </paragraph>
+
+    <image
+      color="white"
+      img="./post/0547-03.png"
+      href="./post/0547-03.png" />
+
+    <image
+      color="white"
+      img="./post/0547-04.png"
+      href="./post/0547-04.png" />
+
+    <paragraph>
+      The minimum FPS is probably the most important number. If this number is too low, the user experience will be jaepodized. 
+    </paragraph>
+    <paragraph>
+      Here the one that does best is Intel but actually <bold>all vendors performs very badly</bold>. We see that <bold>keeping a stable framerate with OpenGL is really hard</bold>.
+      A possible explanation for that is OpenGL memory model. 
+      Transfers, copies are not explicit, we only provide "hint" hoping that the drivers will interpret them approciatly and do the transfer when it's the most wise to do them.
+      Good luck with that! My first request for OpenGL remains <link href="http://www.opengl.org/registry/specs/EXT/direct_state_access.txt">Direct State Access</link>, 4 years after the extension release..., 
+      but my second is a new memory model where the application which is the only one to know what to do with the memory, which mean allocate it, releasing it, copying it from one space to another, etc.
+      Then, my explaination for this performance issue might be wrong but what close to sure is that this is consdering every vendor so this is an OpenGL design issue, not a vendor specific issue.
+    </paragraph>
+    <paragraph>
+      Speaking of vendor specific issues, Intel seems to have a performance bug on its Direct3D 11 drivers.
+    </paragraph>
+
+    <image
+      color="white"
+      img="./post/0547-05.png"
+      href="./post/0547-05.png" />
+
+    <image
+      color="white"
+      img="./post/0547-06.png"
+      href="./post/0547-06.png" />
+
+    <paragraph>
+      The max FPS doesn't matter much except that it's better when it is as close as possible to the average FPS. Having huge difference is just a waste of performance that bias the average FPS making it look better without giving the user experience that should come with it.
+    </paragraph>
+
+    <paragraph>
+      To extend feather this study it would be interesting to run some test with more CPU limited configuration to see how each implementation behaves.
     </paragraph>
 
     <paragraph>
       Once again, don't forget to contribute to the OpenGL community by <link href="post-0430.html#menu">reporting your bugs</link>!
-      The detailled <link href="project-0033.html#menu">OpenGL drivers status</link> and <link href="project-0034.html#menu">OpenGL extensions matrix</link> are available for download below.
     </paragraph>
 
     <source-list>
@@ -108,7 +224,7 @@
       <source-download index="1130" />
       <source-download index="1129" />
     </source-list>
-  </draft>
+  </post>
 
   <post index="0545" date="24/02/2013" std-date="2013-02-24T17:00:00.00Z" title="OpenGL Samples Pack 4.3.2.1 released">
     <meta>
@@ -32354,6 +32470,7 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 
 
 </g-truc>
