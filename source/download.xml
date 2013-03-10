@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+  <download index="1132" date="10/03/2013" std-date="2013-03-10T15:02:00.00Z" type="gtc-tech-project-gli" title="GLI" version="0.4.1.0">
+    <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.4.1.0/gli-0.4.1.0.zip/download" type="ZIP" size="17.6 MB" />
+    <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.4.1.0/gli-0.4.1.0.7z/download" type="7Z" size="14.9 MB" />
+  </download>
   <download index="1131" date="24/02/2013" std-date="2012-02-30T17:00:00.00Z" type="gtc-tech-project-openglmatrix" title="OpenGL Matrix" short="OGL matrix" version="February 2013">
     <item href="doc/OpenGL%20matrix%202013-02.pdf" type="PDF" size="469 KB" />
     <item href="doc/OpenGL%20matrix.xlsx" type="XLSX" size="84 KB" />

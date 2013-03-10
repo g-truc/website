@@ -53,9 +53,224 @@
     </source-list>
   </draft>
 
-  <post index="0547" date="26/02/2013" std-date="2003-02-26T02:00:00.00Z" title="A look at OpenGL and Direct3D performance with Unigine">
+  <draft index="0550" date="10/03/2013" std-date="2013-03-10T02:00:00.00Z" title="Playing with Unigine on Mac">
     <meta>
-      <tag>gtc-tech-project-openglstatus</tag>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+  </draft>
+
+  <post index="0549" date="10/03/2013" std-date="2013-03-10T02:30:00.00Z" title="GLI 0.4.1.0 released">
+    <meta>
+      <tag>gtc-tech-project-gli</tag>
+    </meta>
+
+    <paragraph>
+      GLI 0.4.1.0 essentially add the support of texture export to DDS files. Issues with GCC and XCode have been fixed as well.
+    </paragraph>
+
+    <code title="Create a texture with GLI 0.4 and save it to a DDS file:">
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/glm.hpp&gt;</string>
+      </line>
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;gli/gli.hpp&gt;</string>
+      </line>
+      <line>
+      </line>
+      <line>
+        <comment>// Allocated a 32 bits texture with one mipmap level</comment>
+      </line>
+      <line>
+        gli::texture2D Texture(1, gli::RGBA8_UNORM, gli::texture2D::dimensions_type(256, 256));
+      </line>
+      <line>
+        glm::u8vec4 * LinearAddress = Texture.data&lt;glm::u8vec4&gt;();
+      </line>
+      <line>
+        ...
+      </line>
+      <line>
+        <comment>// Do something</comment>
+      </line>
+      <line>
+        ...
+      </line>
+      <line>
+        gli::saveStorageDDS(Texture, "texture.dds");
+      </line>
+    </code>
+
+    <paragraph>
+      Already a lot of work as been done for <link href="https://github.com/g-truc/gli/issues">GLI 0.5.0</link> including an extended support of texture views and copies, comparison operators and texture clearing.
+    </paragraph>
+
+    <code title="Create an OpenGL 4.2 texture with GLI 0.4:">
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;gli/gli.hpp&gt;</string>
+      </line>
+      <line>
+      </line>
+      <line>
+        <comment>// </comment>
+      </line>
+      <line>
+        gli::texture2D Texture(gli::loadStorageDDS("kueken2.dds"));
+      </line>
+      <line>
+        assert(!Texture.empty());
+      </line>
+      <line>
+      </line>
+      <line>
+        glBindTexture(GL_TEXTURE_2D, TextureName);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, GLint(Texture.levels() - 1));
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, GL_RED);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, GL_GREEN);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, GL_BLUE);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_A, GL_ALPHA);
+      </line>
+      <line>
+        glTexStorage2D(GL_TEXTURE_2D,
+      </line>
+      <line align="32px">
+        GLint(Texture.levels()),
+      </line>
+      <line align="32px">
+        GLenum(gli::internal_format(Texture.format())),
+      </line>
+      <line align="32px">
+        GLsizei(Texture.dimensions().x),
+      </line>
+      <line align="32px">
+        GLsizei(Texture.dimensions().y));
+      </line>
+      <line>
+
+      </line>
+      <line>
+        if(gli::is_compressed(Texture.format()))
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        for(gli::texture2D::size_type Level = 0; Level &lt; Texture.levels(); ++Level)
+      </line>
+      <line align="32px">
+        {
+      </line>
+      <line align="64px">
+        glCompressedTexSubImage2D(GL_TEXTURE_2D,
+      </line>
+      <line align="96px">
+        GLint(Level),
+      </line>
+      <line align="96px">
+        0, 0,
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().x),
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().y),
+      </line>
+      <line align="96px">
+        GLenum(gli::internal_format(Texture.format())),
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].size()),
+      </line>
+      <line align="96px">
+        Texture[Level].data());
+      </line>
+      <line align="32px">
+        }
+      </line>
+      <line>
+        }
+      </line>
+      <line>
+        else
+      </line>
+      <line>
+        {
+      </line>
+
+      <line align="32px">
+        for(gli::texture2D::size_type Level = 0; Level &lt; Texture.levels(); ++Level)
+      </line>
+      <line align="32px">
+        {
+      </line>
+      <line align="64px">
+        glTexSubImage2D(GL_TEXTURE_2D,
+      </line>
+      <line align="96px">
+        GLint(Level),
+      </line>
+      <line align="96px">
+        0, 0,
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().x),
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().y),
+      </line>
+      <line align="96px">
+        GLenum(gli::external_format(Texture.format())),
+      </line>
+      <line align="96px">
+        GLenum(gli::type_format(Texture.format())),
+      </line>
+      <line align="96px">
+        Texture[Level].data());
+      </line>
+      <line align="32px">
+        }
+      </line>
+      <line>
+        }
+      </line>
+    </code>
+
+    <source-list>
+      <source-download type="Download" index="1132" />
+      <source-element type="Link" href="https://github.com/g-truc/gli/issues" title="Submit a bug report" />
+    </source-list>
+  </post>
+  
+  <post index="0548" date="09/03/2013" std-date="2013-03-09T16:00:00.00Z" title="Photograph week 8">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-08-960.jpg"
+      href="./photo/2013-08.jpg" />
+  </post>
+
+
+  <post index="0547" date="26/02/2013" std-date="2013-02-26T02:00:00.00Z" title="A look at OpenGL and Direct3D performance with Unigine">
+    <meta>
+        <tag>gtc-tech-opengl-tips</tag>
     </meta>
 
     <title>Is OpenGL faster than Direct3D?</title>
