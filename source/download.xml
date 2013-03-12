@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+
+  http://www.seas.upenn.edu/~pcozzi/OpenGLInsights/OpenGLInsights-Pipeline.pdf
+
+  <download index="1133" date="01/08/2012" std-date="2012-08-01T15:02:00.00Z" type="gtc-tech-project-openglpipeline" title="OpenGL Pipeline Map" version="OpenGL 4.2">
+    <item href="http://www.seas.upenn.edu/~pcozzi/OpenGLInsights/OpenGLInsights-Pipeline.pdf" type="PDF" size="8.7 MB" />
+  </download>
   <download index="1132" date="10/03/2013" std-date="2013-03-10T15:02:00.00Z" type="gtc-tech-project-gli" title="GLI" version="0.4.1.0">
     <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.4.1.0/gli-0.4.1.0.zip/download" type="ZIP" size="17.6 MB" />
     <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.4.1.0/gli-0.4.1.0.7z/download" type="7Z" size="14.9 MB" />

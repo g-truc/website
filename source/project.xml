@@ -2,6 +2,14 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
 
+  <project index="0035" name="OpenGL Pipeline Map" short="OpenGL Pipeline Map" type="gtc-tech-project-openglpipeline" date-creation="01/08/2012">
+    <text>
+      <paragraph>
+        List the extensions exposed by OpenGL implementations.
+      </paragraph>
+    </text>
+  </project>
+  
   <project index="0034" name="OpenGL Matrix" short="OpenGL Matrix" type="gtc-tech-project-openglmatrix" date-creation="28/12/2012">
     <text>
       <paragraph>
