@@ -118,6 +118,14 @@
     </p>
   </xsl:template>
 
+  <xsl:template match="quiz">
+    <div xmlns="http://www.w3.org/1999/xhtml" >
+      <iframe frameborder="0" width="100%" height="1200" scrolling="auto" allowtransparency="true" src="http://groovounet.polldaddy.com/s/opengl-quiz?iframe=1">
+        <a href="http://groovounet.polldaddy.com/s/{@id}">View Survey</a>
+      </iframe>
+    </div>
+  </xsl:template>
+
   <xsl:template match="poll">
     <div xmlns="http://www.w3.org/1999/xhtml" >
       <script 

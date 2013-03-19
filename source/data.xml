@@ -53,12 +53,150 @@
     </source-list>
   </draft>
 
-  <draft index="0550" date="10/03/2013" std-date="2013-03-10T02:00:00.00Z" title="Playing with Unigine on Mac">
+  <draft index="0997" date="13/03/2013" title="Poll: future improvements for GLM?" image="goodies/logo.png" image-mini="image/logo-mini.png">
+    <meta>
+      <tag>gtc-tech-project-glm</tag>
+    </meta>
+
+    <paragraph>
+      A new revision of GLM is available. It fixes the following issues.
+    </paragraph>
+
+    <poll id="6958684" title="What do you want the most for future versions of GLM?" />
+
+    <source-download index="1127" />
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+    <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf" title="GLM 0.9.4 Manual" />
+    <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
+  </draft>
+
+  <post index="0554" date="19/03/2013" std-date="2013-03-19T02:30:00.00Z" title="Step by step OpenGL rendering of Rage frames">
     <meta>
       <tag>gtc-tech-opengl-tips</tag>
     </meta>
-  </draft>
 
+    <paragraph>
+      Following the step by step videos I made on Unigine, I have explored others renderers including the one from 
+      <link href="http://www.terathon.com/c4engine/index.php">C4 Engine</link>, 
+      <link href="http://store.steampowered.com/app/70/">Counter-Strike</link>, 
+      <link href="http://openarena.ws/smfnews.php">OpenArena</link>, 
+      <link href="http://en.wikipedia.org/wiki/Doom_3">Doom 3</link> and obviously 
+      <link href="http://www.rage.com/">Rage</link>.
+    </paragraph>
+    
+    <video href="http://www.youtube.com/v/HG0Qq_HEciY?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/1lRqlXhbQcc?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/8KgK3kesifE?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/5GyyxkHBvu0?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/BegWy_t74pQ?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/_YOjfhlJMCE?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/r11Y1ze0y-g?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/oYxshDDS0Qk?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/7EpdeRYeQRo?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/NJCsR1kwhF4?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/WQGnufsrYDM?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/ax22vuy_4U4?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+  </post>
+
+  <post index="0553" date="18/03/2013" std-date="2013-03-18T02:30:00.00Z" title="Demystifying the Unigine Valley rendering">
+    <meta>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+
+    <paragraph>
+      My production pipeline for the step by step single frame OpenGL rendering video being more effective than what I initially thought, I have been able to generate six 720p videos for Unigine Valley.
+    </paragraph>
+    <paragraph>
+      Enjoy!
+    </paragraph>
+
+    <video href="http://www.youtube.com/v/EzK1txBuFMc?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/jqvTii1O8BE?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/CVFcSQHKVp8?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/h0T9H1pOhWM?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/_jq13KUGp7c?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/IEqmGbVRw0s?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+  </post>
+
+  <post index="0553" date="18/03/2013" std-date="2013-03-18T02:00:00.00Z" title="Demystifying the Unigine Heaven rendering">
+    <meta>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+
+    <paragraph>
+      Thanks to my favoute OpenGL tool, <link href="https://code.google.com/p/glintercept/">GLIntercept</link>, I studied the Unigine renderer and I though it could be fun to build videos showing how a single frame is built.
+    </paragraph>
+    <paragraph>
+      The video display frame at 5 FPS. Sometime, it seems that nothing is happening but this is because even draw calls contributing to zero pixel are represented as separated but identical frames. 
+      Unigine is a deferred renderer so that the beginning of rendering fills G-Buffers but only the diffuse component is displayed in these videos.
+    </paragraph>
+    <paragraph>
+      I think these videos are quite interesting because we can clearly see the rendering methods and even some optimisation strategies. In a future post, we will study these in more detail and how the OpenGL API is used by Unigine.
+    </paragraph>
+
+    <video href="http://www.youtube.com/v/s6Vp7h3g1Aw?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/4jzhPqLoRno?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/6TKdrrpBfhM?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/ObxL_eyUXhM?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/bdpT58TunC4?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/NFlGAjaGmR8?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/9VBqi11MrFk?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/SSYvECXx8fQ?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+    <video href="http://www.youtube.com/v/lH9jkYf8taA?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
+  </post>
+  
+  <post index="0552" date="17/03/2013" std-date="2013-03-17T23:00:00.00Z" title="Playing with Unigine on Mac">
+    <meta>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+
+    <paragraph>
+      Following the post <link href="post-0547.html#menu">"A look at OpenGL and Direct3D performance with Unigine"</link>, here is some extra data using Unigine Heaven and Valley on Mac running both MacOS X and Windows.
+    </paragraph>
+
+    <image
+      color="white"
+      img="./post/0552-01.png"
+      href="./post/0552-01.png" />
+
+    <image
+      color="white"
+      img="./post/0552-02.png"
+      href="./post/0552-02.png" />
+
+    <paragraph>
+      We see on these resulats that MacOS X OpenGL implementation provides better performance than AMD and NVIDIA OpenGL implementations on Windows. However, once using Direct3D, the engine run better on Windows. 
+      Interestingly, the Direct3D 9 renderer is slightly faster than the Direct3D 11 renderer on these platforms.
+    </paragraph>
+
+    <paragraph>
+      Thanks to <link href="https://twitter.com/LokimanSK">Vladimir Hrincar</link> and <link href="https://twitter.com/McNopper">Norbert Nopper</link> who ran the tests for these results!
+    </paragraph>
+  </post>
+
+  <post index="0551" date="16/03/2013" std-date="2013-03-16T14:00:00.00Z" title="Week 9: Sharpness">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-09-960.jpg"
+      href="./photo/2013-09.jpg" />
+  </post>
+  
+  <post index="0550" date="12/03/2013" std-date="2013-03-12T01:30:00.00Z" title="OpenGL quiz">
+    <meta>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+
+    <paragraph>
+      Here is an OpenGL quiz I just made. You can play as many time as you want, good luck!
+    </paragraph>
+
+    <quiz id="opengl-quiz" />
+  </post>
+  
   <post index="0549" date="10/03/2013" std-date="2013-03-10T02:30:00.00Z" title="GLI 0.4.1.0 released">
     <meta>
       <tag>gtc-tech-project-gli</tag>
@@ -266,7 +404,6 @@
       img="./photo/2013-08-960.jpg"
       href="./photo/2013-08.jpg" />
   </post>
-
 
   <post index="0547" date="26/02/2013" std-date="2013-02-26T02:00:00.00Z" title="A look at OpenGL and Direct3D performance with Unigine">
     <meta>
@@ -6239,7 +6376,7 @@
       <tag>gtc-tech-opengl</tag>
     </meta>
 
-	<poll id="6139189" title="Which versions of OpenGL are you programming with?" />
+  <poll id="6139189" title="Which versions of OpenGL are you programming with?" />
 
   </post>
 

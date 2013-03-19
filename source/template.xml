@@ -70,6 +70,9 @@
   <item level="1" name="gtc-tech-project" parent="gtc-tech" title="Projects">
     <address type="main" url="post-project.html" processor="page-post-list.xsl" />
   </item>
+  <item level="2" name="gtc-tech-project-openglpipeline" parent="gtc-tech-project" title="OpenGL Pipeline Map">
+    <address type="main" url="http://openglinsights.com/pipeline.html" processor="page-post-list.xsl" />
+  </item>
   <item level="2" name="gtc-tech-project-openglinsights" parent="gtc-tech-project" title="OpenGL Insights">
     <address type="main" url="http://www.openglinsights.com" processor="page-post-list.xsl" />
   </item>

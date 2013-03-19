@@ -314,7 +314,7 @@
           <xsl:with-param name="Token" select="'gtc-tech-project-openglmatrix'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
         </xsl:call-template>
-        <xsl:call-template name="tech-menu-button-project">
+        <xsl:call-template name="tech-menu-button-link">
           <xsl:with-param name="Token" select="'gtc-tech-project-openglpipeline'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
         </xsl:call-template>
@@ -349,7 +349,7 @@
           <xsl:with-param name="Token" select="'gtc-tech-project-openglmatrix'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
         </xsl:call-template>
-        <xsl:call-template name="tech-menu-button-project">
+        <xsl:call-template name="tech-menu-button-link">
           <xsl:with-param name="Token" select="'gtc-tech-project-openglpipeline'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
         </xsl:call-template>

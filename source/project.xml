@@ -8,6 +8,9 @@
         List the extensions exposed by OpenGL implementations.
       </paragraph>
     </text>
+    <source-list>
+      <source-element type="Link" href="http://openglinsights.com/pipeline.html" title="OpenGL Pipeline Map" />
+    </source-list>
   </project>
   
   <project index="0034" name="OpenGL Matrix" short="OpenGL Matrix" type="gtc-tech-project-openglmatrix" date-creation="28/12/2012">
@@ -42,7 +45,7 @@
       </paragraph>
     </text>
     <source-list>
-      <source-element type="Link" href="http://www.openglinsights.com" title="OpenGL Insights blog" />
+      <source-element type="Link" href="http://www.openglinsights.com" title="OpenGL Insights" />
     </source-list>
   </project>
 
