@@ -53,24 +53,109 @@
     </source-list>
   </draft>
 
-  <draft index="0997" date="13/03/2013" title="Poll: future improvements for GLM?" image="goodies/logo.png" image-mini="image/logo-mini.png">
+  <post index="0559" date="25/03/2013" std-date="2013-03-25T01:00:00.00Z" title="Week 11: No only horizontal and vertical">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-11-960.jpg"
+      href="./photo/2013-11.jpg" />
+  </post>
+
+  <post index="0558" date="25/02/2013" std-date="2003-02-25T23:30:00.00Z" title="March 2013 OpenGL status">
+    <meta>
+      <tag>gtc-tech-project-openglstatus</tag>
+    </meta>
+
+    <paragraph>
+      The tested drivers this month are
+      <link href="http://www.guru3d.com/files_details/amd_catalyst_13_3_beta_2_download.html">AMD Catalyst 13.3 beta 3</link>,
+      <link href="http://www.necacom.net/index.php?option=com_content&amp;view=article&amp;id=6773:intel-hd-graphics-40002500-drivers-version-153113006-whql&amp;catid=68:intel&amp;Itemid=86">
+        Intel 9.18.10.3006
+      </link> and
+      <link href="http://www.guru3d.com/files_details/geforce_314_21_beta_driver_download.html">NVIDIA Forceware 314.21 beta</link>. 
+    </paragraph>
+
+    <paragraph>
+      Apple released MacOS X 10.8.3 that came with an OpenGL drivers update. It fixes many issues from the GLSL compiler but there are still main issues while clearing a FBO or even deleting shader objects attached by program objects.
+      For more information, <link href="http://renderingpipeline.com/2013/03/macos-x-opengl-driver-status-10-8-3/">RenderingPipeline</link> keeps track of more bugs.
+    </paragraph>
+    
+    <paragraph>
+      Soon after the release of Catalyst 13.3 beta 2, a beta 3 was released fixing some OpenGL issues. With the beta 2, some new OpenGL 4.3 extensions were exposed but those have been removed in the beta 3.
+      Trying to use the beta 2? I experienced some issues, being unenable to run my OpenGL samples. Conscequently, I used the beta 3 for the drivers status. 
+      The beta 2 exposed <link href="http://www.opengl.org/registry/specs/ARB/stencil_texturing.txt">ARB_stencil_texturing</link>,
+      <link href="http://www.opengl.org/registry/specs/ARB/shader_image_size.txt">ARB_shader_image_size</link>,
+      <link href="http://www.opengl.org/registry/specs/ARB/explicit_uniform_location.txt">ARB_explicit_uniform_location</link>,
+      <link href="http://www.opengl.org/registry/specs/ARB/ES3_compatibility.txt">ARB_ES3_compatibility</link>,
+      <link href="http://www.opengl.org/registry/specs/ARB/clear_buffer_object.txt">ARB_clear_buffer_object</link> and
+      <link href="http://www.opengl.org/registry/specs/ARB/arrays_of_arrays.txt">ARB_arrays_of_arrays</link>. 
+      Hopefully, we will actually have the support of these extensions soon.
+    </paragraph>
+
+    <paragraph>
+      No particular changes noticed on NVIDIA or Intel OpenGL implementations.
+    </paragraph>
+
+    <image title="OpenGL feature set exposed by GPU architechtures"
+      color="white"
+      img="./post/0558-1-feature-800.png"
+      href="./doc/OpenGL%20matrix%202013-03.pdf" />
+
+    <image title="OpenGL samples passing on available implementations"
+      color="white"
+      img="./post/0558-2-status-800.png"
+      href="./doc/OpenGL%20status%202013-03.pdf" />
+
+    <paragraph>
+      Once again, don't forget to contribute to the OpenGL community by <link href="post-0430.html#menu">reporting your bugs</link>!
+    </paragraph>
+
+    <source-list>
+      <source-download index="1136" />
+      <source-download index="1135" />
+      <source-download index="1129" />
+    </source-list>
+  </post>
+
+  <post index="0557" date="20/03/2013" std-date="2013-03-20T01:00:00.00Z" title="Week 10: The end of the world is Blue">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-10-960.jpg"
+      href="./photo/2013-10.jpg" />
+  </post>
+
+  <post index="0556" date="20/03/2013" title="GLM 0.9.4.3 released" image="goodies/logo.png" image-mini="image/logo-mini.png">
     <meta>
       <tag>gtc-tech-project-glm</tag>
     </meta>
 
-    <paragraph>
-      A new revision of GLM is available. It fixes the following issues.
-    </paragraph>
+    <list name="Changelog:">
+      <list-element>Detected qualifier for Clang</list-element>
+      <list-element>Fixed C++11 mode for GCC, couldn't be enabled without MS extensions</list-element>
+      <list-element>Fixed squad, intermediate and exp quaternion functions</list-element>
+      <list-element>Fixed GTX_polar_coordinates euclidean function, takes a vec2 instead of a vec3</list-element>
+      <list-element>Clarify the license applying on the manual</list-element>
+      <list-element>Added a docx copy of the manual</list-element>
+      <list-element>Fixed GLM_GTX_matrix_interpolation</list-element>
+      <list-element>Fixed isnan and isinf on Android with Clang</list-element>
+      <list-element>Autodetected C++ version using __cplusplus value</list-element>
+      <list-element>Fixed mix for bool and bvec* third parameter</list-element>
+    </list>
 
-    <poll id="6958684" title="What do you want the most for future versions of GLM?" />
-
-    <source-download index="1127" />
+    <source-download index="1134" />
     <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
     <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf" title="GLM 0.9.4 Manual" />
     <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
-  </draft>
+  </post>
 
-  <post index="0554" date="19/03/2013" std-date="2013-03-19T02:30:00.00Z" title="Step by step OpenGL rendering of Rage frames">
+  <post index="0555" date="19/03/2013" std-date="2013-03-19T02:30:00.00Z" title="Step by step OpenGL rendering of Rage frames">
     <meta>
       <tag>gtc-tech-opengl-tips</tag>
     </meta>
@@ -98,7 +183,7 @@
     <video href="http://www.youtube.com/v/ax22vuy_4U4?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
   </post>
 
-  <post index="0553" date="18/03/2013" std-date="2013-03-18T02:30:00.00Z" title="Demystifying the Unigine Valley rendering">
+  <post index="0554" date="18/03/2013" std-date="2013-03-18T02:30:00.00Z" title="Demystifying the Unigine Valley rendering">
     <meta>
       <tag>gtc-tech-opengl-tips</tag>
     </meta>
