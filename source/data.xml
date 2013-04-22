@@ -53,6 +53,50 @@
     </source-list>
   </draft>
 
+  <post index="0564" date="22/04/2013" std-date="2013-04-22T17:00:00.00Z" title="Week 16: For a change">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-16-960.jpg"
+      href="./photo/2013-16.jpg" />
+  </post>
+
+  <post index="0563" date="19/04/2013" std-date="2013-04-19T14:00:00.00Z" title="Photograph Week 15">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-15-960.jpg"
+      href="./photo/2013-15.jpg" />
+  </post>
+
+  <post index="0562" date="12/04/2013" std-date="2013-04-12T14:00:00.00Z" title="Week 14: The end of the world">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-14-960.jpg"
+      href="./photo/2013-14.jpg" />
+  </post>
+
+  <post index="0561" date="08/04/2013" std-date="2013-04-08T14:00:00.00Z" title="Week 13: Closer to the end of the world">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-13-960.jpg"
+      href="./photo/2013-13.jpg" />
+  </post>
+
   <post index="0560" date="29/03/2013" std-date="2013-03-29T01:00:00.00Z" title="Week 12: Fading light">
     <meta>
       <tag>gtc-crea-photograph</tag>
