@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+  <download index="1138" date="30/04/2013" std-date="2012-04-30T17:00:00.00Z" type="gtc-tech-project-openglmatrix" title="OpenGL Matrix" short="OGL matrix" version="April 2013">
+    <item href="doc/OpenGL%20matrix%202013-04.pdf" type="PDF" size="471 KB" />
+    <item href="doc/OpenGL%20matrix.xlsx" type="XLSX" size="112 KB" />
+  </download>
+  <download index="1137" date="30/04/2013" std-date="2013-04-30T17:00:00.00Z" type="gtc-tech-project-openglstatus" title="OpenGL status" short="OGL status" version="April 2013">
+    <item href="doc/OpenGL%20status%202013-04.pdf" type="PDF" size="309 KB" />
+    <item href="doc/OpenGL%20status.xlsx" type="XLSX" size="102 KB" />
+  </download>
   <download index="1136" date="24/03/2013" std-date="2012-03-24T17:00:00.00Z" type="gtc-tech-project-openglmatrix" title="OpenGL Matrix" short="OGL matrix" version="March 2013">
     <item href="doc/OpenGL%20matrix%202013-03.pdf" type="PDF" size="471 KB" />
     <item href="doc/OpenGL%20matrix.xlsx" type="XLSX" size="112 KB" />

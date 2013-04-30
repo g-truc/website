@@ -53,6 +53,108 @@
     </source-list>
   </draft>
 
+
+  <post index="0566" date="30/04/2013" std-date="2013-04-30T23:30:00.00Z" title="April 2013 OpenGL status">
+    <meta>
+      <tag>gtc-tech-project-openglstatus</tag>
+    </meta>
+
+    <paragraph>
+      The tested drivers this month are
+      <link href="http://www.guru3d.com/files_get/amd_catalyst_13_4_whql_download,1.html">AMD Catalyst 13.4</link>,
+      <link href="http://www.necacom.net/index.php?option=com_content&amp;view=article&amp;id=6773:intel-hd-graphics-40002500-drivers-version-153113006-whql&amp;catid=68:intel&amp;Itemid=86">
+        Intel 9.18.10.3006
+      </link> and
+      <link href="http://www.guru3d.com/files_details/geforce_320_00_beta_driver_download.html">NVIDIA Forceware 320.00 beta</link>.
+    </paragraph>
+
+    <paragraph>
+      It's started to be a little complicated to follow AMD drivers release. Catalyst 13.4 are supported to be stable drivers but it appears to provide more rescent OpenGL drivers than <link href="http://www.guru3d.com/files_details/amd_catalyst_13_5_beta_2_download.html">Catalyst 13.5 beta 2</link>.
+      While Catalyst 13.5 beta 2 exposes to same features as Catalyst 13.3 beta drivers, Catalyst 13.4 provides many new OpenGL 4.3 extensions.
+    </paragraph>
+
+    <list name="OpenGL 4.3 extensions exposed in Catalyst 13.4:">
+      <list-element href="http://www.opengl.org/registry/specs/ARB/arrays_of_arrays.txt">GL_ARB_arrays_of_arrays</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/clear_buffer_object.txt">GL_ARB_clear_buffer_object</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/compute_shader.txt">GL_ARB_compute_shader</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/ES3_compatibility.txt">GL_ARB_ES3_compatibility</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/explicit_uniform_location.txt">GL_ARB_explicit_uniform_location</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/fragment_layer_viewport.txt">GL_ARB_fragment_layer_viewport</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/invalidate_subdata.txt">GL_ARB_invalidate_subdata</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/multi_draw_indirect.txt">GL_ARB_multi_draw_indirect</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/program_interface_query.txt">GL_ARB_program_interface_query</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/shader_image_size.txt">GL_ARB_shader_image_size</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/shader_storage_buffer_object.txt">GL_ARB_shader_storage_buffer_object</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/stencil_texturing.txt">GL_ARB_stencil_texturing</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/texture_buffer_range.txt">GL_ARB_texture_buffer_range</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/texture_query_levels.txt">GL_ARB_texture_query_levels</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/texture_storage_multisample.txt">GL_ARB_texture_storage_multisample</list-element>
+    </list>
+
+    <list name="Missing extensions in Catalyst 13.4 for a full OpenGL 4.3 support:">
+      <list-element href="http://www.opengl.org/registry/specs/KHR/debug.txt">GL_KHR_debug</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/framebuffer_no_attachments.txt">GL_ARB_framebuffer_no_attachments</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/copy_image.txt">GL_ARB_copy_image</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/texture_view.txt">GL_ARB_texture_view</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/vertex_attrib_binding.txt">GL_ARB_vertex_attrib_binding</list-element>
+    </list>
+    
+    <paragraph>
+      Mesa has also made some progress adding the support for 
+      <link href="http://www.opengl.org/registry/specs/ARB/texture_buffer_range.txt">GL_ARB_texture_buffer_range</link> (4.3),
+      <link href="http://www.opengl.org/registry/specs/ARB/texture_query_lod.txt">GL_ARB_texture_query_lod</link> (4.0),
+      <link href="http://www.opengl.org/registry/specs/ARB/texture_multisample.txt">GL_ARB_texture_multisample</link> (3.2) and
+      <link href="http://www.opengl.org/registry/specs/ARB/get_program_binary.txt">GL_ARB_get_program_binary</link> (4.1) even if for this last case, not binary format is actually supported...
+    </paragraph>
+
+    <title>An OpenGL specification bug: Interaction between the program pipeline object and subroutine</title>
+    <paragraph>
+      AMD OpenGL implementation is generating an error when calling <codeword href="http://www.opengl.org/sdk/docs/man/xhtml/glUniformSubroutines.xml">glUniformSubroutines</codeword> and using a program pipeline object which forces us to bind a program object to set the subroutines.
+      Unfortunately, this behaviour follows the OpenGL 4.3 specification which fells like a specification bug.
+    </paragraph>
+
+    <quote author="OpenGL 4.3 core specification - 7.9 Subroutine Uniform Variables">
+      An INVALID_OPERATION error is generated if no program is active.
+    </quote>
+
+    <image title="OpenGL feature set exposed by GPU architechtures"
+      color="white"
+      img="./post/0566-feature.png"
+      href="./doc/OpenGL%20matrix%202013-04.pdf" />
+
+    <image title="OpenGL samples passing on available implementations"
+      color="white"
+      img="./post/0566-status.png"
+      href="./doc/OpenGL%20status%202013-04.pdf" />
+
+    <paragraph>
+      Once again, don't forget to contribute to the OpenGL community by <link href="post-0430.html#menu">reporting your bugs</link>!
+    </paragraph>
+
+    <source-list>
+      <source-download index="1138" />
+      <source-download index="1137" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=340" title="glCapsViewer report for AMD Catalyst 13.4" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=329" title="glCapsViewer report for Intel HD Graphics 9.18.10.3006" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=304" title="glCapsViewer report for NVIDIA Forceware 320.00 beta" />
+      <source-element type="Link" href="http://www.guru3d.com/files_get/amd_catalyst_13_4_whql_download,1.html" title="Download page for AMD Catalyst 13.4" />
+      <source-element type="Link" href="https://downloadcenter.intel.com/SearchResult.aspx?lang=eng&amp;ProductFamily=Graphics&amp;ProductLine=Laptop+graphics+drivers&amp;roductProduct=2nd+Generation+Intel%C2%AE+Core%E2%84%A2+Processors+with+Intel%C2%AE+HD+Graphics+3000%2f2000" title="Download page for Intel HD Graphics 9.17.10.3062" />
+      <source-element type="Link" href="http://www.guru3d.com/files_details/geforce_320_00_beta_driver_download.html" title="Download page for NVIDIA Forceware 320.00 beta" />
+      <source-download index="1129" />
+    </source-list>
+  </post>
+  
+  <post index="0565" date="29/04/2013" std-date="2013-04-29T17:00:00.00Z" title="Photograph Week 17">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-17-960.jpg"
+      href="./photo/2013-17.jpg" />
+  </post>
+
   <post index="0564" date="22/04/2013" std-date="2013-04-22T17:00:00.00Z" title="Week 16: For a change">
     <meta>
       <tag>gtc-crea-photograph</tag>
@@ -119,7 +221,7 @@
       href="./photo/2013-11.jpg" />
   </post>
 
-  <post index="0558" date="25/02/2013" std-date="2003-02-25T23:30:00.00Z" title="March 2013 OpenGL status">
+  <post index="0558" date="25/02/2013" std-date="2013-02-25T23:30:00.00Z" title="March 2013 OpenGL status">
     <meta>
       <tag>gtc-tech-project-openglstatus</tag>
     </meta>
