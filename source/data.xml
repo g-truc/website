@@ -53,6 +53,63 @@
     </source-list>
   </draft>
 
+  <draft index="0571" date="12/05/2013" std-date="2013-05-12T17:00:00.00Z" title="Still a skyscape">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-21-960.jpg"
+      href="./photo/2013-21.jpg" />
+  </draft>
+  
+  <draft index="0570" date="12/05/2013" std-date="2013-05-12T17:00:00.00Z" title="Skyscape">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-20-960.jpg"
+      href="./photo/2013-20.jpg" />
+  </draft>
+
+  <post index="0569" date="10/05/2013" std-date="2013-05-10T12:00:00.00Z" title="OpenGL Samples Pack 4.3.2.2 released">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      This revision includes few sample fixes and updates others samples to extend conformance tests.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1139" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+
+  <post index="0568" date="09/05/2013" std-date="2013-05-09T17:00:00.00Z" title="Moonscape">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-19-960.jpg"
+      href="./photo/2013-19.jpg" />
+  </post>
+
+  <post index="0567" date="06/05/2013" std-date="2013-05-06T11:00:00.00Z" title="Photograph Week 18">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-18-960.jpg"
+      href="./photo/2013-18.jpg" />
+  </post>
 
   <post index="0566" date="30/04/2013" std-date="2013-04-30T23:30:00.00Z" title="April 2013 OpenGL status">
     <meta>
@@ -33165,6 +33222,7 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 
 
 
