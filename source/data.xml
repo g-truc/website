@@ -64,18 +64,7 @@
       href="./photo/2013-21.jpg" />
   </draft>
   
-  <draft index="0571" date="12/05/2013" std-date="2013-05-12T17:00:00.00Z" title="Skyscape">
-    <meta>
-      <tag>gtc-crea-photograph</tag>
-    </meta>
-
-    <image
-      color="black"
-      img="./photo/2013-20-960.jpg"
-      href="./photo/2013-20.jpg" />
-  </draft>
-
-  <post index="0570" date="09/01/2012" std-date="2013-05-11T23:30:00.00Z" title="Compiler SSE code generation">
+  <draft index="0571" date="09/01/2012" std-date="2013-05-11T23:30:00.00Z" title="Compiler SSE code generation">
     <meta>
       <tag>gtc-tech-project-glm</tag>
     </meta>
@@ -207,9 +196,20 @@
       <source-element type="Link" href="http://glm.g-truc.net/api-0.9.3/index.html" title="GLM 0.9.3 API" />
       <source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-math/newticket" title="Submit a feature request or a bug report" />
     </source-list>
-  </post>
+  </draft>
 
-  <post index="0569" date="10/05/2013" std-date="2013-05-10T12:00:00.00Z" title="OpenGL Samples Pack 4.3.2.2 released">
+    <post index="0570" date="12/05/2013" std-date="2013-05-12T17:00:00.00Z" title="Skyscape">
+      <meta>
+        <tag>gtc-crea-photograph</tag>
+      </meta>
+
+      <image
+        color="black"
+        img="./photo/2013-20-960.jpg"
+        href="./photo/2013-20.jpg" />
+    </post>
+
+    <post index="0569" date="10/05/2013" std-date="2013-05-10T12:00:00.00Z" title="OpenGL Samples Pack 4.3.2.2 released">
     <meta>
       <tag>gtc-tech-opengl-samples</tag>
     </meta>
@@ -33356,6 +33356,7 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 
 
 
