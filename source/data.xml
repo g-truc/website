@@ -53,7 +53,7 @@
     </source-list>
   </draft>
 
-  <draft index="0572" date="12/05/2013" std-date="2013-05-12T17:00:00.00Z" title="Still a skyscape">
+  <post index="0572" date="17/05/2013" std-date="2013-05-17T17:00:00.00Z" title="Week 21: Kueken">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -62,143 +62,364 @@
       color="black"
       img="./photo/2013-21-960.jpg"
       href="./photo/2013-21.jpg" />
-  </draft>
+  </post>
   
-  <draft index="0571" date="09/01/2012" std-date="2013-05-11T23:30:00.00Z" title="Compiler SSE code generation">
+  <post index="0571" date="16/05/2012" std-date="2013-05-16T12:30:00.00Z" title="Compiler SSE code generation">
     <meta>
       <tag>gtc-tech-project-glm</tag>
     </meta>
 
-    http://rise4fun.com/vcpp
-    http://gcc.godbolt.org/
-
     <paragraph>
-      During the first years of development of GLM, I raised my interest for the efficiency of the generated code my the compiler.
-      This is how I learn to optimize the logic of the code that the compiler 
+      During the first years of GLM development, I raised my interest for the efficiency of the generated code by the compiler 
+      to answer this simple question: Is writing SSE code using intrinsics worth the effort? Understand, while that give a performance gain?
+      For a long time the answer was easy, yes because the compiler does a poor job. Today's compilers do a much better job however there are still incapable of vectorizing the code...  
+    </paragraph>
+    <paragraph>
+    	One of the interest of the SSE or AVX instruction sets is a provide SIMD instructions allowing to process in a Single Instruction Multiple Data. 
+    	However, this is only a subset of the SEE or AVS instructions as all the Multiple Data instructions also come with Single Data equivalent. 
+    	This is these Single Data instructions that the compilers are actually generating. Following, here is a code sample that we will use to generate the ASM code for GCC 4.4, GCC 4.8, ICC13, VC12, Clang 3.0 and Clang 3.2. 
     </paragraph>
 
-    <paragraph>
-      GLM 0.9.3.0 is finally released. Since the branch 0.9.2, the test bench and the Doxygen API documentation has been expended significantly leading
-      to an even more reliable implementation and hopefully an even smoother development experience.
-    </paragraph>
-    <paragraph>
-      For the feature set, the GLSL noise functions are added, based on the implementation of <link href="https://github.com/ashima/webgl-noise">webgl-noise</link>.
-      Some users might prefer the promoted GLM_GTC_noise extension also based on <link href="https://github.com/ashima/webgl-noise">webgl-noise</link> but with
-      a different interface and three noise methods: Perlin noise, periodic noise and simplex noise.
-    </paragraph>
-    <image img="./post/0437-1.jpg" title="2D simplex noise with GLM_GTC_noise" color="'white'" />
-    <paragraph>
-      Additionally, the random number generation functions (GLM_GTC_random) which provides various interesting distributions as illustrated below.
-      Also reaching GLM tool box, the new experimental extension GLM_GTX_constants provides a set of constants.
-    </paragraph>
-    <image img="./post/0437-2.jpg" title="Spherical random distribution with GLM_GTC_random" color="'white'" />
-
-    <paragraph>
-      Finally, swizzle operators are a challenging task to implement but thanks to the effort of many contributors, GLM 0.9.3.0 provides something interesting, but admittably
-      not perfect. The new implementation is a great improvement considering the incompatibilities with some external libraries in GLM 0.9.2.7. GLM 0.9.3 provides two implemetanations, one for C++ 98
-      compilers and one for C++ 11 compilers providing an implemetnation closer to what GLSL does. Indeed the C++ 98 implementation is compatible with C++ 11 compilers.
-    </paragraph>
-
-    <code title="Implementation for C++ 98 compilers:">
+    <code title="Source used to analyse compiler generated ASM">
       <line>
-        <comment>// To declare before including glm.hpp, to use the swizzle operators</comment>
-      </line>
-      <line>
-        <keyword>#define </keyword> GLM_SWIZZLE
+        <keyword>#include </keyword>
+        <string>&lt;emmintrin&gt;</string>
       </line>
       <line>
         <keyword>#include </keyword>
-        <string>&lt;glm/glm.hpp&gt;</string>
+        <string>&lt;cstddef&gt;</string>
       </line>
-      <line>
 
-      </line>
       <line>
-        <keyword>void</keyword> example_cpp98()
       </line>
-      <line>
-        {
-      </line>
-      <line align="32px">
-        glm::vec4 a = glm::vec4(2, 0, 0, 0);
-      </line>
-      <line align="32px">
-        glm::vec4 b = glm::vec4(0, 2, 0, 0);
-      </line>
-      <line align="32px">
-        glm::vec3 c = vec4((a.zyx() + b.xyz()).xyz() * 0.5f, 1.0f);
-      </line>
-      <line align="32px">
-        glm::vec2 d = glm::normalize(glm::vec2(c.yz()));
-      </line>
-      <line align="32px">
-        a.xyzw() = d.xyxy();
-      </line>
-      <line>
-        }
-      </line>
+      
+		<line>
+    		<keyword>struct</keyword> float4
+      	</line>
+		<line>
+      		{
+		</line>
+		<line align="32px">
+      		float4(){}
+		</line>
+
+		<line align="32px">
+      		float4(<keyword>float const</keyword> &amp; s) :
+		</line>
+		<line align="64px">
+      		x(s), y(s), z(s), w(s)
+		</line>
+		<line align="32px">
+      		{}
+		</line>
+		<line></line>		
+ 
+		<line align="32px">
+      		float4(<keyword>float const</keyword> &amp; x, <keyword>float const</keyword> &amp; y, <keyword>float const</keyword> &amp; z, <keyword>float const</keyword> &amp; w) :
+		</line>
+		<line align="64px">
+      		x(x), y(y), z(z), w(w)
+		</line>
+		<line align="32px">
+      		{}
+		</line>
+		<line></line>	  	
+  		
+		<line align="32px">
+      		<keyword>float operator</keyword>[](std::size_t i) <keyword>const</keyword>
+		</line>
+		<line align="32px">
+      		{
+		</line>
+		<line align="64px">
+      		<keyword>return</keyword> (&amp;x)[i];
+		</line>
+		<line align="32px">
+      		}
+		</line>
+		<line></line>	  	
+    
+		<line align="32px">
+      		<keyword>union</keyword>
+		</line>
+		<line align="32px">
+      		{
+		</line>
+		<line align="64px">
+      		<keyword>struct</keyword> {<keyword>float</keyword> r, g, b, a;};
+		</line>
+		<line align="64px">
+      		<keyword>struct</keyword> {<keyword>float</keyword> s, t, p, q;};
+		</line>
+		<line align="64px">
+      		<keyword>struct</keyword> {<keyword>float</keyword> x, y, z, w;};
+		</line>
+		<line align="64px">
+      		__m128 data;
+		</line>
+		<line align="32px">
+      		};
+		</line>
+		<line></line>	  	
+
+		<line>
+      		}
+		</line>
+
+		<line>
+      		<keyword>inline</keyword> float4 operator*(float4 <keyword>const</keyword> &amp; a, float4 <keyword>const</keyword> &amp; b)
+		</line>
+		<line>
+      		{
+		</line>
+		<line align="32px">
+      		<keyword>return</keyword> float4(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w);
+		</line>
+		<line>
+      		}
+		</line>
+		<line></line>	  	
+
+		<line>
+      		float4 mul_intrinsic(float4 <keyword>const</keyword> m[4], float4 <keyword>const</keyword> &amp; v)
+		</line>
+		<line>
+      		{
+		</line>
+		<line align="32px">
+      		__m128 v0 = _mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(0, 0, 0, 0));
+		</line>
+		<line align="32px">
+      		__m128 v1 = _mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(1, 1, 1, 1));
+		</line>
+		<line align="32px">
+      		__m128 v2 = _mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(2, 2, 2, 2));
+		</line>
+		<line align="32px">
+      		__m128 v3 = _mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(3, 3, 3, 3));
+		</line>
+		<line align="32px">
+      		
+		</line>
+		<line align="32px">
+      		__m128 m0 = _mm_mul_ps(m[0].data, v0);
+		</line>
+		<line align="32px">
+      		__m128 m1 = _mm_mul_ps(m[1].data, v1);
+		</line>
+		<line align="32px">
+      		__m128 a0 = _mm_add_ps(m0, m1);
+		</line>
+		<line align="32px">
+      		
+		</line>
+		<line align="32px">
+      		__m128 m2 = _mm_mul_ps(m[2].data, v2);
+		</line>
+		<line align="32px">
+      		__m128 m3 = _mm_mul_ps(m[3].data, v3);
+		</line>
+		<line align="32px">
+      		__m128 a1 = _mm_add_ps(m2, m3);
+		</line>
+		<line align="32px">
+      		
+		</line>
+		<line align="32px">
+      		__m128 a2 = _mm_add_ps(a0, a1);
+		</line>
+		<line align="32px">
+      		
+		</line>
+		
+		<line align="32px">
+      		float4 f;
+		</line>
+		<line align="32px">
+      		f.data = a2;
+		</line>
+		<line align="32px">
+      		<keyword>return</keyword> f;
+		</line>
+		<line>
+      		}
+		</line>
+		<line></line>
+
+		<line>
+      		float4 mul_cpp(float4 <keyword>const</keyword> m[4], float4 <keyword>const</keyword> &amp; v)
+		</line>
+		<line>
+      		{
+		</line>
+		<line align="32px">
+      		<keyword>return</keyword> float4(
+		</line>
+		<line align="64px">
+      		m[0][0] * v[0] + m[1][0] * v[1] + m[2][0] * v[2] + m[3][0] * v[3],
+		</line>
+		<line align="64px">
+      		m[0][1] * v[0] + m[1][1] * v[1] + m[2][1] * v[2] + m[3][1] * v[3],
+		</line>
+		<line align="64px">
+      		m[0][2] * v[0] + m[1][2] * v[1] + m[2][2] * v[2] + m[3][2] * v[3],
+		</line>
+		<line align="64px">
+      		m[0][3] * v[0] + m[1][3] * v[1] + m[2][3] * v[2] + m[3][3] * v[3]);
+		</line>
+		<line>
+      		}
+		</line>
+		<line></line>
+
+		<line>
+      		float4 mul_inst_like(float4 <keyword>const</keyword> m[4], float4 <keyword>const</keyword> &amp; v)
+		</line>		
+		<line>
+      		{
+		</line>		
+		<line align="32px">
+      		float4 <keyword>const</keyword> Mov0(v[0]);
+		</line>	
+		<line align="32px">
+      		float4 <keyword>const</keyword> Mov1(v[1]);
+		</line>
+		<line align="32px">
+      		float4 <keyword>const</keyword> Mul0 = m[0] * Mov0;
+		</line>
+		<line align="32px">
+      		float4 <keyword>const</keyword> Mul1 = m[1] * Mov1;
+		</line>
+		<line align="32px">
+      		float4 <keyword>const</keyword> Add0 = Mul0 * Mul1;
+		</line>
+		<line align="32px">
+      		float4 <keyword>const</keyword> Mov2(v[2]);
+		</line>	
+		<line align="32px">
+      		float4 <keyword>const</keyword> Mov3(v[3]);
+		</line>
+		<line align="32px">
+      		float4 <keyword>const</keyword> Mul2 = m[2] * Mov2;
+		</line>
+		<line align="32px">
+      		float4 <keyword>const</keyword> Mul3 = m[3] * Mov3;
+		</line>		
+		<line align="32px">
+      		float4 <keyword>const</keyword> Add1 = Mul2 * Mul3;
+		</line>
+		<line align="32px">
+      		float4 <keyword>const</keyword> Add2 = Add0 * Add1; 
+		</line>
+		<line>
+      		
+		</line>
+		<line align="32px">
+      		<keyword>return</keyword> Add2;
+		</line>
+		<line>
+      		}
+		</line>
+
+		<line>
+		</line>
+
+		<line>
+      		<keyword>int</keyword> main()
+		</line>
+		<line>
+      		{
+		</line>
+		<line align="32px">
+      		<keyword>return</keyword> 0;
+		</line>
+		<line>
+      		}
+		</line>
     </code>
-
-    <code title="Implementation for C++ 11 compilers:">
-      <line>
-        <comment>// To declare before including glm.hpp, to use the swizzle operators</comment>
-      </line>
-      <line>
-        <keyword>#define </keyword> GLM_SWIZZLE
-      </line>
-      <line>
-        <keyword>#include </keyword>
-        <string>&lt;glm/glm.hpp&gt;</string>
-      </line>
-      <line>
-
-      </line>
-      <line>
-        <keyword>void</keyword> example_cpp11()
-      </line>
-      <line>
-        {
-      </line>
-      <line align="32px">
-        glm::vec4 a = glm::vec4(2, 0, 0, 0);
-      </line>
-      <line align="32px">
-        glm::vec4 b = glm::vec4(0, 2, 0, 0);
-      </line>
-      <comment>// To use a swizzle operator with an operator, it needs to be cast into a vector either explicitly or with the operator ()</comment>
-      <line align="32px">
-        glm::vec4 c = glm::vec4((a.zyx() + b.xyz()).xyz * 0.5f, 1.0f);
-      </line>
-      <line align="32px">
-        <comment>// Before being pasted to a function, a swizzle operator needs to be cast into</comment>
-      </line>
-      <line align="32px">
-        <comment>// a vector either explicitly or with the operator ()</comment>
-      </line>
-      <line align="32px">
-        glm::vec2 d = glm::normalize(glm::vec2(c.yz));
-      </line>
-      <line align="32px">
-        <comment>// glm::vec2 d = glm::normalize(c.yz()); // Equivalent code</comment>
-      </line>
-      <line align="32px">
-        a.xyzw = d.xyxy;
-      </line>
-      <line>
-        }
-      </line>
-    </code>
+    
+    <list name="Generated ASM by the compilers">
+    	<list-element href="./post/0571-clang3.0.txt">Clang 3.0</list-element>
+    	<list-element href="./post/0571-clang3.2.txt">Clang 3.2</list-element>
+    	<list-element href="./post/0571-gcc4.4.txt">GCC 4.4</list-element>
+    	<list-element href="./post/0571-gcc4.8.txt">GCC 4.8</list-element>
+    	<list-element href="./post/0571-icc13.txt">ICC 13</list-element>
+    	<list-element href="./post/0571-vc12.txt">Visual C++ 12</list-element>
+    </list>
+    
+    <paragraph>
+    	Reading these codes, we immediately see that no compiler is capable of generating vectorized intructions.
+    </paragraph>
+    <paragraph>
+    	We can notice some useless mov instructions generated by some compilers. 
+    	Also, Clang tries to interleave different instructions while ICC is regrouping identical instructions.  
+    	Others compilers more or less interleave or regroup the identical instructions but in any case each compiler 
+    	is capable to massively reorder the instructions to the point that GCC 4.8 is capable to generate exactly the same assembly code 
+    	for both <codeword>mul_cpp</codeword> and <codeword>mul_inst_like</codeword> but it is still incapable of vectorizing a code.
+    </paragraph>
+    <paragraph>
+    	It seems to me that being capable of such reording shows how compiler optimizations have been focus on the result and 
+    	the dependances to this result.
+    	With such strategy based on ASTs, the compilers can remove dead code and useless operations like sequence of mov instructions. 
+    	However, today CPU performances are more bound to the usage of memory, 
+    	how we maximize the cache usage and how we reduce the data movement and transfer. 
+    	Two conscequences: There is still a lot of room for compiler optimizations and hand 
+    	writing code with intrinsic remains relevants.  
+    </paragraph>
+    <paragraph>
+    	There are some researches to resolve the issue of generating vectorized code. 
+    	<link href="https://github.com/ispc/ispc">ISPC</link> seems inspired by GPU architechtures and it generates 
+    	C++ source code using on demand SIMD instruction sets. 
+    	Then <link href="http://polly.llvm.org/index.html">Polly</link> is a compiler optimizer that 
+    	directly tackles the issues of memory access pattern.
+    	Finally, LLVM is going to integrate in LLVM 3.3 a new optimizer called 
+    	<link href="http://llvm.org/docs/Vectorizers.html#slp-vectorizer">SLP Vectorizer</link>
+    </paragraph>
+    <paragraph>
+    	For GLM, what I would enjoy is to figure out an approach where I could avoid writing intrinsic code 
+    	but still write my C++ code in a way that the compiler would generate the SSE code I expect it to be generated.
+    	Even if, I have to look at the assembler code, such approach would allow me to have a single code for each operation 
+    	making it easier to maintain.  
+    </paragraph>
+    <paragraph>
+    	So far GLM provides dedicated 
+    	<link href="http://glm.g-truc.net/api-0.9.4/a00086_source.html">simdVec4</link> and 
+    	<link href="http://glm.g-truc.net/api-0.9.4/a00085_source.html">simdMat4</link> classes for SIMD optimiations. 
+    	<link href="https://github.com/mackron">David Reid</link> even contributed a simd version of GLM quaternions for GLM 0.9.5.
+    	It is obivous that using GLM to write very fast code is not a good idea but this is not a reason why GLM shouldn't 
+    	be as fast as possible and ideally it should be fast transparently but for that the compilers will need to do a better job.
+    </paragraph>
+    
+    <title>Viewing x86 assembly with XCode</title>
+    <paragraph>
+    	Since XCode 4.1, we can display the assembly of a file using the menu "Product/Generate Output/Assembly File". 
+    	However, with Clang the IDE will show the LLVM IR which might be great for the compiler to use but I find it harder to read than 
+    	old-fashion CPU or GPU instructions. Fortunately we can enable x86 assembly generation using the argument "-no-integrated-as".
+    	This argument can be set using the menu "Product/Scheme/Manage Schemes". Also, "-integrated-as" can explicitly request LLVM IR.
+    </paragraph>
+    
+    <title>Online C++ compilers</title>
+    <paragraph>
+    	I discovered few months ago that many compilers can be used online. 
+    	This is very convenient idea that allows to quickly test a code on different compilers. 
+    	Isn't it nice to be able to use VC12 on MacOS X?
+    	My favourite website is <link href="http://gcc.godbolt.org/">gcc.godbolt.org</link> 
+    	which support many versions of GCC but also Clang 3.0 and ICC 13.
+		A great feature is that this website display the ASM code generated. 
+		For Visual C++ 12 there is the great <link href="http://rise4fun.com/vcpp">rise4fun.com/vcpp</link> 
+		however it doesn't generate ASM code but only the compiler errors.	
+    </paragraph>
 
     <source-list>
-      <source-download index="1103" />
+      <source-download index="1134" />
       <source-element type="Link" href="http://glm.g-truc.net" title="GLM website" />
-      <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.3.pdf" title="GLM 0.9.3 Manual" />
-      <source-element type="Link" href="http://glm.g-truc.net/api-0.9.3/index.html" title="GLM 0.9.3 API" />
+      <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf" title="GLM 0.9.4 Manual" />
+      <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
       <source-element type="Link" href="https://sourceforge.net/apps/trac/ogl-math/newticket" title="Submit a feature request or a bug report" />
     </source-list>
-  </draft>
+  </post>
 
-    <post index="0570" date="12/05/2013" std-date="2013-05-12T17:00:00.00Z" title="Skyscape">
+    <post index="0570" date="12/05/2013" std-date="2013-05-12T17:00:00.00Z" title="Week 20: Skyscape">
       <meta>
         <tag>gtc-crea-photograph</tag>
       </meta>
@@ -223,7 +444,7 @@
     </source-list>
   </post>
 
-  <post index="0568" date="09/05/2013" std-date="2013-05-09T17:00:00.00Z" title="Moonscape">
+  <post index="0568" date="09/05/2013" std-date="2013-05-09T17:00:00.00Z" title="Week 19: Moonscape">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>

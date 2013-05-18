@@ -1,0 +1,138 @@
+mul_intrinsic(float4 const*, float4 const&):         # @mul_intrinsic(float4 const*, float4 const&)
+	movdqa	(%rsi), %xmm1
+	pshufd	$-1, %xmm1, %xmm2       # xmm2 = xmm1[3,3,3,3]
+	mulps	48(%rdi), %xmm2
+	pshufd	$-86, %xmm1, %xmm0      # xmm0 = xmm1[2,2,2,2]
+	mulps	32(%rdi), %xmm0
+	addps	%xmm2, %xmm0
+	pshufd	$85, %xmm1, %xmm2       # xmm2 = xmm1[1,1,1,1]
+	mulps	16(%rdi), %xmm2
+	pshufd	$0, %xmm1, %xmm1        # xmm1 = xmm1[0,0,0,0]
+	mulps	(%rdi), %xmm1
+	addps	%xmm2, %xmm1
+	addps	%xmm0, %xmm1
+	movaps	%xmm1, %xmm2
+	unpckhpd	%xmm0, %xmm2    # xmm2 = xmm2[1],xmm0[1]
+	movaps	%xmm1, %xmm0
+	movapd	%xmm2, %xmm1
+	ret
+
+mul_cpp(float4 const*, float4 const&):                # @mul_cpp(float4 const*, float4 const&)
+	movss	(%rsi), %xmm1
+	movss	4(%rsi), %xmm8
+	movss	16(%rdi), %xmm0
+	mulss	%xmm8, %xmm0
+	movss	(%rdi), %xmm4
+	mulss	%xmm1, %xmm4
+	addss	%xmm0, %xmm4
+	movss	8(%rsi), %xmm3
+	movss	32(%rdi), %xmm0
+	mulss	%xmm3, %xmm0
+	addss	%xmm4, %xmm0
+	movss	12(%rsi), %xmm4
+	movss	48(%rdi), %xmm5
+	mulss	%xmm4, %xmm5
+	addss	%xmm0, %xmm5
+	movss	24(%rdi), %xmm7
+	mulss	%xmm8, %xmm7
+	movss	8(%rdi), %xmm6
+	mulss	%xmm1, %xmm6
+	movss	20(%rdi), %xmm2
+	mulss	%xmm8, %xmm2
+	movss	4(%rdi), %xmm0
+	mulss	%xmm1, %xmm0
+	addss	%xmm2, %xmm0
+	movd	%xmm5, %ecx
+	addss	%xmm7, %xmm6
+	movss	40(%rdi), %xmm5
+	mulss	%xmm3, %xmm5
+	addss	%xmm6, %xmm5
+	movss	56(%rdi), %xmm6
+	mulss	%xmm4, %xmm6
+	addss	%xmm5, %xmm6
+	movss	36(%rdi), %xmm5
+	mulss	%xmm3, %xmm5
+	movd	%xmm6, %eax
+	addss	%xmm0, %xmm5
+	movss	52(%rdi), %xmm0
+	mulss	%xmm4, %xmm0
+	addss	%xmm5, %xmm0
+	movd	%xmm0, %edx
+	shlq	$32, %rdx
+	mulss	28(%rdi), %xmm8
+	mulss	12(%rdi), %xmm1
+	orq	%rcx, %rdx
+	movd	%rdx, %xmm0
+	addss	%xmm8, %xmm1
+	mulss	44(%rdi), %xmm3
+	addss	%xmm1, %xmm3
+	mulss	60(%rdi), %xmm4
+	addss	%xmm3, %xmm4
+	movd	%xmm4, %ecx
+	shlq	$32, %rcx
+	orq	%rax, %rcx
+	movd	%rcx, %xmm1
+	ret
+
+mul_inst_like(float4 const*, float4 const&):         # @mul_inst_like(float4 const*, float4 const&)
+	movss	12(%rsi), %xmm2
+	movss	48(%rdi), %xmm3
+	mulss	%xmm2, %xmm3
+	movss	8(%rsi), %xmm1
+	movss	32(%rdi), %xmm0
+	mulss	%xmm1, %xmm0
+	mulss	%xmm3, %xmm0
+	movss	(%rsi), %xmm3
+	movss	4(%rsi), %xmm4
+	movss	16(%rdi), %xmm6
+	mulss	%xmm4, %xmm6
+	movss	(%rdi), %xmm5
+	mulss	%xmm3, %xmm5
+	mulss	%xmm6, %xmm5
+	mulss	%xmm0, %xmm5
+	movd	%xmm5, %eax
+	movss	52(%rdi), %xmm5
+	mulss	%xmm2, %xmm5
+	movss	36(%rdi), %xmm0
+	mulss	%xmm1, %xmm0
+	mulss	%xmm5, %xmm0
+	movss	20(%rdi), %xmm6
+	mulss	%xmm4, %xmm6
+	movss	4(%rdi), %xmm5
+	mulss	%xmm3, %xmm5
+	mulss	%xmm6, %xmm5
+	mulss	%xmm0, %xmm5
+	movd	%xmm5, %ecx
+	shlq	$32, %rcx
+	movss	56(%rdi), %xmm5
+	mulss	%xmm2, %xmm5
+	movss	40(%rdi), %xmm0
+	mulss	%xmm1, %xmm0
+	orq	%rax, %rcx
+	mulss	%xmm5, %xmm0
+	movss	24(%rdi), %xmm6
+	mulss	%xmm4, %xmm6
+	movss	8(%rdi), %xmm5
+	mulss	%xmm3, %xmm5
+	mulss	%xmm6, %xmm5
+	mulss	%xmm0, %xmm5
+	movd	%xmm5, %eax
+	mulss	60(%rdi), %xmm2
+	mulss	44(%rdi), %xmm1
+	movd	%rcx, %xmm0
+	mulss	%xmm2, %xmm1
+	mulss	28(%rdi), %xmm4
+	mulss	12(%rdi), %xmm3
+	mulss	%xmm4, %xmm3
+	mulss	%xmm1, %xmm3
+	movd	%xmm3, %ecx
+	shlq	$32, %rcx
+	orq	%rax, %rcx
+	movd	%rcx, %xmm1
+	ret
+
+main:                                   # @main
+	xorl	%eax, %eax
+	ret
+
+

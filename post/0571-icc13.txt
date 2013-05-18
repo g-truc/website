@@ -1,0 +1,146 @@
+L__routine_start_main_0:
+main:
+        pushq     %rbp                                          #87.1
+        movq      %rsp, %rbp                                    #87.1
+        andq      $-128, %rsp                                   #87.1
+        subq      $128, %rsp                                    #87.1
+        movl      $3, %edi                                      #87.1
+        call      __intel_new_proc_init                         #87.1
+        stmxcsr   (%rsp)                                        #87.1
+        xorl      %eax, %eax                                    #90.9
+        orl       $32832, (%rsp)                                #87.1
+        ldmxcsr   (%rsp)                                        #87.1
+        movq      %rbp, %rsp                                    #90.9
+        popq      %rbp                                          #90.9
+        ret                                                     #90.9
+L__routine_start__Z13mul_intrinsicPK6float4RS0__1:
+mul_intrinsic(float4 const*, float4 const&):
+        movaps    (%rsi), %xmm3                                 #37.29
+        movaps    %xmm3, %xmm5                                  #37.14
+        movaps    %xmm3, %xmm2                                  #38.14
+        movaps    %xmm3, %xmm4                                  #39.14
+        shufps    $0, %xmm3, %xmm5                              #37.14
+        shufps    $85, %xmm3, %xmm2                             #38.14
+        shufps    $170, %xmm3, %xmm4                            #39.14
+        shufps    $255, %xmm3, %xmm3                            #40.14
+        mulps     (%rdi), %xmm5                                 #42.14
+        mulps     16(%rdi), %xmm2                               #43.14
+        mulps     32(%rdi), %xmm4                               #46.14
+        mulps     48(%rdi), %xmm3                               #47.14
+        addps     %xmm2, %xmm5                                  #44.14
+        addps     %xmm3, %xmm4                                  #48.14
+        addps     %xmm4, %xmm5                                  #50.14
+        movaps    %xmm5, -24(%rsp)                              #53.4
+        movsd     -24(%rsp), %xmm0                              #55.9
+        movsd     -16(%rsp), %xmm1                              #55.9
+        ret                                                     #55.9
+L__routine_start__Z7mul_cppPK6float4RS0__2:
+mul_cpp(float4 const*, float4 const&):
+        movss     (%rsi), %xmm2                                 #18.12
+        movss     4(%rsi), %xmm4                                #18.12
+        movss     (%rdi), %xmm7                                 #18.12
+        movss     16(%rdi), %xmm8                               #18.12
+        mulss     %xmm2, %xmm7                                  #62.14
+        mulss     %xmm4, %xmm8                                  #62.31
+        movss     32(%rdi), %xmm9                               #18.12
+        addss     %xmm8, %xmm7                                  #62.31
+        movss     8(%rsi), %xmm5                                #18.12
+        mulss     %xmm5, %xmm9                                  #62.48
+        movss     4(%rdi), %xmm3                                #18.12
+        addss     %xmm9, %xmm7                                  #62.48
+        mulss     %xmm2, %xmm3                                  #63.14
+        movss     20(%rdi), %xmm11                              #18.12
+        movss     8(%rdi), %xmm8                                #18.12
+        movss     24(%rdi), %xmm14                              #18.12
+        movss     12(%rdi), %xmm9                               #18.12
+        movss     28(%rdi), %xmm0                               #18.12
+        mulss     %xmm4, %xmm11                                 #63.31
+        mulss     %xmm2, %xmm8                                  #64.14
+        mulss     %xmm4, %xmm14                                 #64.31
+        mulss     %xmm2, %xmm9                                  #65.14
+        mulss     %xmm4, %xmm0                                  #65.31
+        addss     %xmm11, %xmm3                                 #63.31
+        addss     %xmm14, %xmm8                                 #64.31
+        addss     %xmm0, %xmm9                                  #65.31
+        movss     36(%rdi), %xmm12                              #18.12
+        movss     40(%rdi), %xmm15                              #18.12
+        movss     44(%rdi), %xmm2                               #18.12
+        mulss     %xmm5, %xmm12                                 #63.48
+        mulss     %xmm5, %xmm15                                 #64.48
+        mulss     %xmm5, %xmm2                                  #65.48
+        addss     %xmm12, %xmm3                                 #63.48
+        addss     %xmm15, %xmm8                                 #64.48
+        addss     %xmm2, %xmm9                                  #65.48
+        movss     48(%rdi), %xmm10                              #18.12
+        movss     52(%rdi), %xmm13                              #18.12
+        movss     56(%rdi), %xmm1                               #18.12
+        movss     60(%rdi), %xmm4                               #18.12
+        movss     12(%rsi), %xmm6                               #18.12
+        mulss     %xmm6, %xmm10                                 #62.65
+        mulss     %xmm6, %xmm13                                 #63.65
+        mulss     %xmm6, %xmm1                                  #64.65
+        mulss     %xmm6, %xmm4                                  #65.65
+        addss     %xmm10, %xmm7                                 #62.65
+        addss     %xmm13, %xmm3                                 #63.65
+        addss     %xmm1, %xmm8                                  #64.65
+        addss     %xmm4, %xmm9                                  #65.65
+        movss     %xmm7, -24(%rsp)                              #61.2
+        movss     %xmm3, -20(%rsp)                              #61.2
+        movss     %xmm8, -16(%rsp)                              #61.2
+        movss     %xmm9, -12(%rsp)                              #61.2
+        movsd     -24(%rsp), %xmm0                              #61.9
+        movsd     -16(%rsp), %xmm1                              #61.9
+        ret                                                     #61.9
+L__routine_start__Z13mul_inst_likePK6float4RS0__3:
+mul_inst_like(float4 const*, float4 const&):
+        movss     (%rdi), %xmm5                                 #32.19
+        movss     4(%rdi), %xmm9                                #32.30
+        movss     8(%rdi), %xmm13                               #32.41
+        movss     12(%rdi), %xmm0                               #32.52
+        movss     16(%rdi), %xmm2                               #32.19
+        movss     20(%rdi), %xmm6                               #32.30
+        movss     24(%rdi), %xmm10                              #32.41
+        movss     28(%rdi), %xmm14                              #32.52
+        movss     32(%rdi), %xmm4                               #32.19
+        movss     36(%rdi), %xmm8                               #32.30
+        movss     40(%rdi), %xmm12                              #32.41
+        movss     44(%rdi), %xmm1                               #32.52
+        movss     48(%rdi), %xmm3                               #32.19
+        movss     52(%rdi), %xmm7                               #32.30
+        movss     56(%rdi), %xmm11                              #32.41
+        movss     60(%rdi), %xmm15                              #32.52
+        mulss     (%rsi), %xmm5                                 #32.25
+        mulss     (%rsi), %xmm9                                 #32.36
+        mulss     (%rsi), %xmm13                                #32.47
+        mulss     (%rsi), %xmm0                                 #32.58
+        mulss     4(%rsi), %xmm2                                #32.25
+        mulss     4(%rsi), %xmm6                                #32.36
+        mulss     4(%rsi), %xmm10                               #32.47
+        mulss     4(%rsi), %xmm14                               #32.58
+        mulss     8(%rsi), %xmm4                                #32.25
+        mulss     8(%rsi), %xmm8                                #32.36
+        mulss     8(%rsi), %xmm12                               #32.47
+        mulss     8(%rsi), %xmm1                                #32.58
+        mulss     12(%rsi), %xmm3                               #32.25
+        mulss     12(%rsi), %xmm7                               #32.36
+        mulss     12(%rsi), %xmm11                              #32.47
+        mulss     12(%rsi), %xmm15                              #32.58
+        mulss     %xmm2, %xmm5                                  #32.25
+        mulss     %xmm3, %xmm4                                  #32.25
+        mulss     %xmm6, %xmm9                                  #32.36
+        mulss     %xmm7, %xmm8                                  #32.36
+        mulss     %xmm10, %xmm13                                #32.47
+        mulss     %xmm11, %xmm12                                #32.47
+        mulss     %xmm14, %xmm0                                 #32.58
+        mulss     %xmm15, %xmm1                                 #32.58
+        mulss     %xmm4, %xmm5                                  #32.25
+        mulss     %xmm8, %xmm9                                  #32.36
+        mulss     %xmm12, %xmm13                                #32.47
+        mulss     %xmm1, %xmm0                                  #32.58
+        movss     %xmm5, -24(%rsp)                              #32.5
+        movss     %xmm9, -20(%rsp)                              #32.5
+        movss     %xmm13, -16(%rsp)                             #32.5
+        movss     %xmm0, -12(%rsp)                              #32.5
+        movsd     -24(%rsp), %xmm0                              #32.12
+        movsd     -16(%rsp), %xmm1                              #32.12
+        ret                                                     #83.10
