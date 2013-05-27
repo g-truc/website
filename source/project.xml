@@ -182,97 +182,183 @@
         GLI supports DDS (Direct3D9 and Direct3D10) file formats including all BC1 to BC7 formats but don't compressed image data to these formats (yet).
       </paragraph>
 
-      <code title="Creating an OpenGL texture object with GLI manually:">
-        <line>
-          <keyword>#include </keyword>
-          <string>&lt;gli/gli.hpp&gt;</string>
-        </line>
-        <line>
-          <keyword>#include </keyword>
-          <string>&lt;gli/gtx/loader.hpp&gt;</string>
-        </line>
-        <line>
+    <code title="Create a texture with GLI 0.4 and save it to a DDS file:">
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/glm.hpp&gt;</string>
+      </line>
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;gli/gli.hpp&gt;</string>
+      </line>
+      <line>
+      </line>
+      <line>
+        <comment>// Allocated a 32 bits texture with one mipmap level</comment>
+      </line>
+      <line>
+        gli::texture2D Texture(1, gli::RGBA8_UNORM, gli::texture2D::dimensions_type(256, 256));
+      </line>
+      <line>
+        glm::u8vec4 * LinearAddress = Texture.data&lt;glm::u8vec4&gt;();
+      </line>
+      <line>
+        ...
+      </line>
+      <line>
+        <comment>// Do something</comment>
+      </line>
+      <line>
+        ...
+      </line>
+      <line>
+        gli::saveStorageDDS(Texture, "texture.dds");
+      </line>
+    </code>
 
-        </line>
-        <line align="0px">
-          ...
-        </line>
-        <line align="0px">
-          glGenTextures(1, &amp;TextureName);
-        </line>
-        <line align="0px">
-          glBindTexture(GL_TEXTURE_2D, TextureName);
-        </line>
-        <line align="0px">
+    <code title="Create an OpenGL 4.2 texture with GLI 0.4:">
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;gli/gli.hpp&gt;</string>
+      </line>
+      <line>
+      </line>
+      <line>
+        <comment>// </comment>
+      </line>
+      <line>
+        gli::texture2D Texture(gli::loadStorageDDS("kueken2.dds"));
+      </line>
+      <line>
+        assert(!Texture.empty());
+      </line>
+      <line>
+      </line>
+      <line>
+        glBindTexture(GL_TEXTURE_2D, TextureName);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, GLint(Texture.levels() - 1));
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, GL_RED);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, GL_GREEN);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, GL_BLUE);
+      </line>
+      <line>
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_A, GL_ALPHA);
+      </line>
+      <line>
+        glTexStorage2D(GL_TEXTURE_2D,
+      </line>
+      <line align="32px">
+        GLint(Texture.levels()),
+      </line>
+      <line align="32px">
+        GLenum(gli::internal_format(Texture.format())),
+      </line>
+      <line align="32px">
+        GLsizei(Texture.dimensions().x),
+      </line>
+      <line align="32px">
+        GLsizei(Texture.dimensions().y));
+      </line>
+      <line>
 
-        </line>
-        <line align="0px">
-          gli::texture2D Texture = gli::load("texture-bc3.dds");
-        </line>
-        <line align="0px">
-          <keyword>for</keyword>(gli::texture2D::level_type Level = 0; Level &lt; Texture.levels(); ++Level)
-        </line>
-        <line align="0px">
-          {
-        </line>
-        <line align="32px">
-          glCompressedTexImage2D(
-        </line>
-        <line align="32px">
-          GL_TEXTURE_2D,
-        </line>
-        <line align="32px">
-          GLint(Level),
-        </line>
-        <line align="32px">
-          GL_COMPRESSED_RGBA_S3TC_DXT5_EXT,
-        </line>
-        <line align="32px">
-          GLsizei(Texture[Level].dimensions().x),
-        </line>
-        <line align="32px">
-          GLsizei(Texture[Level].dimensions().y),
-        </line>
-        <line align="32px">
-          0,
-        </line>
-        <line align="32px">
-          GLsizei(Texture[Level].capacity()),
-        </line>
-        <line align="32px">
-          Texture[Level].data());
-        </line>
-        <line align="0px">
-          }
-        </line>
-        <line align="0px">
-          ...
-        </line>
-      </code>
+      </line>
+      <line>
+        if(gli::is_compressed(Texture.format()))
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        for(gli::texture2D::size_type Level = 0; Level &lt; Texture.levels(); ++Level)
+      </line>
+      <line align="32px">
+        {
+      </line>
+      <line align="64px">
+        glCompressedTexSubImage2D(GL_TEXTURE_2D,
+      </line>
+      <line align="96px">
+        GLint(Level),
+      </line>
+      <line align="96px">
+        0, 0,
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().x),
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().y),
+      </line>
+      <line align="96px">
+        GLenum(gli::internal_format(Texture.format())),
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].size()),
+      </line>
+      <line align="96px">
+        Texture[Level].data());
+      </line>
+      <line align="32px">
+        }
+      </line>
+      <line>
+        }
+      </line>
+      <line>
+        else
+      </line>
+      <line>
+        {
+      </line>
 
-      <code title="Creating an OpenGL texture object with GLI automatically:">
-        <line>
-          <keyword>#include </keyword>
-          <string>&lt;gli/gli.hpp&gt;</string>
-        </line>
-        <line>
-          <keyword>#include </keyword>
-          <string>&lt;gli/gtx/gl_texture2d.hpp&gt;</string>
-          <comment>// Requires OpenGL >= 1.1 to be included before this include</comment>
-        </line>
-        <line>
-
-        </line>
-        <line align="0px">
-          ...
-        </line>
-        <line align="0px">
-          GLuint TextureName = gli::createTexture2D("texture-bc3.dds");
-        </line>
-        <line align="0px">
-          ...
-        </line>
-      </code>
+      <line align="32px">
+        for(gli::texture2D::size_type Level = 0; Level &lt; Texture.levels(); ++Level)
+      </line>
+      <line align="32px">
+        {
+      </line>
+      <line align="64px">
+        glTexSubImage2D(GL_TEXTURE_2D,
+      </line>
+      <line align="96px">
+        GLint(Level),
+      </line>
+      <line align="96px">
+        0, 0,
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().x),
+      </line>
+      <line align="96px">
+        GLsizei(Texture[Level].dimensions().y),
+      </line>
+      <line align="96px">
+        GLenum(gli::external_format(Texture.format())),
+      </line>
+      <line align="96px">
+        GLenum(gli::type_format(Texture.format())),
+      </line>
+      <line align="96px">
+        Texture[Level].data());
+      </line>
+      <line align="32px">
+        }
+      </line>
+      <line>
+        }
+      </line>
+    </code>
       
 		</text>
 		<source-list>

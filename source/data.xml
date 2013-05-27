@@ -53,6 +53,46 @@
     </source-list>
   </draft>
 
+
+  <post index="0574" date="27/02/2013" title="GLM packages for Linux" image="goodies/logo.png" image-mini="image/logo-mini.png">
+    <meta>
+      <tag>gtc-tech-project-glm</tag>
+    </meta>
+
+    <paragraph>
+     	GLM is now included in many major Linux distributions. Here is a quick list of available packages.
+    </paragraph>
+
+    <list>
+      <list-element href="https://www.archlinux.org/packages/community/any/glm/">archlinux</list-element>
+      <list-element href="http://packages.debian.org/search?searchon=sourcenames&amp;keywords=glm">Debian</list-element>
+      <list-element href="http://koji.fedoraproject.org/koji/packageinfo?packageID=14633">Fedora</list-element>
+      <list-element href="http://packages.ubuntu.com/source/raring/glm">Ubuntu</list-element>
+      <list-element href="http://community.linuxmint.com/software/view/libglm-dev">Mint</list-element>
+      <list-element href="https://build.opensuse.org/package/show?package=glm&amp;project=devel%3Alibraries%3Ac_c%2B%2B">OpenSuse</list-element>
+    </list>
+
+	<paragraph>
+		Thanks to the package maintainers for this contribution!
+	</paragraph>
+
+    <source-download index="1127" />
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+    <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf" title="GLM 0.9.4 Manual" />
+    <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
+  </post>
+
+  <post index="0573" date="23/05/2013" std-date="2013-05-23T20:00:00.00Z" title="Week 22: Solid light">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-22-960.jpg"
+      href="./photo/2013-22.jpg" />
+  </post>
+
   <post index="0572" date="17/05/2013" std-date="2013-05-17T17:00:00.00Z" title="Week 21: Kueken">
     <meta>
       <tag>gtc-crea-photograph</tag>
