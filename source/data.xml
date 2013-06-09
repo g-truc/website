@@ -54,7 +54,48 @@
   </draft>
 
 
-  <post index="0574" date="27/02/2013" title="GLM packages for Linux" image="goodies/logo.png" image-mini="image/logo-mini.png">
+  <post index="0576" date="09/06/2013" std-date="2013-06-09T20:00:00.00Z" title="Week 23: Cycling">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-22-960.jpg"
+      href="./photo/2013-22.jpg" />
+  </post>
+
+  <post index="0575" date="29/03/2013" title="GLM 0.9.4.4 released" image="goodies/logo.png" image-mini="image/logo-mini.png">
+	<meta>
+		<tag>gtc-tech-project-glm</tag>
+	</meta>
+
+	<paragraph>
+		A new revision of GLM is available. This revision will hopefully be the last one
+		for GLM 0.9.4 branch before the release of GLM 0.9.5
+		which focus on the reduction of the compilation time and
+		an improvement of the interpretation of GLSL precision qualifier allowing
+		optimizations by reducing the ULPs of operations when using lowp and mediump qualifiers.
+	</paragraph>
+
+    <list name="Changelog:">
+      <list-element>Fixed slerp when costheta is close to 1 #65</list-element>
+      <list-element>Fixed mat4x2 value_type constructor #70</list-element>
+      <list-element>Fixed glm.natvis for Visual C++ 12 #82</list-element>
+      <list-element>Added assert in inversesqrt to detect division by zero #61</list-element>
+      <list-element>Fixed missing swizzle operators #86</list-element>
+      <list-element>Fixed GLM natvis for VC11 #82</list-element>
+      <list-element>Fixed GLM_GTX_multiple with negative values #79</list-element>
+      <list-element>Fixed glm::perspective when zNear is zero #71</list-element>
+    </list>
+	
+    <source-download index="1140" />
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+    <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf" title="GLM 0.9.4 Manual" />
+    <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
+  </post>
+
+  <post index="0574" date="27/05/2013" std-date="2013-05-27T23:30:00.00Z" title="GLM packages for Linux" image="goodies/logo.png" image-mini="image/logo-mini.png">
     <meta>
       <tag>gtc-tech-project-glm</tag>
     </meta>
@@ -76,7 +117,7 @@
 		Thanks to the package maintainers for this contribution!
 	</paragraph>
 
-    <source-download index="1127" />
+    <source-download index="1134" />
     <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
     <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf" title="GLM 0.9.4 Manual" />
     <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
