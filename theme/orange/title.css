@@ -1,4 +1,38 @@
-﻿div.title-frame
+﻿.title-link
+{
+/*
+	display: block;
+	text-indent: -9999px;
+	width:48px;
+	height:48px;
+	background: url(logo-twitter.svg);
+	background-size: 48px 48px;
+	color:#0080FF;
+*/
+	opacity:0.6;
+	float:right;
+	padding:8px;
+}
+
+.title-link:hover
+{
+	opacity:0.8;
+}
+
+.title-nav
+{
+	opacity:0.6;
+	float:left;
+	padding-top:16px;
+	padding-left:16px;
+}
+
+.title-nav:hover
+{
+	opacity:0.8;
+}
+
+div.title-frame, div.title-frame-full
 {
 	background-image:url('title-11.jpg');
 	background-repeat:no-repeat;
@@ -7,14 +41,24 @@
 	width:1000px;
 	color:#ffffff;
 	font-family:Verdana, Geneva, Georgia, Arial;
-	min-height:500px;
 	margin:0px;
 	padding:0px;
-	border-radius:16px;
+	border-top-left-radius:6px;
+	border-top-right-radius:6px;
 	border-style:solid;
 	border-width:0px;
 	border-color:#FF00FF;
 	position:relative;
+}
+
+div.title-frame
+{
+	min-height:280px;
+}
+
+div.title-frame-full
+{
+	min-height:480px;
 }
 
 a.title-frame
@@ -50,7 +94,7 @@ div.title-frame-shadow
 div.title-frame-menu
 {
 	position:relative;
-	top:310px;
+	top:220px;
 	left:8px;
 	z-index:0;
 }

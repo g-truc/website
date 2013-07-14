@@ -3,11 +3,11 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:include href="util-constants.xsl" />
 	<xsl:include href="util.xsl" />
-  <xsl:include href="util-html.xsl" />
-  <xsl:include href="util-head.xsl" />
-  <xsl:include href="util-webgl.xsl" />
-  <xsl:include href="util-foot.xsl" />
-  <xsl:include href="util-title.xsl" />
+	<xsl:include href="util-html.xsl" />
+	<xsl:include href="util-head.xsl" />
+	<xsl:include href="util-webgl.xsl" />
+	<xsl:include href="util-foot.xsl" />
+	<xsl:include href="util-title.xsl" />
 	<xsl:include href="util-directory.xsl" />
 
 	<xsl:param name="index" select="'none'" />
@@ -15,25 +15,25 @@
 	<xsl:template match="g-truc">
 		<xsl:param name="Project" select="document($FILE_PROJ)/g-truc/project" />
 
-    <html xmlns="http://www.w3.org/1999/xhtml">
+    	<html xmlns="http://www.w3.org/1999/xhtml">
 			<!-- Head -->
-      <xsl:call-template name="g-truc-head">
-        <xsl:with-param name="Title" select="$Project[@index=$index]/@name" />
-      </xsl:call-template>
+      		<xsl:call-template name="g-truc-head">
+        		<xsl:with-param name="Title" select="$Project[@index=$index]/@name" />
+      		</xsl:call-template>
 
 			<!-- Body -->
 			<body>
 				<div class="page">
 					<!-- Title -->
-          <xsl:call-template name="g-truc-title-full">
-            <xsl:with-param name="filter" select="$Project[@index=$index]/@type"/>
-          </xsl:call-template>
+          			<xsl:call-template name="g-truc-title">
+            			<xsl:with-param name="filter" select="$Project[@index=$index]/@type"/>
+          			</xsl:call-template>
 
 					<!-- Frame -->
 					<xsl:apply-templates select="$Project[@index=$index]" mode="filtered-items" />
 				</div>
 
-        <xsl:call-template name="g-truc-foot" />
+        		<xsl:call-template name="g-truc-foot" />
 			</body>
 		</html>
 	</xsl:template>

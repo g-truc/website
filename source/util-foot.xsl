@@ -20,18 +20,6 @@
         <a href="http://www.opera.com/" class="page-foot">Opera 11</a> and 
         <a href="http://www.apple.com/safari" class="page-foot">Safari 5</a>
       </div>
-		<div>
-			<xsl:text> - </xsl:text>
-		</div>
-		<div>
-			<a href="https://twitter.com/share" class="twitter-share-button" data-text="http://goo.gl/mqsYr #OpenGL specification reviews, programming tips and drivers status. #GLM, #GLI, Samples and #Photography." data-via="g_truc">Tweet</a>
-    	</div>
-		<div>
-			<xsl:text> - </xsl:text>
-		</div>
-		<div>	
-			<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://www.g-truc.net"></a>
-		</div>
     </div>
   </xsl:template>
 

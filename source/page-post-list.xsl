@@ -21,9 +21,9 @@
 
       <!-- Body -->
 			<body>
-				<div class="page">
+				<div class="page-search">
 					<!-- Title -->
-					<xsl:call-template name="g-truc-title-full">
+					<xsl:call-template name="g-truc-title">
 						<xsl:with-param name="filter" select="$filter"/>
 					</xsl:call-template>
 

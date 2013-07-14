@@ -2,7 +2,6 @@
 {
 	margin:0px;
 	padding:0px;
-	background-color:#000000;
 	background-image:url(background-14.jpg);
 	background-repeat:no-repeat;
 	background-position:center center;
@@ -10,19 +9,19 @@
 	font-size:14px;
 	font-family:verdana;
 	min-height:1200px;
-    color:#402000;
+    color:#000000;
     overflow:auto;
 }
 
-div.page
+div.page, div.page-search
 {
-	margin-top:128px;
+	background-color:#000000;
+	margin-top:64px;
 	margin-bottom:0px;
 	margin-left:auto; 
 	margin-right:auto;
 	width:1000px;
 	min-height:600px;
-    background-color:#000000;
 	/*font-family:Century, Arial;*/
 	/*font-family::Georgia;*/
 	/*font-family:"Century Gothic";*/
@@ -33,11 +32,16 @@ div.page
 	border-top-left-radius: 16px 16px;
 	border-top-right-radius: 16px 16px;
 	*/
-	border-radius:16px;
+	border-radius:8px;
 	border-style:solid;
 	border-width:1px;
 	border-color:#000000;
 	/*font-size:16px;*/
+}
+
+div.page-search
+{
+	background-color:#FFF0F8;
 }
 
 div.page-foot
@@ -227,14 +231,19 @@ a.post-menu-entry:hover
 
 div.post-frame
 {
-	border-radius:16px;
+	border-bottom-left-radius:8px;
+	border-bottom-right-radius:8px;
 	
-	background-color:#FFF8F0;
+	border-top-color:#000000;
+	border-top-style:solid;
+	border-top-width:1px;	
+	
+	background-color:#FFFFFF;
 	padding:32px;
 	padding-right:92px;
 	padding-left:92px;
-    margin:8px;
-	width:800px;
+    margin:0px;
+	width:816px;
 }
 
 div.post-frame-content-photo
@@ -255,7 +264,7 @@ div.post-frame-list
 {
 	border-radius:16px;
 	
-	background-color:#FFF8F0;
+	background-color:#FFF0F8;
 	padding:32px;
     padding-bottom:16px;
     margin:8px;
@@ -266,19 +275,19 @@ span.post-frame-list
 {
 	display:inline-block;
 	
-	border-color:#00FF00;
-	border-style:solid;
-	border-width:0px;	
+	border-top-color:#000000;
+	border-top-style:solid;
+	border-top-width:1px;	
 
-	border-radius:16px;
+	border-bottom-left-radius:6px;
 	
-	background-color:#FFF8F0;
+	background-color:#FFFFFF;
 	padding:32px;
     padding-bottom:16px;
-    margin:8px;
+    margin:0px;
     margin-right:0px;
-	width:656px;
-	min-height:600px;
+	width:680px;
+	min-height:800px;
 }
 
 ul.post-frame-menu
@@ -286,16 +295,17 @@ ul.post-frame-menu
 	display:inline-block;
 	float:right;
 
-	border-color:#FF00FF;
-	border-style:solid;
-	border-width:0px;	
-
-	border-radius:16px;
+	border-top-color:#000000;
+	border-top-style:solid;
+	border-top-width:1px;	
+	border-bottom-right-radius:6px;
 	
-	background-color:#FFF8F0;
 	padding:32px;
-    margin:8px;
+	padding-bottom:16px;
+    margin:0px;
 	width:192px;
+	
+	min-height:800px;
 }
 
 li.post-frame-menu-level0,

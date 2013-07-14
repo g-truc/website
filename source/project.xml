@@ -5,11 +5,12 @@
   <project index="0035" name="OpenGL Pipeline Map" short="OpenGL Pipeline Map" type="gtc-tech-project-openglpipeline" date-creation="01/08/2012">
     <text>
       <paragraph>
-        List the extensions exposed by OpenGL implementations.
-      </paragraph>
+        UML activity diagram showing a detail OpenGL pipeline.
+		</paragraph>
     </text>
     <source-list>
-      <source-element type="Link" href="http://openglinsights.com/pipeline.html" title="OpenGL Pipeline Map" />
+      <source-element type="Link" href="http://openglinsights.com/pipeline.html" title="OpenGL Insights - Pipeline Map" />
+      <source-element type="Link" href="http://www.sparxsystems.com/resources/uml2_tutorial/uml2_activitydiagram.html" title="UML activity diagrams overview" />
     </source-list>
   </project>
   

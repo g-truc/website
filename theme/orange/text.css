@@ -26,7 +26,7 @@ h2
 {
 	margin-top:0px;
 	font-size:16px;
-	font-family:Century;
+	font-family:Georgia;
 	font-weight:bold;
 }
 
@@ -65,22 +65,22 @@ h5
 
 a
 {
-    color:#402000;
+    color:#003000;
 }
 
 a:hover
 {
-	color:#804000;
+	color:#008000;
 }
 
 .light
 {
-	color:#402000;
+	color:#401020;
 }
 
 .light:hover
 {
-	color:#804000;
+	color:#802040;
 }
 
 .dark

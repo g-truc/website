@@ -9,7 +9,7 @@
   <xsl:variable name="WEBSITE_AUTHOR">Christophe Riccio</xsl:variable>
   <xsl:variable name="WEBSITE_EMAIL">mail@g-truc.net</xsl:variable>
   <xsl:variable name="WEBSITE_TITLE">G-Truc Creation</xsl:variable>
-  <xsl:variable name="WEBSITE_COPYRIGHT">2002-2012</xsl:variable>
+  <xsl:variable name="WEBSITE_COPYRIGHT">2002-2013</xsl:variable>
   <xsl:variable name="WEBSITE_FEED">http://feeds.feedburner.com/g-truc</xsl:variable>
   <xsl:variable name="WEBSITE_FEED_CREA">http://feeds.feedburner.com/gtc-crea</xsl:variable>
   <xsl:variable name="WEBSITE_FEED_TECH">http://feeds.feedburner.com/gtc-tech</xsl:variable>
@@ -28,7 +28,9 @@
 
   <xsl:variable name="ANCHOR_MENU_NAME">menu</xsl:variable>
   <xsl:variable name="ANCHOR_MENU_LINK">#menu</xsl:variable>
-
+  <xsl:variable name="ANCHOR_PICTURE_NAME">picture</xsl:variable>
+  <xsl:variable name="ANCHOR_PICTURE_LINK">#picture</xsl:variable>
+  
   <xsl:variable name="MENU_POST_COUNT">7</xsl:variable>
 
   <xsl:variable name="FILTER_CREA_TOKEN">gtc-crea</xsl:variable>

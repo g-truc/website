@@ -20,8 +20,9 @@
       </xsl:call-template>
       
       <!-- Body -->
-      <body>
+      <body>      	
         <div class="page">
+        
           <!-- Title -->
           <xsl:call-template name="g-truc-title-full">
             <xsl:with-param name="filter" select="$filter"/>

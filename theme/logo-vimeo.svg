@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- The icon can be used freely in both personal and commercial projects with no attribution required, but always appreciated. 
+You may NOT sub-license, resell, rent, redistribute or otherwise transfer the icon without express written permission from iconmonstr.com -->
+
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+
+<path id="vimeo-square-rounded-icon" d="M412,50H100c-27.614,0-50,22.386-50,50v312c0,27.614,22.386,50,50,50h312
+
+	c27.614,0,50-22.386,50-50V100C462,72.386,439.614,50,412,50z M399.062,191.959c-1.291,28.083-20.896,66.537-58.819,115.346
+
+	c-39.214,50.981-72.389,76.475-99.525,76.475c-16.805,0-31.036-15.52-42.654-46.574c-7.762-28.464-15.52-56.927-23.277-85.389
+
+	c-8.63-31.038-17.885-46.574-27.784-46.574c-2.155,0-9.708,4.543-22.632,13.589l-13.568-17.486
+
+	c14.23-12.51,28.273-25.02,42.088-37.546c18.98-16.407,33.232-25.037,42.732-25.91c22.443-2.156,36.261,13.192,41.445,46.046
+
+	c5.6,35.445,9.48,57.491,11.656,66.12c6.471,29.41,13.586,44.099,21.364,44.099c6.036,0,15.103-9.54,27.195-28.614
+
+	c12.072-19.078,18.549-33.593,19.417-43.567c1.725-16.464-4.752-24.717-19.417-24.717c-6.907,0-14.022,1.591-21.347,4.731
+
+	c14.174-46.44,41.254-68.999,81.225-67.714C386.795,135.147,400.763,154.373,399.062,191.959z"/>
+
+</svg>
+

@@ -16,19 +16,19 @@
 	<xsl:template match="g-truc">
 		<xsl:param name="filter" select="./post[@index=$index]/meta/tag[1]" />
 		<xsl:param name="Post" select="./post" />
-    <xsl:param name="DraftPost" select="./draft" />
+    	<xsl:param name="DraftPost" select="./draft" />
 
-    <html xmlns="http://www.w3.org/1999/xhtml">
+    	<html xmlns="http://www.w3.org/1999/xhtml">
 			<!-- Head -->
 			<xsl:call-template name="g-truc-head">
-        <xsl:with-param name="Index" select="$index" />
+        		<xsl:with-param name="Index" select="$index" />
 			</xsl:call-template>
 
 			<!-- Body -->
 			<body onload="main();">
 				<div class="page">
 					<!-- Title -->
-					<xsl:call-template name="g-truc-title-full">
+					<xsl:call-template name="g-truc-title">
 						<xsl:with-param name="filter" select="$filter"/>
 					</xsl:call-template>
 
@@ -50,9 +50,9 @@
 
 	<xsl:template match="draft">
 		<xsl:param name="Project" select="document($FILE_PROJ)/g-truc/project" />
-    <xsl:param name="Template" select="document($FILE_TMPL)/g-truc" />
+    	<xsl:param name="Template" select="document($FILE_TMPL)/g-truc" />
     
-    <xsl:param name="Item" select="$Template/item" />
+    	<xsl:param name="Item" select="$Template/item" />
 		<xsl:param name="Filter" select="../post[@index=$index]/meta/tag" />
 
     <div xmlns="http://www.w3.org/1999/xhtml" class="post-frame">
@@ -164,7 +164,7 @@
 
       <xsl:choose>
         <xsl:when test="./meta/tag='gtc-crea-photograph'">
-          <div class="post-frame-content-photo">
+          <div class="post-frame-content-photo" id="{$ANCHOR_PICTURE_NAME}">
             <xsl:call-template name="post-title">
               <xsl:with-param name="Post" select="." />
               <xsl:with-param name="Theme" select="'dark'" />
@@ -200,17 +200,47 @@
         </xsl:otherwise>
       </xsl:choose>
 
-    <xsl:call-template name="post-browse">
-      <xsl:with-param name="Post" select="." />
-    </xsl:call-template>
+		<xsl:choose>
+			<xsl:when test="./meta/tag='gtc-crea-photograph'">
+    			<div xmlns="http://www.w3.org/1999/xhtml" class="post-browse">
+      				<xsl:variable name="next-index" select="./preceding-sibling::post[./meta/tag='gtc-crea-photograph'][position()=1]/@index" />
+      				<xsl:variable name="prev-index" select="./following-sibling::post[./meta/tag='gtc-crea-photograph'][position()=1]/@index" />
+
+      				<xsl:variable name="curr-index" select="@index" />
+
+      				<xsl:if test="$Post/../post[@index=$next-index]">
+        				<div class="post-next-text">
+          					<a class="post-next-text" href="{concat($URL_POST_TOKEN, $next-index, $URL_HTML_TOKEN, $ANCHOR_PICTURE_LINK)}">
+            					<xsl:value-of select="$Post/../post[@index=$next-index]/@title" />
+            					<xsl:text> &gt;</xsl:text>
+          					</a>
+        				</div>
+      				</xsl:if>
+
+      				<xsl:if test="$Post/../post[@index=$prev-index]">
+        				<div class="post-prev-text">
+        					<a class="post-prev-text" href="{concat($URL_POST_TOKEN, $prev-index, $URL_HTML_TOKEN, $ANCHOR_PICTURE_LINK)}"> 
+            					<xsl:text>&lt; </xsl:text>
+            					<xsl:value-of select="$Post/../post[@index=$prev-index]/@title" />
+          					</a>
+        				</div>
+      				</xsl:if>
+				</div>				
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:call-template name="post-browse">
+      				<xsl:with-param name="Post" select="." />
+    			</xsl:call-template>
+			</xsl:otherwise>
+		</xsl:choose>
   </xsl:template>
 
   <xsl:template name="post-browse">
     <xsl:param name="Post" />
     
     <div xmlns="http://www.w3.org/1999/xhtml" class="post-browse">
-      <xsl:variable name="next-index" select="$Post/preceding-sibling::post[position()=1]/@index" />
-      <xsl:variable name="prev-index" select="$Post/following-sibling::post[position()=1]/@index" />
+      <xsl:variable name="next-index" select="$Post/preceding-sibling::post[starts-with(./meta/tag, 'gtc-tech')][position()=1]/@index" />
+      <xsl:variable name="prev-index" select="$Post/following-sibling::post[starts-with(./meta/tag, 'gtc-tech')][position()=1]/@index" />
 
       <xsl:variable name="curr-index" select="@index" />
 

@@ -53,6 +53,133 @@
     </source-list>
   </draft>
 
+  <draft index="0583" date="09/07/2012" std-date="2013-07-09T20:00:00.00Z" title="5 great C++ 11 language features">
+		<meta>
+			<tag>gtc-tech-devel-cpp</tag>
+		</meta>
+	
+    <paragraph>
+    	It seems to me that C++ 11 encounters some resistances which very often (always?) aren't justify. 
+    	For example many programers fear the STL but I believe for reasons that are not legitimate anymore, for example regarding the quality of actual implementation. 
+    	I am sorry but it we use a current GCC, Clang or Visual C++ STL implementation we get very well performing STL implementations.
+    </paragraph>
+    
+    <paragraph>
+    	In this post I am going to present my 5 favorite C++ 11 features which does what we should expect from C++ 11, that is to say providing new contructs allowing to write 
+    	more efficient, more robust and more simplier code.  
+    </paragraph>
+    
+    <title>Delegated contructors</title>
+    <paragraph>
+    	A wrong approach in programming is to duplicate some code because as soon as we change the behaviour of one version of the code we might forget to update the other versions.
+    	Sadly, sometimes C++ 98 force us to duplicate code and this is the case of constructors. 
+    	I like to program using small classes without hierarchies avoiding getters and setters as much as possible so that all the classe need to be used is to be created using one of its constructors.
+    	Unfortunately, as soon as we create multiple contructors we will be duplicating some code to initialise class members. A workaround could be to use a shared initialization function but that strategy will have 
+    	a cost as member variables will be contructed before being initialized resulting in wasteful and costly data movements. Fortunatly, C++ 11 provides delecated contructors to resolve this issue, allowing to call an existing constructor from another contructor.
+    </paragraph>
+  </draft>
+
+  <post index="0582" date="14/07/2013" std-date="2013-07-14T18:00:00.00Z" title="Week 27: Lundi">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-27-960.jpg"
+      href="./photo/2013-27.jpg" />
+  </post>
+
+	<post index="0581" date="11/07/2013" std-date="2013-07-11T02:00:00.00Z" title="OpenGL ES 3.0 Pipeline Map available">
+  		<meta>
+			<tag>gtc-tech-opengl-review</tag>
+			<tag>gtc-tech-project-openglpipeline</tag>
+		</meta>
+
+		<paragraph>
+			Following the release of the <link href="post-0581.html">OpenGL 4.3 Pipeline Map</link>, here is the OpenGL ES 3.0 Pipeline Map.
+    	</paragraph>
+		<paragraph>
+			Enjoy!
+		</paragraph>
+
+		<image
+			color="white"
+			img="./post/0581.png"
+			href="doc/OpenGL%20ES%203.0%20Pipeline%20Map.pdf" />
+
+    	<source-list>
+      		<source-element type="Download" href="http://www.khronos.org/registry/gles/specs/3.0/es_spec_3.0.2.pdf" title="OpenGL ES 3.0.2 specification" />
+      		<source-element type="Download" href="http://www.khronos.org/registry/gles/specs/3.0/GLSL_ES_Specification_3.00.4.pdf" title="GLSL ES 3.00.4 specification" />
+      		<source-download index="1143" />
+      		<source-download index="1142" />
+    	</source-list>
+  	</post>
+
+  <post index="0580" date="08/07/2013" std-date="2013-07-08T20:00:00.00Z" title="OpenGL 4.3 Pipeline Map available">
+    <meta>
+      <tag>gtc-tech-opengl-review</tag>
+      <tag>gtc-tech-project-openglpipeline</tag>
+    </meta>
+
+    <paragraph>
+      For <link href="http://openglinsights.com">OpenGL Insights</link>, we created an <link href="http://openglinsights.com/pipeline.html">OpenGL 4.2 and OpenGL ES 2.0 pipeline map</link>. 
+      <link href="http://www.seas.upenn.edu/~pcozzi/">Patrick Cozzi</link> asked me few times to update it for OpenGL 4.3 and OpenGL ES 3.0 but obviously I found interest in making it only to make it a lot more detailled 
+      considering that it would not be for printing so it could be as big as I see fit. This endeavour represented a significant amount of work but finally I have completed the OpenGL 4.3 Pipeline Map.
+    </paragraph>
+    
+    <paragraph>
+    	Wonder why Larrabee for graphics failed? I guess when we see all this fixed function functionalities that hardware vendor can implement very effectively, it gives us some clues.
+    </paragraph>
+    
+    <paragraph>
+    	Enjoy and send me your feedback for improvements!
+    </paragraph>
+
+    <image
+      color="white"
+      img="./post/0580.png"
+      href="doc/OpenGL%204.3%20Pipeline%20Map.pdf" />
+
+    <source-list>
+      <source-element type="Download" href="http://www.opengl.org/registry/doc/glspec43.core.20130214.withchanges.pdf" title="OpenGL 4.3 core specification" />
+      <source-element type="Download" href="http://www.opengl.org/registry/doc/GLSLangSpec.4.30.8.pdf" title="GLSL 4.3 specification" />
+      <source-download index="1142" />
+    </source-list>
+  </post>
+
+  <post index="0579" date="07/07/2013" std-date="2013-07-07T20:00:00.00Z" title="Week 26: Civilisation">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-26-960.jpg"
+      href="./photo/2013-26.jpg" />
+  </post>
+
+  <post index="0578" date="27/06/2013" std-date="2013-06-27T20:00:00.00Z" title="Week 25: Eigðu góðan dag">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-25-960.jpg"
+      href="./photo/2013-25.jpg" />
+  </post>
+
+  <post index="0577" date="15/06/2013" std-date="2013-06-15T20:00:00.00Z" title="Week 24: Looking north at the sun">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-24-960.jpg"
+      href="./photo/2013-24.jpg" />
+  </post>
 
   <post index="0576" date="09/06/2013" std-date="2013-06-09T20:00:00.00Z" title="Week 23: Cycling">
     <meta>
@@ -61,11 +188,11 @@
 
     <image
       color="black"
-      img="./photo/2013-22-960.jpg"
-      href="./photo/2013-22.jpg" />
+      img="./photo/2013-23-960.jpg"
+      href="./photo/2013-23.jpg" />
   </post>
 
-  <post index="0575" date="29/03/2013" title="GLM 0.9.4.4 released" image="goodies/logo.png" image-mini="image/logo-mini.png">
+  <post index="0575" date="29/05/2013" std-date="2013-05-29T23:30:00.00Z"  title="GLM 0.9.4.4 released">
 	<meta>
 		<tag>gtc-tech-project-glm</tag>
 	</meta>

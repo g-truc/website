@@ -24,7 +24,7 @@
 			<body>
         <div class="page">
           <!-- Head -->
-					<xsl:call-template name="g-truc-title-full">
+					<xsl:call-template name="g-truc-title">
 						<xsl:with-param name="filter" select="$FILTER_CREA_TOKEN"/>
 					</xsl:call-template>
 

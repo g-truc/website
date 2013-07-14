@@ -23,7 +23,7 @@
       <body>
         <div class="page">
           <!-- Title -->
-          <xsl:call-template name="g-truc-title-full">
+          <xsl:call-template name="g-truc-title">
             <xsl:with-param name="filter" select="$filter"/>
           </xsl:call-template>
 
