@@ -53,6 +53,89 @@
     </source-list>
   </draft>
 
+  <post index="0585" date="22/07/2013" std-date="2013-07-22T20:00:00.00Z" title="Week 28: Pink is a good color">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-28-960.jpg"
+      href="./photo/2013-28.jpg" />
+  </post>
+
+  <post index="0584" date="22/07/2013" std-date="2013-07-22T23:00:00.00Z" title="OpenGL 4.4 released and a glance at OpenGL 5 hardware">
+    <meta>
+      <tag>gtc-tech-opengl-review</tag>
+      <tag>gtc-tech-project-openglreviews</tag>
+    </meta>
+
+    <paragraph>
+      The <link href="http://www.khronos.org">Khronos Group</link> has released the OpenGL 4.3 at 
+      <link href="http://www.siggraph.org/s2013/">Siggraph 2013</link>.
+    </paragraph>
+    
+    <paragraph>
+    	OpenGL 4.4 turns out to be a small update of OpenGL 4.3 but it comes with a good number of ARB extensions which gives us a glance at OpenGL 5 hardware level. 
+    </paragraph>
+
+    <list name="OpenGL 4.4 feature set:">
+      <list-element href="http://www.opengl.org/registry/specs/ARB/buffer_storage.txt">GL_ARB_buffer_storage</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/clear_texture.txt">GL_ARB_clear_texture</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/enhanced_layouts.txt">GL_ARB_enhanced_layouts</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/multi_bind.txt">GL_ARB_multi_bind</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/query_buffer_object.txt">GL_ARB_query_buffer_object</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/texture_mirror_clamp_to_edge.txt">GL_ARB_texture_mirror_clamp_to_edge</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/texture_stencil.txt">GL_ARB_texture_stencil</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/vertex_type_10f_11f_11f_rev.txt">GL_ARB_vertex_type_10f_11f_11f_rev</list-element>
+    </list>
+    
+	<paragraph>
+		So OpenGL 4.4 is made of 8 extensions but really 
+		<link href="http://www.opengl.org/registry/specs/ARB/texture_mirror_clamp_to_edge.txt">GL_ARB_texture_mirror_clamp_to_edge</link> is simply one new wrap mode,  
+		<link href="http://www.opengl.org/registry/specs/ARB/texture_stencil.txt">GL_ARB_texture_stencil</link> is really just one new texture format and 
+		<link href="http://www.opengl.org/registry/specs/ARB/vertex_type_10f_11f_11f_rev.txt">GL_ARB_vertex_type_10f_11f_11f_rev</link> just a single vertex attribute format; 
+		none of these being a "selling" feature, but addition for the purpose of completeness which is already nice.
+	</paragraph>
+
+	<list name="New ARB extensions:">
+      <list-element href="http://www.opengl.org/registry/specs/ARB/bindless_texture.txt">GL_ARB_bindless_texture</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/compute_variable_group_size.txt">GL_ARB_compute_variable_group_size</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/indirect_parameters.txt">GL_ARB_indirect_parameters</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/seamless_cubemap_per_texture.txt">GL_ARB_seamless_cubemap_per_texture</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/shader_draw_parameters.txt">GL_ARB_shader_draw_parameters</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/shader_group_vote.txt">GL_ARB_shader_group_vote</list-element>
+      <list-element href="http://www.opengl.org/registry/specs/ARB/sparse_texture.txt">GL_ARB_sparse_texture</list-element>
+	</list>
+	
+	<paragraph>
+		On the ARB extension side, we have 7 new extensions all of them except 
+		<link href="http://www.opengl.org/registry/specs/ARB/shader_group_vote.txt">GL_ARB_shader_group_vote</link> and maybe
+		<link href="http://www.opengl.org/registry/specs/ARB/compute_variable_group_size.txt">GL_ARB_compute_variable_group_size</link> requiring post OpenGL 4 hardware.
+	</paragraph>
+	
+	<paragraph>
+		Sadly still no Direct State Access progress. Happy 5 years complain aniversary!
+	</paragraph>
+
+	<paragraph>
+		Not real surprise but NVIDIA has released <link href="https://developer.nvidia.com/opengl-driver">beta OpenGL 4.4 drivers</link> exposing also all the new extensions. More surprizingly, NVIDIA has released three new propriatary extensions:
+		<link href="http://www.opengl.org/registry/specs/NV/blend_equation_advanced.txt">NV_blend_equation_advanced</link>,
+		<link href="http://www.opengl.org/registry/specs/NV/bindless_multi_draw_indirect.txt">NV_bindless_multi_draw_indirect</link>,
+		<link href="http://www.opengl.org/registry/specs/NV/gpu_program5_mem_extended.txt">NV_gpu_program5_mem_extended</link>,
+	</paragraph>
+
+    <paragraph>
+    	Unfortunately, I haven't finished writing my OpenGL 4.4 review but as it is customary it will be published as soon as possible.
+    </paragraph>
+
+    <source-list>
+      <source-element type="Download" href="http://www.opengl.org/registry/doc/glspec44.core.withchanges.pdf" title="OpenGL 4.4 core specification" />
+      <source-element type="Download" href="http://www.opengl.org/registry/doc/GLSLangSpec.4.40.diff.pdf" title="GLSL 4.4 specification" />
+      <!--source-download index="1144" /-->
+    </source-list>
+  </post>
+
   <draft index="0583" date="09/07/2012" std-date="2013-07-09T20:00:00.00Z" title="5 great C++ 11 language features">
 		<meta>
 			<tag>gtc-tech-devel-cpp</tag>
