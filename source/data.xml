@@ -53,6 +53,40 @@
     </source-list>
   </draft>
 
+  <post index="0586" date="28/07/2013" std-date="2013-07-28T23:30:00.00Z" title="OpenGL 4.4 review and pipeline map available">
+    <meta>
+      <tag>gtc-tech-opengl-review</tag>
+      <tag>gtc-tech-project-openglreviews</tag>
+    </meta>
+
+    <paragraph>
+      Following the release of <link href="http://www.opengl.org/registry/doc/glspec44.core.withchanges.pdf">OpenGL 4.4</link> and 
+      <link href="http://www.opengl.org/registry/doc/GLSLangSpec.4.40.diff.pdf">GLSL 4.40</link> at 
+      <link href="http://www.siggraph.org/s2013/">Siggraph 2013</link> I have finally completed by review continuing on this tradition.
+    </paragraph>
+    
+    <paragraph>
+    	I described each extension in more or less details, mentioned the expected hardware support and gave some personal views on opportunities for an OpenGL 4.5 version.
+    	I am also considering potential future OpenGL 5 hardware features and opportunities for deprecation.
+    </paragraph>    
+    
+      <paragraph>
+      	Enjoy!
+      </paragraph>
+
+    <image
+      color="white"
+      img="./post/0414.png"
+      href="./post/0414.png" />
+
+    <source-list>
+      <source-download index="1145" />
+      <source-download index="1144" />
+      <source-element type="Download" href="http://www.opengl.org/registry/doc/glspec43.core.20120806.withchanges.pdf" title="OpenGL 4.4 core specification" />
+      <source-element type="Download" href="http://www.opengl.org/registry/doc/GLSLangSpec.4.30.6.pdf" title="GLSL 4.4 specification" />
+    </source-list>
+  </post>
+
   <post index="0585" date="22/07/2013" std-date="2013-07-22T20:00:00.00Z" title="Week 28: Pink is a good color">
     <meta>
       <tag>gtc-crea-photograph</tag>
@@ -93,7 +127,7 @@
 	<paragraph>
 		So OpenGL 4.4 is made of 8 extensions but really 
 		<link href="http://www.opengl.org/registry/specs/ARB/texture_mirror_clamp_to_edge.txt">GL_ARB_texture_mirror_clamp_to_edge</link> is simply one new wrap mode,  
-		<link href="http://www.opengl.org/registry/specs/ARB/texture_stencil.txt">GL_ARB_texture_stencil</link> is really just one new texture format and 
+		<link href="http://www.opengl.org/registry/specs/ARB/texture_stencil8.txt">GL_ARB_texture_stencil8</link> is really just one new texture format and 
 		<link href="http://www.opengl.org/registry/specs/ARB/vertex_type_10f_11f_11f_rev.txt">GL_ARB_vertex_type_10f_11f_11f_rev</link> just a single vertex attribute format; 
 		none of these being a "selling" feature, but addition for the purpose of completeness which is already nice.
 	</paragraph>
@@ -115,7 +149,7 @@
 	</paragraph>
 	
 	<paragraph>
-		Sadly still no Direct State Access progress. Happy 5 years complain aniversary!
+		Sadly still no Direct State Access progress. Happy 5 years complain anniversary!
 	</paragraph>
 
 	<paragraph>

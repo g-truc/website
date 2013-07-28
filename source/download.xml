@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
-  <download index="1144" date="22/07/2013" std-date="2012-07-22T12:30:00.00Z" type="gtc-tech-project-openglreviews" version="4.4">
-    <item href="doc/OpenGL4.4review.pdf" type="PDF" size="762 KB" />
+  <download index="1145" date="28/07/2013" std-date="2012-07-28T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="4.4">
+    <item href="doc/OpenGL4.4review.pdf" type="PDF" size="572 KB" />
   </download>
-
+  	<download index="1144" date="28/08/2013" std-date="2013-08-08T23:30:00.00Z" type="gtc-tech-project-openglpipeline" title="OpenGL Pipeline Map" short="OpenGL Pipeline Map" version="4.4">
+    	<item href="doc/OpenGL%204.4%20Pipeline%20Map.pdf" type="PDF" size="1.1 MB" />
+  	</download>
 	<download index="1143" date="10/08/2013" std-date="2013-08-10T23:30:00.00Z" type="gtc-tech-project-openglpipeline" title="OpenGL Pipeline Map" short="OpenGL Pipeline Map" version="ES 3.0">
     	<item href="doc/OpenGL%20ES%203.0%20Pipeline%20Map.pdf" type="PDF" size="718 KB" />
 	</download>
