@@ -2,7 +2,7 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
   <download index="1145" date="28/07/2013" std-date="2012-07-28T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="4.4">
-    <item href="doc/OpenGL4.4review.pdf" type="PDF" size="572 KB" />
+    <item href="doc/OpenGL%204.4%20review.pdf" type="PDF" size="572 KB" />
   </download>
   	<download index="1144" date="28/08/2013" std-date="2013-08-08T23:30:00.00Z" type="gtc-tech-project-openglpipeline" title="OpenGL Pipeline Map" short="OpenGL Pipeline Map" version="4.4">
     	<item href="doc/OpenGL%204.4%20Pipeline%20Map.pdf" type="PDF" size="1.1 MB" />
@@ -125,7 +125,7 @@
     <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.3.0.0/ogl-samples-4.3.0.0.7z/download" type="7Z" size="2.31 MB" />
   </download>
   <download index="1113" date="06/08/2012" std-date="2012-08-06T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="4.3">
-    <item href="doc/OpenGL4.3review.pdf" type="PDF" size="762 KB" />
+    <item href="doc/OpenGL%204.3%20review.pdf" type="PDF" size="762 KB" />
   </download>
   <download index="1112" date="30/06/2012" std-date="2012-06-30T20:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.3.4">
     <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.3.4/glm-0.9.3.4.zip/download" type="ZIP" size="6.4 MB" />
@@ -216,19 +216,19 @@
     <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.2.0.0/ogl-samples-4.2.0.0.7z/download" type="7Z" size="5.3 MB" />
   </download>
   <download index="1090" date="08/08/2011" std-date="2011-08-08T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="4.2">
-    <item href="doc/OpenGL4.2review.pdf" type="PDF" size="857 KB" />
+    <item href="doc/OpenGL%204.2%20review.pdf" type="PDF" size="857 KB" />
     <item href="https://docs.google.com/document/d/1kFzd9eZikZoAIKdDTkPo2i3OVeq4u8JZkmmIkdXDRNM/edit?hl=en_US" type="Google Docs" />
   </download>
   <download index="1089" date="18/08/2011" std-date="2010-08-18T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="4.1">
-    <item href="doc/OpenGL4.1review.pdf" type="PDF" size="274 KB" />
+    <item href="doc/OpenGL%204.1%20review.pdf" type="PDF" size="274 KB" />
     <item href="https://docs.google.com/document/d/1XQZ91G_Cxpq6H3a1dwCg1G0jUR6KMHIihCded7HFLpQ/edit?hl=en_US" type="Google Docs" />
   </download>
   <download index="1088" date="23/03/2010" std-date="2010-03-23T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="4.0">
-    <item href="doc/OpenGL4.0review.pdf" type="PDF" size="382 KB" />
+    <item href="doc/OpenGL%204.0%20review.pdf" type="PDF" size="382 KB" />
     <item href="https://docs.google.com/document/d/14wg28sEhrnl3QNMJymlHzZ7qoySiTTnre-KJu74cMn4/edit?hl=en_US" type="Google Docs" />
   </download>
   <download index="1087" date="16/03/2010" std-date="2010-03-16T23:30:00.00Z" type="gtc-tech-project-openglreviews" version="3.3">
-    <item href="doc/OpenGL3.3review.pdf" type="PDF" size="207 KB" />
+    <item href="doc/OpenGL%203.3%20review.pdf" type="PDF" size="207 KB" />
     <item href="https://docs.google.com/document/d/15Y166rexHlbKuhK-dtp_8rUxdk-m99wQa28nAEgEbqs/edit?hl=en_US" type="Google Docs" />
   </download>
   <download index="1086" date="04/08/2011" std-date="2011-08-04T23:30:00.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.1.7.2">
