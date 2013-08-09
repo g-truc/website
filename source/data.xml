@@ -53,6 +53,28 @@
     </source-list>
   </draft>
 
+  <post index="0588" date="09/08/2013" std-date="2013-08-09T23:30:00.00Z" title="Week 30: Two">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-30-960.jpg"
+      href="./photo/2013-30.jpg" />
+  </post>
+
+  <post index="0587" date="31/07/2013" std-date="2013-07-31T23:30:00.00Z" title="Week 29: Our friends the conspirationists">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-29-960.jpg"
+      href="./photo/2013-29.jpg" />
+  </post>
+
   <post index="0586" date="28/07/2013" std-date="2013-07-28T23:30:00.00Z" title="OpenGL 4.4 review and pipeline map available">
     <meta>
       <tag>gtc-tech-opengl-review</tag>
