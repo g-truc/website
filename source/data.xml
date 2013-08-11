@@ -53,6 +53,42 @@
     </source-list>
   </draft>
 
+  <draft index="0591" date="16/08/2013" std-date="2013-08-16T23:30:00.00Z" title="Week 32: Not for nothing">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-32-960.jpg"
+      href="./photo/2013-32.jpg" />
+  </draft>
+
+  <draft index="0590" date="16/08/2013" std-date="2013-08-16T23:30:00.00Z" title="Week 31: Chuck and Steven">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-31-960.jpg"
+      href="./photo/2013-31.jpg" />
+  </draft>
+
+  <post index="0589" date="11/08/2013" std-date="2013-08-11T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.0 released">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      This new version of the OpenGL Samples Pack provides 5 new OpenGL 4.4 samples.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1146" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+
   <post index="0588" date="09/08/2013" std-date="2013-08-09T23:30:00.00Z" title="Week 30: Two">
     <meta>
       <tag>gtc-crea-photograph</tag>
