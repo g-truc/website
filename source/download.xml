@@ -1,6 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+  <download index="1148" date="29/08/2013" std-date="2013-08-29T02:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.5 provitional">
+    <item href="https://github.com/g-truc/glm/archive/preview1.zip" type="ZIP" size="5.3 MB" />
+  </download>
+
+  <download index="1147" date="13/08/2013" std-date="2013-08-13T00:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.4.5">
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.4.5/glm-0.9.4.5.zip/download" type="ZIP" size="5.2 MB" />
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.4.5/glm-0.9.4.5.7z/download" type="7Z" size="3.1 MB" />
+  </download>
+
   <download index="1146" date="11/08/2013" std-date="2013-08-11T12:00:00.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.4.0.0">
     <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.0.0/ogl-samples-4.4.0.0.zip/download" type="ZIP" size="7.9 MB" />
     <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.0.0/ogl-samples-4.4.0.0.7z/download" type="7Z" size="4.2 MB" />

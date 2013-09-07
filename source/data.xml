@@ -53,7 +53,81 @@
     </source-list>
   </draft>
 
-  <draft index="0591" date="16/08/2013" std-date="2013-08-16T23:30:00.00Z" title="Week 32: Not for nothing">
+  <post index="0593" date="30/08/2013" std-date="2013-08-30T00:30:00.00Z"  title="GLM 0.9.5 provisional tag">
+    <meta>
+      <tag>gtc-tech-project-glm</tag>
+    </meta>
+
+    <paragraph>
+      Following the great idea by the Khronos Group to release <link href="https://www.khronos.org/news/press/khronos-releases-opencl-2.0">provitional specifications</link>, I decided to publish a provitional version of GLM 0.9.5.  
+    </paragraph>
+
+    <paragraph>
+      GLM 0.9.5 is a pretty disruptive new branch due to ideas aiming at making GLM more robust. 
+      GLM being largely used by now, the purpose of this provitional release is to ensure that it won't be too disruptive for the community when comes the final release.
+    </paragraph>
+
+    <title>Replacing half based types by packing functions</title>
+
+    <paragraph>
+      First, GLM 0.9.5 removes the <codeword>hvec*</codeword> and the <codeword>hmat*</codeword> types. 
+      Half floats are usefuls but those types are the wrong abstraction because they let use believe that half floats are native types while they are not.
+      For example, we can perform an addition between two hvec4 but the underlying implementation will simply convert each component to float, do the addition and convert back to half.
+      There is probably better approach to do this addition, there is just none that will be as fast as if that instruction what supported by the CPUs.
+      As a replacement, GLM 0.9.5 provides functions to explicitly perform the conversion from float to half and half to float with the functions 
+      <codeword>packHalf1x16</codeword>, <codeword>unpackHalf1x16</codeword>, <codeword>packHalf4x16</codeword>, <codeword>unpackHalf4x16</codeword>,
+      included in the new <codeword>GLM_GTC_packing</codeword> extension and <codeword>packHalf2x16</codeword>, <codeword>unpackHalf2x16</codeword> 
+      already available in the GLM 0.9.4 core implementation.
+    </paragraph>
+
+    <title>Simplified but more robust swizzle operators</title>
+
+    <paragraph>
+      Swizzle operators have been a source of a massive amount of work in GLM leading to a very complex design. 
+      Because of this complexity, I never dare to enable them by default which is quite unfortunate considering how useful they can be.
+    </paragraph>
+
+    <title>Faster projects build using forward declaration</title>
+
+    <paragraph>
+      The problem with header only library is that they increase the compilation time of a program. 
+      One of the reason for not enabling the swizzle operators by default is that it generates a lot of code. 
+      A good strategy to avoid running in compilation time issues is to ensure that the code isn't a spageti plate, and relying on forward declarations.
+      GLM 0.9.5 provides <codeword>glm/fwd.hpp</codeword> with a complete set of GLM types forward declarations. 
+    </paragraph>
+
+    <code>
+        <line><comment>// In a header file using GLM types</comment></line>
+        <line>
+          <keyword>#include </keyword>
+          <string>&lt;glm/fwd.hpp&gt;</string>
+        </line>
+
+        <line></line>
+
+        <line><comment>// In a source file using GLM types</comment></line>
+        <line>
+          <keyword>#include </keyword>
+          <string>&lt;glm/glm.hpp&gt;</string>
+        </line>
+        <line></line>
+    </code>
+
+    <title>Redefinition of the precision qualifier</title> 
+
+    <paragraph>
+      
+    </paragraph>
+
+    <paragraph>
+      GLM 0.9.4 exposes GLSL precision qualifiers by using different native types. For example <codeword>mediump_float</codeword> is actually a <codeword>float</codeword> type and <codeword>highp_float</codeword> is actually a <codeword>double</codeword>.
+    </paragraph>
+  
+    <source-download index="1148" />
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+  </post>
+
+  <post index="0592" date="26/08/2013" std-date="2013-08-26T23:30:00.00Z" title="Week 32: Pas pour rien">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -62,9 +136,9 @@
       color="black"
       img="./photo/2013-32-960.jpg"
       href="./photo/2013-32.jpg" />
-  </draft>
+  </post>
 
-  <draft index="0590" date="16/08/2013" std-date="2013-08-16T23:30:00.00Z" title="Week 31: Chuck and Steven">
+  <post index="0591" date="18/08/2013" std-date="2013-08-18T23:30:00.00Z" title="Week 31: Chuck and Steven">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -73,7 +147,30 @@
       color="black"
       img="./photo/2013-31-960.jpg"
       href="./photo/2013-31.jpg" />
-  </draft>
+  </post>
+
+  <post index="0590" date="13/08/2013" std-date="2013-08-13T00:30:00.00Z"  title="GLM 0.9.4.5 released">
+    <meta>
+      <tag>gtc-tech-project-glm</tag>
+    </meta>
+
+    <paragraph>
+      GLM 0.9.4.5 is available and it fixes the following issues. 
+    </paragraph>
+
+    <list name="Changelog:">
+      <list-element>Fixed CUDA support</list-element>
+      <list-element>Fixed inclusion of intrinsics in "pure" mode #92</list-element>
+      <list-element>Fixed language detection on GCC when the C++0x mode isn't enabled #95</list-element>
+      <list-element>Added missing value_ptr for quaternions #99</list-element>
+      <list-element>Added WINCE detection #92</list-element>
+    </list>
+  
+    <source-download index="1147" />
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+    <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf" title="GLM 0.9.4 Manual" />
+    <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
+  </post>
 
   <post index="0589" date="11/08/2013" std-date="2013-08-11T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.0 released">
     <meta>
