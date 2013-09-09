@@ -53,7 +53,7 @@
     </source-list>
   </draft>
 
-  <post index="0593" date="30/08/2013" std-date="2013-08-30T00:30:00.00Z"  title="GLM 0.9.5 provisional tag">
+  <draft index="0594" date="30/08/2013" std-date="2013-08-30T00:30:00.00Z"  title="GLM 0.9.5 provisional tag">
     <meta>
       <tag>gtc-tech-project-glm</tag>
     </meta>
@@ -125,6 +125,73 @@
   
     <source-download index="1148" />
     <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+  </draft>
+
+  <post index="0593" date="09/09/2013" std-date="2013-09-09T23:30:00.00Z" title="September 2013 OpenGL status">
+    <meta>
+      <tag>gtc-tech-project-openglstatus</tag>
+    </meta>
+
+    <paragraph>
+      Since the <link href="post-0566.html">previous OpenGL status</link> last April, the OpenGL drivers ecosystem has significantly changed. 
+    </paragraph>
+
+    <list name="Evolution of OpenGL support:">
+      <list-element>Apple: from OpenGL 3.2 (MacOSX 10.8) to OpenGL 4.1 (MacOSX 10.9)</list-element>
+      <list-element>AMD: from OpenGL 4.2 (Catalyst 13.4) to OpenGL 4.3 (Catalyst 13.8 beta)</list-element>
+      <list-element>Intel: from OpenGL 4.0 (9.18.10.3006) to OpenGL 4.2 (10.18.10.3277)</list-element>
+      <list-element>Mesa: still OpenGL 3.2...</list-element>
+      <list-element>NVIDIA: from OpenGL 4.3 (Forceware 300.00 beta) to OpenGL (Forceware 326.98)</list-element>
+    </list>
+
+    <paragraph>
+      Going from OpenGL 3.2 to OpenGL 4.1 for Apple is great. However, considering that Apple took 3 years for that...
+      At least, it's great for OpenGL programmers because it means that we will be able to target OpenGL 4 hardware.
+    </paragraph>
+    <paragraph>
+      It seems that AMD has released an OpenGL 4.3 driver but as I don't have an AMD card at the moment so I haven't tested it. 
+      Also, according to <link href="https://twitter.com/cameni">Brano Kemen</link>, Catalyst 13.8 causes a performance drop and glClientWaitSync is particularly slow (> 7ms in his case).
+    </paragraph>
+    <paragraph>
+      Intel continues to work hard on its OpenGL implementation reaching OpenGL 4.2. According to my sample tests, the implementation works pretty well and it also provides the big OpenGL 4.3 extensions: 
+      <link href="http://www.opengl.org/registry/specs/ARB/compute_shader.txt">GL_ARB_compute_shader</link>,
+      <link href="http://www.opengl.org/registry/specs/ARB/shader_storage_buffer_object.txt">GL_ARB_shader_storage_buffer_object</link>,
+      <link href="http://www.opengl.org/registry/specs/ARB/multi_draw_indirect.txt">GL_ARB_multi_draw_indirect</link> and
+      <link href="http://www.opengl.org/registry/specs/ARB/program_interface_query.txt">GL_ARB_program_interface_query</link>,
+      Considering how far Intel was just a couple of years ago, it's fantastic. 
+      I woudn't be surprised if Intel manages to release at Siggraph 2014 an OpenGL implementation on part with lastest specifications at the time.
+    </paragraph>
+    <paragraph>
+      Mesa is a bit of a desappointment considering that geometry shader is still not supported so we are bound to OpenGL 3.1 on this platform. 
+    </paragraph>
+    <paragraph>
+      OpenGL 4.4 being a small update, NVIDIA had no trouble to ship a good OpenGL 4.4 implementation at Siggraph.
+    </paragraph>
+
+    <image title="OpenGL feature set exposed by GPU architechtures"
+      color="white"
+      img="./post/0593-feature.png"
+      href="./doc/OpenGL%20matrix%202013-09.pdf" />
+
+    <image title="OpenGL samples passing on available implementations"
+      color="white"
+      img="./post/0593-status.png"
+      href="./doc/OpenGL%20status%202013-09.pdf" />
+
+    <paragraph>
+      Once again, don't forget to contribute to the OpenGL community by <link href="post-0430.html#menu">reporting your bugs</link>!
+    </paragraph>
+
+    <source-list>
+      <source-download index="1149" />
+      <source-download index="1148" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=340" title="glCapsViewer report for AMD Catalyst 13.4" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=366" title="glCapsViewer report for Intel HD Graphics 10.18.10.3277" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=365" title="glCapsViewer report for NVIDIA Forceware 326.98 beta" />
+      <source-element type="Link" href="http://www.guru3d.com/files_details/amd_catalyst_13_x_(13_150_100_1)_opengl_4_3_beta_driver_download.html" title="Download page for AMD Catalyst with OpenGL 4.3" />
+      <source-element type="Link" href="http://forums.guru3d.com/showthread.php?t=381146" title="Download page for Intel HD Graphics 10.18.10.3277" />
+      <source-element type="Link" href="https://developer.nvidia.com/opengl-driver" title="Download page for NVIDIA Forceware 326.98 beta" />
+    </source-list>
   </post>
 
   <post index="0592" date="26/08/2013" std-date="2013-08-26T23:30:00.00Z" title="Week 32: Pas pour rien">
