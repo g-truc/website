@@ -53,7 +53,7 @@
     </source-list>
   </draft>
 
-  <draft index="0594" date="30/08/2013" std-date="2013-08-30T00:30:00.00Z"  title="GLM 0.9.5 provisional tag">
+  <draft index="0596" date="30/08/2013" std-date="2013-08-30T00:30:00.00Z"  title="GLM 0.9.5 provisional tag">
     <meta>
       <tag>gtc-tech-project-glm</tag>
     </meta>
@@ -126,6 +126,42 @@
     <source-download index="1148" />
     <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
   </draft>
+
+  <post index="0595" date="15/09/2013" std-date="2013-09-15T02:00:00.00Z" title="Week 33: The future doesn't exist">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-33-960.jpg"
+      href="./photo/2013-33.jpg" />
+  </post>
+
+  <post index="0594" date="14/09/2013" std-date="2013-09-14T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.1 and drivers status update">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      Trying to catch up with my delays, I have released the <link href="post-0589.html">OpenGL Samples Pack 4.4.0.0</link> too quickly. It resulted in many issues that the new 4.4.0.1 release is mostly fixing.
+    </paragraph>
+    <paragraph>
+      Unfortunatly, some Linux issues remain. If someone is interested to maintain the Linux port, I'll be glade! ;)
+    </paragraph>
+    <paragraph>
+      I have updated September 2013 OpenGL drivers status as I seriously overlook the resolution of bugs of old OpenGL samples. Intel scores an impressive 100% success without workaround for all the samples from 3.2 to 4.1.
+    </paragraph>
+    <paragraph>
+      AMD, Intel, Mesa and NVIDIA are all supporting <link href="http://www.opengl.org/registry/specs/KHR/debug.txt">KHR_debug</link> but unfortunately Apple remains behind. 
+      Robert Menzel wrote an article <link href="http://renderingpipeline.com/2013/09/simulating-khr_debug-on-macos-x/">to simulate KHR_debug</link> that will help dealing with this issue. 
+      It's amazing to see OpenGL debugging giving up its status of a privilege for a few.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1150" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
 
   <post index="0593" date="09/09/2013" std-date="2013-09-09T23:30:00.00Z" title="September 2013 OpenGL status">
     <meta>

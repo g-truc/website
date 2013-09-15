@@ -2,8 +2,13 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
 
-  <download index="1150" date="09/09/2013" std-date="2013-08-29T02:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.5 provitional">
+  <download index="1151" date="09/09/2013" std-date="2013-08-29T02:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.5 provitional">
     <item href="https://github.com/g-truc/glm/archive/preview1.zip" type="ZIP" size="5.3 MB" />
+  </download>
+
+  <download index="1150" date="14/09/2013" std-date="2013-09-14T12:23:30.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.4.0.1">
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.0.1/ogl-samples-4.4.0.1.zip/download" type="ZIP" size="6.4 MB" />
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.0.1/ogl-samples-4.4.0.1.7z/download" type="7Z" size="3.5 MB" />
   </download>
 
   <download index="1149" date="09/09/2013" std-date="2012-09-09T23:00:00.00Z" type="gtc-tech-project-openglmatrix" title="OpenGL Matrix" short="OGL matrix" version="September 2013">
