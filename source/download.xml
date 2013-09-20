@@ -2,6 +2,11 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
 
+  <download index="1152" date="20/09/2013" std-date="2013-09-20T00:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.4.6">
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.4.6/glm-0.9.4.6.zip/download" type="ZIP" size="5.1 MB" />
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.4.6/glm-0.9.4.6.7z/download" type="7Z" size="3.0 MB" />
+  </download>
+
   <download index="1151" date="09/09/2013" std-date="2013-08-29T02:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.5 provitional">
     <item href="https://github.com/g-truc/glm/archive/preview1.zip" type="ZIP" size="5.3 MB" />
   </download>
