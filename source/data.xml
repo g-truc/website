@@ -179,6 +179,17 @@
     </list>
   </draft>  
 
+  <post index="0598" date="23/09/2013" std-date="2013-09-23T14:00:00.00Z" title="Week 35: The other side of the situation">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-35-960.jpg"
+      href="./photo/2013-35.jpg" />
+  </post>
+
   <post index="0597" date="22/09/2013" std-date="2013-09-22T18:30:00.00Z" title="'Rasterization patterns' of Haswell GPU">
     <meta>
       <tag>gtc-tech-opengl-tips</tag>
