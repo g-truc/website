@@ -179,6 +179,53 @@
     </list>
   </draft>  
 
+  <post index="0597" date="22/09/2013" std-date="2013-09-22T18:30:00.00Z" title="'Rasterization patterns' of Haswell GPU">
+    <meta>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+    <paragraph>
+      Thanks to the release of an OpenGL 4.2 implementation for Intel GPUs, I can finally use atomic counter to have a look at Haswell's 'Rasterization patterns'.
+    </paragraph>
+    <paragraph>
+      How to read these images? A fragment shader is launched each pixel. An atomic counter is increased for each invocation to produce a unique color. 
+      It can me seen as a <codeword>reinterprect_cast</codeword> so that once the pixel color reach 255 to the red channel, the next one will be 1 for the green channel.
+    </paragraph>
+
+    <image title="Haswell's 'rasterization pattern'" 
+      color="black"
+      img="./post/0597.png"
+      href="./post/0597.png" />
+
+    <paragraph>
+      The rasterization is performed on Haswell by scanning the primitives top to bottom from right to left, then left to right on corse gain tile of 16 by 16 pixels. This is surprizingly the same behaviour than Kepler.
+      As a comparison, Southern Islands is very different. It is scanning 512*32 pixel bands in which 8 by 8 pixel tiles are scheduled in Z-order as long as the assigned CUs/ALUs are available.
+    </paragraph>
+    <paragraph>
+      At fine granularity, Haswell GPU is working within 16 by 16 pixel tiles on 4 by 2 pixel horizontal blocks that might be scheduled to different Execution Units (EU) (CU on Southern Islands; SMX on Kepler).
+      Hence, the wavefront/warp size is 8 invocations. As a comparison, Kepler works using 4 by 8 pixel vertical blocks (wrap: 32 invocations) and Southern Islands uses 8 by 8 pixel blocks (wavefront: 64 invocations) where the pixels are executed in Z-order.
+    </paragraph>
+    <paragraph>
+      Finally, Haswell seems to rely on a synchronious architechture, at coarse and fine granularity. The rendering doesn't show any long delay for specific tiles. 
+      This is either because the architechture is very synchronized so it never has to wait, or it doesn't delay the execution of blocks and systematically wait for atomic results. My guess is that it waits that means pretty bad atomic counter performance in my opinion.
+      On Kepler, the architechture is capable of handling very long latences between coarse grain blocks. With Fermi, it was more extreme, we could even expect that the first coarse tile could be completed last!
+      On Southern Islands, this latence appears shorter but it might be because Southern Islands architechture has a Global Data Store (GDS) so that synchronization of atomic doesn't have to be done down to the memory.
+    </paragraph>
+
+    <image title="Kepler's 'rasterization pattern'" 
+      color="black"
+      img="./post/0486-1.png"
+      href="./post/0486-1.png" />
+
+    <image title="Southern Island's 'rasterization pattern'"
+      color="black"
+      img="./post/0486-2.png"
+      href="./post/0486-2.png" />
+
+    <paragraph>
+      
+    </paragraph>
+  </post>
+
   <post index="0596" date="20/09/2013" std-date="2013-09-20T14:30:00.00Z"  title="GLM 0.9.4.6 released">
     <meta>
       <tag>gtc-tech-project-glm</tag>
