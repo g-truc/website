@@ -53,6 +53,32 @@
     </source-list>
   </draft>
 
+  <draft index="0602" date="20/09/2013" std-date="2013-09-20T14:00:00.00Z" title="Mythologolical memory fragmentation">
+    <meta>
+      <tag>gtc-tech-devel-cpp</tag>
+    </meta>
+    <paragraph>
+      When I through the fact that I like C++ and the STL, too many people tells: "STL is wrong it fragment memory". To what I answer, "use the right tool for the right purpose". What to I mean by that? It's not STL that fragment memory it's the way it's used, if we write are own code and we are still using the wrong method, we will still fragment memory. When I see the quality of code out there, I much prefer a well documented and specified implementation, perfectly scrafted by compiler authors both both performance and robustness. 
+    </paragraph>
+    <paragraph>
+      What's memory fragmentation? Why it's a problem and what's the domain of validity of that problem?
+    </paragraph>
+    <quote>
+      Memory fragmentation definition 
+    </quote>
+    <paragraph>
+      Conscequences of memory fragmentation involves 
+    </paragraph>  
+    <paragraph>
+       The software, the OS and the CPU hardware.
+    </paragraph>
+    <list name="Memory fragmentation involved three components:">
+      <list-element>The user software </list-element>
+      <list-element>The OS </list-element>
+      <list-element>The CPU</list-element>
+    </list>
+  </draft>  
+
   <draft index="0601" date="09/07/2012" std-date="2013-07-09T20:00:00.00Z" title="5 great C++ 11 language features">
     <meta>
       <tag>gtc-tech-devel-cpp</tag>
@@ -153,31 +179,16 @@
     <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
   </draft>
 
-  <draft index="0599" date="20/09/2013" std-date="2013-09-20T14:00:00.00Z" title="Mythologolical memory fragmentation">
+  <post index="0599" date="29/09/2013" std-date="2013-09-29T02:00:00.00Z" title="Week 36: Pauline at the beach">
     <meta>
-      <tag>gtc-tech-devel-cpp</tag>
+      <tag>gtc-crea-photograph</tag>
     </meta>
-    <paragraph>
-      When I through the fact that I like C++ and the STL, too many people tells: "STL is wrong it fragment memory". To what I answer, "use the right tool for the right purpose". What to I mean by that? It's not STL that fragment memory it's the way it's used, if we write are own code and we are still using the wrong method, we will still fragment memory. When I see the quality of code out there, I much prefer a well documented and specified implementation, perfectly scrafted by compiler authors both both performance and robustness. 
-    </paragraph>
-    <paragraph>
-      What's memory fragmentation? Why it's a problem and what's the domain of validity of that problem?
-    </paragraph>
-    <quote>
-      Memory fragmentation definition 
-    </quote>
-    <paragraph>
-      Conscequences of memory fragmentation involves 
-    </paragraph>  
-    <paragraph>
-       The software, the OS and the CPU hardware.
-    </paragraph>
-    <list name="Memory fragmentation involved three components:">
-      <list-element>The user software </list-element>
-      <list-element>The OS </list-element>
-      <list-element>The CPU</list-element>
-    </list>
-  </draft>  
+
+    <image
+      color="black"
+      img="./photo/2013-36-960.jpg"
+      href="./photo/2013-36.jpg" />
+  </post>
 
   <post index="0598" date="23/09/2013" std-date="2013-09-23T14:00:00.00Z" title="Week 35: The other side of the situation">
     <meta>
