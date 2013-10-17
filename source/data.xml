@@ -53,7 +53,7 @@
     </source-list>
   </draft>
 
-  <draft index="0602" date="20/09/2013" std-date="2013-09-20T14:00:00.00Z" title="Mythologolical memory fragmentation">
+  <draft index="0702" date="20/09/2013" std-date="2013-09-20T14:00:00.00Z" title="Mythologolical memory fragmentation">
     <meta>
       <tag>gtc-tech-devel-cpp</tag>
     </meta>
@@ -79,7 +79,7 @@
     </list>
   </draft>  
 
-  <draft index="0601" date="09/07/2012" std-date="2013-07-09T20:00:00.00Z" title="5 great C++ 11 language features">
+  <draft index="0701" date="09/07/2012" std-date="2013-07-09T20:00:00.00Z" title="5 great C++ 11 language features">
     <meta>
       <tag>gtc-tech-devel-cpp</tag>
     </meta>
@@ -105,7 +105,7 @@
     </paragraph>
   </draft>
 
-  <draft index="0600" date="30/08/2013" std-date="2013-08-30T00:30:00.00Z"  title="GLM 0.9.5 provisional tag">
+  <draft index="0700" date="30/08/2013" std-date="2013-08-30T00:30:00.00Z"  title="GLM 0.9.5 provisional tag">
     <meta>
       <tag>gtc-tech-project-glm</tag>
     </meta>
@@ -178,6 +178,111 @@
     <source-download index="1148" />
     <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
   </draft>
+
+  <post index="0603" date="17/10/2013" std-date="2013-10-17T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.3 released">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      Another great contribution, this time by <link href="https://twitter.com/elmindreda">Camilla Berglund</link> who fixed some <link href="http://www.glfw.org/">GLFW</link> things and the MacOSX port.
+    </paragraph>
+    <paragraph>
+      The OpenGL Samples Pack 4.4.0.3 works on Windows with Visual C++, on Linux with GCC and MacOSX with Clang.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1154" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+
+  <post index="0602" date="16/10/2013" std-date="2013-10-16T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.2 for Linux">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      Thanks to an amazing contribution from <link href="https://github.com/kphillisjr">kphillisjr</link>, the Linux port of the <link href="http://www.g-truc.net/project-0026.html#menu">OpenGL samples</link> is functional again.
+    </paragraph>
+    <paragraph>
+      He even updated migrated GLFW to version 3. Enjoy, I certainly do!
+    </paragraph>
+
+    <source-list>
+      <source-download index="1153" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+
+  <post index="0601" date="14/10/2013" std-date="2013-10-14T23:30:00.00Z" title="Sleepless night time readings and tools">
+    <meta>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+    <paragraph>
+      It's a good time for graphics programmers that want to understand how things are working under the hood. AMD and Intel provide AMAZING documentation for both their CPUs and GPUs. NVIDIA documentation is not as good but ok. 
+      It's pretty annoying that mobile GPU vendors are not following especially considering that these GPUs are harder to program but can yield gold from each watt consumed when properly understood. No, the "developer guides" are not interesting.
+      Good luck to compete against NVIDIA software stack and their long waited first relevant mobile GPU. :p
+    </paragraph>
+
+    <paragraph>
+      Enjoy!
+    </paragraph>
+
+    <list title="GPU documentation">
+      <list-element href="http://www.x.org/docs/AMD/">AMD GPUs documentation</list-element>
+      <list-element href="https://01.org/linuxgraphics/documentation">Intel GPUs documentation</list-element>
+      <list-element href="http://docs.nvidia.com/cuda/parallel-thread-execution/index.html">NVIDIA PTX documentation</list-element>
+      <list-element href="http://www.seas.upenn.edu/~pcozzi/OpenGLInsights/OpenGLInsights-TileBasedArchitectures.pdf">Performance Tuning for Tile-Based Architectures</list-element>
+      <list-element href="http://renderingpipeline.com/graphics-literature/low-level-gpu-documentation/">Robert Menzel's low-level-gpu-documentation page</list-element>
+      <list-element href="http://openglinsights.com/pipeline.html">OpenGL Pipeline Map</list-element>
+      <list-element href="http://www.opengl.org/registry/">OpenGL registry</list-element>
+      <list-element href="https://www.khronos.org/registry/gles/">OpenGL ES registry</list-element>
+      <list-element href="https://www.khronos.org/registry/cl/">OpenCL registry</list-element>
+      <list-element href="http://www.mesa3d.org/sourcetree.html">Mesa OpenGL open source drivers</list-element>
+      <list-element href="http://cgit.freedesktop.org/mesa/mesa/tree/src/glsl/ir.h">Mesa GLSL IR</list-element>
+      <list-element href="http://people.freedesktop.org/~csimpson/gallium-docs/tgsi.html">TGSI (an intermediate language for describing shaders)</list-element>
+      <list-element href="http://docs.google.com/viewer?a=v&amp;pid=sites&amp;srcid=bHVuYXJnbGFzcy5vcmd8bHVuYXJnbGFzc3xneDo3NDU4NDdjODVlZmY2Njk1">LunarGLASS (an intermediate language for describing shaders)</list-element>
+      <list-element href="http://graphics.stanford.edu/papers/gramps-tog/">GRAMPS: A Programming Model for Graphics Pipelines</list-element>
+    </list>
+
+    <list title="CPU documentation">
+      <list-element href="http://www.agner.org/optimize/">Agner's optimization manuals</list-element>
+      <list-element href="http://software.intel.com/en-us/articles/intel-intrinsics-guide">Intel intrinsics guide</list-element>
+      <list-element href="http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html">Intel CPU architectures Software Developer Manuals</list-element>
+      <list-element href="http://developer.amd.com/resources/documentation-articles/developer-guides-manuals/">AMD64 Architecture Programmer’s Manual</list-element>
+      <list-element href="http://openmp.org/wp/openmp-specifications/">OpenMP specifications</list-element>
+      <list-element href="http://open-std.org/JTC1/SC22/WG21/">C++ specifications</list-element>
+    </list>
+
+    <list title="Platform support">
+      <list-element href="http://stats.unity3d.com/">Unity3D's stats</list-element>
+      <list-element href="http://delphigl.de/glcapsviewer/listreports.php">glCapsViewer</list-element>
+      <list-element href="http://www.g-truc.net/project-0034.html#menu">G-Truc Creation's OpenGL matrix</list-element>
+      <list-element href="https://developer.apple.com/graphicsimaging/opengl/capabilities/">Apple OpenGL capabilities table</list-element>
+    </list>
+
+    <list title="Tools">
+      <list-element href="http://ispc.github.io/">Intel SPMD Program Compiler</list-element>
+      <list-element href="http://llvm.org/docs/">LLVM documentation</list-element>
+      <list-element href="https://code.google.com/p/glintercept/">GLIntercept (OpenGL debugging)</list-element>
+      <list-element href="https://github.com/apitrace/apitrace">APITrace (Graphics API debugging/profiling)</list-element>
+      <list-element href="http://software.intel.com/en-us/vcsource/tools/intel-gpa">Intel GPA</list-element>
+      <list-element href="http://fraps.com/">Fraps</list-element>
+      <list-element href="http://www.opengl.org/sdk/tools/glslang/">GLSLang (GLSL reference compiler front-end)</list-element>
+      <list-element href="http://cgit.freedesktop.org/~idr/mesa/log/?h=standalone-compiler">Mesa GLSL compiler (GLSL reference compiler front-end)</list-element>
+      <list-element href="http://piglit.freedesktop.org/">Piglit (an open-source OpenGL test suite)</list-element>
+    </list>
+  </post>
+
+  <post index="0600" date="13/10/2013" std-date="2013-10-13T02:00:00.00Z" title="Week 37: Drinking for charity and a nice garden">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-37-960.jpg"
+      href="./photo/2013-37.jpg" />
+  </post>
 
   <post index="0599" date="29/09/2013" std-date="2013-09-29T02:00:00.00Z" title="Week 36: Pauline at the beach">
     <meta>
