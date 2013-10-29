@@ -179,6 +179,28 @@
     <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
   </draft>
 
+  <post index="0605" date="29/10/2013" std-date="2013-10-29T02:00:00.00Z" title="Week 39: God save the queen">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-39-960.jpg"
+      href="./photo/2013-39.jpg" />
+  </post>
+
+  <post index="0604" date="20/10/2013" std-date="2013-10-20T02:00:00.00Z" title="Week 38: Chestnut in Blossom, 1881, Auguste Renoir (detail)">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-38-960.jpg"
+      href="./photo/2013-38.jpg" />
+  </post>
+
   <post index="0603" date="17/10/2013" std-date="2013-10-17T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.3 released">
     <meta>
       <tag>gtc-tech-opengl-samples</tag>
