@@ -53,7 +53,59 @@
     </source-list>
   </draft>
 
-  <draft index="0596" date="30/08/2013" std-date="2013-08-30T00:30:00.00Z"  title="GLM 0.9.5 provisional tag">
+  <draft index="0702" date="20/09/2013" std-date="2013-09-20T14:00:00.00Z" title="Mythologolical memory fragmentation">
+    <meta>
+      <tag>gtc-tech-devel-cpp</tag>
+    </meta>
+    <paragraph>
+      When I through the fact that I like C++ and the STL, too many people tells: "STL is wrong it fragment memory". To what I answer, "use the right tool for the right purpose". What to I mean by that? It's not STL that fragment memory it's the way it's used, if we write are own code and we are still using the wrong method, we will still fragment memory. When I see the quality of code out there, I much prefer a well documented and specified implementation, perfectly scrafted by compiler authors both both performance and robustness. 
+    </paragraph>
+    <paragraph>
+      What's memory fragmentation? Why it's a problem and what's the domain of validity of that problem?
+    </paragraph>
+    <quote>
+      Memory fragmentation definition 
+    </quote>
+    <paragraph>
+      Conscequences of memory fragmentation involves 
+    </paragraph>  
+    <paragraph>
+       The software, the OS and the CPU hardware.
+    </paragraph>
+    <list name="Memory fragmentation involved three components:">
+      <list-element>The user software </list-element>
+      <list-element>The OS </list-element>
+      <list-element>The CPU</list-element>
+    </list>
+  </draft>  
+
+  <draft index="0701" date="09/07/2012" std-date="2013-07-09T20:00:00.00Z" title="5 great C++ 11 language features">
+    <meta>
+      <tag>gtc-tech-devel-cpp</tag>
+    </meta>
+  
+    <paragraph>
+      It seems to me that C++ 11 encounters some resistances which very often (always?) aren't justify. 
+      For example many programers fear the STL but I believe for reasons that are not legitimate anymore, for example regarding the quality of actual implementation. 
+      I am sorry but it we use a current GCC, Clang or Visual C++ STL implementation we get very well performing STL implementations.
+    </paragraph>
+    
+    <paragraph>
+      In this post I am going to present my 5 favorite C++ 11 features which does what we should expect from C++ 11, that is to say providing new contructs allowing to write 
+      more efficient, more robust and more simplier code.  
+    </paragraph>
+    
+    <title>Delegated contructors</title>
+    <paragraph>
+      A wrong approach in programming is to duplicate some code because as soon as we change the behaviour of one version of the code we might forget to update the other versions.
+      Sadly, sometimes C++ 98 force us to duplicate code and this is the case of constructors. 
+      I like to program using small classes without hierarchies avoiding getters and setters as much as possible so that all the classe need to be used is to be created using one of its constructors.
+      Unfortunately, as soon as we create multiple contructors we will be duplicating some code to initialise class members. A workaround could be to use a shared initialization function but that strategy will have 
+      a cost as member variables will be contructed before being initialized resulting in wasteful and costly data movements. Fortunatly, C++ 11 provides delecated contructors to resolve this issue, allowing to call an existing constructor from another contructor.
+    </paragraph>
+  </draft>
+
+  <draft index="0700" date="30/08/2013" std-date="2013-08-30T00:30:00.00Z"  title="GLM 0.9.5 provisional tag">
     <meta>
       <tag>gtc-tech-project-glm</tag>
     </meta>
@@ -127,7 +179,225 @@
     <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
   </draft>
 
-  <post index="0595" date="15/09/2013" std-date="2013-09-15T02:00:00.00Z" title="Week 33: The future doesn't exist">
+  <post index="0603" date="17/10/2013" std-date="2013-10-17T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.3 released">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      Another great contribution, this time by <link href="https://twitter.com/elmindreda">Camilla Berglund</link> who fixed some <link href="http://www.glfw.org/">GLFW</link> things and the MacOSX port.
+    </paragraph>
+    <paragraph>
+      The OpenGL Samples Pack 4.4.0.3 works on Windows with Visual C++, on Linux with GCC and MacOSX with Clang.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1154" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+
+  <post index="0602" date="16/10/2013" std-date="2013-10-16T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.2 for Linux">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      Thanks to an amazing contribution from <link href="https://github.com/kphillisjr">kphillisjr</link>, the Linux port of the <link href="http://www.g-truc.net/project-0026.html#menu">OpenGL samples</link> is functional again.
+    </paragraph>
+    <paragraph>
+      He even updated migrated GLFW to version 3. Enjoy, I certainly do!
+    </paragraph>
+
+    <source-list>
+      <source-download index="1153" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+
+  <post index="0601" date="14/10/2013" std-date="2013-10-14T23:30:00.00Z" title="Sleepless night time readings and tools">
+    <meta>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+    <paragraph>
+      It's a good time for graphics programmers that want to understand how things are working under the hood. AMD and Intel provide AMAZING documentation for both their CPUs and GPUs. NVIDIA documentation is not as good but ok. 
+      It's pretty annoying that mobile GPU vendors are not following especially considering that these GPUs are harder to program but can yield gold from each watt consumed when properly understood. No, the "developer guides" are not interesting.
+      Good luck to compete against NVIDIA software stack and their long waited first relevant mobile GPU. :p
+    </paragraph>
+
+    <paragraph>
+      Enjoy!
+    </paragraph>
+
+    <list title="GPU documentation">
+      <list-element href="http://www.x.org/docs/AMD/">AMD GPUs documentation</list-element>
+      <list-element href="https://01.org/linuxgraphics/documentation">Intel GPUs documentation</list-element>
+      <list-element href="http://docs.nvidia.com/cuda/parallel-thread-execution/index.html">NVIDIA PTX documentation</list-element>
+      <list-element href="http://www.seas.upenn.edu/~pcozzi/OpenGLInsights/OpenGLInsights-TileBasedArchitectures.pdf">Performance Tuning for Tile-Based Architectures</list-element>
+      <list-element href="http://renderingpipeline.com/graphics-literature/low-level-gpu-documentation/">Robert Menzel's low-level-gpu-documentation page</list-element>
+      <list-element href="http://openglinsights.com/pipeline.html">OpenGL Pipeline Map</list-element>
+      <list-element href="http://www.opengl.org/registry/">OpenGL registry</list-element>
+      <list-element href="https://www.khronos.org/registry/gles/">OpenGL ES registry</list-element>
+      <list-element href="https://www.khronos.org/registry/cl/">OpenCL registry</list-element>
+      <list-element href="http://www.mesa3d.org/sourcetree.html">Mesa OpenGL open source drivers</list-element>
+      <list-element href="http://cgit.freedesktop.org/mesa/mesa/tree/src/glsl/ir.h">Mesa GLSL IR</list-element>
+      <list-element href="http://people.freedesktop.org/~csimpson/gallium-docs/tgsi.html">TGSI (an intermediate language for describing shaders)</list-element>
+      <list-element href="http://docs.google.com/viewer?a=v&amp;pid=sites&amp;srcid=bHVuYXJnbGFzcy5vcmd8bHVuYXJnbGFzc3xneDo3NDU4NDdjODVlZmY2Njk1">LunarGLASS (an intermediate language for describing shaders)</list-element>
+      <list-element href="http://graphics.stanford.edu/papers/gramps-tog/">GRAMPS: A Programming Model for Graphics Pipelines</list-element>
+    </list>
+
+    <list title="CPU documentation">
+      <list-element href="http://www.agner.org/optimize/">Agner's optimization manuals</list-element>
+      <list-element href="http://software.intel.com/en-us/articles/intel-intrinsics-guide">Intel intrinsics guide</list-element>
+      <list-element href="http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html">Intel CPU architectures Software Developer Manuals</list-element>
+      <list-element href="http://developer.amd.com/resources/documentation-articles/developer-guides-manuals/">AMD64 Architecture Programmer’s Manual</list-element>
+      <list-element href="http://openmp.org/wp/openmp-specifications/">OpenMP specifications</list-element>
+      <list-element href="http://open-std.org/JTC1/SC22/WG21/">C++ specifications</list-element>
+    </list>
+
+    <list title="Platform support">
+      <list-element href="http://stats.unity3d.com/">Unity3D's stats</list-element>
+      <list-element href="http://delphigl.de/glcapsviewer/listreports.php">glCapsViewer</list-element>
+      <list-element href="http://www.g-truc.net/project-0034.html#menu">G-Truc Creation's OpenGL matrix</list-element>
+      <list-element href="https://developer.apple.com/graphicsimaging/opengl/capabilities/">Apple OpenGL capabilities table</list-element>
+    </list>
+
+    <list title="Tools">
+      <list-element href="http://ispc.github.io/">Intel SPMD Program Compiler</list-element>
+      <list-element href="http://llvm.org/docs/">LLVM documentation</list-element>
+      <list-element href="https://code.google.com/p/glintercept/">GLIntercept (OpenGL debugging)</list-element>
+      <list-element href="https://github.com/apitrace/apitrace">APITrace (Graphics API debugging/profiling)</list-element>
+      <list-element href="http://software.intel.com/en-us/vcsource/tools/intel-gpa">Intel GPA</list-element>
+      <list-element href="http://fraps.com/">Fraps</list-element>
+      <list-element href="http://www.opengl.org/sdk/tools/glslang/">GLSLang (GLSL reference compiler front-end)</list-element>
+      <list-element href="http://cgit.freedesktop.org/~idr/mesa/log/?h=standalone-compiler">Mesa GLSL compiler (GLSL reference compiler front-end)</list-element>
+      <list-element href="http://piglit.freedesktop.org/">Piglit (an open-source OpenGL test suite)</list-element>
+    </list>
+  </post>
+
+  <post index="0600" date="13/10/2013" std-date="2013-10-13T02:00:00.00Z" title="Week 37: Drinking for charity and a nice garden">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-37-960.jpg"
+      href="./photo/2013-37.jpg" />
+  </post>
+
+  <post index="0599" date="29/09/2013" std-date="2013-09-29T02:00:00.00Z" title="Week 36: Pauline at the beach">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-36-960.jpg"
+      href="./photo/2013-36.jpg" />
+  </post>
+
+  <post index="0598" date="23/09/2013" std-date="2013-09-23T14:00:00.00Z" title="Week 35: The other side of the situation">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-35-960.jpg"
+      href="./photo/2013-35.jpg" />
+  </post>
+
+  <post index="0597" date="22/09/2013" std-date="2013-09-22T18:30:00.00Z" title="'Rasterization patterns' of Haswell GPU">
+    <meta>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+    <paragraph>
+      Thanks to the release of an OpenGL 4.2 implementation for Intel GPUs, I can finally use atomic counter to have a look at Haswell's 'Rasterization patterns'.
+    </paragraph>
+    <paragraph>
+      How to read these images? A fragment shader is launched each pixel. An atomic counter is increased for each invocation to produce a unique color. 
+      It can me seen as a <codeword>reinterprect_cast</codeword> so that once the pixel color reach 255 to the red channel, the next one will be 1 for the green channel.
+    </paragraph>
+
+    <image title="Haswell's 'rasterization pattern'" 
+      color="black"
+      img="./post/0597.png"
+      href="./post/0597.png" />
+
+    <paragraph>
+      The rasterization is performed on Haswell by scanning the primitives top to bottom from right to left, then left to right on corse gain tile of 16 by 16 pixels. This is surprizingly the same behaviour than Kepler.
+      As a comparison, Southern Islands is very different. It is scanning 512*32 pixel bands in which 8 by 8 pixel tiles are scheduled in Z-order as long as the assigned CUs/ALUs are available.
+    </paragraph>
+    <paragraph>
+      At fine granularity, Haswell GPU is working within 16 by 16 pixel tiles on 4 by 2 pixel horizontal blocks that might be scheduled to different Execution Units (EU) (CU on Southern Islands; SMX on Kepler).
+      Hence, the wavefront/warp size is 8 invocations. As a comparison, Kepler works using 4 by 8 pixel vertical blocks (wrap: 32 invocations) and Southern Islands uses 8 by 8 pixel blocks (wavefront: 64 invocations) where the pixels are executed in Z-order.
+    </paragraph>
+    <paragraph>
+      Finally, Haswell seems to rely on a synchronious architechture, at coarse and fine granularity. The rendering doesn't show any long delay for specific tiles. 
+      This is either because the architechture is very synchronized so it never has to wait, or it doesn't delay the execution of blocks and systematically wait for atomic results. My guess is that it waits that means pretty bad atomic counter performance in my opinion.
+      On Kepler, the architechture is capable of handling very long latences between coarse grain blocks. With Fermi, it was more extreme, we could even expect that the first coarse tile could be completed last!
+      On Southern Islands, this latence appears shorter but it might be because Southern Islands architechture has a Global Data Store (GDS) so that synchronization of atomic doesn't have to be done down to the memory.
+    </paragraph>
+
+    <image title="Kepler's 'rasterization pattern'" 
+      color="black"
+      img="./post/0486-1.png"
+      href="./post/0486-1.png" />
+
+    <image title="Southern Island's 'rasterization pattern'"
+      color="black"
+      img="./post/0486-2.png"
+      href="./post/0486-2.png" />
+
+    <paragraph>
+      
+    </paragraph>
+  </post>
+
+  <post index="0596" date="20/09/2013" std-date="2013-09-20T14:30:00.00Z"  title="GLM 0.9.4.6 released">
+    <meta>
+      <tag>gtc-tech-project-glm</tag>
+    </meta>
+
+    <paragraph>
+      New revision of GLM 0.9.4 available thanks to user contributions.
+    </paragraph>
+
+    <list title="Changelog:">
+      <list-element>Fixed detection to select the last known compiler if newer version #106</list-element>
+      <list-element>Fixed is_int and is_uint code duplication with GCC and C++11 #107</list-element>
+      <list-element>Fixed test suite build while using Clang in C++11 mode</list-element>
+      <list-element>Added c++1y mode support in CMake test suite</list-element>
+      <list-element>Added pedantic mode to CMake test suite for Clang and GCC</list-element>
+      <list-element>Added use of GCC frontend on Unix for ICC and Visual C++ fronted on Windows for ICC</list-element>
+      <list-element>Added compilation errors for unsupported compiler versions</list-element>
+      <list-element>Removed ms extension mode to CMake when no using Visual C++</list-element>
+      <list-element>Fixed glm::orientation with GLM_FORCE_RADIANS defined #112</list-element>
+      <list-element>Fixed const ref issue on assignment operator taking a scalar parameter #116</list-element>
+      <list-element>Fixed glm::eulerAngleY implementation #117</list-element>
+    </list>
+  
+    <paragraph>
+      GLM 0.9.5 is still in active development, fell free to <link href="https://github.com/g-truc/glm/archive/0.9.5.zip">download a staging</link> and <link href="https://github.com/g-truc/glm/issues">submit feedback</link>. 
+    </paragraph>
+
+    <source-download index="1152" />
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+    <source-element type="Link" href="http://glm.g-truc.net/glm-0.9.4.pdf" title="GLM 0.9.4 Manual" />
+    <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
+  </post>
+
+  <post index="0595" date="20/09/2013" std-date="2013-09-20T14:00:00.00Z" title="Week 34: L’inquiétante étrangeté">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-34-960.jpg"
+      href="./photo/2013-34.jpg" />
+  </post>
+
+  <post index="0594" date="15/09/2013" std-date="2013-09-15T02:00:00.00Z" title="Week 33: The future doesn't exist">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -138,7 +408,7 @@
       href="./photo/2013-33.jpg" />
   </post>
 
-  <post index="0594" date="14/09/2013" std-date="2013-09-14T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.1 and drivers status update">
+  <post index="0593" date="14/09/2013" std-date="2013-09-14T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.1 and drivers status update">
     <meta>
       <tag>gtc-tech-opengl-samples</tag>
     </meta>
@@ -163,7 +433,7 @@
     </source-list>
   </post>
 
-  <post index="0593" date="09/09/2013" std-date="2013-09-09T23:30:00.00Z" title="September 2013 OpenGL status">
+  <post index="0592" date="09/09/2013" std-date="2013-09-09T23:30:00.00Z" title="September 2013 OpenGL status">
     <meta>
       <tag>gtc-tech-project-openglstatus</tag>
     </meta>
@@ -230,7 +500,7 @@
     </source-list>
   </post>
 
-  <post index="0592" date="26/08/2013" std-date="2013-08-26T23:30:00.00Z" title="Week 32: Pas pour rien">
+  <post index="0591" date="26/08/2013" std-date="2013-08-26T23:30:00.00Z" title="Week 32: Pas pour rien">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -241,7 +511,7 @@
       href="./photo/2013-32.jpg" />
   </post>
 
-  <post index="0591" date="18/08/2013" std-date="2013-08-18T23:30:00.00Z" title="Week 31: Chuck and Steven">
+  <post index="0590" date="18/08/2013" std-date="2013-08-18T23:30:00.00Z" title="Week 31: Chuck and Steven">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -252,7 +522,7 @@
       href="./photo/2013-31.jpg" />
   </post>
 
-  <post index="0590" date="13/08/2013" std-date="2013-08-13T00:30:00.00Z"  title="GLM 0.9.4.5 released">
+  <post index="0589" date="13/08/2013" std-date="2013-08-13T00:30:00.00Z"  title="GLM 0.9.4.5 released">
     <meta>
       <tag>gtc-tech-project-glm</tag>
     </meta>
@@ -275,7 +545,7 @@
     <source-element type="Link" href="http://glm.g-truc.net/api-0.9.4/index.html" title="GLM 0.9.4 API" />
   </post>
 
-  <post index="0589" date="11/08/2013" std-date="2013-08-11T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.0 released">
+  <post index="0588" date="11/08/2013" std-date="2013-08-11T23:30:00.00Z" title="OpenGL Samples Pack 4.4.0.0 released">
     <meta>
       <tag>gtc-tech-opengl-samples</tag>
     </meta>
@@ -289,7 +559,7 @@
     </source-list>
   </post>
 
-  <post index="0588" date="09/08/2013" std-date="2013-08-09T23:30:00.00Z" title="Week 30: Two">
+  <post index="0587" date="09/08/2013" std-date="2013-08-09T23:30:00.00Z" title="Week 30: Two">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -300,7 +570,7 @@
       href="./photo/2013-30.jpg" />
   </post>
 
-  <post index="0587" date="31/07/2013" std-date="2013-07-31T23:30:00.00Z" title="Week 29: Our friends the conspirationists">
+  <post index="0586" date="31/07/2013" std-date="2013-07-31T23:30:00.00Z" title="Week 29: Our friends the conspirationists">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -311,7 +581,7 @@
       href="./photo/2013-29.jpg" />
   </post>
 
-  <post index="0586" date="28/07/2013" std-date="2013-07-28T23:30:00.00Z" title="OpenGL 4.4 review and pipeline map available">
+  <post index="0585" date="28/07/2013" std-date="2013-07-28T23:30:00.00Z" title="OpenGL 4.4 review and pipeline map available">
     <meta>
       <tag>gtc-tech-opengl-review</tag>
       <tag>gtc-tech-project-openglreviews</tag>
@@ -345,7 +615,7 @@
     </source-list>
   </post>
 
-  <post index="0585" date="22/07/2013" std-date="2013-07-22T20:00:00.00Z" title="Week 28: Pink is a good color">
+  <post index="0584" date="22/07/2013" std-date="2013-07-22T20:00:00.00Z" title="Week 28: Pink is a good color">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
@@ -356,7 +626,7 @@
       href="./photo/2013-28.jpg" />
   </post>
 
-  <post index="0584" date="22/07/2013" std-date="2013-07-22T23:00:00.00Z" title="OpenGL 4.4 released and a glance at OpenGL 5 hardware">
+  <post index="0583" date="22/07/2013" std-date="2013-07-22T23:00:00.00Z" title="OpenGL 4.4 released and a glance at OpenGL 5 hardware">
     <meta>
       <tag>gtc-tech-opengl-review</tag>
       <tag>gtc-tech-project-openglreviews</tag>
@@ -427,32 +697,6 @@
       <!--source-download index="1144" /-->
     </source-list>
   </post>
-
-  <draft index="0583" date="09/07/2012" std-date="2013-07-09T20:00:00.00Z" title="5 great C++ 11 language features">
-		<meta>
-			<tag>gtc-tech-devel-cpp</tag>
-		</meta>
-	
-    <paragraph>
-    	It seems to me that C++ 11 encounters some resistances which very often (always?) aren't justify. 
-    	For example many programers fear the STL but I believe for reasons that are not legitimate anymore, for example regarding the quality of actual implementation. 
-    	I am sorry but it we use a current GCC, Clang or Visual C++ STL implementation we get very well performing STL implementations.
-    </paragraph>
-    
-    <paragraph>
-    	In this post I am going to present my 5 favorite C++ 11 features which does what we should expect from C++ 11, that is to say providing new contructs allowing to write 
-    	more efficient, more robust and more simplier code.  
-    </paragraph>
-    
-    <title>Delegated contructors</title>
-    <paragraph>
-    	A wrong approach in programming is to duplicate some code because as soon as we change the behaviour of one version of the code we might forget to update the other versions.
-    	Sadly, sometimes C++ 98 force us to duplicate code and this is the case of constructors. 
-    	I like to program using small classes without hierarchies avoiding getters and setters as much as possible so that all the classe need to be used is to be created using one of its constructors.
-    	Unfortunately, as soon as we create multiple contructors we will be duplicating some code to initialise class members. A workaround could be to use a shared initialization function but that strategy will have 
-    	a cost as member variables will be contructed before being initialized resulting in wasteful and costly data movements. Fortunatly, C++ 11 provides delecated contructors to resolve this issue, allowing to call an existing constructor from another contructor.
-    </paragraph>
-  </draft>
 
   <post index="0582" date="14/07/2013" std-date="2013-07-14T18:00:00.00Z" title="Week 27: Lundi">
     <meta>
