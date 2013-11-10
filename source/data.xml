@@ -179,7 +179,18 @@
     <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
   </draft>
 
-  <post index="0606" date="03/01/2013" std-date="2013-01-03T02:00:00.00Z" title="Week 40: Bound to be more human">
+  <post index="0607" date="10/11/2013" std-date="2013-11-10T02:00:00.00Z" title="Week 41: And watch the only way out disappear">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-41-960.jpg"
+      href="./photo/2013-41.jpg" />
+  </post>
+
+  <post index="0606" date="03/11/2013" std-date="2013-11-03T02:00:00.00Z" title="Week 40: Bound to be more human">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>
