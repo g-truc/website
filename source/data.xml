@@ -179,7 +179,7 @@
     <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
   </draft>
 
-  <post index="0614" date="09/12/2013" std-date="2013-12-09T10:00:00.00Z" title="On the road to 1 million draws at 60 Hz">
+  <!--post index="0614" date="09/12/2013" std-date="2013-12-09T10:00:00.00Z" title="On the road to 1 million draws at 60 Hz">
     <meta>
       <tag>gtc-tech-opengl</tag>
     </meta>
@@ -264,6 +264,17 @@
       
     </paragraph>
 
+  </post-->
+
+  <post index="0614" date="13/12/2013" std-date="2013-12-13T01:00:00.00Z" title="Week 46: Glyptoteket">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-46-960.jpg"
+      href="./photo/2013-46.jpg" />
   </post>
 
   <post index="0613" date="09/12/2013" std-date="2013-12-09T10:00:00.00Z" title="Week 45: Sailing Vessel In Moonlight, 1878">
