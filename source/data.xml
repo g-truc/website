@@ -105,80 +105,6 @@
     </paragraph>
   </draft>
 
-  <draft index="0700" date="30/08/2013" std-date="2013-08-30T00:30:00.00Z"  title="GLM 0.9.5 provisional tag">
-    <meta>
-      <tag>gtc-tech-project-glm</tag>
-    </meta>
-
-    <paragraph>
-      Following the great idea by the Khronos Group to release <link href="https://www.khronos.org/news/press/khronos-releases-opencl-2.0">provitional specifications</link>, I decided to publish a provitional version of GLM 0.9.5.  
-    </paragraph>
-
-    <paragraph>
-      GLM 0.9.5 is a pretty disruptive new branch due to ideas aiming at making GLM more robust. 
-      GLM being largely used by now, the purpose of this provitional release is to ensure that it won't be too disruptive for the community when comes the final release.
-    </paragraph>
-
-    <title>Replacing half based types by packing functions</title>
-
-    <paragraph>
-      First, GLM 0.9.5 removes the <codeword>hvec*</codeword> and the <codeword>hmat*</codeword> types. 
-      Half floats are usefuls but those types are the wrong abstraction because they let use believe that half floats are native types while they are not.
-      For example, we can perform an addition between two hvec4 but the underlying implementation will simply convert each component to float, do the addition and convert back to half.
-      There is probably better approach to do this addition, there is just none that will be as fast as if that instruction what supported by the CPUs.
-      As a replacement, GLM 0.9.5 provides functions to explicitly perform the conversion from float to half and half to float with the functions 
-      <codeword>packHalf1x16</codeword>, <codeword>unpackHalf1x16</codeword>, <codeword>packHalf4x16</codeword>, <codeword>unpackHalf4x16</codeword>,
-      included in the new <codeword>GLM_GTC_packing</codeword> extension and <codeword>packHalf2x16</codeword>, <codeword>unpackHalf2x16</codeword> 
-      already available in the GLM 0.9.4 core implementation.
-    </paragraph>
-
-    <title>Simplified but more robust swizzle operators</title>
-
-    <paragraph>
-      Swizzle operators have been a source of a massive amount of work in GLM leading to a very complex design. 
-      Because of this complexity, I never dare to enable them by default which is quite unfortunate considering how useful they can be.
-    </paragraph>
-
-    <title>Faster projects build using forward declaration</title>
-
-    <paragraph>
-      The problem with header only library is that they increase the compilation time of a program. 
-      One of the reason for not enabling the swizzle operators by default is that it generates a lot of code. 
-      A good strategy to avoid running in compilation time issues is to ensure that the code isn't a spageti plate, and relying on forward declarations.
-      GLM 0.9.5 provides <codeword>glm/fwd.hpp</codeword> with a complete set of GLM types forward declarations. 
-    </paragraph>
-
-    <code>
-        <line><comment>// In a header file using GLM types</comment></line>
-        <line>
-          <keyword>#include </keyword>
-          <string>&lt;glm/fwd.hpp&gt;</string>
-        </line>
-
-        <line></line>
-
-        <line><comment>// In a source file using GLM types</comment></line>
-        <line>
-          <keyword>#include </keyword>
-          <string>&lt;glm/glm.hpp&gt;</string>
-        </line>
-        <line></line>
-    </code>
-
-    <title>Redefinition of the precision qualifier</title> 
-
-    <paragraph>
-      
-    </paragraph>
-
-    <paragraph>
-      GLM 0.9.4 exposes GLSL precision qualifiers by using different native types. For example <codeword>mediump_float</codeword> is actually a <codeword>float</codeword> type and <codeword>highp_float</codeword> is actually a <codeword>double</codeword>.
-    </paragraph>
-  
-    <source-download index="1148" />
-    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
-  </draft>
-
   <!--post index="0614" date="09/12/2013" std-date="2013-12-09T10:00:00.00Z" title="On the road to 1 million draws at 60 Hz">
     <meta>
       <tag>gtc-tech-opengl</tag>
@@ -266,7 +192,376 @@
 
   </post-->
 
-  <post index="0616" date="20/12/2013" std-date="2013-12-20T00:30:00.00Z" title="Week 48: Björn">
+  <post index="0626" date="20/01/2014" std-date="2014-01-20T23:00:00.00Z" title="Week 3: Glory - Ruhm - Cдaba">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-03-960.jpg"
+      href="./photo/2014-03.jpg" />
+  </post>
+
+  <post index="0625" date="20/01/2014" std-date="2014-01-20T23:30:00.00Z"  title="GLI 0.5.1.1 released">
+    <meta>
+      <tag>gtc-tech-project-gli</tag>
+    </meta>
+
+    <paragraph>
+      GLI 0.5.1.1 added few new functions and few fixes. Tested with Visual C++, GCC, Clang and ICC. 
+    </paragraph>
+
+    <list title="GLI 0.5.1 changelog:">
+      <entry>Added flip function</entry>
+      <entry>Added level_count function</entry>
+      <entry>Fixed interaction with std::map (#33)</entry>
+      <entry>Added texelFetch and texelWrite functions</entry>
+    </list>
+    
+    <paragraph>
+      GLI is still at an alpha stage but hopefully it's already useful for some people. <link href="https://github.com/g-truc/gli/issues">Please contribute! :D</link>
+    </paragraph>
+
+    <source-download index="1161" />
+    <source-element type="Link" href="https://github.com/g-truc/gli/issues" title="Submit a bug report" />
+    <source-element type="Link" href="http://gli.g-truc.net/0.5.1/api/index.html" title="GLI 0.5.1 API" />
+  </post>
+
+  <post index="0624" date="12/01/2014" std-date="2014-01-12T23:00:00.00Z" title="Week 2: Skin">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-02-960.jpg"
+      href="./photo/2014-02.jpg" />
+  </post>
+
+  <post index="0623" date="11/01/2014" std-date="2014-01-11T23:30:00.00Z"  title="GLM 0.9.5.1 released">
+    <meta>
+      <tag>gtc-tech-project-glm</tag>
+    </meta>
+    <paragraph>
+      One of the annoying aspect of GLM is that sometime angles are expressed in degrees and sometime angles are expressed in radians.
+      Angles expressed in radians are features coming from GLSL where all the angles are expressed in radians and angles expressed in degrees are features coming from OpenGL compatibility profile.
+    </paragraph>
+    <paragraph>
+      GLM provides the define <codeword>GLM_FORCE_RADIANS</codeword> to enfore all the angles to be radians. GLM 0.9.5 deprecates degrees so that in GLM 0.9.6 those will be removed.
+      Starting with GLM 0.9.5.1, warnings will be prompt for each instance of usage degrees. This is designed to help transitioning user code.
+      Defining <codeword>GLM_FORCE_RADIANS</codeword> will quiet these messages.
+    </paragraph>
+
+    <code title="Transitioning degrees to radians:">
+      <line>
+        <keyword>#define </keyword> GLM_FORCE_RADIANS
+      </line>
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/gtc/matrix_tansform.hpp&gt;</string>
+      </line>
+      <line>
+        <keyword>#include </keyword>
+        <string>&lt;glm/gtc/constants.hpp&gt;</string>
+      </line>
+      <line>
+
+      </line>
+      <line>
+        <keyword>void</keyword> transitioning_to_radians()
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        ...
+      </line>
+      <line align="32px">
+        glm::mat4 m1 = glm::rotate(glm::mat4(1.f), glm::radians(45.0f), glm::vec3(0.0, 0.0, 1.0));
+      </line>
+      <line align="32px">
+        glm::mat4 m2 = glm::rotate(glm::mat4(1.f), glm::pi&lt;float&gt;() * 0.25f, glm::vec3(0.0, 0.0, 1.0));
+      </line>
+      <line align="32px">
+        ...
+      </line>
+      <line>
+        }
+      </line>
+    </code>
+    <paragraph>
+      GLM 0.9.5.1 is also fixing multiple bugs essentially related to the new approach allowing to include each feature individually.
+    </paragraph>
+
+    <list title="Changelog:">
+      <entry>Fixed angle and orientedAngle that sometimes return NaN values (#145)</entry>
+      <entry>Deprecated degrees for function parameters and display a message</entry>
+      <entry>Added possible static_cast conversion of GLM types (#72)</entry>
+      <entry>Fixed error 'inverse' is not a member of 'glm' from glm::unProject (#146)</entry>
+      <entry>Fixed mismatch between some declarations and definitions</entry>
+      <entry>Fixed inverse link error when using namespace glm; (#147)</entry>
+      <entry>Optimized matrix inverse and division code (#149)</entry>
+      <entry>Added intersectRayPlane function (#153)</entry>
+      <entry>Fixed outerProduct return type (#155)</entry>
+    </list>
+
+    <paragraph>
+      Enjoy!
+    </paragraph>
+
+    <source-download index="1159" />
+    <source-element type="Link" href="http://glm.g-truc.net/0.9.5/glm-0.9.5.pdf" title="GLM 0.9.5 manual" />
+    <source-element type="Link" href="http://glm.g-truc.net/0.9.5/api/index.html" title="GLM 0.9.5 api documentation" />
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+  </post>
+  
+  <post index="0622" date="04/01/2014" std-date="2014-01-04T16:00:00.00Z" title="Week 1: Playing with matter">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-01-960.jpg"
+      href="./photo/2014-01.jpg" />
+  </post>
+
+  <post index="0621" date="31/12/2013" std-date="2013-12-31T16:00:00.00Z" title="Week 52: God rays bokes">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-52-960.jpg"
+      href="./photo/2013-52.jpg" />
+  </post>
+  
+  <post index="0620" date="29/12/2013" std-date="2013-12-29T16:00:00.00Z" title="Week 51: L'être et le devenir">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-51-960.jpg"
+      href="./photo/2013-51.jpg" />
+  </post>
+
+  <post index="0619" date="26/12/2013" std-date="2013-12-26T16:00:00.00Z" title="Week 50: Glyptoteket">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-50-960.jpg"
+      href="./photo/2013-50.jpg" />
+  </post>
+
+  <post index="0618" date="25/12/2013" std-date="2013-12-25T23:30:00.00Z"  title="GLM 0.9.5.0 released">
+    <meta>
+      <tag>gtc-tech-project-glm</tag>
+    </meta>
+
+    <paragraph>
+      GLM 0.9.5 is a pretty disruptive new branch due to ideas aiming at making GLM more robust. 
+      GLM being largely used by now, the purpose of this provitional release is to ensure that it won't be too disruptive for the community when comes the final release.
+    </paragraph>
+
+    <title>Replacing half based types by packing functions</title>
+
+    <paragraph>
+      First, GLM 0.9.5 removes the <codeword>hvec*</codeword> and the <codeword>hmat*</codeword> types. 
+      Half floats are usefuls but those types are the wrong abstraction because they let use believe that half floats are native types while they are not.
+      For example, we can perform an addition between two hvec4 but the underlying implementation will simply convert each component to float, do the addition and convert back to half.
+      There is probably better approach to do this addition, there is just none that will be as fast as if that instruction what supported by the CPUs.
+      As a replacement, GLM 0.9.5 provides functions to explicitly perform the conversion from float to half and half to float with the functions 
+      <codeword>packHalf1x16</codeword>, <codeword>unpackHalf1x16</codeword>, <codeword>packHalf4x16</codeword>, <codeword>unpackHalf4x16</codeword>,
+      included in the new <codeword>GLM_GTC_packing</codeword> extension and <codeword>packHalf2x16</codeword>, <codeword>unpackHalf2x16</codeword> 
+      already available in the GLM 0.9.4 core implementation.
+    </paragraph>
+
+    <code>
+      <line>
+        <keyword>#include </keyword><string>&lt;glm/glm.hpp&gt;</string><comment>// glm::vec4</comment>
+      </line>
+      <line>
+        <keyword>#include </keyword><string>&lt;glm/gtc/packing.hpp&gt;</string><comment>// glm::cross, glm::normalize</comment>
+      </line>
+      <line>
+
+      </line>
+      <line>
+        <keyword>void </keyword> func()
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        glm::<userword>uint64 </userword><keyword>const </keyword> &amp; PackedHalf4x16 = glm::packHalf4x16(glm::<userword>vec4</userword>(1.0, 0.5, 0.0, 1.0));
+      </line>
+      <line align="32px">
+        glm::<userword>uint64 </userword><keyword>const </keyword> &amp; PackedUnorm4x16 = glm::packUnorm4x16(glm::<userword>vec4</userword>(1.0, 0.5, 0.0, 1.0));
+      </line>
+      <line align="32px">
+        glm::<userword>uint32 </userword><keyword>const </keyword> &amp; PackedUnorm3x10_1x2 = glm::packUnorm3x10_1x2(glm::<userword>vec4</userword>(1.0, 0.5, 0.0, 1.0));
+      </line>
+      <line align="32px">
+        glm::<userword>uint32 </userword><keyword>const </keyword> &amp; PackedU3x10_1x2 = glm::packU3x10_1x2(glm::<userword>vec4</userword>(1.0, 0.5, 0.0, 1.0));
+      </line>
+      <line align="32px">
+        glm::<userword>uint32 </userword><keyword>const </keyword> &amp; PackedF2x11_1x10 = glm::packF2x11_1x10(glm::<userword>vec3</userword>(1.0, 0.5, 0.0));
+      </line>
+      <line>
+        }
+      </line>
+    </code>
+
+    <title>Faster projects build using forward declaration</title>
+
+    <paragraph>
+      The problem with header only library is that they increase the compilation time of a program. 
+      One of the reason for not enabling the swizzle operators by default is that it generates a lot of code. 
+      A good strategy to avoid running in compilation time issues is to ensure that the code isn't a spageti plate, and relying on forward declarations.
+      GLM 0.9.5 provides <codeword>glm/fwd.hpp</codeword> with a complete set of GLM types forward declarations. 
+    </paragraph>
+
+    <code>
+        <line><comment>// In a header file using GLM types</comment></line>
+        <line>
+          <keyword>#include </keyword>
+          <string>&lt;glm/fwd.hpp&gt;</string>
+        </line>
+
+        <line></line>
+
+        <line><comment>// In a source file using GLM types</comment></line>
+        <line>
+          <keyword>#include </keyword>
+          <string>&lt;glm/glm.hpp&gt;</string>
+        </line>
+        <line></line>
+    </code>
+
+    <paragraph>
+      Furthermore, in previous version GLM switched from including &lt;glm/ext.hpp&gt; to include individual extensions. 
+      With GLM 0.9.5 we can use individual headers to include only the features we need. For example: 
+      &lt;glm/vec3.hpp&gt; for glm::vec3, &lt;glm/mat4x4.hpp&gt; for glm::mat4 or &lt;glm/geometry.hpp&gt; for all the functions of the geometry section of the GLSL specifications.
+    </paragraph>
+
+    <code>
+      <line>
+        <keyword>#include </keyword><string>&lt;glm/vec3.hpp&gt;</string><comment>// glm::vec3</comment>
+      </line>
+      <line>
+        <keyword>#include </keyword><string>&lt;glm/geometry.hpp&gt;</string><comment>// glm::cross, glm::normalize</comment>
+      </line>
+      <line>
+
+      </line>
+      <line>
+        <keyword>void </keyword> computeNormal(triangle &amp; Triangle)
+      </line>
+      <line>
+        {
+      </line>
+      <line align="32px">
+        glm::<userword>vec3 </userword><keyword>const </keyword> &amp; a = Triangle.Position[0];
+      </line>
+      <line align="32px">
+        glm::<userword>vec3 </userword><keyword>const </keyword> &amp; b = Triangle.Position[1];
+      </line>
+      <line align="32px">
+        glm::<userword>vec3 </userword><keyword>const </keyword> &amp; c = Triangle.Position[2];
+      </line>
+      <line align="32px">
+        Triangle.Normal = glm::normalize(glm::cross(c - a, b - a));
+      </line>
+      <line>
+        }
+      </line>
+    </code>
+
+    <paragraph>
+      Updating my <link href="https://github.com/g-truc/ovtsa">simple raytracer</link> from GLM 0.9.4 to GLM 0.9.5, the project can be compiled in less than half the time.
+    </paragraph>
+
+    <title>Redefinition of the precision qualifier</title> 
+
+    <paragraph>
+      GLM 0.9.4 exposes GLSL precision qualifiers by using different native types. For example <codeword>mediump_float</codeword> is actually a <codeword>float</codeword> type and <codeword>highp_float</codeword> is actually a <codeword>double</codeword>.
+    </paragraph>
+  
+    <paragraph>
+      in GLM 0.9.5 the precision qualifier (<codeword>lowp</codeword>, <codeword>mediump</codeword> and <codeword>highp</codeword>) has been redefined and now express computation precision in term of ULPs.
+      As a conscequence for example <codeword>sizeof(glm::lowp_vec2)</codeword>, <codeword>sizeof(glm::mediump_vec2)</codeword> and <codeword>sizeof(glm::highp_vec2)</codeword> will always return the same values.
+      However, the effective computation can be different. For example, the implementation of <codeword>inversesqrt</codeword> uses
+      <link href="https://en.wikipedia.org/wiki/Fast_inverse_square_root">fast inverse square root</link> for lowp.
+    </paragraph>
+
+    <list title="Changelog:">
+      <list-element>Added forward declarations (glm/fwd.hpp) for faster compilations</list-element>
+      <list-element>Added per feature headers</list-element>
+      <list-element>Minimized GLM internal dependencies</list-element>
+      <list-element>Improved Intel Compiler detection</list-element>
+      <list-element>Added bitfieldInterleave and _mm_bit_interleave_si128 functions</list-element>
+      <list-element>Added GTX_scalar_relational</list-element>
+      <list-element>Added GTX_dual_quaternion</list-element>
+      <list-element>Added rotation function to GTX_quaternion (#22)</list-element>
+      <list-element>Added precision variation of each type</list-element>
+      <list-element>Added quaternion comparison functions</list-element>
+      <list-element>Fixed GTX_multiple for negative value</list-element>
+      <list-element>Removed GTX_ocl_type extension</list-element>
+      <list-element>Fixed post increment and decrement operators</list-element>
+      <list-element>Fixed perspective with zNear == 0 (#71)</list-element>
+      <list-element>Removed l-value swizzle operators</list-element>
+      <list-element>Cleaned up compiler detection code for unsupported compilers</list-element>
+      <list-element>Replaced C cast by C++ casts</list-element>
+      <list-element>Fixed .length() that should return a int and not a size_t</list-element>
+      <list-element>Added GLM_FORCE_SIZE_T_LENGTH and glm::length_t</list-element>
+      <list-element>Removed unnecessary conversions</list-element>
+      <list-element>Optimized packing and unpacking functions</list-element>
+      <list-element>Removed the normalization of the up argument of lookAt function (#114)</list-element>
+      <list-element>Added low precision specializations of inversesqrt</list-element>
+      <list-element>Fixed ldexp and frexp implementations</list-element>
+      <list-element>Increased assert coverage</list-element>
+      <list-element>Increased static_assert coverage</list-element>
+      <list-element>Replaced GLM traits by STL traits when possible</list-element>
+      <list-element>Allowed including individual core feature</list-element>
+      <list-element>Increased unit tests completness</list-element>
+      <list-element>Added creating of a quaternion from two vectors</list-element>
+      <list-element>Added C++11 initializer lists</list-element>
+      <list-element>Fixed umulExtended and imulExtended implementations for vector types (#76)</list-element>
+      <list-element>Fixed CUDA coverage for GTC extensions</list-element>
+      <list-element>Added GTX_io extension</list-element>
+      <list-element>Improved GLM messages enabled when defining GLM_MESSAGES</list-element>
+      <list-element>Hidden matrix _inverse function implementation detail into private section</list-element>
+    </list>
+
+    <paragraph>
+      Enjoy!
+    </paragraph>
+
+    <source-download index="1158" />
+    <source-element type="Link" href="http://glm.g-truc.net/0.9.5/glm-0.9.5.pdf" title="GLM 0.9.5 manual" />
+    <source-element type="Link" href="http://glm.g-truc.net/0.9.5/api/index.html" title="GLM 0.9.5 api documentation" />
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+  </post>
+
+  <post index="0617" date="24/12/2013" std-date="2013-12-24T16:00:00.00Z" title="Week 49: It's my day">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2013-49-960.jpg"
+      href="./photo/2013-49.jpg" />
+  </post>
+
+  <post index="0616" date="20/12/2013" std-date="2013-12-20T00:30:00.00Z" title="Week 48: Lego">
     <meta>
       <tag>gtc-crea-photograph</tag>
     </meta>

@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
-
+  <download index="1160" date="18/01/2014" std-date="2014-01-18T23:30:00.00Z" type="gtc-tech-project-gli" title="GLI" version="0.5.1.0">
+    <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.5.1.0/gli-0.5.1.0.zip/download" type="ZIP" size="6.0 MB" />
+    <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.5.1.0/gli-0.5.1.0.7z/download" type="7Z" size="3.4 MB" />
+  </download>
+  
+  <download index="1159" date="11/01/2014" std-date="2013-01-11T23:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.5.1">
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.5.1/glm-0.9.5.1.zip/download" type="ZIP" size="4.1 MB" />
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.5.1/glm-0.9.5.1.7z/download" type="7Z" size="2.7 MB" />
+  </download>
+  <download index="1158" date="25/12/2013" std-date="2013-12-25T23:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.5.0">
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.5.0/glm-0.9.5.0.zip/download" type="ZIP" size="4.0 MB" />
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.5.0/glm-0.9.5.0.7z/download" type="7Z" size="2.7 MB" />
+  </download>
   <download index="1157" date="24/11/2013" std-date="2013-11-24T23:30:00.00Z" type="gtc-tech-project-gli" title="GLI" version="0.5.0.0">
     <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.5.0.0/gli-0.5.0.0.zip/download" type="ZIP" size="6.4 MB" />
     <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.5.0.0/gli-0.5.0.0.7z/download" type="7Z" size="3.2 MB" />

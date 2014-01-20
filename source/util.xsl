@@ -286,11 +286,27 @@
       </xsl:if>
       <ul class="list">
         <xsl:apply-templates select="./list-element"/>
+        <xsl:apply-templates select="./entry"/>
       </ul>
     </div>
   </xsl:template>
 
   <xsl:template match="list-element">
+    <li xmlns="http://www.w3.org/1999/xhtml" class="list">
+      <xsl:choose>
+        <xsl:when test="./@href">
+          <a href="{./@href}">
+            <xsl:apply-templates />
+          </a>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates />
+        </xsl:otherwise>
+      </xsl:choose>
+    </li>
+  </xsl:template>
+
+  <xsl:template match="entry">
     <li xmlns="http://www.w3.org/1999/xhtml" class="list">
       <xsl:choose>
         <xsl:when test="./@href">
