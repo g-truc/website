@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+  <download index="1164" date="18/02/2014" std-date="2014-02-18T00:30:00.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.4.1.2">
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.1.2/ogl-samples-4.4.1.2.zip/download" type="ZIP" size="56.9 MB" />
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.1.2/ogl-samples-4.4.1.2.7z/download" type="7Z" size="28.3 MB" />
+  </download>
+
+  <download index="1163" date="17/02/2014" std-date="2014-02-17T23:00:00.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.4.1.1">
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.1.1/ogl-samples-4.4.1.1.zip/download" type="ZIP" size="56.5 MB" />
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.1.1/ogl-samples-4.4.1.1.7z/download" type="7Z" size="27.9 MB" />
+  </download>
+
+  <download index="1162" date="11/02/2014" std-date="2014-02-11T23:00:00.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.4.1.0">
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.1.0/ogl-samples-4.4.1.0.zip/download" type="ZIP" size="81.6 MB" />
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.1.0/ogl-samples-4.4.1.0.7z/download" type="7Z" size="25.0 MB" />
+  </download>
+
+  <download index="1161" date="08/02/2014" std-date="2014-02-08T23:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.5.2">
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.5.2/glm-0.9.5.2.zip/download" type="ZIP" size="4.1 MB" />
+    <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.5.2/glm-0.9.5.2.7z/download" type="7Z" size="2.7 MB" />
+  </download>
+
   <download index="1160" date="18/01/2014" std-date="2014-01-18T23:30:00.00Z" type="gtc-tech-project-gli" title="GLI" version="0.5.1.0">
     <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.5.1.0/gli-0.5.1.0.zip/download" type="ZIP" size="6.0 MB" />
     <item href="https://sourceforge.net/projects/ogl-image/files/gli-0.5.1.0/gli-0.5.1.0.7z/download" type="7Z" size="3.4 MB" />
   </download>
   
-  <download index="1159" date="11/01/2014" std-date="2013-01-11T23:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.5.1">
+  <download index="1159" date="11/01/2014" std-date="2014-01-11T23:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.5.1">
     <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.5.1/glm-0.9.5.1.zip/download" type="ZIP" size="4.1 MB" />
     <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.5.1/glm-0.9.5.1.7z/download" type="7Z" size="2.7 MB" />
   </download>

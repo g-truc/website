@@ -192,6 +192,445 @@
 
   </post-->
 
+  <post index="0633" date="18/02/2013" std-date="2014-02-18T23:30:00.00Z" title="OpenGL Samples Pack 4.4.1.2 released">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      The OpenGL Samples Pack 4.4.1.2 fixes Linux and MacOSX support and adds image templates for MacOS X for the automated tests.
+    </paragraph>
+    <paragraph>
+      Furthermore, there is one behaviour change. Before, when we compiled the samples, the shaders and textures were copied into the build directory. Now, the resources are accessed from the source directory.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1164" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+
+  <post index="0632" date="17/02/2014" std-date="2014-02-17T23:00:00.00Z" title="Week 6: For my living room">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-06-960.jpg"
+      href="./photo/2014-06.jpg" />
+  </post>
+
+  <post index="0631" date="15/02/2013" std-date="2014-02-15T23:30:00.00Z" title="The useful functions for modern OpenGL 4.4 programming">
+    <meta>
+      <tag>gtc-tech-opengl-tips</tag>
+    </meta>
+    <paragraph>
+      If anything, at least Mantle created some discussions about graphics API but it remains that I believe it's a waste of
+      AMD engineering resources that could have benefit their OpenGL drivers for example.
+    </paragraph>
+    <paragraph>
+      Looking at the published list of <link href="http://www.geeks3d.com/20140203/amd-catalyst-14-1-beta-driver-for-windows-and-linux-new-opengl-extensions-and-mantle-api-functions-list/">Mantle functions</link>,
+      Mantle API looks really thin compared to OpenGL API for example. However, Mantle targets only AMD Southern Islands onward, while OpenGL 4.4 core profile targets all 
+      OpenGL 3 / Direct3D 10 and OpenGL 4 / Direct3D 11 GPUs. If we consider OpenGL 4.4 compatibility profile, then the API covers all GPUs even made.
+    </paragraph>
+    <paragraph>
+      Let's compare what we can compare. What if we want to write a Modern OpenGL program for AMD Southern Islands and NVIDIA Kepler only. 
+      Then we only need a tiny subset of the OpenGL API that I have listed below.
+    </paragraph>
+    <paragraph>
+      It still appears that Mantle requires less functions. With a closer look we see that Mantle
+      use state objects to group rasterizer, viewport, depth test states.
+      State objects are a idea because every hardware vendor would want different packing but also because every single OpenGL program
+      would use different packing. To write an efficient OpenGL renderer we need to consider the update frequences and move every operations at the lower update rate possible.
+      Packing states is requiring to update more often states that should not have change hence adding CPU overhead.
+      So no thank you but I prefer to have no state object.
+      However, what worked for me in the past (about 2007) was to use display lists to create immutable state objects that matched my program needs.
+      I don't think I want to go this way in 2014.
+    </paragraph>
+    <paragraph>
+      So OpenGL has evolved, "revolution through evolution". If we really want to write low overhead OpenGL programs, we can.
+      If that's not the case right now, my opinion is that the industry didn't put the effort in it because it has higher priority issues to resolve,
+      essentially production issues which include supporting old consoles (PS3 and XBox, OpenGL 2.1 / Direct3D 9 hardware), cross compiling shaders, 
+      the development of mobile and the rise of WebGL.
+    </paragraph>
+
+    <list>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glAttachShader.xhtml">glAttachShader</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBeginConditionalRender.xhtml">glBeginConditionalRender</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBeginQueryIndexed.xhtml">glBeginQueryIndexed</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBeginTransformFeedback.xhtml">glBeginTransformFeedback</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBindBuffer.xhtml">glBindBuffer</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBindBuffersBase.xhtml">glBindBuffersBase</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBindBuffersRange.xhtml">glBindBuffersRange</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBindFramebuffer.xhtml">glBindFramebuffer</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBindImageTextures.xhtml">glBindImageTextures</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBindProgramPipeline.xhtml">glBindProgramPipeline</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBindSamplers.xhtml">glBindSamplers</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBindTextures.xhtml">glBindTextures</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBindTransformFeedback.xhtml">glBindTransformFeedback</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBindVertexArray.xhtml">glBindVertexArray</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBlendColor.xhtml">glBlendColor</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBlendEquationSeparatei.xhtml">glBlendEquationSeparatei</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBlendFuncSeparatei.xhtml">glBlendFuncSeparatei</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBlitFramebuffer.xhtml">glBlitFramebuffer</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glBufferStorage.xhtml">glBufferStorage</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glClampColor.xhtml">glClampColor</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glClearBuffer.xhtml">glClearBuffer</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glClearBufferData.xhtml">glClearBufferData</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glClearTexImage.xhtml">glClearTexImage</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glClearTexSubImage.xhtml">glClearTexSubImage</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glClientWaitSync.xhtml">glClientWaitSync</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glColorMaski.xhtml">glColorMaski</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCompileShader.xhtml">glCompileShader</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCompressedTexSubImage1D.xhtml">glCompressedTexSubImage1D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCompressedTexSubImage2D.xhtml">glCompressedTexSubImage2D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCompressedTexSubImage3D.xhtml">glCompressedTexSubImage3D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCopyBufferSubData.xhtml">glCopyBufferSubData</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCopyImageSubData.xhtml">glCopyImageSubData</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCopyTexSubImage1D.xhtml">glCopyTexSubImage1D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCopyTexSubImage2D.xhtml">glCopyTexSubImage2D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCopyTexSubImage3D.xhtml">glCopyTexSubImage3D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCreateProgram.xhtml">glCreateProgram</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCreateShader.xhtml">glCreateShader</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCullFace.xhtml">glCullFace</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDeleteBuffers.xhtml">glDeleteBuffers</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDeleteFramebuffers.xhtml">glDeleteFramebuffers</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDeleteProgram.xhtml">glDeleteProgram</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDeleteProgramPipelines.xhtml">glDeleteProgramPipelines</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDeleteQueries.xhtml">glDeleteQueries</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDeleteSamplers.xhtml">glDeleteSamplers</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDeleteShader.xhtml">glDeleteShader</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDeleteSync.xhtml">glDeleteSync</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDeleteTextures.xhtml">glDeleteTextures</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDeleteTransformFeedbacks.xhtml">glDeleteTransformFeedbacks</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDeleteVertexArrays.xhtml">glDeleteVertexArrays</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDepthRangeArrayv.xhtml">glDepthRangeArrayv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDepthFunc.xhtml">glDepthFunc</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDepthMask.xhtml">glDepthMask</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDetachShader.xhtml">glDetachShader</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDisable.xhtml">glDisable</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDisablei.xhtml">glDisablei</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDispatchCompute.xhtml">glDispatchCompute</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDispatchComputeIndirect.xhtml">glDispatchComputeIndirect</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDrawArraysInstancedBaseInstance.xhtml">glDrawArraysInstancedBaseInstance</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDrawBuffers.xhtml">glDrawBuffers</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDrawElementsInstancedBaseVertexBaseInstance.xhtml">glDrawElementsInstancedBaseVertexBaseInstance</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDrawTransformFeedbackStreamInstanced.xhtml">glDrawTransformFeedbackStreamInstanced</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glEnable.xhtml">glEnable</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glEnablei.xhtml">glEnablei</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glEndConditionalRender.xhtml">glEndConditionalRender</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glEndQueryIndexed.xhtml">glEndQueryIndexed</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glEndTransformFeedback.xhtml">glEndTransformFeedback</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glFenceSync.xhtml">glFenceSync</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glFinish.xhtml">glFinish</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glFlush.xhtml">glFlush</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glFlushMappedBufferRange.xhtml">glFlushMappedBufferRange</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glFramebufferParameteri.xhtml">glFramebufferParameteri</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glFramebufferTexture.xhtml">glFramebufferTexture</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glFramebufferTextureLayer.xhtml">glFramebufferTextureLayer</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glFrontFace.xhtml">glFrontFace</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGenBuffers.xhtml">glGenBuffers</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGenerateMipmap.xhtml">glGenerateMipmap</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGenFramebuffers.xhtml">glGenFramebuffers</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGenProgramPipelines.xhtml">glGenProgramPipelines</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGenQueries.xhtml">glGenQueries</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGenSamplers.xhtml">glGenSamplers</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGenTextures.xhtml">glGenTextures</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGenTransformFeedbacks.xhtml">glGenTransformFeedbacks</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGenVertexArrays.xhtml">glGenVertexArrays</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glInvalidateBufferData.xhtml">glInvalidateBufferData</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glInvalidateBufferSubData.xhtml">glInvalidateBufferSubData</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glInvalidateFramebuffer.xhtml">glInvalidateFramebuffer</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glInvalidateSubFramebuffer.xhtml">glInvalidateSubFramebuffer</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glInvalidateTexImage.xhtml">glInvalidateTexImage</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glInvalidateTexSubImage.xhtml">glInvalidateTexSubImage</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glLineWidth.xhtml">glLineWidth</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glLinkProgram.xhtml">glLinkProgram</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glLogicOp.xhtml">glLogicOp</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glMapBufferRange.xhtml">glMapBufferRange</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glMemoryBarrier.xhtml">glMemoryBarrier</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glMinSampleShading.xhtml">glMinSampleShading</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glMultiDrawArraysIndirect.xhtml">glMultiDrawArraysIndirect</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glMultiDrawElementsIndirect.xhtml">glMultiDrawElementsIndirect</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPatchParameterfv.xhtml">glPatchParameterfv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPatchParameteri.xhtml">glPatchParameteri</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPauseTransformFeedback.xhtml">glPauseTransformFeedback</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPixelStoref.xhtml">glPixelStoref</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPixelStorei.xhtml">glPixelStorei</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPointParameterfv.xhtml">glPointParameterfv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPointParameteriv.xhtml">glPointParameteriv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPointSize.xhtml">glPointSize</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPolygonMode.xhtml">glPolygonMode</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPolygonOffset.xhtml">glPolygonOffset</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPrimitiveRestartIndex.xhtml">glPrimitiveRestartIndex</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glProgramBinary.xhtml">glProgramBinary</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glProgramParameteri.xhtml">glProgramParameteri</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glProvokingVertex.xhtml">glProvokingVertex</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glQueryCounter.xhtml">glQueryCounter</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glReadBuffer.xhtml">glReadBuffer</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glReadPixels.xhtml">glReadPixels</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glReleaseShaderCompiler.xhtml">glReleaseShaderCompiler</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glResumeTransformFeedback.xhtml">glResumeTransformFeedback</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glSampleCoverage.xhtml">glSampleCoverage</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glSampleMaski.xhtml">glSampleMaski</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glSamplerParameterfv.xhtml">glSamplerParameterfv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glSamplerParameterIiv.xhtml">glSamplerParameterIiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glSamplerParameterIuiv.xhtml">glSamplerParameterIuiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glSamplerParameteriv.xhtml">glSamplerParameteriv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glScissorArrayv.xhtml">glScissorArrayv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glShaderSource.xhtml">glShaderSource</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glStencilFuncSeparate.xhtml">glStencilFuncSeparate</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glStencilMaskSeparate.xhtml">glStencilMaskSeparate</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glStencilOpSeparate.xhtml">glStencilOpSeparate</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexBuffer.xhtml">glTexBuffer</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexBufferRange.xhtml">glTexBufferRange</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexParameterfv.xhtml">glTexParameterfv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexParameterIiv.xhtml">glTexParameterIiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexParameterIuiv.xhtml">glTexParameterIuiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexParameteriv.xhtml">glTexParameteriv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexStorage1D.xhtml">glTexStorage1D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexStorage2D.xhtml">glTexStorage2D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexStorage2DMultisample.xhtml">glTexStorage2DMultisample</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexStorage3D.xhtml">glTexStorage3D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexStorage3DMultisample.xhtml">glTexStorage3DMultisample</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexSubImage1D.xhtml">glTexSubImage1D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexSubImage2D.xhtml">glTexSubImage2D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTexSubImage3D.xhtml">glTexSubImage3D</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glTextureView.xhtml">glTextureView</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glUnmapBuffer.xhtml">glUnmapBuffer</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glUseProgramStages.xhtml">glUseProgramStages</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glViewportArrayv.xhtml">glViewportArrayv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glWaitSync.xhtml">glWaitSync</entry>
+    </list>
+    
+    <list title="Debugging API:">
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDebugMessageCallback.xhtml">glDebugMessageCallback</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDebugMessageControl.xhtml">glDebugMessageControl</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glDebugMessageInsert.xhtml">glDebugMessageInsert</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glCheckFramebufferStatus.xhtml">glCheckFramebufferStatus</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetProgramiv.xhtml">glGetProgramiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetProgramInfoLog.xhtml">glGetProgramInfoLog</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetProgramPipelineiv.xhtml">glGetProgramPipelineiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetProgramPipelineInfoLog.xhtml">glGetProgramPipelineInfoLog</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetShaderiv.xhtml">glGetShaderiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetShaderInfoLog.xhtml">glGetShaderInfoLog</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glObjectLabel.xhtml">glObjectLabel</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glObjectPtrLabel.xhtml">glObjectPtrLabel</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPopDebugGroup.xhtml">glPopDebugGroup</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glPushDebugGroup.xhtml">glPushDebugGroup</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glValidateProgramPipeline.xhtml">glValidateProgramPipeline</entry>
+    </list>
+
+    <list title="Reflexion API (only for tools developers):">
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetActiveAtomicCounterBufferiv.xhtml">glGetActiveAtomicCounterBufferiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetActiveUniform.xhtml">glGetActiveUniform</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetActiveUniformBlockiv.xhtml">glGetActiveUniformBlockiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetActiveUniformBlockName.xhtml">glGetActiveUniformBlockName</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetActiveUniformName.xhtml">glGetActiveUniformName</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetActiveUniformsiv.xhtml">glGetActiveUniformsiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetAttachedShaders.xhtml">glGetAttachedShaders</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetBooleani_v.xhtml">glGetBooleani_v</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetBufferParameter.xhtml">glGetBufferParameter</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetFloati_v.xhtml">glGetFloati_v</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetFloatv.xhtml">glGetFloatv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetInteger64i_v.xhtml">glGetInteger64i_v</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetInteger64v.xhtml">glGetInteger64v</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetIntegeri_v.xhtml">glGetIntegeri_v</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetIntegerv.xhtml">glGetIntegerv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetFramebufferAttachmentParameteriv.xhtml">glGetFramebufferAttachmentParameteriv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetFramebufferParameteriv.xhtml">glGetFramebufferParameteriv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetInternalformati64v.xhtml">glGetInternalformati64v</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetInternalformativ.xhtml">glGetInternalformativ</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetMultisamplefv.xhtml">glGetMultisamplefv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetObjectLabel.xhtml">glGetObjectLabel</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetObjectPtrLabel.xhtml">glGetObjectPtrLabel</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetProgramBinary.xhtml">glGetProgramBinary</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetProgramInterfaceiv.xhtml">glGetProgramInterfaceiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetProgramResourceIndex.xhtml">glGetProgramResourceIndex</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetProgramResourceiv.xhtml">glGetProgramResourceiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetProgramResourceLocationIndex.xhtml">glGetProgramResourceLocationIndex</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetProgramResourceName.xhtml">glGetProgramResourceName</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetProgramStageiv.xhtml">glGetProgramStageiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetQueryIndexediv.xhtml">glGetQueryIndexediv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetQueryiv.xhtml">glGetQueryiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetQueryObjecti64v.xhtml">glGetQueryObjecti64v</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetQueryObjectiv.xhtml">glGetQueryObjectiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetQueryObjectui64v.xhtml">glGetQueryObjectui64v</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetQueryObjectuiv.xhtml">glGetQueryObjectuiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetSamplerParameterfv.xhtml">glGetSamplerParameterfv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetSamplerParameterIiv.xhtml">glGetSamplerParameterIiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetSamplerParameterIuiv.xhtml">glGetSamplerParameterIuiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetSamplerParameteriv.xhtml">glGetSamplerParameteriv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetShaderPrecisionFormat.xhtml">glGetShaderPrecisionFormat</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetShaderSource.xhtml">glGetShaderSource</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetSynciv.xhtml">glGetSynciv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetTexLevelParameterfv.xhtml">glGetTexLevelParameterfv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetTexLevelParameteriv.xhtml">glGetTexLevelParameteriv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetTexParameterfv.xhtml">glGetTexParameterfv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetTexParameterIiv.xhtml">glGetTexParameterIiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetTexParameterIuiv.xhtml">glGetTexParameterIuiv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetTexParameteriv.xhtml">glGetTexParameteriv</entry>
+      <entry href="http://www.opengl.org/sdk/docs/man/html/glGetTransformFeedbackVarying.xhtml">glGetTransformFeedbackVarying</entry>
+    </list>
+  </post>
+
+  <post index="0630" date="11/02/2013" std-date="2014-02-11T23:30:00.00Z" title="OpenGL Samples Pack 4.4.1.0, with image templates">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      The OpenGL Samples Pack 4.4.1.0 is a major update introducing a new test framework with automation against image templates.
+    </paragraph>
+    <paragraph>
+      This is a great step forward because it allows to see when samples get broken (that happens quite a lot in practice),
+      it will make the <link href="http://www.g-truc.net/project-0033.html#menu">OpenGL drivers status</link> work a lot quicker and it allows to easily catch 
+      driver regressions. On top of that, now samples can fail to succeed, to check that drivers generate errors when they are supposed to.
+    </paragraph>
+
+    <paragraph>
+      The package contains template images for AMD, Intel and NVIDIA drivers. These template images have been generate on my machine so they depend to my GPUs,
+      my drivers versions and my control panels settings. Hence running the tests will produce slightly different results on other machine and more samples failing.
+    </paragraph>
+    <paragraph>
+      Users of the automated tests must regenerate image templates on their machines.
+    </paragraph>
+
+    <list title="To generate new template images:">
+      <entry>1. Create a CMake project with AUTOMATED_TEST option ON (in ${BUILD} directory)</entry>
+      <entry>2. Build all the samples (build ALL_BUILD target)</entry>
+      <entry>3. Run the tests (build RUN_TESTS target)</entry>
+      <entry>4. Open ${BUILD}/data/results/${IHV} directory</entry>
+      <entry>5. Compare generated images with ${BUILD}/data/template/reference</entry>
+      <entry>6. Replace each valid images in ${SOURCE}/data/template/${IHV}</entry>
+    </list>
+
+    <paragraph>
+      The test framework is generating result images only for samples failing.
+      Also some samples don't save result images. These are samples that must fail,
+      generating OpenGL errors or GLSL compiler errors or samples that don't generate exactly
+      the same output between runs (eg: gl-420-atomic-counter).
+    </paragraph>
+
+    <paragraph>
+      If you want to track new driver bugs you found, don't hesitate to submit <link href="https://github.com/g-truc/ogl-samples/pulls">pull requests</link> with new samples exposing these bugs.
+      Submitting <link href="https://github.com/g-truc/ogl-samples/issues">an issue</link> is also a good alternative. The samples are also pretty convininent to reproduce a bug and send a reproduction case to IHVs.
+      This is a project for programmers in the OpenGL community so just make it useful for whatever you do with it.
+    </paragraph>
+
+    <paragraph>
+      The OpenGL Samples Pack 4.4.1.0 has only been tested on Windows, I suggest using version 4.4.0.3 on others platforms for the moment but version 4.4.1.1 will support Linux and MacOS X.
+    </paragraph>
+
+      <!--code title="Building and running automated tests:">
+      <line>cd ogl-samples-4.4.1.0</line>
+      <line>mkdir build</line>
+      <line>cd build</line>
+      <line>cmake .. -DAUTOMATED_TESTS=ON</line>
+      <line>cmake - -build .</line>
+      <line>ctest</line>
+    </code-->
+
+    <source-list>
+      <source-download index="1162" />
+      <source-download index="1154" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+  
+  <post index="0629" date="08/02/2014" std-date="2014-02-08T23:00:00.00Z" title="Week 5: Le spectacle singulier qui se découvre à son âme">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-05-960.jpg"
+      href="./photo/2014-05.jpg" />
+  </post>
+
+  <post index="0628" date="08/02/2014" std-date="2014-02-08T23:30:00.00Z"  title="GLM 0.9.5.2 released">
+    <meta>
+      <tag>gtc-tech-project-glm</tag>
+    </meta>
+    <paragraph>
+      C++ 11 introduced <link href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2672.htm">
+      initializer lists and uniform initialization syntax</link> and GLM 0.9.5.0 tried to leverage this functionality but didn't get it quite right.
+      GLM 0.9.5.2 is fixing this.
+    </paragraph>
+
+    <code title="Examples of usage with GLM:">
+      <line><keyword>#define </keyword> GLM_FORCE_RADIANS</line>
+      <line><keyword>#include </keyword><string>&lt;glm/vec4.hpp&gt;</string></line>
+      <line><keyword>#include </keyword><string>&lt;glm/mat4.hpp&gt;</string></line>
+      <line><keyword>#include </keyword><string>&lt;glm/gtc/quat.hpp&gt;</string></line>
+      <line></line>
+      <line>{</line>
+      <line align="32px">...</line>
+      <line align="32px">glm::vec4 A{0, 1, 2, 3};</line>
+      <line></line>
+      <line align="32px">glm::mat4 B{</line>
+      <line align="64px">{0, 1, 2, 3},</line>
+      <line align="64px">{4, 5, 6, 7},</line>
+      <line align="64px">{8, 9, 10, 11},</line>
+      <line align="64px">{12, 13, 14, 15}};</line>
+      <line></line>
+      <line align="32px">std::vector&lt;glm::mat4&gt; C{</line>
+      <line align="64px">{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},</line>
+      <line align="64px">{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}};</line>
+      <line></line>
+      <line align="32px">std::vector&lt;glm::mat4&gt; D{</line>
+      <line align="64px">{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},</line>
+      <line align="64px">{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}};</line>
+      <line></line>
+      <line align="32px">std::vector&lt;glm::mat4&gt; E{</line>
+      <line align="64px">{</line>
+      <line align="96px">{ 0, 1, 2, 3 },</line>
+      <line align="96px">{ 4, 5, 6, 7 },</line>
+      <line align="96px">{ 8, 9, 10, 11 },</line>
+      <line align="96px">{ 12, 13, 14, 15 }</line>
+      <line align="64px">},</line>
+      <line align="64px">{</line>
+      <line align="96px">{ 0, 1, 2, 3 },</line>
+      <line align="96px">{ 4, 5, 6, 7 },</line>
+      <line align="96px">{ 8, 9, 10, 11 },</line>
+      <line align="96px">{ 12, 13, 14, 15 }</line>
+      <line align="64px">}};</line>
+      <line></line>
+      <line align="32px">glm::quat F{0, 1, 2, 3};</line>
+      <line align="32px">...</line>
+      <line>}</line>
+    </code>
+
+    <list title="Changelog:">
+      <entry>Fixed initializer list ambiguity (#159, #160)</entry>
+      <entry>Fixed warnings with the Android NDK 9c</entry>
+      <entry>Fixed non power of two matrix products</entry>
+      <entry>Fixed mix function link error</entry>
+      <entry>Fixed SSE code included in GLM tests on "pure" platforms</entry>
+      <entry>Fixed undefined reference to fastInverseSqrt (#161)</entry>
+      <entry>Fixed GLM_FORCE_RADIANS with &lt;glm/ext.hpp&gt; build error (#165)</entry>
+      <entry>Fix dot product clamp range for vector angle functions. (#163)</entry>
+      <entry>Tentative fix for strict aliasing warning in GCC 4.8.1 / Android NDK 9c (#152)</entry>
+      <entry>Fixed GLM_GTC_constants description brief (#162)</entry>
+    </list>
+
+    <source-download index="1161" />
+    <source-element type="Link" href="http://glm.g-truc.net/0.9.5/glm-0.9.5.pdf" title="GLM 0.9.5 manual" />
+    <source-element type="Link" href="http://glm.g-truc.net/0.9.5/api/index.html" title="GLM 0.9.5 api documentation" />
+    <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+  </post>
+
+  <post index="0627" date="02/02/2014" std-date="2014-02-02T23:00:00.00Z" title="Week 4: Only systems">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-04-960.jpg"
+      href="./photo/2014-04.jpg" />
+  </post>
+
   <post index="0626" date="20/01/2014" std-date="2014-01-20T23:00:00.00Z" title="Week 3: Glory - Ruhm - Cдaba">
     <meta>
       <tag>gtc-crea-photograph</tag>
@@ -641,7 +1080,6 @@
     <source-element type="Link" href="https://github.com/g-truc/gli/issues" title="Submit a bug report" />
     <source-element type="Link" href="http://glm.g-truc.net/0.5.0/api/index.html" title="GLI 0.5.0 API" />
   </post>
-
 
   <post index="0610" date="22/11/2013" std-date="2013-11-22T20:00:00.00Z" title="Week 43: Aliens, floating Hotels and lasers in Copenhagen">
     <meta>

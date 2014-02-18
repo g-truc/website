@@ -268,18 +268,18 @@
 
   <xsl:template match="list">
     <div xmlns="http://www.w3.org/1999/xhtml" class="list">
-      <xsl:if test="./@name">
+      <xsl:if test="./@title">
         <xsl:choose>
           <xsl:when test="./@href">
             <span class="list">
               <a href="{./@href}">
-                <xsl:value-of select="./@name" />
+                <xsl:value-of select="./@title" />
               </a>
             </span>
           </xsl:when>
           <xsl:otherwise>
             <span class="list">
-              <xsl:value-of select="./@name" />
+              <xsl:value-of select="./@title" />
             </span>
           </xsl:otherwise>
         </xsl:choose>
