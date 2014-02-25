@@ -192,6 +192,116 @@
 
   </post-->
 
+  <post index="0636" date="23/02/2014" std-date="2014-02-23T02:00:00.00Z" title="Week 7: Fondant">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-07-960.jpg"
+      href="./photo/2014-07.jpg" />
+  </post>
+  
+  <post index="0635" date="23/02/2014" std-date="2014-02-23T01:00:00.00Z" title="February 2014 OpenGL status">
+    <meta>
+      <tag>gtc-tech-project-openglstatus</tag>
+    </meta>
+
+    <subtitle>OpenGL driver issues</subtitle>
+    
+    <paragraph>
+      This drivers status is based on the OpenGL Samples Pack 4.4.1.3. The NVIDIA implementation had 3 issues with the samples,
+      19 on AMD implementation, 12 on Intel implementation and 13 on Apple implementation.
+    </paragraph>
+    <paragraph>
+      At this point, it seems that essentially the remaining issues in NVIDIA driver is non standard behaviour supported by the OpenGL implementation.
+      I haven't spent much time on OpenGL 4.4 and OpenGL 4.3 so I wouldn't be surprised if there are more issues with this feature.
+      Micro benchmarking also show really reliable level of performance.
+    </paragraph>
+    <paragraph>
+      I considered adding Mesa but I am not sure I got working correctly Mesa 10.1 with the last Intel drivers resulting in basically no sample running... 
+      I tested Debian 7.3, Ubuntu 13.10 and Mint 16 but there are all stock to Mesa 9.2, hence OpenGL 3.1 support.
+      Unfortunately, the OpenGL Samples Pack requires OpenGL 3.2.
+      Updating Mesa and drivers is far less trivial than on Windows and I am not exactly a Linux user so I expect I messed up somewhere.
+      I really hope I manage to get this working for the next OpenGL status, it would be interesting data to have.
+    </paragraph>
+    <paragraph>
+      Apple OpenGL implementation hasn't been updated seen last report, let's hope MacOSX 10.9.1 fixes the new features.
+      OpenGL 3.2 is okish, but outside of that it's not great.
+    </paragraph>
+    <paragraph>
+      I can't exclude that there isn't bug in the samples, so don't hesitate to <link href="https://github.com/g-truc/ogl-samples/issues?state=open">open an issue</link>.
+    </paragraph>
+
+    <image title="OpenGL samples passing on available implementations"
+      color="white"
+      img="./post/0634-status.png"
+      href="./doc/OpenGL%20status%202014-02.pdf" />
+
+    <subtitle>OpenGL extensions exposed</subtitle>
+
+    <paragraph>
+      No change for NVIDIA that has already full support of OpenGL 4.4 and the driver isn't exposing new proprierary features.
+    </paragraph>
+
+    <paragraph>
+      AMD implementation has 7 new extensions including five OpenGL 4.4 onces.
+      The big chunk for OpenGL 4.4 is <link href="http://www.opengl.org/registry/specs/ARB/buffer_storage.txt">ARB_buffer_storage</link> but this extension remains to be implemented.
+    </paragraph>
+
+    <paragraph>
+      Intel implementation added 8 new extensions. Intel is still missing 10 extensions to complete their OpenGL 4.3 implementation.
+      Intel has focussed their efforts on the most complex OpenGL 4.3 extensions so I am still pretty confident that we will have get OpenGL 4.3 by Siggraph 2014.
+    </paragraph>
+    
+    <paragraph>
+      The most impressive jump in extensions exposed comes from Mesa implementation that added 10 new extensions. Mesa coverage is quite sparse as it supports some features of OpenGL 4.4 bug OpenGL 4.0 coverage isn't completed.
+      Mesa is missing some pretty major OpenGL 4.0 extensions: 
+      <link href="http://www.opengl.org/registry/specs/ARB/tessellation_shader.txt">ARB_tessellation_shader</link>, 
+      <link href="http://www.opengl.org/registry/specs/ARB/shader_subroutine.txt">ARB_shader_subroutine</link>, 
+      <link href="http://www.opengl.org/registry/specs/ARB/gpu_shader5.txt">ARB_gpu_shader5</link> and 
+      <link href="http://www.opengl.org/registry/specs/ARB/gpu_shader_fp64.txt">ARB_gpu_shader_fp64</link>. 
+      Out of this set, I probably only really care about <link href="http://www.opengl.org/registry/specs/ARB/gpu_shader5.txt">ARB_gpu_shader5</link>
+      for <link href="http://www.opengl.org/sdk/docs/man/html/interpolateAtCentroid.xhtml">interpolateAtCentroid</link>,
+      <link href="http://www.opengl.org/sdk/docs/man/html/interpolateAtOffset.xhtml">interpolateAtOffset</link> and
+      <link href="http://www.opengl.org/sdk/docs/man/html/interpolateAtSample.xhtml">interpolateAtSample</link> functions. The integer functions are also pretty useful and the
+      <link href="http://www.opengl.org/sdk/docs/man/html/textureGather.xhtml">textureGather</link> too. 
+      
+      Sadly, Linux distributions are stocked to Mesa 9.2 with only OpenGL 3.1 supports.
+    </paragraph>
+    
+    <image title="OpenGL features exposed by GPU architechtures for February 2014 status"
+      color="white"
+      img="./post/0634-matrix.png"
+      href="./doc/OpenGL%20matrix%202014-02.pdf" />
+
+    <paragraph>
+      Once again, don't forget to contribute to the OpenGL community by <link href="post-0430.html#menu">reporting your bugs</link>!
+    </paragraph>
+
+    <source-list>
+      <source-download index="1166" />
+      <source-download index="1165" />
+      <source-download index="1167" />
+      <source-element type="Download" href="https://github.com/g-truc/ogl-samples/archive/4.4.1.zip" title="OpenGL Samples 4.4.1 stagging" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=441" title="glCapsViewer report for AMD Catalyst 14.1 beta 1" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=431" title="glCapsViewer report for Intel HD Graphics 10.18.10.3380" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=389" title="glCapsViewer report for NVIDIA Forceware 334.89" />
+      <source-element type="Link" href="http://www.guru3d.com/files_details/amd_catalyst_14_1_beta_1_6_%2813_350_1005_january_31%29.html" title="Download page for AMD Catalyst" />
+      <source-element type="Link" href="http://alldrivers.ucoz.net/news/intel_hd_iris_graphics_drivers_version_15_36_0_3380_alpha/2014-01-27-287" title="Download page for Intel HD Graphics 10.18.10.3325" />
+      <source-element type="Link" href="http://www.guru3d.com/files_details/geforce_334_89_whql_driver_download.html" title="Download page for NVIDIA Forceware" />
+    </source-list>
+  </post>
+  
+  <post index="0634" date="22/02/2014" std-date="2014-02-22T01:00:00.00Z" title="Which version of OpenGL do you target?">
+    <meta>
+      <tag>gtc-tech-project-openglstatus</tag>
+    </meta>
+    
+    <survey href="https://docs.google.com/forms/d/1anCvFLCXXTXVoBewsGjkZsnFijUVjU0D9VyQox-xXy4/viewform?embedded=true" />
+  </post>
+
   <post index="0633" date="18/02/2013" std-date="2014-02-18T23:30:00.00Z" title="OpenGL Samples Pack 4.4.1.2 released">
     <meta>
       <tag>gtc-tech-opengl-samples</tag>
@@ -35435,5 +35545,6 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 
 </g-truc>

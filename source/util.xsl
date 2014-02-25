@@ -141,6 +141,12 @@
     </div>
   </xsl:template>
 
+  <xsl:template match="survey">
+    <div xmlns="http://www.w3.org/1999/xhtml" >
+      <iframe src="{./@href}" width="800" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+    </div>
+  </xsl:template>
+
   <xsl:template match="bold">
     <span xmlns="http://www.w3.org/1999/xhtml" class="bold">
       <xsl:choose>
