@@ -192,6 +192,274 @@
 
   </post-->
 
+  <draft index="0642" date="09/03/2014" std-date="2014-03-09T18:00:00.00Z" title="OpenGL 5 and Direct3D 12 hardware">
+    <meta>
+      <tag>gtc-tech-opengl-review</tag>
+    </meta>
+
+    <paragraph>
+      The announcement of Mantle few months ago has triggered a lot of discussions about gragphis API design. I think there is technical issues in OpenGL but those are precise problems that needs to be solve individually and following the hardware designes.
+      These redesigning an entier API might be fun, it is keeping marketing people buzy and <link href="https://www.youtube.com/watch?v=-bCeNzgiJ8I&amp;list=PLckFgM6dUP2hc4iy-IdKFtqR9TeZWMPjm">it makes OpenGL people communicating about how good is OpenGL</link>.
+    </paragraph>
+    <paragraph>
+      What I like with Direct3D is that Microsoft was important enough to drive IHVs to standardize hardware features. The Khronos Group is certainly getting better at it, 
+      the <link href="http://www.opengl.org/registry/specs/KHR/texture_compression_astc_hdr.txt">ASTC texture format</link> is a good example as I expect this format will be supported on all mobile and desktop GPUs.
+    </paragraph>
+    <paragraph>
+      What's an OpenGL 5 hardware feature? Follwing the conversions for OpenGL 3 and OpenGL 4, it's any hardware feature that can't be implemented on all OpenGL 4 hardware but would be implementable on newer hardware of all IHVs.
+    </paragraph>
+    <paragraph>
+      in this post I would like to point at hardware features available through OpenGL extensions that may or may not be interesting to standardize.
+    </paragraph>
+
+    <title>Draw submission</title>
+    <subtitle href="http://www.opengl.org/registry/specs/ARB/multi_draw_indirect.txt">GL_ARB_multi_draw_indirect</subtitle>
+    <paragraph>
+      Multi draw indirect is part of OpenGL 4.3 core specification but it's arguably an OpenGL 5 hardware feature allowing the GPU to submit itself draws to be executed. This feature can be implemented through software emulation quite easily using the CPU to push each individual draw but this is really slow.
+      Currently, all the Intel GPU and AMD Evergreen support multi draw in software. 
+    </paragraph>
+    <paragraph>
+      With 800000 draws per frame at 60Hz on Kepler and 300000 draws per frame on Southern Islands with a syntheric test rendering 2 triangles per draw on 4 pixels. That huge amount of draws provide an amazing control of the rendering.
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/ARB/shader_draw_parameters.txt">GL_ARB_shader_draw_parameters</subtitle>
+    <paragraph>
+      With OpenGL 4.3 we got shader storage buffers that we can use in place of vertex array object for programmable vertex pulling which allows for each single draw to use a custom vertex format.
+      To make that approach really useful we were missing access of some useful draw arguments in the vertex shader stage. 
+      With this extension we get gl_BaseVertexARB and gl_BaseInstanceARB that reflect the draw arguments but also gl_DrawIDARB, an iquivalent of gl_InstanceID for draws.
+    </paragraph>
+    <paragraph>
+      Only NVIDIA implements this extension at the moment but it should be implementable by Southern Island. However, the performance of gl_DrawIDARB are poor compared with a dedicated vertex attribute with divisor 1 and a BaseInstance.
+    </paragraph>
+    
+    <subtitle href="http://www.opengl.org/registry/specs/ARB/indirect_parameters.txt">GL_ARB_indirect_parameters</subtitle>
+    <paragraph>
+      One idea with multi draw indirect is to use a compute shader to generate the indirect draw buffer. However, with <link href="http://www.opengl.org/registry/specs/ARB/multi_draw_indirect.txt">GL_ARB_multi_draw_indirect</link> the number of draws is submitted to the GPU through a draw call parameter.
+      Hence, if we generate the list of draws with a compute shader, then we need to query the number of draws to submit it back to the GPU. With <link href="http://www.opengl.org/registry/specs/ARB/indirect_parameters.txt">GL_ARB_indirect_parameters</link>, the number of draws can be stored into a buffer object.
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/NV/bindless_multi_draw_indirect.txt">GL_NV_bindless_multi_draw_indirect</subtitle>
+    <paragraph>
+      This is the last piece of NVIDIA bindless API allowing to submit draws without binding vertex arrays or indirect draw buffer for lower CPU overhead.
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/interleaved_elements.txt">GL_AMD_interleaved_elements</subtitle>
+    <paragraph>
+      This extension is really ugly but the functionnality is really interesting. Instead of having a single element array, thanks to this extension we can have up to 4 element arrays and we can index each vertex attribute with the element array of our choice.
+      There is quite a few software actually generating meshes using multiple element array so this functionnality sounds extremely useful.
+      Taking advantage of this feature can save bandwidth avoiding duplicating vertex attributes.
+    </paragraph>
+    
+    <title>Textures</title>
+    <subtitle href="http://www.opengl.org/registry/specs/ARB/bindless_texture.txt">GL_ARB_bindless_texture</subtitle>
+    <paragraph>
+      Bindless resources is a feature supported by Kepler and Southern Islands architechtures.
+      When we bind a texture, the drivers write a texture descriptor in a special location in the GPU. 
+      The number of these special locations is fixed, 32 on Direct3D11 hardware.
+      With bindless textures we pass a handle (a pointer) directly to the shader stages. The shader invocations fetch and cache the texture descriptors.
+      This approach gives access to an unlimited number of textures but there is chances for texture descriptors cache miss so we need to keep access coherence which multi draw indirect and dynamically uniform expression provide.
+    </paragraph>
+    <paragraph>
+      With OpenGL 4.4 NVIDIA provides bindless buffers but this is still something that we need an ARB extensions for.
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/ARB/sparse_texture.txt">GL_ARB_sparse_texture</subtitle>
+    <paragraph>
+      <link href="http://www.opengl.org/registry/specs/ARB/sparse_texture.txt">ARB_sparse_texture</link> takes advantage of virtual memory supports of GPUs (Fermi and Southern Islands).
+      A sparse texture can be used to create "giant" textures bigger than the graphics card memory size for virtual texturing. 
+      <link href="http://www.opengl.org/registry/specs/AMD/sparse_texture.txt">AMD_sparse_texture</link> is more powerful as it adds shader queries to figure out in a shader invocation whether a texture page is commited or not.
+    </paragraph>
+    <paragraph>
+      There are quite some obvious features that would nice to have: The possibility to share the same texture tile for two texture pages without consuming twice the memory the support of actually giant textures.
+      Sparse texture sizes are currently bound to the same limit than non-sparse textures. 16384 * 16384 for a 2D texture it's big but for a virtual texture, not really.
+      Texture stiching could be an option for large virtual texture where we would use multiple texture 2D array layers and allow filtering accross these layers.
+      Lastly, supporting sparse shadow map would great and could simply a lot shadow rendering by using very high resolution shadow but allocated only where it matters.
+      In <link href="http://www.opengl.org/registry/specs/ARB/sparse_texture.txt">ARB_sparse_texture</link>, this is only optional.
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/KHR/texture_compression_astc_hdr.txt">GL_KHR_texture_compression_astc_ldr / GL_KHR_texture_compression_astc_hdr</subtitle>
+    <paragraph>
+      The Khronos Group has standardize a new texture format called ASTC that provides very low bit rate and HDR support.
+      Because, it's a KHR extensions, it means that both the OpenGL ES group and the OpenGL ARB group voted to support that feature which gives me good hope that we will "soon" have support for this format on all platforms.
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/INTEL/map_texture.txt">GL_INTEL_map_texture</subtitle>
+    <paragraph>
+      This feature allows to map the storage of a texture 2D just like we can do it with buffer.
+      The extension supports linear and <link href="https://duckduckgo.com/Z-order_(curve)">tiled formats</link> however if this feature had to be standardize only
+      the linear storage could be supported accross GPUs but linear storage is really texture cache inefficient. Each GPU tile format is vendor specific so if we had to have that feature it would have to be standardize.
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/ARB/seamless_cubemap_per_texture.txt">GL_ARB_seamless_cubemap_per_texture</subtitle>
+    <paragraph>
+      Seamless cube map filtering is a functionnality that is globally enabled. AMD Radeon HD 4000 introduced the possibility to toggle this feature for each cube map. 
+      Globally enabled seamless cube map is already not that useful but having that toggle for each cube map even less useful but Kepler added support for this feature.
+    </paragraph>
+
+    <title>Blending</title>
+    <paragraph>
+      Programmable blending has been on the wish list of many graphics programmers There are three approaches: Through a per tile shader stage, through a new per pixel shader stage or by modifying the fragment shader stage.
+    </paragraph>
+    
+    <subtitle href="http://www.opengl.org/registry/specs/INTEL/fragment_shader_ordering.txt">GL_INTEL_fragment_shader_ordering</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/blend_minmax_factor.txt">GL_AMD_blend_minmax_factor</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/NV/blend_equation_advanced.txt">GL_NV_blend_equation_advanced</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <title>Shader operations</title>
+
+    <subtitle href="http://www.opengl.org/registry/specs/ARB/shader_group_vote.txt">GL_ARB_shader_group_vote</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/NV/shader_atomic_float.txt">GL_NV_shader_atomic_float</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/shader_atomic_counter_ops.txt">GL_AMD_shader_atomic_counter_ops</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/shader_trinary_minmax.txt">GL_AMD_shader_trinary_minmax</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/ARB/compute_variable_group_size.txt">GL_ARB_compute_variable_group_size</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/NV/vertex_attrib_integer_64bit.txt">GL_NV_vertex_attrib_integer_64bit</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/NV/gpu_shader5.txt">GL_NV_gpu_shader5</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <title>Framebuffer</title>
+    <subtitle href="http://www.opengl.org/registry/specs/EXT/framebuffer_multisample_blit_scaled.txt">GL_EXT_framebuffer_multisample_blit_scaled</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/sample_positions.txt">GL_AMD_sample_positions</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/NV/multisample_coverage.txt">GL_NV_multisample_coverage</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/depth_clamp_separate.txt">GL_AMD_depth_clamp_separate</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <title>Rendering pipeline</title>
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/vertex_shader_layer.txt">GL_AMD_vertex_shader_layer</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/vertex_shader_viewport_index.txt">GL_AMD_vertex_shader_viewport_index</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/transform_feedback3_lines_triangles.txt">GL_AMD_transform_feedback3_lines_triangles</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <title>Stencil</title>
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/stencil_operation_extended.txt">GL_AMD_stencil_operation_extended</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/shader_stencil_export.txt">GL_AMD_shader_stencil_export</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <title>Profiling</title>
+    <subtitle><link href="http://www.opengl.org/registry/specs/AMD/performance_monitor.txt">GL_AMD_performance_monitor</link>, <link href="http://www.opengl.org/registry/specs/INTEL/performance_query.txt">GL_INTEL_performance_query</link></subtitle>
+    <paragraph>
+
+    </paragraph>
+  </draft>
+
+  <post index="0640" date="12/03/2014" std-date="2014-03-12T22:00:00.00Z" title="Week 10: Dancing">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-10-960.jpg"
+      href="./photo/2014-10.jpg" />
+  </post>
+
+  <post index="0639" date="09/03/2014" std-date="2014-03-09T19:00:00.00Z" title="Week 9: A cute couple">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-09-960.jpg"
+      href="./photo/2014-09.jpg" />
+  </post>
+
+  <post index="0638" date="02/03/2014" std-date="2014-03-02T23:00:00.00Z" title="Week 8: Roads are overrated">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-08-960.jpg"
+      href="./photo/2014-08.jpg" />
+  </post>
+
+  <post index="0637" date="01/03/2014" std-date="2014-03-01T18:00:00.00Z" title="OpenGL 4.4 and ES 3.0 Pipeline Maps available in SVG">
+    <meta>
+      <tag>gtc-tech-opengl-review</tag>
+      <tag>gtc-tech-project-openglpipeline</tag>
+    </meta>
+
+    <paragraph>
+      I recieved a request for a vectorial version of the OpenGL Pipeline Maps to be able to print it in A0 size or bigger.
+    </paragraph>
+    <paragraph>
+      It turns out that I could expert in SVG 
+    </paragraph>
+
+    <source-list>
+      <source-download index="1169" />
+      <source-download index="1168" />
+    </source-list>
+  </post>
+  
   <post index="0636" date="23/02/2014" std-date="2014-02-23T02:00:00.00Z" title="Week 7: Fondant">
     <meta>
       <tag>gtc-crea-photograph</tag>
@@ -35545,6 +35813,7 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 
 
 </g-truc>
