@@ -105,7 +105,94 @@
     </paragraph>
   </draft>
 
-  <post index="0643" date="30/03/2014" std-date="2014-03-30T18:00:00.00Z" title="OpenGL 5 and Direct3D 12 hardware 2/N">
+  <!--post index="0700" date="09/12/2013" std-date="2013-12-09T10:00:00.00Z" title="On the road to 1 million draws at 60 Hz">
+    <meta>
+      <tag>gtc-tech-opengl</tag>
+    </meta>
+    <paragraph>
+      I am taking advantages of Graham Sellers excellent title on the subjet to detail here my views on the subject following another discussion about Mantle design is a short coming driven by a believe backend by no evidence. One great effect of Mantle is that it's a catalyser for discussions about how to see real time rendering and finally driving a major evolution after many years stock with deprecated GPU architechture mind frame frozen by the requirement to support the previous generation of consoles.  
+    </paragraph>
+    <paragraph>
+      Why do we want to submit many more draws? Because, we are drastically limiting the scene complexity because of this limitation. By scene complexity, I mean number of objects, details, variations of surfaces and we enforce some levels of staticity to contain this complexity. We just have to look around us, right now and from where we are seating to see the short coming of current real time rendering. 
+    <paragraph>
+      Where Mantle and the mind frame that got with it is wrong is that it's satisfying ourself with so little more scene complexity improvements. "If I can use N CPU core, I can make N time more complex scene!". 
+    </paragraph>
+    <list title="Issues with this reasonning: ">
+      <list-element>I can expect to improve my scene complexity by the number of core maximum.</list-element>
+      <list-element>I still need to do plently of other stuff on my CPU cores. More complex scenes might mean more complex physics. We can make trade off on rendering, hardly on physic.</list-element>
+      <list-element>Even if I am submitting draws from N cores, the commands are necessarily serialized by the GPUs which currently can only execute one command buffer at a time. We can't get linear scaling.</list-element>
+    </list>
+    <paragraph>
+      Am I willing to make any compromised to the real life scenes I am seeing? No. Why should I make any compromise in the virtual scenes I am rendering? No. Therefore, we need to answer what are actually the boundaries for current GPU hardware architechtures. I am sorry for all the developers who spent all that time working on all consoles but at this point the best way forward is to forget all that you learnt with GeForce 7 and Radeon X0000 architechtures because those have very little to do with current architechtures. It's a bit like starting to use Git after some many years on SVN, just forget everything! 
+    </paragraph>
+    <image></image>
+    <subtitle>Some scene complexity theory</subtitle>
+    <paragraph>
+      Just like mathematiciens demonstrated results way before we had computers to calculate these results, scene complexity has been theorized way before computer graphics was created essetially by art movements like De Stidj and generally by the constructivists.
+      I like to say that whatever we need to envision has been painted by Piet Mandrian paintings: Equilibrium, proportions and rhyme. Also, he was monstly concerned by landscapes, his vision applies to indoor scenes, cities or characters as photographers and architeches demonstrated it with their work. 
+    </paragraph>
+    <image>Mondrian paintings here</image>
+    <paragraph>
+      What's real time graphics? Maybe just another media based on abstractions to create images. Instead of lines and colors we have meshes, shaders, buffers and textures and the way to use these media primitives are only expressed by Mandrian subjet of interest: Equilibrium, proportions and rhyme.
+    </paragraph>
+    <paragraph>
+      If we applies his concept to real time rendering, suddently recognize familiar concepts: Recurrence of events, variability of items, grouping and features divisions. If we project ourself with our would we paint one of painting, we can regnozise pattern similar to how we would do rendering.
+    </paragraph>
+    <list>
+      <list-element>1/ Clear the background with white</list-element>
+      <list-element>2/ Tracing lines to bound the colors and the black lines</list-element>
+      <list-element>3/ Filling the areas with colors: first yellow, then red and finally blue.</list-element>
+      <list-element>4/ Drawing the black lines</list-element>
+    </list>
+    <paragraph>
+      Do we want to draw a line and a color area then a line, etc? No because I would need to clean my brush all the time, my black painting would dry out. 
+      Do I want to draw my black lines first? No because it will be hard for me to to fill the areas without drawing over the side of the black lines which would make my lines not as straight.
+      DO I have to fill with white area that will be filled with others colors? No, It's easy to draw over white with any color so I don't have to be precise but I can roughtly skip color areas while filling with white the background. 
+    </paragraph>
+    <paragraph>
+      There is a certain rate at which I am updating my colors, a certain rate are which I am drawing features and an order at which we need to do these operations.
+    </paragraph>
+
+    <subtitle>The theory of harmonics applied to scene complexity<subtitle>
+    <paragraph>
+      All these updates happening at different rates make me think about harmonics: Each signal can be representation as a sum of sinusoids where each one is evolving at frequency that is a multiple of the base frequency. In this vision each frequency is the embodiment of an event happening: A draw, a transfer, a rendering pass, a frame, using a shader program, a texture, etc.   
+    </paragraph>
+    <image>Harminics</image>
+
+    <subtitle>Evidences justifying the MultiDraw mind frame</subtitle>
+    <paragraph>
+      There is this wide spread idea that draw calls are expensive and that we are bound to about 1000 to 5000 draw call. Even AMD, during its marketing Mantle presentation is spreading this legend.  
+      We can easily get some numbers with quick experiments that will show that it's wrong. These experiments will even allow us to get the precise cost of a single draw call invocations.
+    </paragraph>
+    <image>
+      Numbers for draw calls performance
+    </image>
+    <paragraph>
+      Every API call has a constant cost but it seems that the only strategy of the PS3 and XBox360 area had been to submit all the calls at draw calls, hence at the highest update frequency. Adding more CPU core increase the performance by increasing the possible number of API calls but it doesn't improve the efficiency of the system. What we need is not more performance but highest efficiency. Current processors are capable of adapting their frequencies so that is the processor heat up to a certain limit, it will reduce it frequence to control the heat. If the processor has to reduce it's frequency, then its overall performance is dropping. This is particularly true on mobile where the termal limit is very restricted. 
+    </paragraph>
+    <paragraph>
+      The power equation here
+    </paragraph>
+    <paragraph>
+      Removing frequencies is the operation that consist in replacing a CPU based swtiching operation by a GPU based resource indexing operation. The first example in that regard is what we call instracing where out of a single mesh we create multiple instances of the same object fetching MVP matrices or texture indexes out of uniform buffers or texture buffers. The performance is impressive but the usage is limited. It has to be out of a single mesh. Multi draws are a simple extension of this design where each mesh can be different. 
+    </paragraph>
+    <list title="Grouping approaches">
+      <list-element>Instancing: N instances from one mesh</list-element>
+      <list-element>MultiDraw: N draws from N meshes using the 1 vertex formats</list-element>
+      <list-element>
+    </list>
+    <paragraph>
+      Matching freqencies
+    </paragraph>
+
+    <subtitle>States management</subtitle>
+    <paragraph>
+      
+    </paragraph>
+
+  </post-->
+
+  <draft index="0643" date="30/03/2014" std-date="2014-03-30T18:00:00.00Z" title="OpenGL 5 and Direct3D 12 hardware 2/N">
     <meta>
       <tag>gtc-tech-opengl-review</tag>
     </meta>
@@ -207,164 +294,18 @@
     <paragraph>
 
     </paragraph>
-  </post>
-
-  <!--post index="0700" date="09/12/2013" std-date="2013-12-09T10:00:00.00Z" title="On the road to 1 million draws at 60 Hz">
-    <meta>
-      <tag>gtc-tech-opengl</tag>
-    </meta>
-    <paragraph>
-      I am taking advantages of Graham Sellers excellent title on the subjet to detail here my views on the subject following another discussion about Mantle design is a short coming driven by a believe backend by no evidence. One great effect of Mantle is that it's a catalyser for discussions about how to see real time rendering and finally driving a major evolution after many years stock with deprecated GPU architechture mind frame frozen by the requirement to support the previous generation of consoles.  
-    </paragraph>
-    <paragraph>
-      Why do we want to submit many more draws? Because, we are drastically limiting the scene complexity because of this limitation. By scene complexity, I mean number of objects, details, variations of surfaces and we enforce some levels of staticity to contain this complexity. We just have to look around us, right now and from where we are seating to see the short coming of current real time rendering. 
-    <paragraph>
-      Where Mantle and the mind frame that got with it is wrong is that it's satisfying ourself with so little more scene complexity improvements. "If I can use N CPU core, I can make N time more complex scene!". 
-    </paragraph>
-    <list title="Issues with this reasonning: ">
-      <list-element>I can expect to improve my scene complexity by the number of core maximum.</list-element>
-      <list-element>I still need to do plently of other stuff on my CPU cores. More complex scenes might mean more complex physics. We can make trade off on rendering, hardly on physic.</list-element>
-      <list-element>Even if I am submitting draws from N cores, the commands are necessarily serialized by the GPUs which currently can only execute one command buffer at a time. We can't get linear scaling.</list-element>
-    </list>
-    <paragraph>
-      Am I willing to make any compromised to the real life scenes I am seeing? No. Why should I make any compromise in the virtual scenes I am rendering? No. Therefore, we need to answer what are actually the boundaries for current GPU hardware architechtures. I am sorry for all the developers who spent all that time working on all consoles but at this point the best way forward is to forget all that you learnt with GeForce 7 and Radeon X0000 architechtures because those have very little to do with current architechtures. It's a bit like starting to use Git after some many years on SVN, just forget everything! 
-    </paragraph>
-    <image></image>
-    <subtitle>Some scene complexity theory</subtitle>
-    <paragraph>
-      Just like mathematiciens demonstrated results way before we had computers to calculate these results, scene complexity has been theorized way before computer graphics was created essetially by art movements like De Stidj and generally by the constructivists.
-      I like to say that whatever we need to envision has been painted by Piet Mandrian paintings: Equilibrium, proportions and rhyme. Also, he was monstly concerned by landscapes, his vision applies to indoor scenes, cities or characters as photographers and architeches demonstrated it with their work. 
-    </paragraph>
-    <image>Mondrian paintings here</image>
-    <paragraph>
-      What's real time graphics? Maybe just another media based on abstractions to create images. Instead of lines and colors we have meshes, shaders, buffers and textures and the way to use these media primitives are only expressed by Mandrian subjet of interest: Equilibrium, proportions and rhyme.
-    </paragraph>
-    <paragraph>
-      If we applies his concept to real time rendering, suddently recognize familiar concepts: Recurrence of events, variability of items, grouping and features divisions. If we project ourself with our would we paint one of painting, we can regnozise pattern similar to how we would do rendering.
-    </paragraph>
-    <list>
-      <list-element>1/ Clear the background with white</list-element>
-      <list-element>2/ Tracing lines to bound the colors and the black lines</list-element>
-      <list-element>3/ Filling the areas with colors: first yellow, then red and finally blue.</list-element>
-      <list-element>4/ Drawing the black lines</list-element>
-    </list>
-    <paragraph>
-      Do we want to draw a line and a color area then a line, etc? No because I would need to clean my brush all the time, my black painting would dry out. 
-      Do I want to draw my black lines first? No because it will be hard for me to to fill the areas without drawing over the side of the black lines which would make my lines not as straight.
-      DO I have to fill with white area that will be filled with others colors? No, It's easy to draw over white with any color so I don't have to be precise but I can roughtly skip color areas while filling with white the background. 
-    </paragraph>
-    <paragraph>
-      There is a certain rate at which I am updating my colors, a certain rate are which I am drawing features and an order at which we need to do these operations.
-    </paragraph>
-
-    <subtitle>The theory of harmonics applied to scene complexity<subtitle>
-    <paragraph>
-      All these updates happening at different rates make me think about harmonics: Each signal can be representation as a sum of sinusoids where each one is evolving at frequency that is a multiple of the base frequency. In this vision each frequency is the embodiment of an event happening: A draw, a transfer, a rendering pass, a frame, using a shader program, a texture, etc.   
-    </paragraph>
-    <image>Harminics</image>
-
-    <subtitle>Evidences justifying the MultiDraw mind frame</subtitle>
-    <paragraph>
-      There is this wide spread idea that draw calls are expensive and that we are bound to about 1000 to 5000 draw call. Even AMD, during its marketing Mantle presentation is spreading this legend.  
-      We can easily get some numbers with quick experiments that will show that it's wrong. These experiments will even allow us to get the precise cost of a single draw call invocations.
-    </paragraph>
-    <image>
-      Numbers for draw calls performance
-    </image>
-    <paragraph>
-      Every API call has a constant cost but it seems that the only strategy of the PS3 and XBox360 area had been to submit all the calls at draw calls, hence at the highest update frequency. Adding more CPU core increase the performance by increasing the possible number of API calls but it doesn't improve the efficiency of the system. What we need is not more performance but highest efficiency. Current processors are capable of adapting their frequencies so that is the processor heat up to a certain limit, it will reduce it frequence to control the heat. If the processor has to reduce it's frequency, then its overall performance is dropping. This is particularly true on mobile where the termal limit is very restricted. 
-    </paragraph>
-    <paragraph>
-      The power equation here
-    </paragraph>
-    <paragraph>
-      Removing frequencies is the operation that consist in replacing a CPU based swtiching operation by a GPU based resource indexing operation. The first example in that regard is what we call instracing where out of a single mesh we create multiple instances of the same object fetching MVP matrices or texture indexes out of uniform buffers or texture buffers. The performance is impressive but the usage is limited. It has to be out of a single mesh. Multi draws are a simple extension of this design where each mesh can be different. 
-    </paragraph>
-    <list title="Grouping approaches">
-      <list-element>Instancing: N instances from one mesh</list-element>
-      <list-element>MultiDraw: N draws from N meshes using the 1 vertex formats</list-element>
-      <list-element>
-    </list>
-    <paragraph>
-      Matching freqencies
-    </paragraph>
-
-    <subtitle>States management</subtitle>
-    <paragraph>
-      
-    </paragraph>
-
-  </post-->
-
-  <draft index="0642" date="16/03/2014" std-date="2014-03-16T23:30:00.00Z" title="Features for OpenGL 5 and Direct3D 12 hardware, 2/N">
-    <meta>
-      <tag>gtc-tech-opengl-review</tag>
-    </meta>
-
-    <title>Blending</title>
-    <paragraph>
-      Programmable blending has been on the wish list of many graphics programmers There are three approaches: Through a per tile shader stage, through a new per pixel shader stage or by modifying the fragment shader stage.
-    </paragraph>
-    
-    <subtitle href="http://www.opengl.org/registry/specs/INTEL/fragment_shader_ordering.txt">GL_INTEL_fragment_shader_ordering</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/blend_minmax_factor.txt">GL_AMD_blend_minmax_factor</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/NV/blend_equation_advanced.txt">GL_NV_blend_equation_advanced</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <title>Rendering pipeline</title>
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/vertex_shader_layer.txt">GL_AMD_vertex_shader_layer</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/vertex_shader_viewport_index.txt">GL_AMD_vertex_shader_viewport_index</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/transform_feedback3_lines_triangles.txt">GL_AMD_transform_feedback3_lines_triangles</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-     <subtitle href="http://www.opengl.org/registry/specs/AMD/depth_clamp_separate.txt">GL_AMD_depth_clamp_separate</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <title>Stencil</title>
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/stencil_operation_extended.txt">GL_AMD_stencil_operation_extended</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/shader_stencil_export.txt">GL_AMD_shader_stencil_export</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <title>Profiling</title>
-    <subtitle><link href="http://www.opengl.org/registry/specs/AMD/performance_monitor.txt">GL_AMD_performance_monitor</link>, <link href="http://www.opengl.org/registry/specs/INTEL/performance_query.txt">GL_INTEL_performance_query</link></subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <title>My personnal wish list</title>
-    <paragraph>
-
-    </paragraph>
-
   </draft>
+
+  <post index="0643" date="25/03/2014" std-date="2014-03-25T23:00:00.00Z" title="Week 12: What the dreams say">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-12-960.jpg"
+      href="./photo/2014-12.jpg" />
+  </post>
 
   <post index="0642" date="16/03/2014" std-date="2014-03-16T23:30:00.00Z" title="Features for OpenGL 5 and Direct3D 12 hardware, 1/N">
     <meta>
