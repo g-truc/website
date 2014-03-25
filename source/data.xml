@@ -192,41 +192,111 @@
 
   </post-->
 
-  <draft index="0642" date="09/03/2014" std-date="2014-03-09T18:00:00.00Z" title="OpenGL 5 and Direct3D 12 hardware">
+  <draft index="0642" date="16/03/2014" std-date="2014-03-16T23:30:00.00Z" title="Features for OpenGL 5 and Direct3D 12 hardware, 2/N">
+    <meta>
+      <tag>gtc-tech-opengl-review</tag>
+    </meta>
+
+    <title>Blending</title>
+    <paragraph>
+      Programmable blending has been on the wish list of many graphics programmers There are three approaches: Through a per tile shader stage, through a new per pixel shader stage or by modifying the fragment shader stage.
+    </paragraph>
+    
+    <subtitle href="http://www.opengl.org/registry/specs/INTEL/fragment_shader_ordering.txt">GL_INTEL_fragment_shader_ordering</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/blend_minmax_factor.txt">GL_AMD_blend_minmax_factor</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/NV/blend_equation_advanced.txt">GL_NV_blend_equation_advanced</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <title>Rendering pipeline</title>
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/vertex_shader_layer.txt">GL_AMD_vertex_shader_layer</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/vertex_shader_viewport_index.txt">GL_AMD_vertex_shader_viewport_index</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/transform_feedback3_lines_triangles.txt">GL_AMD_transform_feedback3_lines_triangles</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+     <subtitle href="http://www.opengl.org/registry/specs/AMD/depth_clamp_separate.txt">GL_AMD_depth_clamp_separate</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <title>Stencil</title>
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/stencil_operation_extended.txt">GL_AMD_stencil_operation_extended</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/AMD/shader_stencil_export.txt">GL_AMD_shader_stencil_export</subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <title>Profiling</title>
+    <subtitle><link href="http://www.opengl.org/registry/specs/AMD/performance_monitor.txt">GL_AMD_performance_monitor</link>, <link href="http://www.opengl.org/registry/specs/INTEL/performance_query.txt">GL_INTEL_performance_query</link></subtitle>
+    <paragraph>
+
+    </paragraph>
+
+    <title>My personnal wish list</title>
+    <paragraph>
+
+    </paragraph>
+
+  </draft>
+
+  <post index="0642" date="16/03/2014" std-date="2014-03-16T23:30:00.00Z" title="Features for OpenGL 5 and Direct3D 12 hardware, 1/N">
     <meta>
       <tag>gtc-tech-opengl-review</tag>
     </meta>
 
     <paragraph>
-      The announcement of Mantle few months ago has triggered a lot of discussions about gragphis API design. I think there is technical issues in OpenGL but those are precise problems that needs to be solve individually and following the hardware designes.
+      The announcement of Mantle few months ago has triggered a lot of discussions about gragphis API design. I think there are technical issues in OpenGL but those are precise problems that needs to be solve individually and following the hardware designs.
       These redesigning an entier API might be fun, it is keeping marketing people buzy and <link href="https://www.youtube.com/watch?v=-bCeNzgiJ8I&amp;list=PLckFgM6dUP2hc4iy-IdKFtqR9TeZWMPjm">it makes OpenGL people communicating about how good is OpenGL</link>.
     </paragraph>
     <paragraph>
       What I like with Direct3D is that Microsoft was important enough to drive IHVs to standardize hardware features. The Khronos Group is certainly getting better at it, 
-      the <link href="http://www.opengl.org/registry/specs/KHR/texture_compression_astc_hdr.txt">ASTC texture format</link> is a good example as I expect this format will be supported on all mobile and desktop GPUs.
+      the <link href="http://www.opengl.org/registry/specs/KHR/texture_compression_astc_hdr.txt">ASTC texture format</link> is a good example as I expect this format will be supported on all mobile and desktop GPUs in the future. How strong is Microsoft these days? This is something we will be able to judge at GDC.
     </paragraph>
     <paragraph>
-      What's an OpenGL 5 hardware feature? Follwing the conversions for OpenGL 3 and OpenGL 4, it's any hardware feature that can't be implemented on all OpenGL 4 hardware but would be implementable on newer hardware of all IHVs.
+      What's an OpenGL 5 hardware feature? Following the conversions for OpenGL 3 and OpenGL 4, it's any hardware feature that can't be implemented on all OpenGL 4 hardware but would be implementable on newer hardware by all IHVs.
     </paragraph>
     <paragraph>
-      in this post I would like to point at hardware features available through OpenGL extensions that may or may not be interesting to standardize.
+      In this article I would like to point at hardware features available through OpenGL extensions and ideas that may or may not be interesting to standardize. As we will see, there is a lot of great features that could build this OpenGL 5 and Direct3D 12 hardware generation.
     </paragraph>
 
     <title>Draw submission</title>
     <subtitle href="http://www.opengl.org/registry/specs/ARB/multi_draw_indirect.txt">GL_ARB_multi_draw_indirect</subtitle>
     <paragraph>
       Multi draw indirect is part of OpenGL 4.3 core specification but it's arguably an OpenGL 5 hardware feature allowing the GPU to submit itself draws to be executed. This feature can be implemented through software emulation quite easily using the CPU to push each individual draw but this is really slow.
-      Currently, all the Intel GPU and AMD Evergreen support multi draw in software. 
+      Currently, all the Intel GPU and AMD Evergreen support multi draw in software. Hardware implementation gives another magnitude of performance.
     </paragraph>
     <paragraph>
-      With 800000 draws per frame at 60Hz on Kepler and 300000 draws per frame on Southern Islands with a syntheric test rendering 2 triangles per draw on 4 pixels. That huge amount of draws provide an amazing control of the rendering.
+      With 800000 draws per frame at 60Hz on Kepler and 300000 draws per frame on Southern Islands with a syntheric test rendering 2 triangles per draw on 4 pixels. That huge amount of draws provide an amazing control over the rendering.
     </paragraph>
 
     <subtitle href="http://www.opengl.org/registry/specs/ARB/shader_draw_parameters.txt">GL_ARB_shader_draw_parameters</subtitle>
     <paragraph>
       With OpenGL 4.3 we got shader storage buffers that we can use in place of vertex array object for programmable vertex pulling which allows for each single draw to use a custom vertex format.
       To make that approach really useful we were missing access of some useful draw arguments in the vertex shader stage. 
-      With this extension we get gl_BaseVertexARB and gl_BaseInstanceARB that reflect the draw arguments but also gl_DrawIDARB, an iquivalent of gl_InstanceID for draws.
+      With this extension we get gl_BaseVertexARB and gl_BaseInstanceARB that reflect the draw arguments but also gl_DrawIDARB, an equivalent of gl_InstanceID for draws.
     </paragraph>
     <paragraph>
       Only NVIDIA implements this extension at the moment but it should be implementable by Southern Island. However, the performance of gl_DrawIDARB are poor compared with a dedicated vertex attribute with divisor 1 and a BaseInstance.
@@ -250,14 +320,14 @@
       Taking advantage of this feature can save bandwidth avoiding duplicating vertex attributes.
     </paragraph>
     
-    <title>Textures</title>
+    <title>Resources</title>
     <subtitle href="http://www.opengl.org/registry/specs/ARB/bindless_texture.txt">GL_ARB_bindless_texture</subtitle>
     <paragraph>
       Bindless resources is a feature supported by Kepler and Southern Islands architechtures.
       When we bind a texture, the drivers write a texture descriptor in a special location in the GPU. 
-      The number of these special locations is fixed, 32 on Direct3D11 hardware.
+      The number of these special locations is fixed, 32 on OpenGL 4 / Direct3D11 hardware.
       With bindless textures we pass a handle (a pointer) directly to the shader stages. The shader invocations fetch and cache the texture descriptors.
-      This approach gives access to an unlimited number of textures but there is chances for texture descriptors cache miss so we need to keep access coherence which multi draw indirect and dynamically uniform expression provide.
+      This approach gives access to an unlimited number of textures but there is chances for texture descriptors cache miss so we need to keep access coherence which multi draw indirect and dynamically uniform expression can provide by design.
     </paragraph>
     <paragraph>
       With OpenGL 4.4 NVIDIA provides bindless buffers but this is still something that we need an ARB extensions for.
@@ -270,10 +340,10 @@
       <link href="http://www.opengl.org/registry/specs/AMD/sparse_texture.txt">AMD_sparse_texture</link> is more powerful as it adds shader queries to figure out in a shader invocation whether a texture page is commited or not.
     </paragraph>
     <paragraph>
-      There are quite some obvious features that would nice to have: The possibility to share the same texture tile for two texture pages without consuming twice the memory the support of actually giant textures.
+      There are quite some obvious features that would nice to have: The possibility to share the same texture tile for two texture pages without consuming twice the memory but also the support of actual giant textures.
       Sparse texture sizes are currently bound to the same limit than non-sparse textures. 16384 * 16384 for a 2D texture it's big but for a virtual texture, not really.
       Texture stiching could be an option for large virtual texture where we would use multiple texture 2D array layers and allow filtering accross these layers.
-      Lastly, supporting sparse shadow map would great and could simply a lot shadow rendering by using very high resolution shadow but allocated only where it matters.
+      Lastly, supporting sparse shadow map would be great and could simplify a lot the shadow rendering by using very high resolution shadow but allocated only where it matters.
       In <link href="http://www.opengl.org/registry/specs/ARB/sparse_texture.txt">ARB_sparse_texture</link>, this is only optional.
     </paragraph>
 
@@ -285,128 +355,122 @@
 
     <subtitle href="http://www.opengl.org/registry/specs/INTEL/map_texture.txt">GL_INTEL_map_texture</subtitle>
     <paragraph>
-      This feature allows to map the storage of a texture 2D just like we can do it with buffer.
+      This feature allows to map the storage of a texture 2D just like we can do it with a buffer.
       The extension supports linear and <link href="https://duckduckgo.com/Z-order_(curve)">tiled formats</link> however if this feature had to be standardize only
-      the linear storage could be supported accross GPUs but linear storage is really texture cache inefficient. Each GPU tile format is vendor specific so if we had to have that feature it would have to be standardize.
+      the linear storage could be supported accross current GPUs. However, linear storage is texture cache inefficient. Each GPU tile format is vendor specific so if we had to have that feature, the texture layout would have to be standardize.
     </paragraph>
 
     <subtitle href="http://www.opengl.org/registry/specs/ARB/seamless_cubemap_per_texture.txt">GL_ARB_seamless_cubemap_per_texture</subtitle>
     <paragraph>
       Seamless cube map filtering is a functionnality that is globally enabled. AMD Radeon HD 4000 introduced the possibility to toggle this feature for each cube map. 
-      Globally enabled seamless cube map is already not that useful but having that toggle for each cube map even less useful but Kepler added support for this feature.
+      Globally enabled seamless cube map is already not that useful but having that toggle for each cube map even less useful but Kepler added support for this feature as well. As least that per texture toggle works fine while the global toggle is clunky on all available OpenGL implementation.
     </paragraph>
 
-    <title>Blending</title>
-    <paragraph>
-      Programmable blending has been on the wish list of many graphics programmers There are three approaches: Through a per tile shader stage, through a new per pixel shader stage or by modifying the fragment shader stage.
-    </paragraph>
-    
-    <subtitle href="http://www.opengl.org/registry/specs/INTEL/fragment_shader_ordering.txt">GL_INTEL_fragment_shader_ordering</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/blend_minmax_factor.txt">GL_AMD_blend_minmax_factor</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/NV/blend_equation_advanced.txt">GL_NV_blend_equation_advanced</subtitle>
-    <paragraph>
-
-    </paragraph>
+	<subtitle>DMA engines</subtitle>
+	<paragraph>
+		NVIDIA Fermi and AMD Northen Islands have dedicated DMA engines that can live their lifes on their own. Hence a dedicated thread can could be in charge of streaming ressources because at some point the application figure out that they might become useful. During these transfers, the graphics engine can continue his life independently without any required synchronisation. Obviously, the transfers would have to be completed before using the resources but with enough anticipation we could need a synchronisation object only for the purpose of garantying correctness on all possible hardware but without actually hitting that fence.
+	</paragraph>
+	<paragraph>
+		Currently NVIDIA supports this behaviour but only by creating a separated context on a dedicated thread. This is workable but cumbersome and it costs thread safety pernalty for the entire OpenGL implementation.
+	</paragraph>
+	<paragraph>
+		An explicit use of the DMA engine for fully asynchronous transfers and performing transfer outside of the rendering code would be really nice to have.
+	</paragraph>
 
     <title>Shader operations</title>
 
     <subtitle href="http://www.opengl.org/registry/specs/ARB/shader_group_vote.txt">GL_ARB_shader_group_vote</subtitle>
     <paragraph>
+    	This extension is the first for a new kind of idea: "Maybe we can make per warp/wavefront decision or work".
+    	For example, let's say that we are rendering some objects but an area that we cover is actually blurry.
+    	Maybe, it isn't very usefull to use the nicest lighting equation for these pixel. If we make this decision per shader invocation we will trigger complex branching mechanisum.
+    	If we make this decision per wrap/wavefront we will trigger simple jump instructions keeping performance high.
+    </paragraph>
 
+    <subtitle href="http://www.opengl.org/registry/specs/NV/shader_thread_group.txt">GL_NV_shader_thread_group</subtitle>
+    <paragraph>
+    	This extension goes into the "super resolution" range of idea where we no long want to think at a fixed pixel resolutions but instead we want to think at higher or lower resolution than the native resolution. GPU doesn't actually excute anything on a per pixel or per vertex base but in many different kind of grouping. The warp/wavefront is the grouping for shader invocation and another famous one is the quadpixel, a set of 4 fragments. The texture LOD calculation is computed per quadpixel because it is very complex to compute anatically the derivatives required for the  texture LOD computation but it is really easy to compute within a quadpixel: It's only the different between the values across quadpixels.  
+    </paragraph>
+    <paragraph>
+    	This extension gives access to quadpixels allowing to swizzle the intermediate results accross each fragments. Let's say that fragment shader requires 4 texture sampling. 
+    	In some areas, we could consider that it is not that usefull to sample per fragment and we can deal will sampling per quadpixels. This feature should interact pretty well with 
+    	<link href="http://www.opengl.org/registry/specs/ARB/shader_group_vote.txt">GL_ARB_shader_group_vote</link>.
+    </paragraph>
+
+    <subtitle href="http://www.opengl.org/registry/specs/NV/shader_thread_shuffle.txt">GL_NV_shader_thread_shuffle</subtitle>
+    <paragraph>
+    	This extension extends <link href="http://www.opengl.org/registry/specs/NV/shader_thread_group.txt">GL_NV_shader_thread_group</link> to any of the shader invocations of a wrap/wavefront.
+    	It seems very likely that we could use <link href="http://www.opengl.org/registry/specs/NV/shader_thread_group.txt">GL_NV_shader_thread_group</link> on any GPU because all GPUs use quadpixels however, the warp/wavefront size is different for each GPU vendors. 32 for NVIDIA, 64 for AMD and variable for Intel, between 4 to 16 according to the cases. This feature sounds particularly useful for post processed antialiazing and maybe things like soft shadows. 
     </paragraph>
 
     <subtitle href="http://www.opengl.org/registry/specs/NV/shader_atomic_float.txt">GL_NV_shader_atomic_float</subtitle>
     <paragraph>
-
+    	This extension is simply extending add and exchange to float atomic operations.
     </paragraph>
 
     <subtitle href="http://www.opengl.org/registry/specs/AMD/shader_atomic_counter_ops.txt">GL_AMD_shader_atomic_counter_ops</subtitle>
     <paragraph>
-
+    	<link href="http://www.opengl.org/registry/specs/ARB/shader_atomic_counters.txt">ARB_shader_atomic_counters</link> and OpenGL 4.2 introduced the concept of atomic counter operations be those where limited to increment, decrement and query. AMD GPUs support these atomic operations in GDS memory which is faster than image and buffer atomic operations. However, 
+    	AMD GPUs support more atomic operations from GDS: Increment and decrement with wrap ; addition and subtraction ; minimum and maximum ; bitwise operators (AND, OR, XOR, etc.) ; masked OR operator ;
+    	exchange, and compare and exchange operators. <link href="http://www.opengl.org/registry/specs/AMD/shader_atomic_counter_ops.txt">GL_AMD_shader_atomic_counter_ops</link> exposes all these operations.
     </paragraph>
 
     <subtitle href="http://www.opengl.org/registry/specs/AMD/shader_trinary_minmax.txt">GL_AMD_shader_trinary_minmax</subtitle>
     <paragraph>
-
+    	AMD extends mix and max GLSL functions to take three arguments. It also provides mid3 function that returns the median value out of three values.
     </paragraph>
 
     <subtitle href="http://www.opengl.org/registry/specs/ARB/compute_variable_group_size.txt">GL_ARB_compute_variable_group_size</subtitle>
     <paragraph>
-
+    	One particularly annoying behaviour of AMD hardware is that the group size have to be known a compilation time. Hence, this is how OpenGL 4.3 specifies it.
+    	With <link href="http://www.opengl.org/registry/specs/ARB/compute_variable_group_size.txt">GL_ARB_compute_variable_group_size</link>, the ARB relax this behaviour howver this extension is only implemented by NVIDIA at the moment.
     </paragraph>
 
     <subtitle href="http://www.opengl.org/registry/specs/NV/vertex_attrib_integer_64bit.txt">GL_NV_vertex_attrib_integer_64bit</subtitle>
     <paragraph>
-
+    	GLSL is pretty limited in term of different types it supports: int, float, double (GL4). With its OpenGL 4 hardware, NVIDIA provides more storage types including 64 bit integers that can be use with vertex attributes.
     </paragraph>
 
     <subtitle href="http://www.opengl.org/registry/specs/NV/gpu_shader5.txt">GL_NV_gpu_shader5</subtitle>
     <paragraph>
-
+    	This extensions what release with Fermi GPUs. It offers many functionnalities that went to core specifications. However, one of the aspect of that specification is the large range of types it provides: 8, 16, 32 bits integers and half-precision floating point types.
     </paragraph>
 
     <title>Framebuffer</title>
-    <subtitle href="http://www.opengl.org/registry/specs/EXT/framebuffer_multisample_blit_scaled.txt">GL_EXT_framebuffer_multisample_blit_scaled</subtitle>
-    <paragraph>
-
-    </paragraph>
-
     <subtitle href="http://www.opengl.org/registry/specs/AMD/sample_positions.txt">GL_AMD_sample_positions</subtitle>
     <paragraph>
-
+    	Setting the sample positions is to me a very useful feature for post processing antialising but also for very high multisampled rendering with could be nice for text rendering for example.
     </paragraph>
 
-    <subtitle href="http://www.opengl.org/registry/specs/NV/multisample_coverage.txt">GL_NV_multisample_coverage</subtitle>
+    <subtitle href="http://www.opengl.org/registry/specs/EXT/framebuffer_multisample_blit_scaled.txt">GL_EXT_framebuffer_multisample_blit_scaled</subtitle>
     <paragraph>
-
+    	This extension is a collaboration between Apple and NVIDIA. It is obviously design to handle the high DPI screens. When calling glBlitFramebuffer to resolve a multisampled framebuffer, 
+    	the OpenGL implementation can resolve and scale the framebuffer.
     </paragraph>
 
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/depth_clamp_separate.txt">GL_AMD_depth_clamp_separate</subtitle>
+    <subtitle>
+    	<link href="http://www.opengl.org/registry/specs/NV/multisample_coverage.txt">GL_NV_multisample_coverage</link> and 
+    	<link href="http://www.opengl.org/registry/specs/NV/framebuffer_multisample_coverage.txt">GL_NV_framebuffer_multisample_coverage</link>
+    </subtitle>
     <paragraph>
-
+    	NVIDIA uses something call multisample coverage which allows to have coverage samples than color samplers. Hence, the implementation can adapted the multisampling according to the number of coverage samples covering the color sample. 
     </paragraph>
 
-    <title>Rendering pipeline</title>
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/vertex_shader_layer.txt">GL_AMD_vertex_shader_layer</subtitle>
     <paragraph>
-
+    	In the second party of this article, we will discuss the possibilities for blending, stencil, profiling, rendering pipeline and misc features. We will discuss the announcements at GDC if there is enough public information given away that I could discuss about revelant things. We will conclude by my personal wish list for OpenGL 5 and Direct3D 12 hardware class.
     </paragraph>
+  </post>
 
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/vertex_shader_viewport_index.txt">GL_AMD_vertex_shader_viewport_index</subtitle>
-    <paragraph>
+  <post index="0641" date="16/03/2014" std-date="2014-03-16T22:00:00.00Z" title="Week 11: La modernité dans la tradition">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
 
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/transform_feedback3_lines_triangles.txt">GL_AMD_transform_feedback3_lines_triangles</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <title>Stencil</title>
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/stencil_operation_extended.txt">GL_AMD_stencil_operation_extended</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/shader_stencil_export.txt">GL_AMD_shader_stencil_export</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <title>Profiling</title>
-    <subtitle><link href="http://www.opengl.org/registry/specs/AMD/performance_monitor.txt">GL_AMD_performance_monitor</link>, <link href="http://www.opengl.org/registry/specs/INTEL/performance_query.txt">GL_INTEL_performance_query</link></subtitle>
-    <paragraph>
-
-    </paragraph>
-  </draft>
+    <image
+      color="black"
+      img="./photo/2014-11-960.jpg"
+      href="./photo/2014-11.jpg" />
+  </post>
 
   <post index="0640" date="12/03/2014" std-date="2014-03-12T22:00:00.00Z" title="Week 10: Dancing">
     <meta>
