@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+
+  <download index="1170" date="29/03/2014" std-date="2014-03-29T00:30:00.00Z" type="gtc-tech-opengl-samples" title="OpenGL Samples Pack" short="OGL Samples" version="4.4.2.0">
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.2.0/ogl-samples-4.4.2.0.zip/download" type="ZIP" size="57.3 MB" />
+    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.2.0/ogl-samples-4.4.2.0.7z/download" type="7Z" size="28.8 MB" />
+  </download>
+
   <download index="1169" date="01/03/2014" std-date="2014-03-01T17:30:00.00Z" type="gtc-tech-project-openglpipeline" title="OpenGL Pipeline Map" short="OpenGL Pipeline Map" version="4.4">
     <item href="doc/OpenGL%204.4%20Pipeline%20Map.pdf" type="PDF" size="1.1 MB" />
     <item href="doc/OpenGL%204.4%20Pipeline%20Map.svg" type="SVG" size="1.1 MB" />

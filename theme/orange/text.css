@@ -223,8 +223,8 @@ div.post-image-white,
 div.post-image-black
 {
 	width:100%;
-	padding-top:32px;
-	padding-bottom:32px;
+	padding-top:0px;
+	padding-bottom:0px;
 	text-align:center;
 	margin-left:auto;
 	margin-right:auto;

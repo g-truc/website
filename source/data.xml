@@ -192,7 +192,7 @@
 
   </post-->
 
-  <draft index="0643" date="30/03/2014" std-date="2014-03-30T18:00:00.00Z" title="OpenGL 5 and Direct3D 12 hardware 2/N">
+  <draft index="0645" date="30/03/2014" std-date="2014-03-30T18:00:00.00Z" title="OpenGL 5 and Direct3D 12 hardware 2/N">
     <meta>
       <tag>gtc-tech-opengl-review</tag>
     </meta>
@@ -296,6 +296,100 @@
     </paragraph>
   </draft>
 
+  <post index="0644" date="29/03/2014" std-date="2014-03-29T16:30:00.00Z" title="OpenGL Samples Pack 4.4.2.0 released">
+    <meta>
+      <tag>gtc-tech-opengl-samples</tag>
+    </meta>
+    <paragraph>
+      The OpenGL Samples Pack 4.4.2.0 levarage the work on the new framework introduced in 4.4.1 by adding 26 new OpenGL samples.
+      They essentially focus on catching up with OpenGL 4.4, 4.3 and ARB extensions functionnalities.
+    </paragraph>
+
+    <list title="Release notes">
+      <entry>Added 'caps' samples for each version of OpenGL</entry>
+      <entry>Added in source build option</entry>
+      <entry>Added 440-texture-sparse-arb sample</entry>
+      <entry>Added 440-texture-cube-arb sample</entry>
+      <entry>Added 440-texture-bindless-arb sample</entry>
+      <entry>Added 440-shader-invocation-nv sample</entry>
+      <entry>Added 440-query-occlusion sample</entry>
+      <entry>Added 440-multi-draw-indirect-id-arb sample</entry>
+      <entry>Added 440-multi-draw-indirect-count-arb sample</entry>
+      <entry>Added 440-glsl-vote-arb sample</entry>
+      <entry>Added 440-fbo-without-attachment sample</entry>
+      <entry>Added 440-buffer-storage</entry>
+      <entry>Added 440-atomic-counter</entry>
+      <entry>Added 430-query-occlusion sample</entry>
+      <entry>Added 430-query-conditional sample</entry>
+      <entry>Fixed 430-multi-draw-indirect sample, alignment access in shader issue</entry>
+      <entry>Added 430-fbo-without-attachment sample</entry>
+      <entry>Added 430-fbo-invalidate sample</entry>
+      <entry>Added 400-texture-cube sample</entry>
+      <entry>Added 330-query-occlusion sample</entry>
+      <entry>Added 330-query-conditional sample</entry>
+      <entry>Added 320-primitive-line-msaa sample</entry>
+      <entry>Added 320-primitive-point-clip sample</entry>
+      <entry>Added 320-primitive-point-quad sample</entry>
+      <entry>Updated multiple samples to use shader storage buffer instead of VAOs</entry>
+      <entry>Updated multiple samples to use texture 2d array instead if texture 2d</entry>
+      <entry>Fixed FreeImage link issue</entry>
+    </list>
+
+    <title>A look at point rendering</title>
+    
+    <paragraph>
+      Point rendering with OpenGL is a mess. I don't know how it is with other APIs but that's something I'd like to get better.
+      The following screenshots are based on <codeword>gl-320-primitive-point-clip</codeword> sample but it produces pretty difference outputs for each vendors.
+    </paragraph>
+
+    <image title="AMD point rendering: The green point is clipped because its center went outside the window" color="white" img="./post/0644-amd-clip.png" href="./post/0644-amd-clip.png" />
+    <image title="Intel point rendering: The green point is clipped because its center went outside the window and the point size is clamp to it's maximum." color="white" img="./post/0644-intel-clip.png" href="./post/0644-intel-clip.png" />
+    <image title="NVIDIA point rendering: Render the three points with guard band clipping which is not a standard behaviour" color="white" img="./post/0644-nvidia-clip.png" href="./post/0644-nvidia-clip.png" />
+
+    <paragraph>
+      NVIDIA not following the specification is the only approach that really makes sense. Clipping at the point center leads to visible popping artifacts on the border of the window. This makes point rendering an unacceptable solution.
+    </paragraph>
+
+    <paragraph>
+      AMD, Intel and NVIDIA maximum point sizes is respectively 8192.0, 255.0, 2047.0 pixels. The drivers are pretty buggy with these as AMD, Intel and NVIDIA drivers report respectively 63.0, 20.0 and 189.875.
+      If we look at the code to query the point size, the fixed function queries return the numbers we can observe but the programmable query returns wrong numbers.
+    </paragraph>
+
+    <code title="Querying min and max point sizes:">
+      <line>
+        <comment>// Fixed function min point size, compatibility profile only:</comment>
+      </line>
+      <line>
+        glGetFloatv(GL_POINT_SIZE_MIN, &amp;POINT_SIZE_MIN);
+      </line>
+      <line>
+        glGetFloatv(GL_POINT_SIZE_MAX, &amp;POINT_SIZE_MAX);
+      </line>
+      <line></line>
+      <line>
+        <comment>// Programmable range point size, returns min and max in one query:</comment>
+      </line>
+      <line>
+        glGetFloatv(GL_POINT_SIZE_RANGE, &amp;POINT_SIZE_RANGE[0]); 
+      </line>
+   </code>
+
+    <paragraph>
+      One possible alternative is to use geometry shader to expand each point into a triangle strip so that each point is clip as a quad. 
+      This provides reliable rendering as we can see with <codeword>gl-320-primitive-point-quad</codeword> sample.
+      OpenGL ES doesn't support geometry shader but also specified a different clipping rule for points which is no clipping at all which effectively behaves like NVIDIA implementation.
+    </paragraph>
+
+    <image title="AMD point rendering through geometry shader expansion" color="white" img="./post/0644-amd-quad.png" href="./post/0644-amd-quad.png" />
+    <image title="Intel point rendering through geometry shader expansion" color="white" img="./post/0644-intel-quad.png" href="./post/0644-intel-quad.png" />
+    <image title="NVIDIA point rendering through geometry shader expansion" color="white" img="./post/0644-nvidia-quad.png" href="./post/0644-nvidia-quad.png" />
+
+    <source-list>
+      <source-download index="1170" />
+      <source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+    </source-list>
+  </post>
+
   <post index="0643" date="25/03/2014" std-date="2014-03-25T23:00:00.00Z" title="Week 12: What the dreams say">
     <meta>
       <tag>gtc-crea-photograph</tag>
@@ -387,7 +481,7 @@
     <paragraph>
       There are quite some obvious features that would nice to have: The possibility to share the same texture tile for two texture pages without consuming twice the memory but also the support of actual giant textures.
       Sparse texture sizes are currently bound to the same limit than non-sparse textures. 16384 * 16384 for a 2D texture it's big but for a virtual texture, not really.
-      Texture stiching could be an option for large virtual texture where we would use multiple texture 2D array layers and allow filtering accross these layers.
+      Texture stitching could be an option for large virtual texture where we would use multiple texture 2D array layers and allow filtering accross these layers.
       Lastly, supporting sparse shadow map would be great and could simplify a lot the shadow rendering by using very high resolution shadow but allocated only where it matters.
       In <link href="http://www.opengl.org/registry/specs/ARB/sparse_texture.txt">ARB_sparse_texture</link>, this is only optional.
     </paragraph>
@@ -411,16 +505,16 @@
       Globally enabled seamless cube map is already not that useful but having that toggle for each cube map even less useful but Kepler added support for this feature as well. As least that per texture toggle works fine while the global toggle is clunky on all available OpenGL implementation.
     </paragraph>
 
-	<subtitle>DMA engines</subtitle>
-	<paragraph>
-		NVIDIA Fermi and AMD Northen Islands have dedicated DMA engines that can live their lifes on their own. Hence a dedicated thread can could be in charge of streaming ressources because at some point the application figure out that they might become useful. During these transfers, the graphics engine can continue his life independently without any required synchronisation. Obviously, the transfers would have to be completed before using the resources but with enough anticipation we could need a synchronisation object only for the purpose of garantying correctness on all possible hardware but without actually hitting that fence.
-	</paragraph>
-	<paragraph>
-		Currently NVIDIA supports this behaviour but only by creating a separated context on a dedicated thread. This is workable but cumbersome and it costs thread safety pernalty for the entire OpenGL implementation.
-	</paragraph>
-	<paragraph>
-		An explicit use of the DMA engine for fully asynchronous transfers and performing transfer outside of the rendering code would be really nice to have.
-	</paragraph>
+    <subtitle>DMA engines</subtitle>
+    <paragraph>
+	    NVIDIA Fermi and AMD Northen Islands have dedicated DMA engines that can live their lifes on their own. Hence a dedicated thread can could be in charge of streaming ressources because at some point the application figure out that they might become useful. During these transfers, the graphics engine can continue his life independently without any required synchronisation. Obviously, the transfers would have to be completed before using the resources but with enough anticipation we could need a synchronisation object only for the purpose of garantying correctness on all possible hardware but without actually hitting that fence.
+    </paragraph>
+    <paragraph>
+	    Currently NVIDIA supports this behaviour but only by creating a separated context on a dedicated thread. This is workable but cumbersome and it costs thread safety pernalty for the entire OpenGL implementation.
+    </paragraph>
+    <paragraph>
+	    An explicit use of the DMA engine for fully asynchronous transfers and performing transfer outside of the rendering code would be really nice to have.
+    </paragraph>
 
     <title>Shader operations</title>
 
