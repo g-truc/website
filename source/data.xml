@@ -192,117 +192,16 @@
 
   </post-->
 
-  <draft index="0649" date="30/03/2014" std-date="2014-03-30T18:00:00.00Z" title="OpenGL 5 and Direct3D 12 hardware 2/N">
+  <post index="0648" date="15/04/2014" std-date="2014-04-15T23:30:00.00Z" title="Week 15: Little onces">
     <meta>
-      <tag>gtc-tech-opengl-review</tag>
+      <tag>gtc-crea-photograph</tag>
     </meta>
 
-    <title>Blending</title>
-    <paragraph>
-      Programmable blending has been on the wish list of many graphics programmers There are three approaches: Through a per tile shader stage, through a new per pixel shader stage or by modifying the fragment shader stage.
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/NV/texture_barrier.txt">GL_NV_texture_barrier</subtitle>
-    <paragraph>
-    	Texture barrier is an NVIDIA extensions but that extension has been implemented by all vendors (even Apple!).
-    	This extension was the very first step toward programmable blending allowing to read onces and write onces at the same pixel location within a fragment shader invocation.
-    </paragraph>
-
-    <subtitle href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_pixel_local_storage.txt">GL_EXT_pixel_local_storage</subtitle>
-    <paragraph>
-        Pixel local storage is the next big feature allowing programmable blending. For each fragment we can store some data, 
-    </paragraph>
-
-    <subtitle href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_framebuffer_fetch.txt">EXT_shader_framebuffer_fetch</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="https://www.khronos.org/registry/gles/extensions/ARM/ARM_shader_framebuffer_fetch_depth_stencil.txt">ARM_shader_framebuffer_fetch_depth_stencil</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/INTEL/fragment_shader_ordering.txt">GL_INTEL_fragment_shader_ordering</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/NV/blend_equation_advanced.txt">GL_KHR_blend_equation_advanced</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/blend_minmax_factor.txt">GL_AMD_blend_minmax_factor</subtitle>
-    <paragraph>
-
-    </paragraph>
-    
-    <title>Framebuffer</title>
-    <subtitle href="http://www.opengl.org/registry/specs/EXT/framebuffer_multisample_blit_scaled.txt">GL_EXT_framebuffer_multisample_blit_scaled</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/sample_positions.txt">GL_AMD_sample_positions</subtitle>
-    <paragraph>
-    	It allows to select the position of the samples when rendering to a multisample framebuffer.
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/NV/multisample_coverage.txt">GL_NV_multisample_coverage</subtitle>
-    <paragraph>
-    	Multisample coverage separates color/depth/stencil samples and coverage samples providing additional information about whether the sample is covered or not.
-    	This approach sounds like a very chip way to increase multisample quality.
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/depth_clamp_separate.txt">GL_AMD_depth_clamp_separate</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <title>Stencil</title>
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/stencil_operation_extended.txt">GL_AMD_stencil_operation_extended</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/shader_stencil_export.txt">GL_AMD_shader_stencil_export</subtitle>
-    <paragraph>
-
-    </paragraph>
-
-    <title>Rendering pipeline</title>
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/vertex_shader_layer.txt">GL_AMD_vertex_shader_layer</subtitle>
-    <paragraph>
-        OpenGL 3 hardware introduced layered rendering allowing to render each primitive to a different framebuffer attachment.
-        However, to levarge this functionnality, we need to use a geometry shader to specify gl_LayerID per generated primitive.
-        Using a geometry shader is not free on contrary of setting gl_LayerID. Following this reasoning, AMD published 
-        <link href="http://www.opengl.org/registry/specs/AMD/vertex_shader_layer.txt">AMD_vertex_shader_layer</link> which allows to set gl_LayerID in the vertex shader. Considering that mobile GPUs don't have a geometry shader, it would be particularly useful to use layered rendering.  
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/vertex_shader_viewport_index.txt">GL_AMD_vertex_shader_viewport_index</subtitle>
-    <paragraph>
-        This extension follows the same reasonning than <link href="http://www.opengl.org/registry/specs/AMD/vertex_shader_layer.txt">AMD_vertex_shader_layer</link>, enabling to chose the rendering view port gl_ViewportIndex from the vertex shader stage.
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/transform_feedback3_lines_triangles.txt">GL_AMD_transform_feedback3_lines_triangles</subtitle>
-    <paragraph>
-      With unextented OpenGL, the application can use multiple transform feedback streams but only the first stream can output primitives that are not points.
-      <link href="http://www.opengl.org/registry/specs/AMD/transform_feedback3_lines_triangles.txt">GL_AMD_transform_feedback3_lines_triangles</link> removes this restriction, any primitive can be generated to in any stream,
-    </paragraph>
-
-    <subtitle href="http://www.opengl.org/registry/specs/AMD/transform_feedback4.txt">GL_AMD_transform_feedback4</subtitle>
-    <paragraph>
-    	<link href="http://www.opengl.org/registry/specs/AMD/transform_feedback4.txt">GL_AMD_transform_feedback4</link> extends 
-    	<link href="http://www.opengl.org/registry/specs/AMD/transform_feedback3_lines_triangles.txt">GL_AMD_transform_feedback3_lines_triangles</link> so that each stream can be rendered in a single draw.
-    </paragraph>
-
-    <title>Profiling</title>
-    <subtitle><link href="http://www.opengl.org/registry/specs/AMD/performance_monitor.txt">GL_AMD_performance_monitor</link>, <link href="http://www.opengl.org/registry/specs/INTEL/performance_query.txt">GL_INTEL_performance_query</link></subtitle>
-    <paragraph>
-
-    </paragraph>
-  </draft>
+    <image
+      color="black"
+      img="./photo/2014-15-960.jpg"
+      href="./photo/2014-15.jpg" />
+  </post>
 
   <post index="0647" date="03/04/2014" std-date="2014-04-03T23:30:00.00Z" title="Week 14: I mean, Come On">
     <meta>
