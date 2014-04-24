@@ -192,6 +192,50 @@
 
   </post-->
 
+  <draft index="0651" date="26/04/2014" std-date="2014-04-26T23:30:00.00Z" title="Week 17: The eyes of the beholder">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-17-960.jpg"
+      href="./photo/2014-17.jpg" />
+  </draft>
+
+  <post index="0650" date="23/04/2014" std-date="2014-04-23T23:30:00.00Z" title="Week 16: Good old pal'">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-16-960.jpg"
+      href="./photo/2014-16.jpg" />
+  </post>
+
+  <post index="0649" date="23/04/2014" std-date="2014-04-23T23:00:00.00Z" title="OpenGL 3 hardware is going legacy, final extensions list">
+    <meta>
+      <tag>gtc-tech-project-openglmatrix</tag>
+    </meta>
+  
+    <paragraph>
+      <link href="http://nvidia.custhelp.com/app/answers/detail/a_id/3473">NVIDIA has announced that Forceware 340 series is the last to support OpenGL 3 hardware</link>. This implies that no more new OpenGL extension will ever be supported by NVIDIA OpenGL 3 hardware even if it could have been implemented. Thanks to NVIDIA commitment so far, the OpenGL 3 hardware implementation supports more than 60% of the OpenGL 4.4 extensions. NVIDIA had an amazing run with its OpenGL 3 hardware especially with the G80 that was in my opinion the most innovative and crazy GPU architecture ever released.
+    </paragraph>
+    <paragraph>
+    	<link href="http://www.anandtech.com/show/5775/amd-hd-2000-hd-3000-hd-4000-gpus-being-moved-to-legacy-status-in-may">AMD has give up on its OpenGL 3 hardware 2 years ago</link> already so that no OpenGL 4.4 or OpenGL 4.3 extension is supported. The convenient aspect is that by now <link href="http://stats.unity3d.com/pc/gpu.html">AMD OpenGL 3 hardware market share</link> is not significent which is less work for OpenGL programmers. I am not sure the users agree.
+    </paragraph>
+    <paragraph>
+    	The final report for the OpenGL 3 hardware supported extensions is available for download. We had a good run little beauties.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1172" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=503" title="glCapsViewer report for NVIDIA GeForce 8600 with 337.50" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=388" title="glCapsViewer report for AMD Radeon HD 4550 with Catalyst 13.9" />
+    </source-list>
+  </post>
+
   <post index="0648" date="15/04/2014" std-date="2014-04-15T23:30:00.00Z" title="Week 15: Little onces">
     <meta>
       <tag>gtc-crea-photograph</tag>

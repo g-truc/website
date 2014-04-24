@@ -2,6 +2,10 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
 
+  <download index="1172" date="23/04/2014" std-date="2014-04-23T23:00:00.00Z" type="gtc-tech-project-openglmatrix" title="OpenGL Matrix" short="OGL matrix" version="GL3 Final">
+    <item href="doc/OpenGL%20matrix%20GL3.pdf" type="PDF" size="477 KB" />
+  </download>
+
   <download index="1171" date="02/04/2014" std-date="2014-04-02T01:30:00.00Z" type="gtc-tech-project-glm" title="GLM" version="0.9.5.3">
     <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.5.3/glm-0.9.5.3.zip/download" type="ZIP" size="4.0 MB" />
     <item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.5.3/glm-0.9.5.3.7z/download" type="7Z" size="2.6 MB" />
