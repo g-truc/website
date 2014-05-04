@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+<g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
 
   <project index="0035" name="OpenGL Pipeline Map" short="OpenGL Pipeline Map" type="gtc-tech-project-openglpipeline" date-creation="01/08/2012">
     <text>
@@ -14,7 +14,7 @@
     </source-list>
   </project>
   
-  <project index="0034" name="OpenGL Matrix" short="OpenGL Hardware Matrix" type="gtc-tech-project-openglmatrix" date-creation="28/12/2012">
+  <project index="0034" name="OpenGL Hardware Matrix" short="OpenGL Matrix" type="gtc-tech-project-openglmatrix" date-creation="28/12/2012">
     <text>
       <paragraph>
         List the extensions exposed by OpenGL implementations.
@@ -22,7 +22,7 @@
     </text>
   </project>
 
-  <project index="0033" name="OpenGL Status" short="OpenGL Drivers Status" type="gtc-tech-project-openglstatus" date-creation="28/12/2012">
+  <project index="0033" name="OpenGL Drivers Status" short="OpenGL Status" type="gtc-tech-project-openglstatus" date-creation="28/12/2012">
     <text>
       <paragraph>
         OpenGL status published on G-Truc Creation. By testing OpenGL implementations against The OpenGL Samples Pack 

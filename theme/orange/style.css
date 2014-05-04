@@ -286,7 +286,7 @@ span.post-frame-list
     padding-bottom:16px;
     margin:0px;
     margin-right:0px;
-	width:680px;
+	width:660px;
 	min-height:800px;
 }
 
@@ -294,6 +294,8 @@ ul.post-frame-menu
 {
 	display:inline-block;
 	float:right;
+
+	background-color:#FFF0F8;
 
 	border-top-color:#000000;
 	border-top-style:solid;
@@ -303,7 +305,7 @@ ul.post-frame-menu
 	padding:32px;
 	padding-bottom:16px;
     margin:0px;
-	width:192px;
+	width:212px;
 	
 	min-height:800px;
 }

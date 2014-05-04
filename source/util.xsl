@@ -170,8 +170,6 @@
 
   <xsl:template match="source-element">
     <li xmlns="http://www.w3.org/1999/xhtml">
-      <xsl:value-of select="./@type"/>
-      <xsl:text>: </xsl:text>
       <a href="{./@href}">
         <xsl:value-of select="./@title"/>
       </a>
@@ -184,14 +182,23 @@
     <xsl:param name="Project" select="document($FILE_PROJ)/g-truc/project[@type=$Download/@type]" />
 
     <li xmlns="http://www.w3.org/1999/xhtml">
-      <xsl:text>Download: </xsl:text>
       <a href="{concat($URL_PROJ_TOKEN, $Project/@index, $URL_HTML_TOKEN, $ANCHOR_MENU_LINK)}">
-        <xsl:value-of select="$Project/@name" />
+        <xsl:choose>
+          <xsl:when test="$Download/@title">
+            <xsl:value-of select="$Download/@title" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$Project/@name" />
+            <xsl:if test="$Download/@version">
+              <xsl:text> </xsl:text>
+              <a href="{$Download/item[1]/@href}">
+                  <xsl:value-of select="$Download/@version" />
+              </a>
+            </xsl:if>
+          </xsl:otherwise>
+        </xsl:choose>
       </a>
-      <xsl:text> </xsl:text>
-      <a href="{$Download/item[1]/@href}">
-          <xsl:value-of select="$Download/@version" />
-      </a>
+      <xsl:text>: </xsl:text>
       <xsl:for-each select="$Download/item">
         <xsl:text> (</xsl:text>
         <a href="{./@href}">
