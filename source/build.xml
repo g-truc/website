@@ -9,6 +9,7 @@
   	</command>
 	<command out="../info.html" xsl="page-info.xsl" xml="data.xml" />
 	<command out="../search.html" xsl="page-search.xsl" xml="data.xml" />
+	<command out="../doc.html" xsl="page-doc.xsl" xml="download.xml" />
 
 	<!-- desktop post type -->
 	<command-type post-id="posts">

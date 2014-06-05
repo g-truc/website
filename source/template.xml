@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.0.3">
+<g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
 
   <!-- about -->
   <about>
@@ -124,9 +124,6 @@
   </item>
   <item level="2" name="gtc-tech-devel-book" parent="gtc-tech-devel" title="Books">
     <address type="main" url="post-devel-book.html" processor="page-post-list.xsl" />
-  </item>
-  <item level="2" name="gtc-tech-devel-hardware" parent="gtc-tech-devel" title="Hardware">
-    <address type="main" url="post-devel-hardware.html" processor="page-post-list.xsl" />
   </item>
   <item level="2" name="gtc-tech-devel-documentation" parent="gtc-tech-devel" title="Documentation">
     <address type="main" url="post-devel-documentation.html" processor="page-post-list.xsl" />
