@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.0">
+<g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
 	<command out="../index.html" xsl="page-index.xsl" xml="data.xml">
     	<param name="filter" value="'gtc-tech'" />
 	</command>

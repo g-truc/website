@@ -2,9 +2,14 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
 
-  <download index="1174" date="05/05/2014" std-date="2014-05-05T23:00:00.00Z" type="gtc-tech-project-openglmatrix" version="May 2014">
-    <item href="doc/OpenGL%20matrix%202014-02.pdf" type="PDF" size="442 KB" />
-    <item href="doc/OpenGL%20matrix.xlsx" type="XLSX" size="295 KB" />
+  <download index="1175" date="05/05/2014" std-date="2014-05-05T23:00:00.00Z" type="gtc-tech-project-openglmatrix" version="May 2014">
+    <item href="doc/OpenGL%204%20Hardware%20Matrix%202014-05.pdf" type="PDF" size="481 KB" />
+    <item href="doc/OpenGL%204%20Hardware%20Matrix.xlsx" type="XLSX" size="296 KB" />
+  </download>
+
+  <download index="1174" date="12/05/2014" std-date="2014-05-12T03:00:00.00Z" doc="true" type="gtc-tech-project-openglstatus"  version="May 2014">
+    <item href="doc/OpenGL%20status%202014-05.pdf" type="PDF" size="371 KB" />
+    <item href="doc/OpenGL%20status.xlsx" type="XLSX" size="211 KB" />
   </download>
 
   <download index="1173" date="05/05/2014" std-date="2014-05-05T23:00:00.00Z" doc="true" title="Candidate features for OpenGL 5 / D3D12 hardware">
@@ -12,7 +17,7 @@
   </download>
 
   <download index="1172" date="23/04/2014" std-date="2014-04-23T23:00:00.00Z" doc="true" type="gtc-tech-project-openglmatrix" title="OpenGL 3 Hardware Matrix">
-    <item href="doc/OpenGL%20matrix%20GL3.pdf" type="PDF" size="477 KB" />
+    <item href="doc/OpenGL%203%20Hardware%20Matrix.pdf" type="PDF" size="477 KB" />
   </download>
 
   <download index="1171" date="02/04/2014" std-date="2014-04-02T01:30:00.00Z" type="gtc-tech-project-glm" title="GLM 0.9.5.3" version="0.9.5.3">

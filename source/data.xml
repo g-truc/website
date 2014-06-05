@@ -192,28 +192,98 @@
 
   </post-->
 
-  <draft index="0660" date="XX/05/2014" std-date="2014-05-XXT23:00:00.00Z" title="May 2014 OpenGL Hardware Matrix">
+  <post index="0658" date="23/05/2014" std-date="2014-05-23T23:30:00.00Z" title="Week 20: L'aigle noir">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-20-960.jpg"
+      href="./photo/2014-20.jpg" />
+  </post>
+
+  <post index="0657" date="15/05/2014" std-date="2014-05-15T23:00:00.00Z" title="May 2014 OpenGL hardware matrix">
     <meta>
       <tag>gtc-tech-project-openglmatrix</tag>
     </meta>
   
     <paragraph>
-
+      The OpenGL hardware matrix, that lists the exposed extensions by OpenGL implementations, has been updated.
     </paragraph>
     <paragraph>
-
+      Since the previous report, AMD, Intel on Windows and Intel on Linux have published implementations exposing 
+      <link href="http://www.opengl.org/registry/specs/ARB/buffer_storage.txt">ARB_buffer_storage</link>. Only MacOSX doesn't support it.
+    </paragraph>
+    <paragraph>
+      This reports also shows multi vendors and vendors extensions exposed by Mesa. DXTC texture formats are supported via extensions 
+      but without online compression support which I don't think OpenGL should support anyway.
     </paragraph>
  
     <source-list>
-      <source-download index="1173" />
-      <source-element type="Link" href="http://www.g-truc.net/project-0034.html#menu" title="All the OpenGL Hardware Matrix" />
-      <source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=499" title="glCapsViewer report 
-        for AMD Radeon HD 7700 with Catalyst 14.4 rc" />
-      <source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=472" title="glCapsViewer report 
-        for Intel HD Graphics 4600 with 3496" />
-      <source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=486" title="glCapsViewer report for NVIDIA GeForce GTX 680 with 337.50" />
+      <source-download index="1175" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=499" title="glCapsViewer report for AMD Catalyst 14.4 rc" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=521" title="glCapsViewer report for Intel HD Graphics 10.18.10.3574" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=524" title="glCapsViewer report for NVIDIA Forceware 337.67 beta" />
     </source-list>  
-  </draft>
+  </post>
+
+  <post index="0656" date="13/05/2014" std-date="2014-05-13T01:30:00.00Z" title="Week 19: A little bit of peace">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-19-960.jpg"
+      href="./photo/2014-19.jpg" />
+  </post>
+
+  <post index="0655" date="12/05/2014" std-date="2014-05-12T23:00:00.00Z" title="May 2014 OpenGL drivers status">
+    <meta>
+      <tag>gtc-tech-project-openglstatus</tag>
+    </meta>
+
+    <paragraph>
+      The main new element of this OpenGL drivers status is the introduction of the open source Mesa drivers for Intel GPUs on Linux.
+    </paragraph>
+    <paragraph>
+      Outside of the amazingness of the initiative, we can't really say that the quality is here. The overall level of quality just based on the OpenGL samples is below the other implementation but it's remain close. Particularly, the geometry shader is not usable with Mesa.
+    </paragraph>
+    <paragraph>
+      Only OpenGL 3.2 and OpenGL 3.3 samples are tested but Mesa supports even some OpenGL 4.4 features. The issue is that Mesa is essentially making progress on a per-extension base not on a per-version base which doesn't match how the OpenGL samples are written.
+    </paragraph>
+    <paragraph>
+      I definitely need to study more the Mesa implementation and I actually have a strong desire to build my own from source and maybe implement some stuff for fun if I manage to find the time.
+    </paragraph>
+    <paragraph>
+      Despite the mix results, it's still better than what I was expected and considering the evolution of the software ecosystem, it will pay off eventually. I would not be surprise if the implementation had a better feature set support than Apple already (There is <link href="http://www.opengl.org/registry/specs/KHR/debug.txt">KHR_debug</link> support and it's working fine!). Quality will follow and performance... it's too early to say.
+    </paragraph>
+    <paragraph>
+      The other main evolution since the previous OpenGL drivers status is the released by AMD of OpenGL 4.4 drivers. 
+      The OpenGL 4.4 features are pretty broken up but the rest of the drivers recieved serious bugs fixing.
+    </paragraph>
+
+    <image title="OpenGL samples passing on available implementations"
+      color="white"
+      img="./post/0655.png"
+      href="./doc/OpenGL%20status%202014-05.pdf" />
+
+    <paragraph>
+      I can't exclude that there isn't bug in the samples, so don't hesitate to <link href="https://github.com/g-truc/ogl-samples/issues?state=open">open an issue</link>.
+    </paragraph>
+
+    <source-list>
+      <source-download index="1174" />
+      <source-element type="Download" href="https://github.com/g-truc/ogl-samples/archive/4.4.3.zip" title="OpenGL Samples 4.4.3 stagging" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=499" title="glCapsViewer report for AMD Catalyst 14.4 rc" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=521" title="glCapsViewer report for Intel HD Graphics 10.18.10.3574" />
+      <source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=524" title="glCapsViewer report for NVIDIA Forceware 337.67 beta" />
+      <source-element type="Link" href="http://www.guru3d.com/files_details/amd_catalyst_14_1_beta_1_6_%2813_350_1005_january_31%29.html" title="Download page for AMD Catalyst" />
+      <source-element type="Link" href="http://www.station-drivers.com/index.php/downloads/Drivers/Intel/Gpus/HD--and--Iris-Graphics/Intel-HD--and--Iris-Graphics-Drivers-Version-15.33.20.64.3574-WHQL/" title="Download page for Intel HD Graphics 10.18.10.3574" />
+      <source-element type="Link" href="http://www.guru3d.com/files_details/geforce_337_61_beta_download.html" title="Download page for NVIDIA Forceware" />
+    </source-list>
+  </post>
 
   <post index="0654" date="04/05/2014" std-date="2014-05-04T00:30:00.00Z" title="OpenGL supports of Sandy Bridge">
     <meta>
