@@ -10,102 +10,7 @@
   <!--post-list picture="20090722.jpg" comment="Mankind legacy"-->
   <!--post-list picture="20090812.jpg" comment="Flavors and the secret ingredient"-->
 
-  <post index="0700" date="01/06/2014" std-date="2014-06-01T01:00:00.00Z" title="OpenGL rants to Limbo">
-    <meta>
-      <tag>gtc-tech-project-openglstatus</tag>
-    </meta>
-    
-    <paragraph>
-      I enjoyed the link made on tweeter between the OpenGL rants of rants with the movie Inception. 
-      There is a value in these rants because they all have something true in them but the approach is pretty much trying to solve an over-complicated issue with an over-complicated method which Inception is a perfect embodiement.
-    </paragraph>
-
-    <subtitle>L'amour est plus proche de la haine que de l'indifference.</subtitle>
-
-    <paragraph>
-      The simple fact that OpenGL rants are popping up like flowers in springs is a great sign: OpenGL is relevant for some contexts, some people needs to use it.
-
-    </paragraph>
-
-
-    <subtitle>L'amour est plus proche the la haine que de l'indifference.</subtitle>
-
-    <paragraph>
-      I considered adding Mesa but I am not sure I got working correctly Mesa 10.1 with the last Intel drivers resulting in basically no sample running... 
-      I tested Debian 7.3, Ubuntu 13.10 and Mint 16 but there are all stock to Mesa 9.2, hence OpenGL 3.1 support.
-      Unfortunately, the OpenGL Samples Pack requires OpenGL 3.2.
-      Updating Mesa and drivers is far less trivial than on Windows and I am not exactly a Linux user so I expect I messed up somewhere.
-      I really hope I manage to get this working for the next OpenGL status, it would be interesting data to have.
-    </paragraph>
-    <paragraph>
-      Apple OpenGL implementation hasn't been updated seen last report, let's hope MacOSX 10.9.1 fixes the new features.
-      OpenGL 3.2 is okish, but outside of that it's not great.
-    </paragraph>
-    <paragraph>
-      I can't exclude that there isn't bug in the samples, so don't hesitate to <link href="https://github.com/g-truc/ogl-samples/issues?state=open">open an issue</link>.
-    </paragraph>
-
-    <image title="OpenGL samples passing on available implementations"
-      color="white"
-      img="./post/0634-status.png"
-      href="./doc/OpenGL%20status%202014-02.pdf" />
-
-    <subtitle>OpenGL extensions exposed</subtitle>
-
-    <paragraph>
-      No change for NVIDIA that has already full support of OpenGL 4.4 and the driver isn't exposing new proprierary features.
-    </paragraph>
-
-    <paragraph>
-      AMD implementation has 7 new extensions including five OpenGL 4.4 onces.
-      The big chunk for OpenGL 4.4 is <link href="http://www.opengl.org/registry/specs/ARB/buffer_storage.txt">ARB_buffer_storage</link> but this extension remains to be implemented.
-    </paragraph>
-
-    <paragraph>
-      Intel implementation added 8 new extensions. Intel is still missing 10 extensions to complete their OpenGL 4.3 implementation.
-      Intel has focussed their efforts on the most complex OpenGL 4.3 extensions so I am still pretty confident that we will have get OpenGL 4.3 by Siggraph 2014.
-    </paragraph>
-    
-    <paragraph>
-      The most impressive jump in extensions exposed comes from Mesa implementation that added 10 new extensions. Mesa coverage is quite sparse as it supports some features of OpenGL 4.4 bug OpenGL 4.0 coverage isn't completed.
-      Mesa is missing some pretty major OpenGL 4.0 extensions: 
-      <link href="http://www.opengl.org/registry/specs/ARB/tessellation_shader.txt">ARB_tessellation_shader</link>, 
-      <link href="http://www.opengl.org/registry/specs/ARB/shader_subroutine.txt">ARB_shader_subroutine</link>, 
-      <link href="http://www.opengl.org/registry/specs/ARB/gpu_shader5.txt">ARB_gpu_shader5</link> and 
-      <link href="http://www.opengl.org/registry/specs/ARB/gpu_shader_fp64.txt">ARB_gpu_shader_fp64</link>. 
-      Out of this set, I probably only really care about <link href="http://www.opengl.org/registry/specs/ARB/gpu_shader5.txt">ARB_gpu_shader5</link>
-      for <link href="http://www.opengl.org/sdk/docs/man/html/interpolateAtCentroid.xhtml">interpolateAtCentroid</link>,
-      <link href="http://www.opengl.org/sdk/docs/man/html/interpolateAtOffset.xhtml">interpolateAtOffset</link> and
-      <link href="http://www.opengl.org/sdk/docs/man/html/interpolateAtSample.xhtml">interpolateAtSample</link> functions. The integer functions are also pretty useful and the
-      <link href="http://www.opengl.org/sdk/docs/man/html/textureGather.xhtml">textureGather</link> too. 
-      
-      Sadly, Linux distributions are stocked to Mesa 9.2 with only OpenGL 3.1 supports.
-    </paragraph>
-    
-    <image title="OpenGL features exposed by GPU architechtures for February 2014 status"
-      color="white"
-      img="./post/0634-matrix.png"
-      href="./doc/OpenGL%20matrix%202014-02.pdf" />
-
-    <paragraph>
-      Once again, don't forget to contribute to the OpenGL community by <link href="post-0430.html#menu">reporting your bugs</link>!
-    </paragraph>
-
-    <source-list>
-      <source-download index="1166" />
-      <source-download index="1165" />
-      <source-download index="1167" />
-      <source-element type="Download" href="https://github.com/g-truc/ogl-samples/archive/4.4.1.zip" title="OpenGL Samples 4.4.1 stagging" />
-      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=441" title="glCapsViewer report for AMD Catalyst 14.1 beta 1" />
-      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=431" title="glCapsViewer report for Intel HD Graphics 10.18.10.3380" />
-      <source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=389" title="glCapsViewer report for NVIDIA Forceware 334.89" />
-      <source-element type="Link" href="http://www.guru3d.com/files_details/amd_catalyst_14_1_beta_1_6_%2813_350_1005_january_31%29.html" title="Download page for AMD Catalyst" />
-      <source-element type="Link" href="http://alldrivers.ucoz.net/news/intel_hd_iris_graphics_drivers_version_15_36_0_3380_alpha/2014-01-27-287" title="Download page for Intel HD Graphics 10.18.10.3325" />
-      <source-element type="Link" href="http://www.guru3d.com/files_details/geforce_334_89_whql_driver_download.html" title="Download page for NVIDIA Forceware" />
-    </source-list>
-  </post>
-
-  <draft index="0998" date="23/08/2010" std-date="2010-08-23T23:30:00.00Z" title="16 tools free for download">
+   <draft index="0998" date="23/08/2010" std-date="2010-08-23T23:30:00.00Z" title="16 tools free for download">
     <meta>
       <tag>gtc-tech-devel-tool</tag>
     </meta>
@@ -286,6 +191,61 @@
     </paragraph>
 
   </post-->
+
+  <post index="0661" date="21/06/2014" std-date="2014-06-21T18:30:00.00Z" title="Week 22: The moon">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-22-960.jpg"
+      href="./photo/2014-22.jpg" />
+  </post>
+  
+  <post index="0660" date="21/06/2014" std-date="2014-06-21T18:30:00.00Z"  title="GLM 0.9.5.4 released">
+    <meta>
+      <tag>gtc-tech-project-glm</tag>
+    </meta>
+
+    <list title="Changelog:">
+      <entry>Added GTX_io for io with 'iostream' #144</entry>
+      <entry>Added FindGLM install for CMake #189</entry>
+      <entry>Optimized quaternion vector rotation #205</entry>
+      <entry>Fixed non-utf8 character #196</entry>
+      <entry>Fixed GTX_color_space - saturation #195</entry>
+      <entry>Fixed glm::isinf and glm::isnan for with Android NDK 9d #191</entry>
+      <entry>Fixed builtin GLM_ARCH_SSE4 #204</entry>
+      <entry>Fixed missing doxygen @endcond tag #211</entry>
+      <entry>Fixed instruction set detection with Clang #158</entry>
+      <entry>Fixed orientate3 function #207</entry>
+      <entry>Fixed lerp when cosTheta is close to 1 in quaternion slerp #210</entry>
+      <entry>Fixed fastDistance ambiguity #215</entry>
+      <entry>Fixed tweakedInfinitePerspective #208 and added user-defined epsilon to tweakedInfinitePerspective</entry>
+      <entry>Fixed std::copy and std::vector with GLM types #214</entry>
+      <entry>Fixed strict aliasing issues #212, #152</entry>
+      <entry>Fixed std::nextafter not supported with C++11 on Android #213</entry>
+      <entry>Fixed corner cases in exp and log functions for quaternions #199</entry>
+    </list>
+
+    <source-list>
+      <source-download index="1176" />
+      <source-element type="Link" href="http://glm.g-truc.net/0.9.5/glm-0.9.5.pdf" title="GLM 0.9.5 manual" />
+      <source-element type="Link" href="http://glm.g-truc.net/0.9.5/api/index.html" title="GLM 0.9.5 api documentation" />
+      <source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+    </source-list>
+  </post>
+
+  <post index="0659" date="12/06/2014" std-date="2014-06-12T23:30:00.00Z" title="Week 21: Un petit coin bucolique">
+    <meta>
+      <tag>gtc-crea-photograph</tag>
+    </meta>
+
+    <image
+      color="black"
+      img="./photo/2014-21-960.jpg"
+      href="./photo/2014-21.jpg" />
+  </post>
 
   <post index="0658" date="23/05/2014" std-date="2014-05-23T23:30:00.00Z" title="Week 20: L'aigle noir">
     <meta>
