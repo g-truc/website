@@ -58,7 +58,7 @@
       <tag>gtc-tech-devel-cpp</tag>
     </meta>
     <paragraph>
-      When I through the fact that I like C++ and the STL, too many people tells: "STL is wrong it fragment memory". To what I answer, "use the right tool for the right purpose". What to I mean by that? It's not STL that fragment memory it's the way it's used, if we write are own code and we are still using the wrong method, we will still fragment memory. When I see the quality of code out there, I much prefer a well documented and specified implementation, perfectly scrafted by compiler authors both both performance and robustness. 
+      When I through the fact that I like C++ and the STL, too many people tells: "STL is wrong it fragment memory". To what I answer, "use the right tool for the right purpose". What to I mean by that? It's not STL that fragment memory it's the way it's used, if we write are own code and we are still using the wrong method, we will still fragment memory. When I see the quality of code out there, I much prefer a well documented and specified implementation, perfectly crafted by compiler authors both both performance and robustness. 
     </paragraph>
     <paragraph>
       What's memory fragmentation? Why it's a problem and what's the domain of validity of that problem?
@@ -67,7 +67,7 @@
       Memory fragmentation definition 
     </quote>
     <paragraph>
-      Conscequences of memory fragmentation involves 
+      Consequences of memory fragmentation involves 
     </paragraph>  
     <paragraph>
        The software, the OS and the CPU hardware.
@@ -86,22 +86,22 @@
   
     <paragraph>
       It seems to me that C++ 11 encounters some resistances which very often (always?) aren't justify. 
-      For example many programers fear the STL but I believe for reasons that are not legitimate anymore, for example regarding the quality of actual implementation. 
+      For example many programmers fear the STL but I believe for reasons that are not legitimate anymore, for example regarding the quality of actual implementation. 
       I am sorry but it we use a current GCC, Clang or Visual C++ STL implementation we get very well performing STL implementations.
     </paragraph>
     
     <paragraph>
-      In this post I am going to present my 5 favorite C++ 11 features which does what we should expect from C++ 11, that is to say providing new contructs allowing to write 
-      more efficient, more robust and more simplier code.  
+      In this post I am going to present my 5 favorite C++ 11 features which does what we should expect from C++ 11, that is to say providing new constructs allowing to write 
+      more efficient, more robust and more simpler code.  
     </paragraph>
     
-    <title>Delegated contructors</title>
+    <title>Delegated constructors</title>
     <paragraph>
-      A wrong approach in programming is to duplicate some code because as soon as we change the behaviour of one version of the code we might forget to update the other versions.
+      A wrong approach in programming is to duplicate some code because as soon as we change the behavior of one version of the code we might forget to update the other versions.
       Sadly, sometimes C++ 98 force us to duplicate code and this is the case of constructors. 
-      I like to program using small classes without hierarchies avoiding getters and setters as much as possible so that all the classe need to be used is to be created using one of its constructors.
-      Unfortunately, as soon as we create multiple contructors we will be duplicating some code to initialise class members. A workaround could be to use a shared initialization function but that strategy will have 
-      a cost as member variables will be contructed before being initialized resulting in wasteful and costly data movements. Fortunatly, C++ 11 provides delecated contructors to resolve this issue, allowing to call an existing constructor from another contructor.
+      I like to program using small classes without hierarchies avoiding getters and setters as much as possible so that all the class need to be used is to be created using one of its constructors.
+      Unfortunately, as soon as we create multiple constructors we will be duplicating some code to initialize class members. A workaround could be to use a shared initialization function but that strategy will have 
+      a cost as member variables will be constructed before being initialized resulting in wasteful and costly data movements. Fortunately, C++ 11 provides delegated constructors to resolve this issue, allowing to call an existing constructor from another constructor.
     </paragraph>
   </draft>
 
@@ -192,17 +192,358 @@
 
   </post-->
 
-  <post index="0661" date="21/06/2014" std-date="2014-06-21T18:30:00.00Z" title="Week 22: The moon">
-    <meta>
-      <tag>gtc-crea-photograph</tag>
-    </meta>
+	<post index="0666" date="06/07/2014" std-date="2014-07-06T23:30:00.00Z" title="The minimum number of triangles per draw call">
+		<meta><tag>gtc-tech-opengl-tips</tag></meta>
 
-    <image
-      color="black"
-      img="./photo/2014-22-960.jpg"
-      href="./photo/2014-22.jpg" />
-  </post>
-  
+		<paragraph>
+			Graphics programmers use 'batching' as a common performance guide line. 'Batching' is often understood as regrouping multiple draw calls into a single draw call. This is supposed to imply that a draw call is expensive and by reducing the numbers of draw call we linearly increase the performance. This vision is not correct and it doesn't reflect how GPUs work.
+		</paragraph>
+
+		<paragraph>
+			Batching has a performance benefit essentially because of the regrouping of buffers and textures data into larger resources.
+			What's expensive about a draw call is the possible driver validation that a draw call may trigger but validation will happen only if states have changed. By regrouping resources we can avoid as many driver validations.
+		</paragraph>
+
+		<paragraph>
+			In this post, we are looking at the GPU draw call performance. We are studying the minimum number of triangles per draw call that can be submitted before we reach a different and lower performing hardware bottleneck. We are working using a tight loop (a draw call loop without state changes) so that we are not triggering driver validations for each draw.
+		</paragraph>
+
+		<code title="Example of a tight loop:">
+			<line>
+				for(std::size_t i = 0; i &lt; VertexCount; i += 6 * this->TrianglePairPerTile / this->DrawPerTile)
+			</line>
+			<line>
+				{
+			</line>
+			<line align="32px">
+				glDrawArraysInstanced(GL_TRIANGLES,
+			</line>
+			<line align="64px">static_cast&lt;GLint&gt;(i),</line>
+			<line align="64px">static_cast&lt;GLsizei&gt;(6 * this->TrianglePairPerTile / this->DrawPerTile),</line>
+			<line align="64px">1);</line>
+			<line align="0px">
+				}
+			</line>
+		</code>
+
+		<paragraph>
+			Using a tight loop, we can slice the rendering of a mesh and add fine grain culling in the draw calls loop without triggering any driver work. As usual with culling, we are improving the GPU efficiency by avoiding GPU overhead of not visible triangles.
+		</paragraph>
+
+		<subtitle>Minimum triangle count per draw call per graphics card</subtitle>
+
+		<image title="Identify the minimum number of triangle per draw per GPU. X: Number of triangles per draw call. Y: Relative rendering time to 1024 per draw case." color="white" img="./post/0665-1.png" href="./post/0665-1.png" />
+
+		<paragraph>
+			It is very important not to jump too quickly into conclusions with the previous graph. We should not compare the lines against each others as the given results are relative to each card.
+		</paragraph>
+		<paragraph>
+			First, the minimum number of triangles per draw on NVIDIA GPU is 16 triangles per draw since Fermi (GTX 470) and it was 8 triangles per draw on GeForce 8. Second on Intel, reducing the minimum number of triangles per draw start to have an impact from lower than 256 triangles per draw. However, the performance impact becomes significant only from 32 triangles per draw on Ivy Bridge (HD 4000) and 16 triangles per draw on Haswell (HD 4600). On AMD, at first it appears to be a little more random: 256 triangles per draw is a good number to keep in the back of the head but on HD 7750 we can go as far as 64 triangles per draw. On a HD 4550, it's 16 triangles per draw.
+		</paragraph>
+		<paragraph>
+			To make sure that we are not CPU bound, I made an experiment with the HD 4000, the R7 260X and the GTX 750 on an Ivy Bridge 3770K running at 2.8 GHz and 3.8 GHz.
+			On both cases, I had the same performance results. In these tests, we are GPU bound somewhere.
+		</paragraph>
+		<paragraph>
+			Next we are having a closer look at the results using the absolute numbers per vendor as we can expect some correlation between GPU generations per vendor.
+		</paragraph>
+
+		<subtitle>AMD architectures behavior against small triangle count per draw call</subtitle>
+
+		<image title="Triangles per draw per AMD GPU absolute performance. X: Number of triangles per draw call. Y: Absolute rendering time to 1024 per draw case in ms." color="white" img="./post/0665-5B.png" href="./post/0665-5B.png" />
+
+		<paragraph>
+			First, either AMD made significant hardware changes between the Radeon HD 4000 series to the Radeon HD 5000 series or we are observing a drivers bug. Either way, the effective draw call performance of the Radeon HD 4000 series is particularly bad even compared with the older GeForce 8 series.
+		</paragraph>
+		<paragraph>
+			The results between the Radeon HD 7750 and the Radeon R7 260X are particularly interesting. They follow nearly the same curve except that the R7 260X is faster.
+			First, it can be partially explained by the fact that the HD 7750 is clocked at 800 MHz and the R7 260X is clocked at 1100 MHz which is a 137% relative different in frequency. Interestingly, this performance difference is the same difference we observe between the two chips at 32 and 64 triangles per draw.
+			Then, between 16 to 2 triangles per draw, the performance gap is reducing which either means that we are under-utilizing a parallelized hardware block which might be the same or a different one than in the 32 to 64 range.
+			Finally, the range between 128 to 1024 shows a nearly constant performance difference of 265% between the cards that is twice 137%. This can be explained by an architecture difference: <link href="http://www.hardware.fr/articles/890-2/bonaire-gcn-1-1-hsa.html">The Radeon HD 7750 (S.I. Verde) produces 1 triangle per clock where the Radeon R7 260X (C.I. Bonaire) produces 2 triangles per clock</link>.
+		</paragraph>
+		<paragraph>
+			We can conclude that on Bonaire, Pitcain and Tahiti, chips that all supports 2 triangles per clock, we can benefit of the higher primitive rate only if we submit more triangles per draw. Hawaii supports 4 triangles per clock but it's a V.I. chip so hopefully AMD fixed that behavior in the hardware design. Unfortunately, I don't have access to a Hawaii chip.
+		</paragraph>
+		<paragraph>
+			AMD has significantly improved the primitive rate on its GPUs, however they haven't changed sibling blocks which results in pretty bad triangles per draw performance compared with other desktop vendors.
+		</paragraph>
+		<paragraph>
+			We can reach the primitive rate on AMD architectures from 256 triangles per draw call as a worse case.
+		</paragraph>
+
+		<subtitle>NVIDIA architectures behavior against small triangle count per draw call</subtitle>
+
+		<image title="Triangles per draw per NVIDIA GPU absolute performance. X: Number of triangles per draw call. Y: Absolute rendering time to 1024 per draw case in ms." color="white" img="./post/0665-4B.png" href="./post/0665-4B.png" />
+
+		<paragraph>
+			When it comes to draw call performance, NVIDIA GPUs are very pleasing. 16 triangles per draw is just fine. On old GeForce 8 architecture, 8 triangles per draw is fine too but this might only be because the primitive rate was a lot lower than on current hardware. Just like for AMD GPUs, we observe the convergence of performance between GPUs when the triangles per draw call count is getting too small.
+		</paragraph>
+
+		<paragraph>
+			The performance from 16 to 1024 triangles per draw can be explained by the primitive rate performance of each GPU:
+			<link href="http://www.hardware.fr/articles/916-5/performances-theoriques-geometrie.html">4 triangles per cycle on the GTX 680 and 1.67 triangles per cycle on the GTX 750</link>.
+			I haven't find a source for it, however it seems that the GeForce GTX 470 supports 2 triangles per cycle. It looks like the GeForce 8 was capable of less than a triangle per clock, probably 0.5 triangle per clock on the GeForce 8800 GT.
+		</paragraph>
+
+		<paragraph>
+			We can reach the primitive rate on NVIDIA architectures from 16 triangles per draw call on all GPUs.
+		</paragraph>
+
+		<subtitle>Intel architectures behavior against small triangle count per draw call</subtitle>
+
+		<image title="Triangles per draw per Intel GPU absolute performance. X: Number of triangles per draw call. Y: Absolute rendering time to 1024 per draw case in ms." color="white" img="./post/0665-3B.png" href="./post/0665-3B.png" />
+
+		<paragraph>
+			Intel GPUs primitive rate performance are pretty low despite Ivy Bridge being clocked at 1150 MHz and Haswell being clocked at 1250 MHz. It looks like that Haswell primitive rate is lower than Ivy Bridge so that I expect that the primitive rates for Ivy Bridge and Haswell is respectively 0.5 and 0.33.
+		</paragraph>
+		<paragraph>
+			The lower primitive rate performance of Haswell compared with Ivy Bridge remains quite suspicious to me. This could be a case where the GPU is not running full speed because the performance states haven't been triggered for it. Without any feedback in the OpenGL API to detect these cases, I can't confirm or not this hypothesis.
+		</paragraph>
+		<paragraph>
+			The primitive rate is pretty bad but it looks like that some hardware blocks have been improved as Haswell is more efficient for low triangles counts per draw case than Ivy Bridge.
+		</paragraph>
+
+		<paragraph>
+			We can reach the primitive rate on Intel architectures from 32 triangles per draw call as a worse case. On Haswell, we can use 16 triangles per draw call.
+		</paragraph>
+
+		<subtitle>Conclusions</subtitle>
+
+		<list title="Minimum triangles per draw:">
+			<entry>32 triangles per draw on Intel architectures</entry>
+			<entry>16 triangles per draw on NVIDIA architectures</entry>
+			<entry>256 triangles per draw on AMD architectures</entry>
+		</list>
+
+		<paragraph>
+			On my previous study on <link href="post-0662.html#menu">small triangles</link>, I concluded that a good target per triangle is to cover at least 8 by 8 pixels.
+			Thanks to the results on the minimum number of triangles per draw and the minimum number of pixels per draw,
+			we can conclude on the minimum tile size that a draw needs to cover. This could be useful to do efficient coherent screenspace rendering.
+		</paragraph>
+
+		<list title="Minimum tile size per draw:">
+			<entry>64*32 tiles per draw on Intel architectures</entry>
+			<entry>32*32 tiles per draw on NVIDIA architectures</entry>
+			<entry>128*128 tiles per draw on AMD architectures</entry>
+		</list>
+
+		<paragraph>
+			Finally, we can visualize the primitive rate performance and compare these results between GPUs.
+		</paragraph>
+
+		<image title="Comparing the primitive rate of different GPUs using 1024 triangle per draw call. Absolute rendering time in ms." color="white" img="./post/0665-7.png" href="./post/0665-7.png" />
+
+		<paragraph>
+			The source for these tests (test_draw_call) in available in the master branch staging of the <link href="http://www.g-truc.net/project-0026.html#menu">OpenGL Samples Pack</link> in the 'micro' project.
+		</paragraph>
+
+		<source-list>
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/archive/master.zip" title="OpenGL Samples Pack staging" />
+			<source-download index="1177" />
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues?state=open" title="Submit a bug report" />
+		</source-list>
+	</post>
+
+	<post index="0665" date="11/07/2014" std-date="2014-07-11T23:30:00.00Z" title="Week 25: Küken too">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-25-960.jpg" href="./photo/2014-25.jpg" />
+	</post>
+
+	<post index="0664" date="06/07/2014" std-date="2014-07-06T23:30:00.00Z" title="Week 24: Küken">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-24-960.jpg" href="./photo/2014-24.jpg" />
+	</post>
+
+	<post index="0663" date="25/06/2014" std-date="2014-06-25T18:30:00.00Z" title="Week 23: Palácio Nacional da Pena">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-23-960.jpg" href="./photo/2014-23.jpg" />
+	</post>
+
+	<post index="0662" date="25/06/2014" std-date="2014-06-25T23:30:00.00Z" title="How bad are small triangles on GPU and why?">
+		<meta><tag>gtc-tech-opengl-tips</tag></meta>
+
+		<paragraph>
+			Small triangles is bad for performance and this is not something new. In this post, we are just looking at some numbers to quantity these bad performance.
+		</paragraph>
+
+		<paragraph>
+			We are using a simple scenario where the framebuffer is filled with tiles of variable sizes, each tile being composed of two triangles
+			and no tile is overlapping another. The vertex shader only transform the vertices and the fragment shader is a pass through shader.
+			This scenario could be seen as a best case scenario, if not best, it's close to a best case. Nevertheless, the results show horrifying performances on small triangles.
+		</paragraph>
+
+		<paragraph>
+			Following, two images showing examples of rendering used for these tests.
+		</paragraph>
+
+		<image title="Example of rendering test using 8*8 tiles"
+			color="white" img="./post/0662-5.png" href="./post/0662-5.png" />
+
+		<image title="Example of rendering test using 1*1 tiles"
+			color="white" img="./post/0662-4.png" href="./post/0662-4.png" />
+
+		<subtitle>First test with squared tile sizes and a full frame tile</subtitle>
+
+		<paragraph>
+			In a first test, we are filling a 1080p framebuffer using tiles from 1 by 1 to 128 by 128 and even using a single pair of triangle to fill the entire framebuffer.
+			(Going that way, a single triangle makes better sense for the hardware but it was enough for illustrate our scenario).
+		</paragraph>
+
+		<image title="Filling a 1080p framebuffer with tiles using a triangle pair to cover each tile. Relative rendering time to 128*128 tile sizes."
+			color="white" img="./post/0662-1.png" href="./post/0662-1.png" />
+
+		<paragraph>
+			The first conclusion is that filling the framebuffer with anything larger than 16 by 16 tiles have no effect on the GPU performance for any desktop vendors at least for the primitive rasterization/fixed function point of view.
+		</paragraph>
+
+		<paragraph>
+			The primitive minimum size in pixels is pretty much the same for all vendors.
+			Covering 8 by 8 pixels with two triangles starts to have a significant impact on performances but it's still acceptable as not a performance cliff.
+		</paragraph>
+
+		<paragraph>
+			Interestingly, Southern Islands seems to be the least affected architecture by 8 by 8 pixel tiles.
+			Beyond that point, Southern Islands architecture performance cliff-ed faster than the others architectures.
+		</paragraph>
+
+		<paragraph>
+			Haswell behaves the best with small triangles. "The best" is still a performance cliff as basically Haswell, Kepler and Southern Islands are about 10x, 15x, 20x slower than optimal performance respectively.
+		</paragraph>
+
+		<subtitle>Does the shape of the triangles really matters?</subtitle>
+
+		<image title="Filling a 1080p framebuffer with non squared 256 pixel tiles using a triangle pair to cover each tile."
+			color="white" img="./post/0662-2.png" href="./post/0662-2.png" />
+
+		<paragraph>
+			Yes, the shape matters but the good new is that equilateral triangles is generally better for all vendors.
+		</paragraph>
+
+		<paragraph>
+			It's funny how different are the performance characteristics between 256 by 1 and 1 by 256 for example. However, this is nothing really surprising considering the
+			<link href="http://www.g-truc.net/post-0597.html#menu">rasterization patterns of the GPU architectures</link> that is obviously not designed to be somewhat anisotropic.
+		</paragraph>
+
+		<image title="Example of rendering using 32*2 tiles for non squared tiles"
+			color="white" img="./post/0662-6.png" href="./post/0662-6.png" />
+
+		<subtitle>What about sub-pixel triangles?</subtitle>
+
+		<image title="Filling a 320*240 framebuffer with sub-pixel tiles."
+			color="white" img="./post/0662-3.png" href="./post/0662-3.png" />
+
+		<paragraph>
+			It's only getting worse! In this test the framebuffer size is only 320 by 240 because at 1080p implementations would all time out at 0.25 by 0.25 or 0.125 * 0.125 tile sizes.
+		</paragraph>
+
+		<subtitle>The performance cliff is exponential</subtitle>
+
+		<image title="Filling a 640x480 framebuffer with tiles using a triangle pair to cover each tile. X: Tile sizes, Y: Relative log10 rendering time to 128*128 tile size"
+			color="white" img="./post/0662-9.png" href="./post/0662-9.png" />
+
+		<paragraph>
+			This last drawing is to highlight that the performance cliff is about exponential.
+		</paragraph>
+
+		<subtitle>Conclusion</subtitle>
+
+		<paragraph>
+			Why such performance cliff? Because GPUs work at varius granularities that is always larger than 1x pixels.
+		</paragraph>
+
+		<paragraph>
+			First, there is the quadpixels (block of 2 by 2 pixels) that are used to compute the derivatives.
+			The derivatives are used for the explicit fragment shader derivatives but also to select the correct mipmaps while filtering as shown in the following code that can be wired in the texture units.
+		</paragraph>
+
+		<code title="Calculating texture lod with derivatives:">
+			<line>
+				float textureLevel(in sampler2D Sampler, in vec2 Texcoord)
+			</line>
+			<line>
+				{
+			</line>
+			<line align="32px">
+				vec2 TextureSize = vec2(textureSize(Sampler, 0));
+			</line>
+			<line align="32px"></line>
+			<line align="32px">
+				float LevelCount = max(log2(TextureSize.x), log2(TextureSize.y));
+			</line>
+			<line align="32px"></line>
+			<line align="32px"><comment>// Access neighbour values within the quadpixels to return the derivative</comment></line>
+			<line align="32px">
+				vec2 dx = dFdx(Texcoord * TextureSize);
+			</line>
+			<line align="32px"><comment>// Access neighbour values within the quadpixels to return the derivative</comment></line>
+			<line align="32px">
+				vec2 dy = dFdy(Texcoord * TextureSize);
+			</line>
+			<line align="32px">
+				float d = max(dot(dx, dx), dot(dy, dy));
+			</line>
+			<line align="32px"></line>
+			<line align="32px">
+				d = clamp(d, 1.0, pow(2, (LevelCount - 1) * 2));
+			</line>
+			<line></line>
+			<line align="32px">
+				return 0.5 * log2(d);
+			</line>
+			<line>
+				}
+			</line>
+		</code>
+
+		<paragraph>
+			Equally important or even more important: the primitive rate.
+			For example, <link href="http://en.wikipedia.org/wiki/Radeon_HD_7000_Series">Tahiti</link> is capable to process two triangles per clock.
+			However, each triangle is effectively sliced into multiple primitives within 8 by 8 pixel tiles.
+			If a triangle overlap two tiles, the triangle requires two primitives.
+			If a triangle overlap only a single pixel, then the budget for the other pixels in the 8 by 8 tile is wasted as only a single primitive can be scanned per cycle per tile.
+		</paragraph>
+
+		<image title="A triangle is contained with a 8 by 8 pixels block, it consumes 1 primitive"
+			color="white" img="./post/0662-C.png" href="./post/0662-C.png" />
+
+		<image title="A triangle covers only a single pixel, it still consumes 1 primitive"
+			color="white" img="./post/0662-D.png" href="./post/0662-D.png" />
+
+		<image title="Two triangles are contained without the 8 by 8 pixels blocks, they consume 1 primitive each"
+			color="white" img="./post/0662-E.png" href="./post/0662-E.png" />
+
+		<image title="A triangle overlaps two 8 by 8 pixels blocks, it consumes 2 primitives"
+			color="white" img="./post/0662-B.png" href="./post/0662-B.png" />
+
+		<image title="A triangle overlaps four 8 by 8 pixels blocks, it consumes 4 primitives"
+			color="white" img="./post/0662-A.png" href="./post/0662-A.png" />
+
+		<paragraph>
+			Considering these numbers, the felling that tessellation is the biggest waste of GPU area space since the geometry shader might be a little too quick.
+			It's a waste because engines don't really use tessellation however it provides an effective way to control the size of the primitives on screen.
+			Is the current OpenGL 4 / D3D11 hardware tessellation good enough? I don't have that answer.
+		</paragraph>
+
+		<paragraph>
+			In the meantime, if we want some good primitive performances, let's set the minimum target to about 8 by 8 pixels per triangles on screen.
+		</paragraph>
+
+		<paragraph>
+			The source for these tests in available in the staging of the <link href="http://www.g-truc.net/project-0026.html#menu">OpenGL Samples Pack</link> 4.4.3 branch.
+		</paragraph>
+
+		<source-list>
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/tree/4.4.3" title="OpenGL Samples Pack 4.4.3 staging" />
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues?state=open" title="Submit a bug report" />
+		</source-list>
+	</post>
+
+	<post index="0661" date="21/06/2014" std-date="2014-06-21T18:30:00.00Z" title="Week 22: The moon">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+
+		<image color="black" img="./photo/2014-22-960.jpg" href="./photo/2014-22.jpg" />
+	</post>
+
   <post index="0660" date="21/06/2014" std-date="2014-06-21T18:30:00.00Z"  title="GLM 0.9.5.4 released">
     <meta>
       <tag>gtc-tech-project-glm</tag>
@@ -316,7 +657,7 @@
     </paragraph>
     <paragraph>
       The other main evolution since the previous OpenGL drivers status is the released by AMD of OpenGL 4.4 drivers. 
-      The OpenGL 4.4 features are pretty broken up but the rest of the drivers recieved serious bugs fixing.
+      The OpenGL 4.4 features are pretty broken up but the rest of the drivers received serious bugs fixing.
     </paragraph>
 
     <image title="OpenGL samples passing on available implementations"
@@ -377,7 +718,7 @@
       href="./photo/2014-18.jpg" />
   </post>
 
-  <post index="0652" date="03/05/2013" std-date="2014-05-03T23:30:00.00Z" title="Candidate features for OpenGL 5 / D3D12 hardware">
+  <post index="0652" date="03/05/2014" std-date="2014-05-03T23:30:00.00Z" title="Candidate features for OpenGL 5 / D3D12 hardware">
     <meta>
       <tag>gtc-tech-opengl-tips</tag>
     </meta>
@@ -422,7 +763,7 @@
       <link href="http://nvidia.custhelp.com/app/answers/detail/a_id/3473">NVIDIA has announced that Forceware 340 series is the last to support OpenGL 3 hardware</link>. This implies that no more new OpenGL extension will ever be supported by NVIDIA OpenGL 3 hardware even if it could have been implemented. Thanks to NVIDIA commitment so far, the OpenGL 3 hardware implementation supports more than 60% of the OpenGL 4.4 extensions. NVIDIA had an amazing run with its OpenGL 3 hardware especially with the G80 that was in my opinion the most innovative and crazy GPU architecture ever released.
     </paragraph>
     <paragraph>
-    	<link href="http://www.anandtech.com/show/5775/amd-hd-2000-hd-3000-hd-4000-gpus-being-moved-to-legacy-status-in-may">AMD has give up on its OpenGL 3 hardware 2 years ago</link> already so that no OpenGL 4.4 or OpenGL 4.3 extension is supported. The convenient aspect is that by now <link href="http://stats.unity3d.com/pc/gpu.html">AMD OpenGL 3 hardware market share</link> is not significent which is less work for OpenGL programmers. I am not sure the users agree.
+    	<link href="http://www.anandtech.com/show/5775/amd-hd-2000-hd-3000-hd-4000-gpus-being-moved-to-legacy-status-in-may">AMD has give up on its OpenGL 3 hardware 2 years ago</link> already so that no OpenGL 4.4 or OpenGL 4.3 extension is supported. The convenient aspect is that by now <link href="http://stats.unity3d.com/pc/gpu.html">AMD OpenGL 3 hardware market share</link> is not significant which is less work for OpenGL programmers. I am not sure the users agree.
     </paragraph>
     <paragraph>
     	The final report for the OpenGL 3 hardware supported extensions is available for download. We had a good run little beauties.
@@ -501,8 +842,8 @@
       <tag>gtc-tech-opengl-samples</tag>
     </meta>
     <paragraph>
-      The OpenGL Samples Pack 4.4.2.0 levarage the work on the new framework introduced in 4.4.1 by adding 26 new OpenGL samples.
-      They essentially focus on catching up with OpenGL 4.4, 4.3 and ARB extensions functionnalities.
+      The OpenGL Samples Pack 4.4.2.0 leverage the work on the new framework introduced in 4.4.1 by adding 26 new OpenGL samples.
+      They essentially focus on catching up with OpenGL 4.4, 4.3 and ARB extensions functionalities.
     </paragraph>
 
     <list title="Release notes">
@@ -652,7 +993,7 @@
     </meta>
 
     <paragraph>
-      I recieved a request for a vectorial version of the OpenGL Pipeline Maps to be able to print it in A0 size or bigger.
+      I received a request for a vectorial version of the OpenGL Pipeline Maps to be able to print it in A0 size or bigger.
     </paragraph>
     <paragraph>
       It turns out that I could expert in SVG 
@@ -687,7 +1028,7 @@
       19 on AMD implementation, 12 on Intel implementation and 13 on Apple implementation.
     </paragraph>
     <paragraph>
-      At this point, it seems that essentially the remaining issues in NVIDIA driver is non standard behaviour supported by the OpenGL implementation.
+      At this point, it seems that essentially the remaining issues in NVIDIA driver is non standard behavior supported by the OpenGL implementation.
       I haven't spent much time on OpenGL 4.4 and OpenGL 4.3 so I wouldn't be surprised if there are more issues with this feature.
       Micro benchmarking also show really reliable level of performance.
     </paragraph>
@@ -714,7 +1055,7 @@
     <subtitle>OpenGL extensions exposed</subtitle>
 
     <paragraph>
-      No change for NVIDIA that has already full support of OpenGL 4.4 and the driver isn't exposing new proprierary features.
+      No change for NVIDIA that has already full support of OpenGL 4.4 and the driver isn't exposing new proprietary features.
     </paragraph>
 
     <paragraph>
@@ -724,7 +1065,7 @@
 
     <paragraph>
       Intel implementation added 8 new extensions. Intel is still missing 10 extensions to complete their OpenGL 4.3 implementation.
-      Intel has focussed their efforts on the most complex OpenGL 4.3 extensions so I am still pretty confident that we will have get OpenGL 4.3 by Siggraph 2014.
+      Intel has focused their efforts on the most complex OpenGL 4.3 extensions so I am still pretty confident that we will have get OpenGL 4.3 by Siggraph 2014.
     </paragraph>
     
     <paragraph>
@@ -782,7 +1123,7 @@
       The OpenGL Samples Pack 4.4.1.2 fixes Linux and MacOSX support and adds image templates for MacOS X for the automated tests.
     </paragraph>
     <paragraph>
-      Furthermore, there is one behaviour change. Before, when we compiled the samples, the shaders and textures were copied into the build directory. Now, the resources are accessed from the source directory.
+      Furthermore, there is one behavior change. Before, when we compiled the samples, the shaders and textures were copied into the build directory. Now, the resources are accessed from the source directory.
     </paragraph>
 
     <source-list>
@@ -823,7 +1164,7 @@
       It still appears that Mantle requires less functions. With a closer look we see that Mantle
       use state objects to group rasterizer, viewport, depth test states.
       State objects are a idea because every hardware vendor would want different packing but also because every single OpenGL program
-      would use different packing. To write an efficient OpenGL renderer we need to consider the update frequences and move every operations at the lower update rate possible.
+      would use different packing. To write an efficient OpenGL renderer we need to consider the update frequencies and move every operations at the lower update rate possible.
       Packing states is requiring to update more often states that should not have change hence adding CPU overhead.
       So no thank you but I prefer to have no state object.
       However, what worked for me in the past (about 2007) was to use display lists to create immutable state objects that matched my program needs.
@@ -1269,7 +1610,7 @@
       Angles expressed in radians are features coming from GLSL where all the angles are expressed in radians and angles expressed in degrees are features coming from OpenGL compatibility profile.
     </paragraph>
     <paragraph>
-      GLM provides the define <codeword>GLM_FORCE_RADIANS</codeword> to enfore all the angles to be radians. GLM 0.9.5 deprecates degrees so that in GLM 0.9.6 those will be removed.
+      GLM provides the define <codeword>GLM_FORCE_RADIANS</codeword> to enforce all the angles to be radians. GLM 0.9.5 deprecates degrees so that in GLM 0.9.6 those will be removed.
       Starting with GLM 0.9.5.1, warnings will be prompt for each instance of usage degrees. This is designed to help transitioning user code.
       Defining <codeword>GLM_FORCE_RADIANS</codeword> will quiet these messages.
     </paragraph>
@@ -1388,14 +1729,14 @@
 
     <paragraph>
       GLM 0.9.5 is a pretty disruptive new branch due to ideas aiming at making GLM more robust. 
-      GLM being largely used by now, the purpose of this provitional release is to ensure that it won't be too disruptive for the community when comes the final release.
+      GLM being largely used by now, the purpose of this provisional release is to ensure that it won't be too disruptive for the community when comes the final release.
     </paragraph>
 
     <title>Replacing half based types by packing functions</title>
 
     <paragraph>
       First, GLM 0.9.5 removes the <codeword>hvec*</codeword> and the <codeword>hmat*</codeword> types. 
-      Half floats are usefuls but those types are the wrong abstraction because they let use believe that half floats are native types while they are not.
+      Half floats are useful but those types are the wrong abstraction because they let use believe that half floats are native types while they are not.
       For example, we can perform an addition between two hvec4 but the underlying implementation will simply convert each component to float, do the addition and convert back to half.
       There is probably better approach to do this addition, there is just none that will be as fast as if that instruction what supported by the CPUs.
       As a replacement, GLM 0.9.5 provides functions to explicitly perform the conversion from float to half and half to float with the functions 
@@ -1445,7 +1786,7 @@
     <paragraph>
       The problem with header only library is that they increase the compilation time of a program. 
       One of the reason for not enabling the swizzle operators by default is that it generates a lot of code. 
-      A good strategy to avoid running in compilation time issues is to ensure that the code isn't a spageti plate, and relying on forward declarations.
+      A good strategy to avoid running in compilation time issues is to ensure that the code isn't a spaghetti plate, and relying on forward declarations.
       GLM 0.9.5 provides <codeword>glm/fwd.hpp</codeword> with a complete set of GLM types forward declarations. 
     </paragraph>
 
@@ -1937,7 +2278,7 @@
       href="./post/0597.png" />
 
     <paragraph>
-      The rasterization is performed on Haswell by scanning the primitives top to bottom from right to left, then left to right on corse gain tile of 16 by 16 pixels. This is surprizingly the same behaviour than Kepler.
+      The rasterization is performed on Haswell by scanning the primitives top to bottom from right to left, then left to right on coarse gain tile of 16 by 16 pixels. This is surprisingly the same behavior than Kepler.
       As a comparison, Southern Islands is very different. It is scanning 512*32 pixel bands in which 8 by 8 pixel tiles are scheduled in Z-order as long as the assigned CUs/ALUs are available.
     </paragraph>
     <paragraph>
@@ -1945,10 +2286,10 @@
       Hence, the wavefront/warp size is 8 invocations. As a comparison, Kepler works using 4 by 8 pixel vertical blocks (wrap: 32 invocations) and Southern Islands uses 8 by 8 pixel blocks (wavefront: 64 invocations) where the pixels are executed in Z-order.
     </paragraph>
     <paragraph>
-      Finally, Haswell seems to rely on a synchronious architechture, at coarse and fine granularity. The rendering doesn't show any long delay for specific tiles. 
-      This is either because the architechture is very synchronized so it never has to wait, or it doesn't delay the execution of blocks and systematically wait for atomic results. My guess is that it waits that means pretty bad atomic counter performance in my opinion.
-      On Kepler, the architechture is capable of handling very long latences between coarse grain blocks. With Fermi, it was more extreme, we could even expect that the first coarse tile could be completed last!
-      On Southern Islands, this latence appears shorter but it might be because Southern Islands architechture has a Global Data Store (GDS) so that synchronization of atomic doesn't have to be done down to the memory.
+      Finally, Haswell seems to rely on a synchronous architecture, at coarse and fine granularity. The rendering doesn't show any long delay for specific tiles. 
+      This is either because the architecture is very synchronized so it never has to wait, or it doesn't delay the execution of blocks and systematically wait for atomic results. My guess is that it waits that means pretty bad atomic counter performance in my opinion.
+      On Kepler, the architecture is capable of handling very long latencies between coarse grain blocks. With Fermi, it was more extreme, we could even expect that the first coarse tile could be completed last!
+      On Southern Islands, this latency appears shorter but it might be because Southern Islands architecture has a Global Data Store (GDS) so that synchronization of atomic doesn't have to be done down to the memory.
     </paragraph>
 
     <image title="Kepler's 'rasterization pattern'" 
@@ -2029,7 +2370,7 @@
       Trying to catch up with my delays, I have released the <link href="post-0589.html">OpenGL Samples Pack 4.4.0.0</link> too quickly. It resulted in many issues that the new 4.4.0.1 release is mostly fixing.
     </paragraph>
     <paragraph>
-      Unfortunatly, some Linux issues remain. If someone is interested to maintain the Linux port, I'll be glade! ;)
+      Unfortunately, some Linux issues remain. If someone is interested to maintain the Linux port, I'll be glade! ;)
     </paragraph>
     <paragraph>
       I have updated September 2013 OpenGL drivers status as I seriously overlook the resolution of bugs of old OpenGL samples. Intel scores an impressive 100% success without workaround for all the samples from 3.2 to 4.1.
@@ -2078,10 +2419,10 @@
       <link href="http://www.opengl.org/registry/specs/ARB/multi_draw_indirect.txt">GL_ARB_multi_draw_indirect</link> and
       <link href="http://www.opengl.org/registry/specs/ARB/program_interface_query.txt">GL_ARB_program_interface_query</link>,
       Considering how far Intel was just a couple of years ago, it's fantastic. 
-      I woudn't be surprised if Intel manages to release at Siggraph 2014 an OpenGL implementation on part with lastest specifications at the time.
+      I wouldn't be surprised if Intel manages to release at Siggraph 2014 an OpenGL implementation on part with latest specifications at the time.
     </paragraph>
     <paragraph>
-      Mesa is a bit of a desappointment considering that geometry shader is still not supported so we are bound to OpenGL 3.1 on this platform. 
+      Mesa is a bit of a disappointment considering that geometry shader is still not supported so we are bound to OpenGL 3.1 on this platform. 
     </paragraph>
     <paragraph>
       OpenGL 4.4 being a small update, NVIDIA had no trouble to ship a good OpenGL 4.4 implementation at Siggraph.
@@ -2294,7 +2635,7 @@
 	</paragraph>
 
 	<paragraph>
-		Not real surprise but NVIDIA has released <link href="https://developer.nvidia.com/opengl-driver">beta OpenGL 4.4 drivers</link> exposing also all the new extensions. More surprizingly, NVIDIA has released three new propriatary extensions:
+		Not real surprise but NVIDIA has released <link href="https://developer.nvidia.com/opengl-driver">beta OpenGL 4.4 drivers</link> exposing also all the new extensions. More surprisingly, NVIDIA has released three new proprietary extensions:
 		<link href="http://www.opengl.org/registry/specs/NV/blend_equation_advanced.txt">NV_blend_equation_advanced</link>,
 		<link href="http://www.opengl.org/registry/specs/NV/bindless_multi_draw_indirect.txt">NV_bindless_multi_draw_indirect</link>,
 		<link href="http://www.opengl.org/registry/specs/NV/gpu_program5_mem_extended.txt">NV_gpu_program5_mem_extended</link>,
@@ -2356,8 +2697,8 @@
 
     <paragraph>
       For <link href="http://openglinsights.com">OpenGL Insights</link>, we created an <link href="http://openglinsights.com/pipeline.html">OpenGL 4.2 and OpenGL ES 2.0 pipeline map</link>. 
-      <link href="http://www.seas.upenn.edu/~pcozzi/">Patrick Cozzi</link> asked me few times to update it for OpenGL 4.3 and OpenGL ES 3.0 but obviously I found interest in making it only to make it a lot more detailled 
-      considering that it would not be for printing so it could be as big as I see fit. This endeavour represented a significant amount of work but finally I have completed the OpenGL 4.3 Pipeline Map.
+      <link href="http://www.seas.upenn.edu/~pcozzi/">Patrick Cozzi</link> asked me few times to update it for OpenGL 4.3 and OpenGL ES 3.0 but obviously I found interest in making it only to make it a lot more detailed 
+      considering that it would not be for printing so it could be as big as I see fit. This endeavor represented a significant amount of work but finally I have completed the OpenGL 4.3 Pipeline Map.
     </paragraph>
     
     <paragraph>
@@ -3218,14 +3559,14 @@
     </meta>
 
     <paragraph>
-      Thanks to my favoute OpenGL tool, <link href="https://code.google.com/p/glintercept/">GLIntercept</link>, I studied the Unigine renderer and I though it could be fun to build videos showing how a single frame is built.
+      Thanks to my favorite OpenGL tool, <link href="https://code.google.com/p/glintercept/">GLIntercept</link>, I studied the Unigine renderer and I though it could be fun to build videos showing how a single frame is built.
     </paragraph>
     <paragraph>
       The video display frame at 5 FPS. Sometime, it seems that nothing is happening but this is because even draw calls contributing to zero pixel are represented as separated but identical frames. 
       Unigine is a deferred renderer so that the beginning of rendering fills G-Buffers but only the diffuse component is displayed in these videos.
     </paragraph>
     <paragraph>
-      I think these videos are quite interesting because we can clearly see the rendering methods and even some optimisation strategies. In a future post, we will study these in more detail and how the OpenGL API is used by Unigine.
+      I think these videos are quite interesting because we can clearly see the rendering methods and even some optimization strategies. In a future post, we will study these in more detail and how the OpenGL API is used by Unigine.
     </paragraph>
 
     <video href="http://www.youtube.com/v/s6Vp7h3g1Aw?version=3&amp;hl=en_US&amp;rel=0" width="800" height="450" />
