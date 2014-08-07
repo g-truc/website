@@ -2,197 +2,300 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
 
-  <!--
-    Matrix product: strassen, coppersmith-winograd
-  -->
+	<!-- Matrix product: strassen, coppersmith-winograd -->
+	<!--post-list picture="20090317.jpg" comment="Floating colors"-->
+	<!--post-list picture="20090722.jpg" comment="Mankind legacy"-->
+	<!--post-list picture="20090812.jpg" comment="Flavors and the secret ingredient"-->
 
-  <!--post-list picture="20090317.jpg" comment="Floating colors"-->
-  <!--post-list picture="20090722.jpg" comment="Mankind legacy"-->
-  <!--post-list picture="20090812.jpg" comment="Flavors and the secret ingredient"-->
+	<draft index="0999" date="23/08/2010" std-date="2010-08-23T23:30:00.00Z" title="16 tools free for download">
+		<meta><tag>gtc-tech-devel-tool</tag></meta>
+		<paragraph>
 
-   <draft index="0998" date="23/08/2010" std-date="2010-08-23T23:30:00.00Z" title="16 tools free for download">
-    <meta>
-      <tag>gtc-tech-devel-tool</tag>
-    </meta>
-    <paragraph>
+		</paragraph>
+		<list>
+			<list-element href="http://www.realtech-vr.com/glview/index.html">OpenGL Extensions Viewer</list-element>
+			<list-element href="http://www.vis.uni-stuttgart.de/glsldevil/">glslDevil</list-element>
+			<list-element href="http://developer.amd.com/gpu/compressonator/Pages/default.aspx">The Compressonator</list-element>
+			<list-element href="http://www.xnview.com/en/index.html">XnView</list-element>
+			<list-element href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</list-element>
 
-    </paragraph>
-    <list>
-      <list-element href="http://www.realtech-vr.com/glview/index.html">OpenGL Extensions Viewer</list-element>
-      <list-element href="http://www.vis.uni-stuttgart.de/glsldevil/">glslDevil</list-element>
-      <list-element href="http://developer.amd.com/gpu/compressonator/Pages/default.aspx">The Compressonator</list-element>
-      <list-element href="http://www.xnview.com/en/index.html">XnView</list-element>
-      <list-element href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</list-element>
+			<list-element href="http://www.cmake.org/cmake/resources/software.html">CMake</list-element>
+			<list-element href="http://www.microsoft.com/express/downloads/">Visual Studio Express</list-element>
+			<list-element href="http://qt.nokia.com/products/developer-tools">Qt Creator</list-element>
+			<list-element href="http://tdm-gcc.tdragon.net">Recent GCC</list-element>
+			<list-element href="http://www.mingw.org/wiki/MSYS">MSys</list-element>
 
-      <list-element href="http://www.cmake.org/cmake/resources/software.html">CMake</list-element>
-      <list-element href="http://www.microsoft.com/express/downloads/">Visual Studio Express</list-element>
-      <list-element href="http://qt.nokia.com/products/developer-tools">Qt Creator</list-element>
-      <list-element href="http://tdm-gcc.tdragon.net">Recent GCC</list-element>
-      <list-element href="http://www.mingw.org/wiki/MSYS">MSys</list-element>
+			<list-element href="http://www.cygwin.com/">Cygwin</list-element>
+			<list-element href="http://git-scm.com/download">Git</list-element>
+			<list-element href="http://filezilla-project.org/">Filezilla</list-element>
+			<list-element href="http://www.fraps.com/">Fraps</list-element>
 
-      <list-element href="http://www.cygwin.com/">Cygwin</list-element>
-      <list-element href="http://git-scm.com/download">Git</list-element>
-      <list-element href="http://filezilla-project.org/">Filezilla</list-element>
-      <list-element href="http://www.fraps.com/">Fraps</list-element>
+			<list-element href="http://www.videolan.org/vlc/">VLC</list-element>
+			<list-element href="">VirtualDub</list-element>
+		</list>
+		<paragraph>
+			Enjoy!
+		</paragraph>
+	</draft>
 
-      <list-element href="http://www.videolan.org/vlc/">VLC</list-element>
-      <list-element href="">VirtualDub</list-element>
-    </list>
-    <paragraph>
-      Enjoy!
-    </paragraph>
-  </draft>
+	<draft index="0999" date="16/02/2013" std-date="2013-02-16T23:30:00.00Z" title="WebGL test" published="no">
+		<webgl index="canvas"><script type="text/javascript" href="./script/0376.js" /></webgl>
 
-  <draft index="0999" date="16/02/2013" std-date="2013-02-16T23:30:00.00Z" title="WebGL test" published="no">
-    <webgl index="canvas">
-      <script type="text/javascript" href="./script/0376.js" />
-    </webgl>
+		<source-list>
+			<source-download index="1064" />
+		</source-list>
+	</draft>
 
-    <source-list>
-      <source-download index="1064" />
-    </source-list>
-  </draft>
+	<draft index="0999" date="20/09/2013" std-date="2013-09-20T14:00:00.00Z" title="Mythologolical memory fragmentation">
+		<meta><tag>gtc-tech-devel-cpp</tag></meta>
+		<paragraph>
+			When I through the fact that I like C++ and the STL, too many people tells: "STL is wrong it fragment memory". To what I answer, "use the right tool for the right purpose". What to I mean by that? It's not STL that fragment memory it's the way it's used, if we write are own code and we are still using the wrong method, we will still fragment memory. When I see the quality of code out there, I much prefer a well documented and specified implementation, perfectly crafted by compiler authors both both performance and robustness.
+		</paragraph>
+		<paragraph>
+			What's memory fragmentation? Why it's a problem and what's the domain of validity of that problem?
+		</paragraph>
+		<quote>Memory fragmentation definition</quote>
+		<paragraph>
+			Consequences of memory fragmentation involves 
+		</paragraph>
+		<paragraph>
+			The software, the OS and the CPU hardware.
+		</paragraph>
+		<list name="Memory fragmentation involved three components:">
+			<list-element>The user software </list-element>
+			<list-element>The OS </list-element>
+			<list-element>The CPU</list-element>
+		</list>
+	</draft>
 
-  <draft index="0702" date="20/09/2013" std-date="2013-09-20T14:00:00.00Z" title="Mythologolical memory fragmentation">
-    <meta>
-      <tag>gtc-tech-devel-cpp</tag>
-    </meta>
-    <paragraph>
-      When I through the fact that I like C++ and the STL, too many people tells: "STL is wrong it fragment memory". To what I answer, "use the right tool for the right purpose". What to I mean by that? It's not STL that fragment memory it's the way it's used, if we write are own code and we are still using the wrong method, we will still fragment memory. When I see the quality of code out there, I much prefer a well documented and specified implementation, perfectly crafted by compiler authors both both performance and robustness. 
-    </paragraph>
-    <paragraph>
-      What's memory fragmentation? Why it's a problem and what's the domain of validity of that problem?
-    </paragraph>
-    <quote>
-      Memory fragmentation definition 
-    </quote>
-    <paragraph>
-      Consequences of memory fragmentation involves 
-    </paragraph>  
-    <paragraph>
-       The software, the OS and the CPU hardware.
-    </paragraph>
-    <list name="Memory fragmentation involved three components:">
-      <list-element>The user software </list-element>
-      <list-element>The OS </list-element>
-      <list-element>The CPU</list-element>
-    </list>
-  </draft>  
+	<draft index="0999" date="09/07/2012" std-date="2013-07-09T20:00:00.00Z" title="5 great C++ 11 language features">
+		<meta><tag>gtc-tech-devel-cpp</tag></meta>
 
-  <draft index="0701" date="09/07/2012" std-date="2013-07-09T20:00:00.00Z" title="5 great C++ 11 language features">
-    <meta>
-      <tag>gtc-tech-devel-cpp</tag>
-    </meta>
-  
-    <paragraph>
-      It seems to me that C++ 11 encounters some resistances which very often (always?) aren't justify. 
-      For example many programmers fear the STL but I believe for reasons that are not legitimate anymore, for example regarding the quality of actual implementation. 
-      I am sorry but it we use a current GCC, Clang or Visual C++ STL implementation we get very well performing STL implementations.
-    </paragraph>
-    
-    <paragraph>
-      In this post I am going to present my 5 favorite C++ 11 features which does what we should expect from C++ 11, that is to say providing new constructs allowing to write 
-      more efficient, more robust and more simpler code.  
-    </paragraph>
-    
-    <title>Delegated constructors</title>
-    <paragraph>
-      A wrong approach in programming is to duplicate some code because as soon as we change the behavior of one version of the code we might forget to update the other versions.
-      Sadly, sometimes C++ 98 force us to duplicate code and this is the case of constructors. 
-      I like to program using small classes without hierarchies avoiding getters and setters as much as possible so that all the class need to be used is to be created using one of its constructors.
-      Unfortunately, as soon as we create multiple constructors we will be duplicating some code to initialize class members. A workaround could be to use a shared initialization function but that strategy will have 
-      a cost as member variables will be constructed before being initialized resulting in wasteful and costly data movements. Fortunately, C++ 11 provides delegated constructors to resolve this issue, allowing to call an existing constructor from another constructor.
-    </paragraph>
-  </draft>
+		<paragraph>
+			It seems to me that C++ 11 encounters some resistances which very often (always?) aren't justify. 
+			For example many programmers fear the STL but I believe for reasons that are not legitimate anymore, for example regarding the quality of actual implementation. 
+			I am sorry but it we use a current GCC, Clang or Visual C++ STL implementation we get very well performing STL implementations.
+		</paragraph>
 
-  <!--post index="0700" date="09/12/2013" std-date="2013-12-09T10:00:00.00Z" title="On the road to 1 million draws at 60 Hz">
-    <meta>
-      <tag>gtc-tech-opengl</tag>
-    </meta>
-    <paragraph>
-      I am taking advantages of Graham Sellers excellent title on the subjet to detail here my views on the subject following another discussion about Mantle design is a short coming driven by a believe backend by no evidence. One great effect of Mantle is that it's a catalyser for discussions about how to see real time rendering and finally driving a major evolution after many years stock with deprecated GPU architechture mind frame frozen by the requirement to support the previous generation of consoles.  
-    </paragraph>
-    <paragraph>
-      Why do we want to submit many more draws? Because, we are drastically limiting the scene complexity because of this limitation. By scene complexity, I mean number of objects, details, variations of surfaces and we enforce some levels of staticity to contain this complexity. We just have to look around us, right now and from where we are seating to see the short coming of current real time rendering. 
-    <paragraph>
-      Where Mantle and the mind frame that got with it is wrong is that it's satisfying ourself with so little more scene complexity improvements. "If I can use N CPU core, I can make N time more complex scene!". 
-    </paragraph>
-    <list title="Issues with this reasonning: ">
-      <list-element>I can expect to improve my scene complexity by the number of core maximum.</list-element>
-      <list-element>I still need to do plently of other stuff on my CPU cores. More complex scenes might mean more complex physics. We can make trade off on rendering, hardly on physic.</list-element>
-      <list-element>Even if I am submitting draws from N cores, the commands are necessarily serialized by the GPUs which currently can only execute one command buffer at a time. We can't get linear scaling.</list-element>
-    </list>
-    <paragraph>
-      Am I willing to make any compromised to the real life scenes I am seeing? No. Why should I make any compromise in the virtual scenes I am rendering? No. Therefore, we need to answer what are actually the boundaries for current GPU hardware architechtures. I am sorry for all the developers who spent all that time working on all consoles but at this point the best way forward is to forget all that you learnt with GeForce 7 and Radeon X0000 architechtures because those have very little to do with current architechtures. It's a bit like starting to use Git after some many years on SVN, just forget everything! 
-    </paragraph>
-    <image></image>
-    <subtitle>Some scene complexity theory</subtitle>
-    <paragraph>
-      Just like mathematiciens demonstrated results way before we had computers to calculate these results, scene complexity has been theorized way before computer graphics was created essetially by art movements like De Stidj and generally by the constructivists.
-      I like to say that whatever we need to envision has been painted by Piet Mandrian paintings: Equilibrium, proportions and rhyme. Also, he was monstly concerned by landscapes, his vision applies to indoor scenes, cities or characters as photographers and architeches demonstrated it with their work. 
-    </paragraph>
-    <image>Mondrian paintings here</image>
-    <paragraph>
-      What's real time graphics? Maybe just another media based on abstractions to create images. Instead of lines and colors we have meshes, shaders, buffers and textures and the way to use these media primitives are only expressed by Mandrian subjet of interest: Equilibrium, proportions and rhyme.
-    </paragraph>
-    <paragraph>
-      If we applies his concept to real time rendering, suddently recognize familiar concepts: Recurrence of events, variability of items, grouping and features divisions. If we project ourself with our would we paint one of painting, we can regnozise pattern similar to how we would do rendering.
-    </paragraph>
-    <list>
-      <list-element>1/ Clear the background with white</list-element>
-      <list-element>2/ Tracing lines to bound the colors and the black lines</list-element>
-      <list-element>3/ Filling the areas with colors: first yellow, then red and finally blue.</list-element>
-      <list-element>4/ Drawing the black lines</list-element>
-    </list>
-    <paragraph>
-      Do we want to draw a line and a color area then a line, etc? No because I would need to clean my brush all the time, my black painting would dry out. 
-      Do I want to draw my black lines first? No because it will be hard for me to to fill the areas without drawing over the side of the black lines which would make my lines not as straight.
-      DO I have to fill with white area that will be filled with others colors? No, It's easy to draw over white with any color so I don't have to be precise but I can roughtly skip color areas while filling with white the background. 
-    </paragraph>
-    <paragraph>
-      There is a certain rate at which I am updating my colors, a certain rate are which I am drawing features and an order at which we need to do these operations.
-    </paragraph>
+		<paragraph>
+			In this post I am going to present my 5 favorite C++ 11 features which does what we should expect from C++ 11, that is to say providing new constructs allowing to write 
+			more efficient, more robust and more simpler code.
+		</paragraph>
 
-    <subtitle>The theory of harmonics applied to scene complexity<subtitle>
-    <paragraph>
-      All these updates happening at different rates make me think about harmonics: Each signal can be representation as a sum of sinusoids where each one is evolving at frequency that is a multiple of the base frequency. In this vision each frequency is the embodiment of an event happening: A draw, a transfer, a rendering pass, a frame, using a shader program, a texture, etc.   
-    </paragraph>
-    <image>Harminics</image>
+		<title>Delegated constructors</title>
+		<paragraph>
+			A wrong approach in programming is to duplicate some code because as soon as we change the behavior of one version of the code we might forget to update the other versions.
+			Sadly, sometimes C++ 98 force us to duplicate code and this is the case of constructors.
+			I like to program using small classes without hierarchies avoiding getters and setters as much as possible so that all the class need to be used is to be created using one of its constructors.
+			Unfortunately, as soon as we create multiple constructors we will be duplicating some code to initialize class members. A workaround could be to use a shared initialization function but that strategy will have 
+			a cost as member variables will be constructed before being initialized resulting in wasteful and costly data movements. Fortunately, C++ 11 provides delegated constructors to resolve this issue, allowing to call an existing constructor from another constructor.
+		</paragraph>
+	</draft>
 
-    <subtitle>Evidences justifying the MultiDraw mind frame</subtitle>
-    <paragraph>
-      There is this wide spread idea that draw calls are expensive and that we are bound to about 1000 to 5000 draw call. Even AMD, during its marketing Mantle presentation is spreading this legend.  
-      We can easily get some numbers with quick experiments that will show that it's wrong. These experiments will even allow us to get the precise cost of a single draw call invocations.
-    </paragraph>
-    <image>
-      Numbers for draw calls performance
-    </image>
-    <paragraph>
-      Every API call has a constant cost but it seems that the only strategy of the PS3 and XBox360 area had been to submit all the calls at draw calls, hence at the highest update frequency. Adding more CPU core increase the performance by increasing the possible number of API calls but it doesn't improve the efficiency of the system. What we need is not more performance but highest efficiency. Current processors are capable of adapting their frequencies so that is the processor heat up to a certain limit, it will reduce it frequence to control the heat. If the processor has to reduce it's frequency, then its overall performance is dropping. This is particularly true on mobile where the termal limit is very restricted. 
-    </paragraph>
-    <paragraph>
-      The power equation here
-    </paragraph>
-    <paragraph>
-      Removing frequencies is the operation that consist in replacing a CPU based swtiching operation by a GPU based resource indexing operation. The first example in that regard is what we call instracing where out of a single mesh we create multiple instances of the same object fetching MVP matrices or texture indexes out of uniform buffers or texture buffers. The performance is impressive but the usage is limited. It has to be out of a single mesh. Multi draws are a simple extension of this design where each mesh can be different. 
-    </paragraph>
-    <list title="Grouping approaches">
-      <list-element>Instancing: N instances from one mesh</list-element>
-      <list-element>MultiDraw: N draws from N meshes using the 1 vertex formats</list-element>
-      <list-element>
-    </list>
-    <paragraph>
-      Matching freqencies
-    </paragraph>
+	<draft index="0999" date="09/12/2013" std-date="2013-12-09T10:00:00.00Z" title="On the road to 1 million draws at 60 Hz">
+		<meta><tag>gtc-tech-opengl</tag></meta>
+		<paragraph>
+			I am taking advantages of Graham Sellers excellent title on the subjet to detail here my views on the subject following another discussion about Mantle design is a short coming driven by a believe backend by no evidence. One great effect of Mantle is that it's a catalyser for discussions about how to see real time rendering and finally driving a major evolution after many years stock with deprecated GPU architechture mind frame frozen by the requirement to support the previous generation of consoles.  
+		</paragraph>
+		<paragraph>
+			Why do we want to submit many more draws? Because, we are drastically limiting the scene complexity because of this limitation. By scene complexity, I mean number of objects, details, variations of surfaces and we enforce some levels of staticity to contain this complexity. We just have to look around us, right now and from where we are seating to see the short coming of current real time rendering. 
+		</paragraph>
+		<paragraph>
+			Where Mantle and the mind frame that got with it is wrong is that it's satisfying ourself with so little more scene complexity improvements. "If I can use N CPU core, I can make N time more complex scene!". 
+		</paragraph>
+		<list title="Issues with this reasonning: ">
+			<list-element>I can expect to improve my scene complexity by the number of core maximum.</list-element>
+			<list-element>I still need to do plently of other stuff on my CPU cores. More complex scenes might mean more complex physics. We can make trade off on rendering, hardly on physic.</list-element>
+			<list-element>Even if I am submitting draws from N cores, the commands are necessarily serialized by the GPUs which currently can only execute one command buffer at a time. We can't get linear scaling.</list-element>
+		</list>
+		<paragraph>
+			Am I willing to make any compromised to the real life scenes I am seeing? No. Why should I make any compromise in the virtual scenes I am rendering? No. Therefore, we need to answer what are actually the boundaries for current GPU hardware architechtures. I am sorry for all the developers who spent all that time working on all consoles but at this point the best way forward is to forget all that you learnt with GeForce 7 and Radeon X0000 architechtures because those have very little to do with current architechtures. It's a bit like starting to use Git after some many years on SVN, just forget everything!
+		</paragraph>
+		<subtitle>Some scene complexity theory</subtitle>
+		<paragraph>
+			Just like mathematiciens demonstrated results way before we had computers to calculate these results, scene complexity has been theorized way before computer graphics was created essetially by art movements like De Stidj and generally by the constructivists.
+			I like to say that whatever we need to envision has been painted by Piet Mandrian paintings: Equilibrium, proportions and rhyme. Also, he was monstly concerned by landscapes, his vision applies to indoor scenes, cities or characters as photographers and architeches demonstrated it with their work.
+		</paragraph>
+		<image>Mondrian paintings here</image>
+		<paragraph>
+			What's real time graphics? Maybe just another media based on abstractions to create images. Instead of lines and colors we have meshes, shaders, buffers and textures and the way to use these media primitives are only expressed by Mandrian subjet of interest: Equilibrium, proportions and rhyme.
+		</paragraph>
+		<paragraph>
+			If we applies his concept to real time rendering, suddently recognize familiar concepts: Recurrence of events, variability of items, grouping and features divisions. If we project ourself with our would we paint one of painting, we can regnozise pattern similar to how we would do rendering.
+		</paragraph>
+		<list>
+			<list-element>1/ Clear the background with white</list-element>
+			<list-element>2/ Tracing lines to bound the colors and the black lines</list-element>
+			<list-element>3/ Filling the areas with colors: first yellow, then red and finally blue.</list-element>
+			<list-element>4/ Drawing the black lines</list-element>
+		</list>
+		<paragraph>
+			Do we want to draw a line and a color area then a line, etc? No because I would need to clean my brush all the time, my black painting would dry out. 
+			Do I want to draw my black lines first? No because it will be hard for me to to fill the areas without drawing over the side of the black lines which would make my lines not as straight.
+			DO I have to fill with white area that will be filled with others colors? No, It's easy to draw over white with any color so I don't have to be precise but I can roughtly skip color areas while filling with white the background.
+		</paragraph>
+		<paragraph>
+			There is a certain rate at which I am updating my colors, a certain rate are which I am drawing features and an order at which we need to do these operations.
+		</paragraph>
 
-    <subtitle>States management</subtitle>
-    <paragraph>
-      
-    </paragraph>
+		<subtitle>The theory of harmonics applied to scene complexity</subtitle>
+		<paragraph>
+			All these updates happening at different rates make me think about harmonics: Each signal can be representation as a sum of sinusoids where each one is evolving at frequency that is a multiple of the base frequency. In this vision each frequency is the embodiment of an event happening: A draw, a transfer, a rendering pass, a frame, using a shader program, a texture, etc.
+		</paragraph>
+		<image>Harminics</image>
 
-  </post-->
+		<subtitle>Evidences justifying the MultiDraw mind frame</subtitle>
+		<paragraph>
+			There is this wide spread idea that draw calls are expensive and that we are bound to about 1000 to 5000 draw call. Even AMD, during its marketing Mantle presentation is spreading this legend.  
+			We can easily get some numbers with quick experiments that will show that it's wrong. These experiments will even allow us to get the precise cost of a single draw call invocations.
+		</paragraph>
+		<image>
+			Numbers for draw calls performance
+		</image>
+		<paragraph>
+			Every API call has a constant cost but it seems that the only strategy of the PS3 and XBox360 area had been to submit all the calls at draw calls, hence at the highest update frequency. Adding more CPU core increase the performance by increasing the possible number of API calls but it doesn't improve the efficiency of the system. What we need is not more performance but highest efficiency. Current processors are capable of adapting their frequencies so that is the processor heat up to a certain limit, it will reduce it frequence to control the heat. If the processor has to reduce it's frequency, then its overall performance is dropping. This is particularly true on mobile where the termal limit is very restricted. 
+		</paragraph>
+		<paragraph>
+			The power equation here
+		</paragraph>
+		<paragraph>
+			Removing frequencies is the operation that consist in replacing a CPU based swtiching operation by a GPU based resource indexing operation. The first example in that regard is what we call instracing where out of a single mesh we create multiple instances of the same object fetching MVP matrices or texture indexes out of uniform buffers or texture buffers. The performance is impressive but the usage is limited. It has to be out of a single mesh. Multi draws are a simple extension of this design where each mesh can be different. 
+		</paragraph>
+		<list title="Grouping approaches">
+			<list-element>Instancing: N instances from one mesh</list-element>
+			<list-element>MultiDraw: N draws from N meshes using the 1 vertex formats</list-element>
+		</list>
+		<paragraph>
+			Matching freqencies
+		</paragraph>
 
-	<post index="0666" date="06/07/2014" std-date="2014-07-06T23:30:00.00Z" title="The minimum number of triangles per draw call">
+		<subtitle>States management</subtitle>
+		<paragraph>
+
+		</paragraph>
+	</draft>
+
+	<post index="0674" date="03/08/2014" std-date="2014-08-03T23:30:00.00Z" title="OpenGL Samples Pack 4.4.3.0 released">
+		<meta><tag>gtc-tech-opengl-samples</tag></meta>
+		<paragraph>
+			The OpenGL Samples Pack 4.4.3.0 introduced the micro-benchmarks used for <link href="http://www.g-truc.net/post-0666.html#menu">The minimum number of triangles per draw call</link> and <link href="http://www.g-truc.net/post-0662.html#menu">The minimum number of triangles per draw call</link>.
+		</paragraph>
+
+		<list title="Release notes:">
+			<entry>Added draw_array and draw_call microbenchmark tests</entry>
+			<entry>Fixed buffer storage flags</entry>
+			<entry>Fixed samples using newer API than expected</entry>
+			<entry>Added 320-fbo-integer sample</entry>
+			<entry>Added 320-fbo-integer-blit sample</entry>
+			<entry>Added 330-query-counter sample</entry>
+			<entry>Fixed 320-fbo-multisample-integer sample, GL_NEAREST is required</entry>
+			<entry>Updated 4.3 samples to run on Intel 4.2 drivers</entry>
+			<entry>Fixed GL_MAX_UNIFORM_LOCATIONS caps query</entry>
+		</list>
+
+		<source-list>
+			<source-download index="1180" />
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+		</source-list>
+	</post>
+
+	<post index="0673" date="03/08/2014" std-date="2014-08-03T15:30:00.00Z" title="Week 30: Waves, Waves, Waves">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-30-960.jpg" href="./photo/2014-30.jpg" />
+	</post>
+
+	<post index="0672" date="02/08/2014" std-date="2014-08-02T23:00:00.00Z" title="July 2014 OpenGL drivers status">
+		<meta><tag>gtc-tech-project-openglstatus</tag></meta>
+
+		<paragraph>
+			Once again I ran my OpenGL samples available OpenGL desktop implementations and this post is a report on whether these samples ran successfully. My OpenGL samples are not a conformance test, only a set of 183 OpenGL code samples I accumulated over time.
+		</paragraph>
+
+		<paragraph>
+			On NVIDIA side, the only bugs that I am aware of are long standing GLSL compiler bugs that NVIDIA doesn't seem to want to resolve because that would break applications. A -pedantic option like GCC provides would be more than welcome for these cases as if we write shader on NVIDIA we are pretty guarantee they won't work on others implementations. AMD has worked around this issue by introducing support for the NVIDIA behaviors which is the worse way to resolve it for the ecosystem.
+		</paragraph>
+
+		<paragraph>
+			AMD implementation made significant improvements since May. Sadly, a lot of OpenGL 4.4 samples are failing because of the same strange GLSL compiler error. Despite the full OpenGL 4.3 support on Intel, a lot of things are not working properly so in practice we only observe a slight improvement. OpenGL 4.3 support on Intel is still beta, let's hope the stable drivers will largely resolve these issues.
+		</paragraph>
+
+		<paragraph>
+			Despite switching from Mesa 10.1.1 to Mesa 10.2.2, I observed basically no improvement. Same for MacOSX 10.9.4.
+		</paragraph>
+
+		<image title="July 2014 OpenGL samples passing on available implementations" color="white" img="./post/0672-1.png" href="./doc/OpenGL%20status%202014-07.pdf" />
+
+		<paragraph>
+			To give an overview on how the OpenGL drivers improved, following the status from the past year.
+		</paragraph>
+
+		<image title="May 2014 OpenGL samples passing on available implementations" color="white" img="./post/0655.png" href="./doc/OpenGL%20status%202014-05.pdf" />
+
+		<image title="February 2014 OpenGL samples passing on available implementations" color="white" img="./post/0672-2.png" href="./doc/OpenGL%20status%202014-02.pdf" />
+
+		<image title="November 2013 OpenGL samples passing on available implementations" color="white" img="./post/0672-3.png" href="./doc/OpenGL%20status%202013-11.pdf" />
+
+		<image title="September 2013 OpenGL samples passing on available implementations" color="white" img="./post/0672-4.png" href="./doc/OpenGL%20status%202013-09.pdf" />
+
+		<image title="April 2013 OpenGL samples passing on available implementations" color="white" img="./post/0672-5.png" href="./doc/OpenGL%20status%202013-04.pdf" />
+
+		<paragraph>
+			I can't exclude that there isn't bug in the samples, so don't hesitate to <link href="https://github.com/g-truc/ogl-samples/issues?state=open">open an issue</link>.
+		</paragraph>
+
+		<source-list>
+			<source-download index="1178" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=566" title="glCapsViewer report for AMD Catalyst 14.7 rc" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=557" title="glCapsViewer report for Intel HD Graphics 10.18.10.3652" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/generatereport.php?reportID=556" title="glCapsViewer report for NVIDIA Forceware 343.40" />
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/archive/master.zip" title="OpenGL Samples Pack staging" />
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues?state=open" title="Submit a bug report" />
+		</source-list>
+	</post>
+
+	<post index="0671" date="29/07/2014" std-date="2014-07-29T23:30:00.00Z" title="Week 29: Maîtres et possesseurs de la nature">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-29-960.jpg" href="./photo/2014-29.jpg" />
+	</post>
+
+	<post index="0670" date="25/07/2014" std-date="2014-07-25T23:00:00.00Z" title="July 2014 OpenGL hardware matrix">
+		<meta><tag>gtc-tech-project-openglmatrix</tag></meta>
+
+		<paragraph>
+			Most of the improvements come from Intel drivers including: full OpenGL 4.3 support and <link href="http://www.opengl.org/registry/specs/EXT/direct_state_access.txt">EXT_direct_state_access</link> support.
+			EXT_direct_state_access is so old and broken that it's no clear to me it's a good thing overall but there is certainly some conveniences having it.
+		</paragraph>
+		<paragraph>
+			More interesting, Intel added support to two new AMD extensions: <link href="http://www.opengl.org/registry/specs/AMD/vertex_shader_viewport_index.txt">AMD_vertex_shader_viewport_index</link> and 
+			<link href="http://www.opengl.org/registry/specs/AMD/vertex_shader_layer.txt">AMD_vertex_shader_layer</link>. I'd love to see these extensions reaching ARB status and mobile.
+		</paragraph>
+
+		<image title="Exposed extensions to all OpenGL 4 hardware on the lastest drivers available to date" color="white" img="./post/0670.png" href="./doc/OpenGL%204%20Hardware%20Matrix%202014-07.pdf" />
+
+		<source-list>
+			<source-download index="1178" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=566" title="glCapsViewer report for AMD Catalyst 14.7 rc" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=557" title="glCapsViewer report for Intel HD Graphics 10.18.10.3652" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=575" title="glCapsViewer report for NVIDIA Forceware 340.52" />
+		</source-list>
+	</post>
+
+	<post index="0669" date="25/07/2014" std-date="2014-07-25T23:30:00.00Z" title="Week 28: Human kind, creator of God">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-28-960.jpg" href="./photo/2014-28.jpg" />
+	</post>
+
+	<post index="0668" date="18/07/2014" std-date="2014-07-18T00:30:00.00Z" title="Week 27: The Tea house">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-27-960.jpg" href="./photo/2014-27.jpg" />
+	</post>
+
+	<post index="0667" date="14/07/2014" std-date="2014-07-14T23:30:00.00Z" title="Week 26: On the edge">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-26-960.jpg" href="./photo/2014-26.jpg" />
+	</post>
+
+	<post index="0666" date="13/07/2014" std-date="2014-07-13T23:30:00.00Z" title="The minimum number of triangles per draw call">
 		<meta><tag>gtc-tech-opengl-tips</tag></meta>
 
 		<paragraph>
@@ -250,7 +353,7 @@
 
 		<subtitle>AMD architectures behavior against small triangle count per draw call</subtitle>
 
-		<image title="Triangles per draw per AMD GPU absolute performance. X: Number of triangles per draw call. Y: Absolute rendering time to 1024 per draw case in ms." color="white" img="./post/0665-5B.png" href="./post/0665-5B.png" />
+		<image title="Triangles per draw per AMD GPU absolute performance. X: Number of triangles per draw call. Y: Absolute rendering time to 1024 per draw case in μs." color="white" img="./post/0665-5B.png" href="./post/0665-5B.png" />
 
 		<paragraph>
 			First, either AMD made significant hardware changes between the Radeon HD 4000 series to the Radeon HD 5000 series or we are observing a drivers bug. Either way, the effective draw call performance of the Radeon HD 4000 series is particularly bad even compared with the older GeForce 8 series.
@@ -273,7 +376,7 @@
 
 		<subtitle>NVIDIA architectures behavior against small triangle count per draw call</subtitle>
 
-		<image title="Triangles per draw per NVIDIA GPU absolute performance. X: Number of triangles per draw call. Y: Absolute rendering time to 1024 per draw case in ms." color="white" img="./post/0665-4B.png" href="./post/0665-4B.png" />
+		<image title="Triangles per draw per NVIDIA GPU absolute performance. X: Number of triangles per draw call. Y: Absolute rendering time to 1024 per draw case in μs." color="white" img="./post/0665-4B.png" href="./post/0665-4B.png" />
 
 		<paragraph>
 			When it comes to draw call performance, NVIDIA GPUs are very pleasing. 16 triangles per draw is just fine. On old GeForce 8 architecture, 8 triangles per draw is fine too but this might only be because the primitive rate was a lot lower than on current hardware. Just like for AMD GPUs, we observe the convergence of performance between GPUs when the triangles per draw call count is getting too small.
@@ -291,7 +394,7 @@
 
 		<subtitle>Intel architectures behavior against small triangle count per draw call</subtitle>
 
-		<image title="Triangles per draw per Intel GPU absolute performance. X: Number of triangles per draw call. Y: Absolute rendering time to 1024 per draw case in ms." color="white" img="./post/0665-3B.png" href="./post/0665-3B.png" />
+		<image title="Triangles per draw per Intel GPU absolute performance. X: Number of triangles per draw call. Y: Absolute rendering time to 1024 per draw case in μs." color="white" img="./post/0665-3B.png" href="./post/0665-3B.png" />
 
 		<paragraph>
 			Intel GPUs primitive rate performance are pretty low despite Ivy Bridge being clocked at 1150 MHz and Haswell being clocked at 1250 MHz. It looks like that Haswell primitive rate is lower than Ivy Bridge so that I expect that the primitive rates for Ivy Bridge and Haswell is respectively 0.5 and 0.33.
@@ -331,7 +434,7 @@
 			Finally, we can visualize the primitive rate performance and compare these results between GPUs.
 		</paragraph>
 
-		<image title="Comparing the primitive rate of different GPUs using 1024 triangle per draw call. Absolute rendering time in ms." color="white" img="./post/0665-7.png" href="./post/0665-7.png" />
+		<image title="Comparing the primitive rate of different GPUs using 1024 triangle per draw call. Absolute rendering time in μs." color="white" img="./post/0665-7.png" href="./post/0665-7.png" />
 
 		<paragraph>
 			The source for these tests (test_draw_call) in available in the master branch staging of the <link href="http://www.g-truc.net/project-0026.html#menu">OpenGL Samples Pack</link> in the 'micro' project.
