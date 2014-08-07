@@ -175,6 +175,16 @@
 		</paragraph>
 	</draft>
 
+	<draft index="0676" date="XX/08/2014" std-date="2014-08-XXT23:30:00.00Z" title="Week 32: Legacy">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-32-960.jpg" href="./photo/2014-32.jpg" />
+	</draft>
+
+	<post index="0675" date="07/08/2014" std-date="2014-08-07T23:30:00.00Z" title="Week 31: Simple">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-31-960.jpg" href="./photo/2014-31.jpg" />
+	</post>
+
 	<post index="0674" date="03/08/2014" std-date="2014-08-03T23:30:00.00Z" title="OpenGL Samples Pack 4.4.3.0 released">
 		<meta><tag>gtc-tech-opengl-samples</tag></meta>
 		<paragraph>
