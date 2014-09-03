@@ -175,10 +175,51 @@
 		</paragraph>
 	</draft>
 
-	<draft index="0676" date="XX/08/2014" std-date="2014-08-XXT23:30:00.00Z" title="Week 32: Legacy">
+	<draft index="0678" date="11/08/2014" std-date="2014-08-11T23:00:00.00Z" title="There will be no OpenGL 5.0">
+		<meta>
+		  <tag>gtc-tech-opengl-review</tag>
+		  <tag>gtc-tech-project-openglreviews</tag>
+		</meta>
+
+		<paragraph>
+		  The <link href="http://www.khronos.org">Khronos Group</link> has announced working on a new graphics API through a call for participation at 
+		  <link href="http://www.siggraph.org/s2014/">Siggraph 2014</link>.
+		</paragraph>
+
+		<list name="Sadly, the announcement didn't came with much information but we know few important elements:">
+		  <list-element>It won't be based on the current OpenGL specification</list-element>
+		  <list-element>There will be an intermediate shading language</list-element>
+		  <list-element>We are looking at furhther convergence between OpenGL and OpenGL ES</list-element>
+		</list>
+
+		<paragraph>
+			Starting from the ground up implies that we are looking at the unfolding of a new cross platform ecosystem.
+			I think that despite the complains on the current OpenGL ecosystem that ecosystem is more successfull than we think even considering OpenGL.
+		</paragraph>
+
+		<list name="However, there are conceptual issues that makes this reboot almost innevitable:">
+		  <list-element>Thread safety and thread local storage</list-element>
+		  <list-element>1000+ pages of OpenGL and 600+ pages of OpenGL ES</list-element>
+		  <list-element>The ecosystem is not trully cross-platform, nothing enforced drivers to behave the same way.</list-element>
+		  <list-element>Tile based GPU support is a hack leading to under utilisizing the GPU unless we are in the secret of the Gods</list-element> 
+		</list>
+
+		<source-list>
+		  <source-element type="Download" href="http://www.opengl.org/registry/doc/glspec44.core.withchanges.pdf" title="OpenGL 4.4 core specification" />
+		  <source-element type="Download" href="http://www.opengl.org/registry/doc/GLSLangSpec.4.40.diff.pdf" title="GLSL 4.4 specification" />
+		  <!--source-download index="1144" /-->
+		</source-list>
+	</draft>
+
+	<post index="0677" date="31/08/2014" std-date="2014-08-31T23:30:00.00Z" title="Week 33: I like chips better than acorns">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-33-960.jpg" href="./photo/2014-33.jpg" />
+	</post>
+
+	<post index="0676" date="27/08/2014" std-date="2014-08-27T23:30:00.00Z" title="Week 32: Flows">
 		<meta><tag>gtc-crea-photograph</tag></meta>
 		<image color="black" img="./photo/2014-32-960.jpg" href="./photo/2014-32.jpg" />
-	</draft>
+	</post>
 
 	<post index="0675" date="07/08/2014" std-date="2014-08-07T23:30:00.00Z" title="Week 31: Simple">
 		<meta><tag>gtc-crea-photograph</tag></meta>
