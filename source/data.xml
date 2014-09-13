@@ -31,7 +31,7 @@
 			<list-element href="http://www.fraps.com/">Fraps</list-element>
 
 			<list-element href="http://www.videolan.org/vlc/">VLC</list-element>
-			<list-element href="">VirtualDub</list-element>
+			<list-element href="http://unityvs.com/">Visual Studio Tools for Unity</list-element>
 		</list>
 		<paragraph>
 			Enjoy!
@@ -175,7 +175,7 @@
 		</paragraph>
 	</draft>
 
-	<draft index="0678" date="11/08/2014" std-date="2014-08-11T23:00:00.00Z" title="There will be no OpenGL 5.0">
+	<draft index="0681" date="11/08/2014" std-date="2014-08-11T23:00:00.00Z" title="There will be no OpenGL 5.0">
 		<meta>
 		  <tag>gtc-tech-opengl-review</tag>
 		  <tag>gtc-tech-project-openglreviews</tag>
@@ -210,6 +210,16 @@
 		  <!--source-download index="1144" /-->
 		</source-list>
 	</draft>
+
+	<post index="0679" date="31/08/2014" std-date="2014-08-31T23:30:00.00Z" title="Week 35: The innovator's dilemma">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-35-960.jpg" href="./photo/2014-35.jpg" />
+	</post>
+
+	<post index="0678" date="07/09/2014" std-date="2014-09-07T1:30:00.00Z" title="Week 34: Silence music">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-34-960.jpg" href="./photo/2014-34.jpg" />
+	</post>
 
 	<post index="0677" date="31/08/2014" std-date="2014-08-31T23:30:00.00Z" title="Week 33: I like chips better than acorns">
 		<meta><tag>gtc-crea-photograph</tag></meta>
