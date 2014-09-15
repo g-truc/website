@@ -175,7 +175,7 @@
 		</paragraph>
 	</draft>
 
-	<draft index="0681" date="11/08/2014" std-date="2014-08-11T23:00:00.00Z" title="There will be no OpenGL 5.0">
+	<draft index="0682" date="11/08/2014" std-date="2014-08-11T23:00:00.00Z" title="There will be no OpenGL 5.0">
 		<meta>
 		  <tag>gtc-tech-opengl-review</tag>
 		  <tag>gtc-tech-project-openglreviews</tag>
@@ -210,6 +210,32 @@
 		  <!--source-download index="1144" /-->
 		</source-list>
 	</draft>
+
+	<post index="0681" date="15/09/2014" std-date="2014-09-15T23:30:00.00Z" title="OpenGL Samples Pack 4.5.0.0 released">
+		<meta><tag>gtc-tech-opengl-samples</tag></meta>
+		<paragraph>
+			The OpenGL Samples Pack 4.5.0.0 introduced <link href="http://www.opengl.org/registry/">OpenGL 4.5</link> samples.
+		</paragraph>
+
+		<list title="Release notes:">
+			<entry>Added 450-buffer-sparse-arb</entry>
+			<entry>Added 450-caps</entry>
+			<entry>Added 450-clip-control</entry>
+			<entry>Added 450-culling</entry>
+			<entry>Added 450-direct-state-access</entry>
+			<entry>Added 450-fbo-multisample-explicit</entry>
+			<entry>Added 450-query-conditional</entry>
+			<entry>Added 450-query-statistics-arb</entry>
+			<entry>Added 450-texture-barrier</entry>
+			<entry>Added 450-texture-derivative</entry>
+			<entry>Added 450-transform-feedback-arb</entry>
+		</list>
+
+		<source-list>
+			<source-download index="1181" />
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+		</source-list>
+	</post>
 
 	<post index="0680" date="16/09/2014" std-date="2014-09-16T00:30:00.00Z" title="Week 36: Hey cutie">
 		<meta><tag>gtc-crea-photograph</tag></meta>
