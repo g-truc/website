@@ -175,7 +175,7 @@
 		</paragraph>
 	</draft>
 
-	<draft index="0682" date="11/08/2014" std-date="2014-08-11T23:00:00.00Z" title="There will be no OpenGL 5.0">
+	<draft index="0999" date="11/08/2014" std-date="2014-08-11T23:00:00.00Z" title="There will be no OpenGL 5.0">
 		<meta>
 		  <tag>gtc-tech-opengl-review</tag>
 		  <tag>gtc-tech-project-openglreviews</tag>
@@ -210,6 +210,26 @@
 		  <!--source-download index="1144" /-->
 		</source-list>
 	</draft>
+
+	<post index="0685" date="18/10/2014" std-date="2014-10-18T22:30:00.00Z" title="Week 40: Horizontal line not expressed horizontally">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-40-960.jpg" href="./photo/2014-40.jpg" />
+	</post>
+
+	<post index="0684" date="14/10/2014" std-date="2014-10-14T00:30:00.00Z" title="Week 39: City in the wild">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-39-960.jpg" href="./photo/2014-39.jpg" />
+	</post>
+
+	<post index="0683" date="11/10/2014" std-date="2014-10-11T00:30:00.00Z" title="Week 38: Cindercraft">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-38-960.jpg" href="./photo/2014-38.jpg" />
+	</post>
+
+	<post index="0682" date="05/10/2014" std-date="2014-10-05T00:30:00.00Z" title="Week 37: Horizontal line not expressed horizontally">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-37-960.jpg" href="./photo/2014-37.jpg" />
+	</post>
 
 	<post index="0681" date="15/09/2014" std-date="2014-09-15T23:30:00.00Z" title="OpenGL Samples Pack 4.5.0.0 released">
 		<meta><tag>gtc-tech-opengl-samples</tag></meta>
