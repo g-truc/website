@@ -211,7 +211,17 @@
 		</source-list>
 	</draft>
 
-	<post index="0685" date="18/10/2014" std-date="2014-10-18T22:30:00.00Z" title="Week 40: Horizontal line not expressed horizontally">
+	<draft index="0687" date="21/10/2014" std-date="2014-10-21T22:30:00.00Z" title="Week 42: Cinematic crash">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-42-960.jpg" href="./photo/2014-42.jpg" />
+	</draft>
+
+	<post index="0686" date="26/10/2014" std-date="2014-10-26T22:30:00.00Z" title="Week 41: Cinematic crash">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-41-960.jpg" href="./photo/2014-41.jpg" />
+	</post>
+
+	<post index="0685" date="18/10/2014" std-date="2014-10-18T22:30:00.00Z" title="Week 40: Peace and fire">
 		<meta><tag>gtc-crea-photograph</tag></meta>
 		<image color="black" img="./photo/2014-40-960.jpg" href="./photo/2014-40.jpg" />
 	</post>
