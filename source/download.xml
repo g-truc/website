@@ -2,10 +2,20 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
 
-  <download index="1181" date="15/09/2014" std-date="2014-09-15T23:30:00.00Z" type="gtc-tech-opengl-samples" version="4.5.0.0">
-    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.5.0.0/ogl-samples-4.5.0.0.zip/download" type="ZIP" size="57.7 MB" />
-    <item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.5.0.0/ogl-samples-4.5.0.0.7z/download" type="7Z" size="29.7 MB" />
-  </download>
+	<download index="1183" date="10/12/2014" std-date="2014-12-10T23:30:00.00Z" type="gtc-tech-project-glm" title="GLM 0.9.6.1" version="0.9.6.1">
+		<item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.6.1/glm-0.9.6.1.zip/download" type="ZIP" size="4.1 MB" />
+		<item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.6.1/glm-0.9.6.1.7z/download" type="7Z" size="2.7 MB" />
+	</download>
+
+	<download index="1182" date="30/11/2014" std-date="2014-11-30T23:30:00.00Z" type="gtc-tech-project-glm" title="GLM 0.9.6.0" version="0.9.6.0">
+		<item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.6.0/glm-0.9.6.0.zip/download" type="ZIP" size="4.1 MB" />
+		<item href="https://sourceforge.net/projects/ogl-math/files/glm-0.9.6.0/glm-0.9.6.0.7z/download" type="7Z" size="2.7 MB" />
+	</download>
+
+	<download index="1181" date="15/09/2014" std-date="2014-09-15T23:30:00.00Z" type="gtc-tech-opengl-samples" version="4.5.0.0">
+		<item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.5.0.0/ogl-samples-4.5.0.0.zip/download" type="ZIP" size="57.7 MB" />
+		<item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.5.0.0/ogl-samples-4.5.0.0.7z/download" type="7Z" size="29.7 MB" />
+	</download>
 
 	<download index="1180" date="03/08/2014" std-date="2014-08-03T23:30:00.00Z" type="gtc-tech-opengl-samples" version="4.4.3.0">
 		<item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.3.0/ogl-samples-4.4.3.0.zip/download" type="ZIP" size="55.4 MB" />

@@ -198,10 +198,10 @@
 		</paragraph>
 
 		<list name="However, there are conceptual issues that makes this reboot almost innevitable:">
-		  <list-element>Thread safety and thread local storage</list-element>
-		  <list-element>1000+ pages of OpenGL and 600+ pages of OpenGL ES</list-element>
-		  <list-element>The ecosystem is not trully cross-platform, nothing enforced drivers to behave the same way.</list-element>
-		  <list-element>Tile based GPU support is a hack leading to under utilisizing the GPU unless we are in the secret of the Gods</list-element> 
+			<list-element>Thread safety and thread local storage</list-element>
+			<list-element>1000+ pages of OpenGL and 600+ pages of OpenGL ES</list-element>
+			<list-element>The ecosystem is not trully cross-platform, nothing enforced drivers to behave the same way.</list-element>
+			<list-element>Tile based GPU support is a hack leading to under utilisizing the GPU unless we are in the secret of the Gods</list-element>
 		</list>
 
 		<source-list>
@@ -211,10 +211,377 @@
 		</source-list>
 	</draft>
 
-	<draft index="0687" date="21/10/2014" std-date="2014-10-21T22:30:00.00Z" title="Week 42: Cinematic crash">
+	<post index="0700" date="20/12/2014" std-date="2014-12-20T23:00:00.00Z" title="Week 52: Bloodflood">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-52-960.jpg" href="./photo/2014-52.jpg" />
+	</post>
+
+	<post index="0699" date="16/12/2014" std-date="2014-12-16T23:00:00.00Z" title="Week 51: L’impuissance de la volonté">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-51-960.jpg" href="./photo/2014-51.jpg" />
+	</post>
+
+	<post index="0698" date="11/12/2014" std-date="2014-12-11T23:00:00.00Z" title="Week 50: Le corail et le joyau">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-50-960.jpg" href="./photo/2014-50.jpg" />
+	</post>
+
+	<post index="0697" date="10/12/2014" std-date="2014-12-10T23:30:00.00Z"  title="GLM 0.9.6.1 released">
+		<meta><tag>gtc-tech-project-glm</tag></meta>
+
+		<paragraph>
+			GLM 0.9.6.0 came with its set of major glitches: C++98 only mode, 32 bit build, Cuda and Android support should all be fixed in GLM 0.9.6.1 release.
+		</paragraph>
+
+		<list title="Features:">
+			<entry>Added GLM_LANG_CXX14_FLAG and GLM_LANG_CXX1Z_FLAG language feature flags</entry>
+			<entry>Added C++14 detection</entry>
+		</list>
+
+		<list title="Improvements:">
+			<entry>Clean up GLM_MESSAGES compilation log to report only detected capabilities</entry>
+		</list>
+
+		<list title="Fixes:">
+			<entry>Fixed scalar uaddCarry build error with Cuda #276</entry>
+			<entry>Fixed C++11 explicit conversion operators detection #282</entry>
+			<entry>Fixed missing explicit convertion when using integer log2 with *vec1 types</entry>
+			<entry>Fixed 64 bits integer GTX_string_cast to_string on VC 32 bit compiler</entry>
+			<entry>Fixed Android build issue, STL C++11 is not supported by the NDK #284</entry>
+			<entry>Fixed unsupported _BitScanForward64 and _BitScanReverse64 in VC10</entry>
+			<entry>Fixed Visual C++ 32 bit build #283</entry>
+			<entry>Fixed GLM_FORCE_SIZE_FUNC pragma message</entry>
+			<entry>Fixed C++98 only build</entry>
+			<entry>Fixed conflict between GTX_compatibility and GTC_quaternion #286</entry>
+			<entry>Fixed C++ language restriction using GLM_FORCE_CXX**</entry>
+		</list>
+
+		<source-list>
+			<source-download index="1183" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.6/glm-0.9.6.pdf" title="GLM 0.9.6 manual" />
+			<source-element type="Link" href="./post-0693.html" title="GLM 0.9.6 overview" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.6/api/index.html" title="GLM 0.9.6 api documentation" />
+			<source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+		</source-list>
+	</post>
+
+	<post index="0696" date="08/12/2014" std-date="2014-12-08T23:00:00.00Z" title="Week 49: A representation of nature">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-49-960.jpg" href="./photo/2014-49.jpg" />
+	</post>
+
+	<post index="0695" date="30/12/2014" std-date="2014-12-30T23:30:00.00Z"  title="GLM 0.9.6.0 released">
+		<meta><tag>gtc-tech-project-glm</tag></meta>
+
+		<paragraph>
+			GLM 0.9.6.0 is available. Have a look at the <link href="./post-0693.html">GLM 0.9.6 overview</link> for more information.
+		</paragraph>
+
+		<source-list>
+			<source-download index="1182" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.6/glm-0.9.6.pdf" title="GLM 0.9.6 manual" />
+			<source-element type="Link" href="./post-0693.html" title="GLM 0.9.6 overview" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.6/api/index.html" title="GLM 0.9.6 api documentation" />
+			<source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+		</source-list>
+	</post>
+
+	<post index="0694" date="30/11/2014" std-date="2014-11-30T23:00:00.00Z" title="Week 48: 90% Honesty">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2014-48-960.jpg" href="./photo/2014-48.jpg" />
+	</post>
+
+	<post index="0693" date="28/11/2014" std-date="2014-11-28T02:30:00.00Z"  title="GLM 0.9.6 is coming: an overview">
+		<meta>
+			<tag>gtc-tech-project-glm</tag>
+		</meta>
+
+		<paragraph>
+			GLM 0.9.6 is making great progress and a first stable release should available soon. This post is presenting an overview of some changes.
+		</paragraph>
+
+		<subtitle>Transition from degrees to radians compatibility break and GLM 0.9.5.4 help</subtitle>
+		<paragraph>
+			One of the long term issue with GLM is that some functions were using radians, functions from GLSL and others were using degrees, functions from GLU or legacy OpenGL.
+		</paragraph>
+		<paragraph>
+			In GLM 0.9.5, we can use <codeword>GLM_FORCE_RADIANS</codeword> to force all GLM functions to adopt radians.
+		</paragraph>
+
+		<code title="In GLM 0.9.5 in degrees:">
+			<line><keyword>#include </keyword><string>&lt;glm/mat4.hpp&gt;</string></line>
+			<line><keyword>#include </keyword><string>&lt;glm/gtc/matrix_tansform.hpp&gt;</string></line>
+			<line></line>
+			<line>glm::mat4 my_rotateZ(glm::mat4 <keyword>const</keyword> &amp; m, <keyword>float</keyword> angleInRadians)</line>
+			<line>{</line>
+			<line align="32px"><keyword>return</keyword> glm::rotate(m, glm::degrees(angleInRadians), glm::vec3(0.0, 0.0, 1.0));</line>
+			<line>}</line>
+		</code>
+
+		<code title="In GLM 0.9.5 in radians:">
+			<line><keyword>#define </keyword> GLM_FORCE_RADIANS</line>
+			<line><keyword>#include </keyword><string>&lt;glm/mat4.hpp&gt;</string></line>
+			<line><keyword>#include </keyword><string>&lt;glm/gtc/matrix_tansform.hpp&gt;</string></line>
+			<line></line>
+			<line>glm::mat4 my_rotateZ(glm::mat4 <keyword>const</keyword> &amp; m, <keyword>float</keyword> angleInRadians)</line>
+			<line>{</line>
+			<line align="32px"><keyword>return</keyword> glm::rotate(m, angleInRadians, glm::vec3(0.0, 0.0, 1.0));</line>
+			<line>}</line>
+		</code>
+
+		<code title="In GLM 0.9.6 in radians only:">
+			<line><keyword>#include </keyword><string>&lt;glm/mat4.hpp&gt;</string></line>
+			<line><keyword>#include </keyword><string>&lt;glm/gtc/matrix_tansform.hpp&gt;</string></line>
+			<line></line>
+			<line>glm::mat4 my_rotateZ(glm::mat4 <keyword>const</keyword> &amp; m, <keyword>float</keyword> angleInRadians)</line>
+			<line>{</line>
+			<line align="32px"><keyword>return</keyword> glm::rotate(m, angleInRadians, glm::vec3(0.0, 0.0, 1.0));</line>
+			<line>}</line>
+		</code>
+
+		<code title="In GLM 0.9.6 if you what to use degrees anyway:">
+			<line><keyword>#include </keyword><string>&lt;glm/mat4.hpp&gt;</string></line>
+			<line><keyword>#include </keyword><string>&lt;glm/gtc/matrix_tansform.hpp&gt;</string></line>
+			<line></line>
+			<line>glm::mat4 my_rotateZ(glm::mat4 <keyword>const</keyword> &amp; m, <keyword>float</keyword> angleInDegrees)</line>
+			<line>{</line>
+			<line align="32px"><keyword>return</keyword> glm::rotate(m, glm::radians(angleInDegrees), glm::vec3(0.0, 0.0, 1.0));</line>
+			<line>}</line>
+		</code>
+
+		<paragraph>
+			GLM 0.9.5 will show warning messages at compilation each time a function taking degrees is used.
+		</paragraph>
+
+		<quote>
+			GLM: rotate function taking degrees as a parameter is deprecated. <codeword>#define GLM_FORCE_RADIANS</codeword> before including GLM headers to remove this message.
+		</quote>
+
+		<paragraph>
+			If you are using a version of GLM older than GLM 0.9.5.1, update to <link href="./post-0660.html">GLM 0.9.5.4</link> before transitioning to GLM 0.9.6 to get this help in that process.
+		</paragraph>
+
+		<title>Make sure to build and run successfully your application with GLM 0.9.5 with GLM_FORCE_RADIANS, before transistioning to GLM 0.9.6</title>
+
+		<paragraph>
+			Finally, here is a list of all the functions that could use degrees in GLM 0.9.5.4 that requires radians in GLM 0.9.6: 
+			<codeword>rotate</codeword> (matrices and quaternions), 
+			<codeword>perspective</codeword>, 
+			<codeword>perspectiveFov</codeword>, 
+			<codeword>infinitePerspective</codeword>,
+			<codeword>tweakedInfinitePerspective</codeword>, 
+			<codeword>roll</codeword>,
+			<codeword>pitch</codeword>,
+			<codeword>yaw</codeword>,
+			<codeword>angle</codeword>,
+			<codeword>angleAxis</codeword>,
+			<codeword>polar</codeword>,
+			<codeword>euclidean</codeword>,
+			<codeword>rotateNormalizedAxis</codeword>,
+			<codeword>rotateX</codeword>,
+			<codeword>rotateY</codeword>,
+			<codeword>rotateZ</codeword> and
+			<codeword>orientedAngle</codeword>.			
+		</paragraph>
+
+		<subtitle>Using GLM template types</subtitle>
+		<paragraph>
+			There are a lot of reasons for using template types: Writing new template classes and functions or defining new types.
+			Unfortunately, until GLM 0.9.5, GLM template types were defined into the <codeword>detail</codeword> namespace indicating there are implementation details that may changed. 
+		</paragraph>
+		<paragraph>
+			With GLM 0.9.6, template types are accessible from the GLM namespace and guarantee to be stable onward.
+		</paragraph>
+
+		<code title="Example of template functions, GLM 0.9.5 and 0.9.6 style:">
+			<line><keyword>#include </keyword><string>&lt;glm/geometry.hpp&gt;</string></line>
+			<line><keyword>#include </keyword><string>&lt;glm/exponential.hpp&gt;</string></line>
+			<line></line>
+			<line><keyword>template</keyword> &lt;<keyword>typename</keyword> vecType&gt;</line>
+			<line><keyword>typename</keyword> vecType::value_type normalizeDot(vecType <keyword>const</keyword> &amp; a, vecType <keyword>const</keyword> &amp; b)</line>
+			<line>{</line>
+			<line align="32px"><keyword>return</keyword> glm::dot(a, b) * glm::inversesqrt(glm::dot(a, a) * glm::dot(b, b));</line>
+			<line>}</line>
+			<line></line>
+			<line><keyword>#include </keyword><string>&lt;glm/vec4.hpp&gt;</string></line>
+			<line></line>
+			<line><keyword>int</keyword> main()</line>
+			<line>{</line>
+			<line align="32px"><keyword>return</keyword> normalizeDot(glm::vec4(2.0), glm::vec4(2.0)) &gt; 0.0f ? 0 : 1</line>
+			<line>}</line>
+		</code>
+
+		<code title="Example of template functions, alternative GLM 0.9.6 style:">
+			<line><keyword>#include </keyword><string>&lt;glm/geometry.hpp&gt;</string></line>
+			<line><keyword>#include </keyword><string>&lt;glm/exponential.hpp&gt;</string></line>
+			<line></line>
+			<line><keyword>template</keyword> &lt;<keyword>typename</keyword> T, <keyword>template</keyword> &lt;<keyword>typename</keyword>, glm::precision&gt; <keyword>class</keyword> vecType&gt;</line>
+			<line>T normalizeDot(vecType&lt;T, P&gt; <keyword>const</keyword> &amp; a, vecType&lt;T, P&gt; <keyword>const</keyword> &amp; b)</line>
+			<line>{</line>
+			<line align="32px"><keyword>return</keyword> glm::dot(a, b) * glm::inversesqrt(glm::dot(a, a) * glm::dot(b, b));</line>
+			<line>}</line>
+			<line></line>
+			<line><keyword>#include </keyword><string>&lt;glm/vec4.hpp&gt;</string></line>
+			<line></line>
+			<line><keyword>int</keyword> main()</line>
+			<line>{</line>
+			<line align="32px"><keyword>return</keyword> normalizeDot(glm::vec4(2.0), glm::vec4(2.0)) &gt; 0.0f ? 0 : 1</line>
+			<line>}</line>
+		</code>
+
+		<code title="Example of typedefs with GLM 0.9.6:">
+			<line><keyword>#include </keyword><string>&lt;cstddef&gt;</string></line>
+			<line><keyword>#include </keyword><string>&lt;glm/vec4.hpp&gt;</string></line>
+			<line><keyword>#include </keyword><string>&lt;glm/mat4.hpp&gt;</string></line>
+			<line></line>
+			<line><keyword>typedef </keyword> glm::tvec4&lt;std::size_t&gt; size4;</line>
+			<line><keyword>typedef </keyword> glm::tvec4&lt;<keyword>long double</keyword>, glm::highp&gt; ldvec4;</line>
+			<line><keyword>typedef </keyword> glm::tmat4x4&lt;<keyword>long double</keyword>, glm::highp&gt; ldmat4x4;</line>
+		</code>
+
+		<subtitle>Optimizations</subtitle>
+		<paragraph>
+			With GLM 0.9.5, the library started to tackle the issue of compilation time by introducing forward declarations through <codeword>&lt;glm/fwd.hpp&gt;</codeword> but also by providing an alternative to the monolithic <codeword>&lt;glm/glm.hpp&gt;</codeword> headers with <codeword>&lt;glm/vec2.hpp&gt;</codeword>, <codeword>&lt;glm/mat3x2.hpp&gt;</codeword> and <codeword>&lt;glm/common.hpp&gt;</codeword>, etc.
+		</paragraph>
+		<paragraph>
+			With GLM 0.9.6, the library took advantage of dropping old compilers to replace preprocessor instantiation of the code by template instantiation.
+			The issue of preprocessor instantiation (among them!) is that all the code is generated even if it is never used resulting in building and compiling much bigger header files.
+		</paragraph>
+		<paragraph>
+			Furthermore, a lot of code optimizations have been done to provide better performance at run time by leveraging integer bitfield tricks and compiler intrinsics.
+			The test framework has been extended to include performance tests. The total code size of the tests is now 50% of the library code which is still not enough but pretty solid.
+		</paragraph>
+
+		<subtitle>Compilers support</subtitle>
+		<paragraph>
+			GLM 0.9.6 removed support for a lot of old compiler versions. If you are really insisting in using an older compiler, you are welcome to keep using GLM 0.9.5.
+		</paragraph>
+		<list title="Supported compilers by GLM 0.9.6:">
+			<entry>Apple Clang 4.0 and higher</entry>
+			<entry>CUDA 4.0 and higher</entry>
+			<entry>GCC 4.4 and higher</entry>
+			<entry>LLVM 3.0 and higher</entry>
+			<entry>Intel C++ Composer XE 2013 and higher</entry>
+			<entry>Visual Studio 2010 and higher</entry>
+			<entry>Any conform C++98 compiler</entry>
+		</list>
+
+		<subtitle>Lisence</subtitle>
+		<paragraph>
+			Finally, GLM is changing Lisence to adopt the <link href="http://glm.g-truc.net/copying.txt">Happy Bunny Lisence</link>. 
+		</paragraph>
+
+		<subtitle>Release note (not final)</subtitle>
+		<list title="Features:">
+			<entry>Exposed template vector and matrix types in 'glm' namespace #239, #244</entry>
+			<entry>Added GTX_scalar_multiplication for C++ 11 compiler only #242</entry>
+			<entry>Added GTX_range for C++ 11 compiler only #240</entry>
+			<entry>Added closestPointOnLine function for tvec2 to GTX_closest_point #238</entry>
+			<entry>Added GTC_vec1 extension, *vec1 support to *vec* types</entry>
+			<entry>Updated GTX_associated_min_max with vec1 support</entry>
+			<entry>Added support of precision and integers to linearRand #230</entry>
+			<entry>Added Integer types support to GTX_string_cast #249</entry>
+			<entry>Added vec3 slerp #237</entry>
+			<entry>Added GTX_common with isdenomal #223</entry>
+			<entry>Added GLM_FORCE_SIZE_FUNC to replace .length() by .size() #245</entry>
+			<entry>Added GLM_FORCE_NO_CTOR_INIT</entry>
+			<entry>Added 'uninitialize' to explicitly not initialize a GLM type</entry>
+			<entry>Added GTC_bitfield extension, promoted GTX_bit</entry>
+			<entry>Added GTC_integer extension, promoted GTX_bit and GTX_integer</entry>
+			<entry>Added GTC_round extension, promoted GTX_bit</entry>
+			<entry>Added GLM_FORCE_EXPLICIT_CTOR to require explicit type conversions #269</entry>
+			<entry>Added GTX_type_aligned for aligned vector, matrix and quaternion types</entry>
+		</list>
+
+		<list title="Improvements:">
+			<entry>Rely on C++11 to implement isinf and isnan</entry>
+			<entry>Removed GLM_FORCE_CUDA, Cuda is implicitly detected</entry>
+			<entry>Separated Apple Clang and LLVM compiler detection</entry>
+			<entry>Used pragma once</entry>
+			<entry>Undetected C++ compiler automatically compile with GLM_FORCE_CXX98 and GLM_FORCE_PURE</entry>
+			<entry>Added not function (from GLSL specification) on VC12</entry>
+			<entry>Optimized bitfieldReverse and bitCount functions</entry>
+			<entry>Optimized findLSB and findMSB functions</entry>
+			<entry>Optimized matrix-vector multiple performance with Cuda #257, #258</entry>
+			<entry>Reduced integer type redifinitions #233</entry>
+			<entry>Rewrited of GTX_fast_trigonometry #264 #265</entry>
+			<entry>Made types trivially copyable #263</entry>
+			<entry>Removed iostream in GLM tests</entry>
+			<entry>Used std features within GLM without redeclaring</entry>
+			<entry>Optimized cot function #272</entry>
+			<entry>Optimized sign function #272</entry>
+			<entry>Added explicit cast from quat to mat3 and mat4 #275</entry>
+		</list>
+
+		<list title="Fixes:">
+			<entry>Fixed std::nextafter not supported with C++11 on Android #217</entry>
+			<entry>Fixed missing value_type for dual quaternion</entry>
+			<entry>Fixed return type of dual quaternion length</entry>
+			<entry>Fixed infinite loop in isfinite function with GCC #221</entry>
+			<entry>Fixed Visual Studio 14 compiler warnings</entry>
+			<entry>Fixed implicit conversion from another tvec2 type to another tvec2 #241</entry>
+			<entry>Fixed lack of consistency of quat and dualquat constructors</entry>
+			<entry>Fixed uaddCarray #253</entry>
+			<entry>Fixed float comparison warnings #270</entry>
+		</list>
+
+		<list title="Deprecation:">
+			<entry>Removed degrees for function parameters</entry>
+			<entry>Removed GLM_FORCE_RADIANS, active by default</entry>
+			<entry>Removed VC 2005 / 8 and 2008 / 9 support</entry>
+			<entry>Removed GCC 3.4 to 4.5 support</entry>
+			<entry>Removed LLVM GCC support</entry>
+			<entry>Removed LLVM 2.6 to 2.9 support</entry>
+			<entry>Removed CUDA 3.0 to 4.0 support</entry>
+		</list>
+
+		<paragraph>
+			Enjoy!
+		</paragraph>
+
+		<source-list>
+			<source-element type="Link" href="https://github.com/g-truc/glm/archive/master.zip" title="GLM 0.9.6 staging" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.6/glm-0.9.6.pdf" title="GLM 0.9.6 manual" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.6/api/index.html" title="GLM 0.9.6 api documentation" />
+			<source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+		</source-list>
+	</post>
+
+	<post index="0692" date="26/11/2014" std-date="2014-11-26T23:00:00.00Z" title="Week 47: Landing">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2014-47-960.jpg" href="./photo/2014-47.jpg" />
+	</post>
+
+	<post index="0691" date="19/11/2014" std-date="2014-11-19T00:30:00.00Z" title="Week 46: 10 days later">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2014-46-960.jpg" href="./photo/2014-46.jpg" />
+	</post>
+
+    <post index="0690" date="16/11/2014" std-date="2014-11-16T16:30:00.00Z" title="Week 45: More happiness">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-45-960.jpg" href="./photo/2014-45.jpg" />
+	</post>
+
+	<post index="0689" date="10/11/2014" std-date="2014-11-10T22:30:00.00Z" title="Week 44: A lot of happiness">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-44-960.jpg" href="./photo/2014-44.jpg" />
+	</post>
+
+	<post index="0688" date="06/11/2014" std-date="2014-11-06T22:30:00.00Z" title="Week 43: Yang">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2014-43-960.jpg" href="./photo/2014-43.jpg" />
+	</post>
+
+	<post index="0687" date="31/10/2014" std-date="2014-10-31T23:30:00.00Z" title="Week 42: Visual categorization">
 		<meta><tag>gtc-crea-photograph</tag></meta>
 		<image color="black" img="./photo/2014-42-960.jpg" href="./photo/2014-42.jpg" />
-	</draft>
+	</post>
 
 	<post index="0686" date="26/10/2014" std-date="2014-10-26T22:30:00.00Z" title="Week 41: Cinematic crash">
 		<meta><tag>gtc-crea-photograph</tag></meta>
@@ -36585,5 +36952,6 @@
 
     <source-element type="Pack CS Interstate v2.03 (9.82Mo)" href="http://ftp.g-truc.net/projets/pcsi/pcsi-v2.03.exe" title="pcsi-v2.03.exe" />
   </post>
+
 
 </g-truc>
