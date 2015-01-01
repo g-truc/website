@@ -211,6 +211,422 @@
 		</source-list>
 	</draft>
 
+	<post index="0701" date="07/01/2015" std-date="2015-01-07T14:00:00.00Z" title="Effective and robust translation tables with zero based enums in C++">
+		<meta><tag>gtc-tech-devel-cpp</tag></meta>
+
+		<paragraph>
+			It is often useful to use enumeration values as an identifier however all enumerations are not equal.
+		</paragraph>
+		<paragraph>
+			OpenGL is using lose typed enums using assigned values where GLenum is sorry but an alias for <codeword>unsigned int</codeword> and all the values are defines belonging to a global enumation.
+		</paragraph>
+		<list name="Example of OpenGL enum values:">
+			<list-element><codeword><keyword>#define</keyword> GL_FRAGMENT_SHADER 0x8B30</codeword></list-element>
+			<list-element><codeword><keyword>#define</keyword> GL_READ_ONLY 0x88B8</codeword></list-element>
+			<list-element><codeword><keyword>#define</keyword> GL_UNIFORM_BUFFER 0x8A11</codeword></list-element>
+			<list-element><codeword><keyword>#define</keyword> GL_TEXTURE_BASE_LEVEL 0x813C</codeword></list-element>
+			<list-element><codeword><keyword>#define</keyword> GL_UNSIGNED_INT_10F_11F_11F_REV 0x8C3B</codeword></list-element>
+		</list>
+   
+		<paragraph>
+			Such enums values are undesirable identifiers. First, we can pass invalid values that result in runtime errors undetected at compilation. Second, it is very difficult to access data using such identifiers. Final, they implies an API dependance in cross graphics API code.
+		</paragraph>
+		<paragraph>
+			In this post, we propose to use <bold>user-defined enums with translation tables</bold> allowing to detect at compilation time translation issues and providing constantly fast performance.
+		</paragraph>
+
+		<title>Using enumemation values as identifiers and translation</title>
+
+		<paragraph>
+			Let's work using OpenGL enum values for shader stages.
+		</paragraph>
+
+		<code title="OpenGL enum values for shader stages:">
+			<line><keyword>#define</keyword> GL_VERTEX_SHADER 0x8B31</line>
+			<line><keyword>#define</keyword> GL_TESS_CONTROL_SHADER 0x8E88</line>
+			<line><keyword>#define</keyword> GL_TESS_EVALUATION_SHADER 0x8E87</line>
+			<line><keyword>#define</keyword> GL_GEOMETRY_SHADER 0x8DD9</line>
+			<line><keyword>#define</keyword> GL_FRAGMENT_SHADER 0x8B30</line>
+			<line><keyword>#define</keyword> GL_COMPUTE_SHADER 0x91B9</line>
+		</code>
+
+		<paragraph>
+			We could imagine a scenario where an OpenGL programs may have up to six shader objects, one per shader stages.
+			If we want to identify these shader objects using OpenGL enums values we are bound to write horrible code such as the following.
+		</paragraph>
+
+		<code title="Trivializing the issue using 'switch':">
+			<line>GLuint GetShaderName(GLenum Stage) <keyword>const</keyword></line>
+			<line>{</line>
+			<line align="32px"><keyword>switch</keyword>(Stage)</line>
+			<line align="32px">{</line>
+			<line align="32px"><keyword>case</keyword> GL_VERTEX_SHADER: <keyword>return this</keyword>->VertShaderName;</line>
+			<line align="32px"><keyword>case</keyword> GL_TESS_CONTROL_SHADER: <keyword>return this</keyword>->ContShaderName;</line>
+			<line align="32px"><keyword>case</keyword> GL_TESS_EVALUATION_SHADER: <keyword> return this</keyword>->EvalShaderName;</line>
+			<line align="32px"><keyword>case</keyword> GL_GEOMETRY_SHADER: <keyword>return this</keyword>->GeomShaderName;</line>
+			<line align="32px"><keyword>case</keyword> GL_FRAGMENT_SHADER: <keyword>return this</keyword>->FragShaderName;</line>
+			<line align="32px"><keyword>case</keyword> GL_COMPUTE_SHADER: <keyword>return this</keyword>->CompShaderName;</line>
+			<line align="32px"><keyword>default</keyword>:</line>
+			<line align="64px">assert(0); <comment>// Invalid value for 'Stage'</comment></line>
+			<line align="64px"><keyword>return</keyword> 0;</line>
+			<line align="32px">}</line>
+			<line>}</line>
+		</code>
+
+		<paragraph>
+			First issue, the user of this function might submit any value for 'Stage' because GLenum is just an alias for <codeword>unsigned int</codeword>.
+			Second issue, if in the future an new shader stage is added, then the function will just assert in debug build during runtime.
+			Finally, <codeword>switch</codeword> is slow. With a regular patern the CPU branching prediction can help a lot here but with random input values, this code is going to seriously polute the CPU caches. 
+		</paragraph>
+
+		<code title="Over-engineering the solution using 'std::map':">
+			<line>GLuint GetShaderName(GLenum Stage) <keyword>const</keyword></line>
+			<line>{</line>
+			<line align="32px">std::map&lt;GLenum, GLuint&gt;::const_iterator it = <keyword>this</keyword>->ShaderNames.find(Stage);</line>
+			<line align="32px">assert(it != <keyword>this</keyword>->ShaderNames.end()); <comment>// Invalid value for 'Stage'</comment></line>
+			<line align="32px"><keyword>return</keyword> it->second;</line>
+			<line>}</line>
+		</code>
+
+		<paragraph>
+			This common case of over-engineering certainly only requires few lines but it's going to be extremely slow to look up each OpenGL shader name with a lot of cache misses on the way 
+			and invalid enums are still only detected at run time.
+		</paragraph>
+
+		<title>Using a translation table</title>
+
+		<paragraph>
+			A programmer who takes the time to think about this issue will quickly figure out that the best way to identify the shader stages is to create a zero based enumetions and index a table to access the shader object using the enum values directly. 
+		</paragraph>
+
+		<code title="Accessing shader object name using a zero based enumeration:">
+			<line><keyword>enum</keyword> stage</line>
+			<line>{</line>
+			<line align="32px">VERTEX_SHADER,</line>
+			<line align="32px">TESS_CONTROL_SHADER,</line>
+			<line align="32px">TESS_EVALUATION_SHADER,</line>
+			<line align="32px">GEOMETRY_SHADER,</line>
+			<line align="32px">FRAGMENT_SHADER,</line>
+			<line align="32px">COMPUTE_SHADER</line>
+			<line>};</line>
+			<line></line>
+			<line>GLuint GetShaderName(stage Stage) <keyword>const</keyword></line>
+			<line>{</line>
+			<line align="32px"><keyword>return</keyword> <keyword>this</keyword>->ShaderNames[Stage];</line>
+			<line>}</line>
+		</code>
+
+		<paragraph>
+			Typically, the desir of using the OpenGL values directly it driven by the necessity to use it anyway for something hence it may fell like duplicating values.
+			However, as we seen in the previous example, we may duplicate the semantics of values but enum based values are vaslty superior.  
+		</paragraph>
+
+		<paragraph>
+			Now that we can access the shader names very efficiently, a problem to solve is how to translate the <codeword>stage</codeword> enumaration values into OpenGL values.
+			A first approach is to rely on <codeword>switch</codeword> to do this translation:
+		</paragraph>
+
+		<code title="Translation from user-defined enum to OpenGL enum using 'switch':">
+			<line>GLenum translate(stage Stage)</line>
+			<line>{</line>
+			<line align="32px"><keyword>switch</keyword>(Stage)</line>
+			<line align="32px">{</line>
+			<line align="32px"><keyword>case</keyword> VERTEX_SHADER: <keyword>return</keyword> GL_VERTEX_SHADER;</line>
+			<line align="32px"><keyword>case</keyword> TESS_CONTROL_SHADER: <keyword>return</keyword> GL_TESS_CONTROL_SHADER;</line>
+			<line align="32px"><keyword>case</keyword> TESS_EVALUATION_SHADER: <keyword>return</keyword> GL_TESS_EVALUATION_SHADER;</line>
+			<line align="32px"><keyword>case</keyword> GEOMETRY_SHADER: <keyword>return</keyword> GL_GEOMETRY_SHADER;</line>
+			<line align="32px"><keyword>case</keyword> FRAGMENT_SHADER: <keyword>return</keyword> GL_FRAGMENT_SHADER;</line>
+			<line align="32px"><keyword>case</keyword> COMPUTE_SHADER: <keyword>return</keyword> GL_COMPUTE_SHADER;</line>
+			<line align="32px">}</line>
+			<line>}</line>
+		</code>
+
+		<paragraph>
+			An alternative is to use a translation table.
+		</paragraph>
+
+		<paragraph>
+			Obviously, this code has the same issue as previously stated so an idea is to get inspired by how we would access shader objects in the previous example to do the translation.
+			It's essential to have a fast and constant time translation approach because this translation will happen inside the rendering loop.
+			We call translation table the idea of addressing a table to convert an enumeration value into a different values.
+		</paragraph>
+
+		<code title="Translation from user-defined enum to OpenGL enum with a translation table:">
+			<line>GLenum translate(stage Stage)</line>
+			<line>{</line>
+			<line align="32px"><keyword>static const</keyword> GLenum Table[] =</line>
+			<line align="32px">{</line>
+			<line align="64px">GL_VERTEX_SHADER,				<comment>// VERTEX_SHADER</comment></line>
+			<line align="64px">GL_TESS_CONTROL_SHADER,			<comment>// TESS_CONTROL_SHADER</comment></line>
+			<line align="64px">GL_TESS_EVALUATION_SHADER,		<comment>// TESS_EVALUATION_SHADER</comment></line>
+			<line align="64px">GL_GEOMETRY_SHADER,				<comment>// GEOMETRY_SHADER</comment></line>
+			<line align="64px">GL_FRAGMENT_SHADER,				<comment>// FRAGMENT_SHADER</comment></line>
+			<line align="64px">GL_COMPUTE_SHADER				<comment>// COMPUTE_SHADER</comment></line>
+			<line align="32px">};</line>
+			<line></line>
+			<line align="32px"><keyword>return</keyword> Table[Stage];</line>
+			<line>}</line>
+		</code>
+
+		<paragraph>
+			Before studying how we can make this code more robust by generating meaningful errors at compilation and runtime, let's start by studying the performance.
+		</paragraph>
+
+		<image title="Performance comparison between translation using 'switch' and a table. 4 to 128 values per enumation" color="white" img="./post/0701-1.png" href="./post/0701-1.png" />
+
+		<paragraph>
+			
+		</paragraph>
+
+		<title>Detecting the addition or removal of enumation values at compilation time</title>
+
+		<code title="Translation from user-defined enum to OpenGL enum:">
+			<line><keyword>enum</keyword> stage</line>
+			<line>{</line>
+			<line align="32px">VERTEX_SHADER,</line>
+			<line align="32px">TESS_CONTROL_SHADER,</line>
+			<line align="32px">TESS_EVALUATION_SHADER,</line>
+			<line align="32px">GEOMETRY_SHADER,</line>
+			<line align="32px">FRAGMENT_SHADER,</line>
+			<line align="32px">COMPUTE_SHADER,</line>
+			<line align="32px">LAST_SHADER = COMPUTE_SHADER</line>
+			<line>};</line>
+			<line></line>
+			<line>GLenum translate(stage Stage)</line>
+			<line>{</line>
+			<line align="32px"><keyword>static const</keyword> GLenum Table[] =</line>
+			<line align="32px">{</line>
+			<line align="64px">GL_VERTEX_SHADER,				<comment>// VERTEX_SHADER</comment></line>
+			<line align="64px">GL_TESS_CONTROL_SHADER,			<comment>// TESS_CONTROL_SHADER</comment></line>
+			<line align="64px">GL_TESS_EVALUATION_SHADER,		<comment>// TESS_EVALUATION_SHADER</comment></line>
+			<line align="64px">GL_GEOMETRY_SHADER,				<comment>// GEOMETRY_SHADER</comment></line>
+			<line align="64px">GL_FRAGMENT_SHADER,				<comment>// FRAGMENT_SHADER</comment></line>
+			<line align="64px">GL_COMPUTE_SHADER				<comment>// COMPUTE_SHADER</comment></line>
+			<line align="32px">};</line>
+			<line></line>
+			<line align="32px"><keyword>static_cast</keyword>(</line>
+			<line align="64px"><keyword>sizeof</keyword>(Table) / <keyword>sizeof</keyword>(GLenum) == LAST_SHADER + 1,</line>
+			<line align="64px"><string>"OPENGL ERROR: The translation table for 'stage' needs to be updated."</string>);</line>
+			<line></line>
+			<line align="32px"><keyword>return</keyword> Table[Stage];</line>
+			<line>};</line>
+		</code>
+
+		<title>Detecting invalid values at runtime</title>
+
+		<code title="Translation from user-defined enum to OpenGL enum:">
+			<line><keyword>enum</keyword> stage</line>
+			<line>{</line>
+			<line align="32px">VERTEX_SHADER,</line>
+			<line align="32px">TESS_CONTROL_SHADER,</line>
+			<line align="32px">TESS_EVALUATION_SHADER,</line>
+			<line align="32px">GEOMETRY_SHADER,</line>
+			<line align="32px">FRAGMENT_SHADER,</line>
+			<line align="32px">COMPUTE_SHADER,</line>
+			<line align="32px">LAST_SHADER = COMPUTE_SHADER</line>
+			<line>};</line>
+			<line></line>
+			<line>GLenum translate(stage Stage)</line>
+			<line>{</line>
+			<line align="32px"><keyword>static const</keyword> GLenum Table[] =</line>
+			<line align="32px">{</line>
+			<line align="64px">GL_VERTEX_SHADER,				<comment>// VERTEX_SHADER</comment></line>
+			<line align="64px">GL_NONE,							<comment>// TESS_CONTROL_SHADER</comment></line>
+			<line align="64px">GL_NONE,							<comment>// TESS_EVALUATION_SHADER</comment></line>
+			<line align="64px">GL_GEOMETRY_SHADER,				<comment>// GEOMETRY_SHADER</comment></line>
+			<line align="64px">GL_FRAGMENT_SHADER,				<comment>// FRAGMENT_SHADER</comment></line>
+			<line align="64px">GL_COMPUTE_SHADER				<comment>// COMPUTE_SHADER</comment></line>
+			<line align="32px">};</line>
+			<line></line>
+			<line align="32px"><keyword>static_cast</keyword>(</line>
+			<line align="64px"><keyword>sizeof</keyword>(Table) / <keyword>sizeof</keyword>(GLenum) == LAST_SHADER + 1,</line>
+			<line align="64px"><string>"OPENGL ERROR: The translation table for 'shader_stage' needs to be updated."</string>);</line>
+			<line></line>
+			<line align="32px">GLenum Translation = Table[Stage];</line>
+			<line align="32px">assert(Translation != GL_NONE); <comment>// Invalid value for 'Stage'</comment></line>
+			<line align="32px"><keyword>return</keyword> Translation;</line>
+			<line>};</line>
+		</code>
+
+		<title>Baking translation table at runtime</title>
+
+		<code title="Translation from user-defined enum to OpenGL enum:">
+			<line><keyword>enum</keyword> stage</line>
+			<line>{</line>
+			<line align="32px">VERTEX_SHADER,</line>
+			<line align="32px">TESS_CONTROL_SHADER,</line>
+			<line align="32px">TESS_EVALUATION_SHADER,</line>
+			<line align="32px">GEOMETRY_SHADER,</line>
+			<line align="32px">FRAGMENT_SHADER,</line>
+			<line align="32px">COMPUTE_SHADER,</line>
+			<line align="32px">LAST_SHADER = COMPUTE_SHADER</line>
+			<line>};</line>
+			<line></line>
+			<line>GLenum translate(std::array&lt;stage, LAST_SHADER + 1&gt; <keyword>const</keyword> &amp; Table, stage Stage)</line>
+			<line>{</line>
+			<line align="32px"><keyword>static_cast</keyword>(</line>
+			<line align="64px"><keyword>sizeof</keyword>(shader) * Table.size() / <keyword>sizeof</keyword>(GLenum) == LAST_SHADER + 1,</line>
+			<line align="64px"><string>"OPENGL ERROR: The translation table for 'stage' needs to be updated."</string>);</line>
+			<line></line>
+			<line align="32px">GLenum Translation = Table[Stage];</line>
+			<line align="32px">assert(Translation != GL_NONE); <comment>// Invalid value for 'Stage'</comment></line>
+			<line align="32px"><keyword>return</keyword> Translation;</line>
+			<line>};</line>
+		</code>
+
+		<title>Dynamic translation table at runtime</title>
+
+		<code title="Translation from user-defined enum to OpenGL enum:">
+			<line><keyword>typedef</keyword> std::size_t stage;</line>
+			<line></line>
+			<line>GLenum translate(std::vector&lt;stage&gt; <keyword>const</keyword> &amp; Table, stage Stage)</line>
+			<line>{</line>
+			<line align="32px">assert(Stage &lt; Table.size()); <comment>// Invalid value for 'Stage'</comment></line>
+			<line></line>
+			<line align="32px">GLenum Translation = Table[Stage];</line>
+			<line align="32px">assert(Translation != GL_NONE); <comment>// Invalid value for 'Stage'</comment></line>
+			<line align="32px"><keyword>return</keyword> Translation;</line>
+			<line>};</line>
+		</code>
+
+		<title>Translation tables using 'static const' or 'const' tables</title>
+
+		<paragraph>
+			My instinct would be that it should be static and not only const because when we enter the function there will be a stack allocation big enough so that all the variables in it could fit there. The issue with only const is that the function might get bigger so it will consume more CPU instructions cache, hence evict more stuff resulting in more instruction cache misses. So, my choice here is to fight against instructions cache evictions.
+
+With static, the table should go into the data part of the ASM so effectively the function remains compact and evict less. The downside is that we may cache miss twice. Once on the function call (in L1 inst. cache) and once on the table fetch (in L1 data cache which is not that busy in "random code" while is super busy in optimize data transformation code).
+
+It possible that in practice the compilers put the table at the same place. I can check that and see, I don't know. Benchmarking might be a little hard as it might depend on the benchmark. My felling is that our call stack is pretty big so we are probably bound by the instruction cache evictions rather than cache miss latencies but it's possible that we end up evicting all the time anyway in which case it's better to optimize for number of cache misses. I am pretty doubtful on this because I would be super surpris that the data cache is a bottleneck is random plumbing code.
+
+It's definitely an interesting topic which I am happy to study more. In any case, this is magnitudes more efficient and robust than doing translations with switch statements! A rule on using switch statement? Hell yes! I would be up for something like that: "Stop pretending with 'switch' that the code is 'future proof', make your code break everywhere X is used if your enums changed using indirection tables instead of switches". 
+		</paragraph>
+
+		<code title="Visual C++ 2013 assembly code for a 'static const' translation table:">
+			<line>?static_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z PROC</line>
+			<line></line>
+			<line align="32px">movsxd	rax, ecx,</line>
+			<line align="32px">lea	rcx, OFFSET FLAT:?Table@?1??static_table_translate@translation4@@YA?AW4translated@2@W4index@2@@Z@4QBW432@B,</line>
+			<line align="32px">mov	eax, DWORD PTR [rcx+rax*4]</line>
+			<line></line>
+			<line align="32px">ret	0</line>
+			<line></line>
+			<line>?static_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z ENDP</line>
+		</code>
+
+		<paragraph>
+
+		</paragraph>
+
+		<code title="Visual C++ 2013 assembly code for a 'const' translation table:">
+			<line>?const_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z PROC</line>
+			<line></line>
+			<line>$LN4:</line>
+			<line align="32px">sub	rsp, 40					; 00000028H</line>
+			<line align="32px">mov	rax, QWORD PTR __security_cookie</line>
+			<line align="32px">xor	rax, rsp</line>
+			<line></line>
+			<line align="32px">movsxd	rax, ecx</line>
+			<line align="32px">movdqu	XMMWORD PTR Table$[rsp], xmm0</line>
+			<line align="32px">mov	eax, DWORD PTR Table$[rsp+rax*4]</line>
+			<line></line>
+			<line align="32px">mov	rcx, QWORD PTR __$ArrayPad$[rsp]</line>
+			<line align="32px">xor	rcx, rsp</line>
+			<line align="32px">call	__security_check_cookie</line>
+			<line align="32px">add	rsp, 40					; 00000028H</line>
+			<line></line>
+			<line align="32px">ret	0</line>
+			<line></line>
+			<line>?const_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z ENDP</line>
+		</code>
+
+		<paragraph>
+
+		</paragraph>
+
+		<title>Do not translate more than necessary</title>
+
+		<paragraph>
+
+		</paragraph>
+
+		<code title="Example of useless last minute translation:">
+			<line><keyword>enum</keyword> target</line>
+			<line>{</line>
+			<line align="32px">UNIFORM_BUFFER,</line>
+			<line align="32px">SHADER_STORAGE_BUFFER,</line>
+			<line align="32px">TRANSFORM_FEEDBACK_BUFFER</line>
+			<line>};</line>
+			<line></line>
+			<line><keyword>void</keyword> bindBuffer(target Target, GLuint Unit, GLuint Buffer)</line>
+			<line>{</line>
+			<line align="32px"><keyword>switch</keyword>(Target)</line>
+			<line align="32px">{</line>
+			<line align="32px"><keyword>case</keyword> UNIFORM_BUFFER:</line>
+			<line align="64px"><keyword>if</keyword>(<keyword>this</keyword>->UniformBufferBound[Unit] == Buffer)</line>
+			<line align="96px"><keyword>return</keyword>;</line>
+			<line align="64px"><keyword>this</keyword>->UniformBufferBound[Unit] = Buffer;</line>
+			<line align="64px"><keyword>break</keyword>;</line>
+			<line align="32px"><keyword>case</keyword> SHADER_STORAGE_BUFFER:</line>
+			<line align="64px"><keyword>if</keyword>(<keyword>this</keyword>->ShaderStorageBufferBound[Unit] == Buffer)</line>
+			<line align="96px"><keyword>return</keyword>;</line>
+			<line align="64px"><keyword>this</keyword>->ShaderStorageBufferBound[Unit] = Buffer;</line>
+			<line align="64px"><keyword>break</keyword>;</line>
+			<line align="32px"><keyword>case</keyword> TRANSFORM_FEEDBACK_BUFFER:</line>
+			<line align="64px"><keyword>if</keyword>(<keyword>this</keyword>->TransformFeedbackBufferBound[Unit] == Buffer)</line>
+			<line align="96px"><keyword>return</keyword>;</line>
+			<line align="64px"><keyword>this</keyword>->TransformFeedbackBufferBound[Unit] = Buffer;</line>
+			<line align="64px"><keyword>break</keyword>;</line>
+			<line align="32px">}</line>
+			<line></line>
+			<line align="32px">glBindBufferBase(translate(Target), Unit, Buffer);</line>
+			<line>}</line>
+			<line></line>
+			<line><keyword>void</keyword> foo()</line>
+			<line>{</line>
+			<line align="32px">...</line>
+			<line align="32px"><keyword>for</keyword>(GLuint i = 0; i &lt; Buffers.size(); ++i)</line>
+			<line align="64px">bindBuffer(UNIFORM_BUFFER, i, Buffers[i]);</line>
+			<line align="32px">...</line>
+			<line>}</line>
+		</code>
+
+		<code title="Using the code context to avoid translation:">
+			<line><keyword>void</keyword> bindUniformBuffer(GLuint Unit, GLuint Buffer);</line>
+			<line>{</line>
+			<line align="32px"><keyword>if</keyword>(<keyword>this</keyword>->UniformBufferBound[Unit] == Buffer)</line>
+			<line align="64px"><keyword>return</keyword>;</line>
+			<line align="32px">glBindBufferBase(GL_UNIFORM_BUFFER, Unit, Buffer);</line>
+			<line align="32px"><keyword>this</keyword>->UniformBufferBound[Unit] = Buffer;</line>
+			<line>}</line>
+			<line></line>
+			<line><keyword>void</keyword> bindShaderStorageBuffer(GLuint Unit, GLuint Buffer);</line>
+			<line>{</line>
+			<line align="32px"><keyword>if</keyword>(<keyword>this</keyword>->ShaderStorageBufferBound[Unit] == Buffer)</line>
+			<line align="64px"><keyword>return</keyword>;</line>
+			<line align="32px">glBindBufferBase(GL_SHADER_STORAGE_BUFFER, Unit, Buffer);</line>
+			<line align="32px"><keyword>this</keyword>->ShaderStorageBufferBound[Unit] = Buffer;</line>
+			<line>}</line>
+			<line></line>
+			<line><keyword>void</keyword> bindTransformFeedbackBuffer(GLuint Unit, GLuint Buffer);</line>
+			<line>{</line>
+			<line align="32px"><keyword>if</keyword>(<keyword>this</keyword>->TransformFeedbackBufferBound[Unit] == Buffer)</line>
+			<line align="64px"><keyword>return</keyword>;</line>
+			<line align="32px">glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, Unit, Buffer);</line>
+			<line align="32px"><keyword>this</keyword>->TransformFeedbackBufferBound[Unit] = Buffer;</line>
+			<line>}</line>
+			<line></line>
+			<line><keyword>void</keyword> foo()</line>
+			<line>{</line>
+			<line align="32px">...</line>
+			<line align="32px"><keyword>for</keyword>(GLuint i = 0; i &lt; Buffers.size(); ++i)</line>
+			<line align="64px">bindUniformBuffer(i, Buffers[i]);</line>
+			<line align="32px">...</line>
+			<line>}</line>
+		</code>
+
+		<title>Conclusions</title>
+	</post>
+
 	<post index="0700" date="20/12/2014" std-date="2014-12-20T23:00:00.00Z" title="Week 52: Bloodflood">
 		<meta><tag>gtc-crea-photograph</tag></meta>
 		<image color="black" img="./photo/2014-52-960.jpg" href="./photo/2014-52.jpg" />
