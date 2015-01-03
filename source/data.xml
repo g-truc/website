@@ -211,7 +211,7 @@
 		</source-list>
 	</draft>
 
-	<post index="0701" date="07/01/2015" std-date="2015-01-07T14:00:00.00Z" title="Effective and robust translation tables with zero based enums in C++">
+	<draft index="0999" date="07/01/2015" std-date="2015-01-07T14:00:00.00Z" title="Effective and robust translation tables with zero based enums in C++">
 		<meta><tag>gtc-tech-devel-cpp</tag></meta>
 
 		<paragraph>
@@ -625,6 +625,11 @@ It's definitely an interesting topic which I am happy to study more. In any case
 		</code>
 
 		<title>Conclusions</title>
+	</draft>
+
+	<post index="0701" date="03/01/2015" std-date="2015-01-03T23:00:00.00Z" title="Week 1: The forth component of representations">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2015-01-960.jpg" href="./photo/2015-01.jpg" />
 	</post>
 
 	<post index="0700" date="20/12/2014" std-date="2014-12-20T23:00:00.00Z" title="Week 52: Bloodflood">
