@@ -46,28 +46,6 @@
 		</source-list>
 	</draft>
 
-	<draft index="0999" date="20/09/2013" std-date="2013-09-20T14:00:00.00Z" title="Mythologolical memory fragmentation">
-		<meta><tag>gtc-tech-devel-cpp</tag></meta>
-		<paragraph>
-			When I through the fact that I like C++ and the STL, too many people tells: "STL is wrong it fragment memory". To what I answer, "use the right tool for the right purpose". What to I mean by that? It's not STL that fragment memory it's the way it's used, if we write are own code and we are still using the wrong method, we will still fragment memory. When I see the quality of code out there, I much prefer a well documented and specified implementation, perfectly crafted by compiler authors both both performance and robustness.
-		</paragraph>
-		<paragraph>
-			What's memory fragmentation? Why it's a problem and what's the domain of validity of that problem?
-		</paragraph>
-		<quote>Memory fragmentation definition</quote>
-		<paragraph>
-			Consequences of memory fragmentation involves 
-		</paragraph>
-		<paragraph>
-			The software, the OS and the CPU hardware.
-		</paragraph>
-		<list name="Memory fragmentation involved three components:">
-			<list-element>The user software </list-element>
-			<list-element>The OS </list-element>
-			<list-element>The CPU</list-element>
-		</list>
-	</draft>
-
 	<draft index="0999" date="09/07/2012" std-date="2013-07-09T20:00:00.00Z" title="5 great C++ 11 language features">
 		<meta><tag>gtc-tech-devel-cpp</tag></meta>
 
@@ -92,540 +70,131 @@
 		</paragraph>
 	</draft>
 
-	<draft index="0999" date="09/12/2013" std-date="2013-12-09T10:00:00.00Z" title="On the road to 1 million draws at 60 Hz">
-		<meta><tag>gtc-tech-opengl</tag></meta>
-		<paragraph>
-			I am taking advantages of Graham Sellers excellent title on the subjet to detail here my views on the subject following another discussion about Mantle design is a short coming driven by a believe backend by no evidence. One great effect of Mantle is that it's a catalyser for discussions about how to see real time rendering and finally driving a major evolution after many years stock with deprecated GPU architechture mind frame frozen by the requirement to support the previous generation of consoles.  
-		</paragraph>
-		<paragraph>
-			Why do we want to submit many more draws? Because, we are drastically limiting the scene complexity because of this limitation. By scene complexity, I mean number of objects, details, variations of surfaces and we enforce some levels of staticity to contain this complexity. We just have to look around us, right now and from where we are seating to see the short coming of current real time rendering. 
-		</paragraph>
-		<paragraph>
-			Where Mantle and the mind frame that got with it is wrong is that it's satisfying ourself with so little more scene complexity improvements. "If I can use N CPU core, I can make N time more complex scene!". 
-		</paragraph>
-		<list title="Issues with this reasonning: ">
-			<list-element>I can expect to improve my scene complexity by the number of core maximum.</list-element>
-			<list-element>I still need to do plently of other stuff on my CPU cores. More complex scenes might mean more complex physics. We can make trade off on rendering, hardly on physic.</list-element>
-			<list-element>Even if I am submitting draws from N cores, the commands are necessarily serialized by the GPUs which currently can only execute one command buffer at a time. We can't get linear scaling.</list-element>
-		</list>
-		<paragraph>
-			Am I willing to make any compromised to the real life scenes I am seeing? No. Why should I make any compromise in the virtual scenes I am rendering? No. Therefore, we need to answer what are actually the boundaries for current GPU hardware architechtures. I am sorry for all the developers who spent all that time working on all consoles but at this point the best way forward is to forget all that you learnt with GeForce 7 and Radeon X0000 architechtures because those have very little to do with current architechtures. It's a bit like starting to use Git after some many years on SVN, just forget everything!
-		</paragraph>
-		<subtitle>Some scene complexity theory</subtitle>
-		<paragraph>
-			Just like mathematiciens demonstrated results way before we had computers to calculate these results, scene complexity has been theorized way before computer graphics was created essetially by art movements like De Stidj and generally by the constructivists.
-			I like to say that whatever we need to envision has been painted by Piet Mandrian paintings: Equilibrium, proportions and rhyme. Also, he was monstly concerned by landscapes, his vision applies to indoor scenes, cities or characters as photographers and architeches demonstrated it with their work.
-		</paragraph>
-		<image>Mondrian paintings here</image>
-		<paragraph>
-			What's real time graphics? Maybe just another media based on abstractions to create images. Instead of lines and colors we have meshes, shaders, buffers and textures and the way to use these media primitives are only expressed by Mandrian subjet of interest: Equilibrium, proportions and rhyme.
-		</paragraph>
-		<paragraph>
-			If we applies his concept to real time rendering, suddently recognize familiar concepts: Recurrence of events, variability of items, grouping and features divisions. If we project ourself with our would we paint one of painting, we can regnozise pattern similar to how we would do rendering.
-		</paragraph>
-		<list>
-			<list-element>1/ Clear the background with white</list-element>
-			<list-element>2/ Tracing lines to bound the colors and the black lines</list-element>
-			<list-element>3/ Filling the areas with colors: first yellow, then red and finally blue.</list-element>
-			<list-element>4/ Drawing the black lines</list-element>
-		</list>
-		<paragraph>
-			Do we want to draw a line and a color area then a line, etc? No because I would need to clean my brush all the time, my black painting would dry out. 
-			Do I want to draw my black lines first? No because it will be hard for me to to fill the areas without drawing over the side of the black lines which would make my lines not as straight.
-			DO I have to fill with white area that will be filled with others colors? No, It's easy to draw over white with any color so I don't have to be precise but I can roughtly skip color areas while filling with white the background.
-		</paragraph>
-		<paragraph>
-			There is a certain rate at which I am updating my colors, a certain rate are which I am drawing features and an order at which we need to do these operations.
-		</paragraph>
-
-		<subtitle>The theory of harmonics applied to scene complexity</subtitle>
-		<paragraph>
-			All these updates happening at different rates make me think about harmonics: Each signal can be representation as a sum of sinusoids where each one is evolving at frequency that is a multiple of the base frequency. In this vision each frequency is the embodiment of an event happening: A draw, a transfer, a rendering pass, a frame, using a shader program, a texture, etc.
-		</paragraph>
-		<image>Harminics</image>
-
-		<subtitle>Evidences justifying the MultiDraw mind frame</subtitle>
-		<paragraph>
-			There is this wide spread idea that draw calls are expensive and that we are bound to about 1000 to 5000 draw call. Even AMD, during its marketing Mantle presentation is spreading this legend.  
-			We can easily get some numbers with quick experiments that will show that it's wrong. These experiments will even allow us to get the precise cost of a single draw call invocations.
-		</paragraph>
-		<image>
-			Numbers for draw calls performance
-		</image>
-		<paragraph>
-			Every API call has a constant cost but it seems that the only strategy of the PS3 and XBox360 area had been to submit all the calls at draw calls, hence at the highest update frequency. Adding more CPU core increase the performance by increasing the possible number of API calls but it doesn't improve the efficiency of the system. What we need is not more performance but highest efficiency. Current processors are capable of adapting their frequencies so that is the processor heat up to a certain limit, it will reduce it frequence to control the heat. If the processor has to reduce it's frequency, then its overall performance is dropping. This is particularly true on mobile where the termal limit is very restricted. 
-		</paragraph>
-		<paragraph>
-			The power equation here
-		</paragraph>
-		<paragraph>
-			Removing frequencies is the operation that consist in replacing a CPU based swtiching operation by a GPU based resource indexing operation. The first example in that regard is what we call instracing where out of a single mesh we create multiple instances of the same object fetching MVP matrices or texture indexes out of uniform buffers or texture buffers. The performance is impressive but the usage is limited. It has to be out of a single mesh. Multi draws are a simple extension of this design where each mesh can be different. 
-		</paragraph>
-		<list title="Grouping approaches">
-			<list-element>Instancing: N instances from one mesh</list-element>
-			<list-element>MultiDraw: N draws from N meshes using the 1 vertex formats</list-element>
-		</list>
-		<paragraph>
-			Matching freqencies
-		</paragraph>
-
-		<subtitle>States management</subtitle>
-		<paragraph>
-
-		</paragraph>
-	</draft>
-
-	<draft index="0999" date="11/08/2014" std-date="2014-08-11T23:00:00.00Z" title="There will be no OpenGL 5.0">
-		<meta>
-		  <tag>gtc-tech-opengl-review</tag>
-		  <tag>gtc-tech-project-openglreviews</tag>
-		</meta>
-
-		<paragraph>
-		  The <link href="http://www.khronos.org">Khronos Group</link> has announced working on a new graphics API through a call for participation at 
-		  <link href="http://www.siggraph.org/s2014/">Siggraph 2014</link>.
-		</paragraph>
-
-		<list name="Sadly, the announcement didn't came with much information but we know few important elements:">
-		  <list-element>It won't be based on the current OpenGL specification</list-element>
-		  <list-element>There will be an intermediate shading language</list-element>
-		  <list-element>We are looking at furhther convergence between OpenGL and OpenGL ES</list-element>
-		</list>
-
-		<paragraph>
-			Starting from the ground up implies that we are looking at the unfolding of a new cross platform ecosystem.
-			I think that despite the complains on the current OpenGL ecosystem that ecosystem is more successfull than we think even considering OpenGL.
-		</paragraph>
-
-		<list name="However, there are conceptual issues that makes this reboot almost innevitable:">
-			<list-element>Thread safety and thread local storage</list-element>
-			<list-element>1000+ pages of OpenGL and 600+ pages of OpenGL ES</list-element>
-			<list-element>The ecosystem is not trully cross-platform, nothing enforced drivers to behave the same way.</list-element>
-			<list-element>Tile based GPU support is a hack leading to under utilisizing the GPU unless we are in the secret of the Gods</list-element>
-		</list>
-
-		<source-list>
-		  <source-element type="Download" href="http://www.opengl.org/registry/doc/glspec44.core.withchanges.pdf" title="OpenGL 4.4 core specification" />
-		  <source-element type="Download" href="http://www.opengl.org/registry/doc/GLSLangSpec.4.40.diff.pdf" title="GLSL 4.4 specification" />
-		  <!--source-download index="1144" /-->
-		</source-list>
-	</draft>
-
-	<draft index="0999" date="07/01/2015" std-date="2015-01-07T14:00:00.00Z" title="Effective and robust translation tables with zero based enums in C++">
+	<draft index="0704" date="11/01/2015" std-date="2015-01-11T14:00:00.00Z" title="Translations in C++ using tables with zero-based enums">
 		<meta><tag>gtc-tech-devel-cpp</tag></meta>
 
 		<paragraph>
-			It is often useful to use enumeration values as an identifier however all enumerations are not equal.
+			Few months ago, I got annoy that we had some code that translate API independent enumerations to OpenGL enumerations, back and forth, with basically no consideration at what happens when we add a new enumeration value in the API independent enumerations and no consideration of how this translation would perform within the rendering loop, where performance is critical and it's typically going to be called. Considering the high number of translations per frame, probably it starts to matter.
 		</paragraph>
-		<paragraph>
-			OpenGL is using lose typed enums using assigned values where GLenum is sorry but an alias for <codeword>unsigned int</codeword> and all the values are defines belonging to a global enumation.
-		</paragraph>
-		<list name="Example of OpenGL enum values:">
-			<list-element><codeword><keyword>#define</keyword> GL_FRAGMENT_SHADER 0x8B30</codeword></list-element>
-			<list-element><codeword><keyword>#define</keyword> GL_READ_ONLY 0x88B8</codeword></list-element>
-			<list-element><codeword><keyword>#define</keyword> GL_UNIFORM_BUFFER 0x8A11</codeword></list-element>
-			<list-element><codeword><keyword>#define</keyword> GL_TEXTURE_BASE_LEVEL 0x813C</codeword></list-element>
-			<list-element><codeword><keyword>#define</keyword> GL_UNSIGNED_INT_10F_11F_11F_REV 0x8C3B</codeword></list-element>
-		</list>
-   
-		<paragraph>
-			Such enums values are undesirable identifiers. First, we can pass invalid values that result in runtime errors undetected at compilation. Second, it is very difficult to access data using such identifiers. Final, they implies an API dependance in cross graphics API code.
-		</paragraph>
-		<paragraph>
-			In this post, we propose to use <bold>user-defined enums with translation tables</bold> allowing to detect at compilation time translation issues and providing constantly fast performance.
-		</paragraph>
-
-		<title>Using enumemation values as identifiers and translation</title>
 
 		<paragraph>
-			Let's work using OpenGL enum values for shader stages.
+			Well, we know how things rise... It turns out as this 27 pages article that I called <link href="./doc/C++%20Translations.pdf">Robust and efficient translations in C++ using tables with zero-based enumerations</link>
+			which is nothing revolutionnary but maybe somewhat useful.
 		</paragraph>
-
-		<code title="OpenGL enum values for shader stages:">
-			<line><keyword>#define</keyword> GL_VERTEX_SHADER 0x8B31</line>
-			<line><keyword>#define</keyword> GL_TESS_CONTROL_SHADER 0x8E88</line>
-			<line><keyword>#define</keyword> GL_TESS_EVALUATION_SHADER 0x8E87</line>
-			<line><keyword>#define</keyword> GL_GEOMETRY_SHADER 0x8DD9</line>
-			<line><keyword>#define</keyword> GL_FRAGMENT_SHADER 0x8B30</line>
-			<line><keyword>#define</keyword> GL_COMPUTE_SHADER 0x91B9</line>
-		</code>
 
 		<paragraph>
-			We could imagine a scenario where an OpenGL programs may have up to six shader objects, one per shader stages.
-			If we want to identify these shader objects using OpenGL enums values we are bound to write horrible code such as the following.
+			It's pretty common to read some stipulations about how the compilers are supposed to optimize the code. On cross-compiler environments, the following charts from the article are wishing us good luck with such ideas! The four implementation methods are described in the full article. 
 		</paragraph>
-
-		<code title="Trivializing the issue using 'switch':">
-			<line>GLuint GetShaderName(GLenum Stage) <keyword>const</keyword></line>
-			<line>{</line>
-			<line align="32px"><keyword>switch</keyword>(Stage)</line>
-			<line align="32px">{</line>
-			<line align="32px"><keyword>case</keyword> GL_VERTEX_SHADER: <keyword>return this</keyword>->VertShaderName;</line>
-			<line align="32px"><keyword>case</keyword> GL_TESS_CONTROL_SHADER: <keyword>return this</keyword>->ContShaderName;</line>
-			<line align="32px"><keyword>case</keyword> GL_TESS_EVALUATION_SHADER: <keyword> return this</keyword>->EvalShaderName;</line>
-			<line align="32px"><keyword>case</keyword> GL_GEOMETRY_SHADER: <keyword>return this</keyword>->GeomShaderName;</line>
-			<line align="32px"><keyword>case</keyword> GL_FRAGMENT_SHADER: <keyword>return this</keyword>->FragShaderName;</line>
-			<line align="32px"><keyword>case</keyword> GL_COMPUTE_SHADER: <keyword>return this</keyword>->CompShaderName;</line>
-			<line align="32px"><keyword>default</keyword>:</line>
-			<line align="64px">assert(0); <comment>// Invalid value for 'Stage'</comment></line>
-			<line align="64px"><keyword>return</keyword> 0;</line>
-			<line align="32px">}</line>
-			<line>}</line>
-		</code>
 
 		<paragraph>
-			First issue, the user of this function might submit any value for 'Stage' because GLenum is just an alias for <codeword>unsigned int</codeword>.
-			Second issue, if in the future an new shader stage is added, then the function will just assert in debug build during runtime.
-			Finally, <codeword>switch</codeword> is slow. With a regular patern the CPU branching prediction can help a lot here but with random input values, this code is going to seriously polute the CPU caches. 
+			X: number values per enumeration ; Y: ms.
 		</paragraph>
 
-		<code title="Over-engineering the solution using 'std::map':">
-			<line>GLuint GetShaderName(GLenum Stage) <keyword>const</keyword></line>
-			<line>{</line>
-			<line align="32px">std::map&lt;GLenum, GLuint&gt;::const_iterator it = <keyword>this</keyword>->ShaderNames.find(Stage);</line>
-			<line align="32px">assert(it != <keyword>this</keyword>->ShaderNames.end()); <comment>// Invalid value for 'Stage'</comment></line>
-			<line align="32px"><keyword>return</keyword> it->second;</line>
-			<line>}</line>
-		</code>
+		<image title="Four enumeration translation methods performance with Clang 3.6-trunk." color="white" img="./post/0704-clang.png" href="./post/0704-clang.png" />
+
+		<image title="Four enumeration translation methods performance with GCC 4.8.1." color="white" img="./post/0704-gcc.png" href="./post/0704-gcc.png" />
+
+		<image title="Four enumeration translation methods performance with ICC 2015." color="white" img="./post/0704-icc.png" href="./post/0704-icc.png" />
+
+		<image title="Four enumeration translation methods performance with VC 2013." color="white" img="./post/0704-vc.png" href="./post/0704-vc.png" />
 
 		<paragraph>
-			This common case of over-engineering certainly only requires few lines but it's going to be extremely slow to look up each OpenGL shader name with a lot of cache misses on the way 
-			and invalid enums are still only detected at run time.
+			For the once who doesn't want to go through the 27 pages, here is the base solution we propose for enumeration translations.
 		</paragraph>
 
-		<title>Using a translation table</title>
-
-		<paragraph>
-			A programmer who takes the time to think about this issue will quickly figure out that the best way to identify the shader stages is to create a zero based enumetions and index a table to access the shader object using the enum values directly. 
-		</paragraph>
-
-		<code title="Accessing shader object name using a zero based enumeration:">
+		<code title="Translation using a table and zero-based enumemation:">
 			<line><keyword>enum</keyword> stage</line>
 			<line>{</line>
-			<line align="32px">VERTEX_SHADER,</line>
-			<line align="32px">TESS_CONTROL_SHADER,</line>
-			<line align="32px">TESS_EVALUATION_SHADER,</line>
-			<line align="32px">GEOMETRY_SHADER,</line>
-			<line align="32px">FRAGMENT_SHADER,</line>
-			<line align="32px">COMPUTE_SHADER</line>
-			<line>};</line>
-			<line></line>
-			<line>GLuint GetShaderName(stage Stage) <keyword>const</keyword></line>
-			<line>{</line>
-			<line align="32px"><keyword>return</keyword> <keyword>this</keyword>->ShaderNames[Stage];</line>
-			<line>}</line>
-		</code>
-
-		<paragraph>
-			Typically, the desir of using the OpenGL values directly it driven by the necessity to use it anyway for something hence it may fell like duplicating values.
-			However, as we seen in the previous example, we may duplicate the semantics of values but enum based values are vaslty superior.  
-		</paragraph>
-
-		<paragraph>
-			Now that we can access the shader names very efficiently, a problem to solve is how to translate the <codeword>stage</codeword> enumaration values into OpenGL values.
-			A first approach is to rely on <codeword>switch</codeword> to do this translation:
-		</paragraph>
-
-		<code title="Translation from user-defined enum to OpenGL enum using 'switch':">
-			<line>GLenum translate(stage Stage)</line>
-			<line>{</line>
-			<line align="32px"><keyword>switch</keyword>(Stage)</line>
-			<line align="32px">{</line>
-			<line align="32px"><keyword>case</keyword> VERTEX_SHADER: <keyword>return</keyword> GL_VERTEX_SHADER;</line>
-			<line align="32px"><keyword>case</keyword> TESS_CONTROL_SHADER: <keyword>return</keyword> GL_TESS_CONTROL_SHADER;</line>
-			<line align="32px"><keyword>case</keyword> TESS_EVALUATION_SHADER: <keyword>return</keyword> GL_TESS_EVALUATION_SHADER;</line>
-			<line align="32px"><keyword>case</keyword> GEOMETRY_SHADER: <keyword>return</keyword> GL_GEOMETRY_SHADER;</line>
-			<line align="32px"><keyword>case</keyword> FRAGMENT_SHADER: <keyword>return</keyword> GL_FRAGMENT_SHADER;</line>
-			<line align="32px"><keyword>case</keyword> COMPUTE_SHADER: <keyword>return</keyword> GL_COMPUTE_SHADER;</line>
-			<line align="32px">}</line>
-			<line>}</line>
-		</code>
-
-		<paragraph>
-			An alternative is to use a translation table.
-		</paragraph>
-
-		<paragraph>
-			Obviously, this code has the same issue as previously stated so an idea is to get inspired by how we would access shader objects in the previous example to do the translation.
-			It's essential to have a fast and constant time translation approach because this translation will happen inside the rendering loop.
-			We call translation table the idea of addressing a table to convert an enumeration value into a different values.
-		</paragraph>
-
-		<code title="Translation from user-defined enum to OpenGL enum with a translation table:">
-			<line>GLenum translate(stage Stage)</line>
-			<line>{</line>
-			<line align="32px"><keyword>static const</keyword> GLenum Table[] =</line>
-			<line align="32px">{</line>
-			<line align="64px">GL_VERTEX_SHADER,				<comment>// VERTEX_SHADER</comment></line>
-			<line align="64px">GL_TESS_CONTROL_SHADER,			<comment>// TESS_CONTROL_SHADER</comment></line>
-			<line align="64px">GL_TESS_EVALUATION_SHADER,		<comment>// TESS_EVALUATION_SHADER</comment></line>
-			<line align="64px">GL_GEOMETRY_SHADER,				<comment>// GEOMETRY_SHADER</comment></line>
-			<line align="64px">GL_FRAGMENT_SHADER,				<comment>// FRAGMENT_SHADER</comment></line>
-			<line align="64px">GL_COMPUTE_SHADER				<comment>// COMPUTE_SHADER</comment></line>
-			<line align="32px">};</line>
-			<line></line>
-			<line align="32px"><keyword>return</keyword> Table[Stage];</line>
-			<line>}</line>
-		</code>
-
-		<paragraph>
-			Before studying how we can make this code more robust by generating meaningful errors at compilation and runtime, let's start by studying the performance.
-		</paragraph>
-
-		<image title="Performance comparison between translation using 'switch' and a table. 4 to 128 values per enumation" color="white" img="./post/0701-1.png" href="./post/0701-1.png" />
-
-		<paragraph>
-			
-		</paragraph>
-
-		<title>Detecting the addition or removal of enumation values at compilation time</title>
-
-		<code title="Translation from user-defined enum to OpenGL enum:">
-			<line><keyword>enum</keyword> stage</line>
-			<line>{</line>
-			<line align="32px">VERTEX_SHADER,</line>
-			<line align="32px">TESS_CONTROL_SHADER,</line>
-			<line align="32px">TESS_EVALUATION_SHADER,</line>
-			<line align="32px">GEOMETRY_SHADER,</line>
-			<line align="32px">FRAGMENT_SHADER,</line>
-			<line align="32px">COMPUTE_SHADER,</line>
-			<line align="32px">LAST_SHADER = COMPUTE_SHADER</line>
+			<line align="32px">STAGE_VERTEX = 0,</line>
+			<line align="32px">STAGE_TESS_CONTROL,</line>
+			<line align="32px">STAGE_TESS_EVALUATION,</line>
+			<line align="32px">STAGE_GEOMETRY,</line>
+			<line align="32px">STAGE_FRAGMENT,</line>
+			<line align="32px">STAGE_LAST = STAGE_FRAGMENT</line><comment>// No extra and unexpected invalid value</comment>
 			<line>};</line>
 			<line></line>
 			<line>GLenum translate(stage Stage)</line>
 			<line>{</line>
-			<line align="32px"><keyword>static const</keyword> GLenum Table[] =</line>
+			<line align="32px"><comment>// One weakness in the design: Don't change the order of the enum values</comment></line>
+			<line align="32px"><keyword>static const</keyword> GLenum Table[] = <comment>// Implicitly sized</comment></line>
 			<line align="32px">{</line>
-			<line align="64px">GL_VERTEX_SHADER,				<comment>// VERTEX_SHADER</comment></line>
-			<line align="64px">GL_TESS_CONTROL_SHADER,			<comment>// TESS_CONTROL_SHADER</comment></line>
-			<line align="64px">GL_TESS_EVALUATION_SHADER,		<comment>// TESS_EVALUATION_SHADER</comment></line>
-			<line align="64px">GL_GEOMETRY_SHADER,				<comment>// GEOMETRY_SHADER</comment></line>
-			<line align="64px">GL_FRAGMENT_SHADER,				<comment>// FRAGMENT_SHADER</comment></line>
-			<line align="64px">GL_COMPUTE_SHADER				<comment>// COMPUTE_SHADER</comment></line>
+			<line align="64px">GL_VERTEX_SHADER,				<comment>// STAGE_VERTEX</comment></line>
+			<line align="64px">GL_TESS_CONTROL_SHADER,			<comment>// STAGE_TESS_CONTROL</comment></line>
+			<line align="64px">GL_TESS_EVALUATION_SHADER,		<comment>// STAGE_TESS_EVALUATION</comment></line>
+			<line align="64px">GL_GEOMETRY_SHADER,				<comment>// STAGE_GEOMETRY</comment></line>
+			<line align="64px">GL_FRAGMENT_SHADER				<comment>// STAGE_FRAGMENT</comment></line>
 			<line align="32px">};</line>
 			<line></line>
+			<line align="32px"><comment>// The compiler will generate an error each time we add a new value to the zero-based enum</comment></line>
 			<line align="32px"><keyword>static_cast</keyword>(</line>
-			<line align="64px"><keyword>sizeof</keyword>(Table) / <keyword>sizeof</keyword>(GLenum) == LAST_SHADER + 1,</line>
+			<line align="64px"><keyword>sizeof</keyword>(Table) / <keyword>sizeof</keyword>(GLenum) == STAGE_LAST + 1,</line>
 			<line align="64px"><string>"OPENGL ERROR: The translation table for 'stage' needs to be updated."</string>);</line>
 			<line></line>
 			<line align="32px"><keyword>return</keyword> Table[Stage];</line>
 			<line>};</line>
 		</code>
 
-		<title>Detecting invalid values at runtime</title>
-
-		<code title="Translation from user-defined enum to OpenGL enum:">
-			<line><keyword>enum</keyword> stage</line>
-			<line>{</line>
-			<line align="32px">VERTEX_SHADER,</line>
-			<line align="32px">TESS_CONTROL_SHADER,</line>
-			<line align="32px">TESS_EVALUATION_SHADER,</line>
-			<line align="32px">GEOMETRY_SHADER,</line>
-			<line align="32px">FRAGMENT_SHADER,</line>
-			<line align="32px">COMPUTE_SHADER,</line>
-			<line align="32px">LAST_SHADER = COMPUTE_SHADER</line>
-			<line>};</line>
-			<line></line>
-			<line>GLenum translate(stage Stage)</line>
-			<line>{</line>
-			<line align="32px"><keyword>static const</keyword> GLenum Table[] =</line>
-			<line align="32px">{</line>
-			<line align="64px">GL_VERTEX_SHADER,				<comment>// VERTEX_SHADER</comment></line>
-			<line align="64px">GL_NONE,							<comment>// TESS_CONTROL_SHADER</comment></line>
-			<line align="64px">GL_NONE,							<comment>// TESS_EVALUATION_SHADER</comment></line>
-			<line align="64px">GL_GEOMETRY_SHADER,				<comment>// GEOMETRY_SHADER</comment></line>
-			<line align="64px">GL_FRAGMENT_SHADER,				<comment>// FRAGMENT_SHADER</comment></line>
-			<line align="64px">GL_COMPUTE_SHADER				<comment>// COMPUTE_SHADER</comment></line>
-			<line align="32px">};</line>
-			<line></line>
-			<line align="32px"><keyword>static_cast</keyword>(</line>
-			<line align="64px"><keyword>sizeof</keyword>(Table) / <keyword>sizeof</keyword>(GLenum) == LAST_SHADER + 1,</line>
-			<line align="64px"><string>"OPENGL ERROR: The translation table for 'shader_stage' needs to be updated."</string>);</line>
-			<line></line>
-			<line align="32px">GLenum Translation = Table[Stage];</line>
-			<line align="32px">assert(Translation != GL_NONE); <comment>// Invalid value for 'Stage'</comment></line>
-			<line align="32px"><keyword>return</keyword> Translation;</line>
-			<line>};</line>
-		</code>
-
-		<title>Baking translation table at runtime</title>
-
-		<code title="Translation from user-defined enum to OpenGL enum:">
-			<line><keyword>enum</keyword> stage</line>
-			<line>{</line>
-			<line align="32px">VERTEX_SHADER,</line>
-			<line align="32px">TESS_CONTROL_SHADER,</line>
-			<line align="32px">TESS_EVALUATION_SHADER,</line>
-			<line align="32px">GEOMETRY_SHADER,</line>
-			<line align="32px">FRAGMENT_SHADER,</line>
-			<line align="32px">COMPUTE_SHADER,</line>
-			<line align="32px">LAST_SHADER = COMPUTE_SHADER</line>
-			<line>};</line>
-			<line></line>
-			<line>GLenum translate(std::array&lt;stage, LAST_SHADER + 1&gt; <keyword>const</keyword> &amp; Table, stage Stage)</line>
-			<line>{</line>
-			<line align="32px"><keyword>static_cast</keyword>(</line>
-			<line align="64px"><keyword>sizeof</keyword>(shader) * Table.size() / <keyword>sizeof</keyword>(GLenum) == LAST_SHADER + 1,</line>
-			<line align="64px"><string>"OPENGL ERROR: The translation table for 'stage' needs to be updated."</string>);</line>
-			<line></line>
-			<line align="32px">GLenum Translation = Table[Stage];</line>
-			<line align="32px">assert(Translation != GL_NONE); <comment>// Invalid value for 'Stage'</comment></line>
-			<line align="32px"><keyword>return</keyword> Translation;</line>
-			<line>};</line>
-		</code>
-
-		<title>Dynamic translation table at runtime</title>
-
-		<code title="Translation from user-defined enum to OpenGL enum:">
-			<line><keyword>typedef</keyword> std::size_t stage;</line>
-			<line></line>
-			<line>GLenum translate(std::vector&lt;stage&gt; <keyword>const</keyword> &amp; Table, stage Stage)</line>
-			<line>{</line>
-			<line align="32px">assert(Stage &lt; Table.size()); <comment>// Invalid value for 'Stage'</comment></line>
-			<line></line>
-			<line align="32px">GLenum Translation = Table[Stage];</line>
-			<line align="32px">assert(Translation != GL_NONE); <comment>// Invalid value for 'Stage'</comment></line>
-			<line align="32px"><keyword>return</keyword> Translation;</line>
-			<line>};</line>
-		</code>
-
-		<title>Translation tables using 'static const' or 'const' tables</title>
-
 		<paragraph>
-			My instinct would be that it should be static and not only const because when we enter the function there will be a stack allocation big enough so that all the variables in it could fit there. The issue with only const is that the function might get bigger so it will consume more CPU instructions cache, hence evict more stuff resulting in more instruction cache misses. So, my choice here is to fight against instructions cache evictions.
-
-With static, the table should go into the data part of the ASM so effectively the function remains compact and evict less. The downside is that we may cache miss twice. Once on the function call (in L1 inst. cache) and once on the table fetch (in L1 data cache which is not that busy in "random code" while is super busy in optimize data transformation code).
-
-It possible that in practice the compilers put the table at the same place. I can check that and see, I don't know. Benchmarking might be a little hard as it might depend on the benchmark. My felling is that our call stack is pretty big so we are probably bound by the instruction cache evictions rather than cache miss latencies but it's possible that we end up evicting all the time anyway in which case it's better to optimize for number of cache misses. I am pretty doubtful on this because I would be super surpris that the data cache is a bottleneck is random plumbing code.
-
-It's definitely an interesting topic which I am happy to study more. In any case, this is magnitudes more efficient and robust than doing translations with switch statements! A rule on using switch statement? Hell yes! I would be up for something like that: "Stop pretending with 'switch' that the code is 'future proof', make your code break everywhere X is used if your enums changed using indirection tables instead of switches". 
+			This template can be extended in many ways to better fit the need of the scenarios where it used as described in <link href="./doc/C++%20Translations.pdf">the full article</link>.
+		</paragraph>
+		<paragraph>
+			Enjoy!
 		</paragraph>
 
-		<code title="Visual C++ 2013 assembly code for a 'static const' translation table:">
-			<line>?static_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z PROC</line>
-			<line></line>
-			<line align="32px">movsxd	rax, ecx,</line>
-			<line align="32px">lea	rcx, OFFSET FLAT:?Table@?1??static_table_translate@translation4@@YA?AW4translated@2@W4index@2@@Z@4QBW432@B,</line>
-			<line align="32px">mov	eax, DWORD PTR [rcx+rax*4]</line>
-			<line></line>
-			<line align="32px">ret	0</line>
-			<line></line>
-			<line>?static_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z ENDP</line>
-		</code>
-
-		<paragraph>
-
-		</paragraph>
-
-		<code title="Visual C++ 2013 assembly code for a 'const' translation table:">
-			<line>?const_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z PROC</line>
-			<line></line>
-			<line>$LN4:</line>
-			<line align="32px">sub	rsp, 40					; 00000028H</line>
-			<line align="32px">mov	rax, QWORD PTR __security_cookie</line>
-			<line align="32px">xor	rax, rsp</line>
-			<line></line>
-			<line align="32px">movsxd	rax, ecx</line>
-			<line align="32px">movdqu	XMMWORD PTR Table$[rsp], xmm0</line>
-			<line align="32px">mov	eax, DWORD PTR Table$[rsp+rax*4]</line>
-			<line></line>
-			<line align="32px">mov	rcx, QWORD PTR __$ArrayPad$[rsp]</line>
-			<line align="32px">xor	rcx, rsp</line>
-			<line align="32px">call	__security_check_cookie</line>
-			<line align="32px">add	rsp, 40					; 00000028H</line>
-			<line></line>
-			<line align="32px">ret	0</line>
-			<line></line>
-			<line>?const_table_translate@translation4@@YA?AW4translated@1@W4index@1@@Z ENDP</line>
-		</code>
-
-		<paragraph>
-
-		</paragraph>
-
-		<title>Do not translate more than necessary</title>
-
-		<paragraph>
-
-		</paragraph>
-
-		<code title="Example of useless last minute translation:">
-			<line><keyword>enum</keyword> target</line>
-			<line>{</line>
-			<line align="32px">UNIFORM_BUFFER,</line>
-			<line align="32px">SHADER_STORAGE_BUFFER,</line>
-			<line align="32px">TRANSFORM_FEEDBACK_BUFFER</line>
-			<line>};</line>
-			<line></line>
-			<line><keyword>void</keyword> bindBuffer(target Target, GLuint Unit, GLuint Buffer)</line>
-			<line>{</line>
-			<line align="32px"><keyword>switch</keyword>(Target)</line>
-			<line align="32px">{</line>
-			<line align="32px"><keyword>case</keyword> UNIFORM_BUFFER:</line>
-			<line align="64px"><keyword>if</keyword>(<keyword>this</keyword>->UniformBufferBound[Unit] == Buffer)</line>
-			<line align="96px"><keyword>return</keyword>;</line>
-			<line align="64px"><keyword>this</keyword>->UniformBufferBound[Unit] = Buffer;</line>
-			<line align="64px"><keyword>break</keyword>;</line>
-			<line align="32px"><keyword>case</keyword> SHADER_STORAGE_BUFFER:</line>
-			<line align="64px"><keyword>if</keyword>(<keyword>this</keyword>->ShaderStorageBufferBound[Unit] == Buffer)</line>
-			<line align="96px"><keyword>return</keyword>;</line>
-			<line align="64px"><keyword>this</keyword>->ShaderStorageBufferBound[Unit] = Buffer;</line>
-			<line align="64px"><keyword>break</keyword>;</line>
-			<line align="32px"><keyword>case</keyword> TRANSFORM_FEEDBACK_BUFFER:</line>
-			<line align="64px"><keyword>if</keyword>(<keyword>this</keyword>->TransformFeedbackBufferBound[Unit] == Buffer)</line>
-			<line align="96px"><keyword>return</keyword>;</line>
-			<line align="64px"><keyword>this</keyword>->TransformFeedbackBufferBound[Unit] = Buffer;</line>
-			<line align="64px"><keyword>break</keyword>;</line>
-			<line align="32px">}</line>
-			<line></line>
-			<line align="32px">glBindBufferBase(translate(Target), Unit, Buffer);</line>
-			<line>}</line>
-			<line></line>
-			<line><keyword>void</keyword> foo()</line>
-			<line>{</line>
-			<line align="32px">...</line>
-			<line align="32px"><keyword>for</keyword>(GLuint i = 0; i &lt; Buffers.size(); ++i)</line>
-			<line align="64px">bindBuffer(UNIFORM_BUFFER, i, Buffers[i]);</line>
-			<line align="32px">...</line>
-			<line>}</line>
-		</code>
-
-		<code title="Using the code context to avoid translation:">
-			<line><keyword>void</keyword> bindUniformBuffer(GLuint Unit, GLuint Buffer);</line>
-			<line>{</line>
-			<line align="32px"><keyword>if</keyword>(<keyword>this</keyword>->UniformBufferBound[Unit] == Buffer)</line>
-			<line align="64px"><keyword>return</keyword>;</line>
-			<line align="32px">glBindBufferBase(GL_UNIFORM_BUFFER, Unit, Buffer);</line>
-			<line align="32px"><keyword>this</keyword>->UniformBufferBound[Unit] = Buffer;</line>
-			<line>}</line>
-			<line></line>
-			<line><keyword>void</keyword> bindShaderStorageBuffer(GLuint Unit, GLuint Buffer);</line>
-			<line>{</line>
-			<line align="32px"><keyword>if</keyword>(<keyword>this</keyword>->ShaderStorageBufferBound[Unit] == Buffer)</line>
-			<line align="64px"><keyword>return</keyword>;</line>
-			<line align="32px">glBindBufferBase(GL_SHADER_STORAGE_BUFFER, Unit, Buffer);</line>
-			<line align="32px"><keyword>this</keyword>->ShaderStorageBufferBound[Unit] = Buffer;</line>
-			<line>}</line>
-			<line></line>
-			<line><keyword>void</keyword> bindTransformFeedbackBuffer(GLuint Unit, GLuint Buffer);</line>
-			<line>{</line>
-			<line align="32px"><keyword>if</keyword>(<keyword>this</keyword>->TransformFeedbackBufferBound[Unit] == Buffer)</line>
-			<line align="64px"><keyword>return</keyword>;</line>
-			<line align="32px">glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, Unit, Buffer);</line>
-			<line align="32px"><keyword>this</keyword>->TransformFeedbackBufferBound[Unit] = Buffer;</line>
-			<line>}</line>
-			<line></line>
-			<line><keyword>void</keyword> foo()</line>
-			<line>{</line>
-			<line align="32px">...</line>
-			<line align="32px"><keyword>for</keyword>(GLuint i = 0; i &lt; Buffers.size(); ++i)</line>
-			<line align="64px">bindUniformBuffer(i, Buffers[i]);</line>
-			<line align="32px">...</line>
-			<line>}</line>
-		</code>
-
-		<title>Conclusions</title>
+		<source-list>
+			<source-element type="Link" href="./doc/C++%20Translations.pdf" title="Robust and efficient translations in C++ using tables with zero-based enumerations" />
+		</source-list>
 	</draft>
+
+	<post index="0703" date="09/01/2015" std-date="2015-01-09T23:00:00.00Z" title="Week 2: The deadline">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2015-02-960.jpg" href="./photo/2015-02.jpg" />
+	</post>
+
+	<post index="0702" date="05/01/2015" std-date="2015-01-05T23:00:00.00Z" title="January 2015 OpenGL hardware matrix">
+		<meta><tag>gtc-tech-project-openglmatrix</tag></meta>
+
+		<paragraph>
+			It has been six months since my last report on the landscape of exposed OpenGL extensions by drivers.
+		</paragraph>
+		<paragraph>
+			Nevertheless, the ecosystem hasn't evolved so much with no change for Apple despite MacOSX 10.10 release; basically no change for Intel drivers; and just a handful of OpenGL 4.5 extensions for AMD.
+		</paragraph>
+		<list title="Numbers of new extensions exposed since last report:">
+			<entry>AMD: 7 total; 5 core; 1 ARB; 1 vendor</entry>
+			<entry>Apple: 0 total</entry>
+			<entry>Intel: 2 total; 1 ARB; 1 vendor</entry>
+			<entry>NVIDIA: 33 total (BAM!); 12 core; 3 ARB; 18 vendors</entry>
+		</list>
+		<paragraph>
+			Obviously, if we don't care about cross-platform support, it's a great time to work on NVIDIA with Maxwell 200 series: We have been waiting for a while for OpenGL 4.5 drivers on GM204 but we finally have them. NVIDIA also published a bunch of extensions to expose all sort of great new hardware features: <link href="https://www.opengl.org/registry/specs/NV/conservative_raster.txt">NV_conservative_raster</link>, <link href="https://www.opengl.org/registry/specs/NV/sample_locations.txt">NV_sample_locations</link> or <link href="https://www.opengl.org/registry/specs/NV/fragment_shader_interlock.txt">NV_fragment_shader_interlock</link> to only mention my favourites.
+		</paragraph>
+		<paragraph>
+			I personnally consider GM204 the second best chip ever produced by NVIDIA after G80. Not as crazy as G80 for the time but certainly more healthy.
+		</paragraph>
+		<paragraph>
+			Additionally, NVIDIA continues to invest on low CPU overhead with the release of <link href="https://www.opengl.org/registry/specs/NV/uniform_buffer_unified_memory.txt">bindless uniform buffer</link> but also announcing <link href="http://www.slideshare.net/tlorach/opengl-nvidia-commandlistapproaching-zerodriveroverhead">NV_command_list</link> including <link href="https://github.com/nvpro-samples">code samples</link>. Both features are designed for Fermi and newer GPUs.
+		</paragraph>
+		<paragraph>
+			Furthermore, NVIDIA is shipping OpenGL ES 3.1 and the <link href="https://www.khronos.org/registry/gles/extensions/ANDROID/ANDROID_extension_pack_es31a.txt">Android extension pack</link> on desktop through the <link href="https://www.opengl.org/registry/specs/EXT/wgl_create_context_es2_profile.txt">OpenGL ES profile</link>.
+		</paragraph>
+		<paragraph>
+			Finally, because it seems it's not enough, NVIDIA has released <link href="https://github.com/NVIDIAGameWorks/OpenGLSamples">OpenGL samples</link> for Maxwell new features but also additional samples for ES3.1 or multi draw indirect.
+		</paragraph>
+		<paragraph>
+			Well, it was a *smashing* 2014 second semester for NVIDIA.
+		</paragraph>
+
+		<image title="Exposed extensions to all OpenGL 4 hardware on the lastest drivers available to date" color="white" img="./post/0702.png" href="./doc/OpenGL%204%20Hardware%20Matrix%202015-01.pdf" />
+
+		<source-list>
+			<source-download index="1184" />
+			<source-element type="Link" href="post-0670.html#menu" title="July 2014 OpenGL hardware matrix" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=670" title="glCapsViewer report for AMD Catalyst 14.12" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=626" title="glCapsViewer report for Intel HD Graphics 10.18.10.3977" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=650" title="glCapsViewer report for NVIDIA Forceware 347.09" />
+		</source-list>
+	</post>
 
 	<post index="0701" date="03/01/2015" std-date="2015-01-03T23:00:00.00Z" title="Week 1: The forth component of representations">
 		<meta><tag>gtc-crea-photograph</tag></meta>

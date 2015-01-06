@@ -9,8 +9,8 @@
 	font-size:14px;
 	font-family:verdana;
 	min-height:1200px;
-    color:#000000;
-    overflow:auto;
+	color:#000000;
+	overflow:auto;
 }
 
 div.page, div.page-search
@@ -148,7 +148,7 @@ a.page-index-photo-title:hover
 img.page-index-photo
 {
 	padding:32px;
-	background-color:#000000;	
+	background-color:#000000;
 	width:64px;
 	height:64px;
 }
@@ -190,11 +190,11 @@ div.content-menu
 
 div.post-menu
 {
-    background-color:transparent;
-    text-align:center;
-    padding:0px;
-    margin:0px;
-    color:#304703;
+	background-color:transparent;
+	text-align:center;
+	padding:0px;
+	margin:0px;
+	color:#304703;
 }
 
 span.post-menu-entry
@@ -242,7 +242,7 @@ div.post-frame
 	padding:32px;
 	padding-right:92px;
 	padding-left:92px;
-    margin:0px;
+	margin:0px;
 	width:816px;
 }
 
@@ -256,7 +256,7 @@ div.post-frame-content-photo
 	padding-right:16px;
 	padding-left:16px;
 	padding-bottom:0px;
-    margin:8px;
+	margin:8px;
 	width:800px;
 }
 
@@ -266,8 +266,8 @@ div.post-frame-list
 	
 	background-color:#FFF0F8;
 	padding:32px;
-    padding-bottom:16px;
-    margin:8px;
+	padding-bottom:16px;
+	margin:8px;
 	width:700px;
 }
 
