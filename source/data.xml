@@ -70,7 +70,17 @@
 		</paragraph>
 	</draft>
 
-	<draft index="0704" date="11/01/2015" std-date="2015-01-11T14:00:00.00Z" title="Translations in C++ using tables with zero-based enums">
+	<draft index="0706" date="26/01/2015" std-date="2015-01-26T23:00:00.00Z" title="Week 4: The deadline">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2015-03-960.jpg" href="./photo/2015-03.jpg" />
+	</draft>
+
+	<post index="0705" date="22/01/2015" std-date="2015-01-22T23:00:00.00Z" title="Week 3: Forth component, instance 2">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2015-03-960.jpg" href="./photo/2015-03.jpg" />
+	</post>
+
+	<post index="0704" date="10/01/2015" std-date="2015-01-10T14:00:00.00Z" title="Translations in C++ using tables with zero-based enums">
 		<meta><tag>gtc-tech-devel-cpp</tag></meta>
 
 		<paragraph>
@@ -116,7 +126,7 @@
 			<line>GLenum translate(stage Stage)</line>
 			<line>{</line>
 			<line align="32px"><comment>// One weakness in the design: Don't change the order of the enum values</comment></line>
-			<line align="32px"><keyword>static const</keyword> GLenum Table[] = <comment>// Implicitly sized</comment></line>
+			<line align="32px"><keyword>static</keyword> GLenum <keyword>const</keyword> Table[] = <comment>// Implicitly sized</comment></line>
 			<line align="32px">{</line>
 			<line align="64px">GL_VERTEX_SHADER,				<comment>// STAGE_VERTEX</comment></line>
 			<line align="64px">GL_TESS_CONTROL_SHADER,			<comment>// STAGE_TESS_CONTROL</comment></line>
@@ -126,7 +136,7 @@
 			<line align="32px">};</line>
 			<line></line>
 			<line align="32px"><comment>// The compiler will generate an error each time we add a new value to the zero-based enum</comment></line>
-			<line align="32px"><keyword>static_cast</keyword>(</line>
+			<line align="32px"><keyword>static_assert</keyword>(</line>
 			<line align="64px"><keyword>sizeof</keyword>(Table) / <keyword>sizeof</keyword>(GLenum) == STAGE_LAST + 1,</line>
 			<line align="64px"><string>"OPENGL ERROR: The translation table for 'stage' needs to be updated."</string>);</line>
 			<line></line>
@@ -140,13 +150,16 @@
 		<paragraph>
 			Enjoy!
 		</paragraph>
+		<paragraph>
+			Thanks to <link ref="https://twitter.com/sehurlburt">Stephanie Hurlburt</link> for the review.
+		</paragraph>
 
 		<source-list>
 			<source-element type="Link" href="./doc/C++%20Translations.pdf" title="Robust and efficient translations in C++ using tables with zero-based enumerations" />
 		</source-list>
-	</draft>
+	</post>
 
-	<post index="0703" date="09/01/2015" std-date="2015-01-09T23:00:00.00Z" title="Week 2: The deadline">
+	<post index="0703" date="08/01/2015" std-date="2015-01-08T23:00:00.00Z" title="Week 2: De la reflexion, de l'humour">
 		<meta><tag>gtc-crea-photograph</tag></meta>
 		<image color="black" img="./photo/2015-02-960.jpg" href="./photo/2015-02.jpg" />
 	</post>
@@ -196,7 +209,7 @@
 		</source-list>
 	</post>
 
-	<post index="0701" date="03/01/2015" std-date="2015-01-03T23:00:00.00Z" title="Week 1: The forth component of representations">
+	<post index="0701" date="03/01/2015" std-date="2015-01-03T23:00:00.00Z" title="Week 1: The four components of representation">
 		<meta><tag>gtc-crea-photograph</tag></meta>
 		<image color="black" img="./photo/2015-01-960.jpg" href="./photo/2015-01.jpg" />
 	</post>
