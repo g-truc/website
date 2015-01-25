@@ -33,41 +33,41 @@
 			<xsl:call-template name="title-buttons" />
 
 			<div class="title-frame-menu">
-			<div class="title-frame-shadow">
-				<xsl:text>♥</xsl:text>
-			</div>
+				<div class="title-frame-shadow">
+					<xsl:text>♥</xsl:text>
+				</div>
 
-			<xsl:choose>
-				<!-- index-crea.html -->
-				<xsl:when test="starts-with($filter, $FILTER_CREA_TOKEN)">
-					<xsl:call-template name="crea-side">
-						<xsl:with-param name="filter" select="$filter"/>
-					</xsl:call-template>
-					<xsl:call-template name="crea-menu">
-						<xsl:with-param name="filter" select="$filter"/>
-					</xsl:call-template>
-				</xsl:when>
-
-				<!-- index-tech.html -->
-				<xsl:when test="starts-with($filter, $FILTER_TECH_TOKEN)">
-					<xsl:call-template name="tech-menu">
-						<xsl:with-param name="filter" select="$filter"/>
-					</xsl:call-template>
-					<xsl:call-template name="tech-side">
-						<xsl:with-param name="filter" select="$filter"/>
-					</xsl:call-template>
-				</xsl:when>
-
-				<!-- index.html -->
-				<xsl:otherwise>
-					<xsl:call-template name="crea-side">
-						<xsl:with-param name="filter" select="$filter"/>
-					</xsl:call-template>
-					<xsl:call-template name="tech-side">
+				<xsl:choose>
+					<!-- index-crea.html -->
+					<xsl:when test="starts-with($filter, $FILTER_CREA_TOKEN)">
+						<xsl:call-template name="crea-side">
 							<xsl:with-param name="filter" select="$filter"/>
-					</xsl:call-template>
-				</xsl:otherwise>
-			</xsl:choose>
+						</xsl:call-template>
+						<xsl:call-template name="crea-menu">
+							<xsl:with-param name="filter" select="$filter"/>
+						</xsl:call-template>
+					</xsl:when>
+
+					<!-- index-tech.html -->
+					<xsl:when test="starts-with($filter, $FILTER_TECH_TOKEN)">
+						<xsl:call-template name="tech-menu">
+							<xsl:with-param name="filter" select="$filter"/>
+						</xsl:call-template>
+						<xsl:call-template name="tech-side">
+							<xsl:with-param name="filter" select="$filter"/>
+						</xsl:call-template>
+					</xsl:when>
+
+					<!-- index.html -->
+					<xsl:otherwise>
+						<xsl:call-template name="crea-side">
+							<xsl:with-param name="filter" select="$filter"/>
+						</xsl:call-template>
+						<xsl:call-template name="tech-side">
+								<xsl:with-param name="filter" select="$filter"/>
+						</xsl:call-template>
+					</xsl:otherwise>
+				</xsl:choose>
 			</div>
 			<div style="clear:both; color:transparent;">
 				<xsl:text>♥</xsl:text>
@@ -308,7 +308,7 @@
       <xsl:call-template name="tech-menu-button-hack">
         <xsl:with-param name="Class" select="'title-frame-tech-extend-button-hidden'"/>
       </xsl:call-template>
-      
+
       <div class="title-frame-tech-extend-button-block">
         <xsl:call-template name="tech-menu-button-project">
           <xsl:with-param name="Token" select="'gtc-tech-opengl-samples'"/>
@@ -337,6 +337,10 @@
         </xsl:call-template>
         <xsl:call-template name="tech-menu-button-project">
           <xsl:with-param name="Token" select="'gtc-tech-project-openglmatrix'"/>
+          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
+        </xsl:call-template>
+        <xsl:call-template name="tech-menu-button-project">
+          <xsl:with-param name="Token" select="'gtc-tech-project-cppstatus'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-entry'"/>
         </xsl:call-template>
         <xsl:call-template name="tech-menu-button-url">
@@ -377,6 +381,10 @@
         </xsl:call-template>
         <xsl:call-template name="tech-menu-button-project">
           <xsl:with-param name="Token" select="'gtc-tech-project-openglmatrix'"/>
+          <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
+        </xsl:call-template>
+        <xsl:call-template name="tech-menu-button-project">
+          <xsl:with-param name="Token" select="'gtc-tech-project-cppstatus'"/>
           <xsl:with-param name="Class" select="'title-frame-tech-extend-button-shadow'"/>
         </xsl:call-template>
         <xsl:call-template name="tech-menu-button-url">
@@ -433,31 +441,40 @@
     </span>
   </xsl:template>
 
-  <xsl:template name="tech-menu-button-project">
-    <xsl:param name="Class" />
-    <xsl:param name="Token" />
+	<xsl:template name="tech-menu-button-project">
+		<xsl:param name="Class" />
+		<xsl:param name="Token" />
 
-    <xsl:param name="Download" select="document($FILE_DOWN)/g-truc/download[@type=$Token][1]" />
-    <xsl:param name="Project" select="document($FILE_PROJ)/g-truc/project[@type=$Token]" />
+		<xsl:param name="Project" select="document($FILE_PROJ)/g-truc/project[@type=$Token]" />
+		<xsl:param name="Download" select="document($FILE_DOWN)/g-truc/download[@type=$Token][1]" />
 
-    <xsl:param name="Href" select="concat($URL_PROJ_TOKEN, $Project/@index, $URL_HTML_TOKEN, $ANCHOR_MENU_LINK)" />
+		<xsl:param name="Href" select="concat($URL_PROJ_TOKEN, $Project/@index, $URL_HTML_TOKEN, $ANCHOR_MENU_LINK)" />
 
-    <span xmlns="http://www.w3.org/1999/xhtml" class="title-frame-tech-extend-button-entry">
-      <a href="{$Href}" class="{$Class}">
-        <xsl:choose>
-          <xsl:when test="$Project/@short">
-            <xsl:value-of select="$Project/@short" />
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="$Project/@name" />
-          </xsl:otherwise>
-        </xsl:choose>
-      </a>
-      <xsl:text> </xsl:text>
-      <a href="{$Download/item/@href}" class="{$Class}">
-        <xsl:value-of select="$Download/@version" />
-      </a>
-    </span>
-  </xsl:template>
+		<span xmlns="http://www.w3.org/1999/xhtml" class="title-frame-tech-extend-button-entry">
+			<a href="{$Href}" class="{$Class}">
+				<xsl:choose>
+					<xsl:when test="$Project/@short">
+						<xsl:value-of select="$Project/@short" />
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="$Project/@name" />
+					</xsl:otherwise>
+				</xsl:choose>
+			</a>
+			<xsl:text> </xsl:text>
+			<xsl:choose>
+				<xsl:when test="$Project/@default-download">
+					<a href="{$Project/@default-download}" class="{$Class}">
+						<xsl:value-of select="$Download/@version" />
+					</a>
+				</xsl:when>
+				<xsl:otherwise>
+					<a href="{$Download/item/@href}" class="{$Class}">
+						<xsl:value-of select="$Download/@version" />
+					</a>
+				</xsl:otherwise>
+			</xsl:choose>
+		</span>
+	</xsl:template>
 
 </xsl:stylesheet>

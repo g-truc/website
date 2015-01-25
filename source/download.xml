@@ -2,11 +2,15 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
 
-	<download index="1185" date="11/01/2015" std-date="2015-01-11T23:00:00.00Z" type="gtc-tech-devel-cpp" title="Robust and efficient translations in C++ using tables with zero-based enumerations" version="2015/01/11">
-		<item href="./doc/C++%20Translations.pdf" type="pdf" />
+	<download index="1186" date="25/01/2015" std-date="2015-01-25T23:00:00.00Z" type="gtc-tech-project-cppstatus" version="2015/01">
+		<item href="./doc/C++%20Compiler%20Status%202015-01.pdf" type="pdf" size="472 KB" />
 	</download>
 
-	<download index="1184" date="05/01/2015" std-date="2015-01-05T23:00:00.00Z" type="gtc-tech-project-openglmatrix" version="January 2015">
+	<download index="1185" date="11/01/2015" std-date="2015-01-11T23:00:00.00Z" type="gtc-tech-devel-cpp" title="Robust and efficient translations in C++ using tables with zero-based enumerations" version="2015/01">
+		<item href="./doc/C++%20Translations.pdf" type="pdf" size="826 KB" />
+	</download>
+
+	<download index="1184" date="05/01/2015" std-date="2015-01-05T23:00:00.00Z" type="gtc-tech-project-openglmatrix" version="2015/01">
 		<item href="doc/OpenGL%204%20Hardware%20Matrix%202015-01.pdf" type="PDF" size="514 KB" />
 		<item href="doc/OpenGL%204%20Hardware%20Matrix.xlsx" type="XLSX" size="337 KB" />
 	</download>
@@ -31,12 +35,12 @@
 		<item href="https://sourceforge.net/projects/ogl-samples/files/OpenGL%20Samples%20Pack%204.4.3.0/ogl-samples-4.4.3.0.7z/download" type="7Z" size="29.1 MB" />
 	</download>
 
-	<download index="1179" date="02/07/2014" std-date="2014-07-02T23:30:00.00Z" doc="true" type="gtc-tech-project-openglstatus"  version="July 2014">
-		<item href="doc/OpenGL%20Drivers%20Status%202014-07.pdf" type="PDF" size="371 KB" />
+	<download index="1179" date="02/07/2014" std-date="2014-07-02T23:30:00.00Z" doc="true" type="gtc-tech-project-openglstatus"  version="2014-07">
+		<item href="doc/OpenGL%20Drivers%20Status%202014/07.pdf" type="PDF" size="371 KB" />
 		<item href="doc/OpenGL%20status.xlsx" type="XLSX" size="237 KB" />
 	</download>
 
-	<download index="1178" date="25/07/2014" std-date="2014-07-25T23:00:00.00Z" type="gtc-tech-project-openglmatrix" version="July 2014">
+	<download index="1178" date="25/07/2014" std-date="2014-07-25T23:00:00.00Z" type="gtc-tech-project-openglmatrix" version="Jul. 2014">
 		<item href="doc/OpenGL%204%20Hardware%20Matrix%202014-07.pdf" type="PDF" size="481 KB" />
 		<item href="doc/OpenGL%204%20Hardware%20Matrix.xlsx" type="XLSX" size="296 KB" />
 	</download>

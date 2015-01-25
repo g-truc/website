@@ -70,10 +70,66 @@
 		</paragraph>
 	</draft>
 
-	<draft index="0706" date="26/01/2015" std-date="2015-01-26T23:00:00.00Z" title="Week 4: The deadline">
+	<draft index="0707" date="26/01/2015" std-date="2015-01-26T23:00:00.00Z" title="Week 4: The deadline">
 		<meta><tag>gtc-crea-photograph</tag></meta>
-		<image color="black" img="./photo/2015-03-960.jpg" href="./photo/2015-03.jpg" />
+		<image color="black" img="./photo/2015-04-960.jpg" href="./photo/2015-04.jpg" />
 	</draft>
+
+	<post index="0706" date="25/01/2015" std-date="2015-01-25T14:00:00.00Z" title="January 2015 C++ Compilers Status">
+		<meta>
+			<tag>gtc-tech-devel-cpp</tag>
+			<tag>gtc-tech-project-cppstatus</tag>
+		</meta>
+
+		<paragraph>
+			It's an euphemism to say that I'm frustrated by the impossibility I encounter of using C++ 11 on a daily base for my personal and professional projects.
+		</paragraph>
+		<paragraph>
+			For the case of libraries like <link href="http://glm.g-truc.net/">GLM</link>, the code must build on old enough compilers because users may rely on those compilers. Yes, I received multiple requests to support Barland C++ 5.5 compiler!
+			It's also only with GLM 0.9.6.0, released in November 2014, that I felt confident enough to drop Visual C++ 2005 and 2008 support.
+		</paragraph>
+		<paragraph>
+			One way to work around this issue is to ask the users to use older versions of GLM if they want to use it on an old compilers. Obviously, this either mean back porting bug fixes or letting the users maintain the older release.
+		</paragraph>
+		<paragraph>
+			For the case of applications, they may relies on binaries that we don't have the source or binaries for the new compilers. Alternatively, the code base may be used on platforms which development tools are not updated anymore as it's often the case with consoles. It's clearly a complex nest which needs to be resolved per code base.
+		</paragraph>
+		<paragraph>
+			Finally, a last issue for adopting new C++11 features is simply our own ignorance of which feature is available on all the compilers we support. To resolve that problems, I made the followiong table listing all the C++ features and their support on <link href="http://clang.llvm.org/cxx_status.html">Clang</link>, <link href="https://gcc.gnu.org/projects/cxx0x.html">GCC</link>, <link href="https://software.intel.com/en-us/articles/c0x-features-supported-by-intel-c-compiler">ICC</link> and <link href="http://msdn.microsoft.com/en-us/library/hh567368.aspx">Visual C++</link>. 
+		</paragraph>
+
+		<image title="Available C++ functionalities by compilers" color="white" img="./post/0706-cpp-status.png" href="./doc/C++%20Compiler%20Status.pdf" />
+
+		<paragraph>
+			I have been looking for some information about the C++11 support in <link href="https://developer.nvidia.com/cuda-toolkit">CUDA</link> but there is just no good public information for that. In my opinion and from my experience with <link href="http://glm.g-truc.net/">GLM</link>, the static C++ language and library support in Cuda is largely behind even for the C++98 support.
+		</paragraph>
+
+		<paragraph>
+			Android is also a pretty difficult platform to support and I think the cause is the initial code debt of the early NDK releases which were in an horrible non conformant states with a library mess.
+		</paragraph>
+
+		<paragraph>
+			<link href="https://twitter.com/twoscomplement">Jonathan Adamczewski</link> made the following great charts from these data, showing how compilers have progressed over time, based on the compiler release dates.
+		</paragraph>
+
+		<image title="The Growth of C++11 Support (as of 2015-01-16)" color="white" img="./post/0706-cpp11-growth.png" href="http://brnz.org/hbr/wp-content/uploads/2015/01/C++11Growth.html" />
+
+		<image title="The Growth of C++14 Support (as of 2015-01-16)" color="white" img="./post/0706-cpp14-growth.png" href="http://brnz.org/hbr/wp-content/uploads/2015/01/C++14Growth.html" />
+
+		<paragraph>
+			Let's hope Microsoft will invest more in the C++ compiler to catch up!
+		</paragraph>
+
+		<source-list>
+			<source-download index="1186" />
+			<source-element type="Link" href="http://brnz.org/hbr/?p=1389" title="Jonathan Adamczewski's 'The Growth of C++11 Support'" />
+			<source-element type="Link" href="http://brnz.org/hbr/?p=1404" title="Jonathan Adamczewski's 'The Growth of Modern C++ Support'" />
+			<source-element type="Link" href="http://clang.llvm.org/cxx_status.html" title="Clang C++ feature status" />
+			<source-element type="Link" href="https://gcc.gnu.org/projects/cxx0x.html" title="GCC C++ feature status" />
+			<source-element type="Link" href="https://software.intel.com/en-us/articles/c0x-features-supported-by-intel-c-compiler" title="ICC C++ feature status" />
+			<source-element type="Link" href="http://msdn.microsoft.com/en-us/library/hh567368.aspx" title="Visual Studio C++ feature status" />
+		</source-list>
+	</post>
 
 	<post index="0705" date="22/01/2015" std-date="2015-01-22T23:00:00.00Z" title="Week 3: Forth component, instance 2">
 		<meta><tag>gtc-crea-photograph</tag></meta>

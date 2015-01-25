@@ -16,22 +16,22 @@
 	<html xmlns="http://www.w3.org/1999/xhtml">
 		<!-- Head -->
 		<xsl:call-template name="g-truc-head">
-		<xsl:with-param name="Title" select="./@title" />
+			<xsl:with-param name="Title" select="./@title" />
 		</xsl:call-template>
 
 		<!-- Body -->
-		<body>      	
+		<body>
 			<div class="page">
 				<!-- Title -->
 				<xsl:call-template name="g-truc-title-full">
-				<xsl:with-param name="filter" select="$filter"/>
+					<xsl:with-param name="filter" select="$filter"/>
 				</xsl:call-template>
 
 				<!-- Frame -->
 				<div class="post-frame-photo">
-				<!--xsl:apply-templates select="$Post[./meta/tag[.=$post-other-photograph-id]][1]/album/slide" /-->
-				<xsl:apply-templates select="$Post[./meta/tag[.=$post-other-photograph-id]][1]" mode="photo-menu-index" />
-				<br />
+					<!--xsl:apply-templates select="$Post[./meta/tag[.=$post-other-photograph-id]][1]/album/slide" /-->
+					<xsl:apply-templates select="$Post[./meta/tag[.=$post-other-photograph-id]][1]" mode="photo-menu-index" />
+					<br />
 				</div>
 			</div>
 			<xsl:call-template name="g-truc-foot" />
