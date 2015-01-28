@@ -2,11 +2,15 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
 
+	<download index="1187" date="28/01/2015" std-date="2015-01-28T23:00:00.00Z" type="gtc-tech-devel-cpp" title="Better 'countof' implementation with C++ 11">
+		<item href="./doc/C++%20CountOf.pdf" type="pdf" size="826 KB" />
+	</download>
+
 	<download index="1186" date="25/01/2015" std-date="2015-01-25T23:00:00.00Z" type="gtc-tech-project-cppstatus" version="2015/01">
 		<item href="./doc/C++%20Compiler%20Status%202015-01.pdf" type="pdf" size="472 KB" />
 	</download>
 
-	<download index="1185" date="11/01/2015" std-date="2015-01-11T23:00:00.00Z" type="gtc-tech-devel-cpp" title="Robust and efficient translations in C++ using tables with zero-based enumerations" version="2015/01">
+	<download index="1185" date="11/01/2015" std-date="2015-01-11T23:00:00.00Z" type="gtc-tech-devel-cpp" title="Robust and efficient translations in C++ using tables with zero-based enumerations">
 		<item href="./doc/C++%20Translations.pdf" type="pdf" size="826 KB" />
 	</download>
 

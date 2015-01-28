@@ -70,6 +70,82 @@
 		</paragraph>
 	</draft>
 
+	<post index="0708" date="28/01/2015" std-date="2015-01-28T14:00:00.00Z" title="Better 'countof' implementation with C++ 11">
+		<meta>
+			<tag>gtc-tech-devel-cpp</tag>
+		</meta>
+
+		<paragraph>
+			It's an euphemism to say that I'm frustrated by the impossibility I encounter of using C++ 11 on a daily base for my personal and professional projects.
+		</paragraph>
+
+		<code title="Trivial countof implementation based on the C preprocessor:">
+			<line><keyword>enum</keyword> stage</line>
+			<line>{</line>
+			<line align="32px">STAGE_VERTEX = 0,</line>
+			<line align="32px">STAGE_TESS_CONTROL,</line>
+			<line align="32px">STAGE_TESS_EVALUATION,</line>
+			<line align="32px">STAGE_GEOMETRY,</line>
+			<line align="32px">STAGE_FRAGMENT,</line>
+			<line align="32px">STAGE_LAST = STAGE_FRAGMENT</line><comment>// No extra and unexpected invalid value</comment>
+			<line>};</line>
+			<line></line>
+			<line>GLuint Program[STAGE_LAST + 1] = {0, 0, 0, 0, 0};</line>
+			<line></line>
+			<line><keyword>#define</keyword> countof(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
+			<line></line>
+			<line><keyword>void</keyword> AttachPipelinePrograms(GLuint PipelineName, GLuint Programs[STAGE_LAST + 1])</line>
+			<line>{</line>
+			<line align="32px"><keyword>static</keyword> GLenum <keyword>const</keyword> ShaderBit[] = <comment>// Implicitly sized</comment></line>
+			<line align="32px">{</line>
+			<line align="64px">GL_VERTEX_SHADER_BIT,			<comment>// STAGE_VERTEX</comment></line>
+			<line align="64px">GL_TESS_CONTROL_SHADER_BIT,		<comment>// STAGE_TESS_CONTROL</comment></line>
+			<line align="64px">GL_TESS_EVALUATION_SHADER_BIT,	<comment>// STAGE_TESS_EVALUATION</comment></line>
+			<line align="64px">GL_GEOMETRY_SHADER_BIT,			<comment>// STAGE_GEOMETRY</comment></line>
+			<line align="64px">GL_FRAGMENT_SHADER_BIT			<comment>// STAGE_FRAGMENT</comment></line>
+			<line align="32px">};</line>
+			<line></line>
+			<line align="32px">std::size_t <keyword>const</keyword> Count = countof(Programs);</line>
+			<line align="32px"><keyword>for</keyword>(std::size_t i = 0; i &lt; Count; ++i)</line>
+			<line align="64px">glUseProgramStages(PipelineName, ShaderBit[i], Programs[i]);</line>
+			<line>}</line>
+		</code>
+
+		<code title="Alternative implementation of countof using a C++ function:">
+			<line>template &lt;typename T, std::size_t N&gt;</line>
+			<line>std::size_t countof(T <keyword>const</keyword> (&amp;)[N])</line>
+			<line>{</line>
+			<line align="32px"><keyword>return</keyword> N;</line>
+			<line>}</line>
+		</code>
+
+		<code title="The issue with C++ function, compilation time execution:">
+			<line align="0px"><keyword>static</keyword> GLenum <keyword>const</keyword> Table[] = <comment>// Implicitly sized</comment></line>
+			<line align="0px">{</line>
+			<line align="32px">GL_VERTEX_SHADER,				<comment>// STAGE_VERTEX</comment></line>
+			<line align="32px">GL_TESS_CONTROL_SHADER,			<comment>// STAGE_TESS_CONTROL</comment></line>
+			<line align="32px">GL_TESS_EVALUATION_SHADER,		<comment>// STAGE_TESS_EVALUATION</comment></line>
+			<line align="32px">GL_GEOMETRY_SHADER,				<comment>// STAGE_GEOMETRY</comment></line>
+			<line align="32px">GL_FRAGMENT_SHADER				<comment>// STAGE_FRAGMENT</comment></line>
+			<line align="0px">};</line>
+			<line></line>
+			<line><keyword>static_assert</keyword>(countof(Table) == STAGE_LAST + 1,</line>
+			<line align="32px"><string>"OPENGL ERROR: The translation table for 'stage' needs to be updated."</string>);</line>
+		</code>
+
+		<code title="Implementation countof using C++11 constant expression:">
+			<line>template &lt;typename T, std::size_t N&gt;</line>
+			<line><keyword>constexpr</keyword> std::size_t countof(T <keyword>const</keyword> (&amp;)[N])</line>
+			<line>{</line>
+			<line align="32px"><keyword>return</keyword> N;</line>
+			<line>}</line>
+		</code>
+
+		<source-list>
+			<source-download index="1187" />
+		</source-list>
+	</post>
+
 	<draft index="0707" date="26/01/2015" std-date="2015-01-26T23:00:00.00Z" title="Week 4: The deadline">
 		<meta><tag>gtc-crea-photograph</tag></meta>
 		<image color="black" img="./photo/2015-04-960.jpg" href="./photo/2015-04.jpg" />
