@@ -70,7 +70,12 @@
 		</paragraph>
 	</draft>
 
-	<post index="0708" date="28/01/2015" std-date="2015-01-28T14:00:00.00Z" title="Better 'countof' implementation with C++ 11">
+	<draft index="0709" date="05/02/2015" std-date="2015-02-05T23:00:00.00Z" title="Week 5: Watching the world and saying it's beautiful">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2015-05-960.jpg" href="./photo/2015-05.jpg" />
+	</draft>
+
+	<draft index="0708" date="01/02/2015" std-date="2015-02-01T14:00:00.00Z" title="Better 'countof' implementation with C++ 11">
 		<meta>
 			<tag>gtc-tech-devel-cpp</tag>
 		</meta>
@@ -144,12 +149,12 @@
 		<source-list>
 			<source-download index="1187" />
 		</source-list>
-	</post>
+	</draft>
 
-	<draft index="0707" date="26/01/2015" std-date="2015-01-26T23:00:00.00Z" title="Week 4: The deadline">
+	<post index="0707" date="31/01/2015" std-date="2015-01-31T23:00:00.00Z" title="Week 4: The deadline">
 		<meta><tag>gtc-crea-photograph</tag></meta>
 		<image color="black" img="./photo/2015-04-960.jpg" href="./photo/2015-04.jpg" />
-	</draft>
+	</post>
 
 	<post index="0706" date="25/01/2015" std-date="2015-01-25T14:00:00.00Z" title="January 2015 C++ Compilers Status">
 		<meta>
