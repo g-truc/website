@@ -76,70 +76,118 @@
 		</meta>
 
 		<paragraph>
-			It's an euphemism to say that I'm frustrated by the impossibility I encounter of using C++ 11 on a daily base for my personal and professional projects.
+			It's often useful to count the number of elements in an array. Using std::vector or std::array, this is done using .size() however this function is not available on good old C++ array.
 		</paragraph>
 
-		<code title="Trivial countof implementation based on the C preprocessor:">
-			<line><keyword>enum</keyword> stage</line>
-			<line>{</line>
-			<line align="32px">STAGE_VERTEX = 0,</line>
-			<line align="32px">STAGE_TESS_CONTROL,</line>
-			<line align="32px">STAGE_TESS_EVALUATION,</line>
-			<line align="32px">STAGE_GEOMETRY,</line>
-			<line align="32px">STAGE_FRAGMENT,</line>
-			<line align="32px">STAGE_LAST = STAGE_FRAGMENT</line><comment>// No extra and unexpected invalid value</comment>
-			<line>};</line>
-			<line></line>
-			<line>GLuint Program[STAGE_LAST + 1] = {0, 0, 0, 0, 0};</line>
-			<line></line>
+		<paragraph>
+			For compilation time determination of the size of an array, we often define a macro called <codeword>countof</codeword> or sometime called <codeword>ARRAY_SIZE</codeword> to solve this issue defined as shown in listing 1.
+		</paragraph>
+
+		<code title="Listing 1: Trivial countof implementation based on the C preprocessor with usage example:">
 			<line><keyword>#define</keyword> countof(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
 			<line></line>
-			<line><keyword>void</keyword> AttachPipelinePrograms(GLuint PipelineName, GLuint Programs[STAGE_LAST + 1])</line>
-			<line>{</line>
-			<line align="32px"><keyword>static</keyword> GLenum <keyword>const</keyword> ShaderBit[] = <comment>// Implicitly sized</comment></line>
-			<line align="32px">{</line>
-			<line align="64px">GL_VERTEX_SHADER_BIT,			<comment>// STAGE_VERTEX</comment></line>
-			<line align="64px">GL_TESS_CONTROL_SHADER_BIT,		<comment>// STAGE_TESS_CONTROL</comment></line>
-			<line align="64px">GL_TESS_EVALUATION_SHADER_BIT,	<comment>// STAGE_TESS_EVALUATION</comment></line>
-			<line align="64px">GL_GEOMETRY_SHADER_BIT,			<comment>// STAGE_GEOMETRY</comment></line>
-			<line align="64px">GL_FRAGMENT_SHADER_BIT			<comment>// STAGE_FRAGMENT</comment></line>
-			<line align="32px">};</line>
+			<line>static const std::size_t values[] = {42, 76, 16, 11, 31};</line>
 			<line></line>
-			<line align="32px">std::size_t <keyword>const</keyword> Count = countof(Programs);</line>
-			<line align="32px"><keyword>for</keyword>(std::size_t i = 0; i &lt; Count; ++i)</line>
-			<line align="64px">glUseProgramStages(PipelineName, ShaderBit[i], Programs[i]);</line>
+			<line><keyword>void</keyword> foo()</line>
+			<line>{</line>
+			<line align="32px"><keyword>for</keyword>(std::size_t i = 0; i &lt; countof(values); ++i)</line>
+			<line align="64px">bar(values[i]);</line>
 			<line>}</line>
 		</code>
 
-		<code title="Alternative implementation of countof using a C++ function:">
-			<line>template &lt;typename T, std::size_t N&gt;</line>
-			<line>std::size_t countof(T <keyword>const</keyword> (&amp;)[N])</line>
+		<list title="Unfortunately, the implementation shown in as multiple draw backs:">
+			<entry>1/ C preprocessor only replace code so effectively the count of elements computation is done at runtime.</entry>
+			<entry>2/ Just like any macro, there is potential namespace collision issue.</entry>
+			<entry>3/ Because macros curry no type, the implementation is not robust and bad usage won't be detected at compilation time.</entry>
+		</list>
+
+		<paragraph>
+			To detail item 3, let's look at a possible refactoring of listing 1 in listing 2
+		</paragraph>
+
+		<code title="Listing 2: Refactoring of listing 1 leading to an invalid usage of the trivial countof implementation:">
+			<line><keyword>#define</keyword> countof(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
+			<line></line>
+			<line>static const std::size_t values[] = {42, 76, 16, 11, 31};</line>
+			<line></line>
+			<line><keyword>void</keyword> foo(const std::size_t arg[])</line>
 			<line>{</line>
-			<line align="32px"><keyword>return</keyword> N;</line>
+			<line align="32px"><keyword>for</keyword>(std::size_t i = 0; i &lt; countof(arg); ++i)</line>
+			<line align="64px">bar(arg[i]);</line>
+			<line>}</line>
+			<line></line>
+			<line><keyword>void</keyword> main()</line>
+			<line>{</line>
+			<line align="32px">bar(values);</line>
 			<line>}</line>
 		</code>
 
-		<code title="The issue with C++ function, compilation time execution:">
-			<line align="0px"><keyword>static</keyword> GLenum <keyword>const</keyword> Table[] = <comment>// Implicitly sized</comment></line>
-			<line align="0px">{</line>
-			<line align="32px">GL_VERTEX_SHADER,				<comment>// STAGE_VERTEX</comment></line>
-			<line align="32px">GL_TESS_CONTROL_SHADER,			<comment>// STAGE_TESS_CONTROL</comment></line>
-			<line align="32px">GL_TESS_EVALUATION_SHADER,		<comment>// STAGE_TESS_EVALUATION</comment></line>
-			<line align="32px">GL_GEOMETRY_SHADER,				<comment>// STAGE_GEOMETRY</comment></line>
-			<line align="32px">GL_FRAGMENT_SHADER				<comment>// STAGE_FRAGMENT</comment></line>
-			<line align="0px">};</line>
-			<line></line>
-			<line><keyword>static_assert</keyword>(countof(Table) == STAGE_LAST + 1,</line>
-			<line align="32px"><string>"OPENGL ERROR: The translation table for 'stage' needs to be updated."</string>);</line>
-		</code>
+		<paragraph>
+			<wordcode>arg<wordcode> in listing 2 may look like an implicitly size array but in fact it just a pointer. Hence when we call <wordcode>countof<wordcode> on <wordcode>arg<wordcode> we only divide the size of a pointer (32 bits or 64 bits depending on the system) by the size of an element in this array.
+		</paragraph>
 
-		<code title="Implementation countof using C++11 constant expression:">
+		<paragraph>
+			Visual C++ support a built-in macro called <wordcode>_countof</wordcode> allowing to detect invalid input usage at compilation time. 
+		</paragraph>
+
+		<paragraph>
+			Additionally, C++ 11 introduced constant expressions allowing us to create functions which results is baked at compilation time. Furthermore, relying on a function ensure type safety.  
+		</paragraph>
+
+		<code title="Listing 3: Implementation countof using C++11 constant expression:">
 			<line>template &lt;typename T, std::size_t N&gt;</line>
 			<line><keyword>constexpr</keyword> std::size_t countof(T <keyword>const</keyword> (&amp;)[N])</line>
 			<line>{</line>
 			<line align="32px"><keyword>return</keyword> N;</line>
 			<line>}</line>
 		</code>
+
+		<code title="Listing 4: Usage examples of constant expression countof:">
+			<line></line>
+			<line>static const std::size_t values[] = {42, 76, 16, 11, 31};</line>
+			<line></line>
+			<line><keyword>void</keyword> foo()</line>
+			<line>{</line>
+			<line align="32px"><keyword>for</keyword>(std::size_t i = 0; i &lt; countof(values); ++i)</line><comment>// Compilation, Ok!</comment>
+			<line align="64px">bar(values[i]);</line>
+			<line>}</line>
+			<line></line>
+			<line><keyword>void</keyword> foo(const std::size_t arg[])</line>
+			<line>{</line>
+			<line align="32px"><keyword>for</keyword>(std::size_t i = 0; i &lt; countof(arg); ++i)<comment>// Compilation error!</comment></line>
+			<line align="64px">bar(arg[i]);</line>
+			<line>}</line>
+		</code>
+
+		<paragraph>
+			<codeword>countof</codeword> implementation based on constant expressions is a great improvement over the macro based implementation. However, realitically, only a subset of compilaters actually support constant expressions for example Visual Studio 2015 only introduced a subset of constant expressions support and previous versions had absolutly no support. 
+		</paragraph>
+
+		<paragraph>
+			Hence, listing 5 proposes a more scalable implementation to manage the transition period until C++11 support bacame universal.
+		</paragraph>
+
+		<code title="Listing 5: Implementation countof using C++11 constant expression:">
+			<line align="0px">#ifndef __has_feature</line>
+			<line align="32px">#define __has_feature(x) 0  // Compatibility with non-clang compilers.</line>
+			<line align="0px">#endif</line>
+			<line align="0px"></line>
+			<line align="0px">#if __cplusplus >= 201103L || _MSC_VER >= 1900 || __has_feature(cxx_constexpr)</line>
+			<line align="32px">template &lt;typename T, std::size_t N&gt;</line>
+			<line align="32px"><keyword>constexpr</keyword> std::size_t countof(T <keyword>const</keyword> (&amp;)[N])</line>
+			<line align="32px">{</line>
+			<line align="64px"><keyword>return</keyword> N;</line>
+			<line align="32px">}</line>
+			<line align="0px">#elseif _MSC_VER</line>
+			<line align="32px"><keyword>#define</keyword> countof(arr) _countof(arr)</line>
+			<line align="0px">#else</line>
+			<line align="32px"><keyword>#define</keyword> countof(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
+			<line align="0px">#end</line>
+		</code>
+
+		<paragraph>
+			Enjoy!
+		</paragraph>
 
 		<source-list>
 			<source-download index="1187" />
