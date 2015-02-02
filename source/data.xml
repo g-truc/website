@@ -70,28 +70,30 @@
 		</paragraph>
 	</draft>
 
-	<draft index="0709" date="05/02/2015" std-date="2015-02-05T23:00:00.00Z" title="Week 5: Watching the world and saying it's beautiful">
+	<post index="0709" date="02/02/2015" std-date="2015-02-02T23:00:00.00Z" title="Week 5: Watching the world and saying it's beautiful">
 		<meta><tag>gtc-crea-photograph</tag></meta>
 		<image color="black" img="./photo/2015-05-960.jpg" href="./photo/2015-05.jpg" />
-	</draft>
+	</post>
 
-	<draft index="0708" date="01/02/2015" std-date="2015-02-01T14:00:00.00Z" title="Better 'countof' implementation with C++ 11">
+	<post index="0708" date="02/02/2015" std-date="2015-02-02T14:00:00.00Z" title="Better 'countof' implementation with C++ 11">
 		<meta>
 			<tag>gtc-tech-devel-cpp</tag>
 		</meta>
 
 		<paragraph>
-			It's often useful to count the number of elements in an array. Using std::vector or std::array, this is done using .size() however this function is not available on good old C++ array.
+			It's often useful to count the number of elements in an array. Using <codeword>std::vector</codeword> or <codeword>std::array</codeword>, this is done using <codeword>.size()</codeword> however this function is not available on good old C++ array.
 		</paragraph>
 
+		<subtitle>Quick and dirty: a macro</subtitle>
+
 		<paragraph>
-			For compilation time determination of the size of an array, we often define a macro called <codeword>countof</codeword> or sometime called <codeword>ARRAY_SIZE</codeword> to solve this issue defined as shown in listing 1.
+			For compilation time determination of the size of an array, we often define a macro called <codeword>countof</codeword> or sometime <codeword>ARRAY_SIZE</codeword> as defined in listing 1.
 		</paragraph>
 
 		<code title="Listing 1: Trivial countof implementation based on the C preprocessor with usage example:">
 			<line><keyword>#define</keyword> countof(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
 			<line></line>
-			<line>static const std::size_t values[] = {42, 76, 16, 11, 31};</line>
+			<line><keyword>static const</keyword> std::size_t values[] = {42, 76, 16, 11, 31};</line>
 			<line></line>
 			<line><keyword>void</keyword> foo()</line>
 			<line>{</line>
@@ -100,24 +102,24 @@
 			<line>}</line>
 		</code>
 
-		<list title="Unfortunately, the implementation shown in as multiple draw backs:">
-			<entry>1/ C preprocessor only replace code so effectively the count of elements computation is done at runtime.</entry>
-			<entry>2/ Just like any macro, there is potential namespace collision issue.</entry>
-			<entry>3/ Because macros curry no type, the implementation is not robust and bad usage won't be detected at compilation time.</entry>
+		<list title="Unfortunately, the implementation in listing 1 has multiple drawbacks:">
+			<entry>1 C preprocessor only replaces code so logically the count of elements computation is done at runtime.</entry>
+			<entry>2 Just like any macro, there are potential namespace collision issues.</entry>
+			<entry>3 Because macros carry no type, the implementation is not robust and bad usage won't be detected at compilation time.</entry>
 		</list>
 
 		<paragraph>
-			To detail item 3, let's look at a possible refactoring of listing 1 in listing 2
+			To detail item 3, let's look at a possible refactoring of listing 1 in listing 2.
 		</paragraph>
 
 		<code title="Listing 2: Refactoring of listing 1 leading to an invalid usage of the trivial countof implementation:">
 			<line><keyword>#define</keyword> countof(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
 			<line></line>
-			<line>static const std::size_t values[] = {42, 76, 16, 11, 31};</line>
+			<line><keyword>static const</keyword> std::size_t values[] = {42, 76, 16, 11, 31};</line>
 			<line></line>
-			<line><keyword>void</keyword> foo(const std::size_t arg[])</line>
+			<line><keyword>void</keyword> foo(std::size_t <keyword>const</keyword> arg[])</line>
 			<line>{</line>
-			<line align="32px"><keyword>for</keyword>(std::size_t i = 0; i &lt; countof(arg); ++i)</line>
+			<line align="32px"><keyword>for</keyword>(std::size_t i = 0; i &lt; countof(arg); ++i)<comment>// Wrong but no compilation error!</comment></line>
 			<line align="64px">bar(arg[i]);</line>
 			<line>}</line>
 			<line></line>
@@ -128,19 +130,21 @@
 		</code>
 
 		<paragraph>
-			<wordcode>arg<wordcode> in listing 2 may look like an implicitly size array but in fact it just a pointer. Hence when we call <wordcode>countof<wordcode> on <wordcode>arg<wordcode> we only divide the size of a pointer (32 bits or 64 bits depending on the system) by the size of an element in this array.
+			In listing 2, <codeword>arg</codeword> may look like an implicitly size array but actually, it's just a pointer. Hence, when we call <codeword>countof</codeword> on <codeword>arg</codeword> we divide the size of a pointer (32 bits or 64 bits depending on the system) by the size of an element in this array which is indeed not what we expect.
+		</paragraph>
+
+		<subtitle>Alternative C++ 11 implementation</subtitle>
+
+		<paragraph>
+			To resolve this issue, Visual C++ supports a built-in macro called <codeword href="https://msdn.microsoft.com/en-us/library/ms175773.aspx">_countof</codeword> to detect invalid inputs at compilation time but this solution is not standard.
 		</paragraph>
 
 		<paragraph>
-			Visual C++ support a built-in macro called <wordcode>_countof</wordcode> allowing to detect invalid input usage at compilation time. 
+			Fortunately, C++ 11 introduced constant expressions allowing us to create functions which exercutions are resolved at compilation time. This allows us to write a function for <codeword>countof</codeword> in listing 3 which provides type safety, namespace capability and compile time resolution.
 		</paragraph>
 
-		<paragraph>
-			Additionally, C++ 11 introduced constant expressions allowing us to create functions which results is baked at compilation time. Furthermore, relying on a function ensure type safety.  
-		</paragraph>
-
-		<code title="Listing 3: Implementation countof using C++11 constant expression:">
-			<line>template &lt;typename T, std::size_t N&gt;</line>
+		<code title="Listing 3: Implementation of countof using a C++11 constant expression:">
+			<line><keyword>template</keyword> &lt;<keyword>typename</keyword> T, std::size_t N&gt;</line>
 			<line><keyword>constexpr</keyword> std::size_t countof(T <keyword>const</keyword> (&amp;)[N])</line>
 			<line>{</line>
 			<line align="32px"><keyword>return</keyword> N;</line>
@@ -149,7 +153,7 @@
 
 		<code title="Listing 4: Usage examples of constant expression countof:">
 			<line></line>
-			<line>static const std::size_t values[] = {42, 76, 16, 11, 31};</line>
+			<line><keyword>static const</keyword> std::size_t values[] = {42, 76, 16, 11, 31};</line>
 			<line></line>
 			<line><keyword>void</keyword> foo()</line>
 			<line>{</line>
@@ -164,40 +168,42 @@
 			<line>}</line>
 		</code>
 
+		<subtitle>Scalable implementation for old compilers support</subtitle>
+
 		<paragraph>
-			<codeword>countof</codeword> implementation based on constant expressions is a great improvement over the macro based implementation. However, realitically, only a subset of compilaters actually support constant expressions for example Visual Studio 2015 only introduced a subset of constant expressions support and previous versions had absolutly no support. 
+			<codeword>countof</codeword> implementation based on constant expressions is a great improvement over the macro implementation. However, nowadays, only a subset of compilers support constant expressions. For example, Visual Studio 2015 only introduced a subset of constant expressions support and previous versions had absolutly no support of this C++ 11 feature.
 		</paragraph>
 
 		<paragraph>
-			Hence, listing 5 proposes a more scalable implementation to manage the transition period until C++11 support bacame universal.
+			Hence, listing 5 proposes a more scalable implementation to manage the transition period until C++11 support bacomes universal.
 		</paragraph>
 
 		<code title="Listing 5: Implementation countof using C++11 constant expression:">
-			<line align="0px">#ifndef __has_feature</line>
-			<line align="32px">#define __has_feature(x) 0  // Compatibility with non-clang compilers.</line>
-			<line align="0px">#endif</line>
+			<line align="0px"><keyword>#ifndef</keyword> __has_feature</line>
+			<line align="32px"><keyword>#define</keyword> __has_feature(x) 0  <comment>// Compatibility with non-clang compilers.</comment></line>
+			<line align="0px"><keyword>#endif</keyword></line>
 			<line align="0px"></line>
-			<line align="0px">#if __cplusplus >= 201103L || _MSC_VER >= 1900 || __has_feature(cxx_constexpr)</line>
-			<line align="32px">template &lt;typename T, std::size_t N&gt;</line>
-			<line align="32px"><keyword>constexpr</keyword> std::size_t countof(T <keyword>const</keyword> (&amp;)[N])</line>
+			<line align="0px"><keyword>#if</keyword> __cplusplus >= 201103L || _MSC_VER >= 1900 || __has_feature(cxx_constexpr)</line>
+			<line align="32px"><keyword>namespace</keyword> mylib</line>
 			<line align="32px">{</line>
-			<line align="64px"><keyword>return</keyword> N;</line>
-			<line align="32px">}</line>
-			<line align="0px">#elseif _MSC_VER</line>
-			<line align="32px"><keyword>#define</keyword> countof(arr) _countof(arr)</line>
-			<line align="0px">#else</line>
-			<line align="32px"><keyword>#define</keyword> countof(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
-			<line align="0px">#end</line>
+			<line align="64px"><keyword>template</keyword> &lt;<keyword>typename</keyword> T, std::size_t N&gt;</line>
+			<line align="64px"><keyword>constexpr</keyword> std::size_t countof(T <keyword>const</keyword> (&amp;)[N])</line>
+			<line align="64px">{</line>
+			<line align="96px"><keyword>return</keyword> N;</line>
+			<line align="64px">}</line>
+			<line align="32px">} <comment>// namespace mylib</comment></line>
+			<line align="32px"><keyword>#define</keyword> MYLIB_COUNTOF(arr) mylib::countof(arr)</line>
+			<line align="0px"><keyword>#elif</keyword> _MSC_VER</line>
+			<line align="32px"><keyword>#define</keyword> MYLIB_COUNTOF(arr) _countof(arr)</line>
+			<line align="0px"><keyword>#else</keyword></line>
+			<line align="32px"><keyword>#define</keyword> MYLIB_COUNTOF(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
+			<line align="0px"><keyword>#endif</keyword></line>
 		</code>
 
 		<paragraph>
 			Enjoy!
 		</paragraph>
-
-		<source-list>
-			<source-download index="1187" />
-		</source-list>
-	</draft>
+	</post>
 
 	<post index="0707" date="31/01/2015" std-date="2015-01-31T23:00:00.00Z" title="Week 4: The deadline">
 		<meta><tag>gtc-crea-photograph</tag></meta>
