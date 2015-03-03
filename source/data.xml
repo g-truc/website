@@ -81,7 +81,7 @@
 
 		<paragraph>
 			First, let's clear out something: SPIR-V has nothing to do with SPIR, it's a new thing which marketing thought it was a good idea to name two products with different version values.
-			Ohhh, I can't wait to battle against the confusions this idea will lead to. SPIR-V is not tight to LLVM, it's a fully specified and self contained specification, it can represent both graphics code and compute code for any API, including Vulcan, OpenCL, OpenGL, OpenGL ES or WebGL.
+			Ohhh, I can't wait to battle against the confusions this idea will lead to. SPIR-V is not tied to LLVM, it's a fully specified and self contained specification, it can represent both graphics code and compute code for any API, including Vulcan, OpenCL, OpenGL, OpenGL ES or WebGL.
 			If we trust that the insdustry is interested in solving actual developers' problems, it would eventually be used for Direct3D, Metal and consoles.
 		</paragraph>
 
