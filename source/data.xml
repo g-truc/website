@@ -70,12 +70,223 @@
 		</paragraph>
 	</draft>
 
-	<post index="0709" date="02/02/2015" std-date="2015-02-02T23:00:00.00Z" title="Week 5: Watching the world and saying it's beautiful">
+	<post index="0714" date="03/03/2015" std-date="2015-03-03T23:30:00.00Z" title="Redefining the shading languages ecosystem with SPIR-V">
+		<meta>
+			<tag>gtc-tech-opengl-review</tag>
+		</meta>
+
+		<paragraph>
+			At Siggraph 2014, the Khronos Group announced the development of GLnext and a shader IL. They have a name now: Vulkan and SPIR V.
+		</paragraph>
+
+		<paragraph>
+			First, let's clear out something: SPIR-V has nothing to do with SPIR, it's a new thing which marketing thought it was a good idea to name two products with different version values.
+			Ohhh, I can't wait to battle against the confusions this idea will lead to. SPIR-V is not tight to LLVM, it's a fully specified and self contained specification, it can represent both graphics code and compute code for any API, including Vulcan, OpenCL, OpenGL, OpenGL ES or WebGL.
+			If we trust that the insdustry is interested in solving actual developers' problems, it would eventually be used for Direct3D, Metal and consoles.
+		</paragraph>
+
+		<paragraph>
+			The Khronos Group has published some great documents for SPIR-V: <link href="https://www.khronos.org/registry/spir-v/papers/WhitePaper.pdf">A white paper</link>, <link href="https://www.khronos.org/registry/spir-v/specs/1.0/SPIRV.pdf">a provisial portable core specification</link>, <link href="https://www.khronos.org/registry/spir-v/specs/1.0/GLSL.std.450.pdf">an provisial extended instructions for graphics specification</link>, <link href="https://www.khronos.org/registry/spir-v/specs/1.0/OpenCL.std.21.pdf">an provisial extended instructions for compute specification</link>.
+		</paragraph>
+
+		<list title="SPIR-V in a nutshell:">
+			<entry>Better portability</entry>
+			<entry>Better runtime performance</entry>
+			<entry>Source languages independant</entry>
+			<entry>Fully specified</entry>
+			<entry>Simple binary</entry>
+			<entry>Extendable</entry>
+		</list>
+
+		<subtitle>A current shader compilation pipeline</subtitle>
+
+		<paragraph>
+			Engines will typically use a meta HLSL and/or shader language for their shaders. Historically, HLSL in desktop and console games and GLSL on mobile and CAD/DCC/professional stuff because of the markets differences. An engine that wants to address multiple markets is quickly confronted to the requirement of cross-compiling shaders from HLSL to GLSL and/or GLSL to HLSL. 
+		</paragraph>
+
+		<paragraph>
+			To match with the really of the ecosystem, we have to cross compile the shading languages but this is always <link href="http://aras-p.info/blog/2014/03/28/cross-platform-shaders-in-2014/">a painful process</link> as illustrated in figure 1.
+		</paragraph>
+
+		<image title="Figure 1: Shader compilation pipeline in Unity 5+" color="white" img="./post/0714-2-800.png" href="./post/0714-2.png" />
+
+		<paragraph>
+			Is this crazy and insane? Yes but it matches the reality of the market which is complex and fragmented with a lot of legacy. If there are reasons to use an engine, this is one. 
+			This pipeline is particularly complex but still GLSL remains a second class citizen in the sense that this pipeline doesn't allow to run GLSL code on Direct3D for example.
+		</paragraph>
+
+		<subtitle>Issues with HLSL11 IL and D3D11 compiler</subtitle>
+
+
+		<list title="In this pipeline HLSL and HLSL11 IL have a central place but HLSL11 IL is not specified and it's produced by a closed source Windows only compiler. The D3D11 compiler should be a deprecated software because: ">
+			<entry>1 It's designed for legacy vec4 GPUs which implies wasting 50% of registers on vec2 and %25% on vec3. Considering that most GPUs hide memory access latencies by launching as many wavefront as possible and that we can launch only as wavefront when there is still space in the register file, D3D11 compiler cost a great deal of performance.</entry>
+			<entry>2 HLSL11 doesn't expose many hardware features (<link href="https://www.opengl.org/registry/specs/ARB/shader_draw_parameters.txt">gl_DrawID</link>, <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_pixel_local_storage.txt">pixel local storage</link>, <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_framebuffer_fetch.txt">framebuffer fetch</link>) hence how to express these features in HLSL when we want to use them in GLSL where they are available? Well, it's hard and at best possible through ugly hacks!</entry>
+			<entry>3 D3D11 compiler performs destructive "optimizations" on the input shaders. Maybe, these "optimizations" where ok at some points in history but they prevent GPU vendors to properly optimize the shaders because information has been lost. From where comes from these massive performance increase from hotfix drivers on new game released? At least, part of it from shaders replacement. If HLSL11 IL input is A, use this totally different binary. This process is probably ok for hardware vendor that can afford it but this process won't scale beyond some flag ship AAA games. Hence, there rest of us, the 99%, are paying the piece.</entry>
+		</list>
+
+		<subtitle>Easier and more robust cross compilation with SPIR-V</subtitle>
+
+		<paragraph>
+			SPIR-V is a fully specified, cross APIs, binary intermediate language which is easy to read, to extend or to ignore unknown instructions without destructing the source in engines tool chain.
+		</paragraph>
+
+		<image title="Figure 2: A more desiable shader compilation pipeline to match the market reality. PS: I need to update this figure to replace SPIR-V AST by SPIR-V CFG" color="white" img="./post/0714-4-800.png" href="./post/0714-4.png" />
+
+		<paragraph>
+			In figure 2 shows how SPIR-V could be used as a center piece of the compilation pipeline allowing multiple front-ends / languages to produce the SPIR-V IL. On platforms supporting SPIR-V, we could directly feed submit SPIR-V. The reality is that it will take a lot of time to transform the ecosystem and we need a solution for others platforms (eg: shipped mobiles which will never get new drivers). Hence, in a market real shader compilation pipeline, SPIR-V would need to be converted to HLSL9 IL, HLSL11 IL, GLSL, Metal, etc. 
+		</paragraph>
+
+		<paragraph>
+			This is a lot of work but SPIR-V provides a simpler and more robust approach to cross compile for other IL and languages. <link href="https://github.com/James-Jones/HLSLCrossCompiler">HLSLcc</link> is a great tool that demonstrated than cross compilation at IL level is a good direction. Another example is <link href="http://blogs.unity3d.com/2014/05/20/the-future-of-scripting-in-unity/">IL2CPP</link> used by Unity to cross compile C# to C++. However, HLSL11 IL has many issues, as expressed previously. With SPIR-V, the source IL is fully specified and extendable making the translation from SPIR-V to HLSL11 IL easier (or even possible) than HLSL11 IL to SPIR-V for example.
+		</paragraph>
+
+		<image title="Figure 3: Dreaming of a large market adoption, wish: that's the plan 5 years down this line" color="white" img="./post/0714-3-800.png" href="./post/0714-3.png" />
+
+		<paragraph>
+			In figure 3, we show what would be the ultimate goal for SPIR-V: A massive adoption of shading intermediate language so that we only have focus on innovations in the source language world.
+		</paragraph>
+		<paragraph>
+			In the current ecosystem, we have to generate N shaders per source because Direct3D 9, Direct3D 11, OpenGL and OpenGL ES accept different syntax. In many cases, only the syntax sugar is different but the functionnality is exactly the same from API to API. 
+			Multiplicating the number of generated shaders as a production cost in iteration time and latency before results that SPIR-V could ultimately avoid. One SPIR-V => N platforms. Only hardware feature levels would condition the generation of multiple shader outputs.
+		</paragraph>
+
+		<subtitle>Building bridges between ecosystem</subtitle>
+
+		<paragraph>
+			Supporting multiple source languages as first class citizen is valuable for many reasons: The user case choice the shading language he like best but also to build bridges between ecosystem.
+		</paragraph>
+
+		<paragraph>
+			 We can imagine the case of skinning. For some games it might be valuable to do the skinning using a computer shader so that this work will be done on the GPU. However, some games might be GPU bound so to get better performance, it's probably a good idea to rely on the CPU. Let's imagine that <link href="https://github.com/ispc/ispc">ISPC</link> decides to support SPIR-V just like it supports <link href="https://github.com/ispc/ispc/blob/master/ptxtools/ptx.ll">NVIDIA PTX</link> for example. In such case an engine could create a single parallel friendly and optimized code and a game could choose either a GPU or CPU target for skinning depending on its needs.
+		</paragraph>
+
+		<paragraph>
+			SPIR-V also allow to decouple the tools from the shipping software. There is no reason to ship a SPIR-V compiler such potentially as ISPC or LLVM. It would increase export time and take a lot of space which is not desiable on mobile or WebGL platforms where memory is critical.
+		</paragraph>
+
+		<subtitle>Better matching of the engine reality: custom shading languages!</subtitle>
+
+		<paragraph>
+			If we consider engine shading languages, most are actually meta-HLSL using custom syntax to expose built-in shaders, engine specific functionnality, fallback systems, making easier/possible cross compilation and platform targetting or offering a more natural way to expose shaders to technical shader artists as we can see with <link href="http://docs.unity3d.com/Manual/SL-Reference.html">Unity shader reference</link> for example. 
+		</paragraph>
+
+		<paragraph>
+			SPIR-V is offering us the opportunity to officialize this language and even build the custom engine functionalities in its heart through extended instruction set.
+			SPIR-V is built around a model where unrecognized blocks are just ignored and preserved allowing interaction with SPIR-V tools unaware of these extensions.
+		</paragraph>
+
+		<paragraph>
+			Going crazier, we could imagine in the future storing OpenGL states in SPIR-V and describing rendering passes with off-line tools capable to filter redundant states changes.
+		</paragraph>
+
+		<subtitle>NOT resolved by SPIR V: "Ohoho, on line shader compilation time is too long."</subtitle>
+		<paragraph>
+			Some game developers would say that we need an IL for better online compilation performance. I think this is misunderstanding the issue. The slow part of the GLSL compilation isn't the translation from GLSL to IHVs IL (eg <link href="http://docs.nvidia.com/cuda/parallel-thread-execution/#abstract">NVIDIA PTX</link>) 
+			but the optimizations path on the IHVs IL particularly register allocation and scheduling transformation. These operations are fully dependent on the GPU architechture hence should be performed by a targeted platform hardware vendor compiler.
+		</paragraph>
+		<paragraph>
+			Parsing GLSL / HLSL and performing non destruction optimizations have a cost and moving these off-line will give us some online performance gains. However, following the <link href="http://en.wikipedia.org/wiki/Pareto_principle">80-20 rule</link>, we should expect only 20% performance gain. Compilation is a finer art than just parsing languages.
+		</paragraph>
+
+		<subtitle>NOT fully resolved by SPIR V: "Ohoho, IHVs shader compilers are rubish."</subtitle>
+		<paragraph>
+			A lot of issues with current GLSL compilers is that all of them support invalid syntaxes but hardware vendors don't want to fix them because it would break some applications. Removing the language syntax avoid potential errors but if tools generate invalid SPIR-V code chances are that drivers will still do whatever it takes to garantee the IL works on their implementations. From an IHVs point of view, the worse is an application that doesn't work on their platforms by run fine else where. By design, SPIR-V doesn't prevent IHV to run invalid code so something else would need to be done to resolve this issue. Conformance tests? 
+			This said, I think that the simplicity of SPIR-V brings us to a much better state.
+		</paragraph>
+		<paragraph>
+			The other issue is that some shader compilers are terrible at performance trivial optimizations hence we will probably need to have a shader pipeline path to do this job.
+		</paragraph>
+
+		<subtitle>Better integration of the shading language in modern graphics APIs:</subtitle>
+		<image title="Figure 4: Integration of SPIR-V in an explict graphics API such as Vulkan" color="white" img="./post/0714-1-800.png" href="./post/0714-1.png" />
+
+		<paragraph>
+			Figure 4 shows the integration of SPIR-V in Vulkan. Basically, with OpenGL and GLSL, all the cross compilation can be done off-line but the rest, including the actual shader compilations, needs to happen in the rendering thread. With Vulkan, we can decouple the tasks and guarantee that the rendering loop never compile shaders, play with shader cache or validate states. Additionally, we have a full control other the threaded shader compilations. With OpenGL, if we don't query the compilation results right after requesting a compilation, the drivers can thread and hide the compilation time but this behavior is not specified: Would the drivers actually thread the compilation? How many compilations can happen in parallel? Vulkan is an explict API, hence we have control for each step, when, where and how these steps should performed.
+		</paragraph>
+
+		<subtitle>Time for celebration before hard work for an ecosystem revolution!</subtitle>
+		<paragraph>
+			I am absolutely convinced that SPIR-V is a game changer for the industry just like WebGL before it. However, there is no magic. To become really succesfull, it will take a lot of efforts to ensure adoption by hardware and platform vendors but also to adapt SPIR-V to the reality of the market and build (open source!) cross compilation tools placing SPIR-V at their centers.
+		</paragraph>
+
+		<paragraph>
+			The head lines might be all about iPhone6 and Samsung S6 but the reality of the market is that we are seeing a race to the bottom with lot of old ES2 GPU IP shipping everyday. Furthermore, there is already a lot of devices already shipped that will never get drivers update during their life time. Finally, Vulkan might be cute but there is a lot of OpenGL/ES, WebGL, Direct3D, console APIs out there. SPIR-V is solution for all of them!
+		</paragraph>
+
+		<paragraph>
+			I am looking for the shading language revolution that SPIR-V will lead to, one step at a time!
+		</paragraph>
+	</post>
+
+	<post index="0713" date="01/02/2015" std-date="2015-02-01T23:00:00.00Z" title="Week 8: Megalithic">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2015-08-960.jpg" href="./photo/2015-08.jpg" />
+	</post>
+
+	<post index="0712" date="22/02/2015" std-date="2015-02-22T23:00:00.00Z" title="Week 7">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2015-07-960.jpg" href="./photo/2015-07.jpg" />
+	</post>
+
+	<post index="0711" date="15/02/2015" std-date="2015-02-15T23:30:00.00Z"  title="GLM 0.9.6.3 released">
+		<meta>
+			<tag>gtc-tech-project-glm</tag>
+		</meta>
+
+		<subtitle>GLM 0.9.6.3 release note (hotfix)</subtitle>
+
+		<list title="Fixes:">
+			<entry>Fixed Android doesn't have C++ 11 STL #284</entry>
+		</list>
+
+		<subtitle>GLM 0.9.6.2 release note</subtitle>
+
+		<list title="Features:">
+			<entry>Added display of GLM version with other GLM_MESSAGES</entry>
+			<entry>Added ARM instruction set detection</entry>
+		</list>
+
+		<list title="Improvements:">
+			<entry>Removed assert for perspective with zFar &lt; zNear #298</entry>
+			<entry>Added Visual Studio natvis support for vec1, quat and dualqual types</entry>
+			<entry>Cleaned up C++11 feature detections</entry>
+			<entry>Clarify GLM licensing</entry>
+		</list>
+
+		<list title="Fixes:">
+			<entry>Fixed faceforward build #289</entry>
+			<entry>Fixed conflict with Xlib #define True 1 #293</entry>
+			<entry>Fixed decompose function VS2010 templating issues #294</entry>
+			<entry>Fixed mat4x3 = mat2x3 * mat4x2 operator #297</entry>
+			<entry>Fixed warnings in F2x11_1x10 packing function in GTC_packing #295</entry>
+			<entry>Fixed Visual Studio natvis support for vec4 #288</entry>
+			<entry>Fixed GTC_packing *pack*norm*x* build and added tests #292</entry>
+			<entry>Disabled GTX_scalar_multiplication for GCC, failing to build tests #242</entry>
+			<entry>Fixed Visual C++ 2015 constexpr errors: Disabled only partial support</entry>
+			<entry>Fixed functions not inlined with Clang #302</entry>
+			<entry>Fixed memory corruption (undefined behaviour) #303</entry>
+		</list>
+
+		<source-list>
+			<source-download index="1189" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.6/glm-0.9.6.pdf" title="GLM 0.9.6 manual" />
+			<source-element type="Link" href="./post-0693.html" title="GLM 0.9.6 overview and transition guide" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.6/api/index.html" title="GLM 0.9.6 api documentation" />
+			<source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+		</source-list>
+	</post>
+
+	<post index="0710" date="14/02/2015" std-date="2015-02-14T23:00:00.00Z" title="Week 6: Instance 2 complete">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2015-06-960.jpg" href="./photo/2015-06.jpg" />
+	</post>
+
+	<post index="0709" date="08/02/2015" std-date="2015-02-08T23:00:00.00Z" title="Week 5: Watching the world and saying it's beautiful">
 		<meta><tag>gtc-crea-photograph</tag></meta>
 		<image color="black" img="./photo/2015-05-960.jpg" href="./photo/2015-05.jpg" />
 	</post>
 
-	<post index="0708" date="02/02/2015" std-date="2015-02-02T14:00:00.00Z" title="Better 'countof' implementation with C++ 11">
+	<post index="0708" date="08/02/2015" std-date="2015-02-08T14:00:00.00Z" title="Better array 'countof' implementation with C++ 11 (updated)">
 		<meta>
 			<tag>gtc-tech-devel-cpp</tag>
 		</meta>
@@ -84,13 +295,37 @@
 			It's often useful to count the number of elements in an array. Using <codeword>std::vector</codeword> or <codeword>std::array</codeword>, this is done using <codeword>.size()</codeword> however this function is not available on good old C++ array.
 		</paragraph>
 
+		<paragraph>
+			Furthermore, implictily sized arrays have their sizes defined at compilation time which could be useful in many scenarios such as the ones in listing 1.
+		</paragraph>
+
+		<code title="Listing 1: Example of use cases for countof:">
+			<line><keyword>static</keyword> std::size_t <keyword>const</keyword> ImplictlySizedArray[] = {1, 2};</line>
+			<line></line>
+			<line><keyword>enum</keyword>{COUNT = countof(ImplictlySizedArray)};</line>
+			<line></line>
+			<line><keyword>void</keyword> foo()</line>
+			<line>{</line>
+			<line align="32px">std::size_t <keyword>const</keyword> CountOf = countof(ImplictlySizedArray);</line>
+			<line></line>
+			<line align="32px"><keyword>for</keyword>(std::size_t i = 0; i &lt; countof(ImplictlySizedArray) * 2; ++i)</line>
+			<line align="32px">{</line>
+			<line align="64px"><keyword>switch</keyword>(i)</line>
+			<line align="64px">{</line>
+			<line align="64px"><keyword>case </keyword>countof(ImplictlySizedArray):</line>
+			<line align="96px"><keyword>break</keyword>;</line>
+			<line align="64px">}</line>
+			<line align="32px">}</line>
+			<line>}</line>
+		</code>
+
 		<subtitle>Quick and dirty: a macro</subtitle>
 
 		<paragraph>
-			For compilation time determination of the size of an array, we often define a macro called <codeword>countof</codeword> or sometime <codeword>ARRAY_SIZE</codeword> as defined in listing 1.
+			For compilation time determination of the size of an array, we often define a macro called <codeword>countof</codeword> or sometime <codeword>ARRAY_SIZE</codeword> as defined in listing 2.
 		</paragraph>
 
-		<code title="Listing 1: Trivial countof implementation based on the C preprocessor with usage example:">
+		<code title="Listing 2: Trivial countof implementation based on the C preprocessor with usage example:">
 			<line><keyword>#define</keyword> countof(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
 			<line></line>
 			<line><keyword>static const</keyword> std::size_t values[] = {42, 76, 16, 11, 31};</line>
@@ -103,16 +338,16 @@
 		</code>
 
 		<list title="Unfortunately, the implementation in listing 1 has multiple drawbacks:">
-			<entry>1 C preprocessor only replaces code so logically the count of elements computation is done at runtime.</entry>
-			<entry>2 Just like any macro, there are potential namespace collision issues.</entry>
-			<entry>3 Because macros carry no type, the implementation is not robust and bad usage won't be detected at compilation time.</entry>
+			<entry>1 Because macros carry no type, the implementation is not robust and bad usage won't be detected at compilation time.</entry>
+			<entry>2 Macros can't be overloaded which would be useful for containers.</entry>
+			<entry>3 Just like any macro, there are potential namespace collision issues.</entry>
 		</list>
 
 		<paragraph>
-			To detail item 3, let's look at a possible refactoring of listing 1 in listing 2.
+			To detail item 1, let's look at a possible refactoring of listing 2 in listing 3.
 		</paragraph>
 
-		<code title="Listing 2: Refactoring of listing 1 leading to an invalid usage of the trivial countof implementation:">
+		<code title="Listing 3: Refactoring of listing 1 leading to an invalid usage of the trivial countof implementation:">
 			<line><keyword>#define</keyword> countof(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
 			<line></line>
 			<line><keyword>static const</keyword> std::size_t values[] = {42, 76, 16, 11, 31};</line>
@@ -130,28 +365,54 @@
 		</code>
 
 		<paragraph>
-			In listing 2, <codeword>arg</codeword> may look like an implicitly size array but actually, it's just a pointer. Hence, when we call <codeword>countof</codeword> on <codeword>arg</codeword> we divide the size of a pointer (32 bits or 64 bits depending on the system) by the size of an element in this array which is indeed not what we expect.
+			In listing 3, <codeword>arg</codeword> may look like an implicitly size array but actually, it's just a pointer. Hence, when we call <codeword>countof</codeword> on <codeword>arg</codeword> we divide the size of a pointer (32 bits or 64 bits depending on the system) by the size of an element in this array which is indeed not what we expect.
+		</paragraph>
+
+		<subtitle>Robust C++ 98 implementation</subtitle>
+
+		<paragraph>
+			To resolve this issue, Charles Nicholson publihed <link href="http://cnicholson.net/2011/01/stupid-c-tricks-a-better-sizeof_array/">a C++98 implementation with a detail description</link>.
+			This implementation is shown in listing 4.
+		</paragraph>
+
+		<code title="Listing 4: Implementation of countof using a C++98 trick:">
+			<line><keyword>template</keyword> &lt;<keyword>typename</keyword> T, std::size_t N&gt;</line>
+			<line><keyword>char</keyword>(&amp;COUNTOF_REQUIRES_ARRAY_ARGUMENT(T(&amp;)[N]))[N];</line>
+			<line></line>
+			<line><keyword>#define</keyword> countof(x) <keyword>sizeof</keyword>(COUNTOF_REQUIRES_ARRAY_ARGUMENT(x))</line>
+		</code>
+
+		<paragraph>
+			The idea is to return the size of an array of char, declared using the template argument size (N) of the array we want to know the number of elements from.
+		</paragraph>
+
+		<paragraph>
+			This <codeword>countof</codeword> implementation still particularly relevant and work well on all static use cases.
+			I find only two minor draw backs. First, it's still a macro so overloading for containers will be challenging.
+			Second, old GCC compilers doesn't support this construct.
+		</paragraph>
+
+		<subtitle>Visual C++ built-in macro</subtitle>
+
+		<paragraph>
+			Visual C++ supports a built-in macro called <codeword href="https://msdn.microsoft.com/en-us/library/ms175773.aspx">_countof</codeword> to detect invalid inputs at compilation time but this solution is not standard.
 		</paragraph>
 
 		<subtitle>Alternative C++ 11 implementation</subtitle>
 
 		<paragraph>
-			To resolve this issue, Visual C++ supports a built-in macro called <codeword href="https://msdn.microsoft.com/en-us/library/ms175773.aspx">_countof</codeword> to detect invalid inputs at compilation time but this solution is not standard.
+			Fortunately, C++ 11 introduced constant expressions allowing us to create functions which executions are resolved at compilation time. This allows us to write a function for <codeword>countof</codeword> in listing 5 which provides type safety, namespace capability and compile time resolution.
 		</paragraph>
 
-		<paragraph>
-			Fortunately, C++ 11 introduced constant expressions allowing us to create functions which exercutions are resolved at compilation time. This allows us to write a function for <codeword>countof</codeword> in listing 3 which provides type safety, namespace capability and compile time resolution.
-		</paragraph>
-
-		<code title="Listing 3: Implementation of countof using a C++11 constant expression:">
+		<code title="Listing 5: Implementation of countof using a C++11 constant expression:">
 			<line><keyword>template</keyword> &lt;<keyword>typename</keyword> T, std::size_t N&gt;</line>
-			<line><keyword>constexpr</keyword> std::size_t countof(T <keyword>const</keyword> (&amp;)[N])</line>
+			<line><keyword>constexpr</keyword> std::size_t countof(T <keyword>const</keyword> (&amp;)[N]) <keyword>noexcept</keyword></line>
 			<line>{</line>
 			<line align="32px"><keyword>return</keyword> N;</line>
 			<line>}</line>
 		</code>
 
-		<code title="Listing 4: Usage examples of constant expression countof:">
+		<code title="Listing 6: Usage examples of constant expression countof:">
 			<line></line>
 			<line><keyword>static const</keyword> std::size_t values[] = {42, 76, 16, 11, 31};</line>
 			<line></line>
@@ -161,7 +422,7 @@
 			<line align="64px">bar(values[i]);</line>
 			<line>}</line>
 			<line></line>
-			<line><keyword>void</keyword> foo(const std::size_t arg[])</line>
+			<line><keyword>void</keyword> foo(<keyword>const</keyword> std::size_t arg[])</line>
 			<line>{</line>
 			<line align="32px"><keyword>for</keyword>(std::size_t i = 0; i &lt; countof(arg); ++i)<comment>// Compilation error!</comment></line>
 			<line align="64px">bar(arg[i]);</line>
@@ -175,34 +436,80 @@
 		</paragraph>
 
 		<paragraph>
-			Hence, listing 5 proposes a more scalable implementation to manage the transition period until C++11 support bacomes universal.
+			Hence, listing 7 proposes a more scalable implementation to manage the transition period until C++11 support bacomes universal.
 		</paragraph>
 
-		<code title="Listing 5: Implementation countof using C++11 constant expression:">
+		<code title="Listing 7: Implementation of countof with fallbacks:">
 			<line align="0px"><keyword>#ifndef</keyword> __has_feature</line>
 			<line align="32px"><keyword>#define</keyword> __has_feature(x) 0  <comment>// Compatibility with non-clang compilers.</comment></line>
 			<line align="0px"><keyword>#endif</keyword></line>
 			<line align="0px"></line>
-			<line align="0px"><keyword>#if</keyword> __cplusplus >= 201103L || _MSC_VER >= 1900 || __has_feature(cxx_constexpr)</line>
-			<line align="32px"><keyword>namespace</keyword> mylib</line>
+			<line align="0px"><comment>// Any compiler claiming C++11 supports, Visual C++ 2015 and Clang version supporting constexp</comment></line>
+			<line align="0px"><keyword>#if</keyword> __cplusplus >= 201103L || _MSC_VER >= 1900 || __has_feature(cxx_constexpr) // C++ 11 implementation</line>
+			<line align="32px"><keyword>namespace</keyword> detail</line>
 			<line align="32px">{</line>
 			<line align="64px"><keyword>template</keyword> &lt;<keyword>typename</keyword> T, std::size_t N&gt;</line>
-			<line align="64px"><keyword>constexpr</keyword> std::size_t countof(T <keyword>const</keyword> (&amp;)[N])</line>
+			<line align="64px"><keyword>constexpr</keyword> std::size_t countof(T <keyword>const</keyword> (&amp;)[N]) noexcept</line>
 			<line align="64px">{</line>
 			<line align="96px"><keyword>return</keyword> N;</line>
 			<line align="64px">}</line>
-			<line align="32px">} <comment>// namespace mylib</comment></line>
-			<line align="32px"><keyword>#define</keyword> MYLIB_COUNTOF(arr) mylib::countof(arr)</line>
-			<line align="0px"><keyword>#elif</keyword> _MSC_VER</line>
-			<line align="32px"><keyword>#define</keyword> MYLIB_COUNTOF(arr) _countof(arr)</line>
+			<line align="32px">} <comment>// namespace detail</comment></line>
+			<line align="32px"><keyword>#define</keyword> MY_NAMESPACE_COUNTOF(arr) detail::countof(arr)</line>
+			<line align="32px"></line>
+			<line align="0px"><keyword>#elif</keyword> _MSC_VER<comment> // Visual C++ fallback</comment></line>
+			<line align="32px"><keyword>#define</keyword> MY_NAMESPACE_COUNTOF(arr) _countof(arr)</line>
+			<line align="32px"></line>
+			<line align="0px"><keyword>#elif</keyword> __cplusplus >= 199711L &amp;&amp; ( <comment>// C++ 98 trick</comment></line>
+			<line align="32px"><keyword>defined</keyword>(__INTEL_COMPILER) || <keyword>defined</keyword>(__clang__) || </line>
+			<line align="32px">(<keyword>defined</keyword>(__GNUC__) &amp;&amp; ((__GNUC__ > 4) || (__GNUC__ == 4 &amp;&amp; __GNUC_MINOR__ >= 4)))</line>
+			<line align="32px"></line>
+			<line align="32px"><keyword>template</keyword> &lt;<keyword>typename</keyword> T, std::size_t N&gt;</line>
+			<line align="32px"><keyword>char</keyword>(&amp;COUNTOF_REQUIRES_ARRAY_ARGUMENT(T(&amp;)[N]))[N];</line>
+			<line align="32px"></line>
+			<line align="32px"><keyword>#define</keyword> countof(x) <keyword>sizeof</keyword>(COUNTOF_REQUIRES_ARRAY_ARGUMENT(x))</line>
+			<line align="32px"></line>
 			<line align="0px"><keyword>#else</keyword></line>
-			<line align="32px"><keyword>#define</keyword> MYLIB_COUNTOF(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
+			<line align="32px"><keyword>#define</keyword> MY_NAMESPACE_COUNTOF(arr) <keyword>sizeof</keyword>(arr) / <keyword>sizeof</keyword>(arr[0])</line>
+			<line align="32px"></line>
 			<line align="0px"><keyword>#endif</keyword></line>
 		</code>
+
+		<subtitle>Overloading for dynamic containers</subtitle>
+
+		<paragraph>
+			Only when relaying on the C++11 implementation shown in listing 5, we can consider overloading the <codeword>countof</codeword> function to work with STL containers.
+			Listing 8 provides an implementation example.
+		</paragraph>
+
+		<code title="Listing 8: Implementation of countof using a C++11 constant expression:">
+			<line align="0px"><keyword>template</keyword> &lt;<keyword>class</keyword> C&gt;</line>
+			<line align="0px">std::size_t countof(C <keyword>const </keyword> &amp; c)</line>
+			<line align="0px">{</line>
+			<line align="32px"><keyword>return</keyword> c.size();</line>
+			<line align="0px">}</line>
+		</code>
+
+		<subtitle>Toward C++ 17 support of countof</subtitle>
+
+		<paragraph>
+			A new standard library paper titled <link href="http://isocpp.org/files/papers/n4280.pdf">Non-member size() and more</link> has been adopted for C++17.
+			This proposal is using the same implementation as describ here.
+		</paragraph>
 
 		<paragraph>
 			Enjoy!
 		</paragraph>
+
+		<paragraph>
+			Special thanks to <link href="https://twitter.com/gpakosz">Gregory Pakosz</link>, <link href="https://twitter.com/molecularmusing">Stefan Reinalter</link> and <link href="https://twitter.com/Donzanoid">Don Williamson</link> for the great comments and references.
+		</paragraph>
+
+		<source-list>
+			<source-element type="Link" href="https://github.com/Groovounet/cpp-experiments/blob/master/test_elementsof.cpp" title="C++ code experiments used for this post" />
+			<source-element type="Link" href="http://cnicholson.net/2011/01/stupid-c-tricks-a-better-sizeof_array/" title="Stupid C++ Tricks: A better sizeof_array()" />
+			<source-element type="Link" href="http://blogs.msdn.com/b/the1/archive/2004/05/07/128242.aspx" title="How Would You Get the Count of an Array in C++?" />
+			<source-element type="Link" href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4280" title="Non-member size() and more (Revision 2)" />
+		</source-list>
 	</post>
 
 	<post index="0707" date="31/01/2015" std-date="2015-01-31T23:00:00.00Z" title="Week 4: The deadline">
