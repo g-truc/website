@@ -81,8 +81,8 @@
 
 		<paragraph>
 			First, let's clear out something: SPIR-V has nothing to do with SPIR, it's a new thing which marketing thought it was a good idea to name two products with different version values.
-			Ohhh, I can't wait to battle against the confusions this idea will lead to. SPIR-V is not tied to LLVM, it's a fully specified and self contained specification, it can represent both graphics code and compute code for any API, including Vulcan, OpenCL, OpenGL, OpenGL ES or WebGL.
-			If we trust that the insdustry is interested in solving actual developers' problems, it would eventually be used for Direct3D, Metal and consoles.
+			Ohhh, I can't wait to battle against the confusions this idea will lead to. SPIR-V is not tied to LLVM, it's a fully specified and self-contained specification, it can represent both graphics code and compute code for any API, including Vulcan, OpenCL, OpenGL, OpenGL ES or WebGL.
+			If we trust that the industry is interested in solving actual developers' problems, it would eventually be used for Direct3D, Metal and consoles.
 		</paragraph>
 
 		<paragraph>
@@ -101,7 +101,7 @@
 		<subtitle>A current shader compilation pipeline</subtitle>
 
 		<paragraph>
-			Engines will typically use a meta HLSL and/or shader language for their shaders. Historically, HLSL in desktop and console games and GLSL on mobile and CAD/DCC/professional stuff because of the markets differences. An engine that wants to address multiple markets is quickly confronted to the requirement of cross-compiling shaders from HLSL to GLSL and/or GLSL to HLSL. 
+			Engines will typically use a meta-HLSL and/or shader language for their shaders. Historically, HLSL in desktop and console games and GLSL on mobile and CAD/DCC/professional stuff because of the markets differences. An engine that wants to address multiple markets is quickly confronted to the requirement of cross-compiling shaders from HLSL to GLSL and/or GLSL to HLSL. 
 		</paragraph>
 
 		<paragraph>
@@ -121,7 +121,7 @@
 		<list title="In this pipeline HLSL and HLSL11 IL have a central place but HLSL11 IL is not specified and it's produced by a closed source Windows only compiler. The D3D11 compiler should be a deprecated software because: ">
 			<entry>1 It's designed for legacy vec4 GPUs which implies wasting 50% of registers on vec2 and %25% on vec3. Considering that most GPUs hide memory access latencies by launching as many wavefront as possible and that we can launch only as wavefront when there is still space in the register file, D3D11 compiler cost a great deal of performance.</entry>
 			<entry>2 HLSL11 doesn't expose many hardware features (<link href="https://www.opengl.org/registry/specs/ARB/shader_draw_parameters.txt">gl_DrawID</link>, <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_pixel_local_storage.txt">pixel local storage</link>, <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_framebuffer_fetch.txt">framebuffer fetch</link>) hence how to express these features in HLSL when we want to use them in GLSL where they are available? Well, it's hard and at best possible through ugly hacks!</entry>
-			<entry>3 D3D11 compiler performs destructive "optimizations" on the input shaders. Maybe, these "optimizations" where ok at some points in history but they prevent GPU vendors to properly optimize the shaders because information has been lost. From where comes from these massive performance increase from hotfix drivers on new game released? At least, part of it from shaders replacement. If HLSL11 IL input is A, use this totally different binary. This process is probably ok for hardware vendor that can afford it but this process won't scale beyond some flag ship AAA games. Hence, there rest of us, the 99%, are paying the piece.</entry>
+			<entry>3 D3D11 compiler performs destructive "optimizations" on the input shaders. Maybe, these "optimizations" where ok at some points in history but they prevent GPU vendors to properly optimize the shaders because information has been lost. From where comes from these massive performance increase from hotfix drivers on new game released? At least, part of it from shaders replacement. If HLSL11 IL input is A, use this totally different binary. This process is probably ok for hardware vendor that can afford it but this process won't scale beyond some flag ship AAA games. Hence, there rest of us, the 99%, are paying the price.</entry>
 		</list>
 
 		<subtitle>Easier and more robust cross compilation with SPIR-V</subtitle>
@@ -146,8 +146,8 @@
 			In figure 3, we show what would be the ultimate goal for SPIR-V: A massive adoption of shading intermediate language so that we only have focus on innovations in the source language world.
 		</paragraph>
 		<paragraph>
-			In the current ecosystem, we have to generate N shaders per source because Direct3D 9, Direct3D 11, OpenGL and OpenGL ES accept different syntax. In many cases, only the syntax sugar is different but the functionnality is exactly the same from API to API. 
-			Multiplicating the number of generated shaders as a production cost in iteration time and latency before results that SPIR-V could ultimately avoid. One SPIR-V => N platforms. Only hardware feature levels would condition the generation of multiple shader outputs.
+			In the current ecosystem, we have to generate N shaders per source because Direct3D 9, Direct3D 11, OpenGL and OpenGL ES accept different syntax. In many cases, only the syntax sugar is different but the functionality is exactly the same from API to API. 
+			The multiplication of generated shaders has a production cost in iteration time and latency until we get the results that SPIR-V could ultimately avoid. One SPIR-V => N platforms. Only hardware feature levels would condition the generation of multiple shader outputs.
 		</paragraph>
 
 		<subtitle>Building bridges between ecosystem</subtitle>
@@ -178,6 +178,10 @@
 		<paragraph>
 			Going crazier, we could imagine in the future storing OpenGL states in SPIR-V and describing rendering passes with off-line tools capable to filter redundant states changes.
 		</paragraph>
+
+		<paragraph>
+			On the opposity side, we could imagine innovations to design a shading language friendly for technical artists, exposing <link href="http://www.frostbite.com/2014/11/moving-frostbite-to-pbr/">PBR</link> parametrization for example or decoupling <link href="http://aras-p.info/blog/2009/05/07/shaders-must-die-part-2/">surface shader, lighting model and light shader</link> natively in the language.
+ 		</paragraph>
 
 		<subtitle>NOT resolved by SPIR V: "Ohoho, on line shader compilation time is too long."</subtitle>
 		<paragraph>
