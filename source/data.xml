@@ -119,9 +119,9 @@
 
 
 		<list title="In this pipeline HLSL and HLSL11 IL have a central place but HLSL11 IL is not specified and it's produced by a closed source Windows only compiler. The D3D11 compiler should be a deprecated software because: ">
-			<entry>1 It's designed for legacy vec4 GPUs which implies wasting 50% of registers on vec2 and %25% on vec3. Considering that most GPUs hide memory access latencies by launching as many wavefront as possible and that we can launch only as wavefront when there is still space in the register file, D3D11 compiler cost a great deal of performance.</entry>
+			<entry>1 It's designed for legacy vec4 GPUs which implies wasting 50% of registers on vec2 and %25% on vec3. Considering that most GPUs hide memory access latencies by launching as many wavefronts as possible. However, GPUs can only launch new wavefronts when there is still space in the register file, D3D11 compiler cost a great deal of performance.</entry>
 			<entry>2 HLSL11 doesn't expose many hardware features (<link href="https://www.opengl.org/registry/specs/ARB/shader_draw_parameters.txt">gl_DrawID</link>, <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_pixel_local_storage.txt">pixel local storage</link>, <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_framebuffer_fetch.txt">framebuffer fetch</link>) hence how to express these features in HLSL when we want to use them in GLSL where they are available? Well, it's hard and at best possible through ugly hacks!</entry>
-			<entry>3 D3D11 compiler performs destructive "optimizations" on the input shaders. Maybe, these "optimizations" where ok at some points in history but they prevent GPU vendors to properly optimize the shaders because information has been lost. From where comes from these massive performance increase from hotfix drivers on new game released? At least, part of it from shaders replacement. If HLSL11 IL input is A, use this totally different binary. This process is probably ok for hardware vendor that can afford it but this process won't scale beyond some flag ship AAA games. Hence, there rest of us, the 99%, are paying the price.</entry>
+			<entry>3 D3D11 compiler performs destructive "optimizations" on the input shaders. Maybe, these "optimizations" where ok at some points in history but they prevent GPU vendors to properly optimize the shaders because information has been lost. From where comes from these massive performance gains from hotfix drivers on new AAA released games? At least, part of it from shaders replacements. If HLSL11 IL input is A, use this totally different binary. This process is probably ok for hardware vendor that can afford it but this process won't scale beyond some flagship AAA games. Hence, there rest of us, the 99%, are paying the piece of a poor compiler.</entry>
 		</list>
 
 		<subtitle>Easier and more robust cross compilation with SPIR-V</subtitle>
@@ -130,7 +130,7 @@
 			SPIR-V is a fully specified, cross APIs, binary intermediate language which is easy to read, to extend or to ignore unknown instructions without destructing the source in engines tool chain.
 		</paragraph>
 
-		<image title="Figure 2: A more desiable shader compilation pipeline to match the market reality. PS: I need to update this figure to replace SPIR-V AST by SPIR-V CFG" color="white" img="./post/0714-4-800.png" href="./post/0714-4.png" />
+		<image title="Figure 2: A more desiable shader compilation pipeline to match the market reality" color="white" img="./post/0714-4-800.png" href="./post/0714-4.png" />
 
 		<paragraph>
 			In figure 2 shows how SPIR-V could be used as a center piece of the compilation pipeline allowing multiple front-ends / languages to produce the SPIR-V IL. On platforms supporting SPIR-V, we could directly feed submit SPIR-V. The reality is that it will take a lot of time to transform the ecosystem and we need a solution for others platforms (eg: shipped mobiles which will never get new drivers). Hence, in a market real shader compilation pipeline, SPIR-V would need to be converted to HLSL9 IL, HLSL11 IL, GLSL, Metal, etc. 
