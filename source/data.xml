@@ -70,159 +70,439 @@
 		</paragraph>
 	</draft>
 
+	<post index="0725" date="26/04/2015" std-date="2015-04-26T23:00:00.00Z" title="Week 16: Gold blind">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-16-960.jpg" href="./photo/2015-16.jpg" />
+	</post>
+
+	<post index="0724" date="19/04/2015" std-date="2015-04-19T23:30:00.00Z" title="EuroLLVM slides about SPIR-V">
+		<meta>
+			<tag>gtc-tech-opengl-review</tag>
+		</meta>
+
+		<paragraph>
+			The <link href="./doc/2015%20-%20EuroLLVM%20-%20SPIR-V.pdf">slides</link> from my presentation at EuroLLVM.
+		</paragraph>
+
+		<source-list>
+			<source-element type="Link" href="./doc/2015%20-%20EuroLLVM%20-%20SPIR-V.pdf" title="Slides" />
+			<source-element type="Link" href="post-0714.html" title="Redefining the shading languages ecosystem with SPIR-V" />
+			<source-element type="Link" href="https://www.khronos.org/registry/spir-v/papers/WhitePaper.pdf" title="SPIR-V: whitepaper" />
+			<source-element type="Link" href="https://www.khronos.org/registry/spir-v/specs/1.0/SPIRV.pdf" title="SPIR-V 0.99, provisiontal specification" />
+			<source-element type="Link" href="https://www.khronos.org/registry/spir-v/specs/1.0/GLSL.std.450.pdf" title="SPIR-V Extended Instructions for GLSL, provisiontal specification" />
+			<source-element type="Link" href="https://www.khronos.org/registry/spir-v/specs/1.0/OpenCL.std.21.pdf" title="SPIR-V OpenCL 2.1 Extended Instruction Set, provisiontal specification" />
+			<source-element type="Link" href="https://www.khronos.org/spir" title="SPIR-V front page" />
+			<source-element type="Link" href="https://www.khronos.org/vulkan" title="Vulkan front page" />
+		</source-list>
+	</post>
+
+	<post index="0723" date="18/04/2015" std-date="2015-04-18T23:00:00.00Z" title="Week 15: Natural abstract expressionism">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-15-960.jpg" href="./photo/2015-15.jpg" />
+	</post>
+
+	<post index="0722" date="15/04/2015" std-date="2015-04-15T23:00:00.00Z" title="Week 14: Season first water">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-14-960.jpg" href="./photo/2015-14.jpg" />
+	</post>
+
+	<post index="0721" date="01/04/2015" std-date="2015-04-01T23:00:00.00Z" title="Week 13: Tearing the sky apart">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-13-960.jpg" href="./photo/2015-13.jpg" />
+	</post>
+
+	<post index="0720" date="29/03/2015" std-date="2015-03-29T23:00:00.00Z" title="March 2015 OpenGL drivers status and FB sRGB conversions">
+		<meta><tag>gtc-tech-project-openglstatus</tag></meta>
+
+		<paragraph>
+			After a long 8 months pause, once again, I tested my OpenGL samples on available OpenGL desktop drivers. This post is a report on whether these samples ran successfully. My OpenGL samples are not a conformance test, only a set of 212 OpenGL code samples I accumulated over time. I haven't updated MacOSX or Linux results.
+		</paragraph>
+
+		<title>Focus on sRGB framebuffer conversion with OpenGL and OpenGL ES</title>
+
+		<paragraph>
+			sRGB conversions is typically a pretty buggy area particularly on MacOSX. On Windows, it looks like that every hardware vendors got it somewhat wrong with OpenGL core and compatibility profile. How to explain this? AMD and Intel have followed NVIDIA behaviors which dominates the OpenGL desktop ecosystem.
+		</paragraph>
+
+		<paragraph>
+			This is attitude of following NVIDIA behaviors is pretty striking considering for example that Intel behaviors used to make the most sense and used to follow the specification.
+		</paragraph>
+
+		<paragraph>
+			However, NVIDIA behavior is not correct to my understanding build from reading the OpenGL specification and many experiments. Not following the specification is not necessary a bad thing as we observe on <link href="http://www.g-truc.net/post-0644.html#menu">the point rendering case study</link>, however on the framebuffer sRGB conversion case, NVIDIA behavior only implies rendering garbage as shown in figure 3.
+			So, what the OpenGL core profile specification says?
+		</paragraph>
+
+		<quote author="OpenGL core framebuffer sRGB conversion rules" href="https://www.opengl.org/registry/specs/ARB/framebuffer_sRGB.txt">
+			If <codeword>FRAMEBUFFER_SRGB</codeword> is enabled and the value of <codeword>FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING</codeword> for the framebuffer attachment corresponding to the destination buffer is SRGB (see section 6.1.3), the R, G, and B values after blending are converted into the non-linear sRGB color space.
+		</quote>
+
+		<paragraph>
+			OpenGL ES is slightly different: <codeword>GL_FRAMEBUFFER_SRGB</codeword> doesn't exist so that framebuffer sRGB conversion only depends on the <codeword>GL_FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING</codeword>.
+		</paragraph>
+
+		<quote author="OpenGL ES framebuffer sRGB conversion rules" href="https://www.khronos.org/registry/gles/specs/3.1/es_spec_3.1.withchanges.pdf">
+			If the value of <codeword>FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING</codeword> for the framebuffer attachment corresponding to the destination buffer is SRGB (see section 9.2.3), the R, G, and B values after blending are converted into the non-linear sRGB color space.
+		</quote>
+
+		<paragraph>
+			This hightlight a OpenGL core and OpenGL ES incompatibility: OpenGL ES behaves as if <codeword>GL_FRAMEBUFFER_SRGB</codeword> was already enabled where on desktop <codeword>GL_FRAMEBUFFER_SRGB</codeword> is disabled by default.
+		</paragraph>
+
+		<paragraph>
+			Following this reasonning a quick interpretation would be that to handle this imcompatibility, we could simply enable <codeword>GL_FRAMEBUFFER_SRGB</codeword> at initialization on desktop. Unfortunately, this is not working in practice as shown in figure 3.
+		</paragraph>
+
+		<image title="Figure 1: Fully linear framebuffer rendering" color="white" img="./post/0720-crop-linear.png" href="./post/0720-linear.png" />
+
+		<image title="Figure 2: sRGB intermediate framebuffer with explicitly disable conversion on default framebuffer" color="white" img="./post/0720-crop-srgb_disable_on_fbo_0.png" href="./post/0720-srgb_disable_on_fbo_0.png" />
+
+		<image title="Figure 3: Always enabled framebuffer sRGB conversion on OpenGL core profile: What we see here is sRGB data being interpreted as RGB, just as in 5" color="white" img="./post/0720-crop-srgb_enable_always.png" href="./post/0720-srgb_enable_always.png" />
+
+		<image title="Figure 4: Always enabled framebuffer sRGB conversion on OpenGL ES profile" color="white" img="./post/0720-crop-es.png" href="./post/0720-es.png" />
+
+		<image title="Figure 5: Sample a sRGB texture (with sRGB data) without doing a sRGB to linear RGB conversion" color="white" img="./post/0720-crop-skip.png" href="./post/0720-skip.png" />
+
+		<paragraph>
+			As a result, a default behavior on ES profile (4) results in a completely wrong output on core profile (3).
+		</paragraph>
+		<paragraph>
+			Intel (with only new drivers) and AMD behave just like NVIDIA except regarding the <codeword>GL_FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING</codeword> query on the default framebuffer: Intel and AMD returns GL_SRGB and NVIDIA returns GL_LINEAR.
+		</paragraph>
+
+		<quote author="Observed NVIDIA framebuffer sRGB conversion rule on OpenGL core">
+			IF <codeword>FRAMEBUFFER_BINDING</codeword> is 0 then if <codeword>FRAMEBUFFER_SRGB</codeword> is enabled, the R, G, and B values after blending are converted into the non-linear sRGB color space. Otherwise, follow the specification.
+		</quote>
+
+		<paragraph>
+			Where NVIDIA behavior has obviously a bug, Intel and AMD behavior might be the result of a specification bug: <link href="https://www.opengl.org/registry/specs/ARB/framebuffer_sRGB.txt">WGL_framebuffer_sRGB</link> despite being ratified in 2008, never had the luxury to get it's specification written.
+		</paragraph>
+
+		<quote author="framebuffer_sRGB: issue 21" href="https://www.opengl.org/registry/specs/ARB/framebuffer_sRGB.txt">
+			21) Where's the specification language for the GLX and WGL pixel format selection interface? 
+			TO BE DONE. The <codeword>{GLX,WGL}_FRAMEBUFFER_SRGB_CAPABLE_ARB</codeword> pixel format attributes are used to select default framebuffers which are sRGB-capable in the fairly obvious way, but this language was missing in the original <codeword>EXT_framebuffer_sRGB</codeword> and needs to be added here.
+		</quote>
+
+		<paragraph>
+			With Windows 7, all the default framebuffers are sRGB capable however there is no way to explicitly request a linear or sRGB color encoding. Additionally, maybe the default framebuffer is effectively sRGB however Windows compositor interprets sRGB values as linear RGB values anyway hence producing the result in figure 3 and 5. This would mean that Windows effectively doesn't support sRGB framebuffer natively which would be shocking but not impossible. If someone has information at OS level, I'll enjoy to get some inputs!
+		</paragraph>
+
+		<paragraph>
+			In any case, we need a proper <codeword href="https://www.opengl.org/registry/specs/ARB/framebuffer_sRGB.txt">WGL_framebuffer_sRGB</codeword> specification allowing to create a linear RGB or sRGB default framebuffer explicitly but also defining sRGB conversions on the default framebuffer.
+		</paragraph>
+
+		<code title="How to workaround sRGB framebuffer conversions issues on Windows?">
+			<line><keyword>void</keyword> bindFramebuffer(GLuint FramebufferName)</line>
+			<line>{</line>
+			<line align="32px">glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);</line>
+			<line></line>
+			<line align="32px"><comment>// ES doesn't have GL_FRAMEBUFFER_SRGB unless <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_sRGB_write_control.txt">EXT_sRGB_write_control</link> is supported</comment></line>
+			<line align="32px"><keyword>if</keyword>(HasFramebufferSRGBEnable)</line>
+			<line align="32px">{</line>
+			<line align="64px"><keyword>if</keyword>(FramebufferName == 0)</line>
+			<line align="96px">glDisable(GL_FRAMEBUFFER_SRGB);</line>
+			<line align="64px"><keyword>else</keyword></line>
+			<line align="96px">glEnable(GL_FRAMEBUFFER_SRGB);</line>
+			<line align="32px">}</line>
+			<line>}</line>
+		</code>
+
+		<paragraph>
+			Unfortunately, on MacOSX and at least some AMD drivers there are more problematic cases. For example, it may happen that we must disable framebuffer sRGB conversion on framebuffer object if the attachments are not using a sRGB framebuffer. Furthremore, sRGB conversions are performed on none or all framebuffer attachments for multiple framebuffer attachments case so that all attachments must use the same color space.
+		</paragraph>
+
+		<paragraph>
+			Considering formats such as <codeword>RGB10A_UNORM</codeword> or <link href="http://iwasbeingirony.blogspot.jp/2010/06/difference-between-rgbm-and-rgbd.html">RGBD</link> we might wonder if it's worth bothering with sRGB framebuffers.
+		</paragraph>
+
+		<title>OpenGL drivers summary</title>
+
+		<image title="March 2015 OpenGL samples passing on available implementations" color="white" img="./post/0720.png" href="./doc/OpenGL%20Drivers%20Status.pdf" />
+
+		<image title="July 2014 OpenGL samples passing on available implementations" color="white" img="./post/0672-1.png" href="./doc/OpenGL%20Drivers%20Status%202014-07.pdf" />
+
+		<source-list>
+			<source-element type="Link" href="http://opengl.delphigl.de/gl_generatereport.php?reportID=767" title="glCapsViewer report for AMD Catalyst 15.3 b1" />
+			<source-element type="Link" href="http://opengl.delphigl.de/gl_generatereport.php?reportID=766" title="glCapsViewer report for Intel HD Graphics 10.18.10.4156" />
+			<source-element type="Link" href="http://opengl.delphigl.de/gl_generatereport.php?reportID=753" title="glCapsViewer report for NVIDIA Forceware 347.88" />
+			<source-download index="1188" />
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/archive/master.zip" title="OpenGL Samples Pack staging" />
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues?state=open" title="Submit a bug report" />
+		</source-list>
+	</post>
+
+	<post index="0719" date="28/03/2015" std-date="2015-03-28T23:30:00.00Z" title="OpenGL Samples Pack 4.5.1.0 released">
+		<meta><tag>gtc-tech-opengl-samples</tag></meta>
+		<paragraph>
+			The OpenGL Samples Pack 4.5.1.0 introduced new samples for NVIDIA Maxwell architechture but also samples testing sRGB color space.
+		</paragraph>
+
+		<list title="Release notes:">
+			<entry>Added gl-500-conservative-raster-nv sample</entry>
+			<entry>Added gl-500-fbo-layered-nv sample</entry>
+			<entry>Added gl-500-fill-rectangle-nv sample</entry>
+			<entry>Added gl-500-primitive-shading-nv sample</entry>
+			<entry>Added gl-500-shader-blend-intel sample</entry>
+			<entry>Added gl-500-shader-blend-nv sample</entry>
+			<entry>Added gl-500-sample-location-nv sample</entry>
+			<entry>Added gl-500-sample-location-grid-nv sample</entry>
+			<entry>Updated gl-320-fbo-srgb sample to be more meaningful</entry>
+			<entry>Added gl-320-fbo-blend sample</entry>
+			<entry>Added gl-320-fbo-srgb sample</entry>
+			<entry>Added gl-320-fbo-srgb-blend sample</entry>
+			<entry>Added gl-320-fbo-srgb-decode-ext sample</entry>
+			<entry>Added gl-430-fbo-srgb-decode sample</entry>
+			<entry>Added gl-320-texture-lod sample</entry>
+			<entry>Added gl-320-fbo-depth-stencil sample</entry>
+			<entry>Added gl-440-fbo-depth-stencil sample</entry>
+			<entry>Reorganized vendor and ARB samples into GL5 hardware samples</entry>
+			<entry></entry>
+		</list>
+
+		<source-list>
+			<source-download index="1188" />
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+		</source-list>
+	</post>
+
+	<post index="0718" date="27/03/2015" std-date="2015-03-27T23:00:00.00Z" title="Week 12: With modesty, the noon and sun switch off the light">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-12-960.jpg" href="./photo/2015-12.jpg" />
+	</post>
+
+	<post index="0717" date="18/03/2015" std-date="2015-03-18T23:00:00.00Z" title="Week 11: La nostalgie de l'étoile">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-11-960.jpg" href="./photo/2015-11.jpg" />
+	</post>
+
+	<post index="0716" date="12/03/2015" std-date="2015-03-12T23:00:00.00Z" title="Week 10: Jupiter alternative">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-10-960.jpg" href="./photo/2015-10.jpg" />
+	</post>
+
+	<post index="0715" date="05/03/2015" std-date="2015-03-05T23:00:00.00Z" title="Week 9: A crack on my sky">
+		<meta><tag>gtc-crea-photograph</tag></meta>
+		<image color="black" img="./photo/2015-09-960.jpg" href="./photo/2015-09.jpg" />
+	</post>
+
 	<post index="0714" date="03/03/2015" std-date="2015-03-03T23:30:00.00Z" title="Redefining the shading languages ecosystem with SPIR-V">
 		<meta>
 			<tag>gtc-tech-opengl-review</tag>
 		</meta>
 
 		<paragraph>
-			At Siggraph 2014, the Khronos Group announced the development of GLnext and a shader IL. They have a name now: Vulkan and SPIR V.
+			At Siggraph 2014, the Khronos Group announced the development of <link href="https://www.khronos.org/assets/uploads/developers/library/2014-siggraph-bof/OpenGL-Ecosystem-BOF_Aug14.pdf">GLnext and a shader IL</link>. They have a name now: <link href="https://www.khronos.org/vulkan">Vulkan</link> and <link href="https://www.khronos.org/spir">SPIR V</link>.
 		</paragraph>
 
 		<paragraph>
-			First, let's clear out something: SPIR-V has nothing to do with SPIR, it's a new thing which marketing thought it was a good idea to name two products with different version values.
-			Ohhh, I can't wait to battle against the confusions this idea will lead to. SPIR-V is not tied to LLVM, it's a fully specified and self-contained specification, it can represent both graphics code and compute code for any API, including Vulcan, OpenCL, OpenGL, OpenGL ES or WebGL.
-			If we trust that the industry is interested in solving actual developers' problems, it would eventually be used for Direct3D, Metal and consoles.
+			First, let's clear out something: SPIR-V has nothing to do with SPIR. It's built from scratch with marketing thinking it was a good idea to name two products with different version values.
+			Ohhh, I can't wait to battle against the confusions this idea will lead to. SPIR-V is not tied to LLVM, it's a fully specified and self-contained specification. It can represent both graphics code and compute code for any API, including Vulcan, OpenCL, OpenGL, OpenGL ES, WebGL, etc.
 		</paragraph>
 
 		<paragraph>
-			The Khronos Group has published some great documents for SPIR-V: <link href="https://www.khronos.org/registry/spir-v/papers/WhitePaper.pdf">A white paper</link>, <link href="https://www.khronos.org/registry/spir-v/specs/1.0/SPIRV.pdf">a provisial portable core specification</link>, <link href="https://www.khronos.org/registry/spir-v/specs/1.0/GLSL.std.450.pdf">an provisial extended instructions for graphics specification</link>, <link href="https://www.khronos.org/registry/spir-v/specs/1.0/OpenCL.std.21.pdf">an provisial extended instructions for compute specification</link>.
+			If we trust the industry is interested in solving actual developers' problems, it will eventually be used outside the Khronos Group, for Direct3D, Metal, consoles and beyond!
+		</paragraph>
+
+		<paragraph>
+			The Khronos Group has published some great documents for SPIR-V: <link href="https://www.khronos.org/registry/spir-v/papers/WhitePaper.pdf">a white paper</link>, <link href="https://www.khronos.org/registry/spir-v/specs/1.0/SPIRV.pdf">a provisial portable core specification</link>, <link href="https://www.khronos.org/registry/spir-v/specs/1.0/GLSL.std.450.pdf">an provisial extended instructions for graphics specification</link>, <link href="https://www.khronos.org/registry/spir-v/specs/1.0/OpenCL.std.21.pdf">an provisial extended instructions for compute specification</link>. A work in progress <link href="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/">GLSL to SPIR-V compiler</link> is also available.
 		</paragraph>
 
 		<list title="SPIR-V in a nutshell:">
 			<entry>Better portability</entry>
 			<entry>Better runtime performance</entry>
-			<entry>Source languages independant</entry>
+			<entry>Source languages independent</entry>
 			<entry>Fully specified</entry>
 			<entry>Simple binary</entry>
 			<entry>Extendable</entry>
 		</list>
 
-		<subtitle>A current shader compilation pipeline</subtitle>
+		<title>A current shader cross-compilation pipeline</title>
 
 		<paragraph>
-			Engines will typically use a meta-HLSL and/or shader language for their shaders. Historically, HLSL in desktop and console games and GLSL on mobile and CAD/DCC/professional stuff because of the markets differences. An engine that wants to address multiple markets is quickly confronted to the requirement of cross-compiling shaders from HLSL to GLSL and/or GLSL to HLSL. 
+			Engines will typically use a meta-HLSL or meta shading languages for their shader code. Historically, HLSL on desktop and consoles but GLSL on mobile and CAD/DCC/professional stuff because of markets differences and reality.
+			An engine that wants to address multiple markets is quickly confronted to the requirement of cross-compiling shaders from HLSL to GLSL and/or GLSL to HLSL for example with game engines. Alternatively, in the off-line rendering ecosystem, we could also imagine the issue happenning between <link href="http://www.openshading.com/">Open Shading Language</link> and <link href="https://renderman.pixar.com/resources/current/RenderMan/shadingLanguage.html">RenderMan</link>.
 		</paragraph>
 
 		<paragraph>
-			To match with the really of the ecosystem, we have to cross compile the shading languages but this is always <link href="http://aras-p.info/blog/2014/03/28/cross-platform-shaders-in-2014/">a painful process</link> as illustrated in figure 1.
+			To match the reality of the ecosystem, we have to cross compile the shading languages but this is always <link href="http://aras-p.info/blog/2014/03/28/cross-platform-shaders-in-2014/">a painful process</link> as illustrated in figure 1.
 		</paragraph>
 
 		<image title="Figure 1: Shader compilation pipeline in Unity 5+" color="white" img="./post/0714-2-800.png" href="./post/0714-2.png" />
 
 		<paragraph>
-			Is this crazy and insane? Yes but it matches the reality of the market which is complex and fragmented with a lot of legacy. If there are reasons to use an engine, this is one. 
-			This pipeline is particularly complex but still GLSL remains a second class citizen in the sense that this pipeline doesn't allow to run GLSL code on Direct3D for example.
+			Is this crazy and insane? Yes. However, it addresses the reality of the market which is complex and fragmented with a lot of legacy hardware and software. If there are reasons to use an engine, this is one. 
+			This pipeline is particularly complex but still GLSL remains a second class shading language in the sense that this pipeline doesn't allow to run GLSL code on Direct3D for example.
 		</paragraph>
 
-		<subtitle>Issues with HLSL11 IL and D3D11 compiler</subtitle>
+		<title>Issues with HLSL11 IL and D3D11 compiler</title>
 
-
-		<list title="In this pipeline HLSL and HLSL11 IL have a central place but HLSL11 IL is not specified and it's produced by a closed source Windows only compiler. The D3D11 compiler should be a deprecated software because: ">
-			<entry>1 It's designed for legacy vec4 GPUs which implies wasting 50% of registers on vec2 and %25% on vec3. Considering that most GPUs hide memory access latencies by launching as many wavefronts as possible. However, GPUs can only launch new wavefronts when there is still space in the register file, D3D11 compiler cost a great deal of performance.</entry>
-			<entry>2 HLSL11 doesn't expose many hardware features (<link href="https://www.opengl.org/registry/specs/ARB/shader_draw_parameters.txt">gl_DrawID</link>, <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_pixel_local_storage.txt">pixel local storage</link>, <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_framebuffer_fetch.txt">framebuffer fetch</link>) hence how to express these features in HLSL when we want to use them in GLSL where they are available? Well, it's hard and at best possible through ugly hacks!</entry>
-			<entry>3 D3D11 compiler performs destructive "optimizations" on the input shaders. Maybe, these "optimizations" where ok at some points in history but they prevent GPU vendors to properly optimize the shaders because information has been lost. From where comes from these massive performance gains from hotfix drivers on new AAA released games? At least, part of it from shaders replacements. If HLSL11 IL input is A, use this totally different binary. This process is probably ok for hardware vendor that can afford it but this process won't scale beyond some flagship AAA games. Hence, there rest of us, the 99%, are paying the piece of a poor compiler.</entry>
+		<list title="In this pipeline HLSL and HLSL11 IL have a central place but HLSL11 IL is not specified and it's produced by a closed source Windows only compiler. Additionally, the D3D11 compiler should be a deprecated software because: ">
+			<entry>
+				1 It was designed for legacy vec4 GPUs which implies wasting 50% of registers on vec2 and %25% on vec3.
+				Considering that most GPUs hide memory access latencies by launching as many wavefronts as possible, GPUs can only launch new wavefronts when there is still space available in the register file. Thus, D3D11 compiler cost a great deal of performance by wasting registers.
+			</entry>
+			<entry>
+				2 HLSL11 doesn't expose many hardware features (<link href="https://www.opengl.org/registry/specs/ARB/shader_draw_parameters.txt">gl_DrawID</link>, <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_pixel_local_storage.txt">pixel local storage</link>, <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_shader_framebuffer_fetch.txt">framebuffer fetch</link>). How to express these features in HLSL when we want to use them in GLSL where they are available? Well, it's hard and at best possible through ugly hacks!
+			</entry>
+			<entry>
+				3 D3D11 compiler performs destructive "optimizations" on the input shaders. Maybe, these "optimizations" where ok at some points in history but they prevent GPU vendors to properly optimize the shaders because source information gets lost.
+				From where comes from these massive performance gains from hotfix drivers on new AAA released games? At least, part of it from shaders replacements. If HLSL11 IL input is A, use this totally different binary.
+				This process is probably ok for hardware vendors that can afford it but this process won't scale beyond some flagship AAA games. Hence, the rest of us, the 99%, are paying the price of a poor compiler.
+			</entry>
 		</list>
 
-		<subtitle>Easier and more robust cross compilation with SPIR-V</subtitle>
+		<title>Easier and more robust cross compilation with SPIR-V</title>
 
 		<paragraph>
-			SPIR-V is a fully specified, cross APIs, binary intermediate language which is easy to read, to extend or to ignore unknown instructions without destructing the source in engines tool chain.
+			SPIR-V is a fully specified, cross APIs, binary intermediate language which is easy to read, to extend or to ignore unknown instructions without destructing the source in a tool chain.
 		</paragraph>
 
 		<image title="Figure 2: A more desiable shader compilation pipeline to match the market reality" color="white" img="./post/0714-4-800.png" href="./post/0714-4.png" />
 
 		<paragraph>
-			In figure 2 shows how SPIR-V could be used as a center piece of the compilation pipeline allowing multiple front-ends / languages to produce the SPIR-V IL. On platforms supporting SPIR-V, we could directly feed submit SPIR-V. The reality is that it will take a lot of time to transform the ecosystem and we need a solution for others platforms (eg: shipped mobiles which will never get new drivers). Hence, in a market real shader compilation pipeline, SPIR-V would need to be converted to HLSL9 IL, HLSL11 IL, GLSL, Metal, etc. 
+			In figure 2 shows how SPIR-V could be used as a center piece of the compilation pipeline allowing multiple front-ends / languages to produce the SPIR-V IL. On platforms supporting SPIR-V, we could directly feed APIs with SPIR-V.
+			The reality is that it will take a lot of time to transform the ecosystem and we need a solution for others platforms (eg: shipped mobiles which will never get new drivers).
+			Hence, in a market real shader compilation pipeline, SPIR-V would need to be converted to HLSL9 IL, HLSL11 IL, GLSL, Metal, etc. 
 		</paragraph>
 
 		<paragraph>
-			This is a lot of work but SPIR-V provides a simpler and more robust approach to cross compile for other IL and languages. <link href="https://github.com/James-Jones/HLSLCrossCompiler">HLSLcc</link> is a great tool that demonstrated than cross compilation at IL level is a good direction. Another example is <link href="http://blogs.unity3d.com/2014/05/20/the-future-of-scripting-in-unity/">IL2CPP</link> used by Unity to cross compile C# to C++. However, HLSL11 IL has many issues, as expressed previously. With SPIR-V, the source IL is fully specified and extendable making the translation from SPIR-V to HLSL11 IL easier (or even possible) than HLSL11 IL to SPIR-V for example.
+			This is a lot of work but SPIR-V provides a simpler and more robust approach to cross compile to others ILs and languages.
+			<link href="https://github.com/James-Jones/HLSLCrossCompiler">HLSLcc</link> is a great tool that demonstrated that cross compilation at IL level is a good direction.
+			Another example is <link href="http://blogs.unity3d.com/2014/05/20/the-future-of-scripting-in-unity/">IL2CPP</link> used by Unity to cross compile C# to C++. However, HLSL11 IL has many issues, as expressed previously.
+			With SPIR-V, the source IL is fully specified and extendable making the translation from SPIR-V to HLSL11 IL easier (or even possible) than HLSL11 IL to SPIR-V for example.
+		</paragraph>
+
+		<paragraph>
+			I am glade to see that some frameworks are already <link href="https://jogamp.org/bugzilla/show_bug.cgi?id=1140#c2">investigating about SPIR-V</link>: <link href="https://jogamp.org/">Jogamp</link> is a Java binding for multiple APIs including OpenGL and OpenCL. SPIR-V will allow the framework users to target independently OpenGL compute of OpenCL depending framework users needs for example.
 		</paragraph>
 
 		<image title="Figure 3: Dreaming of a large market adoption, wish: that's the plan 5 years down this line" color="white" img="./post/0714-3-800.png" href="./post/0714-3.png" />
 
 		<paragraph>
-			In figure 3, we show what would be the ultimate goal for SPIR-V: A massive adoption of shading intermediate language so that we only have focus on innovations in the source language world.
+			In figure 3, we show what would be the ultimate goal for SPIR-V: A massive adoption of the shading intermediate language so that we only have focus on innovations in the source language world. Great time to start a PHD on shading language!
 		</paragraph>
 		<paragraph>
-			In the current ecosystem, we have to generate N shaders per source because Direct3D 9, Direct3D 11, OpenGL and OpenGL ES accept different syntax. In many cases, only the syntax sugar is different but the functionality is exactly the same from API to API. 
-			The multiplication of generated shaders has a production cost in iteration time and latency until we get the results that SPIR-V could ultimately avoid. One SPIR-V => N platforms. Only hardware feature levels would condition the generation of multiple shader outputs.
+			In the current ecosystem, we have to generate N shaders per source because Direct3D 9, Direct3D 11, OpenGL and OpenGL ES accept different syntaxes. In many cases, only the syntax sugar is different but the functionality is exactly the same from API to API. 
+			The multiplication of generated shaders has a production cost in iteration time and latency until we get the results that SPIR-V could ultimately avoid. One SPIR-V => N platforms. Ideally, only hardware feature levels would condition the generation of multiple shader outputs.
 		</paragraph>
 
-		<subtitle>Building bridges between ecosystem</subtitle>
+		<title>Building bridges between ecosystems</title>
 
 		<paragraph>
-			Supporting multiple source languages as first class citizen is valuable for many reasons: The user case choice the shading language he like best but also to build bridges between ecosystem.
-		</paragraph>
-
-		<paragraph>
-			 We can imagine the case of skinning. For some games it might be valuable to do the skinning using a computer shader so that this work will be done on the GPU. However, some games might be GPU bound so to get better performance, it's probably a good idea to rely on the CPU. Let's imagine that <link href="https://github.com/ispc/ispc">ISPC</link> decides to support SPIR-V just like it supports <link href="https://github.com/ispc/ispc/blob/master/ptxtools/ptx.ll">NVIDIA PTX</link> for example. In such case an engine could create a single parallel friendly and optimized code and a game could choose either a GPU or CPU target for skinning depending on its needs.
+			Supporting multiple source languages as first class citizen is valuable for many reasons: The user case choice the shading language he like best but also to build bridges between ecosystem: off-line rendering and real-time rendering; Mobile and desktop; Simulation and rendering,; etc!
 		</paragraph>
 
 		<paragraph>
-			SPIR-V also allow to decouple the tools from the shipping software. There is no reason to ship a SPIR-V compiler such potentially as ISPC or LLVM. It would increase export time and take a lot of space which is not desiable on mobile or WebGL platforms where memory is critical.
-		</paragraph>
-
-		<subtitle>Better matching of the engine reality: custom shading languages!</subtitle>
-
-		<paragraph>
-			If we consider engine shading languages, most are actually meta-HLSL using custom syntax to expose built-in shaders, engine specific functionnality, fallback systems, making easier/possible cross compilation and platform targetting or offering a more natural way to expose shaders to technical shader artists as we can see with <link href="http://docs.unity3d.com/Manual/SL-Reference.html">Unity shader reference</link> for example. 
+			 Let's take a common real-time use case: the case of skinning. For some games it might be valuable to do the skinning using a computer shader so that this work will be done on the GPU. However, some games might be GPU bound so to get better performance, it's probably a good idea to rely on the CPU. Let's imagine that <link href="https://github.com/ispc/ispc">ISPC</link> decides to support SPIR-V just like it supports <link href="https://github.com/ispc/ispc/blob/master/ptxtools/ptx.ll">NVIDIA PTX</link> for example. In such case an engine could create a single parallel friendly and optimized code and a game could choose either a GPU or CPU target for skinning depending on its needs.
 		</paragraph>
 
 		<paragraph>
-			SPIR-V is offering us the opportunity to officialize this language and even build the custom engine functionalities in its heart through extended instruction set.
-			SPIR-V is built around a model where unrecognized blocks are just ignored and preserved allowing interaction with SPIR-V tools unaware of these extensions.
+			Futhermore, SPIR-V allows to decouple the tools from the shipping software. There is no reason to ship a SPIR-V compiler such as ISPC or LLVM in a final game. It would increase export time and take a lot of space which is not desiable on mobile or WebGL platforms where memory is critical.
+		</paragraph>
+
+		<title>Better matching of the engine reality: custom shading languages!</title>
+
+		<paragraph>
+			If we consider engine shading languages, most are actually meta-HLSL using custom syntax to expose built-in shaders, engine specific functionality, fallback systems, making easier/possible cross compilation and platform targeting or offering a more natural way to expose shaders to technical shader artists. <link href="http://docs.unity3d.com/Manual/SL-Reference.html">Unity shading language</link> is a good example of such meta-HLSL approach. 
 		</paragraph>
 
 		<paragraph>
-			Going crazier, we could imagine in the future storing OpenGL states in SPIR-V and describing rendering passes with off-line tools capable to filter redundant states changes.
+			SPIR-V is offering us the opportunity to officialize these languages and even build the custom engine functionalities in their hearts through extended instruction sets.
+			SPIR-V is built around a model where unrecognized blocks are just ignored and preserved, allowing interactions with SPIR-V tools unaware of these extensions.
+		</paragraph>
+
+		<paragraph>
+			Going crazier, we could imagine in the future storing OpenGL states in SPIR-V or describing rendering passes with off-line tools capable to filter redundant states changes. Many opportunities to run our imagination wild!
 		</paragraph>
 
 		<paragraph>
 			On the opposity side, we could imagine innovations to design a shading language friendly for technical artists, exposing <link href="http://www.frostbite.com/2014/11/moving-frostbite-to-pbr/">PBR</link> parametrization for example or decoupling <link href="http://aras-p.info/blog/2009/05/07/shaders-must-die-part-2/">surface shader, lighting model and light shader</link> natively in the language.
  		</paragraph>
 
-		<subtitle>NOT resolved by SPIR V: "Ohoho, on line shader compilation time is too long."</subtitle>
+		<title>NOT resolved by SPIR V: "Ohoho, on line shader compilation time is too long."</title>
 		<paragraph>
-			Some game developers would say that we need an IL for better online compilation performance. I think this is misunderstanding the issue. The slow part of the GLSL compilation isn't the translation from GLSL to IHVs IL (eg <link href="http://docs.nvidia.com/cuda/parallel-thread-execution/#abstract">NVIDIA PTX</link>) 
-			but the optimizations path on the IHVs IL particularly register allocation and scheduling transformation. These operations are fully dependent on the GPU architechture hence should be performed by a targeted platform hardware vendor compiler.
+			Some game developers would say that we need an IL for better online compilation performance. I think this is misunderstanding the cause of this issue.
+			The slow part of the GLSL compilation isn't the translation from GLSL to IHVs IL 
+			(eg <link href="http://docs.nvidia.com/cuda/parallel-thread-execution/#abstract">NVIDIA PTX</link> or <link href="http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2012/10/AMD_Intermediate_Language_%28IL%29_Specification_v2.pdf">AMD IL</link>) 
+			but the optimizations path on the IHVs IL, particularly register allocation and scheduling transformation. These operations are fully dependent of GPU architectures hence should be performed by a targeted platform hardware vendor compiler.
 		</paragraph>
 		<paragraph>
-			Parsing GLSL / HLSL and performing non destruction optimizations have a cost and moving these off-line will give us some online performance gains. However, following the <link href="http://en.wikipedia.org/wiki/Pareto_principle">80-20 rule</link>, we should expect only 20% performance gain. Compilation is a finer art than just parsing languages.
+			Parsing GLSL / HLSL and performing non destruction optimizations have a cost and moving these off-line will give us some online performance gains.
+			However, following the <link href="http://en.wikipedia.org/wiki/Pareto_principle">80-20 rule</link>, we should expect only 20% performance gain.
+			Compilation is a finer art than just parsing languages.
 		</paragraph>
 
-		<subtitle>NOT fully resolved by SPIR V: "Ohoho, IHVs shader compilers are rubish."</subtitle>
+		<title>NOT fully resolved by SPIR V: "Ohoho, IHVs shader compilers are rubish."</title>
 		<paragraph>
-			A lot of issues with current GLSL compilers is that all of them support invalid syntaxes but hardware vendors don't want to fix them because it would break some applications. Removing the language syntax avoid potential errors but if tools generate invalid SPIR-V code chances are that drivers will still do whatever it takes to garantee the IL works on their implementations. From an IHVs point of view, the worse is an application that doesn't work on their platforms by run fine else where. By design, SPIR-V doesn't prevent IHV to run invalid code so something else would need to be done to resolve this issue. Conformance tests? 
-			This said, I think that the simplicity of SPIR-V brings us to a much better state.
+			A lot of issues with current GLSL compilers is that all of them support invalid syntaxes but hardware vendors don't want to fix them because it could break some applications.
+			Removing the language syntax avoid potential errors but if tools generate invalid SPIR-V code, chances are that drivers will still do whatever it takes to garantee the IL works on their implementations.
+			From an IHVs point of view, the worse is an application that doesn't work on their platforms by run fine else where.
+		</paragraph>
+		<paragraph>
+			By design, SPIR-V doesn't prevent IHVs to run invalid code so something else would need to be done to resolve this issue. Conformance tests? 
+			This said, I think that the simplicity of SPIR-V brings us to a much better state but the larger potential SPIR-V ecosystem than GLSL makes it required to ensure SPIR-V code quality.
 		</paragraph>
 		<paragraph>
 			The other issue is that some shader compilers are terrible at performance trivial optimizations hence we will probably need to have a shader pipeline path to do this job.
 		</paragraph>
 
-		<subtitle>Better integration of the shading language in modern graphics APIs:</subtitle>
+		<title>Better integration of the shading language in modern graphics APIs:</title>
 		<image title="Figure 4: Integration of SPIR-V in an explict graphics API such as Vulkan" color="white" img="./post/0714-1-800.png" href="./post/0714-1.png" />
 
 		<paragraph>
-			Figure 4 shows the integration of SPIR-V in Vulkan. Basically, with OpenGL and GLSL, all the cross compilation can be done off-line but the rest, including the actual shader compilations, needs to happen in the rendering thread. With Vulkan, we can decouple the tasks and guarantee that the rendering loop never compile shaders, play with shader cache or validate states. Additionally, we have a full control other the threaded shader compilations. With OpenGL, if we don't query the compilation results right after requesting a compilation, the drivers can thread and hide the compilation time but this behavior is not specified: Would the drivers actually thread the compilation? How many compilations can happen in parallel? Vulkan is an explict API, hence we have control for each step, when, where and how these steps should performed.
+			Figure 4 shows a potential integration of SPIR-V in Vulkan. Basically, with OpenGL and GLSL, all the cross compilation can be done off-line but the rest, including the actual shader compilations, needs to happen in the rendering thread.
+			With Vulkan, we can decouple the tasks and guarantee that the rendering loop never compile shaders because of shader patching, play with shader cache or validate states.
+			Additionally, we have a full control other the threaded shader compilations. With OpenGL, if we don't query the compilation results right after requesting a compilation, the drivers may thread and hide the compilation time but this behavior is not specified: Would the drivers actually thread the compilation? How many compilations can happen in parallel? Vulkan is an explict API, hence we have control for each step, when, where and how these steps should be performed.
 		</paragraph>
 
-		<subtitle>Time for celebration before hard work for an ecosystem revolution!</subtitle>
+		<title>Time for celebrations before hard work for an ecosystem revolution!</title>
 		<paragraph>
-			I am absolutely convinced that SPIR-V is a game changer for the industry just like WebGL before it. However, there is no magic. To become really succesfull, it will take a lot of efforts to ensure adoption by hardware and platform vendors but also to adapt SPIR-V to the reality of the market and build (open source!) cross compilation tools placing SPIR-V at their centers.
-		</paragraph>
-
-		<paragraph>
-			The head lines might be all about iPhone6 and Samsung S6 but the reality of the market is that we are seeing a race to the bottom with lot of old ES2 GPU IP shipping everyday. Furthermore, there is already a lot of devices already shipped that will never get drivers update during their life time. Finally, Vulkan might be cute but there is a lot of OpenGL/ES, WebGL, Direct3D, console APIs out there. SPIR-V is solution for all of them!
+			I am absolutely convinced that SPIR-V is a game changer for the industry just like WebGL before it. However, there is no magic. To become really successful, it will take a lot of efforts to ensure adoption by hardware and platform vendors but also to adapt SPIR-V to the reality of the market and build (open source!) cross compilation tools placing SPIR-V at their centers.
 		</paragraph>
 
 		<paragraph>
-			I am looking for the shading language revolution that SPIR-V will lead to, one step at a time!
+			The head lines might be all about iPhone6 and Samsung S6 but the reality of the market is that we are seeing a race to the bottom with lot of old ES2 GPU IP shipping everyday.
+			Furthermore, there is already a lot of devices already shipped that will never see the color of a drivers update during their entire life time.
+			Finally, Vulkan might be great and all but realistically it will take years for the ecosystem to complete this transition. Meanwhile, there is a lot of OpenGL/ES, WebGL, Direct3D, console APIs out there. SPIR-V is solution for all of them!
 		</paragraph>
+
+		<paragraph>
+			I am looking forward the shading language revolution that SPIR-V will lead to, one step at a time!
+		</paragraph>
+
+		<paragraph>
+			Enjoy!
+		</paragraph>
+
+		<quote author="John W Kloetzli, Jr" href="https://twitter.com/JJcoolkl/status/572791033551036417">
+			I cannot express how awesome this is.  :-P
+		</quote>
+
+		<source-list>
+			<source-element type="Link" href="https://www.khronos.org/registry/spir-v/papers/WhitePaper.pdf" title="SPIR-V: whitepaper" />
+			<source-element type="Link" href="https://www.khronos.org/registry/spir-v/specs/1.0/SPIRV.pdf" title="SPIR-V 0.99, provisiontal specification" />
+			<source-element type="Link" href="https://www.khronos.org/registry/spir-v/specs/1.0/GLSL.std.450.pdf" title="SPIR-V Extended Instructions for GLSL, provisiontal specification" />
+			<source-element type="Link" href="https://www.khronos.org/registry/spir-v/specs/1.0/OpenCL.std.21.pdf" title="SPIR-V OpenCL 2.1 Extended Instruction Set, provisiontal specification" />
+			<source-element type="Link" href="https://www.khronos.org/spir" title="SPIR-V front page" />
+			<source-element type="Link" href="https://www.khronos.org/vulkan" title="Vulkan front page" />
+		</source-list>
 	</post>
 
-	<post index="0713" date="01/02/2015" std-date="2015-02-01T23:00:00.00Z" title="Week 8: Megalithic">
+	<post index="0713" date="01/03/2015" std-date="2015-03-01T23:00:00.00Z" title="Week 8: Megalithic">
 		<meta><tag>gtc-crea-photograph</tag></meta>
 		<image color="black" img="./photo/2015-08-960.jpg" href="./photo/2015-08.jpg" />
 	</post>
