@@ -70,12 +70,74 @@
 		</paragraph>
 	</draft>
 
-	<draft index="0729" date="16/05/2015" std-date="2015-05-16T23:00:00.00Z" title="Week 20: Apprendre à jouir">
+	<draft index="0730" date="19/06/2015" std-date="2015-06-19T23:00:00.00Z" title="Week 20: Apprendre à jouir">
 		<meta>
 			<tag>gtc-crea-photograph</tag>
 		</meta>
 		<image color="black" img="./photo/2015-20-960.jpg" href="./photo/2015-20.jpg" />
 	</draft>
+
+	<post index="0729" date="19/06/2015" std-date="2015-06-19T23:00:00.00Z" title="June 2015 OpenGL hardware matrix: Intel Sandy Bridge">
+		<meta>
+			<tag>gtc-tech-project-openglmatrix</tag>
+		</meta>
+
+		<paragraph>
+			These days, I am working on Intel Sandy Bridge architecture OpenGL support.
+		</paragraph>
+		<paragraph>
+			If Intel Ivy Bridge is already pretty hard to support with its OpenGL 4.0 support, Sandy Bridge is another kind of challenge:
+			OpenGL 3.1 support with no core profile. Unfortunately, released in 2011, Sandy Bridge is a bad GPU with 2009 OpenGL support that is a still a good CPU architecture largely used as Unity stats shows.
+		</paragraph>
+
+		<image title="Unity Windows editor stats for April 2015" color="white" img="./post/0729-1-small.png" href="./post/0729-1.png" />
+
+		<paragraph>
+			Sandy Bridge (HD 2000 / HD 3000) is 9.8% of the Unity editor users and one of the most used GPU architectures.
+		</paragraph>
+
+		<image title="Exposed extensions to all OpenGL 4 hardware on the lastest drivers available to date" color="white" img="./post/0729-2.png" href="./doc/OpenGL%204%20Hardware%20Matrix%202015-06.pdf" />
+
+		<paragraph>
+			In practice, Sandy Bridge supports OpenGL 3.1 with all the OpenGL 3.2 extensions but <link href="https://www.opengl.org/registry/specs/ARB/texture_multisample.txt">ARB_texture_multisample</link>.
+		</paragraph>
+		<paragraph>
+			Additionally, Sandy Bridge supports six OpenGL 3.3 extensions: 
+			<link href="https://www.opengl.org/registry/specs/ARB/vertex_type_2_10_10_10_rev.txt">ARB_vertex_type_2_10_10_10_rev</link>,
+			<link href="https://www.opengl.org/registry/specs/ARB/timer_query.txt">ARB_timer_query</link>,
+			<link href="https://www.opengl.org/registry/specs/ARB/texture_rgb10_a2ui.txt">ARB_texture_rgb10_a2ui</link>,
+			<link href="https://www.opengl.org/registry/specs/ARB/shader_bit_encoding.txt">ARB_shader_bit_encoding</link>,
+			<link href="https://www.opengl.org/registry/specs/ARB/occlusion_query2.txt">ARB_occlusion_query2</link> and
+			<link href="https://www.opengl.org/registry/specs/ARB/explicit_attrib_location.txt">ARB_explicit_attrib_location</link>.
+		</paragraph>
+		<paragraph>
+			Finally, Sandy Bridge supports three OpenGL 4.0 extensions:
+			<link href="https://www.opengl.org/registry/specs/ARB/texture_query_lod.txt">ARB_texture_query_lod</link>,
+			<link href="https://www.opengl.org/registry/specs/ARB/texture_buffer_object_rgb32.txt">ARB_texture_buffer_object_rgb32</link> and
+			<link href="https://www.opengl.org/registry/specs/ARB/draw_buffers_blend.txt">draw_buffers_blend</link>.
+		</paragraph>
+
+		<paragraph>
+			By giving up on feature support, basically at the release of an architecture, Intel has been able to provide pretty good drivers on the lastest architectures (Haswell / Broadwell), both in term of quality and feature set (OpenGL 4.3).
+		</paragraph>
+
+		<paragraph>
+			However, it is very unfortunate that anything older is more complex to support than a good old <link href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=603">GeForce 8</link>, released 9 years ago.
+			Sadly, it can get worse! Older architectures than Sandy Bridge, that is GMA (OpenGL 1.4), GMA HD (OpenGL 2.0) and Ironlake HD Graphics (OpenGL 2.1) represent 12.9% of the editor users.
+		</paragraph>
+
+		<paragraph>
+			Lastly, Intel GPU names are dreadful: It was aweful back at the GMA time, it is still just as bad. For example, "Intel HD Graphics" (without any numbering) has been used for Clarkdale, Arrandale, Sandy Bridge, Ivy Bridge, Haswell, Bay Trail, Broadwell and Braswell.
+		</paragraph>
+
+		<source-list>
+			<source-download index="1190" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=851" title="glCapsViewer report for Intel HD Graphics 9.17.10.4101 (Sandy Bridge)" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=869" title="glCapsViewer report for Intel HD Graphics 4000 10.18.10.4226 (Ivy Bridge)" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=862" title="glCapsViewer report for Intel HD Graphics 4600 10.18.14.4222 (Haswell)" />
+			<source-element type="Link" href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=848" title="glCapsViewer report for Intel HD Graphics 6000 10.18.14.4170 (Broadwell)" />
+		</source-list>
+	</post>
 
 	<post index="0728" date="14/05/2015" std-date="2015-05-14T23:00:00.00Z" title="Week 19: La jouissance">
 		<meta>
