@@ -2,13 +2,23 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
 
-	<download index="1190" date="19/06/2014" std-date="2014-06-19T01:00:00.00Z" type="gtc-tech-project-openglmatrix" version="Jun. 2015">
+	<download index="1192" date="18/07/2015" std-date="2015-07-18T23:30:00.00Z" type="gtc-tech-project-gli" title="GLI 0.6.1.1" version="0.6.1.1">
+		<item href="https://github.com/g-truc/gli/releases/download/0.6.1.1/gli-0.6.1.1.zip" type="ZIP" size="9.0 MB" />
+		<item href="https://github.com/g-truc/gli/releases/download/0.6.1.1/gli-0.6.1.1.7z" type="7Z" size="5.7 MB" />
+	</download>
+
+	<download index="1191" date="28/06/2015" std-date="2015-06-28T23:30:00.00Z" type="gtc-tech-project-gli" title="GLI 0.6.0.0" version="0.6.0.0">
+		<item href="https://github.com/g-truc/gli/releases/download/0.6.0.0/gli-0.6.0.0.zip" type="ZIP" size="8.6 MB" />
+		<item href="https://github.com/g-truc/gli/releases/download/0.6.0.0/gli-0.6.0.0.7z" type="7Z" size="5.5 MB" />
+	</download>
+
+	<download index="1190" date="19/06/2015" std-date="2015-06-19T01:00:00.00Z" type="gtc-tech-project-openglmatrix" version="Jun. 2015">
 		<item href="doc/OpenGL%204%20Hardware%20Matrix%202015-06.pdf" type="PDF" size="547 KB" />
 		<item href="doc/OpenGL%204%20Hardware%20Matrix.xlsx" type="XLSX" size="369 KB" />
 	</download>
 
 	<download index="1189" date="29/03/2015" std-date="2015-03-29T23:30:00.00Z" doc="true" type="gtc-tech-project-openglstatus"  version="2015-03">
-		<item href="doc/OpenGL%20Drivers%20Status%202015/03.pdf" type="PDF" size="383 KB" />
+		<item href="doc/OpenGL%20Drivers%20Status%202015-03.pdf" type="PDF" size="383 KB" />
 		<item href="doc/OpenGL%20status.xlsx" type="XLSX" size="250 KB" />
 	</download>
 

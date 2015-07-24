@@ -70,12 +70,319 @@
 		</paragraph>
 	</draft>
 
-	<draft index="0730" date="19/06/2015" std-date="2015-06-19T23:00:00.00Z" title="Week 20: Apprendre à jouir">
+	<post index="0735" date="20/07/2015" std-date="2015-07-20T23:30:00.00Z" title="Week 22: C'est mon ile">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-22-960.jpg" href="./photo/2015-22.jpg" />
+	</post>
+
+	<post index="0734" date="20/07/2015" std-date="2015-07-20T23:30:00.00Z" title="Texture swizzling in OpenGL, OpenGL ES and WebGL">
+		<meta><tag>gtc-tech-opengl-tips</tag></meta>
+
+		<paragraph>
+			When targetting a large amount of platform, by coincidence OpenGL 3.2 to 4.5, OpenGL ES 2.0 to ES 3.1+ and WebGL 1.0 and 2.0,
+			it takes quite some investigations to implement a feature optimally. The difference between doing this investigation and not doing it is basically shipping a buggy engine.
+			As an example, let's study texture swizzle and how it's exposed in OpenGL, OpenGL ES and WebGL.
+		</paragraph>
+
+		<title>1. Configurable texture swizzling</title>
+
+		<paragraph>
+			<link href="https://www.opengl.org/registry/specs/EXT/texture_swizzle.txt">GL_EXT_texture swizzle</link>,
+			promoted to OpenGL 3.3 core specifiction through <link href="https://www.opengl.org/registry/specs/ARB/texture_swizzle.txt">GL_ARB_texture_swizzle</link> extension,
+			introduced a functionnality to handle texture with arbitrary ordering or the components without requiring CPU reordering.
+			For example, it allows loading BGRA8 or ARGB8 source textures to OpenGL RGBA8 texture object.
+		</paragraph>
+
+		<paragraph>
+			With OpenGL 3.3 and OpenGL ES 3.0, loading a BGRA8 texture can be done using the following approach:
+		</paragraph>
+
+		<code title="OpenGL 3.3 and OpenGL ES 3.0 BGRA texture swizzling, a channel at a time:">
+			<line>GLint const Swizzle[] = {GL_BLUE, GL_GREEN, GL_RED, GL_ALPHA};</line>
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, Swizzle[0]);</line>
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, Swizzle[1]);</line>
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, Swizzle[2]);</line>
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_A, Swizzle[3]);</line>
+			<line>glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, Width, Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, Data);</line>
+		</code>
+
+		<paragraph>
+			OpenGL 3.3, <link href="https://www.opengl.org/registry/specs/ARB/texture_swizzle.txt">GL_ARB_texture_swizzle</link>
+			and <link href="https://www.opengl.org/registry/specs/EXT/texture_swizzle.txt">GL_EXT_texture swizzle</link>
+			provides a slightly different approach that is not available with OpenGL ES 3.0:
+		</paragraph>
+
+		<code title="OpenGL 3.3 BGRA texture swizzling, all channels at once:">
+			<line>GLint <keyword>const</keyword> Swizzle[] = {GL_BLUE, GL_GREEN, GL_RED, GL_ALPHA};</line>
+			<line>glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, Swizzle);</line>
+			<line>glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, Width, Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, Data);</line>
+		</code>
+
+		<paragraph>
+			Unfortunately, <link href="https://www.khronos.org/registry/webgl/specs/latest/2.0/#5.18">neither WebGL 1.0 or WebGL 2.0 support texture swizzle</link>
+			due to performance issue of implementation such feature on top of Direct3D which doesn't have any equivalent functionnality.
+		</paragraph>
+
+		<list title="Support:">
+			<entry>Any OpenGL 3.3 or OpenGL ES 3.0 driver</entry>
+			<entry href="https://developer.apple.com/opengl/capabilities/index.html">MacOSX 10.8 through GL_ARB_texture_swizzle using the OpenGL 3.2 core driver</entry>
+			<entry href="http://delphigl.de/glcapsviewer/gl_generatereport.php?reportID=888">Intel SandyBridge through GL_EXT_texture swizzle</entry>
+		</list>
+
+		<list title="Known driver bugs:">
+			<entry>NVIDIA ES drivers (353.12) won't generate an invalid enum error if <codeword>GL_TEXTURE_SWIZZLE_RGBA</codeword> is used</entry>
+			<entry>Intel ES drivers (4222) won't generate an invalid enum error if <codeword>GL_TEXTURE_SWIZZLE_RGBA</codeword> is used</entry>
+		</list>
+
+		<title>2. BGRA texture swizzling using texture formats</title>
+
+		<paragraph>
+			OpenGL supports GL_BGRA external format to load BGRA8 source textures without requiring the application to swizzle the source data. This is done using the following code:
+		</paragraph>
+
+		<code title="OpenGL core and compatibility profiles BGRA swizzling with texture image:">
+			<line>glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, Data);</line>
+		</code>
+
+		<code title="OpenGL core and compatibility profiles BGRA swizzling with texture storage:">
+			<line>glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA8, Width, Height);</line>
+			<line>glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, Width, Height, GL_BGRA, GL_UNSIGNED_BYTE, Data);</line>
+		</code>
+
+		<paragraph>
+			However, such functionnality isn't available with OpenGL ES. While, it's not useful for OpenGL ES 3.0 that has texture swizzling support,
+			OpenGL ES 2.0 relies on some extensions to expose this feature but it does it differently than OpenGL.
+		</paragraph>
+
+		<paragraph>
+			Using the <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_texture_format_BGRA8888.txt">GL_EXT_texture_format_BGRA8888</link>
+			or <link href="https://www.khronos.org/registry/gles/extensions/APPLE/APPLE_texture_format_BGRA8888.txt">GL_APPLE_texture_format_BGRA8888</link> extensions,
+			loading BGRA textures is done with the following code:
+		</paragraph>
+
+		<code title="OpenGL core and compatibility profiles BGRA swizzling with texture image:">
+			<line>glTexImage2D(GL_TEXTURE_2D, 0, GL_BGRA_EXT, Width, Height, 0, GL_BGRA_EXT, GL_UNSIGNED_BYTE, Data);</line>
+		</code>
+
+		<paragraph>
+			When <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_texture_storage.txt">GL_EXT_texture_storage</link> (ES2) is supported, BGRA texture loading is perform with the following code.
+		</paragraph>
+
+		<code title="OpenGL core and compatibility profiles BGRA swizzling with texture image:">
+			<line>glTexStorage2D(GL_TEXTURE_2D, 1, GL_BGRA8_EXT, Width, Height);</line>
+			<line>glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, Width, Height, GL_BGRA, GL_UNSIGNED_BYTE, Data);</line>
+		</code>
+
+		<paragraph>
+			To understand the difference between OpenGL, OpenGL ES and OpenGL ES with texture storage the reasonning is the following:
+			On the contrary to OpenGL, OpenGL ES doesn't support external format to internal format conversion of any kind, including texture component swizzling.
+			Additionally, OpenGL ES 2.0 requires unsized format for the internal format while OpenGL ES 3.0 and texture storage requires sized internal format.
+		</paragraph>
+
+		<list title="Support:">
+			<entry href="http://delphigl.de/glcapsviewer/gl_listreports.php?listreportsbyextension=GL_EXT_bgra">Any driver supporting OpenGL 1.2 or GL_EXT_bgra including OpenGL core profile</entry>
+			<entry href="http://delphigl.de/glcapsviewer/gles_listreports.php?extension=GL_EXT_texture_format_BGRA8888">Adreno 200, Mali 400, PowerVR series 5, Tegra 3, Videocore IV and GC1000 through GL_EXT_texture_format_BGRA8888</entry>
+			<entry href="https://developer.apple.com/library/ios/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/OpenGLESPlatforms/OpenGLESPlatforms.html">iOS through GL_APPLE_texture_format_BGRA8888</entry>
+			<entry href="https://www.khronos.org/registry/gles/extensions/APPLE/APPLE_texture_format_BGRA8888.txt">GC1000 through GL_APPLE_texture_format_BGRA8888</entry>
+			<entry href="http://delphigl.de/glcapsviewer/gles_listreports.php?extension=GL_IMG_texture_format_BGRA8888">PowerVR series 5 through GL_IMG_texture_format_BGRA8888</entry>
+		</list>
+
+		<title>3. Texture alpha swizzling</title>
+
+		<paragraph>
+			In this section, we call a texture alpha, a texture we using the alpha channel (.a, .w, .q) in a shader.
+			With OpenGL ES and WebGL, this can be done by creating a texture with an alpha format as shown with the following code samples.
+		</paragraph>
+
+		<code title="OpenGL ES 2.0 texture alpha:">
+			<line>glTexImage2D(GL_TEXTURE_2D, 0, GL_ALPHA, Width, Height, 0, GL_ALPHA, GL_UNSIGNED_BYTE, Data);</line>
+		</code>
+
+		<code title="OpenGL ES 3.0 texture alpha:">
+			<line>glTexStorage2D(GL_TEXTURE_2D, 1, GL_ALPHA8, Width, Height);</line>
+			<line>glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, Width, Height, GL_ALPHA, GL_UNSIGNED_BYTE, Data);</line>
+		</code>
+		
+		<paragraph>
+			Texture alpha format is also available in OpenGL compability profile and WebGL but was removed in OpenGL core profile.
+			An alternative is to rely on <link href="https://www.opengl.org/registry/specs/ARB/texture_rg.txt">texture red format</link>
+			and texture swizzle as shown with the following code samples.
+		</paragraph>
+
+		<paragraph>
+			On one hand, both OpenGL ES and OpenGL compability profile supports texture alpha and luminance alpha.
+			However, OpenGL core profile doesn't. On other hand, OpenGL 3.0 and OpenGL ES 3.0 support texture red and texture red green.
+		</paragraph>
+
+		<code title="OpenGL 3.3 and OpenGL ES 3.0 texture alpha:">
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, GL_ZERO);</line>
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, GL_ZERO);</line>
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, GL_ZERO);</line>
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_A, GL_RED);</line>
+			<line>glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, Width, Height, 0, GL_RED, GL_UNSIGNED_BYTE, Data);</line>
+		</code>
+
+		<code title="OpenGL 4.2 and OpenGL ES 3.0 texture alpha with texture storage:">
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, GL_ZERO);</line>
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, GL_ZERO);</line>
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, GL_ZERO);</line>
+			<line>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_A, GL_RED);</line>
+			<line>glTexStorage2D(GL_TEXTURE_2D, 1, GL_R8, Width, Height);</line>
+			<line>glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, Width, Height, GL_RED, GL_UNSIGNED_BYTE, Data);</line>
+		</code>
+
+		<paragraph>
+			Texture red format was introduced on desktop with OpenGL 3.0 and <link href="https://www.opengl.org/registry/specs/ARB/texture_rg.txt">GL_ARB_texture_rg</link>.
+			On OpenGL ES, it was introduced with OpenGL ES 3.0 and <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_texture_rg.txt">GL_EXT_texture_rg</link>.
+		</paragraph>
+
+		<paragraph>
+			Unfortunately, OpenGL 3.2 core profile doesn't support either texture alpha format or texture swizzling.
+			A possible workaround is to expend the source data to RGBA8 which consumes 4 times the memory which might be necessary to support texture alpha on MacOSX 10.7.
+		</paragraph>
+
+		<list title="Support:">
+			<entry href="http://delphigl.de/glcapsviewer/listreports2.php?listreportsbyextension=GL_ARB_texture_rg">Texture red format is supported on any OpenGL 3.0 or OpenGL ES 3.0 driver</entry>
+			<entry href="http://delphigl.de/glcapsviewer/gles_listreports.php?extension=GL_EXT_texture_rg">Texture red format is supported on PowerVR series 5, Mali 600 series, Tegra and Bay Trail on Android through <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_texture_rg.txt">GL_EXT_texture_rg</link></entry>
+			<entry href="http://delphigl.de/glcapsviewer/gles_listreports.php?extension=GL_EXT_texture_rg">
+				Texture red format is supported on iOS through <link href="https://www.khronos.org/registry/gles/extensions/EXT/EXT_texture_rg.txt">GL_EXT_texture_rg</link>
+			</entry>
+		</list>
+
+		<paragraph>
+			Enjoy!
+		</paragraph>
+
+		<source-element type="Link" href="http://delphigl.de/glcapsviewer/listreports2.php?listreportsbyextension=GL_ARB_texture_swizzle" title="GL_ARB_texture_swizzle support on Windows and Linux" />
+		<source-element type="Link" href="http://delphigl.de/glcapsviewer/listreports2.php?listreportsbyextension=GL_EXT_texture_swizzle" title="GL_EXT_texture_swizzle support on Windows and Linux" />
+		<source-element type="Link" href="http://delphigl.de/glcapsviewer/listreports2.php?listreportsbyextension=GL_ARB_texture_rg" title="GL_ARB_texture_rg support on Windows and Linux" />
+		<source-element type="Link" href="http://delphigl.de/glcapsviewer/gles_listreports.php?extension=GL_EXT_texture_rg" title="GL_EXT_texture_rg support on Android" />
+		<source-element type="Link" href="http://delphigl.de/glcapsviewer/gles_listreports.php?extension=GL_EXT_texture_format_BGRA8888" title="GL_EXT_texture_format_BGRA8888 support on Android" />
+		<source-element type="Link" href="http://delphigl.de/glcapsviewer/gles_listreports.php?extension=GL_APPLE_texture_format_BGRA8888" title="GL_APPLE_texture_format_BGRA8888 support on Android" />
+		<source-element type="Link" href="https://developer.apple.com/opengl/capabilities/index.html" title="OSX OpenGL extensions" />
+		<source-element type="Link" href="https://developer.apple.com/library/ios/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/OpenGLESPlatforms/OpenGLESPlatforms.html" title="iOS OpenGL extensions" />
+	</post>
+
+	<post index="0733" date="18/07/2015" std-date="2015-07-18T23:30:00.00Z" title="Week 21: Show you are not afraid">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-21-960.jpg" href="./photo/2015-21.jpg" />
+	</post>
+
+	<post index="0732" date="18/07/2015" std-date="2015-07-18T23:30:00.00Z"  title="GLI 0.6.1.1 released">
+		<meta>
+			<tag>gtc-tech-project-gli</tag>
+		</meta>
+
+		<list title="GLI 0.6.1 changelog:">
+			<entry>Fixed interface inconsistencies</entry>
+			<entry>Improved clear(), data() and size() performance using caching</entry>
+			<entry>Removed internal dependence to std::fstream</entry>
+			<entry>Added FORMAT_BGRX8_UNORM and FORMAT_BGRX8_SRGB support #48, #43</entry>
+			<entry>Improved FORMAT_RGB8_UNORM loading</entry>
+		</list>
+
+		<paragraph>
+			GLI is still at an alpha stage but hopefully it's already useful for some people. <link href="https://github.com/g-truc/gli/issues">Please contribute! :D</link>
+		</paragraph>
+
+		<source-download index="1192" />
+		<source-element type="Link" href="https://github.com/g-truc/gli/issues" title="Submit a bug report" />
+		<source-element type="Link" href="http://gli.g-truc.net/0.6.1/api/index.html" title="GLI 0.6.1 API" />
+	</post>
+
+	<post index="0731" date="28/06/2015" std-date="2015-06-28T23:30:00.00Z" title="Week 20: Les forcats de l'absolu">
 		<meta>
 			<tag>gtc-crea-photograph</tag>
 		</meta>
 		<image color="black" img="./photo/2015-20-960.jpg" href="./photo/2015-20.jpg" />
-	</draft>
+	</post>
+
+	<post index="0730" date="28/06/2015" std-date="2015-06-28T23:30:00.00Z"  title="GLI 0.6.0.0 released">
+		<meta>
+			<tag>gtc-tech-project-gli</tag>
+		</meta>
+
+		<list title="GLI 0.6.0.0 changelog:">
+			<entry>Large refactoring</entry>
+			<entry>Added loading DDS from memory</entry>
+			<entry>Added saving DDS to memory</entry>
+			<entry>Improved DDS coverage for R, RG, RGB and RGBA formats</entry>
+			<entry>Added DDS ASTC, PVRTC, ATC and ETC support</entry>
+			<entry>Added DDS alpha, luminance and alpha luminance support</entry>
+			<entry>Added PVRTC2, ETC2 and EAC formats</entry>
+		</list>
+
+		<code version="0.6" title="Loading a DDS file to OpenGL texture object:">
+			<line><keyword>#include </keyword><string>&lt;gli/gli.hpp&gt;</string></line>
+			<line></line>
+			<line>GLuint CreateTextureArray(<keyword>char </keyword><keyword>const</keyword>* Filename)</line>
+			<line>{</line>
+			<line align="32px">gli::texture2D Texture(gli::load_dds(Filename));</line>
+			<line align="32px">assert(!Texture.empty());</line>
+			<line align="32px">gli::gl GL;</line>
+			<line align="32px">gli::gl::format <keyword>const</keyword> Format = GL.translate(Texture.format());</line>
+			<line></line>
+			<line align="32px">GLuint TextureName = 0;</line>
+			<line align="32px">glGenTextures(1, &amp;TextureName);</line>
+			<line align="32px">glBindTexture(GL_TEXTURE_2D_ARRAY, TextureName);</line>
+			<line></line>
+			<line align="32px">glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_BASE_LEVEL, 0);</line>
+			<line align="32px">glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAX_LEVEL, <keyword>static_cast</keyword>&lt;GLint&gt;(Texture.levels() - 1));</line>
+			<line align="32px">glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_SWIZZLE_R, Format.Swizzle[0]);</line>
+			<line align="32px">glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_SWIZZLE_G, Format.Swizzle[1]);</line>
+			<line align="32px">glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_SWIZZLE_B, Format.Swizzle[2]);</line>
+			<line align="32px">glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_SWIZZLE_A, Format.Swizzle[3]);</line>
+			<line></line>
+			<line align="32px">glTexStorage3D(GL_TEXTURE_2D_ARRAY, <keyword>static_cast</keyword>&lt;GLint&gt;(Texture.levels()),</line>
+			<line align="64px">Format.Internal,</line>
+			<line align="64px"><keyword>static_cast</keyword>&lt;GLsizei&gt;(Texture.dimensions().x),</line>
+			<line align="64px"><keyword>static_cast</keyword>&lt;GLsizei&gt;(Texture.dimensions().y),</line>
+			<line align="64px"><keyword>static_cast</keyword>&lt;GLsizei&gt;(1));</line>
+			<line></line>
+			<line align="32px"><keyword>if</keyword>(gli::is_compressed(Texture.format()))</line>
+			<line align="32px">{</line>
+			<line align="64px"><keyword>for</keyword>(std::size_t Level = 0; Level &lt; Texture.levels(); ++Level)</line>
+			<line align="64px">{</line>
+			<line align="96px">glCompressedTexSubImage3D(GL_TEXTURE_2D_ARRAY, <keyword>static_cast</keyword>&lt;GLint&gt;(Level),</line>
+			<line align="128px">0, 0, 0,</line>
+			<line align="128px"><keyword>static_cast</keyword>&lt;GLsizei&gt;(Texture[Level].dimensions().x),</line>
+			<line align="128px"><keyword>static_cast</keyword>&lt;GLsizei&gt;(Texture[Level].dimensions().y),</line>
+			<line align="128px"><keyword>static_cast</keyword>&lt;GLsizei&gt;(1),</line>
+			<line align="128px">Format.External,</line>
+			<line align="128px"><keyword>static_cast</keyword>&lt;GLsizei&gt;(Texture[Level].size()),</line>
+			<line align="128px">Texture[Level].data());</line>
+			<line align="64px">}</line>
+			<line align="32px">}</line>
+			<line align="32px"><keyword>else</keyword></line>
+			<line align="32px">{</line>
+			<line align="64px"><keyword>for</keyword>(std::size_t Level = 0; Level &lt; Texture.levels(); ++Level)</line>
+			<line align="64px">{</line>
+			<line align="96px">glTexSubImage3D(GL_TEXTURE_2D_ARRAY, <keyword>static_cast</keyword>&lt;GLint&gt;(Level),</line>
+			<line align="128px">0, 0, 0,</line>
+			<line align="128px"><keyword>static_cast</keyword>&lt;GLsizei&gt;(Texture[Level].dimensions().x),</line>
+			<line align="128px"><keyword>static_cast</keyword>&lt;GLsizei&gt;(Texture[Level].dimensions().y),</line>
+			<line align="128px"><keyword>static_cast</keyword>&lt;GLsizei&gt;(1),</line>
+			<line align="128px">Format.External, Format.Type,</line>
+			<line align="128px">Texture[Level].data());</line>
+			<line align="64px">}</line>
+			<line align="32px">}</line>
+			<line></line>
+			<line align="32px"><keyword>return</keyword> TextureName;</line>
+			<line>}</line>
+		</code>
+
+		<paragraph>
+			GLI is still at an alpha stage but hopefully it's already useful for some people. <link href="https://github.com/g-truc/gli/issues">Please contribute! :D</link>
+		</paragraph>
+
+		<source-download index="1191" />
+		<source-element type="Link" href="https://github.com/g-truc/gli/issues" title="Submit a bug report" />
+		<source-element type="Link" href="http://gli.g-truc.net/0.6.0/api/index.html" title="GLI 0.6.0 API" />
+	</post>
 
 	<post index="0729" date="19/06/2015" std-date="2015-06-19T23:00:00.00Z" title="June 2015 OpenGL hardware matrix: Intel Sandy Bridge">
 		<meta>
