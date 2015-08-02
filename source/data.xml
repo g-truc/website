@@ -70,6 +70,63 @@
 		</paragraph>
 	</draft>
 
+	<post index="0736" date="02/08/2015" std-date="2015-08-02T12:00:00.00Z"  title="GLM 0.9.7.0 released">
+		<meta>
+			<tag>gtc-tech-project-glm</tag>
+		</meta>
+
+		<subtitle>GLM 0.9.7.0 release note</subtitle>
+
+		<list title="Features:">
+			<entry>Added GTC_color_space: convertLinearToSRGB and convertSRGBToLinear functions</entry>
+			<entry>Added 'fmod' overload to GTX_common with tests #308</entry>
+			<entry>Added left handed perspective and lookAt functions #314</entry>
+			<entry>Added functions eulerAngleXYZ and extractEulerAngleXYZ #311</entry>
+			<entry>Added GTX_hash to perform std::hash on GLM types #320 #367</entry>
+			<entry>Added GTX_wrap for texcoord wrapping</entry>
+			<entry>Added static components and precision members to all vector and quat types #350</entry>
+			<entry>Added .gitignore #349</entry>
+			<entry>Added support of defaulted functions to GLM types, to use them in unions #366</entry>
+		</list>
+
+		<list title="Improvements:">
+			<entry>Changed usage of __has_include to support Intel compiler #307</entry>
+			<entry>Specialized integer implementation of YCoCg-R #310</entry>
+			<entry>Don't show status message in 'FindGLM' if 'QUIET' option is set. #317</entry>
+			<entry>Added master branch continuous integration service on Linux 64 #332</entry>
+			<entry>Clarified manual regarding angle unit in GLM, added FAQ 11 #326</entry>
+			<entry>Updated list of compiler versions</entry>
+		</list>
+
+		<list title="Fixes:">
+			<entry>Fixed default precision for quat and dual_quat type #312</entry>
+			<entry>Fixed (u)int64 MSB/LSB handling on BE archs #306</entry>
+			<entry>Fixed multi-line comment warning in g++ #315</entry>
+			<entry>Fixed specifier removal by 'std::make_pair' #333</entry>
+			<entry>Fixed perspective fovy argument documentation #327</entry>
+			<entry>Removed -m64 causing build issues on Linux 32 #331</entry>
+			<entry>Fixed isfinite with C++98 compilers #343</entry>
+			<entry>Fixed Intel compiler build error on Linux #354</entry>
+			<entry>Fixed use of libstdc++ with Clang #351</entry>
+			<entry>Fixed quaternion pow #346</entry>
+			<entry>Fixed decompose warnings #373</entry>
+			<entry>Fixed matrix conversions #371</entry>
+		</list>
+
+		<list title="Deprecation:">
+			<entry>Removed integer specification for 'mod' in GTC_integer #308</entry>
+			<entry>Removed GTX_multiple, replaced by GTC_round</entry>
+		</list>
+
+		<source-list>
+			<source-download index="1194" />
+			<source-element type="Link" href="http://glm.g-truc.net" title="glm.g-truc.net" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.7/glm-0.9.7.pdf" title="GLM 0.9.7 manual" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.7/api/index.html" title="GLM 0.9.7 api documentation" />
+			<source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+		</source-list>
+	</post>
+
 	<post index="0735" date="20/07/2015" std-date="2015-07-20T23:30:00.00Z" title="Week 22: C'est mon ile">
 		<meta>
 			<tag>gtc-crea-photograph</tag>
@@ -949,7 +1006,7 @@
 		</list>
 
 		<source-list>
-			<source-download index="1189" />
+			<source-download index="1193" />
 			<source-element type="Link" href="http://glm.g-truc.net/0.9.6/glm-0.9.6.pdf" title="GLM 0.9.6 manual" />
 			<source-element type="Link" href="./post-0693.html" title="GLM 0.9.6 overview and transition guide" />
 			<source-element type="Link" href="http://glm.g-truc.net/0.9.6/api/index.html" title="GLM 0.9.6 api documentation" />
