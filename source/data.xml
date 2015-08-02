@@ -81,7 +81,7 @@
 		<meta><tag>gtc-tech-opengl-tips</tag></meta>
 
 		<paragraph>
-			When targetting a large amount of platform, by coincidence OpenGL 3.2 to 4.5, OpenGL ES 2.0 to ES 3.1+ and WebGL 1.0 and 2.0,
+			When targeting a large amount of platform, by coincidence OpenGL 3.2 to 4.5, OpenGL ES 2.0 to ES 3.1+ and WebGL 1.0 and 2.0,
 			it takes quite some investigations to implement a feature optimally. The difference between doing this investigation and not doing it is basically shipping a buggy engine.
 			As an example, let's study texture swizzle and how it's exposed in OpenGL, OpenGL ES and WebGL.
 		</paragraph>
@@ -91,7 +91,7 @@
 		<paragraph>
 			<link href="https://www.opengl.org/registry/specs/EXT/texture_swizzle.txt">GL_EXT_texture swizzle</link>,
 			promoted to OpenGL 3.3 core specifiction through <link href="https://www.opengl.org/registry/specs/ARB/texture_swizzle.txt">GL_ARB_texture_swizzle</link> extension,
-			introduced a functionnality to handle texture with arbitrary ordering or the components without requiring CPU reordering.
+			introduced a functionality  to handle texture with arbitrary ordering or the components without requiring CPU reordering.
 			For example, it allows loading BGRA8 or ARGB8 source textures to OpenGL RGBA8 texture object.
 		</paragraph>
 
@@ -122,7 +122,7 @@
 
 		<paragraph>
 			Unfortunately, <link href="https://www.khronos.org/registry/webgl/specs/latest/2.0/#5.18">neither WebGL 1.0 or WebGL 2.0 support texture swizzle</link>
-			due to performance issue of implementation such feature on top of Direct3D which doesn't have any equivalent functionnality.
+			due to performance issue of implementation such feature on top of Direct3D which doesn't have any equivalent functionality.
 		</paragraph>
 
 		<list title="Support:">
@@ -176,7 +176,7 @@
 		</code>
 
 		<paragraph>
-			To understand the difference between OpenGL, OpenGL ES and OpenGL ES with texture storage the reasonning is the following:
+			To understand the difference between OpenGL, OpenGL ES and OpenGL ES with texture storage the reasoning  is the following:
 			On the contrary to OpenGL, OpenGL ES doesn't support external format to internal format conversion of any kind, including texture component swizzling.
 			Additionally, OpenGL ES 2.0 requires unsized format for the internal format while OpenGL ES 3.0 and texture storage requires sized internal format.
 		</paragraph>
@@ -206,13 +206,13 @@
 		</code>
 		
 		<paragraph>
-			Texture alpha format is also available in OpenGL compability profile and WebGL but was removed in OpenGL core profile.
+			Texture alpha format is also available in OpenGL compatibility profile and WebGL but was removed in OpenGL core profile.
 			An alternative is to rely on <link href="https://www.opengl.org/registry/specs/ARB/texture_rg.txt">texture red format</link>
 			and texture swizzle as shown with the following code samples.
 		</paragraph>
 
 		<paragraph>
-			On one hand, both OpenGL ES and OpenGL compability profile supports texture alpha and luminance alpha.
+			On one hand, both OpenGL ES and OpenGL compatibility profile supports texture alpha and luminance alpha.
 			However, OpenGL core profile doesn't. On other hand, OpenGL 3.0 and OpenGL ES 3.0 support texture red and texture red green.
 		</paragraph>
 
