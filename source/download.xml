@@ -2,6 +2,21 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
 
+	<download index="1197" date="22/09/2015" std-date="2015-09-22T23:30:00.00Z" type="gtc-tech-opengl-samples" version="4.5.2.0">
+		<item href="https://github.com/g-truc/ogl-samples/releases/download/4.5.1.0/ogl-samples-4.5.1.0.zip" type="ZIP" size="153.0 MB" />
+		<item href="https://github.com/g-truc/ogl-samples/releases/download/4.5.1.0/ogl-samples-4.5.1.0.7z" type="7Z" size="78.3 MB" />
+	</download>
+
+	<download index="1196" date="07/09/2015" std-date="2015-09-07T23:00:00.00Z" type="gtc-tech-project-glm" title="GLM 0.9.7.1" version="0.9.7.1">
+		<item href="https://github.com/g-truc/glm/releases/download/0.9.7.1/glm-0.9.7.1.zip" type="ZIP" size="4.2 MB" />
+		<item href="https://github.com/g-truc/glm/releases/download/0.9.7.1/glm-0.9.7.1.7z" type="7Z" size="2.8 MB" />
+	</download>
+
+	<download index="1195" date="01/09/2015" std-date="2015-09-01T23:30:00.00Z" type="gtc-tech-project-gli" title="GLI 0.7.0.0" version="0.7.0.0">
+		<item href="https://github.com/g-truc/gli/releases/download/0.7.0.0/gli-0.7.0.0.zip" type="ZIP" size="12.2 MB" />
+		<item href="https://github.com/g-truc/gli/releases/download/0.7.0.0/gli-0.7.0.0.7z" type="7Z" size="7.2 MB" />
+	</download>
+
 	<download index="1194" date="02/08/2015" std-date="2015-08-02T23:00:00.00Z" type="gtc-tech-project-glm" title="GLM 0.9.7.0" version="0.9.7.0">
 		<item href="https://github.com/g-truc/glm/releases/download/0.9.7.0/glm-0.9.7.0.zip" type="ZIP" size="4.2 MB" />
 		<item href="https://github.com/g-truc/glm/releases/download/0.9.7.0/glm-0.9.7.0.7z" type="7Z" size="2.8 MB" />

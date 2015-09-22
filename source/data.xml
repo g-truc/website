@@ -70,6 +70,337 @@
 		</paragraph>
 	</draft>
 
+	<post index="0741" date="22/09/2015" std-date="2015-09-22T23:30:00.00Z" title="OpenGL Samples 4.5.2.0 released">
+		<meta>
+			<tag>gtc-tech-opengl-samples</tag>
+		</meta>
+
+		<list title="OpenGL Samples 4.5.2.0 release notes:">
+			<entry>Added gl-320-fbo-blend-points sample</entry>
+			<entry>Added gl-400-buffer-uniform-array sample</entry>
+			<entry>Added gl-410-buffer-uniform-array sample</entry>
+			<entry>Added gl-430-texture-fetch-dependent sample</entry>
+			<entry>Many updated samples</entry>
+			<entry>Updated template images for current drivers</entry>
+			<entry>Updated GLM to 0.9.7.1 and GLI to 0.7.1.0</entry>
+			<entry>Fixed gl-320-draw-instanced #55</entry>
+			<entry>Fixed gl-430-program-binary #48</entry>
+		</list>
+
+		<source-list>
+			<source-download index="1197" />
+			<source-element type="Link" href="https://github.com/g-truc/ogl-samples/issues" title="Report a bug or submit a request"/>
+		</source-list>
+	</post>
+
+	<post index="0740" date="07/09/2015" std-date="2015-09-07T23:30:00.00Z" title="Week 24: Voyage">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-24-960.jpg" href="./photo/2015-24.jpg" />
+	</post>
+
+	<post index="0739" date="07/09/2015" std-date="2015-09-07T12:00:00.00Z"  title="GLM 0.9.7.1 released">
+		<meta>
+			<tag>gtc-tech-project-glm</tag>
+		</meta>
+
+		<subtitle>GLM 0.9.7.1 release note</subtitle>
+
+		<list title="Improvements:">
+			<entry>Improved constexpr for constant functions coverage #198</entry>
+			<entry>Added to_string for quat and dual_quat in GTX_string_cast #375</entry>
+			<entry>Improved overall execution time of unit tests #396</entry>
+		</list>
+
+		<list title="Fixes:">
+			<entry>Fixed strict alignment warnings #235 #370</entry>
+			<entry>Fixed link errors on compilers not supported default function #377</entry>
+			<entry>Fixed compilation warnings in vec4</entry>
+			<entry>Fixed non-identity quaternions for equal vectors #234</entry>
+			<entry>Fixed excessive GTX_fast_trigonometry execution time #396</entry>
+			<entry>Fixed Visual Studio 2015 'hides class member' warnings #394</entry>
+			<entry>Fixed builtin bitscan never being used #392</entry>
+			<entry>Removed unused func_noise.* files #398</entry>
+		</list>
+
+		<source-list>
+			<source-download index="1196" />
+			<source-element type="Link" href="http://glm.g-truc.net" title="glm.g-truc.net" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.7/glm-0.9.7.pdf" title="GLM 0.9.7 manual" />
+			<source-element type="Link" href="http://glm.g-truc.net/0.9.7/api/index.html" title="GLM 0.9.7 api documentation" />
+			<source-element type="Link" href="https://github.com/g-truc/glm/issues" title="Submit a bug report" />
+		</source-list>
+	</post>
+
+	<post index="0738" date="01/09/2015" std-date="2015-09-01T23:30:00.00Z" title="Week 23: Underwater golden infinite">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-23-960.jpg" href="./photo/2015-23.jpg" />
+	</post>
+
+	<post index="0737" date="01/09/2015" std-date="2015-09-01T23:30:00.00Z"  title="GLI 0.7.0.0 released">
+		<meta>
+			<tag>gtc-tech-project-gli</tag>
+		</meta>
+
+		<list title="GLI 0.7.0 changelog:">
+			<entry>Added KTX loading and saving</entry>
+			<entry>Added gli::load for generic file loading, either DDS or KTX files depending on filename extensions</entry>
+			<entry>Added gli::save for generic file saving, either DDS or KTX files depending on filename extensions</entry>
+			<entry>Added texture views using different texture format, including compressed texture formats</entry>
+			<entry>Added fine granularity includes</entry>
+			<entry>Improved API documentation</entry>
+			<entry>Much faster texture comparisons is non optimal cases. (Measured ~21x faster on Intel IVB)</entry>
+			<entry>Explicitly handling of texture targets: fixed various cases of cubemap and texture arrays failing to load with DDS</entry>
+			<entry>Fixed GCC build</entry>
+			<entry>Fixed warnings</entry>
+			<entry>Fixed saved DDS header size on #52</entry>
+		</list>
+
+		<code title="Create OpenGL texture object from a file with the corresponding target:">
+			<line>
+				<keyword>#include </keyword>
+				<string>&lt;gli/texture.hpp&gt;</string>
+			</line>
+			<line>
+				<keyword>#include </keyword>
+				<string>&lt;gli/load.hpp&gt;</string>
+			</line>
+			<line>
+				<keyword>#include </keyword>
+				<string>&lt;gli/save.hpp&gt;</string>
+			</line>
+			<line>
+				<keyword>#include </keyword>
+				<string>&lt;gli/gl.hpp&gt;</string>
+			</line>
+			<line></line>
+			<line>
+				<comment>/// Filename can be KTX or DDS files</comment>
+			</line>
+			<line>
+				GLuint createTexture(char <keyword>const</keyword>* Filename)
+			</line>
+			<line>{</line>
+			<line align="32px">gli::texture Texture = gli::load(Filename);</line>
+			<line align="32px">
+				<keyword>if</keyword>(Texture.empty())
+			</line>
+			<line align="64px">
+				<keyword>return</keyword> 0;
+			</line>
+			<line></line>
+			<line align="32px">gli::gl GL;</line>
+			<line align="32px">
+				gli::gl::format <keyword>const</keyword> Format = GL.translate(Texture.format());
+			</line>
+			<line align="32px">GLenum Target = GL.translate(Texture.target());</line>
+			<line></line>
+			<line align="32px">GLuint TextureName = 0;</line>
+			<line align="32px">glGenTextures(1, &amp;TextureName);</line>
+			<line align="32px">glBindTexture(Target, TextureName);</line>
+			<line align="32px">glTexParameteri(Target, GL_TEXTURE_BASE_LEVEL, 0);</line>
+			<line align="32px">
+				glTexParameteri(Target, GL_TEXTURE_MAX_LEVEL, <keyword>static_cast</keyword>&lt;GLint&gt;(Texture.levels() - 1));
+			</line>
+			<line align="32px">glTexParameteri(Target, GL_TEXTURE_SWIZZLE_R, Format.Swizzle[0]);</line>
+			<line align="32px">glTexParameteri(Target, GL_TEXTURE_SWIZZLE_G, Format.Swizzle[1]);</line>
+			<line align="32px">glTexParameteri(Target, GL_TEXTURE_SWIZZLE_B, Format.Swizzle[2]);</line>
+			<line align="32px">glTexParameteri(Target, GL_TEXTURE_SWIZZLE_A, Format.Swizzle[3]);</line>
+			<line></line>
+			<line align="32px">
+				glm::tvec3&lt;GLsizei&gt; <keyword>const</keyword> Dimensions(Texture.dimensions());
+			</line>
+			<line align="32px">
+				GLsizei <keyword>const</keyword> FaceTotal = <keyword>static_cast</keyword>&lt;GLsizei&gt;(Texture.layers() * Texture.faces());
+			</line>
+			<line></line>
+			<line align="32px">
+				<keyword>switch</keyword>(Texture.target())
+			</line>
+			<line align="32px">{</line>
+			<line align="32px">
+				<keyword>case</keyword> gli::TARGET_1D:
+			</line>
+			<line align="64px">
+				glTexStorage1D(Target, <keyword>static_cast</keyword>&lt;GLint&gt;(Texture.levels()), Format.Internal, Dimensions.x);
+			</line>
+			<line align="64px">
+				<keyword>break</keyword>;
+			</line>
+			<line align="32px">
+				<keyword>case</keyword> gli::TARGET_1D_ARRAY:
+			</line>
+			<line align="32px">
+				<keyword>case</keyword> gli::TARGET_2D:
+			</line>
+			<line align="32px">
+				<keyword>case</keyword> gli::TARGET_CUBE:
+			</line>
+			<line align="64px">glTexStorage2D(</line>
+			<line align="96px">
+				Target, <keyword>static_cast</keyword>&lt;GLint&gt;(Texture.levels()), Format.Internal,
+			</line>
+			<line align="96px">Dimensions.x, Texture.target() == gli::TARGET_2D ? Dimensions.y : FaceTotal);</line>
+			<line align="64px">
+				<keyword>break</keyword>;
+			</line>
+			<line align="32px">
+				<keyword>case</keyword> gli::TARGET_2D_ARRAY:
+			</line>
+			<line align="32px">
+				<keyword>case</keyword> gli::TARGET_3D:
+			</line>
+			<line align="32px">
+				<keyword>case</keyword> gli::TARGET_CUBE_ARRAY:
+			</line>
+			<line align="64px">glTexStorage3D(</line>
+			<line align="96px">
+				Target, <keyword>static_cast</keyword>&lt;GLint&gt;(Texture.levels()), Format.Internal,
+			</line>
+			<line align="96px">Dimensions.x, Dimensions.y, Texture.target() == gli::TARGET_3D ? Dimensions.z : FaceTotal);</line>
+			<line align="64px">
+				<keyword>break</keyword>;
+			</line>
+			<line align="32px">
+				<keyword>default</keyword>: assert(0); break;
+			</line>
+			<line align="32px">}</line>
+			<line></line>
+			<line align="32px">
+				<keyword>for</keyword>(std::size_t Layer = 0; Layer &lt; Texture.layers(); ++Layer)
+			</line>
+			<line align="32px">
+				<keyword>for</keyword>(std::size_t Face = 0; Face &lt; Texture.faces(); ++Face)
+			</line>
+			<line align="32px">
+				<keyword>for</keyword>(std::size_t Level = 0; Level &lt; Texture.levels(); ++Level)
+			</line>
+			<line align="32px">{</line>
+			<line align="64px">
+				GLsizei <keyword>const</keyword> LayerGL = <keyword>static_cast</keyword>&lt;GLsizei&gt;(Layer);
+			</line>
+			<line align="64px">glm::tvec3&lt;GLsizei&gt; Dimensions(Texture.dimensions(Level));</line>
+			<line align="64px">
+				<keyword>if</keyword>(gli::is_target_cube(Texture.target()))
+			</line>
+			<line align="96px">
+				Target = <keyword>static_cast</keyword>&lt;GLenum&gt;(GL_TEXTURE_CUBE_MAP_POSITIVE_X + Face);
+			</line>
+			<line></line>
+			<line align="64px">
+				<keyword>switch</keyword>(Texture.target())
+			</line>
+			<line align="64px">{</line>
+			<line align="64px">
+				<keyword>case</keyword> gli::TARGET_1D:
+			</line>
+			<line align="96px">
+				<keyword>if</keyword>(gli::is_compressed(Texture.format()))
+			</line>
+			<line align="128px">glCompressedTexSubImage1D(</line>
+			<line align="160px">
+				Target, <keyword>static_cast</keyword>&lt;GLint&gt;(Level), 0, Dimensions.x,
+			</line>
+			<line align="160px">
+				Format.Internal, <keyword>static_cast</keyword>&lt;GLsizei&gt;(Texture.size(Level)),
+			</line>
+			<line align="160px">Texture.data(Layer, Face, Level));</line>
+			<line align="96px">
+				<keyword>else</keyword>
+			</line>
+			<line align="128px">glTexSubImage1D(</line>
+			<line align="160px">
+				Target, <keyword>static_cast</keyword>&lt;GLint&gt;(Level), 0, Dimensions.x, Format.External, Format.Type,
+			</line>
+			<line align="160px">Texture.data(Layer, Face, Level));</line>
+			<line align="96px">
+				<keyword>break</keyword>;
+			</line>
+			<line align="64px">
+				<keyword>case</keyword> gli::TARGET_1D_ARRAY:
+			</line>
+			<line align="64px">
+				<keyword>case</keyword> gli::TARGET_2D:
+			</line>
+			<line align="64px">
+				<keyword>case</keyword> gli::TARGET_CUBE:
+			</line>
+			<line align="96px">
+				<keyword>if</keyword>(gli::is_compressed(Texture.format()))
+			</line>
+			<line align="128px">glCompressedTexSubImage2D(</line>
+			<line align="160px">
+				Target, <keyword>static_cast</keyword>&lt;GLint&gt;(Level), 0, 0,
+			</line>
+			<line align="160px">Dimensions.x, Texture.target() == gli::TARGET_1D_ARRAY ? : Dimensions.y,</line>
+			<line align="160px">
+				Format.Internal, <keyword>static_cast</keyword>&lt;GLsizei&gt;(Texture.size(Level)),
+			</line>
+			<line align="160px">Texture.data(Layer, Face, Level));</line>
+			<line align="96px">
+				<keyword>else</keyword>
+			</line>
+			<line align="128px">glTexSubImage2D(</line>
+			<line align="160px">
+				Target, <keyword>static_cast</keyword>&lt;GLint&gt;(Level), 0, 0,
+			</line>
+			<line align="160px">Dimensions.x, Texture.target() == gli::TARGET_1D_ARRAY ? LayerGL : Dimensions.y,</line>
+			<line align="160px">Format.External, Format.Type, Texture.data(Layer, Face, Level));</line>
+			<line align="96px">
+				<keyword>break;</keyword>
+			</line>
+			<line align="64px">
+				<keyword>case</keyword> gli::TARGET_2D_ARRAY:
+			</line>
+			<line align="64px">
+				<keyword>case</keyword> gli::TARGET_3D:
+			</line>
+			<line align="64px">
+				<keyword>case</keyword> gli::TARGET_CUBE_ARRAY:
+			</line>
+			<line align="96px">
+				<keyword>if</keyword>(gli::is_compressed(Texture.format()))
+			</line>
+			<line align="128px">glCompressedTexSubImage3D(</line>
+			<line align="160px">
+				Target, <keyword>static_cast</keyword>&lt;GLint&gt;(Level), 0, 0, 0,
+			</line>
+			<line align="160px">Dimensions.x, Dimensions.y, Texture.target() == gli::TARGET_3D ? Dimensions.z : LayerGL,</line>
+			<line align="160px">
+				Format.Internal, <keyword>static_cast</keyword>&lt;GLsizei&gt;(Texture.size(Level)),
+			</line>
+			<line align="160px">Texture.data(Layer, Face, Level));</line>
+			<line align="96px">
+				<keyword>else</keyword>
+			</line>
+			<line align="128px">glTexSubImage3D(</line>
+			<line align="160px">
+				Target, <keyword>static_cast</keyword>&lt;GLint&gt;(Level), 0, 0, 0,
+			</line>
+			<line align="160px">Dimensions.x, Dimensions.y, Texture.target() == gli::TARGET_3D ? Dimensions.z : LayerGL,</line>
+			<line align="160px">Format.External, Format.Type, Texture.data(Layer, Face, Level));</line>
+			<line align="96px">
+				<keyword>break</keyword>;
+			</line>
+			<line align="64px">
+				<keyword>default</keyword>: assert(0); <keyword>break</keyword>;
+			</line>
+			<line align="64px">}</line>
+			<line align="32px">}</line>
+			<line align="32px">
+				<keyword>return</keyword> TextureName;
+			</line>
+			<line>}</line>
+		</code>
+
+		<source-download index="1195" />
+		<source-element type="Link" href="https://github.com/g-truc/gli/issues" title="Submit a bug report" />
+		<source-element type="Link" href="http://gli.g-truc.net/0.7.0/api/index.html" title="GLI 0.7.0 API" />
+	</post>
+
 	<post index="0736" date="02/08/2015" std-date="2015-08-02T12:00:00.00Z"  title="GLM 0.9.7.0 released">
 		<meta>
 			<tag>gtc-tech-project-glm</tag>
