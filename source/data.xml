@@ -70,6 +70,13 @@
 		</paragraph>
 	</draft>
 
+	<post index="0742" date="03/10/2015" std-date="2015-10-03T23:30:00.00Z" title="Week 25: Vient, puis s'en va">
+		<meta>
+			<tag>gtc-crea-photograph</tag>
+		</meta>
+		<image color="black" img="./photo/2015-25-960.jpg" href="./photo/2015-25.jpg" />
+	</post>
+
 	<post index="0741" date="22/09/2015" std-date="2015-09-22T23:30:00.00Z" title="OpenGL Samples 4.5.2.0 released">
 		<meta>
 			<tag>gtc-tech-opengl-samples</tag>
