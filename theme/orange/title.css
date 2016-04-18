@@ -58,7 +58,7 @@ div.title-frame
 
 div.title-frame-full
 {
-	min-height:480px;
+	min-height:1650px;
 }
 
 a.title-frame
@@ -83,20 +83,18 @@ a.title-frame-shadow:hover
 	text-decoration:underline;
 }
 
-div.title-frame-menu,
-div.title-frame-shadow
+a.title-frame-menu
 {
-	width:984px;
-	min-height:180px;
-	border-radius:16px;
+	color:#ffffff;
 }
 
 div.title-frame-menu
 {
 	position:relative;
-	top:220px;
-	left:8px;
-	z-index:0;
+	top:300px;
+	padding:32px;
+	min-height:180px;
+	border-radius:16px;
 }
 
 a.menu-anchor
@@ -107,26 +105,10 @@ a.menu-anchor
 	top:32px;
 	color:transparent;
 	text-align:center;
-	
+
 	border-style:solid;
 	border-width:0px;
 	border-color:#00FFFF;
-}
-
-div.title-frame-shadow
-{
-	color:transparent;
-	position:absolute;
-	top:0px;
-	left:0px;
-	
-	background-color:#000000;
-	
-	filter:alpha(opacity=30);
-	-moz-opacity:0.3;
-	-khtml-opacity: 0.3;
-	opacity: 0.3;
-	z-index:1;
 }
 
 ul.title-frame-crea, ul.title-frame-crea-shadow,  div.title-frame-crea-menu,
@@ -134,13 +116,13 @@ ul.title-frame-tech, ul.title-frame-tech-shadow, div.title-frame-tech-menu,
 div.title-frame-google
 {
 	padding:8px;
-    padding-top:32px;
-    padding-bottom:0px;
+	padding-top:32px;
+	padding-bottom:0px;
 	marging:8px;
 	width:476px;
-    font-family:Century;
-    position:absolute;
-    
+	font-family:Century;
+	position:absolute;
+
 	border-style:solid;
 	border-width:0px;
 	border-color:#00FF00;

@@ -2,11 +2,11 @@
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
 	<command out="../index.html" xsl="page-index.xsl" xml="data.xml">
-    	<param name="filter" value="'gtc-tech'" />
+		<param name="filter" value="'gtc-tech'" />
 	</command>
-	<command out="../photo.html" xsl="page-index.xsl" xml="data.xml">
-    	<param name="filter" value="'gtc-crea'" />
-  	</command>
+	<command out="../photo.html" xsl="page-photo.xsl" xml="data.xml">
+		<param name="filter" value="'gtc-crea'" />
+	</command>
 	<command out="../info.html" xsl="page-info.xsl" xml="data.xml" />
 	<command out="../search.html" xsl="page-search.xsl" xml="data.xml" />
 	<command out="../doc.html" xsl="page-doc.xsl" xml="download.xml" />
