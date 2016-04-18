@@ -164,9 +164,9 @@
 							<xsl:text> &gt;</xsl:text>
 							</a>
 						</div>
-						</xsl:if>
+					</xsl:if>
 
-						<xsl:if test="$Post/../post[@index=$prev-index]">
+					<xsl:if test="$Post/../post[@index=$prev-index]">
 						<div class="post-prev-text">
 							<a class="post-prev-text" href="{concat($URL_POST_TOKEN, $prev-index, $URL_HTML_TOKEN, $ANCHOR_PICTURE_LINK)}"> 
 								<xsl:text>&lt; </xsl:text>
