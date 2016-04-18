@@ -3,11 +3,11 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:include href="util-constants.xsl" />
 	<xsl:include href="util.xsl" />
-  <xsl:include href="util-html.xsl" />
-  <xsl:include href="util-head.xsl" />
-  <xsl:include href="util-webgl.xsl" />
-  <xsl:include href="util-foot.xsl" />
-  <xsl:include href="util-title.xsl" />
+	<xsl:include href="util-html.xsl" />
+	<xsl:include href="util-head.xsl" />
+	<xsl:include href="util-webgl.xsl" />
+	<xsl:include href="util-foot.xsl" />
+	<xsl:include href="util-title.xsl" />
 	<xsl:include href="util-directory.xsl" />
 
 	<xsl:template match="g-truc">

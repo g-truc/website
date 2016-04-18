@@ -78,55 +78,15 @@
 						flashvars="{./album/slide/@href}"
 						pluginspage="http://www.macromedia.com/go/getflashplayer">
 					</embed>
-
-					<!--object type="application/x-shockwave-flash" data="http://picasaweb.google.com/s/c/bin/slideshow.swf" width="800" height="533">
-							<param name="movie" value="http://picasaweb.google.com/s/c/bin/slideshow.swf" />
-							<param name="flashvars" value="{./album/slideshow}" />
-							<param name="pluginspage" value="http://www.macromedia.com/go/getflashplayer" />
-					</object-->
 				</div>
 			</xsl:if>
 
 			<xsl:apply-templates />
-
-			<!--script type="text/javascript" src="http://reddit.com/static/button/button1.js" class="button-reddit">
-				reddit_url = "<xsl:value-of select="concat($WEBSITE_URL, $URL_POST_TOKEN, ./@index, $URL_HTML_TOKEN)" />";
-				reddit_title = "<xsl:value-of select="./@title" />";
-				reddit_target = "opengl";
-				reddit_bgcolor = "FFF8F0";
-				reddit_bordercolor = "FFF8F0";
-				</script-->
 		</div>
 
 		<xsl:call-template name="post-browse">
 			<xsl:with-param name="Post" select="." />
 		</xsl:call-template>
-
-		<!--div xmlns="http://www.w3.org/1999/xhtml" class="post-browse">
-			<xsl:variable name="next-index" select="./preceding-sibling::post[position()=1]/@index" />
-			<xsl:variable name="prev-index" select="./following-sibling::post[position()=1]/@index" />
-
-			<xsl:variable name="curr-index" select="@index" />
-
-			<xsl:if test="../post[@index=$next-index]">
- 				<div class="post-next-text">
-					<a class="post-next-text" href="{concat($URL_POST_TOKEN, $next-index, $URL_HTML_TOKEN, $ANCHOR_MENU_LINK)}">
-						<xsl:value-of select="../post[@index=$next-index]/@title" />
-						<xsl:text> &gt;</xsl:text>
-					</a>
-				</div>
-			</xsl:if>
-
-			<xsl:if test="../post[@index=$prev-index]">
-				<div class="post-prev-text">
-					<a class="post-prev-text" href="{concat($URL_POST_TOKEN, $prev-index, $URL_HTML_TOKEN, $ANCHOR_MENU_LINK)}">
-						<xsl:text>&lt; </xsl:text>
-						<xsl:value-of select="../post[@index=$prev-index]/@title" />
-					</a>
-				</div>
-			</xsl:if>
-
-		</div-->
 	</xsl:template>
 
 	<xsl:template name="post-title">
@@ -171,7 +131,7 @@
 				</xsl:call-template>
 				</div>
 
-				<div class="post-frame-photo">            
+				<div class="post-frame-photo">
 				<xsl:apply-templates select="." mode="photo-menu-index" />
 				<br />
 				</div>
@@ -183,17 +143,6 @@
 					<xsl:with-param name="Post" select="." />
 					<xsl:with-param name="Theme" select="'light'" />
 				</xsl:call-template>
-
-				<!--xsl:if test="./album/slide">
-				  <div class="slideshow">
-				    <embed
-				       type="application/x-shockwave-flash"
-				       src="https://picasaweb.google.com/s/c/bin/slideshow.swf"
-				       width="./album/slide/@width" height="./album/slide/@height"
-				       flashvars="{./album/slide/@href}"
-				       pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
-				  </div>
-				</xsl:if-->
 
 				<xsl:apply-templates />
 				</div>
@@ -215,9 +164,9 @@
 							<xsl:text> &gt;</xsl:text>
 							</a>
 						</div>
-						</xsl:if>
+					</xsl:if>
 
-						<xsl:if test="$Post/../post[@index=$prev-index]">
+					<xsl:if test="$Post/../post[@index=$prev-index]">
 						<div class="post-prev-text">
 							<a class="post-prev-text" href="{concat($URL_POST_TOKEN, $prev-index, $URL_HTML_TOKEN, $ANCHOR_PICTURE_LINK)}"> 
 								<xsl:text>&lt; </xsl:text>
@@ -236,32 +185,32 @@
 	</xsl:template>
 
 	<xsl:template name="post-browse">
-	<xsl:param name="Post" />
+		<xsl:param name="Post" />
 
-	<div xmlns="http://www.w3.org/1999/xhtml" class="post-browse">
-		<xsl:variable name="next-index" select="$Post/preceding-sibling::post[starts-with(./meta/tag, 'gtc-tech')][position()=1]/@index" />
-		<xsl:variable name="prev-index" select="$Post/following-sibling::post[starts-with(./meta/tag, 'gtc-tech')][position()=1]/@index" />
+		<div xmlns="http://www.w3.org/1999/xhtml" class="post-browse">
+			<xsl:variable name="next-index" select="$Post/preceding-sibling::post[starts-with(./meta/tag, 'gtc-tech')][position()=1]/@index" />
+			<xsl:variable name="prev-index" select="$Post/following-sibling::post[starts-with(./meta/tag, 'gtc-tech')][position()=1]/@index" />
 
-		<xsl:variable name="curr-index" select="@index" />
+			<xsl:variable name="curr-index" select="@index" />
 
-		<xsl:if test="$Post/../post[@index=$next-index]">
-			<div class="post-next-text">
-				<a class="post-next-text" href="{concat($URL_POST_TOKEN, $next-index, $URL_HTML_TOKEN, $ANCHOR_MENU_LINK)}">
-					<xsl:value-of select="$Post/../post[@index=$next-index]/@title" />
-					<xsl:text> &gt;</xsl:text>
-				</a>
-			</div>
-		</xsl:if>
+			<xsl:if test="$Post/../post[@index=$next-index]">
+				<div class="post-next-text">
+					<a class="post-next-text" href="{concat($URL_POST_TOKEN, $next-index, $URL_HTML_TOKEN, $ANCHOR_MENU_LINK)}">
+						<xsl:value-of select="$Post/../post[@index=$next-index]/@title" />
+						<xsl:text> &gt;</xsl:text>
+					</a>
+				</div>
+			</xsl:if>
 
-		<xsl:if test="$Post/../post[@index=$prev-index]">
-			<div class="post-prev-text">
-				<a class="post-prev-text" href="{concat($URL_POST_TOKEN, $prev-index, $URL_HTML_TOKEN, $ANCHOR_MENU_LINK)}">
-					<xsl:text>&lt; </xsl:text>
-					<xsl:value-of select="$Post/../post[@index=$prev-index]/@title" />
-				</a>
-			</div>
-		</xsl:if>
-	</div>
+			<xsl:if test="$Post/../post[@index=$prev-index]">
+				<div class="post-prev-text">
+					<a class="post-prev-text" href="{concat($URL_POST_TOKEN, $prev-index, $URL_HTML_TOKEN, $ANCHOR_MENU_LINK)}">
+						<xsl:text>&lt; </xsl:text>
+						<xsl:value-of select="$Post/../post[@index=$prev-index]/@title" />
+					</a>
+				</div>
+			</xsl:if>
+		</div>
 	</xsl:template>
 
 </xsl:stylesheet>
