@@ -81,6 +81,7 @@
 									<a class="title-frame-menu" href="doc/OpenGL%204.0%20review.pdf">4.0</a>, 
 									<a class="title-frame-menu" href="doc/OpenGL%203.3%20review.pdf">3.3</a>
 								</li>
+								<li>Effective OpenGL: <a class="title-frame-menu" href="doc/Effective%20OpenGL.pdf">pdf</a> (2016-06)</li>
 								<li>Candidate features for OpenGL 5 hardware: <a class="title-frame-menu" href="doc/Candidate%20features%20for%20OpenGL%205.pdf">pdf</a> (2014-05)</li>
 								<li>GLSL Capabilities: <a class="title-frame-menu" href="doc/GLSL%20Capabilities.pdf">ES 2.0 to ES 3.1 and GL 3.2 to GL 4.5</a></li>
 							</ul>
