@@ -47,7 +47,7 @@
 								The OpenGL Samples Pack is a collection of OpenGL samples based on the OpenGL "core profile" specifications. This code samples are also used to produce the <strong>OpenGL Drivers Status</strong> evaluating the quality of OpenGL drivers.
 							</p>
 							<ul>
-								<li>OpenGL Drivers Status: <a class="title-frame-menu" href="doc/OpenGL%204%20Hardware%20Matrix.pdf">pdf (2015-09)</a>, <a class="title-frame-menu" href="doc/OpenGL%204%20Hardware%20Matrix.xlsx">xlsx (all revisions since 2012)</a></li>
+								<li>OpenGL Drivers Status: <a class="title-frame-menu" href="doc/OpenGL%204%20Hardware%20Matrix.pdf">pdf (2016-07)</a>, <a class="title-frame-menu" href="doc/OpenGL%204%20Hardware%20Matrix.xlsx">xlsx (all revisions since 2012)</a></li>
 							</ul>
 							<br />
 

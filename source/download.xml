@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <g-truc xmlns:g="http://www.g-truc.net/2010/g-truc" version="7.1.1">
+	<download index="1199" date="10/07/2016" std-date="2015-09-22T23:30:00.00Z" type="gtc-tech-opengl-samples" version="4.5.3.0">
+		<item href="https://github.com/g-truc/ogl-samples/releases/download/4.5.3.0/ogl-samples-4.5.3.0.zip" type="ZIP" size="36.8 MB" />
+		<item href="https://github.com/g-truc/ogl-samples/releases/download/4.5.3.0/ogl-samples-4.5.3.0.7z" type="7Z" size="25.7 MB" />
+	</download>
 
 	<download index="1198" date="29/09/2015" std-date="2015-09-29T23:30:00.00Z" doc="true" type="gtc-tech-project-openglstatus"  version="2015-09">
 		<item href="doc/OpenGL%20Drivers%20Status%202015-09.pdf" type="PDF" size="461 KB" />
