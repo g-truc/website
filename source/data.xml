@@ -7436,18 +7436,18 @@
     </meta>
     <paragraph>
       <link href="http://www.opengl.org/registry/specs/AMD/multi_draw_indirect.txt">AMD_multi_draw_indirect</link> is 
-        a functionality that Direct3D 11 programmers can be particularly jaleous as it reached OpenGL 4.3 specification but this great feature is still missing in the Direct3D 11 world.
-        Direct3D 11 and OpenGL 4.0 introduced the draw indirect functionnality to submit a draw using parameters stored in a buffer object.
+        a functionality that Direct3D 11 programmers can be particularly jealous as it reached OpenGL 4.3 specification but this great feature is still missing in the Direct3D 11 world.
+        Direct3D 11 and OpenGL 4.0 introduced the draw indirect functionality to submit a draw using parameters stored in a buffer object.
         <link href="http://www.opengl.org/registry/specs/AMD/multi_draw_indirect.txt">AMD_multi_draw_indirect</link> 
         extends this feature by allowing multiple draw submissions in a single call. This approach moves a CPU loop to a GPU command processor loop, 
-        hence potencially significantly reducing the CPU overhead and the possible number of draws per frame.
+        hence potentially significantly reducing the CPU overhead and the possible number of draws per frame.
         Unfortunately, unlike instanced draw, OpenGL doesn't provide a unique identifier per draw (let's call it <codeword>gl_DrawID</codeword>) for each draw... 
     </paragraph>
       
       <paragraph>
           A first approach we could thought of is to use an atomic counter and increment each draw its value when <codeword>gl_VertexID</codeword> and <codeword>gl_InstanceID</codeword> are equal to 0.
-        Unfortunately, this idea is not working because of the GPU architechture so that OpenGL doesn't provide garantee on the order of excutions so that we can't be sure with this method that the first draw will be identified with the value 0.
-        On AMD hardware this behaviour is almost possible but not all the time. On NVIDIA hardware atomic counter are asynchronously executed which nearly garantee that we will never have the right identifier for a draw.
+        Unfortunately, this idea is not working because of the GPU architecture so that OpenGL doesn't provide guarantee on the order of excutions so that we can't be sure with this method that the first draw will be identified with the value 0.
+        On AMD hardware this behavior is almost possible but not all the time. On NVIDIA hardware atomic counter are asynchronously executed which nearly guarantee that we will never have the right identifier for a draw.
       </paragraph>
       
       <paragraph>
@@ -7489,9 +7489,9 @@
         </code>
       <paragraph>
           With a divisor equal to 1, all the vertices of a draw will access to the same buffer value. Then, for each draw we use the base instance parameter as an offset to set where in the buffer we are reading the DrawID value. 
-          The base instance value act here as an indirection value which increases the execution latency but allow to set a specific value for each DrawID, providing a behaviours more advanced than a simple increase of the value for each draw. 
-          This behaviours allows to maximize the usage of each draws by the application. When each draw is associated with a specific mesh, for a specific frame a lot of draws will be useless for the rendering. 
-          This bahaviours wouldn't matter if discarding a draw was particularly efficient but it isn't on both Kepler and Southern Islands architechtures. 
+          The base instance value act here as an indirection value which increases the execution latency but allow to set a specific value for each DrawID, providing a behavior more advanced than a simple increase of the value for each draw. 
+          This behavior allows to maximize the usage of each draws by the application. When each draw is associated with a specific mesh, for a specific frame a lot of draws will be useless for the rendering. 
+          This behavior wouldn't matter if discarding a draw was particularly efficient but it isn't on both Kepler and Southern Islands architectures.
           By being able to assign a specific DrawID to each draw we can assign a specific mesh for each draw allowing to build the needed list of meshes for each draw.
       </paragraph>
       <code title="Content of the DrawID buffer for three draws">
@@ -7512,11 +7512,11 @@
           </line>
       </code>
       <paragraph>
-        This DrawID gives an interesting fonctional quality to the multi draw indirect approach however adding an application specific semantic could increase the flexibility and even the change the application performance balance. 
-        This DrawID is useful because it allows indexing ressources in the shader. Typically, we would like to use it to index material in the fragment shader stage. 
-        We can even imagine that multiple ressources will be indexed thanks this this DrawID. 
-        Hence, we need an indirection table that per draw and this table will be embodied by a uniform block which stores indexes to access each ressources per draw. 
-        Unfortunately indirections imply latences which cost performances... 
+        This DrawID gives an interesting functional quality to the multi draw indirect approach however adding an application specific semantic could increase the flexibility and even the change the application performance balance. 
+        This DrawID is useful because it allows indexing resources in the shader. Typically, we would like to use it to index material in the fragment shader stage.
+        We can even imagine that multiple resources will be indexed thanks this this DrawID.
+        Hence, we need an indirection table that per draw and this table will be embodied by a uniform block which stores indexes to access each resource per draw.
+        Unfortunately indirections imply latencies and potentially performance... 
       </paragraph>
 
     <paragraph>
@@ -7541,7 +7541,7 @@
 
     <paragraph>
       A question remains, how fast an automatically increased <codeword>gl_DrawID</codeword> would be compare to the proposed solution? 
-      No immediate bandwidth and latency impact but this approach would require an indirection table (uniform block) to identify which actual ressource to access which may not do a better cache reuse than the divisor.
+      No immediate bandwidth and latency impact but this approach would require an indirection table (uniform block) to identify which actual resource to access which may not do a better cache reuse than the divisor.
       Another approach would be to add another draw parameter alongside with <codeword>BaseVertex</codeword> and <codeword>BaseInstance</codeword> where the user could set its own value for the DrawID parameter. 
       We could even imagine multiple of those parameters. However, what garantee us that those parameters would not have to be fetched for each vertex shader invocation? 
       As a result, this approach could perform equally than using vertex attribute with divisors.
