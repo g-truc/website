@@ -1,7 +1,45 @@
-0. Working in a Khronos committee.1.6. Texture float and half filtering1.7. ETC texture formats1.8. Seamless cubemap texture1.9. Non power of two texture2.1. Buffer target2.2. Mapped buffer3.1. glDrawBuffer3.2. glDrawBuffer(GL_NONE)3.3. glDrawBuffers(1, &GL_BACK)3.4. GL_DEPTH_STENCIL_ATTACHMENT3.5. Framebuffer read3.8. Rendering to float textures3.9. Invalidate framebuffer4.1. Precision qualifiers5.1. GL_MAX_VERTEX_UNIFORM_VECTORS vs GL_MAX_VERTEX_UNIFORM_COMPONENTS5.2. Multiple transform feedback buffers5.3. Version and extension queries5.4. Timer queries6.1. Window system differences11. Texture format support: https://docs.google.com/spreadsheets/d/1f26k1bwq4Lb9CWHXqIX3wLl0wvInwB4RwG8L4i2q72E/edit#gid=012. Use of element of language with shader interfaces: https://docs.google.com/spreadsheets/d/1f26k1bwq4Lb9CWHXqIX3wLl0wvInwB4RwG8L4i2q72E/edit#gid=0
+0. Working in a Khronos committee.
+1.6. Texture float and half filtering
+1.7. ETC texture formats
+1.8. Seamless cubemap texture
+1.9. Non power of two texture
+2.1. Buffer target
+2.2. Mapped buffer
+3.1. glDrawBuffer
+3.2. glDrawBuffer(GL_NONE)
+3.3. glDrawBuffers(1, &GL_BACK)
+3.4. GL_DEPTH_STENCIL_ATTACHMENT
+3.5. Framebuffer read
+3.8. Rendering to float textures
+3.9. Invalidate framebuffer
+4.1. Precision qualifiers
+5.1. GL_MAX_VERTEX_UNIFORM_VECTORS vs GL_MAX_VERTEX_UNIFORM_COMPONENTS
+5.2. Multiple transform feedback buffers
+5.3. Version and extension queries
+5.4. Timer queries
+6.1. Window system differences
+11. Texture format support: https://docs.google.com/spreadsheets/d/1f26k1bwq4Lb9CWHXqIX3wLl0wvInwB4RwG8L4i2q72E/edit#gid=0
+12. Use of element of language with shader interfaces: https://docs.google.com/spreadsheets/d/1f26k1bwq4Lb9CWHXqIX3wLl0wvInwB4RwG8L4i2q72E/edit#gid=0
 
-bool isTextureFormatSupported(GLenum InternalFormat, GLenum Format, GLenum Type, bool Compressed, GLsizei Size){    GLuint Name = 0;    glGenTextures(1, &Name);     if(Compressed)        glCompressedTexImage2D(GL_TEXTURE_2D, 0, InternalFormat, 4, 4, 0, Size, NULL);    else        glTexImage2D(GL_TEXTURE_2D, 0, InternalFormat, 1, 1, 0, Format, Type, NULL);    return glGetError() == GL_NO_ERROR;}Listing 12.2: Checking texture format support using glGetError.
+bool isTextureFormatSupported(GLenum InternalFormat, GLenum Format, GLenum Type, bool Compressed, GLsizei Size)
+{
+    GLuint Name = 0;
+    glGenTextures(1, &Name); 
+    if(Compressed)
+        glCompressedTexImage2D(GL_TEXTURE_2D, 0, InternalFormat, 4, 4, 0, Size, NULL);
+    else
+        glTexImage2D(GL_TEXTURE_2D, 0, InternalFormat, 1, 1, 0, Format, Type, NULL);
+    return glGetError() == GL_NO_ERROR;
+}
+Listing 12.2: Checking texture format support using glGetError.
 
 https://developer.nvidia.com/reading-between-threads-shader-intrinsics
 
 https://github.com/ziacko/SPIRV-viewer
+
+18 Built-in variables
+
+References:
+- Reading Between The Threads: Shader Intrinsics, Mathias Schott, 2016
+- GCN Shader Extensions for Direct3D and Vulkan, Matthaeus Chajdas, 2016
+
