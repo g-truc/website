@@ -56,7 +56,7 @@
 								Assembling contributions from experienced developers, hardware vendors, researchers, and educators, OpenGL Insights present real-world techniques for intermediate and advanced OpenGL, OpenGL ES, and WebGL developers. 
 							</p>
 							<ul>
-								<li>OpenGL ES 3 Hardware Matrix: <a class="title-frame-menu" href="doc/OpenGL%20ES%203%20Hardware%20Matrix.pdf">pdf (2016-04)</a>, <a class="title-frame-menu" href="doc/OpenGL%20ES%203%20Hardware%20Matrix.xlsx">xlsx (all revisions since 2016)</a></li>
+								<li>OpenGL ES 3 Hardware Matrix: <a class="title-frame-menu" href="doc/OpenGL%20ES%203%20Hardware%20Matrix.pdf">pdf (2016-08)</a>, <a class="title-frame-menu" href="doc/OpenGL%20ES%203%20Hardware%20Matrix.xlsx">xlsx (all revisions since 2016)</a></li>
 								<li>OpenGL 4 Hardware Matrix: <a class="title-frame-menu" href="doc/OpenGL%204%20Hardware%20Matrix.pdf">pdf (2016-04)</a>, <a class="title-frame-menu" href="doc/OpenGL%204%20Hardware%20Matrix.xlsx">xlsx (all revisions since 2012)</a></li>
 								<li>OpenGL 3 Hardware Matrix: <a class="title-frame-menu" href="doc/OpenGL%203%20Hardware%20Matrix.pdf">pdf (2014-04)</a></li>
 							</ul>
@@ -81,7 +81,7 @@
 									<a class="title-frame-menu" href="doc/OpenGL%204.0%20review.pdf">4.0</a>, 
 									<a class="title-frame-menu" href="doc/OpenGL%203.3%20review.pdf">3.3</a>
 								</li>
-								<li>Effective OpenGL: <a class="title-frame-menu" href="doc/Effective%20OpenGL.pdf">pdf</a> (2016-06)</li>
+								<li>Effective OpenGL: <a class="title-frame-menu" href="doc/Effective%20OpenGL.pdf">pdf</a> (2016-08)</li>
 								<li>Candidate features for OpenGL 5 hardware: <a class="title-frame-menu" href="doc/Candidate%20features%20for%20OpenGL%205.pdf">pdf</a> (2014-05)</li>
 								<li>GLSL Capabilities: <a class="title-frame-menu" href="doc/GLSL%20Capabilities.pdf">ES 2.0 to ES 3.1 and GL 3.2 to GL 4.5</a></li>
 							</ul>
