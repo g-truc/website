@@ -43,3 +43,8 @@ References:
 - Reading Between The Threads: Shader Intrinsics, Mathias Schott, 2016
 - GCN Shader Extensions for Direct3D and Vulkan, Matthaeus Chajdas, 2016
 
+
+
+GL_MAX_VERTEX_UNIFORM_VECTORS vs GL_MAX_VERTEX_UNIFORM_COMPONENTSMultiple transform feedback buffers3.4. GL_DEPTH_STENCIL_ATTACHMENTSeamless cubemap texture
+
+
