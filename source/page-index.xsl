@@ -57,7 +57,7 @@
 							</p>
 							<ul>
 								<li>OpenGL ES 3 Hardware Matrix: <a class="title-frame-menu" href="doc/OpenGL%20ES%203%20Hardware%20Matrix.pdf">pdf (2016-08)</a>, <a class="title-frame-menu" href="doc/OpenGL%20ES%203%20Hardware%20Matrix.xlsx">xlsx (all revisions since 2016)</a></li>
-								<li>OpenGL 4 Hardware Matrix: <a class="title-frame-menu" href="doc/OpenGL%204%20Hardware%20Matrix.pdf">pdf (2016-04)</a>, <a class="title-frame-menu" href="doc/OpenGL%204%20Hardware%20Matrix.xlsx">xlsx (all revisions since 2012)</a></li>
+								<li>OpenGL 4 Hardware Matrix: <a class="title-frame-menu" href="doc/OpenGL%204%20Hardware%20Matrix.pdf">pdf (2017-07)</a>, <a class="title-frame-menu" href="doc/OpenGL%204%20Hardware%20Matrix.xlsx">xlsx (all revisions since 2012)</a></li>
 								<li>OpenGL 3 Hardware Matrix: <a class="title-frame-menu" href="doc/OpenGL%203%20Hardware%20Matrix.pdf">pdf (2014-04)</a></li>
 							</ul>
 							<br />

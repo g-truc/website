@@ -1,13 +1,9 @@
 0. Working in a Khronos committee.
 1.6. Texture float and half filtering
-1.7. ETC texture formats
 1.8. Seamless cubemap texture
 1.9. Non power of two texture
 2.1. Buffer target
 2.2. Mapped buffer
-3.1. glDrawBuffer
-3.2. glDrawBuffer(GL_NONE)
-3.3. glDrawBuffers(1, &GL_BACK)
 3.4. GL_DEPTH_STENCIL_ATTACHMENT
 3.5. Framebuffer read
 3.8. Rendering to float textures
