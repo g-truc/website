@@ -117,8 +117,6 @@
 						</div>
 					</div>
 				</div>
-
-				<xsl:call-template name="g-truc-foot" />
 			</body>
 		</html>
 	</xsl:template>

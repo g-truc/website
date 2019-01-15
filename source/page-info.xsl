@@ -29,8 +29,6 @@
 
           <xsl:apply-templates select="$Template/about" />
         </div>
-
-        <xsl:call-template name="g-truc-foot" />
       </body>
     </html>
   </xsl:template>
